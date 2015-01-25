@@ -15,8 +15,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/project', {templateUrl: 'partials/view-project.html'});
   $routeProvider.when('/addproperty', {templateUrl: 'partials/add-property.html'});
   $routeProvider.when('/addproject', {templateUrl: 'partials/add-project.html'});
-  $routeProvider.when('/webresponse', {templateUrl: 'partials/webresponse.html'});
-  $routeProvider.when('/propertyresponse', {templateUrl: 'partials/propertyresponse.html'});
-  $routeProvider.when('/projectresponce', {templateUrl: 'partials/projectresponce.html'});
+  $routeProvider.when('/webresponse/all', {templateUrl: 'partials/webresponse.html'});
+  $routeProvider.when('/propertyresponse/all', {templateUrl: 'partials/propertyresponse.html'});
+  $routeProvider.when('/projectresponse/all', {templateUrl: 'partials/projectresponce.html'});
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
