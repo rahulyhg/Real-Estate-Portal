@@ -1,16 +1,16 @@
 <div>
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="#/response/web">Web Response</a></li>
-      <li role="presentation"><a href="#/response/property">Property Response</a></li>
-      <li role="presentation"><a href="#/response/project">Project Response</a></li>
+      <li role="presentation" ng-class="getClass('/response/web')"><a href="#/response/web">Web Response</a></li>
+      <li role="presentation" ng-class="getClass('/response/property')"><a href="#/response/property">Property Response</a></li>
+      <li role="presentation" ng-class="getClass('/response/project')"><a href="#/response/project">Project Response</a></li>
     </ul>
 </div>
 <div>
     <ul class="nav nav-tabs">
-		<li role="presentation" class="active"><a ng-href="#/response/{{type}}/all">All</a></li>
-		<li role="presentation"><a ng-href="#/response/{{type}}/new">New</a></li>
-		<li role="presentation"><a href="#/response/{{type}}/read">Read</a></li>
-		<li role="presentation"><a href="#/response/{{type}}/delete">Delete</a></li>
+		<li role="presentation" ng-class="getClass('/response/{{type}}/all')"><a ng-href="#/response/{{type}}/all">All</a></li>
+		<li role="presentation" ng-class="getClass('/response/{{type}}/new')"><a ng-href="#/response/{{type}}/new">New</a></li>
+		<li role="presentation" ng-class="getClass('/response/{{type}}/read')"><a href="#/response/{{type}}/read">Read</a></li>
+		<li role="presentation" ng-class="getClass('/response/{{type}}/delete')"><a href="#/response/{{type}}/delete">Delete</a></li>
     </ul>
 </div>
 <div class="table-responsive">
@@ -37,3 +37,5 @@
 		</tbody>
 	</table>
 </div>
+<script>
+</script>
