@@ -10,6 +10,7 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'partials/home.html'});
   $routeProvider.when('/login', {templateUrl: 'partials/login.html'});
   $routeProvider.when('/register', {templateUrl: 'partials/register.html'});
+  $routeProvider.when('/forgot', {templateUrl: 'partials/forgot.html'});
   $routeProvider.when('/register/:edit', {templateUrl: 'partials/edit-profile.html'});
   $routeProvider.when('/property', {templateUrl: 'partials/view-property.html'});
   $routeProvider.when('/project', {templateUrl: 'partials/view-project.html'});
