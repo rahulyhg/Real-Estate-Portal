@@ -1,13 +1,16 @@
 <section id="input">
-		<!--<div class="container">-->
+		
 			<div class="row">
-				<div class="col-md-12">
-				<form class="form-horizontal" role="form">
+			<div class="col-md-2" ng-include="'partials/innernav.html'">
+		
+			</div>
+				<div class="col-md-10">
+				<form class="form-horizontal" role="form" name="myform" method="post">
 				<h3>My Account - Settings</h3>
 				<hr>
 				<p>Here you can make changes to your profile. Please note that you will not be able to change your email which has been already registered.</p>
   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Your Name/Company Name </label>
+    <label for="name" class="col-sm-2 control-label">Name/Company</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="name" placeholder="Enter Name">
     </div>
@@ -70,39 +73,22 @@
        </div>
       </div>
 	  
-	  
+	  <button type="submit" class="btn btn-success center-block">Save</button>
 	   
 	   <h3>Change Password</h3>
-				<hr>
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	
- <div class="form-group">
-    <label for="password" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="password" placeholder="Enter Password">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="password" class="col-sm-2 control-label">Retype Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="password" placeholder="Enter Password">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="rdomain" class="col-sm-2 control-label">Request For Domain</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" rows="3" placeholder="Request"></textarea>
-    </div>
-  </div>
-	
-	
-  
+		<hr>
+		<p>If you want to change your password, please input your old and new password to make changes.</p>
+		<div class="form-group">
+			<label for="oldpassword" class="col-sm-2 control-label">Old Password</label>
+			<div class="col-sm-10">
+			<input type="password" class="form-control" id="oldpassword" placeholder="Old Password">
+			</div>
+			</div>
+			<div class="form-group">
+			<label for="newpassword" class="col-sm-2 control-label">New Password</label>
+			<div class="col-sm-10">
+			<input type="password" class="form-control" id="newpassword" placeholder="New Password">
+			</div>
+			</div>
+			<button type="submit" class="btn btn-success center-block">Update</button>
 </form>
-<center><button type="submit" class="btn btn-success">Edit</button><center>
