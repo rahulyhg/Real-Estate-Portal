@@ -12,6 +12,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/register/:edit', {templateUrl: 'partials/edit-profile.html'});
   $routeProvider.when('/property', {templateUrl: 'partials/view-property.html'});
   $routeProvider.when('/project', {templateUrl: 'partials/view-project.html'});
+  $routeProvider.when('/previewprop', {templateUrl: 'partials/edit-property.html'});
+  $routeProvider.when('/previewproj', {templateUrl: 'partials/edit-project.html'});
   $routeProvider.when('/addproperty', {templateUrl: 'partials/add-property.html'});
   $routeProvider.when('/addproject', {templateUrl: 'partials/add-project.html'});
   $routeProvider.when('/response/:type?/:status?', {templateUrl: 'partials/response.html', controller: 'responseCtrl'});
