@@ -1,8 +1,8 @@
 <div>
     <ul class="nav nav-pills">
-      <li role="presentation" ng-class="getClass('/response/web')"><a href="#/response/web">Web Response</a></li>
-      <li role="presentation" ng-class="getClass('/response/property')"><a href="#/response/property">Property Response</a></li>
-      <li role="presentation" ng-class="getClass('/response/project')"><a href="#/response/project">Project Response</a></li>
+      <li role="presentation" ng-class="getClass('/response/web')"><a href="#/response/web/all">Web Response</a></li>
+      <li role="presentation" ng-class="getClass('/response/property')"><a href="#/response/property/all">Property Response</a></li>
+      <li role="presentation" ng-class="getClass('/response/project')"><a href="#/response/project/all">Project Response</a></li>
     </ul>
 </div>
 <div>
@@ -32,7 +32,7 @@
 			 <td>{{subject}}</td>
 			 <td>{{replied}}</td>
 			 <td>{{date}}</td>
-			 <td>{{action}}</td>
+			 <td><a>delete</a></td>
 		  </tr>
 		</tbody>
 	</table>
