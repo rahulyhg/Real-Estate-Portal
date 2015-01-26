@@ -3,18 +3,20 @@
 		
 	</div>
 				<div class="col-md-10">
-				<form class="form-horizontal" role="form" name="myform" method="post" ng-app=""  ng-controller="validateCtrl" novalidate>
+				<form class="form-horizontal" role="form" name="myform" method="post"  ng-controller="validateCtrl" novalidate>
 				<h3>Free Registration / Signup</h3>
 				<hr>
 				<p>If you have forgot the account password, you can reset password and a new password will be sent to your email address..</p>
           <div class="form-group">
          <label for="email" class="col-sm-2 control-label">Your Email</label>
         <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Enter Mail">
+        <input type="email" class="form-control"  placeholder="Enter Mail" name="Email" ng-model="Email">
+			<span style="color:red" ng-show="myForm.Email.$dirty && myForm.Email.$invalid">
+			<span ng-show="myForm.Email.$error.required" >Email is required.</span>
+			</span>
        </div>
   </div>
   </form>
   <center><button type="submit" class="btn btn-success">Reset</button><center>
-
     </div>
 </div>
