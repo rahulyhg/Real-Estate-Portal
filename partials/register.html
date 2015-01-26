@@ -2,24 +2,26 @@
 <div class="row">
 	<div class="col-md-2" ng-include="'partials/mainnav.html'"></div>
 	<div class="col-md-10">
-		<form class="form-horizontal" role="form" name="myform" method="post">
+		<form class="form-horizontal" role="form" name="myForm" method="post">
 			<h3>Free Registration / Signup</h3>
 			<hr>
 			<p>Please register a free account, before you can start posting your ads. Registration is quick and free! Please note that fields marked * are required.</p>
 			<div class="form-group">
-			<label for="name" class="col-sm-2 control-label">Name </label>
+			<label for="text" class="col-sm-2 control-label" name="Name" ng-model="Name">Name </label>
+			<span ng-show="myForm.Name.$error.required">Name is required.</span>
+			
 			<div class="col-sm-10">
 			<input type="text" class="form-control" id="name" placeholder="Enter Name">
 			</div>
 			</div>
 			<div class="form-group">
-			<label for="contact" class="col-sm-2 control-label">Address</label>
+			<label for="contact" class="col-sm-2 control-label" name="Address" ng-model="Address">Address</label>
 			<div class="col-sm-10">
-			<textarea class="form-control" rows="3" placeholder="Address"></textarea>
+			<textarea class="form-control" rows="3" placeholder="Address" ></textarea>
 			</div>
 			</div>
 			<div class="form-group">
-			<label for="country" class="col-sm-2 control-label">Country:</label>
+			<label for="Country" class="col-sm-2 control-label" name="Country" ng-model="Country">Country:</label>
 			<div class="col-sm-10">
 						<select class="form-control">
 							<option>India</option>
