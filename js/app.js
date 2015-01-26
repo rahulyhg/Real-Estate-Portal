@@ -16,6 +16,6 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/previewproj', {templateUrl: 'partials/edit-project.html'});
   $routeProvider.when('/addproperty', {templateUrl: 'partials/add-property.html'});
   $routeProvider.when('/addproject', {templateUrl: 'partials/add-project.html'});
-  $routeProvider.when('/response/:type?/:status?', {templateUrl: 'partials/response.html', controller: 'responseCtrl'});
+  $routeProvider.when('/response/:type?/:status?/:id?', {templateUrl: 'partials/response.html', controller: 'responseCtrl'});
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
