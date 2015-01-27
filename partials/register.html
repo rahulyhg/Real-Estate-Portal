@@ -8,7 +8,7 @@
 			<p>Please register a free account, before you can start posting your ads. Registration is quick and free! Please note that fields marked * are required.</p>
 			
 			<div class="form-group">
-							<label for="text" class="col-md-2 control-label">Name </label>
+							<label for="text" class="col-md-2 control-label">Name* </label>
 						<div class="col-md-8">
                             <input type="text" class="form-control" ng-model="name" name="name" placeholder="Enter Name" required>
 							<span style="color:red" ng-show="myForm.name.$dirty && 	myForm.name.$invalid">
@@ -18,7 +18,7 @@
 			</div>
 			
 			<div class="form-group">
-							<label for="Address" class="col-md-2 control-label">Address</label>
+							<label for="Address" class="col-md-2 control-label">Address*</label>
 							<div class="col-md-8">
 							<textarea  class="form-control" ng-model="Address" name="Address" placeholder="Enter Address" required></textarea>
 							<span style="color:red" ng-show="myForm.Address.$dirty && 	myForm.Address.$invalid">
@@ -28,7 +28,7 @@
 			</div>
 	
 			<div class="form-group">
-				<label for="Country" class="col-md-2 control-label" name="Country" ng-model="Country">Country:</label>
+				<label for="Country" class="col-md-2 control-label" name="Country" ng-model="Country">Country</label>
 				<div class="col-md-8">
 						<select class="form-control" required>
 							<option></option>
@@ -79,7 +79,7 @@
 			<h4>Login Details</h4>
 			<hr>
 			<div class="form-group">
-				<label for="UserName" class="col-md-2 control-label">UserName</label>
+				<label for="UserName" class="col-md-2 control-label">UserName*</label>
 						<div class="col-md-6">
                             <input type="UserName " class="form-control" ng-model="UserName" name="UserName " placeholder="Enter UserName " required>
 							<span style="color:red" ng-show="myForm.UserName.$dirty && 	myForm.UserName.$invalid">
@@ -92,7 +92,7 @@
 			</div>
 
 			<div class="form-group">
-						<label for="Password" class="col-md-2 control-label">Password </label>
+						<label for="Password" class="col-md-2 control-label">Password* </label>
 						<div class="col-md-8">
                             <input type="Password" class="form-control" ng-model="Password " name="Password" placeholder="Enter Password " required>
 							<span style="color:red" ng-show="myForm.Password.$dirty && 	myForm.Password.$invalid">
@@ -102,7 +102,7 @@
 			</div>
 			
 			<div class="form-group">
-						<label for="rpassword" class="col-md-2 control-label">Retype Password </label>
+						<label for="rpassword" class="col-md-2 control-label">Retype Password *</label>
 						<div class="col-md-8">
                             <input type="Password" class="form-control" ng-model="rpassword " name="rpassword" placeholder="Enter Password " required>
 							<span style="color:red" ng-show="myForm.rpassword.$dirty && 	myForm.rpassword.$invalid">
