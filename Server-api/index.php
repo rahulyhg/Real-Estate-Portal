@@ -10,10 +10,9 @@ $body = $app->request->getBody();
 
 $app->response->headers->set('Content-Type', 'application/json');
 
-$app->get('/get(/:id)','responseData');
-
-$app->get('/project(/:id)','projectData');
-$app->get('/property(/:id)','propertyData');
+$app->get('/response/web(/:id)','responseData');
+$app->get('/response/property(/:id)','projectData');
+$app->get('/response/project(/:id)','propertyData');
 
 
 

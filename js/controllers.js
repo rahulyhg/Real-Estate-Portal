@@ -9,7 +9,14 @@ controller('responseCtrl', function($scope,$http, $routeParams, $location) {
 	$scope.status = $routeParams.status;
 	$scope.getClass = function(path) {
     if ($location.path().substr(0, path.length) == path) {return "active"} else {return ""}}
-}).controller('viewController',function($http,$scope)
+}).controller('propertyCtrl',function($http,$scope)
 {
+	$http.get("http://localhost/Sunita/Real-Estate-Portal/server-api/index.php/response/property")
+	.success(function(response) {$scope.names = response;});
+	
+}).controller('projectCtrl',function($http,$scope)
+{
+	$http.get("http://localhost/Sunita/Real-Estate-Portal/server-api/index.php/response/project")
+	.success(function(response) {$scope.names = response;});
 	
 });
