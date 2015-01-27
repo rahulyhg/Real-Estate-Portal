@@ -9,4 +9,7 @@ controller('responseCtrl', function($scope,$http, $routeParams, $location) {
 	$scope.status = $routeParams.status;
 	$scope.getClass = function(path) {
     if ($location.path().substr(0, path.length) == path) {return "active"} else {return ""}}
+}).controller('viewController',function($http,$scope)
+{
+	
 });
