@@ -80,7 +80,9 @@
 					<div class="form-group">
 						
 						<div class="col-sm-4">
-							<textarea type="text" name="msg" ng-model="msg" col="8" rows="4" class="form-control"></textarea>
+					
+							<textarea name="msg" ng-model="msg" col="8" rows="4" class="form-control"></textarea>
+							<p>Number of characters left: <span ng-bind="left()"></span></p>
 							
 						</div>		
 					</div>
