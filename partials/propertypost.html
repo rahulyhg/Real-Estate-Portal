@@ -1,0 +1,200 @@
+
+
+<section id="input">
+    <div class="container">
+        <div class="row">
+	        <div class="col-md-9 center-block">
+				
+				<form name="myForm" class="form-horizontal" role="form" novalidate="novalidate">
+						<h2>Post Your Property</h2>
+						
+					<div class="form-group">
+						<label for="propertyfor" class="col-sm-4 control-label pull-left">Property for</label>
+						<div class="col-sm-4">
+							<input type="radio" name="properyfor" value="Sale" checked="true">Sale
+							<input type="radio" name="properyfor" value="Rent">Rent
+							<input type="radio" name="properyfor" value="PG">PG
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="category" class="col-sm-4 control-label">Property Category </label>
+						<div class="col-sm-4">
+							<select ng-model="category">
+								<option>Select Category</option>
+								<option>Residential Property</option>
+								<option>Commercial Property</option>
+								<option>Agricultural Land</option>
+								<option>Industrial Property</option>
+							</select>	 
+						</div>
+					</div>
+					
+					<label for="area" class="col-md-2"> Area</label>
+					<div class="form-group">		
+                        <div class="col-md-6"> 
+							<input type="number" class="form-control" name="area" placeholder="0">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						
+						<div class="col-sm-4">
+							<select ng-model="sqfeet">
+								<option>Sq.Feet</option>
+								<option>Cent</option>
+								<option>Sq.Yard</option>
+								<option>Acre</option>
+								<option>Sq.Meter</option>
+								<option>Bigha</option>
+								<option>Hectares</option>
+							</select>	 
+						</div>
+					</div>
+					
+					<label for="budget" class="col-md-2">Property Budget</label>
+					<div class="form-group">		
+                        <div class="col-md-6"> 
+							<input type="number" class="form-control" name="budget" placeholder="Property Budget">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-4">
+							<select ng-model="selectcat">
+								<option>Select Category</option>
+								<option>In Rupees</option>
+								<option>Thousand</option>
+								<option>Lac</option>
+								<option>Crore</option>
+							</select>	 
+						</div>
+					</div>
+			
+					<label  for="pfacing" class="col-md-2">Property Facing</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="pfacing" name="pfacing" required placeholder="Property Facing">
+							<span style="color:red" ng-show="myForm.pfacing.$dirty && 	myForm.pfacing.$invalid">
+							<span ng-show="myForm.pfacing.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="pimage" class="col-md-2">Property Image</label>
+	              	<div class="form-group" > 
+                        <div class="col-md-8">
+							<button type="button" class="btn btn-success" name="send">Choose File</button>	
+							<span style="color:red" ng-show="myForm.pimage.$dirty && 	myForm.pimage.$invalid">
+							<span ng-show="myForm.pimage.$error.required">name is required.</span>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="pdesc" class="col-sm-4 control-label">Property Description  </label>
+						<div class="col-sm-6">
+							<textarea type="text" name="pdesc" ng-model="pdesc" col="8" rows="4"></textarea>
+							<p>Number of characters left: <span ng-bind="left()"></span></p>
+						</div>		
+					</div>
+					
+					<h2>Property Location</h2>
+					<label  for="country" class="col-md-2">Country</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="country" name="country" required placeholder="Country">
+							<span style="color:red" ng-show="myForm.country.$dirty && 	myForm.country.$invalid">
+							<span ng-show="myForm.country.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<div class="form-group">
+						<div class="col-sm-4">
+							<select ng-model="state">
+								<option>Select State</option>
+								<option>In Rupees</option>
+								<option>Thousand</option>
+								<option>Lac</option>
+								<option>Crore</option>
+							</select>	 
+						</div>
+					</div>
+					
+					<label  for="city" class="col-md-2">City</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="city" name="city" required placeholder="City">
+							<span style="color:red" ng-show="myForm.city.$dirty && 	myForm.city.$invalid">
+							<span ng-show="myForm.city.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="location" class="col-md-2">Area/Location</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="location" name="location" required placeholder="Property Location">
+							<span style="color:red" ng-show="myForm.location.$dirty && 	myForm.location.$invalid">
+							<span ng-show="myForm.location.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<h2>Your Contact Details</h2>
+					<label  for="name" class="col-md-2">Name</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="name" name="name" required placeholder="Enter Your Name">
+							<span style="color:red" ng-show="myForm.name.$dirty && 	myForm.name.$invalid">
+							<span ng-show="myForm.name.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="contact" class="col-md-2">Contact Number</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="number" class="form-control" ng-model="name" name="contact" required placeholder="Enter Your Number">
+							<span style="color:red" ng-show="myForm.contact.$dirty && 	myForm.contact.$invalid">
+							<span ng-show="myForm.contact.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="name" class="col-md-2">Email</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="email" class="form-control" ng-model="email" name="email" required placeholder="E-mail">
+							<span style="color:red" ng-show="myForm.email.$dirty && 	myForm.email.$invalid">
+							<span ng-show="myForm.email.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<div class="form-group">
+						<label for="address" class="col-sm-4 control-label">Address </label>
+						<div class="col-sm-6">
+							<textarea type="text" name="address" ng-model="address" col="8" rows="4"></textarea>
+						</div>		
+					</div>
+			
+	              	<div class="form-group" > 
+                        <div class="col-md-8">
+							<button type="submit" class="btn btn-success" name="submit">Submit</button>
+							
+						</div>
+					</div>			
+				</form>
+			</div>
+        </div>
+	</div>	
+	</section>

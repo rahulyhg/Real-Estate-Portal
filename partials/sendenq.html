@@ -1,0 +1,101 @@
+
+
+<section id="input">
+    <div class="container">
+        <div class="row">
+	        <div class="col-md-9 center-block">
+				
+				<form name="myForm" class="form-horizontal" role="form" novalidate="novalidate">
+						<h2>Send Enquiry</h2>
+						
+					<label  for="fname" class="col-md-2">First Name</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="fname" name="fname" required>
+							<span style="color:red" ng-show="myForm.fname.$dirty && 	myForm.fname.$invalid">
+							<span ng-show="myForm.fname.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="lname" class="col-md-2">Last Name</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="lname" name="lname" required>
+							<span style="color:red" ng-show="myForm.lname.$dirty && 	myForm.lname.$invalid">
+							<span ng-show="myForm.lname.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					
+					<label  for="name" class="col-md-2">Email</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="email" class="form-control" ng-model="email" name="email" required>
+							<span style="color:red" ng-show="myForm.email.$dirty && 	myForm.email.$invalid">
+							<span ng-show="myForm.email.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="mobile" class="col-md-2">Mobile</label>	
+					<div class="form-group">
+							
+						<div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="mobile" name="mobile" required>
+							<span style="color:red" ng-show="myForm.mobile.$dirty && 	myForm.mobile.$invalid">
+							<span ng-show="myForm.mobile.$error.required">name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label for="cname" class="col-md-2">Company Name</label>
+					<div class="form-group">
+                        	
+                        <div class="col-md-6">
+							<input type="text" class="form-control" name="cname" ng-model="cname" required>
+							<span style="color:red" ng-show="myForm.cname.$dirty && myForm.cname.$invalid">
+							<span ng-show="myForm.cname.$error.required">Education is required.</span>
+							</span>
+						</div>					
+					</div>
+					
+						<label for="address" class="col-md-2"> Address</label>
+					<div class="form-group">
+							
+                        <div class="col-md-6"> 
+							<input type="text" class="form-control" name="address" ng-model="address" required> 
+							<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+							<span ng-show="myForm.address.$error.required">Age is required.</span>
+							</span>								
+						</div>
+					</div>
+						
+							
+				
+					<div class="form-group">
+						<label for="address" class="col-sm-4 control-label">Message  </label>
+						<div class="col-sm-6">
+							<textarea type="text" name="address" ng-model="address" col="8" rows="4"></textarea>
+							<p>Number of characters left: <span ng-bind="left()"></span></p>
+						</div>		
+					</div>
+	                  
+			
+	              	<div class="form-group" > 
+                        <div class="col-md-8">
+							<button type="button" class="btn btn-success" name="send">Send Enquiry</button>
+							
+						</div>
+	
+					</div>
+						
+				</form>
+			</div>
+        </div>
+	</div>	
+	</section>
