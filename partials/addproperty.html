@@ -54,7 +54,7 @@
 					<input type="text" class="form-control" name="builtArea" ng-model="builtArea" required>
 				</div>
 				 <div class="col-md-2">
-					<select class="form-control" ng-model="areaUnit" required>
+					<select class="form-control" ng-model="bunit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -81,7 +81,7 @@
 					<input type="text" class="form-control" name="plotArea" ng-model="plotArea" required>
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="areaUnit" required>
+					<select class="form-control" ng-model="Unit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -94,7 +94,7 @@
 						<option>Marla</option>
 						
 					</select>
-					<span style="color:red" ng-show="myForm.areaUnit.$dirty && myForm.areaUnit.$invalid">
+					<span style="color:red" ng-show="myForm.plotArea.$dirty && myForm.areaUnit.$invalid">
 					  <span ng-show="myForm.areaUnit.$error.required">Built Area is required .</span>
 					</span>
 				 
@@ -109,7 +109,7 @@
 				 
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="areaUnit" required>
+					<select class="form-control" ng-model="cunit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
