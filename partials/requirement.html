@@ -22,13 +22,20 @@
 					<label for="category" class="col-sm-3 control-label">Property Category </label>
 					<div class="form-group">	
 						<div class="col-sm-4">
-							<select class="form-control">
+							<select name="sel" class="form-control" required="required">
 								<option selected="selected">Select Category</option>
-								<option>Residential Property</option>
-								<option>Commercial Property</option>
-								<option>Agricultural Land</option>
-								<option>Industrial Property</option>
-							</select>	 
+								<option value="resprop">Residential Property</option>
+								<option value="comprop">Commercial Property</option>
+								<option value="agriland">Agricultural Land</option>
+								<option value="indprop">Industrial Property</option>
+							</select>	
+
+<!--select name="sel" required="required">
+    <option value="">Select option</option>
+    <option value="one">Optin one</option>
+    <option value="two">Optin two</option>
+    <option value="three">Optin three</option>
+</select-->							
 						</div>
 					</div>
 					
@@ -38,14 +45,14 @@
 							<input type="number" class="form-control" name="area" placeholder="Property Area">
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option selected="selected">Sq.Feet</option>
-								<option>Cent</option>
-								<option>Sq.Yard</option>
-								<option>Acre</option>
-								<option>Sq.Meter</option>
-								<option>Bigha</option>
-								<option>Hectares</option>
+							<select class="form-control" required="required">
+								<option selected="selected" >Sq.Feet</option>
+								<option value="cent">Cent</option>
+								<option value="yard">Sq.Yard</option>
+								<option value="acre">Acre</option>
+								<option value="meter">Sq.Meter</option>
+								<option value="bigha">Bigha</option>
+								<option value="hect">Hectares</option>
 							</select>	 
 						</div>
 					</div>
@@ -56,12 +63,12 @@
 							<input type="number" class="form-control" name="budget" placeholder="Property Budget">
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
+							<select class="form-control" required="required">
 								<option selected="selected">Select Category</option>
-								<option>In Rupees</option>
-								<option>Thousand</option>
-								<option>Lac</option>
-								<option>Crore</option>
+								<option value="rupee">In Rupees</option>
+								<option value="thousand">Thousand</option>
+								<option value="lac">Lac</option>
+								<option value="crore">Crore</option>
 							</select>	 
 						</div>
 					</div>
@@ -80,10 +87,9 @@
 					<label  for="pimage" class="col-md-3 control-label">Property Image</label>
 	              	<div class="form-group" > 
                         <div class="col-md-4">
-							<input type="file"  ng-model="file" name="file" required placeholder="Property Facing">
-							<span style="color:red" ng-show="myForm.file.$dirty && 	myForm.file.$invalid">
-							<span ng-show="myForm.file.$error.required">name is required.</span>
-							</span>
+							<input type="file" name="file">
+							
+							
 						</div>
 					</div>
 					
@@ -115,11 +121,11 @@
 						<div class="col-sm-4">
 							<select class="form-control">
 								<option selected="selected">Select State</option>
-								<option>In Rupees</option>
-								<option>Thousand</option>
-								<option>Lac</option>
-								<option>Crore</option>
-							</select>	 
+								<option>Maharashtra</option>
+								<option>Gujrat</option>
+								<option>Rajasthan</option>
+								<option>keral</option>
+							</select>
 						</div>
 					</div>
 					
@@ -191,7 +197,7 @@
 			
 	              	<div class="form-group" > 
                         <div class="col-md-3">
-							<button type="submit" class="btn btn-primary pull-right" name="submit" >Submit</button>
+							<button type="submit" class="btn btn-primary pull-right" name="submit" value="submit">Submit</button>
 							
 						</div>
 					</div>			
