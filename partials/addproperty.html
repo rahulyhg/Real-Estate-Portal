@@ -1,6 +1,9 @@
 <div class="row">
+
+	<div ng-include=" 'partials/innernav.html' "></div>
+
 <h4>Property Info:</h4><hr width="100%">
-	<form class="form-horizontal">	
+	<form class="form-horizontal" name="myForm" novalidate>	
 		  <div class="form-group">
 				<label for="propertyfor" class="col-md-2  ">* Property for</label>
 				<div class="col-md-8">
@@ -21,7 +24,7 @@
 		  <div class="form-group">
 				<label for="Category" class="col-md-2 ">* Property Category </label>
 				<div class="col-md-6">
-					<select ng-model="proCate" class="form-control">
+					<select ng-model="proCate" class="form-control" required>
 						<option>Select Category</option>
 						<option>Residential Property</option>
 						<option>Commercial Property</option>
@@ -29,24 +32,29 @@
 						<option>Industrial Property</option>
 						
 					</select>
+					<span style="color:red" ng-show="myForm.proCate.$dirty && myForm.proCate.$invalid">
+					  <span ng-show="myForm.proCate.$error.required">Property selection is required .</span>
+					</span>
 				 
 				</div>
 		  </div>
 		  <div class="form-group">
 				<label for="type" class="col-md-2  ">* Property Type </label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" name="proType" ng-model="ProType">
-				 
+					<input type="text" class="form-control" name="proType" ng-model="ProType" required>
+					<span style="color:red" ng-show="myForm.proType.$dirty && myForm.proType.$invalid">
+					  <span ng-show="myForm.proType.$error.required">Property type  is required .</span>
+					</span>
 				</div>
 		  </div>
 		  
 		  <div class="form-group">
 				<label for="BuiltArea" class="col-md-2 ">* Built Up Area </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="builtArea" ng-model="builtArea">
+					<input type="text" class="form-control" name="builtArea" ng-model="builtArea" required>
 				</div>
 				 <div class="col-md-2">
-					<select class="form-control" ng-model="areaUnit">
+					<select class="form-control" ng-model="areaUnit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -59,6 +67,9 @@
 						<option>Marla</option>
 						
 					</select>
+					<span style="color:red" ng-show="myForm.builtArea.$dirty && myForm.builtArea.$invalid">
+					  <span ng-show="myForm.builtArea.$error.required">Built Area is required .</span>
+					</span>
 				 
 				</div>
 				
@@ -67,10 +78,10 @@
 		  <div class="form-group">
 				<label for="PlotArea" class="col-md-2 ">* Plot/ Land Area</label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="plotArea" ng-model="plotArea">
+					<input type="text" class="form-control" name="plotArea" ng-model="plotArea" required>
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="areaUnit">
+					<select class="form-control" ng-model="areaUnit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -83,6 +94,9 @@
 						<option>Marla</option>
 						
 					</select>
+					<span style="color:red" ng-show="myForm.areaUnit.$dirty && myForm.areaUnit.$invalid">
+					  <span ng-show="myForm.areaUnit.$error.required">Built Area is required .</span>
+					</span>
 				 
 				</div>
 				
@@ -91,11 +105,11 @@
 		  <div class="form-group">
 				<label for="CarpetArea" class="col-md-2 ">Carpet Area </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="carpetArea" ng-model="carpetArea">
+					<input type="text" class="form-control" name="carpetArea" ng-model="carpetArea" required>
 				 
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="areaUnit">
+					<select class="form-control" ng-model="areaUnit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -108,19 +122,22 @@
 						<option>Marla</option>
 						
 					</select>
+					<span style="color:red" ng-show="myForm.carpetArea.$dirty && myForm.carpetArea.$invalid">
+					  <span ng-show="myForm.carpetArea.$error.required">Carpet Area is required .</span>
+					</span>
 				 
 				</div>
 				
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="PropPrice" class="col-md-2 ">Carpet Area </label>
+				<label for="PropPrice" class="col-md-2 ">Property Price: </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="propertyPrice" ng-model="propertyPrice">
+					<input type="text" class="form-control" name="propertyPrice" ng-model="propertyPrice" required>
 				 
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="Price">
+					<select class="form-control" ng-model="Price" required>
 						<option>In Rupees</option>
 						<option>Thousand</option>
 						<option>Lac</option>
@@ -128,6 +145,9 @@
 						
 						
 					</select>
+					<span style="color:red" ng-show="myForm.propertyPrice.$dirty && myForm.propertyPrice.$invalid">
+					  <span ng-show="myForm.propertyPrice.$error.required">Property Price is required .</span>
+					</span>
 				 
 				</div>
 				
@@ -136,7 +156,7 @@
 		  <div class="form-group">
 				<label for="Bedrooms" class="col-md-2 ">Bedrooms </label>
 				<div class="col-md-6">
-					<select class="form-control" ng-model="Bedrooms">
+					<select class="form-control" ng-model="Bedrooms" required>
 						<option>Select one</option>
 						<option>1</option>
 						<option>2</option>
@@ -151,7 +171,9 @@
 						
 						
 					</select>&nbsp No's
-				 
+				 <span style="color:red" ng-show="myForm.Bedrooms.$dirty && myForm.Bedrooms.$invalid">
+					  <span ng-show="myForm.Bedrooms.$error.required">Select Number of Bedrooms  .</span>
+					</span>
 				</div>
 				
 				
@@ -160,7 +182,7 @@
 		  <div class="form-group">
 				<label for="Bedrooms" class="col-md-2 ">Bathrooms </label>
 				<div class="col-sm-6">
-					<select class="form-control" ng-model="Bathrooms">
+					<select class="form-control" ng-model="Bathrooms" required>
 						<option>Select one</option>
 						<option>1</option>
 						<option>2</option>
@@ -175,6 +197,9 @@
 						
 						
 					</select>&nbsp No's
+					 <span style="color:red" ng-show="myForm.Bathrooms.$dirty && myForm.Bathrooms.$invalid">
+					  <span ng-show="myForm.Bathrooms.$error.required">Select Number of Bathrooms  .</span>
+					</span>
 				 
 				</div>
 				
@@ -211,7 +236,7 @@
 		  <div class="form-group">
 				<label for="State" class="col-md-2 ">* State </label>
 				<div class="col-md-6">
-				  <select class="form-control" ng-model="State">
+				  <select class="form-control" ng-model="State" required>
 						<option selected="true">Select State</option>
 						<option>Andaman Nikobar</option>
 						<option>Andhra Pradesh</option>
@@ -253,6 +278,9 @@
 						<option>Goa</option>
 						
 					</select> 
+					<span style="color:red" ng-show="myForm.State.$dirty && myForm.State.$invalid">
+					  <span ng-show="myForm.State.$error.required">State is required .</span>
+					</span>
 				</div>
 				
 		  </div>
@@ -260,16 +288,21 @@
 		  <div class="form-group">
 				<label for="City" class="col-md-2 ">* City</label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="Country" ng-model="City" >
-				 
+					<input type="text" class="form-control" name="Country" ng-model="City" required>
+					<span style="color:red" ng-show="myForm.City.$dirty && myForm.City.$invalid">
+					  <span ng-show="myForm.City.$error.required">City is required .</span>
+					</span>
 				</div>
 				
 		  </div>
 		  <div class="form-group">
 				<label for="address" class="col-md-2 ">* Address  </label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="address" ng-model="address" col="8" rows="4"></textarea>
+					<textarea type="text" class="form-control" name="address" ng-model="address" col="8" rows="4"required></textarea>
 					<p>Number of characters left: <span ng-bind="left()"></span></p>
+					<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+					  <span ng-show="myForm.address.$error.required">Address is required .</span>
+					</span>
 				 
 				</div>
 				
@@ -278,8 +311,10 @@
 		  <div class="form-group">
 				<label for="Area" class="col-md-2 ">*  Area/Location </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="Area" ng-model="Area" >
-				 
+					<input type="text" class="form-control" name="Area" ng-model="Area" required>
+					<span style="color:red" ng-show="myForm.Area.$dirty && myForm.Area.$invalid">
+					  <span ng-show="myForm.Area.$error.required">Area is required .</span>
+					</span>
 				</div>
 				
 		  </div>
@@ -349,8 +384,10 @@
 				<div class="form-group">
 						<label for="Name" class="col-md-2 ">* Name:</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="Name" ng-model="Name" >
-						 
+							<input type="text" class="form-control" name="Name" ng-model="Name" required>
+							<span style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
+							  <span ng-show="myForm.Name.$error.required">Name is required .</span>
+							</span>
 						</div>
 						
 						
@@ -358,23 +395,28 @@
 				  <div class="form-group">
 						<label for="Contact No:" class="col-md-2"> * Contact No:</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control"  name="Contact" ng-model="Contact" >
-						 &nbsp kms
+							<input type="Number" class="form-control"  name="Contact" ng-model="Contact" max-length="10" required >
+							<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
+							  <span ng-show="myForm.Contact.$error.required">Contact is required .</span>
+							</span>
 						</div>
 						
 						
 				  </div>
 				  <div class="form-group">
-						<label for="Email" class="col-md-2 ">  Railway Station</label>
+						<label for="Email" class="col-md-2 ">* Email ID:</label>
 						<div class="col-md-6">
-							<input type="Email" class="form-control" name="Email" ng-model="Email" >
-						 
+							<input type="email" class="form-control" name="Email" ng-model="Email" >
+							<span style="color:red" ng-show="myForm.Email.$dirty && myForm.Email.$invalid">
+							  <span ng-show="myForm.Email.$error.required">Email is required.</span>
+							  <span ng-show="myForm.Email.$error.email">Invalid email address.</span>
+							  </span>
 						</div>
 						
 						
 				  </div>
 				  <div class="form-group">
-						<label for="Address" class="col-md-2 ">  School </label>
+						<label for="Address" class="col-md-2 "> * Address </label>
 						<div class="col-md-6">
 							<textarea class="form-control" name="Address" ng-model="Address" >
 							</textarea>
@@ -384,7 +426,7 @@
 						
 				  </div>
 				 
-		  </div><!-- property contact details -->
+		 <!-- property contact details -->
 		  
 		  <h4>Optional Property Details:</h4><hr width="100%">
 				<div class="form-group">
@@ -392,17 +434,11 @@
 						<div class="col-md-6">
 							<select class="form-control" ng-model="Age">
 						<option selected="true">Select One</option>
-					</select>
+							</select>
 						</div>
+						
 				</div>
-				<div class="form-group">
-						<label for="Age" class="col-md-2 ">Age</label>
-						<div class="col-md-6">
-							<select class="form-control" ng-model="Age">
-						<option selected="true">Select One</option>
-					</select>
-						</div>
-				</div>
+				
 				<div class="form-group">
 						<label for="Furnished" class="col-md-2 ">Furnished</label>
 						<div class="col-md-6">
@@ -460,7 +496,7 @@
 				  <div class="form-group">
 						<label for="RailwayStation" class="col-md-2 ">  Railway Station</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control"name="RailwayStation" ng-model="RailwayStation" >
+							<input type="text" class="form-control" name="RailwayStation" ng-model="RailwayStation" >
 						 &nbsp kms
 						</div>
 						
@@ -502,7 +538,7 @@
 		  </div> <!--end Amenities-->
 		  
 		  <!--Amenities-->
-		  <h4>Amenities:</h4><hr width="100%">
+		  <h4>Select Sites:</h4><hr width="100%">
 		  <div class="form-group">
 			<div class="col-md-12">
 				<table class="table table-bordered table-responsive">
@@ -517,7 +553,8 @@
 			</div>
 				<div class="form-group">
 					<div class="col-md-offset-6 col-md-10">
-					  <button type="submit" class="btn btn-default">Submit</button>
+					  <button type="submit" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+						myForm.email.$dirty && myForm.email.$invalid">Submit</button>
 					</div>
 				</div>
 		  </form>
