@@ -1,128 +1,176 @@
 <section id="input">
-		
-			<div class="row">
-				<div class="col-md-12" ng-include="'partials/innernav.html'">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-		<form class="form-horizontal" role="form" name="myform" method="post" ng-app=""  ng-controller="validateCtrl" novalidate>
-				<h3>My Account - Settings</h3>
-				<hr>
-				<p>Here you can make changes to your profile. Please note that you will not be able to change your email which has been already registered.</p>
-  <div class="form-group">
-    <label for="text" class="col-sm-2 control-label">Name/Company</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control"  name="Name" ng-model="Name" placeholder="Enter
-	  Name">
-			<span style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
-			<span ng-show="myForm.Name.$error.required">Name is required.</span>
-			</span>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <label for="contact" class="col-sm-2 control-label">Address</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" rows="3" placeholder="Address"  name="Address" ng-model="Address"></textarea>
-			<span style="color:red" ng-show="myForm.Address.$dirty && myForm.Address.$invalid">
-			<span ng-show="myForm.Address.$error.required">Address is required.</span>
-			</span>
-    </div>
-  </div>
-   <div class="form-group">
-	<label for="country" class="col-sm-2 control-label">Country:</label>
-    <div class="col-sm-10">
-						<select class="form-control">
-							<option>India</option>
-							<option>Australia</option>
-							<option>China</option>
-							<option>America</option>
-							<option>Belgium</option>
-						</select>
-					<span style="color:red" ng-show="myForm.Country.$dirty && myForm.Country.$invalid">
-					<span ng-show="myForm.Country.$error.required">Country is required.</span>
+	<div class="row">
+		<div class="col-md-12" ng-include="'partials/innernav.html'">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<form class="form-horizontal" role="form" name="myForm" novalidate="novalidate">
+		<h3>My Account - Settings</h3>
+		<hr>
+		<p>Here you can make changes to your profile. Please note that you will not be able to change your email which has been already registered.</p>
+		<!--<div class="form-group">
+		<label for="text" class="col-md-2 control-label">Name/Company</label>
+		<div class="col-md-10">
+		<input type="text" class="form-control"  name="Name" ng-model="Name" placeholder="Enter
+		Name">
+		<span style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
+		<span ng-show="myForm.Name.$error.required">Name is required.</span>
+		</span>
+		</div>
+		</div>-->
+		<div class="form-group">
+					<label for="Name" class="col-md-2 control-label">Name/Company </label>
+					<div class="col-md-8">
+                    <input type="Name" class="form-control" ng-model="Name" name="Name" placeholder="Enter Name" required>
+					<span style="color:red" ng-show="myForm.Name.$dirty && 	myForm.Name.$invalid">
+					<span ng-show="myForm.Name.$error.required">Name is required.</span>
 					</span>
-    </div>
-  </div>
+                    </div>						
+		</div>
+			
   
-   <div class="form-group">
-    <label for="phone" class="col-sm-2 control-label">Phone</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control"  placeholder="Enter Phone"  name="Phone" ng-model="Phone">
-			<span style="color:red" ng-show="myForm.Phone.$dirty && myForm.Phone.$invalid">
-			<span ng-show="myForm.Phone.$error.required">Phone is required.</span>
-			</span>
-    </div>
-  </div>
-  
-   <div class="form-group">
-    <label for="text" class="col-sm-2 control-label">Fax</label>
-    <div class="col-sm-10">
+		<!--<div class="form-group">
+		<label for="contact" class="col-md-2 control-label">Address</label>
+		<div class="col-md-10">
+		<textarea class="form-control" rows="3" placeholder="Address"  name="Address" ng-model="Address"></textarea>
+		<span style="color:red" ng-show="myForm.Address.$dirty && myForm.Address.$invalid">
+		<span ng-show="myForm.Address.$error.required">Address is required.</span>
+		</span>
+		</div>
+		</div>-->
+		<div class="form-group">
+							<label for="Address" class="col-md-2 control-label">Address</label>
+							<div class="col-md-8">
+							<textarea  class="form-control" ng-model="Address" name="Address" placeholder="Enter Address" required></textarea>
+							<span style="color:red" ng-show="myForm.Address.$dirty && 	myForm.Address.$invalid">
+							<span ng-show="myForm.Address.$error.required">Address is required.</span>
+							</span>
+							</div>						
+		</div>
+			
+		<div class="form-group">
+			<label for="country" class="col-md-2 control-label">Country:</label>
+			<div class="col-md-8">
+				<select class="form-control">
+					<option>India</option>
+					<option>Australia</option>
+					<option>China</option>
+					<option>America</option>
+					<option>Belgium</option>
+				</select>
+				<span style="color:red" ng-show="myForm.Country.$dirty && myForm.Country.$invalid">
+				<span ng-show="myForm.Country.$error.required">Country is required.</span>
+				</span>
+			</div>
+		</div>
+		
+	<!--<div class="form-group">
+		<label for="phone" class="col-md-2 control-label">Phone</label>
+		<div class="col-md-10">
+		<input type="text" class="form-control"  placeholder="Enter Phone"  name="Phone" ng-model="Phone">
+		<span style="color:red" ng-show="myForm.Phone.$dirty && myForm.Phone.$invalid">
+		<span ng-show="myForm.Phone.$error.required">Phone is required.</span>
+		</span>
+		</div>
+	</div>-->
+	
+	<div class="form-group">
+							<label for="Phone" class="col-md-2 control-label">Phone </label>
+						<div class="col-md-8">
+                            <input type="Phone" class="form-control" ng-model="Phone" name="Phone" placeholder="Enter Phone" required>
+							<span style="color:red" ng-show="myForm.Phone.$dirty && 	myForm.Phone.$invalid">
+							<span ng-show="myForm.Phone.$error.required">Phone is required.</span>
+							</span>
+                        </div>						
+	</div>
+			
+	<!--<div class="form-group">
+    <label for="text" class="col-md-2 control-label">Fax</label>
+    <div class="col-md-10">
       <input type="text" class="form-control"  placeholder="Enter Fax"  name="Fax" ng-model="Fax">
 			<span style="color:red" ng-show="myForm.Fax.$dirty && myForm.Fax.$invalid">
 			<span ng-show="myForm.Fax.$error.required">Fax is required.</span>
 			</span>
     </div>
-  </div>
+  </div>-->
   
-   <div class="form-group">
-    <label for="text" class="col-sm-2 control-label">Website</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control"  placeholder="Enter Website"  name="Website" ng-model="Website">
-			<span style="color:red" ng-show="myForm.Website.$dirty && myForm.Website.$invalid">
-			<span ng-show="myForm.Website.$error.required">Website is required.</span>
-			</span>
-    </div>
-  </div>
+	<div class="form-group">
+						<label for="Fax " class="col-md-2 control-label">Fax </label>
+						<div class="col-md-8">
+                            <input type="Fax " class="form-control" ng-model="Fax " name="Fax " placeholder="Enter Fax " required>
+							<span style="color:red" ng-show="myForm.Fax .$dirty && 	myForm.Fax .$invalid">
+							<span ng-show="myForm.Fax.$error.required">Fax  is required.</span>
+							</span>
+                        </div>						
+	</div>
+			
+	<div class="form-group">
+						<label for="Website " class="col-md-2 control-label">Website </label>
+						<div class="col-md-8">
+                            <input type="Website " class="form-control" ng-model="Website " name="Website " placeholder="Enter Website " required>
+							<span style="color:red" ng-show="myForm.Website.$dirty && 	myForm.Website.$invalid">
+							<span ng-show="myForm.Website.$error.required">Website  is required.</span>
+							</span>
+                        </div>						
+	</div>	
+  
+   
   
 		<h4>Login Details</h4>
 		<hr>
 		<div class="form-group">
-        <label for="text" class="col-sm-2 control-label">UserName</label>
-       <div class="col-sm-10">
+       <!-- <label for="text" class="col-md-2 control-label">UserName</label>
+       <div class="col-md-8">
        <input type="text" class="form-control" placeholder="Enter UserName"  name="UserName" ng-model="UserName">
 			<span style="color:red" ng-show="myForm.UserName.$dirty && myForm.UserName.$invalid">
 			<span ng-show="myForm.UserName.$error.required">UserName is required.</span>
 			</span>
-	   </div>
-	   </div>
+	   </div>-->
 	   
-	   
-	   <div class="form-group">
-       <label for="email" class="col-sm-2 control-label">Email</label>
-       <div class="col-sm-10">
-       <textarea class="form-control" rows="3" placeholder="Email"  name="Email" ng-model="Email"></textarea>
-				<span style="color:red" ng-show="myForm.Email.$dirty && myForm.Email.$invalid">
-				<span ng-show="myForm.Email.$error.required">Email is required.</span>
-				<span ng-show="myForm.Email.$error.email">Invalid email address.</span>
-				</span>
-       </div>
-      </div>
+	   <label for="UserName" class="col-md-2 control-label">UserName</label>
+						<div class="col-md-8">
+                            <input type="UserName " class="form-control" ng-model="UserName" name="UserName " placeholder="Enter UserName " required>
+							<span style="color:red" ng-show="myForm.UserName.$dirty && 	myForm.UserName.$invalid">
+							<span ng-show="myForm.UserName.$error.required">UserName  is required.</span>
+							</span>
+                        </div>						
+	   </div>
+	 <div class="form-group">
+							<label for="Email" class="col-md-2 control-label">Email</label>
+						<div class="col-md-8">
+                            <input type="Email" class="form-control" ng-model="Email" name="Email" placeholder="Enter Email" required>
+							<span style="color:red" ng-show="myForm.Email.$dirty && 	myForm.Email.$invalid">
+							<span ng-show="myForm.Email.$error.required">Email is required.</span>
+							<span ng-show="myForm.Email.$error.email">Invalid Email address.</span>
+							</span>
+                        </div>						
+		</div>
 	  
 	  <button type="submit" class="btn btn-success center-block">Save</button>
 	   
 	   <h4>Change Password</h4>
 		<hr>
 		<p>If you want to change your password, please input your old and new password to make changes.</p>
-		<div class="form-group">
-			<label for="oldpassword" class="col-sm-2 control-label">Old Password</label>
-			<div class="col-sm-10">
-			<input type="Password" class="form-control"  placeholder="Old Password"  name="oldpassword" ng-model="oldpassword">
-			<span style="color:red" ng-show="myForm.oldpassword.$dirty && myForm.oldpassword.$invalid">
-			<span ng-show="myForm.oldpassword.$error.required">Password is required.</span>
-			</span>
-			</div>
+			<div class="form-group">
+						<label for="Password" class="col-md-2 control-label">Old Password </label>
+						<div class="col-md-8">
+                            <input type="Password" class="form-control" ng-model="Password " name="Password" placeholder="Old Password " required>
+							<span style="color:red" ng-show="myForm.Password.$dirty && 	myForm.Password.$invalid">
+							<span ng-show="myForm.Password.$error.required">Password is required.</span>
+							</span>
+                        </div>						
 			</div>
 			<div class="form-group">
-			<label for="Password" class="col-sm-2 control-label">New Password</label>
-			<div class="col-sm-10">
-			<input type="Password" class="form-control" placeholder="New Password" name="newpassword" ng-model="newpassword">
-			<span style="color:red" ng-show="myForm.newpassword.$dirty && myForm.newpassword.$invalid">
-			<span ng-show="myForm.newpassword.$error.required">Password is required.</span>
-			</span>
+						<label for="rpassword" class="col-md-2 control-label">New Password </label>
+						<div class="col-md-8">
+                            <input type="Password" class="form-control" ng-model="rpassword " name="rpassword" placeholder="New Password " required>
+							<span style="color:red" ng-show="myForm.rpassword.$dirty && 	myForm.rpassword.$invalid">
+							<span ng-show="myForm.rpassword.$error.required">Password is required.</span>
+							</span>
+                        </div>						
 			</div>
-			</div>
+		
 			<button type="submit" class="btn btn-success center-block">Update</button>
 			
 			
