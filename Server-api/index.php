@@ -21,7 +21,7 @@ function responseData($id=null)
 {
 		echo "hi";
 	if($id===Null){
-		$selectSQL=mysql_query( "SELECT * FROM real_response")or die(mysql_error());
+		$selectSQL=mysql_query( "SELECT * FROM 2_real_response")or die(mysql_error());
 		$data = array();
 		
 		while($row=mysql_fetch_assoc($selectSQL))
