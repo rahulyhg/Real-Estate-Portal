@@ -2,26 +2,26 @@
 <h4>Property Info:</h4><hr width="100%">
 	<form class="form-horizontal">	
 		  <div class="form-group">
-				<label for="propertyfor" class="col-sm-4 control-label pull-left">* Property for</label>
-				<div class="col-sm-4">
+				<label for="propertyfor" class="col-md-2  ">* Property for</label>
+				<div class="col-md-8">
 				  <input type="radio"  name="properyfor" value="Sale" checked="true">Sale
 				  <input type="radio"   name="properyfor" value="Rent">Rent
 				  <input type="radio"   name="properyfor" value="PG">PG
 				</div>
 		  </div>
 		  <div class="form-group">
-				<label for="Featured" class="col-sm-4 control-label">* Featured </label>
-				<div class="col-sm-4">
+				<label for="Featured" class="col-md-2 ">* Featured </label>
+				<div class="col-md-4">
 				  <input type="radio"   name="featured" value="Yes" >Yes
 				  <input type="radio"   name="featured" value="No" checked="false">No
 				 
 				</div>
-				<div class="col-md-4"></div>
+				
 		  </div>
 		  <div class="form-group">
-				<label for="Category" class="col-sm-4 control-label">* Property Category </label>
-				<div class="col-sm-4">
-					<select ng-model="proCate">
+				<label for="Category" class="col-md-2 ">* Property Category </label>
+				<div class="col-md-6">
+					<select ng-model="proCate" class="form-control">
 						<option>Select Category</option>
 						<option>Residential Property</option>
 						<option>Commercial Property</option>
@@ -33,19 +33,20 @@
 				</div>
 		  </div>
 		  <div class="form-group">
-				<label for="type" class="col-sm-4 control-label">* Property Type </label>
-				<div class="col-sm-4">
-					<input type="text" name="proType" ng-model="ProType">
+				<label for="type" class="col-md-2  ">* Property Type </label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" name="proType" ng-model="ProType">
 				 
 				</div>
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="BuiltArea" class="col-sm-4 control-label">* Built Up Area </label>
-				<div class="col-sm-4">
-					<input type="text" name="builtArea" ng-model="builtArea">
-				 
-					<select ng-model="areaUnit">
+				<label for="BuiltArea" class="col-md-2 ">* Built Up Area </label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="builtArea" ng-model="builtArea">
+				</div>
+				 <div class="col-md-2">
+					<select class="form-control" ng-model="areaUnit">
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -60,16 +61,16 @@
 					</select>
 				 
 				</div>
-				<div class="col-md-4"></div>
+				
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="PlotArea" class="col-sm-4 control-label">* Plot/ Land Area</label>
-				<div class="col-sm-4">
-					<input type="text" name="plotArea" ng-model="plotArea">
-				 
-				
-					<select ng-model="areaUnit">
+				<label for="PlotArea" class="col-md-2 ">* Plot/ Land Area</label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="plotArea" ng-model="plotArea">
+				</div>
+				<div class="col-md-2">
+					<select class="form-control" ng-model="areaUnit">
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -84,16 +85,17 @@
 					</select>
 				 
 				</div>
-				<div class="col-md-4"></div>
+				
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="CarpetArea" class="col-sm-4 control-label">Carpet Area </label>
-				<div class="col-sm-4">
-					<input type="text" name="carpetArea" ng-model="carpetArea">
+				<label for="CarpetArea" class="col-md-2 ">Carpet Area </label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="carpetArea" ng-model="carpetArea">
 				 
-				
-					<select ng-model="areaUnit">
+				</div>
+				<div class="col-md-2">
+					<select class="form-control" ng-model="areaUnit">
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -108,16 +110,17 @@
 					</select>
 				 
 				</div>
-				<div class="col-md-4"></div>
+				
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="PropPrice" class="col-sm-4 control-label">Carpet Area </label>
-				<div class="col-md-4">
-					<input type="text" name="propertyPrice" ng-model="propertyPrice">
+				<label for="PropPrice" class="col-md-2 ">Carpet Area </label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="propertyPrice" ng-model="propertyPrice">
 				 
-				
-					<select ng-model="Price">
+				</div>
+				<div class="col-md-2">
+					<select class="form-control" ng-model="Price">
 						<option>In Rupees</option>
 						<option>Thousand</option>
 						<option>Lac</option>
@@ -127,13 +130,13 @@
 					</select>
 				 
 				</div>
-				<div class="col-md-4"></div>
+				
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="Bedrooms" class="col-sm-4 control-label">Bedrooms </label>
-				<div class="col-md-4">
-					<select ng-model="Bedrooms">
+				<label for="Bedrooms" class="col-md-2 ">Bedrooms </label>
+				<div class="col-md-6">
+					<select class="form-control" ng-model="Bedrooms">
 						<option>Select one</option>
 						<option>1</option>
 						<option>2</option>
@@ -151,16 +154,13 @@
 				 
 				</div>
 				
-				<div class="col-md-4">
-					
-				 
-				</div>
+				
 				
 		  </div>
 		  <div class="form-group">
-				<label for="Bedrooms" class="col-sm-4 control-label">Bathrooms </label>
-				<div class="col-sm-4">
-					<select ng-model="Bathrooms">
+				<label for="Bedrooms" class="col-md-2 ">Bathrooms </label>
+				<div class="col-sm-6">
+					<select class="form-control" ng-model="Bathrooms">
 						<option>Select one</option>
 						<option>1</option>
 						<option>2</option>
@@ -178,47 +178,40 @@
 				 
 				</div>
 				
-				<div class="col-md-4">
-					
-				 
-				</div>
+				
 				
 		  </div>
 		  <div class="form-group">
-			  <label for="imageInputFile" class="col-sm-4 control-label" >* Property Images </label>
-			<div class="col-md-4">
+			  <label for="imageInputFile" class="col-md-2" >* Property Images </label>
+			<div class="col-md-6">
 				
-				<input type="file" id="imageInputFile" ng-model="chooseFile">
+				<input type="file" class="form-control" id="imageInputFile" ng-model="chooseFile">
 			</div>
-			<div class="col-md-4"></div>
+			
 		</div>
 			
 		  
 		  
-		  <div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-			  <button type="submit" class="btn btn-default">Submit</button>
-			</div>
-		  </div>
+		  
 		
 			
-			 <!-- end property info form
-			</form>
-<!--  property Location Form
-	<form class="form-horizontal">-->	
+			 <!-- end property  -->
+			
+<!--  property Location -->
+		
 			<h4>Property Location:</h4><hr width="100%">
 	
 		  <div class="form-group">
-				<label for="country" class="col-sm-4 control-label pull-left">Country</label>
-				<div class="col-sm-4">
-				  <input type="text" name="Country" ng-model="Country" value="INDIA">
+				<label for="country" class="col-md-2 ">Country</label>
+				<div class="col-md-6">
+				  <input type="text" class="form-control" name="Country" ng-model="Country" value="INDIA">
 				</div>
-			<div class="col-sm-4"></div>
+			
 		  </div>
 		  <div class="form-group">
-				<label for="State" class="col-sm-4 control-label">* State </label>
-				<div class="col-sm-4">
-				  <select ng-model="State">
+				<label for="State" class="col-md-2 ">* State </label>
+				<div class="col-md-6">
+				  <select class="form-control" ng-model="State">
 						<option selected="true">Select State</option>
 						<option>Andaman Nikobar</option>
 						<option>Andhra Pradesh</option>
@@ -261,21 +254,21 @@
 						
 					</select> 
 				</div>
-				<div class="col-md-4"></div>
+				
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="City" class="col-sm-4 control-label">* City</label>
-				<div class="col-sm-4">
-					<input type="text" name="Country" ng-model="City" >
+				<label for="City" class="col-md-2 ">* City</label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="Country" ng-model="City" >
 				 
 				</div>
-				<div class="col-md-4"></div>
+				
 		  </div>
 		  <div class="form-group">
-				<label for="address" class="col-sm-4 control-label">* Address  </label>
-				<div class="col-sm-8">
-					<textarea type="text" name="address" ng-model="address" col="8" rows="4"></textarea>
+				<label for="address" class="col-md-2 ">* Address  </label>
+				<div class="col-md-6">
+					<textarea type="text" class="form-control" name="address" ng-model="address" col="8" rows="4"></textarea>
 					<p>Number of characters left: <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -283,23 +276,22 @@
 		  </div>
 		  
 		  <div class="form-group">
-				<label for="Area" class="col-sm-4 control-label">*  Area/Location </label>
-				<div class="col-sm-8">
-					<input type="text" name="Area" ng-model="Area" >
+				<label for="Area" class="col-md-2 ">*  Area/Location </label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="Area" ng-model="Area" >
 				 
 				</div>
 				
 		  </div>
 		  
-		<!--</form>  property Location-->
+		<!--  property Location-->
 		
-		<!--  Discription Title
-	<form class="form-horizontal">-->	
+		<!--  Discription Title-->	
 			<h4>Discription Title:</h4><hr width="100%">
 			<div class="form-group">
-				<label for="propTitle" class="col-sm-4 control-label">* Property Title </label>
-				<div class="col-sm-8">
-					<textarea type="text" name="propTitle" ng-model="propTitle" col="8" rows="4"></textarea>
+				<label for="propTitle" class="col-md-2 ">* Property Title </label>
+				<div class="col-md-6">
+					<textarea type="text" class="form-control" name="propTitle" ng-model="propTitle" col="8" rows="4"></textarea>
 					<p>Number of characters left:255 <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -307,109 +299,227 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="browserTitle" class="col-sm-4 control-label">* Browser Title( Display in your website )</label>
-				<div class="col-sm-8">
-					<textarea type="text" name="browserTitle" ng-model="browserTitle" col="8" rows="4"></textarea>
+				<label for="browserTitle" class="col-md-2">* Browser Title<br><small>( Display in your website )</small></label>
+				<div class="col-md-6">
+					<textarea type="text" class="form-control" name="browserTitle" ng-model="browserTitle" col="8" rows="4"></textarea>
 					<p>Number of characters left:255 <span ng-bind="left()"></span></p>
 				 
 				</div>
 				
 			</div>
 			<div class="form-group">
-				<label for="metaDis" class="col-sm-4 control-label">* Meta Discription </label>
-				<div class="col-sm-8">
-					<textarea type="text" name="metaDis" ng-model="metaDis" col="8" rows="4" ></textarea>
+				<label for="metaDis" class="col-md-2">* Meta Discription </label>
+				<div class="col-md-6">
+					<textarea type="text" class="form-control" name="metaDis" ng-model="metaDis" col="8" rows="4" ></textarea>
 					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
 				 
 				</div>
 				
 			</div>
 			<div class="form-group">
-				<label for="metaKey" class="col-sm-4 control-label">* Meta Keywords </label>
-				<div class="col-sm-8">
-					<textarea type="text" name="metaKey" ng-model="metaKey" col="8" rows="4"></textarea>
+				<label for="metaKey" class="col-md-2">* Meta Keywords </label>
+				<div class="col-md-6">
+					<textarea type="text" class="form-control" name="metaKey" ng-model="metaKey" col="8" rows="4"></textarea>
 					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
 				 
 				</div>
 				
 			</div>
 			<div class="form-group">
-				<label for="projName" class="col-sm-4 control-label">* Project Name </label>
-				<div class="col-sm-4">
-				  <select ng-model="projName">
+				<label for="projName" class="col-md-2">* Project Name </label>
+				<div class="col-md-6">
+				  <select class="form-control" ng-model="projName">
 						<option selected="true">other</option>
 					</select>
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<label for="propDis" class="col-sm-4 control-label">* Property Discription  </label>
-				<div class="col-sm-8">
-					<textarea type="text" name="propDis" ng-model="projDis" col="8" rows="5"></textarea>
+				<label for="propDis" class="col-md-2">* Property Discription  </label>
+				<div class="col-md-6">
+					<textarea type="text" class="form-control" name="propDis" ng-model="projDis" col="8" rows="5"></textarea>
 					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
 				 
 				</div>
 				
-			</div>
-		<!--</form> property discription -->
-		
-		<!--Land  Mark 
-		<form class="form-horizontal">-->	
+			</div><!-- property discription -->
+			
+		<!-- property contact details -->
+		<h4>Property contact Detail:</h4><hr width="100%">
+				<div class="form-group">
+						<label for="Name" class="col-md-2 ">* Name:</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="Name" ng-model="Name" >
+						 
+						</div>
+						
+						
+				  </div>
+				  <div class="form-group">
+						<label for="Contact No:" class="col-md-2"> * Contact No:</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control"  name="Contact" ng-model="Contact" >
+						 &nbsp kms
+						</div>
+						
+						
+				  </div>
+				  <div class="form-group">
+						<label for="Email" class="col-md-2 ">  Railway Station</label>
+						<div class="col-md-6">
+							<input type="Email" class="form-control" name="Email" ng-model="Email" >
+						 
+						</div>
+						
+						
+				  </div>
+				  <div class="form-group">
+						<label for="Address" class="col-md-2 ">  School </label>
+						<div class="col-md-6">
+							<textarea class="form-control" name="Address" ng-model="Address" >
+							</textarea>
+							<p>Number of characters left:255 <span ng-bind="left()"></span></p>
+						</div>
+						
+						
+				  </div>
+				 
+		  </div><!-- property contact details -->
+		  
+		  <h4>Optional Property Details:</h4><hr width="100%">
+				<div class="form-group">
+						<label for="Age" class="col-md-2 ">Age</label>
+						<div class="col-md-6">
+							<select class="form-control" ng-model="Age">
+						<option selected="true">Select One</option>
+					</select>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="Age" class="col-md-2 ">Age</label>
+						<div class="col-md-6">
+							<select class="form-control" ng-model="Age">
+						<option selected="true">Select One</option>
+					</select>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="Furnished" class="col-md-2 ">Furnished</label>
+						<div class="col-md-6">
+							<select class="form-control" ng-model="Furnished">
+						<option selected="true">Select One</option>
+					</select>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="owner" class="col-md-2 ">Ownership</label>
+						<div class="col-md-6">
+							<select class="form-control" ng-model="owner">
+						<option selected="true">Select One</option>
+					</select>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="TotFloor" class="col-md-2 ">Total Number of Floors</label>
+						<div class="col-md-6">
+							<select class="form-control" ng-model="TotFloor">
+						<option selected="true">Select One</option>
+					</select>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="Facing" class="col-md-2 ">Facing</label>
+						<div class="col-md-6">
+							<select class="form-control" ng-model="Facing">
+						<option selected="true">Select One</option>
+					</select>
+						</div>
+				</div>
+				
+		  
+		<!--Land  Mark -->	
 			<h4>Land Mark:</h4><hr width="100%">
 				<div class="form-group">
-						<label for="Hospitals" class="col-sm-4 control-label">Hospitals </label>
-						<div class="col-md-4">
-							<input type="text" name="Hospitals" ng-model="Hospitals" >
+						<label for="Hospitals" class="col-md-2 ">Hospitals </label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="Hospitals" ng-model="Hospitals" >
 						 &nbsp kms
 						</div>
-						<div class="col-md-4">
-						</div>
+						
 						
 				  </div>
 				  <div class="form-group">
-						<label for="Airport" class="col-sm-4 control-label">  Airport </label>
-						<div class="col-md-4">
-							<input type="text" name="Airport" ng-model="Airport" >
+						<label for="Airport" class="col-md-2">  Airport </label>
+						<div class="col-md-6">
+							<input type="text" class="form-control"  name="Airport" ng-model="Airport" >
 						 &nbsp kms
 						</div>
-						<div class="col-md-4">
-						</div>
+						
 						
 				  </div>
 				  <div class="form-group">
-						<label for="RailwayStation" class="col-sm-4 control-label">  Railway Station</label>
-						<div class="col-md-4">
-							<input type="text" name="RailwayStation" ng-model="RailwayStation" >
+						<label for="RailwayStation" class="col-md-2 ">  Railway Station</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control"name="RailwayStation" ng-model="RailwayStation" >
 						 &nbsp kms
 						</div>
-						<div class="col-md-4">
-						</div>
+						
 						
 				  </div>
 				  <div class="form-group">
-						<label for="School" class="col-sm-4 control-label">  School </label>
-						<div class="col-md-4">
-							<input type="text" name="School" ng-model="School" >
+						<label for="School" class="col-md-2 ">  School </label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="School" ng-model="School" >
 						 &nbsp kms
 						</div>
-						<div class="col-md-4">
-						</div>
+						
 						
 				  </div>
-				  <div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-			  <button type="submit" class="btn btn-default">Submit</button>
-			</div>
-		  </div><!--land mark-->
+				<!--land mark-->
 		  <!--Amenities-->
+		  <h4>Amenities:</h4><hr width="100%">
+		  <div class="form-group">
 		  <div class="col-md-12">
-				<table class="table table-bordered">
-						
+				<table class="table table-bordered table-responsive">
+					<tr>
+					<td><input type="checkbox" name="power" value="power"></td>
+					<td>Power Backup</td>
+					<td><input type="checkbox" name="power" value="power"></td>
+					<td>Water Storage</td>
+					<td><input type="checkbox" name="power" value="power"></td>
+					<td>Lift</td>
+					</tr>
+					<tr>
+					<td><input type="checkbox" name="power" value="power"></td>
+					<td>Power Backup</td>
+					<td><input type="checkbox" name="power" value="power"></td>
+					<td>Power Backup</td>
+					<td><input type="checkbox" name="power" value="power"></td>
+					<td>Power Backup</td>
+					</tr>	
 				</table>
-		  </div>
+				</div>
+		  </div> <!--end Amenities-->
 		  
-		  
-		
-				  </form>
+		  <!--Amenities-->
+		  <h4>Amenities:</h4><hr width="100%">
+		  <div class="form-group">
+			<div class="col-md-12">
+				<table class="table table-bordered table-responsive">
+					<tr>
+					<td><input type="checkbox" name="power" value="All">Select All</td>
+					</tr>
+					<tr>
+					<td><input type="checkbox" name="power" value="Landmark">www.jaidevlandmark.in</td>
+					</tr>
+				</table>
+			</div>
+			</div>
+				<div class="form-group">
+					<div class="col-md-offset-6 col-md-10">
+					  <button type="submit" class="btn btn-default">Submit</button>
+					</div>
+				</div>
+		  </form>
 		
 </div>
