@@ -15,8 +15,8 @@ $app->get('/project(/:id)','projectData');
 $app->get('/property(/:id)','propertyData');
 $app->put('/editprofile/:id','registerUpdate');
 $app->post('/register)','registerUser');
-//$app->post('/addproject','addProject');
-//$app->post('/addproperty','addProperty');
+$app->post('/addproject','addProject');
+$app->post('/addproperty','addProperty');
 
 //view web response
 function responseData($id=null)
@@ -148,7 +148,57 @@ function registerUser()
 	
 	}
 	
-// 
+// Add new Properties
+
+function addproperty()
+{
+		$app= new \Slim\Slim();
+		$body = $myapp->request->getBody();
+		$postdata=json_decode($body);
+	       $FName= mysql_real_escape_string($postdata->property_for);
+			$UName= mysql_real_escape_string($postdata->featured);
+			$email= mysql_real_escape_string($postdata->category);
+			$pwd= mysql_real_escape_string($postdata->type);
+			$address= mysql_real_escape_string($postdata->buildup_area);
+			$address= mysql_real_escape_string($postdata->build_unit);
+			$country= mysql_real_escape_string($postdata->land_area);
+			$tel= mysql_real_escape_string($postdata->land_unit);
+			$fax= mysql_real_escape_string($postdata->carpet_area);
+			$website= mysql_real_escape_string($postdata->carpet_unit);
+			$website= mysql_real_escape_string($postdata->price);
+			$website= mysql_real_escape_string($postdata->currency);
+			$website= mysql_real_escape_string($postdata->bedrooms);
+			$bathrooms= mysql_real_escape_string($postdata->bathrooms);
+			$country= mysql_real_escape_string($postdata->country);
+			$state= mysql_real_escape_string($postdata->state);
+			$city= mysql_real_escape_string($postdata->city);
+			$address= mysql_real_escape_string($postdata->address);
+			$location= mysql_real_escape_string($postdata->location);
+			$title= mysql_real_escape_string($postdata->title);
+			$browsertitle= mysql_real_escape_string($postdata->browsertitle);
+			$state= mysql_real_escape_string($postdata->state);
+			$city= mysql_real_escape_string($postdata->city);
+			$country= mysql_real_escape_string($postdata->country);
+			$state= mysql_real_escape_string($postdata->state);
+			$city= mysql_real_escape_string($postdata->city);
+			
+			
+	$insertSQL="INSERT INTO users(full_name,user_name,user_email,pwd,address,country,tel,fax,website,requested_domains)VALUES('$FName','$UName','$email','$pwd','$address','$country','$tel','$fax','$website','$domains')";
+	$result=mysql_query($insertSQL);
+	$last_id = mysql_insert_id($result);
+	if($result)
+	{
+	  echo "Registration successful your Reg-ID is ".$last_id;
+	}
+	else
+	{
+	 mysql_error();
+	}	
+		
+}
+
+
+
 
 
 
