@@ -2,14 +2,14 @@
 <div ng-include="'partials/innernav.html'"></div>
 <div>
     <ul class="nav nav-pills">
-     <li role="presentation" ng-class="getClass('/response/web')"><a href="#/response/web/all">Web Response</a></li>
-      <li role="presentation"  ng-class="getClass('/response/property')"><a href="#/response/property/all">Property Response</a></li>
-      <li role="presentation" ng-class="getClass('/response/project')"><a href="#/response/project/all">Project Response</a></li>
+     <li role="presentation" ng-class="getClass('/response/web')"><a href="#/response/web/new">Web Response</a></li>
+      <li role="presentation"  ng-class="getClass('/response/property')"><a href="#/response/property/new">Property Response</a></li>
+      <li role="presentation" ng-class="getClass('/response/project')"><a href="#/response/project/new">Project Response</a></li>
     </ul>
 </div>
 <div>
     <ul class="nav nav-tabs">
-		<li role="presentation" ng-class="getClass('/response/{{type}}/all')"><a ng-href="#/response/{{type}}/all">All</a></li>
+		
 		<li role="presentation" ng-class="getClass('/response/{{type}}/new')"><a ng-href="#/response/{{type}}/new">New</a></li>
 		<li role="presentation" ng-class="getClass('/response/{{type}}/read')"><a href="#/response/{{type}}/read">Read</a></li>
 		<li role="presentation" ng-class="getClass('/response/{{type}}/delete')"><a href="#/response/{{type}}/delete">Delete</a></li>
@@ -25,16 +25,18 @@
 			  <th>Replied</th>
 			  <th>Date</th>
 			  <th>Action</th>
+			  <th>Status</th>
 		  </tr>
 		</thead>
 		<tbody>
-		  <tr ng-repeat="x in names">
+		  <tr ng-repeat="x in resopnses | filter : { respo_for : type, status: status, id:id }">
 			 <td>{{ $index + 1 }}</td>
-			 <td>{{x.from}}</td>
+			 <td>{{ x.first_name +" " +x.last_name }}</td>
 			 <td>{{x.subject}}</td>
-			 <td>{{x.replied}}</td>
+			 <td>{{x.reply}}</td>
 			 <td>{{x.date}}</td>
-			 <td><a>delete</a></td>
+			 <td><a href="#response/{{type}}/{{status}}/{{x.id}}">Delete</a></td>
+			 <td>{{x.status}}</td>
 		  </tr>
 		</tbody>
 	</table>

@@ -7,16 +7,19 @@ controller('responseCtrl', function($scope,$http, $routeParams, $location) {
 	}
 	$scope.type = $routeParams.type;
 	$scope.status = $routeParams.status;
+	$scope.id = $routeParams.id;
+	
+	console.log($scope.status);
 	$scope.getClass = function(path) {
     if ($location.path().substr(0, path.length) == path) {return "active"} else {return ""}}
-}).controller('propertyCtrl',function($http,$scope)
-{
-	$http.get("http://localhost/Sunita/Real-Estate-Portal/server-api/index.php/response/property")
-	.success(function(response) {$scope.names = response;});
 	
-}).controller('projectCtrl',function($http,$scope)
-{
-	$http.get("http://localhost/Sunita/Real-Estate-Portal/server-api/index.php/response/project")
-	.success(function(response) {$scope.names = response;});
+	//this request for all response data
+	$http.get("server-api/index.php/response")
+	.success(function(response) {$scope.resopnses = response;});
 	
+	//this request for single response data
+	if($routeParams.id) {
+		$http.get("server-api/index.php/response/"+$routeParams.id)
+		.success(function(response) {$scope.resopnses = response;});
+	}
 });
