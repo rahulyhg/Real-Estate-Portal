@@ -45,12 +45,12 @@
 				<th>Reserved Parking</th>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Semi-Furnished</td>
-					<td>New Property</td>
-					<td></td>
-					<td></td>
-					<td>1</td>
+				<tr ng-repeat="x in names">
+					<td>{{x.furnished}}</td>
+					<td>{{x.transaction_type}}</td>
+					<td>{{x.bedrooms}}</td>
+					<td>{{x.bathrooms}}</td>
+					<td>{{x.res_parking}}</td>
 				</tr>
 			</tbody>
 		</table>
