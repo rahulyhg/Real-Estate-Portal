@@ -58,7 +58,23 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 			console.log($scope.properties);
 		});
 	}
+}).
+controller('projectCtrl', function($scope,$http) {
+ //this request for all response data
+ $http.get("server-api/index.php/project")
+ .success(function(response) {$scope.projects = response;});
+ 
+ //this request for single response data
+ if($routeParams.id) {
+  $http.get("server-api/index.php/property/"+$routeParams.id)
+  .success(function(response) {$scope.projects = response;});
+ }
 });
+
+	
+
+
+
 
 	
 
