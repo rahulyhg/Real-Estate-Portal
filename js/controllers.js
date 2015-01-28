@@ -75,7 +75,7 @@ controller('registerCtrl', function($scope,$http/*,$routeParams*/) {
 		})
 	}
 	//update record
-	/*$http.get("server-api/index.php/editprofile/"+$routeParams.id)
+	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
 		$scope.names = response;
 		$scope.reset = function() {
@@ -83,6 +83,7 @@ controller('registerCtrl', function($scope,$http/*,$routeParams*/) {
 		};
 		$scope.reset();
 		console.log($scope.user);
+		
 	}).error(function(err){
 		console.log(err);
 	});
@@ -92,7 +93,7 @@ controller('registerCtrl', function($scope,$http/*,$routeParams*/) {
 			alert(response);
 		})
 	}
-	*/
+	
 });
 
 
