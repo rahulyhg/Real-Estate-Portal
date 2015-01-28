@@ -59,17 +59,40 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		});
 	}
 }).
-controller('projectCtrl', function($scope,$http) {
- //this request for all response data
- $http.get("server-api/index.php/project")
- .success(function(response) {$scope.projects = response;});
- 
- //this request for single response data
- if($routeParams.id) {
-  $http.get("server-api/index.php/property/"+$routeParams.id)
-  .success(function(response) {$scope.projects = response;});
- }
+controller('registerCtrl', function($scope, $http, $routeParams) {
+	//add record
+	$scope.reset = function() {
+			$scope.user = {};
+		};
+	$scope.insert = function(){
+		console.log($scope.user);
+		$http.post("server-api/index.php/register/", $scope.user )
+		.success(function(response) {
+			alert(response);
+			$scope.reset();
+		})
+	}
+	//update record
+	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
+    .success(function(response) {
+		$scope.data1 = response;
+		$scope.reset = function() {
+			$scope.user = angular.copy($scope.data1);
+		};
+		$scope.reset();
+		console.log($scope.user);
+	}).error(function(err){
+		console.log(err);
+	});
+	$scope.update = function(){
+	$http.put("server-api/index.php/editprofile/"+$routeParams.id,$scope.user)
+		.success(function(response) {
+			alert(response);
+		})
+	}
+	
 });
+
 
 	
 
