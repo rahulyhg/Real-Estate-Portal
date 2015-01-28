@@ -23,3 +23,25 @@ controller('responseCtrl', function($scope,$http, $routeParams, $location) {
 		.success(function(response) {$scope.resopnses = response;});
 	}
 });
+/*.controller('ViewController',function($scope,$http){
+	$scope.viewdata=function(){
+	$http.get("http://localhost/Trupti/phptrupti/server.php/get").
+	
+	success(function(response)
+	{
+		$scope.data1=response;
+	});
+	}
+	$scope.viewdata();
+	$scope.del=function(RollNo){
+		console.log(RollNo)
+	$http.delete("http://localhost/Trupti/phptrupti/server.php/delete/"+RollNo ).
+	success(function(response){
+		alert(response);
+		console.log(response);
+		
+		$scope.viewdata();
+	});
+	}
+	console.log("home");
+})*/
