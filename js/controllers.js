@@ -39,7 +39,6 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 		.success(function(response) {$scope.projects = response;
 			console.log($scope.projects);
 		});
-		.
 		
 	}
 }).
