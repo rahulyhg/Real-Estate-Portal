@@ -1,61 +1,46 @@
 <!DOCTYPE >
 
 <html>
-<div class="container">
+<div ng-include="'partials/innernav.html'"></div>
 <div class="row">
-    <div class="col-md-12">
-        <form class="form-horizontal" role="form">		      
+    <form class="form-horizontal" role="form">		      
 			<h2>Project Info</h2>
-				<div class="row">
-				    <div class="form-group">
-					   <div class="col-md-3">
-					        <label  for="tile">Project Title</label>
-						</div>
-                        <div class="col-md-9">
-                              <input type="text" class="form-control" id="title" placeholder="Enter Project title">
+				<div class="form-group">
+				    <label  for="tile" class="col-md-3">Project Title</label>
+					    <div class="col-md-9">
+                            <input type="text" class="form-control" id="title" placeholder="Enter Project title">
                         </div>
 					</div>
                      <div class="form-group">
-					    <div class="col-md-3">
-                            <label for="btitle">Browser Title</label>
-						</div>	
+					    <label for="btitle" class="col-md-3">Browser Title</label>				
                         <div class="col-md-9">
                             <input type="text" class="form-control" id="btitle" placeholder="Enter Browser Title">
                         </div>							
                      </div>
                      <div class="form-group">
-					    <div class="col-md-3">
-                             <label for="metakey">Meta Keywords</label> 
-						</div>
-                        <div class="col-md-9"> 
-                            <textarea class="form-control" rows="3"> </textarea>
-						</div>
-							
+					    <label for="metakey" class="col-md-3">Meta Keywords</label> 
+						   <div class="col-md-9"> 
+                              <textarea class="form-control" rows="3"> </textarea>
+						   </div>							
                       </div>
 	                  <div class="form-group"> 
-					       <div class="col-md-3">
-					            <label for="metakey">Meta Discription</label> 
-							</div>	
-                           <div class="col-md-9">
-                               <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                       </div>
+					        <label for="metakey" class="col-md-3">Meta Discription</label> 
+							   <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
+                      </div>
 			
-	              		<div class="form-group"> 
-						    <div class="col-md-3">
-						         <label for="radiobtn">Featured</label> 
-                            </div>						   
+	              	<div class="form-group"> 
+					    <label for="radiobtn" class="col-md-3">Featured</label> 
                             <div class="col-md-3">
-                                <input type="radio" class="form-control" id="yes" checked>Yes
-								<input type="radio" class="form-control" id="no">No
-                              </div>	
-                        </div>
+                                <input type="radio" name="rbtn" id="yes" checked>Yes
+								<input type="radio" name="rbtn" id="no">No
+                            </div>	
+                    </div>
 						
 					<div class="form-group">
-					      <div class="col-md-3">
-					          <label for="category">Category</label>
-					      </div>	
-					      <div class="col-md-12">
+					    <label for="category" class="col-md-3">Category</label>
+					        <div class="col-md-9">
 								<select name="category">
 									   <option>Select Category</option>
 										<option value="residential">Residential Property</option>
@@ -66,190 +51,115 @@
                             </div>
 					</div>	
 					<div class="form-group">
-						<div class="col-md-3">
-                             <label for="ptype">Project Type</label>
-						</div>	 
-                        <div class="col-md-9">
+						<label for="ptype" class="col-md-3">Project Type</label>
+						    <div class="col-md-9">
                               <input type="text" class="form-control" id="ptype">
-                        </div>							
+                           </div>							
                      </div>
 					 <div class="form-group">
-					    <div class="col-md-3">
-                             <label for="location">Location</label>
-						</div>	 
-                        <div class="col-md-9">
+					    <label for="location" class="col-md-3">Location</label>
+						<div class="col-md-9">
                               <input type="text" class="form-control" id="location">
                         </div>							
                      </div>
 					 <div class="form-group">
-                        <div class="col-md-3"> 					 
-                              <label for="location">Overview</label>
-						</div>
-                        <div class="col-md-9">
-                            <table>
-							    <div class="row">
-                                </div>  								
-                            </table>							
+                        <label for="location" class="col-md-3">Overview</label>
+						   <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
+                            					
                         </div>							
-                     </div>
+                    
 					 <div class="form-group">
-                        <label for="pimg">Project Image</label>
-                            <div class="col-md-9">
+                        <label for="pimg" class="col-md-3">Project Image</label>
+                            <div class="col-md-6">
                               <input type="text" class="form-control" id="pimg">
                             </div>
-                          <button onclick="openFileBrowser('proj_img')" onblur="imgSrc()"> Browse</button>		
+                          <button> Browse</button>		
                      </div>
 					<div class="form-group">
-                        <label for="plogo">Project Logo</label>
+                        <label for="plogo" class="col-md-3">Project Logo</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                         </div>
 					</div>	
 					<div class="form-group">
-                        <label for="features">Amenities/Features</label>
+                        <label for="features" class="col-md-3">Amenities/Features</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
 					</div>	
 					<div class="form-group">
-                        <label for="spcification">Spcifications</label>
+                        <label for="spcification" class="col-md-3">Spcifications</label>
+						 <div class="col-md-9">
+                            <textarea class="form-control" rows="3"></textarea>
+                          </div>
 					</div>	
 					<div class="form-group">
-                        <label for="plogo">Project Logo</label>
+                        <label for="plogo" class="col-md-3">Project Logo</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
 					</div>	
 					<div class="form-group">
-                        <label for="lmap">Location Map</label>
+                        <label for="lmap" class="col-md-3">Location Map</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
 					</div>	
 					<div class="form-group">
-                        <label for="layout">Layout Map</label>
+                        <label for="layout" class="col-md-3">Layout Map</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                          </div>
 					</div>
 					<div class="form-group">
-                        <label for="bplan">Browser Title Floor Plan</label>
+                        <label for="bplan" class="col-md-3">Browser Title Floor Plan</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
 					</div>	
 					<div class="form-group">
-                        <label for="fplan">Floor Plans</label>
+                        <label for="fplan" class="col-md-3">Floor Plans</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
 					</div>	
 					<div class="form-group">
-                        <label for="wthrough">Walk Through</label>
+                        <label for="wthrough" class="col-md-3">Walk Through</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                         </div>
 					</div>	
 					<div class="form-group">
-                        <label for="contact">Contact</label>
-					</div>	
-			   </form>
-			</div>   
+                        <label for="contact" class="col-md-3">Contact</label>
+						 <div class="col-md-9">
+                                   <textarea class="form-control" rows="3"></textarea>
+                               </div>
+					</div>
+					
+					</div>
+			     <label>Select Sites</label>
+				<hr width="100%" style="border-color:black;"></hr>
 			     <div class="col-md-3"></div>
-			       <div class="col-md-9">
-			          <div class="table-responsive">
-			             <table>					    
-						    <tr> 
-							    <label><input type="checkbox" name="other_domain[]" value="www.jaidevlandmarks.com">"www.jaidevlandmarks.com"</label>
-					         </tr>
-					  	  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.hinjewadiproperties.com">"www.hinjewadiproperties.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkstreetwakad.com/">"www.parkstreetwakad.com/"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.24kglitterati.com/">"www.24kglitterati.com/"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.propertydemand.com">"www.propertydemand.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parktitanium.com">"www.parktitanium.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.sapphireparkwakad.com">"www.sapphireparkwakad.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.24kglitterati.in">"www.24kglitterati.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.99solutions.in">"www.99solutions.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.alomacountyaundh.com">"www.alomacountyaundh.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.alomacountyaundh.in">"www.alomacountyaundh.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.hinjewadiproperties.in">"www.hinjewadiproperties.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.jaidevlandmarks.in">"www.jaidevlandmarks.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.liferepublichinjewadi.com">"www.liferepublichinjewadi.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.masterpieceelements.com">"www.masterpieceelements.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkpanoramapune.com">"www.parkpanoramapune.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkpanoramapune.in">"www.parkpanoramapune.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkroyalepune.com">"www.parkroyalepune.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkroyalepune.in">"www.parkroyalepune.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parktitanium.in">"www.parktitanium.in"</label>					 
-					      </tr>
-						   <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value"www.parkturquoisewakad.com">"www.parkturquoisewakad.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkxpress.in">"www.parkxpress.in"</label>					 
-					      </tr>
-						   <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkxpressbaner.com">"www.parkxpressbaner.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.pridegrandeur.com">"www.pridegrandeur.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.pridegrandeur.in">"www.pridegrandeur.in"</label>					 
-					      </tr>
-						   <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.prideplatinum.com">"www.prideplatinum.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.prideplatinum.in">"www.prideplatinum.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.pridevalencia.com">"www.pridevalencia.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.pridevalencia.in">"www.pridevalencia.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.sapphireparkwakad.com">"www.sapphireparkwakad.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.sapphireparkwakad.in">"www.sapphireparkwakad.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.thespiresaundh.com">"www.thespiresaundh.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.thespiresaundh.in">"www.thespiresaundh.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.wakadparkstreet.com">"www.wakadparkstreet.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.jaidevproperties.com">"www.jaidevproperties.com"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkstreetwakad.in">"www.parkstreetwakad.in"</label>					 
-					      </tr>
-						  <tr> 
-							 <label><input type="checkbox" name="other_domain[]" value="www.parkturquoisewakad.in">"www.parkturquoisewakad.in"</label>					 
-					      </tr>
-						</table>
+			     <div class="col-md-9">				    
+					  <table class="table table-bordered">
+				         <tr><td> 
+ 						    <input type="checkbox" name="other_domain[]">Select All
+						 </td></tr>
+						 <tr><td>          	 				    
+						   	<input type="checkbox" name="other_domain[]" value="www.jaidevlandmarks.com">www.jaidevlandmarks.com
+						</td></tr>
+					  	<tr><td>
+						    <input type="checkbox" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
+						</td></tr>
+						<tr><td>							
+							<input type="checkbox" name="other_domain[]" value="www.parkstreetwakad.com/">www.parkstreetwakad.com/
+					     </tr></td>	
+						 </table> 
+					
 					</div>	
-            </div>
-		</div>	<!--end col-12-->   
+			</form>		
     </div><!--end row-->   
-</div><!--end container-->   	
+
 </html>
