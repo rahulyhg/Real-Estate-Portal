@@ -13,7 +13,7 @@ $app->response->headers->set('Content-Type', 'application/json');
 $app->get('/response(/:id)','responseData');
 $app->get('/project(/:id)','projectData');
 $app->get('/property(/:id)','propertyData');
-$app->put('/register/:id','registerUpdate');
+$app->put('/editProfile/:id','registerUpdate');
 $app->post('/register)','registerUser');
 //$app->post('/addproject','addProject');
 //$app->post('/addproperty','addProperty');
