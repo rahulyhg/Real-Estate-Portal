@@ -59,14 +59,14 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		});
 	}
 }).
-controller('registerCtrl', function($scope, $http, $routeParams) {
+controller('registerCtrl', function($scope,$http,$routeParams) {
 	//add record
 	$scope.reset = function() {
 			$scope.user = {};
 		};
 	$scope.insert = function(){
 		console.log($scope.user);
-		$http.post("server-api/index.php/register/", $scope.user )
+		$http.post("server-api/index.php/register/",$scope.user)
 		.success(function(response) {
 			alert(response);
 			$scope.reset();
@@ -75,9 +75,9 @@ controller('registerCtrl', function($scope, $http, $routeParams) {
 	//update record
 	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
-		$scope.data1 = response;
+		$scope.names = response;
 		$scope.reset = function() {
-			$scope.user = angular.copy($scope.data1);
+			$scope.user = angular.copy($scope.names);
 		};
 		$scope.reset();
 		console.log($scope.user);
