@@ -22,26 +22,30 @@ controller('responseCtrl', function($scope,$http, $routeParams, $location) {
 		$http.get("server-api/index.php/response/"+$routeParams.id)
 		.success(function(response) {$scope.resopnses = response;});
 	}
-});
-/*.controller('ViewController',function($scope,$http){
-	$scope.viewdata=function(){
-	$http.get("http://localhost/Trupti/phptrupti/server.php/get").
+}).
+controller('propertyCtrl', function($scope,$http, $routeParams, $location) {
+	if(!$routeParams.type && !$routeParams.status){
+		$location.path( "/property/web/all" );
+	}
+	$scope.type = $routeParams.type;
+	$scope.status = $routeParams.status;
+	$scope.id = $routeParams.id;
 	
-	success(function(response)
-	{
-		$scope.data1=response;
-	});
+	console.log($scope.status);
+	$scope.getClass = function(path) {
+    if ($location.path().substr(0, path.length) == path) {return "active"} else {return ""}}
+	
+	//this request for all response data
+	$http.get("server-api/index.php/property")
+	.success(function(response) {$scope.resopnses = response;});
+	
+	//this request for single response data
+	if($routeParams.id) {
+		$http.get("server-api/index.php/property/"+$routeParams.id)
+		.success(function(response) {$scope.resopnses = response;});
 	}
-	$scope.viewdata();
-	$scope.del=function(RollNo){
-		console.log(RollNo)
-	$http.delete("http://localhost/Trupti/phptrupti/server.php/delete/"+RollNo ).
-	success(function(response){
-		alert(response);
-		console.log(response);
-		
-		$scope.viewdata();
-	});
-	}
-	console.log("home");
-})*/
+});
+
+	
+
+
