@@ -14,7 +14,7 @@ $app->get('/response(/:id)','responseData');
 $app->get('/project(/:id)','projectData');
 $app->get('/property(/:id)','propertyData');
 $app->put('/editprofile/:id','registerUpdate');
-$app->post('/register)','registerUser');
+$app->post('/register','registerUser');
 $app->post('/addproject','addProject');
 $app->post('/addproperty','addProperty');
 
@@ -88,7 +88,7 @@ function propertyData($id=null)
 function registerUser()
 {
 		$app= new \Slim\Slim();
-		$body = $myapp->request->getBody();
+		$body = $app->request->getBody();
 		$postdata=json_decode($body);
 	       $FName= mysql_real_escape_string($postdata->full_name);
 			$UName= mysql_real_escape_string($postdata->user_name);

@@ -53,27 +53,29 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		
 	}else{
 		//this request for all response data
-		$http.get("server-api/index.php/property")
+		$http.get("Server-api/index.php/property")
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
 		});
 	}
 }).
-controller('registerCtrl', function($scope,$http,$routeParams) {
+controller('registerCtrl', function($scope,$http/*,$routeParams*/) {
 	//add record
 	$scope.reset = function() {
 			$scope.user = {};
 		};
 	$scope.insert = function(){
-		console.log($scope.user);
-		$http.post("server-api/index.php/register/",$scope.user)
+	//	console.log($scope.user);
+		alert($scope);
+		$http.post("Server-api/index.php/register",$scope.user)
 		.success(function(response) {
 			alert(response);
+			alert("Hii");
 			$scope.reset();
 		})
 	}
 	//update record
-	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
+	/*$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
 		$scope.names = response;
 		$scope.reset = function() {
@@ -90,7 +92,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 			alert(response);
 		})
 	}
-	
+	*/
 });
 
 
