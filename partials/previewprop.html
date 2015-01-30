@@ -1,31 +1,34 @@
 <section ng-controller="propertyCtrl">
-<h3>Preview Property</h3>
+<div ng-include="'partials/innernav.html'"></div>
+<h3>{{properties.title}}</h3>
 <div class="content">
 	<blockquote>
-		<p>W We have multiple options of 1 acres to 6 acres to 24 acres to 60 acres to 100+ acres clear title single owner of Pune School Plot for Sale / Built to Suit in Pune & PCMC Educational Institute Land for Sale / Built to Suit. Brokerage applicable. Call 9527289192 / 9881502939 / 9881331689</p>
+		<p>{{proprties.prop_desc}}</p>
 	</blockquote>
 </div>
 <div class="row">
 	<div class="col-md-10">
 		<div class="row">
 			<div class="col-md-4">Property For</div>
-			<div class="col-md-8">Sale</div>			
+			<div class="col-md-8">{{properties.property_for}}</div>			
 		</div>
 		<div class="row">
 			<div class="col-md-4">Property Type</div>
-			<div class="col-md-8">School Plot / Educational Institute Land</div>
+			<div class="col-md-8">{{properties.type}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Location</div>
-			<div class="col-md-8">Pune</div>
+			<div class="col-md-8">{{properties.location}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Area</div>
-			<div class="col-md-8">6 Acre</div>
+			<div class="col-md-8">{{properties.buildup_area}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Price</div>
-			<div class="col-md-8">Contact US!</div>
+			<div class="col-md-8">{{properties.price}}</div>
+			<div class="col-md-4">Contact US!</div>
+			
 		</div>
 	</div>
 	<div class="col-md-2">
@@ -45,12 +48,12 @@
 				<th>Reserved Parking</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat="x in properties">
-					<td>{{x.furnished}}</td>
-					<td>{{x.transaction_type}}</td>
-					<td>{{x.bedrooms}}</td>
-					<td>{{x.bathrooms}}</td>
-					<td>{{x.res_parking}}</td>
+				<tr>
+					<td>{{properties.furnished}}</td>
+					<td>{{properties.transaction_type}}</td>
+					<td>{{properties.bedrooms}}</td>
+					<td>{{properties.bathrooms}}</td>
+					<td>{{properties.res_parking}}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -60,11 +63,11 @@
 <div class="row">
 	<div class="col-md-12">
 		<h3>Amenities</h3>
-		<ul><li>Power Backup</li>
-			<li>Water Storage</li>
-			<li>Reserve Parking</li>
-			<li>Security</li>
-			<li>Servant Quarters</li>
+		<ul><li>{{properties.power}}</li>		
+			<li>{{properties.water}}</li>
+			<li>{{properties.res_parking}}</li>
+			<li>{{properties.security}}</li>
+			<li>{{properties.quarters}}</li>
 		</ul>
 	</div>
 </div>
@@ -72,7 +75,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<h3>Property Address</h3>
-		<p>Pune</p>
+		<p>{{properties.address}}</p>
 	</div>
 </div>
 <hr>
@@ -83,19 +86,19 @@
 			<tbody>
 				<tr>
 					<td>Contact Person</td>
-					<td>Priya</td>
+					<td>{{properties.cont_name}}</td>
 				</tr>
 				<tr>
 					<td>Mobile</td>
-					<td>9527289192</td>
+					<td>{{properties.contact}}</td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td>jaidevlandmarks@gmail.com</td>
+					<td>{{properties.email}}</td>
 				</tr>
 				<tr>
 					<td>Contact Address</td>
-					<td>Pune</td>
+					<td>{{properties.cont_address}}</td>
 				</tr>
 			</tbody>
 		</table>
