@@ -55,6 +55,7 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		//this request for all response data
 		$http.get("Server-api/index.php/property")
 		.success(function(response) {$scope.properties = response;
+		
 			console.log($scope.properties);
 		});
 	}

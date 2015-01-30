@@ -55,18 +55,31 @@
 						<th>Manage</th>
 					</tr>
 				</thead>
-				<tbody ng-repeat="x in properties">
-						<tr>
+				<tbody>
+						<tr ng-repeat="x in properties">
 							<td>{{ $index + 1 }}</td>
-							<td rowspan="4">{{x.prop_image}}</td>
-							<td rowspan="4">{{x.title}}</td>
+							<td rowspan="4">{{<img src="x.prop_image">}}</td>
+							<td>
+								<table>
+									<tr>
+										<th>Property Title</th>
+										<th>Property For</th>
+										<th>Type</th>
+										<th>Address</th>
+									</tr>
+									<tr>
+										<td rowspan="4">{{x.title}}</td>
+										<td>{{x.property_for}}</td>
+										<td>{{x.type}}</td>
+										<td>{{x.address}}</td>	
+									</tr>
+								</table>
+							</td>	
 							<td>{{x.featured}}</td>
 							<td>{{x.status}}</td>
 							<td>{{x.other_domain}}</td>
-							<td>{{x.property_for}}</td>
-							<td>{{x.type}}</td>
-							<td>{{x.address}}</td>		
-							<td><a href="#property/{{x.id}}">Edit</a></td>
+							<td>{{x.property_for}}</td>					
+							<td><a href="#property/edit/{{x.id}}">Edit</a></td>
 						</tr>
 				</tbody>
 			</table>
