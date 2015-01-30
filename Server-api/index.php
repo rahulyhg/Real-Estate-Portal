@@ -278,8 +278,8 @@ function addProject()
 			}
 			 //$sql_str[] = "{$field_name} = '{$field_value}'";
 			 //mysql_query("UPDATE contactinfo SET ".implode(',', $sql_str)." WHERE `id` = '".$rid."';")
-			 
-			$updateSQL=mysql_query("UPDATE  2_real_project SET  '$projectEditKey'='$projectEditVal' where id='$id'")or die(mysql_error());
+			 //implode(",",$projectKey) & implode(",",$projectVal)
+			$updateSQL=mysql_query("UPDATE  2_real_project SET  .implode(',',$projectEditKey) AND .implode(',',$projectEditVal). where id='$id' ")or die(mysql_error());
 	
 		if($updateSQL){
 		  echo "project details updated successfully";
