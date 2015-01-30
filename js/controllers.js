@@ -53,7 +53,7 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		
 	}else{
 		//this request for all response data
-		$http.get("Server-api/index.php/property")
+		$http.get("server-api/index.php/property")
 		.success(function(response) {$scope.properties = response;
 		
 			console.log($scope.properties);
@@ -70,13 +70,14 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 	$scope.insert = function(){
 		//console.log($scope.user);
 		
-		$http.post("Server-api/index.php/register",$scope.reg)
+		$http.post("server-api/index.php/register",$scope.reg)
 		.success(function(response) {
 			alert(response);
 			
 			$scope.reset();
 		})
 	}
+	/*
 	//update record
 	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
@@ -95,7 +96,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 		.success(function(response) {
 			alert(response);
 		})
-	}
+	}*/
 	
 });
 
