@@ -7,16 +7,16 @@
 		  <div class="form-group">
 				<label for="propertyfor" class="col-md-2  ">* Property for</label>
 				<div class="col-md-8">
-				  <input type="radio"  name="properyfor" value="Sale" checked="true">Sale
-				  <input type="radio"   name="properyfor" value="Rent">Rent
-				  <input type="radio"   name="properyfor" value="PG">PG
+				  <input type="radio" name="propertyfor" value="Sale" checked="true" ng-model="addproper.propertyfor">Sale
+				  <input type="radio" name="propertyfor" value="Rent" ng-model="addproper.propertyfor">Rent
+				  <input type="radio" name="propertyfor" value="PG" ng-model="addproper.propertyfor">PG
 				</div>
 		  </div>
 		  <div class="form-group">
 				<label for="Featured" class="col-md-2 ">* Featured </label>
 				<div class="col-md-4">
-				  <input type="radio"   name="featured" value="Yes" >Yes
-				  <input type="radio"   name="featured" value="No" checked="false">No
+				  <input type="radio" name="featured" value="Yes" ng-model="addproper.featured">Yes
+				  <input type="radio" name="featured" value="No" checked="false" ng-model="addproper.featured">No
 				 
 				</div>
 				
@@ -24,7 +24,7 @@
 		  <div class="form-group">
 				<label for="Category" class="col-md-2 ">* Property Category </label>
 				<div class="col-md-6">
-					<select ng-model="proCate" class="form-control" required>
+					<select ng-model="addproper.proCate" class="form-control" required>
 						<option>Select Category</option>
 						<option>Residential Property</option>
 						<option>Commercial Property</option>
@@ -41,7 +41,7 @@
 		  <div class="form-group">
 				<label for="type" class="col-md-2  ">* Property Type </label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" name="proType" ng-model="ProType" required>
+					<input type="text" class="form-control" name="proType" ng-model="addproper.ProType" required>
 					<span style="color:red" ng-show="myForm.proType.$dirty && myForm.proType.$invalid">
 					  <span ng-show="myForm.proType.$error.required">Property type  is required .</span>
 					</span>
@@ -51,10 +51,10 @@
 		  <div class="form-group">
 				<label for="BuiltArea" class="col-md-2 ">* Built Up Area </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="builtArea" ng-model="builtArea" required>
+					<input type="text" class="form-control" name="builtArea" ng-model="addproper.builtArea" required>
 				</div>
 				 <div class="col-md-2">
-					<select class="form-control" ng-model="bunit" required>
+					<select class="form-control" ng-model="addproper.bunit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -78,10 +78,10 @@
 		  <div class="form-group">
 				<label for="PlotArea" class="col-md-2 ">* Plot/ Land Area</label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="plotArea" ng-model="plotArea" required>
+					<input type="text" class="form-control" name="plotArea" ng-model="addproper.plotArea" required>
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="Unit" required>
+					<select class="form-control" ng-model="addproper.Unit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -105,11 +105,11 @@
 		  <div class="form-group">
 				<label for="CarpetArea" class="col-md-2 ">Carpet Area </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="carpetArea" ng-model="carpetArea" required>
+					<input type="text" class="form-control" name="carpetArea" ng-model="addproper.carpetArea" required>
 				 
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="cunit" required>
+					<select class="form-control" ng-model="addproper.cunit" required>
 						<option>Unit Area</option>
 						<option>Sq. Feet</option>
 						<option>Cent</option>
@@ -133,11 +133,11 @@
 		  <div class="form-group">
 				<label for="PropPrice" class="col-md-2 ">Property Price: </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="propertyPrice" ng-model="propertyPrice" required>
+					<input type="text" class="form-control" name="propertyPrice" ng-model="addproper.propertyPrice" required>
 				 
 				</div>
 				<div class="col-md-2">
-					<select class="form-control" ng-model="Price" required>
+					<select class="form-control" ng-model="addproper.Price" required>
 						<option>In Rupees</option>
 						<option>Thousand</option>
 						<option>Lac</option>
@@ -156,7 +156,7 @@
 		  <div class="form-group">
 				<label for="Bedrooms" class="col-md-2 ">Bedrooms </label>
 				<div class="col-md-6">
-					<select class="form-control" ng-model="Bedrooms" required>
+					<select class="form-control" ng-model="addproper.Bedrooms" required>
 						<option>Select one</option>
 						<option>1</option>
 						<option>2</option>
@@ -182,7 +182,7 @@
 		  <div class="form-group">
 				<label for="Bedrooms" class="col-md-2 ">Bathrooms </label>
 				<div class="col-sm-6">
-					<select class="form-control" ng-model="Bathrooms" required>
+					<select class="form-control" ng-model="addproper.Bathrooms" required>
 						<option>Select one</option>
 						<option>1</option>
 						<option>2</option>
@@ -210,7 +210,7 @@
 			  <label for="imageInputFile" class="col-md-2" >* Property Images </label>
 			<div class="col-md-6">
 				
-				<input type="file" class="form-control" id="imageInputFile" ng-model="chooseFile">
+				<input type="file" class="form-control" id="imageInputFile" ng-model="addproper.chooseFile">
 			</div>
 			
 		</div>
@@ -229,14 +229,14 @@
 		  <div class="form-group">
 				<label for="country" class="col-md-2 ">Country</label>
 				<div class="col-md-6">
-				  <input type="text" class="form-control" name="Country" ng-model="Country" value="INDIA">
+				  <input type="text" class="form-control" name="Country" ng-model="addproper.Country" value="INDIA">
 				</div>
 			
 		  </div>
 		  <div class="form-group">
 				<label for="State" class="col-md-2 ">* State </label>
 				<div class="col-md-6">
-				  <select class="form-control" ng-model="State" required>
+				  <select class="form-control" ng-model="addproper.State" required>
 						<option selected="true">Select State</option>
 						<option>Andaman Nikobar</option>
 						<option>Andhra Pradesh</option>
@@ -288,7 +288,7 @@
 		  <div class="form-group">
 				<label for="City" class="col-md-2 ">* City</label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="Country" ng-model="City" required>
+					<input type="text" class="form-control" name="Country" ng-model="addproper.City" required>
 					<span style="color:red" ng-show="myForm.City.$dirty && myForm.City.$invalid">
 					  <span ng-show="myForm.City.$error.required">City is required .</span>
 					</span>
@@ -298,7 +298,7 @@
 		  <div class="form-group">
 				<label for="address" class="col-md-2 ">* Address  </label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="address" ng-model="address" col="8" rows="4"required></textarea>
+					<textarea type="text" class="form-control" name="address" ng-model="addproper.address" col="8" rows="4"required></textarea>
 					<p>Number of characters left: <span ng-bind="left()"></span></p>
 					<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
 					  <span ng-show="myForm.address.$error.required">Address is required .</span>
@@ -311,7 +311,7 @@
 		  <div class="form-group">
 				<label for="Area" class="col-md-2 ">*  Area/Location </label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="Area" ng-model="Area" required>
+					<input type="text" class="form-control" name="Area" ng-model="addproper.Area" required>
 					<span style="color:red" ng-show="myForm.Area.$dirty && myForm.Area.$invalid">
 					  <span ng-show="myForm.Area.$error.required">Area is required .</span>
 					</span>
@@ -326,7 +326,7 @@
 			<div class="form-group">
 				<label for="propTitle" class="col-md-2 ">* Property Title </label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="propTitle" ng-model="propTitle" col="8" rows="4"></textarea>
+					<textarea type="text" class="form-control" name="propTitle" ng-model="addproper.propTitle" col="8" rows="4"></textarea>
 					<p>Number of characters left:255 <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -336,7 +336,7 @@
 			<div class="form-group">
 				<label for="browserTitle" class="col-md-2">* Browser Title<br><small>( Display in your website )</small></label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="browserTitle" ng-model="browserTitle" col="8" rows="4"></textarea>
+					<textarea type="text" class="form-control" name="browserTitle" ng-model="addproper.browserTitle" col="8" rows="4"></textarea>
 					<p>Number of characters left:255 <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -345,7 +345,7 @@
 			<div class="form-group">
 				<label for="metaDis" class="col-md-2">* Meta Discription </label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="metaDis" ng-model="metaDis" col="8" rows="4" ></textarea>
+					<textarea type="text" class="form-control" name="metaDis" ng-model="addproper.metaDis" col="8" rows="4" ></textarea>
 					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -354,7 +354,7 @@
 			<div class="form-group">
 				<label for="metaKey" class="col-md-2">* Meta Keywords </label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="metaKey" ng-model="metaKey" col="8" rows="4"></textarea>
+					<textarea type="text" class="form-control" name="metaKey" ng-model="addproper.metaKey" col="8" rows="4"></textarea>
 					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -363,7 +363,7 @@
 			<div class="form-group">
 				<label for="projName" class="col-md-2">* Project Name </label>
 				<div class="col-md-6">
-				  <select class="form-control" ng-model="projName">
+				  <select class="form-control" ng-model="addproper.projName">
 						<option selected="true">other</option>
 					</select>
 				</div>
@@ -372,7 +372,7 @@
 			<div class="form-group">
 				<label for="propDis" class="col-md-2">* Property Discription  </label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="propDis" ng-model="projDis" col="8" rows="5"></textarea>
+					<textarea type="text" class="form-control" name="propDis" ng-model="addproper.projDis" col="8" rows="5"></textarea>
 					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -384,7 +384,7 @@
 				<div class="form-group">
 						<label for="Name" class="col-md-2 ">* Name:</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="Name" ng-model="Name" required>
+							<input type="text" class="form-control" name="Name" ng-model="addproper.Name" required>
 							<span style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
 							  <span ng-show="myForm.Name.$error.required">Name is required .</span>
 							</span>
@@ -395,7 +395,7 @@
 				  <div class="form-group">
 						<label for="Contact No:" class="col-md-2"> * Contact No:</label>
 						<div class="col-md-6">
-							<input type="Number" class="form-control"  name="Contact" ng-model="Contact" max-length="10" required >
+							<input type="Number" class="form-control"  name="Contact" ng-model="addproper.Contact" max-length="10" required >
 							<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
 							  <span ng-show="myForm.Contact.$error.required">Contact is required .</span>
 							</span>
@@ -406,7 +406,7 @@
 				  <div class="form-group">
 						<label for="Email" class="col-md-2 ">* Email ID:</label>
 						<div class="col-md-6">
-							<input type="email" class="form-control" name="Email" ng-model="Email" >
+							<input type="email" class="form-control" name="Email" ng-model="addproper.Email" >
 							<span style="color:red" ng-show="myForm.Email.$dirty && myForm.Email.$invalid">
 							  <span ng-show="myForm.Email.$error.required">Email is required.</span>
 							  <span ng-show="myForm.Email.$error.email">Invalid email address.</span>
@@ -418,7 +418,7 @@
 				  <div class="form-group">
 						<label for="Address" class="col-md-2 "> * Address </label>
 						<div class="col-md-6">
-							<textarea class="form-control" name="Address" ng-model="Address" >
+							<textarea class="form-control" name="Address" ng-model="addproper.Address" >
 							</textarea>
 							<p>Number of characters left:255 <span ng-bind="left()"></span></p>
 						</div>
@@ -432,7 +432,7 @@
 				<div class="form-group">
 						<label for="Age" class="col-md-2 ">Age</label>
 						<div class="col-md-6">
-							<select class="form-control" ng-model="Age">
+							<select class="form-control" ng-model="addproper.Age">
 						<option selected="true">Select One</option>
 							</select>
 						</div>
@@ -442,7 +442,7 @@
 				<div class="form-group">
 						<label for="Furnished" class="col-md-2 ">Furnished</label>
 						<div class="col-md-6">
-							<select class="form-control" ng-model="Furnished">
+							<select class="form-control" ng-model="addproper.Furnished">
 						<option selected="true">Select One</option>
 					</select>
 						</div>
@@ -450,7 +450,7 @@
 				<div class="form-group">
 						<label for="owner" class="col-md-2 ">Ownership</label>
 						<div class="col-md-6">
-							<select class="form-control" ng-model="owner">
+							<select class="form-control" ng-model="addproper.owner">
 						<option selected="true">Select One</option>
 					</select>
 						</div>
@@ -458,7 +458,7 @@
 				<div class="form-group">
 						<label for="TotFloor" class="col-md-2 ">Total Number of Floors</label>
 						<div class="col-md-6">
-							<select class="form-control" ng-model="TotFloor">
+							<select class="form-control" ng-model="addproper.TotFloor">
 						<option selected="true">Select One</option>
 					</select>
 						</div>
@@ -466,7 +466,7 @@
 				<div class="form-group">
 						<label for="Facing" class="col-md-2 ">Facing</label>
 						<div class="col-md-6">
-							<select class="form-control" ng-model="Facing">
+							<select class="form-control" ng-model="addproper.Facing">
 						<option selected="true">Select One</option>
 					</select>
 						</div>
@@ -478,7 +478,7 @@
 				<div class="form-group">
 						<label for="Hospitals" class="col-md-2 ">Hospitals </label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="Hospitals" ng-model="Hospitals" >
+							<input type="text" class="form-control" name="Hospitals" ng-model="addproper.Hospitals" >
 						 &nbsp kms
 						</div>
 						
@@ -487,7 +487,7 @@
 				  <div class="form-group">
 						<label for="Airport" class="col-md-2">  Airport </label>
 						<div class="col-md-6">
-							<input type="text" class="form-control"  name="Airport" ng-model="Airport" >
+							<input type="text" class="form-control"  name="Airport" ng-model="addproper.Airport" >
 						 &nbsp kms
 						</div>
 						
@@ -496,7 +496,7 @@
 				  <div class="form-group">
 						<label for="RailwayStation" class="col-md-2 ">  Railway Station</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="RailwayStation" ng-model="RailwayStation" >
+							<input type="text" class="form-control" name="RailwayStation" ng-model="addproper.RailwayStation" >
 						 &nbsp kms
 						</div>
 						
@@ -505,7 +505,7 @@
 				  <div class="form-group">
 						<label for="School" class="col-md-2 ">  School </label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="School" ng-model="School" >
+							<input type="text" class="form-control" name="School" ng-model="addproper.School" >
 						 &nbsp kms
 						</div>
 						
@@ -518,21 +518,38 @@
 		  <div class="col-md-12">
 				<table class="table table-bordered table-responsive">
 					<tr>
-					<td><input type="checkbox" name="power" value="power"></td>
-					<td>Power Backup</td>
-					<td><input type="checkbox" name="power" value="power"></td>
-					<td>Water Storage</td>
-					<td><input type="checkbox" name="power" value="power"></td>
-					<td>Lift</td>
+						<td><input type="checkbox" name="power" value="power" ng-model="addproper.power"></td>
+						<td>Power Backup</td>
+						<td><input type="checkbox" name="water" value="water" ng-model="addproper.water"></td>
+						<td>Water Storage</td>
+						<td><input type="checkbox" name="lift" value="lift" ng-model="addproper.lift"></td>
+						<td>Lift</td>
 					</tr>
 					<tr>
-					<td><input type="checkbox" name="power" value="power"></td>
-					<td>Power Backup</td>
-					<td><input type="checkbox" name="power" value="power"></td>
-					<td>Power Backup</td>
-					<td><input type="checkbox" name="power" value="power"></td>
-					<td>Power Backup</td>
+						<td><input type="checkbox" name="reserve" value="reserve" ng-model="addproper.reserve"></td>
+						<td>Reserve Parking</td>
+						<td><input type="checkbox" name="security" value="security" ng-model="addproper.security"></td>
+						<td>Security</td>
+						<td><input type="checkbox" name="maintainance" value="maintainance" ng-model="addproper.maintainance"></td>
+						<td>Maintainance Staff</td>
 					</tr>	
+					<tr>
+						<td><input type="checkbox" name="gym" value="gym" ng-model="addproper.gym"></td>
+						<td>GYM</td>
+						<td><input type="checkbox" name="park" value="park" ng-model="addproper.park"></td>
+						<td>Park</td>
+						<td><input type="checkbox" name="tarrace" value="maintainance"ng-model="addproper.tarrace"></td>
+						<td>Private Tarrace</td>
+					</tr>	
+					<tr>
+						<td><input type="checkbox" name="swimming" value="swimming" ng-model="addproper.swimming"></td>
+						<td>Swimming Pool</td>	
+						<td><input type="checkbox" name="servent" value="servent" ng-model="addproper.servent"></td>
+						<td>Servent Quarters</td>
+						<td><input type="checkbox" name="club" value="" ng-model="addproper.club"></td>
+						<td>Club House</td>
+					</tr>	
+					
 				</table>
 				</div>
 		  </div> <!--end Amenities-->
@@ -543,17 +560,17 @@
 			<div class="col-md-12">
 				<table class="table table-bordered table-responsive">
 					<tr>
-					<td><input type="checkbox" name="power" value="All">Select All</td>
+					<td><input type="checkbox" name="All" value="All" ng-model="addproper.All">Select All</td>
 					</tr>
 					<tr>
-					<td><input type="checkbox" name="power" value="Landmark">www.jaidevlandmark.in</td>
+					<td><input type="checkbox" name="Landmark" value="Landmark" ng-model="addproper.Landmark">www.jaidevlandmark.in</td>
 					</tr>
 				</table>
 			</div>
 			</div>
 				<div class="form-group">
 					<div class="col-md-offset-6 col-md-10">
-					  <button type="submit" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+					  <button type="submit" ng-click="addprop()" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
 						myForm.email.$dirty && myForm.email.$invalid">Submit</button>
 					</div>
 				</div>
