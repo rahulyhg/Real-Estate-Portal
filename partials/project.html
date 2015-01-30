@@ -1,7 +1,11 @@
-<div class="row">
-	<div class="col-md-12"><div ng-include="'partials/innernav.html'"></div>
-</div>
-<div class="row">
+<section ng-controller="projectCtrl">
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-include="'partials/innernav.html'">
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-3">
 			<label>Sort by Order</label>
 			<select class="form-control">            
@@ -35,319 +39,97 @@
 				<option>www.parktitanium.com</option>  
 			</select>
 		</div>
-</div>
-<div class="row">
-	<div class="col-md-12">
-	<table class="table table-bordered table-responsive">
-	<thead>
-		<tr>
-			<th>Sr. No.</th>
-			<th>Image</th>
-			<th colspan="2"> Property Details</th>
-			<th>Featured</th>
-			<th>Status</th>
-			<th>Other Domains</th>
-			<th>Manage</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<tr>
-				<td rowspan="4">1</td>
-				<td rowspan="4"><img src="img.jpg" width="100px"></td>
-				<td>Property Title</td>
-				<td><strong>[Prop-ID: 45] -</strong>Gayatrree Landmarks</td>
-				<td>FEATURED</td>
-				<td>Active</td>
-				<td rowspan="4">
-					<div class="checkbox">
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.jaidevlandmarks.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.hinjewadiproperties.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parkstreetwakad.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.propertydemand.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parktitanium.com</a>
-					</div>
-				</td>
-				<td rowspan="2"><a href="#">Edit</a></td>
-			</tr>
-			<tr>
-				<td>Category</td>
-				<td>Residential Property</td>
-				<td><input type="button" value="Set Not Featured"></input></td>
-				<td><input type="button" value="Delete Property"></input></td>
-				
-			</tr>
-			<tr>
-				<td>Type</td>
-				<td>2 & 3 BHK Premium homes</td>
-				<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
-				<td rowspan="2"><a href="#">View Project</a></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>Kothrud</td>
-			</tr>
-		</tr>
-		<tr>
-			<tr>
-				<td rowspan="4">2</td>
-				<td rowspan="4"><img src="img.jpg" width="100px"></td>
-				<td>Property Title</td>
-				<td><strong>[Prop-ID: 43] -</strong>Hinjewadi Properties Residential 2 3 4 BHK Flats & Villas</td>
-				<td>FEATURED</td>
-				<td>Active</td>
-				<td rowspan="4">
-					<div class="checkbox">
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.jaidevlandmarks.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.hinjewadiproperties.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parkstreetwakad.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.propertydemand.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parktitanium.com</a>
-					</div>
-				</td>
-				<td rowspan="2"><a href="#">Edit</a></td>
-			</tr>
-			<tr>
-				<td>Category</td>
-				<td>Residential Property</td>
-				<td><input type="button" value="Set Not Featured"></input></td>
-				<td><input type="button" value="Delete Property"></input></td>
-				
-			</tr>
-			<tr>
-				<td>Type</td>
-				<td>2 3 4 BHK Flats & Penthouse, 3 4 5 Rowhouse & Bungalows</td>
-				<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
-				<td rowspan="2"><a href="#">View Project</a></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>Hinjewadi Pune</td>
-			</tr>
-		</tr>		
-		<tr>
-			<tr>
-				<td rowspan="4">3</td>
-				<td rowspan="4"><img src="img.jpg" width="100px"></td>
-				<td>Property Title</td>
-				<td><strong>[Prop-ID: 45] -</strong>Gayatrree Landmarks</td>
-				<td>FEATURED</td>
-				<td>Active</td>
-				<td rowspan="4">
-					<div class="checkbox">
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.jaidevlandmarks.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.hinjewadiproperties.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parkstreetwakad.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.propertydemand.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parktitanium.com</a>
-					</div>
-				</td>
-				<td rowspan="2"><a href="#">Edit</a></td>
-			</tr>
-			<tr>
-				<td>Category</td>
-				<td>Residential Property</td>
-				<td><input type="button" value="Set Not Featured"></input></td>
-				<td><input type="button" value="Delete Property"></input></td>
-				
-			</tr>
-			<tr>
-				<td>Type</td>
-				<td>2 & 3 BHK Premium homes</td>
-				<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
-				<td rowspan="2"><a href="#">View Project</a></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>Kothrud</td>
-			</tr>
-		</tr>
-		<tr>
-			<tr>
-				<td rowspan="4">4</td>
-				<td rowspan="4"><img src="img.jpg" width="100px"></td>
-				<td>Property Title</td>
-				<td><strong>[Prop-ID: 45] -</strong>Gayatrree Landmarks</td>
-				<td>FEATURED</td>
-				<td>Active</td>
-				<td rowspan="4">
-					<div class="checkbox">
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.jaidevlandmarks.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.hinjewadiproperties.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parkstreetwakad.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.propertydemand.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parktitanium.com</a>
-					</div>
-				</td>
-				<td rowspan="2"><a href="#">Edit</a></td>
-			</tr>
-			<tr>
-				<td>Category</td>
-				<td>Residential Property</td>
-				<td><input type="button" value="Set Not Featured"></input></td>
-				<td><input type="button" value="Delete Property"></input></td>
-				
-			</tr>
-			<tr>
-				<td>Type</td>
-				<td>2 & 3 BHK Premium homes</td>
-				<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
-				<td rowspan="2"><a href="#">View Project</a></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>Kothrud</td>
-			</tr>
-		</tr>
-		<tr>
-			<tr>
-				<td rowspan="4">5</td>
-				<td rowspan="4"><img src="img.jpg" width="100px"></td>
-				<td>Property Title</td>
-				<td><strong>[Prop-ID: 45] -</strong>Gayatrree Landmarks</td>
-				<td>FEATURED</td>
-				<td>Active</td>
-				<td rowspan="4">
-					<div class="checkbox">
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.jaidevlandmarks.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.hinjewadiproperties.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parkstreetwakad.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.propertydemand.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parktitanium.com</a>
-					</div>
-				</td>
-				<td rowspan="2"><a href="#">Edit</a></td>
-			</tr>
-			<tr>
-				<td>Category</td>
-				<td>Residential Property</td>
-				<td><input type="button" value="Set Not Featured"></input></td>
-				<td><input type="button" value="Delete Property"></input></td>
-				
-			</tr>
-			<tr>
-				<td>Type</td>
-				<td>2 & 3 BHK Premium homes</td>
-				<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
-				<td rowspan="2"><a href="#">View Project</a></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>Kothrud</td>
-			</tr>
-		</tr>
-		<tr>
-			<tr>
-				<td rowspan="4">6</td>
-				<td rowspan="4"><img src="img.jpg" width="100px"></td>
-				<td>Property Title</td>
-				<td><strong>[Prop-ID: 45] -</strong>Gayatrree Landmarks</td>
-				<td>FEATURED</td>
-				<td>Active</td>
-				<td rowspan="4">
-					<div class="checkbox">
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.jaidevlandmarks.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.hinjewadiproperties.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parkstreetwakad.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.propertydemand.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parktitanium.com</a>
-					</div>
-				</td>
-				<td rowspan="2"><a href="#">Edit</a></td>
-			</tr>
-			<tr>
-				<td>Category</td>
-				<td>Residential Property</td>
-				<td><input type="button" value="Set Not Featured"></input></td>
-				<td><input type="button" value="Delete Property"></input></td>
-				
-			</tr>
-			<tr>
-				<td>Type</td>
-				<td>2 & 3 BHK Premium homes</td>
-				<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
-				<td rowspan="2"><a href="#">View Project</a></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>Kothrud</td>
-			</tr>
-		</tr>
-		<tr>
-			<tr>
-				<td rowspan="4">7</td>
-				<td rowspan="4"><img src="img.jpg" width="100px"></td>
-				<td>Property Title</td>
-				<td><strong>[Prop-ID: 45] -</strong>Gayatrree Landmarks</td>
-				<td>FEATURED</td>
-				<td>Active</td>
-				<td rowspan="4">
-					<div class="checkbox">
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.jaidevlandmarks.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.hinjewadiproperties.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parkstreetwakad.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.propertydemand.com</a>
-						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-						<a href="#">www.parktitanium.com</a>
-					</div>
-				</td>
-				<td rowspan="2"><a href="#">Edit</a></td>
-			</tr>
-			<tr>
-				<td>Category</td>
-				<td>Residential Property</td>
-				<td><input type="button" value="Set Not Featured"></input></td>
-				<td><input type="button" value="Delete Property"></input></td>
-				
-			</tr>
-			<tr>
-				<td>Type</td>
-				<td>2 & 3 BHK Premium homes</td>
-				<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
-				<td rowspan="2"><a href="#">View Project</a></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>Kothrud</td>
-			</tr>
-		</tr>
-	</tbody>
-	</table>
 	</div>
-</div>
-
-	
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered table-responsive">
+				<thead>
+					<tr>
+						<th>Sr. No.</th>
+						<th>Image</th>
+						<th colspan="2"> Project Details</th>
+						<th>Featured</th>
+						<th>Status</th>
+						<th>Other Domains</th>
+						<th>Manage</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr ng-repeat="x in projects">
+						<td>{{ $index + 1 }}</td>
+						<td rowspan="4"><img ng-src="/img/{{x.proj_image}}"></td>
+						<td>
+							<table>
+								<tr>
+									<td>Property Title</td>
+									<td rowspan="4">{{x.title}}</td>
+								</tr>
+								<tr>
+									<td>Category</td>
+									<td>{{x.category}}</td>
+								</tr>
+								<tr>
+									<td>Type</td>
+									<td>{{x.type}}</td>		
+								</tr>
+								<tr>
+									<td>Address</td>
+									<td>{{x.location}}</td>
+								</tr>
+							</table>
+						</td>	
+						<td>{{x.featured}}</td>
+						<td>{{x.status}}</td>
+						<td>{{x.domain}}</td>					
+						<td></td>
+						<td><a href="#project/edit/{{x.id}}">Edit</a></td>
+					</tr>				
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+		
+		
+		<!--<tbody>
+				<tr>
+					<td rowspan="4">1</td>
+					<td rowspan="4"><img src="img.jpg" width="100px"></td>
+					<td>Property Title</td>
+					<td><strong>[Prop-ID: 45] -</strong>Gayatrree Landmarks</td>
+					<td>FEATURED</td>
+					<td>Active</td>
+					<td rowspan="4">
+						<div class="checkbox">
+						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+						<a href="#">www.jaidevlandmarks.com</a>
+						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+						<a href="#">www.hinjewadiproperties.com</a>
+						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+						<a href="#">www.parkstreetwakad.com</a>
+						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+						<a href="#">www.propertydemand.com</a>
+						<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+						<a href="#">www.parktitanium.com</a>
+						</div>
+					</td>
+					<td rowspan="2"><a href="#">Edit</a></td>
+				</tr>
+				<tr>
+					<td>Category</td>
+					<td>Residential Property</td>
+					<td><input type="button" value="Set Not Featured"></input></td>
+					<td><input type="button" value="Delete Property"></input></td>
+				</tr>
+				<tr>
+					<td>Type</td>
+					<td>2 & 3 BHK Premium homes</td>
+					<td colspan="2" rowspan="2"><a href="#">Copy Project</a></td>
+					<td rowspan="2"><a href="#">View Project</a></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td>Kothrud</td>
+				</tr>	
+			</tbody>-->
