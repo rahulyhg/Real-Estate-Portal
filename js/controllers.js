@@ -59,18 +59,20 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		});
 	}
 }).
-controller('registerCtrl', function($scope,$http/*,$routeParams*/) {
+controller('registerCtrl', function($scope,$http,$routeParams) {
 	//add record
+	
 	$scope.reset = function() {
-			$scope.user = {};
+			$scope.reg = {};
 		};
+		
 	$scope.insert = function(){
-	//	console.log($scope.user);
-		alert($scope);
-		$http.post("Server-api/index.php/register",$scope.user)
+		//console.log($scope.user);
+		
+		$http.post("Server-api/index.php/register",$scope.reg)
 		.success(function(response) {
 			alert(response);
-			alert("Hii");
+			
 			$scope.reset();
 		})
 	}
