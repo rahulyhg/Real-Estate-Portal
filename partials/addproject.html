@@ -2,172 +2,184 @@
 
 <html>
 <div ng-include="'partials/innernav.html'"></div>
-<div class="row">
-    <form class="form-horizontal" role="form">		      
+	<div class="row">
+		<form class="form-horizontal" role="form">		      
 			<h2>Project Info</h2>
 				<div class="form-group">
 				    <label  for="tile" class="col-md-3">Project Title</label>
 					    <div class="col-md-9">
-                            <input type="text" class="form-control" id="title" placeholder="Enter Project title">
+                            <input type="text" class="form-control" id="title" placeholder="Enter Project title" name="title" ng-model="projects.title">
                         </div>
-					</div>
-                     <div class="form-group">
-					    <label for="btitle" class="col-md-3">Browser Title</label>				
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="btitle" placeholder="Enter Browser Title">
-                        </div>							
-                     </div>
-                     <div class="form-group">
-					    <label for="metakey" class="col-md-3">Meta Keywords</label> 
-						   <div class="col-md-9"> 
-                              <textarea class="form-control" rows="3"> </textarea>
-						   </div>							
-                      </div>
-	                  <div class="form-group"> 
-					        <label for="metakey" class="col-md-3">Meta Discription</label> 
-							   <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
-                      </div>
-			
-	              	<div class="form-group"> 
-					    <label for="radiobtn" class="col-md-3">Featured</label> 
-                            <div class="col-md-3">
-                                <input type="radio" name="rbtn" id="yes" checked>Yes
-								<input type="radio" name="rbtn" id="no">No
-                            </div>	
-                    </div>
-						
-					<div class="form-group">
-					    <label for="category" class="col-md-3">Category</label>
-					        <div class="col-md-9">
-								<select name="category">
-									   <option>Select Category</option>
-										<option value="residential">Residential Property</option>
-										<option value="commercial">Commercial Property</option>
-										<option value="agricultural">Agricultural Land</option>
-										<option value="industrial">Industrial Property</option>
-								</select> 
-                            </div>
-					</div>	
-					<div class="form-group">
-						<label for="ptype" class="col-md-3">Project Type</label>
-						    <div class="col-md-9">
-                              <input type="text" class="form-control" id="ptype">
-                           </div>							
-                     </div>
-					 <div class="form-group">
-					    <label for="location" class="col-md-3">Location</label>
+				</div>
+                <div class="form-group">
+					<label for="btitle" class="col-md-3">Browser Title</label>	   <div class="col-md-9">
+							<input type="text" class="form-control" id="btitle" placeholder="Enter Browser Title" name="btitle" ng-model="projects.btitle">
+						</div>							
+                </div>
+                <div class="form-group">
+					<label for="metakey" class="col-md-3">Meta Keywords</label> 
+						<div class="col-md-9"> 
+                            <textarea class="form-control" rows="3" name="metakey" ng-model="projects.meta"> </textarea>
+						</div>							
+                </div>
+	            <div class="form-group"> 
+					<label for="metakey" class="col-md-3">Meta Discription</label> 
 						<div class="col-md-9">
-                              <input type="text" class="form-control" id="location">
+                            <textarea class="form-control" rows="3" name="metadesc" ng-model="projects.metadesc"></textarea>
+                        </div>
+                </div>
+			
+	            <div class="form-group"> 
+					<label for="radiobtn" class="col-md-3">Featured</label> 
+                        <div class="col-md-3">
+                            <input type="radio" name="rbtn" id="yes" checked  ng-model="projects.rbtn">Yes
+							<input type="radio" name="rbtn" id="no" ng-model="projects.rbtn">No
+                        </div>	
+                </div>
+						
+				<div class="form-group">
+					<label for="category" class="col-md-3">Category</label>
+					    <div class="col-md-9">
+							<select name="category" ng-model="projects.category">
+								<option selected="selected">Select Category</option>
+								<option value="residential">Residential Property</option>
+								<option value="commercial">Commercial Property</option>
+								<option value="agricultural">Agricultural Land</option>
+								<option value="industrial">Industrial Property</option>
+							</select> 
+                        </div>
+				</div>	
+					
+				<div class="form-group">
+					<label for="ptype" class="col-md-3">Project Type</label>
+						<div class="col-md-9">
+                            <input type="text" class="form-control" id="ptype" name="ptype" ng-model="projects.ptype">
                         </div>							
-                     </div>
-					 <div class="form-group">
-                        <label for="location" class="col-md-3">Overview</label>
-						   <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
+                </div>
+			    <div class="form-group">
+					<label for="location" class="col-md-3">Location</label>
+						<div class="col-md-9">
+                            <input type="text" class="form-control" id="location" name="location" ng-model="projects.location">
+                        </div>							
+                </div>
+			    <div class="form-group">
+                    <label for="location" class="col-md-3">Overview</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="overview" ng-model="projects.overview"></textarea>
+                        </div>
                             					
-                        </div>							
+                </div>							
                     
-					 <div class="form-group">
-                        <label for="pimg" class="col-md-3">Project Image</label>
-                            <div class="col-md-6">
-                              <input type="text" class="form-control" id="pimg">
-                            </div>
-                          <button> Browse</button>		
-                     </div>
-					<div class="form-group">
-                        <label for="plogo" class="col-md-3">Project Logo</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                         </div>
-					</div>	
-					<div class="form-group">
-                        <label for="features" class="col-md-3">Amenities/Features</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
-					</div>	
-					<div class="form-group">
-                        <label for="spcification" class="col-md-3">Spcifications</label>
-						 <div class="col-md-9">
-                            <textarea class="form-control" rows="3"></textarea>
-                          </div>
-					</div>	
-					<div class="form-group">
-                        <label for="plogo" class="col-md-3">Project Logo</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
-					</div>	
-					<div class="form-group">
-                        <label for="lmap" class="col-md-3">Location Map</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
-					</div>	
-					<div class="form-group">
-                        <label for="layout" class="col-md-3">Layout Map</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                          </div>
-					</div>
-					<div class="form-group">
-                        <label for="bplan" class="col-md-3">Browser Title Floor Plan</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
-					</div>	
-					<div class="form-group">
-                        <label for="fplan" class="col-md-3">Floor Plans</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
-					</div>	
-					<div class="form-group">
-                        <label for="wthrough" class="col-md-3">Walk Through</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                         </div>
-					</div>	
-					<div class="form-group">
-                        <label for="contact" class="col-md-3">Contact</label>
-						 <div class="col-md-9">
-                                   <textarea class="form-control" rows="3"></textarea>
-                               </div>
-					</div>
+			    <div class="form-group">
+                    <label for="pimg" class="col-md-3">Project Image</label>
+                        <div class="col-md-6">
+							<input type="file" id="pimg" name="pimg" ng-model="projects.pimg">
+                        </div>		
+                </div>
+				
+				<div class="form-group">
+                    <label for="plogo" class="col-md-3">Project Logo</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="plogo"  ng-model="projects.plogo"></textarea>
+                        </div>
+				</div>	
+				
+				 <div class="form-group">
+                    <label for="pimg" class="col-md-3">Project By</label>
+                        <div class="col-md-6">
+							<input type="text" class="form-control" id="pby" name="pby" ng-model="projects.pby">
+                        </div>	
+                </div>
+				
+				<div class="form-group">
+                    <label for="features" class="col-md-3">Amenities/Features</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="amenities" ng-model="projects.amenities"></textarea>
+                        </div>
+				</div>	
+				
+				<div class="form-group">
+                    <label for="spcification" class="col-md-3">Spcifications</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="specification" ng-model="projects.specification"></textarea>
+                        </div>
+				</div>	
 					
-					</div>
-			     <label>Select Sites</label>
+				<div class="form-group">
+                    <label for="lmap" class="col-md-3">Location Map</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="locmap" ng-model="projects.locmap"></textarea>
+                        </div>
+				</div>	
+				
+				<div class="form-group">
+                    <label for="layout" class="col-md-3">Layout Map</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="laymap" ng-model="projects.laymap"></textarea>
+                        </div>
+				</div>
+				<div class="form-group">
+                    <label for="bplan" class="col-md-3">Browser Title Floor Plan</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="brtitle"ng-model="projects.brtitle"></textarea>
+                        </div>
+				</div>	
+				
+				<div class="form-group">
+                    <label for="fplan" class="col-md-3">Floor Plans</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="fplan"ng-model="projects.fplan"></textarea>
+                        </div>
+				</div>	
+					
+				<div class="form-group">
+					<label for="wthrough" class="col-md-3">Walk Through</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="walk" ng-model="projects.walk"></textarea>
+                        </div>
+				</div>	
+				
+				<div class="form-group">
+                    <label for="contact" class="col-md-3">Contact</label>
+						<div class="col-md-9">
+                            <textarea class="form-control" rows="3" name="contact" ng-model="projects.contact"></textarea>
+                        </div>
+				</div>
+					
+					
+			    <label>Select Sites</label>
 				<hr width="100%" style="border-color:black;"></hr>
-			     <div class="col-md-3">
-			     <div class="col-md-9">				    
-					  <table class="table table-bordered">
-							<tr><td> 
- 						    <input type="checkbox" name="other_domain[]">Select All
-						 </td></tr>
-						 <tr><td>          	 				    
-						   	<input type="checkbox" name="other_domain[]" value="www.jaidevlandmarks.com">www.jaidevlandmarks.com
-						</td></tr>
-					  	<tr><td>
-						    <input type="checkbox" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
-						</td></tr>
-						<tr><td>							
-							<input type="checkbox" name="other_domain[]" value="www.parkstreetwakad.com/">www.parkstreetwakad.com/
-					     </tr></td>	
-						 </table>
+			    <div class="col-md-3">
+					<div class="col-md-9">				    
+						<table class="table table-bordered">
+							<tr>
+								<td> 
+									<input type="checkbox" name="sall" ng-model="projects.sall">Select All
+								</td>
+							</tr>
+							<tr>
+								<td>          	 				    
+									<input type="checkbox" name="jaidev" value="www.jaidevlandmarks.com" ng-model="projects.jaidev">www.jaidevlandmarks.com
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
+								</td>
+							</tr>
+							<tr>
+								<td>							
+									<input type="checkbox" name="other_domain[]" value="www.parkstreetwakad.com/">www.parkstreetwakad.com/
+								</td>
+							</tr>	
+						</table>
 					</div>
+				</div>
+			    <div class="form-group">
+					<div class="col-md-offset-6 col-md-10">
+						<button type="submit" ng-click="addproject()" class="btn btn-primary text-center">Submit</button>
 					</div>
-						 <div class="form-group">
-							<div class="col-md-offset-6 col-md-10">
-							  <button type="submit" ng-click="addprop()" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
-								myForm.email.$dirty && myForm.email.$invalid">Submit</button>
-							</div>
-						</div>
-					
-					
-			</form>		
-    </div><!--end row-->   
-
-</html>
+				</div>							
+		</form>	
+	</div>	
+</div><!--end row-->   
