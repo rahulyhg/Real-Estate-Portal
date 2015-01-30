@@ -93,16 +93,7 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-	     /*  $FName= mysql_real_escape_string($postdata->full_name);
-			$UName= mysql_real_escape_string($postdata->user_name);
-			$email= mysql_real_escape_string($postdata->user_email);
-			$pwd= mysql_real_escape_string($postdata->pwd);
-			$address= mysql_real_escape_string($postdata->address);
-			$country= mysql_real_escape_string($postdata->country);
-			$tel= mysql_real_escape_string($postdata->tel);
-			$fax= mysql_real_escape_string($postdata->fax);
-			$website= mysql_real_escape_string($postdata->website);
-			$domains= mysql_real_escape_string($postdata->requested_domains);*/
+	    
 			$regKey=array();
 			$regVal=array();
 			foreach($postdata as $key => $value)
@@ -113,7 +104,7 @@ function registerUser()
 			echo "hello";
 			$insertSQL="INSERT INTO users('$regKey')VALUES('$regVal')";
 			
-/*$insertSQL="INSERT INTO users(full_name,user_name,user_email,pwd,address,country,tel,fax,website,requested_domains)VALUES('$FName','$UName','$email','$pwd','$address','$country','$tel','$fax','$website','$domains')";*/
+
 	$result=mysql_query($insertSQL);
 	$last_id = mysql_insert_id($result);
 	if($result)
@@ -135,6 +126,15 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
+			if($id)
+			{
+				$selectSQL = mysql_query("SELECT * FROM users WHERE id=".$id) or die(mysql_error());
+			
+				$row = mysql_fetch_assoc($selectSQL);
+				echo json_encode($row);
+			}
+			else
+			{
 	
 			$regEditKey=array();
 			$regEditVal=array();
@@ -144,16 +144,7 @@ function registerUser()
 						array_push($regEditVal,$value);
 			}
 			echo "hello";
-			/*$FName= mysql_real_escape_string($postdata->full_name);
-			$UName= mysql_real_escape_string($postdata->user_name);
-			$email= mysql_real_escape_string($postdata->user_email);
-			$pwd= mysql_real_escape_string($postdata->pwd);
-			$address= mysql_real_escape_string($postdata->address);
-			$country= mysql_real_escape_string($postdata->country);
-			$tel= mysql_real_escape_string($postdata->tel);
-			$fax= mysql_real_escape_string($postdata->fax);
-			$website= mysql_real_escape_string($postdata->website);
-			$domains= mysql_real_escape_string($postdata->requested_domains);*/
+			
 				
 		$updateSQL=mysql_query("UPDATE  users SET '$regEditKey'='$regEditVal' where id='$id'")or die(mysql_error());
 	
@@ -183,35 +174,7 @@ function addproperty()
 		
 			$insertSQL="INSERT INTO 2_real_property('$propKey')VALUES('$propVal')";
 		
-	     /*  $FName= mysql_real_escape_string($postdata->property_for);
-			$UName= mysql_real_escape_string($postdata->featured);
-			$email= mysql_real_escape_string($postdata->category);
-			$pwd= mysql_real_escape_string($postdata->type);
-			$address= mysql_real_escape_string($postdata->buildup_area);
-			$address= mysql_real_escape_string($postdata->build_unit);
-			$country= mysql_real_escape_string($postdata->land_area);
-			$tel= mysql_real_escape_string($postdata->land_unit);
-			$fax= mysql_real_escape_string($postdata->carpet_area);
-			$website= mysql_real_escape_string($postdata->carpet_unit);
-			$website= mysql_real_escape_string($postdata->price);
-			$website= mysql_real_escape_string($postdata->currency);
-			$website= mysql_real_escape_string($postdata->bedrooms);
-			$bathrooms= mysql_real_escape_string($postdata->bathrooms);
-			$country= mysql_real_escape_string($postdata->country);
-			$state= mysql_real_escape_string($postdata->state);
-			$city= mysql_real_escape_string($postdata->city);
-			$address= mysql_real_escape_string($postdata->address);
-			$location= mysql_real_escape_string($postdata->location);
-			$title= mysql_real_escape_string($postdata->title);
-			$browsertitle= mysql_real_escape_string($postdata->browsertitle);
-			$state= mysql_real_escape_string($postdata->state);
-			$city= mysql_real_escape_string($postdata->city);
-			$country= mysql_real_escape_string($postdata->country);
-			$state= mysql_real_escape_string($postdata->state);
-			$city= mysql_real_escape_string($postdata->city);
-			
-			
-	$insertSQL="INSERT INTO 2_real_property(property_for,featured,category,type,buildup_area,build_unit,land_area,land_unit,carpet_area,carpet_unit,price,currency,bedrooms,bathrooms,country,city,address,location,title,browsertitle,meta_desc,meta_key,society_name,prop_desc,cont_name,contact,email,cont_address,prop_age,furnished,prop_owner,floors,on_floor,parking,hospital,airport,railway,school,power,water,lift,res_parking,maintenance,gym,park,tarrace,swimming,facing,status,club)VALUES('$propFor','$featured','$category','$type','$buildup_area','$build_unit','$land_area','$land_unit','$carpet_area','$carpet_unit','$price','$currency','$bedrooms','$bathrooms','$country','$state','$city','$address','$location','$title','$browsertitle','$meta_desc','$meta_key','$society_name','$prop_desc','$cont_name','$contact','$email','$cont_address','$prop_age','$furnished','$prop_owner','$floors','$on_floor','$parking','$hospital','$airport','$railway','$school','$power','$water','$lift','$res_parking','$maintenance','$gym','$park','$tarrace','$swimming','$facing','$status','$club')";*/
+	     
 	$result=mysql_query($insertSQL);
 	$last_id = mysql_insert_id($result);
 	if($result)
@@ -232,6 +195,15 @@ function addproperty()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
+		if($id)
+			{
+				$selectSQL = mysql_query("SELECT * FROM 2_real_property WHERE id=".$id) or die(mysql_error());
+			
+				$row = mysql_fetch_assoc($selectSQL);
+				echo json_encode($row);
+			}
+			else
+			{
 		$propEditKey=array();
 			$propEditVal=array();
 			foreach($postdata as $key => $value)
@@ -240,32 +212,7 @@ function addproperty()
 						array_push($propEditVal,$value);
 			}
 		
-		/* $propFor= mysql_real_escape_string($postdata->property_for);
-			$featured= mysql_real_escape_string($postdata->featured);
-			$category= mysql_real_escape_string($postdata->category);
-			$type= mysql_real_escape_string($postdata->type);
-			$buildup_area= mysql_real_escape_string($postdata->buildup_area);
-			$build_unit= mysql_real_escape_string($postdata->build_unit);
-			$land_area= mysql_real_escape_string($postdata->land_area);
-			$land_unit= mysql_real_escape_string($postdata->land_unit);
-			$carpet_area= mysql_real_escape_string($postdata->carpet_area);
-			$carpet_unit= mysql_real_escape_string($postdata->carpet_unit);
-			$price= mysql_real_escape_string($postdata->price);
-			$currency= mysql_real_escape_string($postdata->currency);
-			$bedrooms= mysql_real_escape_string($postdata->bedrooms);
-			$bathrooms= mysql_real_escape_string($postdata->bathrooms);
-			$country= mysql_real_escape_string($postdata->country);
-			$state= mysql_real_escape_string($postdata->state);
-			$city= mysql_real_escape_string($postdata->city);
-			$address= mysql_real_escape_string($postdata->address);
-			$location= mysql_real_escape_string($postdata->location);
-			$title= mysql_real_escape_string($postdata->title);
-			$browsertitle= mysql_real_escape_string($postdata->browsertitle);
-			$state= mysql_real_escape_string($postdata->state);
-			$city= mysql_real_escape_string($postdata->city);
-			$country= mysql_real_escape_string($postdata->country);
-			$state= mysql_real_escape_string($postdata->state);
-			$city= mysql_real_escape_string($postdata->city);*/
+		
 			$updateSQL=mysql_query("UPDATE  2_real_property SET  '$propEditKey'='$propEditVal' where id='$id'")or die(mysql_error());
 	
 		if($updateSQL){
@@ -275,13 +222,15 @@ function addproperty()
 		}	
 
  }
+ }
 
  //add new project
 function addProject()
 {
-	$app= new \Slim\Slim();
+		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
+		
 			$projectKey=array();
 			$projectVal=array();
 			foreach($postdata as $key => $value)
@@ -311,7 +260,15 @@ function addProject()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-	
+			if($id)
+			{
+				$selectSQL = mysql_query("SELECT * FROM 2_real_project WHERE id=".$id) or die(mysql_error());
+			
+				$row = mysql_fetch_assoc($selectSQL);
+				echo json_encode($row);
+			}
+			else
+			{
 			$projectEditKey=array();
 			$projectEditVal=array();
 			foreach($postdata as $key => $value)
@@ -319,6 +276,9 @@ function addProject()
 						array_push($projectEditKey,$key);
 						array_push($projectEditVal,$value);
 			}
+			 //$sql_str[] = "{$field_name} = '{$field_value}'";
+			 //mysql_query("UPDATE contactinfo SET ".implode(',', $sql_str)." WHERE `id` = '".$rid."';")
+			 
 			$updateSQL=mysql_query("UPDATE  2_real_project SET  '$projectEditKey'='$projectEditVal' where id='$id'")or die(mysql_error());
 	
 		if($updateSQL){
@@ -326,7 +286,8 @@ function addProject()
 		}else{
 			 mysql_error();
 		}	
- }
+		}
+	}	
 			
 $app->run();
  ?>
