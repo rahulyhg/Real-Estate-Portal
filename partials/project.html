@@ -47,7 +47,7 @@
 					<tr>
 						<th>Sr. No.</th>
 						<th>Image</th>
-						<th colspan="2"> Project Details</th>
+						<th> Project Details</th>
 						<th>Featured</th>
 						<th>Status</th>
 						<th>Other Domains</th>
@@ -58,12 +58,12 @@
 				<tbody>
 					<tr ng-repeat="x in projects">
 						<td>{{ $index + 1 }}</td>
-						<td rowspan="4"><img ng-src="/img/{{x.proj_image}}"></td>
+						<td><img ng-src="/img/{{x.proj_image}}"></td>
 						<td>
 							<table>
 								<tr>
 									<td>Property Title</td>
-									<td rowspan="4">{{x.title}}</td>
+									<td>{{x.title}}</td>
 								</tr>
 								<tr>
 									<td>Category</td>

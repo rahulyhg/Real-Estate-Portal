@@ -48,7 +48,7 @@
 					<tr>
 						<th>Sr. No.</th>
 						<th>Image</th>
-						<th colspan="2"> Property Details</th>
+						<th> Property Details</th>
 						<th>Featured</th>
 						<th>Status</th>
 						<th>Other Domains</th>
@@ -58,12 +58,12 @@
 				<tbody>
 						<tr ng-repeat="x in properties">
 							<td>{{ $index + 1 }}</td>
-							<td rowspan="4"><img ng-src="{{x.prop_image}}"></td>
+							<td><img ng-src="{{x.prop_image}}"></td>
 							<td>
 								<table>
 									<tr>
 										<td>Property Title</td>
-										<td rowspan="4">{{x.title}}</td>
+										<td>{{x.title}}</td>
 									</tr>
 									<tr>
 										<td>Property For</td>
