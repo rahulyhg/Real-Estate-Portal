@@ -154,7 +154,7 @@ function registerUser()
 			 mysql_error();
 		}	
 		
-	
+                }
 	}
 	
 // Add new Properties
@@ -164,22 +164,24 @@ function addproperty()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-		$propKey=array();
+			$propKey=array();
 			$propVal=array();
 			foreach($postdata as $key => $value)
 			{
 						array_push($propKey,$key);
-						array_push($propVal,$value);
+						array_push($propVal,"'".mysql_real_escape_string($value)."'");
 			}
-		
-			$insertSQL="INSERT INTO 2_real_property('$propKey')VALUES('$propVal')";
+			$col = implode(",",$propKey);
+			$val = implode(",",$propVal);
+			//echo $col;
+			$insertSQL="INSERT INTO 2_real_property($col)VALUES($val)";
 		
 	     
-	$result=mysql_query($insertSQL);
+	$result=mysql_query($insertSQL) or die(mysql_error());
 	$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  echo "Property Added successful your property-ID is ".$last_id;
+	  echo "Property Added successful your property-ID is ".$last_id ;
 	}
 	else
 	{
@@ -195,7 +197,7 @@ function addproperty()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-		if($id)
+		/*if($id)
 			{
 				$selectSQL = mysql_query("SELECT * FROM 2_real_property WHERE id=".$id) or die(mysql_error());
 			
@@ -203,17 +205,16 @@ function addproperty()
 				echo json_encode($row);
 			}
 			else
-			{
-		$propEditKey=array();
-			$propEditVal=array();
+			{*/
+			$propEdit=array();
+
 			foreach($postdata as $key => $value)
 			{
-						array_push($propEditKey,$key);
-						array_push($propEditVal,$value);
+						array_push($propEdit,$key."='".$value."'");
 			}
-		
-		
-			$updateSQL=mysql_query("UPDATE  2_real_property SET  '$propEditKey'='$propEditVal' where id='$id'")or die(mysql_error());
+			$data = implode(",",$propEdit);
+		//echo $data;
+			$updateSQL=mysql_query("UPDATE  2_real_property SET  $data where id='$id'")or die(mysql_error());
 	
 		if($updateSQL){
 		  echo "property updated successfully";
@@ -221,7 +222,7 @@ function addproperty()
 			 mysql_error();
 		}	
 
- }
+ 
  }
 
  //add new project
