@@ -45,14 +45,15 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	$scope.projects = {};
 		};
 		$scope.addproject = function(){
-		console.log($scope.projects);
-		$http.post("server-api/index.php/addproject", $scope.projects)
-		.success(function(response) {
-			alert(response);
-			$scope.reset();
-			
-		}
-	});
+			console.log($scope.projects);
+			$http.post("server-api/index.php/addproject", $scope.projects)
+			.success(function(response) {
+				alert(response);
+				$scope.reset();
+				
+			});
+		};
+	
 	
 	//Update Project
 	
@@ -70,11 +71,11 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	});
 	
 	$scope.update = function(){
-	$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.projects)
+		$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.projects)
 		.success(function(response) {
 			alert(response);
-		})
-	}
+		});
+	};
 		
 }).
 controller('propertyCtrl', function($scope, $http, $routeParams) {
@@ -90,7 +91,6 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		//this request for all response data
 		$http.get("server-api/index.php/property")
 		.success(function(response) {$scope.properties = response;
-		
 			console.log($scope.properties);
 		});
 		
@@ -99,36 +99,36 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 			$scope.properties = {};
 		};
 		$scope.addprop = function(){
-		console.log($scope.properties);
-		$http.post("server-api/index.php/addproperty", $scope.properties)
-		.success(function(response) {
-			alert(response);
-			$scope.reset();
-			
-		}
-	});
-	
-	//Update Property
-	$http.get("server-api/index.php/editproperty/"+$routeParams.id)
-    .success(function(response) {
-		$scope.properties = response;
-		$scope.reset = function() {
-			$scope.properties = angular.copy($scope.properties);
+			console.log($scope.properties);
+			$http.post("server-api/index.php/addproperty", $scope.properties)
+			.success(function(response) {
+				alert(response);
+				$scope.reset();
+			});
 		};
-		$scope.reset();
-		console.log($scope.properties);
-		
-	}).error(function(err){
-		console.log(err);
-	});
-	
-	$scope.update = function(){
-	$http.put("server-api/index.php/editproperty/"+$routeParams.id,$scope.properties)
-		.success(function(response) {
-			alert(response);
-		})
 	}
-	})
+	if($routeParams.id){
+		//Update Property
+		$http.get("server-api/index.php/editproperty/"+$routeParams.id)
+		.success(function(response) {
+			$scope.properties = response;
+			$scope.reset = function() {
+				$scope.properties = angular.copy($scope.properties);
+			};
+			$scope.reset();
+			console.log($scope.properties);
+			
+		}).error(function(err){
+			console.log(err);
+		});
+		
+		$scope.update = function(){
+			$http.put("server-api/index.php/editproperty/"+$routeParams.id,$scope.properties)
+			.success(function(response) {
+				alert(response);
+			});
+		}
+	}
 }).
 
 controller('registerCtrl', function($scope,$http,$routeParams) {
@@ -167,8 +167,9 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 			alert(response);
 		})
 	}
-}).
-/*controller('loginCtrl', function($scope,$http) {
+});
+/*.
+controller('loginCtrl', function($scope,$http) {
 		//Add data
 	$scope.update = function(){
 		console.log($scope.login);
@@ -183,9 +184,9 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
 		});
-	*/
+	
 });
-
+*/
 
 
 
