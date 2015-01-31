@@ -16,10 +16,11 @@ $app->get('/property(/:id)','propertyData');
 $app->post('/register','registerUser');
 $app->put('/editprofile/:id','registerUpdate');
 $app->post('/addproject','addProject');
-$app->put('/editproject(/:id)','updateProject');
+$app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
-$app->put('/editproperty(/:id)','updateProperty');
-$app->post('/login','adminlogin');
+$app->put('/editproperty/:id','updateProperty');
+$app->post('/login','adminLogin');
+$app->post('forgot','resetPassword');
 
 //view web response
 function responseData($id=null)
@@ -271,7 +272,7 @@ function addProject()
 	
 
 //Login
-function adminlogin()
+function adminLogin()
 {
 	$app= new \Slim\Slim();
 		$body = $app->request->getBody();
@@ -287,6 +288,8 @@ function adminlogin()
 		
 			$email=mysql_query("select user_email from users");
 			$pass=mysql_query("select pwd from users");
+			echo "$email";
+			echo "$pass";
 			
 			if(strcmp($user,$email)And strcmp($password,$pass))
 			{
@@ -297,13 +300,26 @@ function adminlogin()
 				}
 				else
 				{
-					echo "login successfull user:$user password:$pass";
+					echo "login successful user:$user password:$pass";
 				}
 			}
 			
 			
 			
 			
+}
+
+//to forgot password
+
+function resetPassword($id=null)
+{
+	$app= new \Slim\Slim();
+		$body = $app->request->getBody();
+		$postdata=json_decode($body);
+
+
+		//to accept data into login form
+			$user= mysql_real_escape_string($postdata->user_email);
 }
 			
 $app->run();
