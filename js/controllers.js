@@ -76,7 +76,7 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 			alert(response);
 		});
 	};
-		
+	}	
 }).
 controller('propertyCtrl', function($scope, $http, $routeParams) {
 
@@ -168,6 +168,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 			alert(response);
 			console.log(response);
 		})
+	}
 	}
 }).
 controller('loginCtrl', function($scope,$http) {
