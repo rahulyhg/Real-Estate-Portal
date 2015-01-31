@@ -19,12 +19,8 @@ $app->post('/addproject','addProject');
 $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty/:id','updateProperty');
-<<<<<<< HEAD
 $app->post('/login','adminLogin');
 $app->post('forgot','resetPassword');
-=======
-$app->post('/login','adminlogin');
->>>>>>> "changed index.php"
 
 //view web response
 function responseData($id=null)
@@ -287,6 +283,7 @@ function adminLogin()
 
 			$password=mysql_real_escape_string($postdata->pwd);
 			
+<<<<<<< HEAD
 		// to accept data into db
 		
 			$email=mysql_query("select user_email from users");
@@ -305,6 +302,30 @@ function adminLogin()
 				{
 					echo "login successful user:$user password:$pass";
 				}
+=======
+		//fetch username & password into db
+			$uname=mysql_query("select user_name From users");
+			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
+			$usersNo = mysql_num_rows($email);
+			if($usersNo === 1){
+				echo "valid user";
+			}else{
+				echo "invalid user";
+			}
+			/*//$pass=mysql_query("select pwd from users");
+			{
+				setcookie($user,$uname,time()+(86400*30),"/");
+			}
+			if(!isset($_COOKIE[$cookie_name]))
+			{
+				echo "Invalid username and Password";
+			}
+			else
+			{
+				alert("Login Successful User Name is:".$user."password:".$password);
+			
+				
+>>>>>>> Login updated.
 			}
 			
 			

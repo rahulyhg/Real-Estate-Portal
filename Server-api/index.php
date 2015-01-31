@@ -285,12 +285,14 @@ function adminLogin()
 			
 		// to accept data into db
 		
-			$email=mysql_query("select user_email from users");
-			$pass=mysql_query("select pwd from users");
-			echo "$email";
-			echo "$pass";
-			
-			if(strcmp($user,$email)And strcmp($password,$pass))
+			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
+			$usersNo = mysql_num_rows($email);
+			if($usersNo === 1){
+				echo "valid user";
+			}else{
+				echo "invalid user";
+			}
+			/*//$pass=mysql_query("select pwd from users");
 			{
 				setcookie($email,$user,time()+(86400*30),"/");
 				if(!isset($_COOKIE[$email]))
