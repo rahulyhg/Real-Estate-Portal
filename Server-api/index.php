@@ -16,9 +16,9 @@ $app->get('/property(/:id)','propertyData');
 $app->post('/register','registerUser');
 $app->put('/editprofile/:id','registerUpdate');
 $app->post('/addproject','addProject');
-$app->put('/editproject(/:id)','updateProject');
+$app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
-$app->put('/editproperty(/:id)','updateProperty');
+$app->put('/editproperty/:id','updateProperty');
 $app->post('/login','adminlogin');
 
 //view web response
