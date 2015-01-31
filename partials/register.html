@@ -8,9 +8,9 @@
 			<p>Please register a free account, before you can start posting your ads. Registration is quick and free! Please note that fields marked * are required.</p>
 			
 			<div class="form-group">
-							<label for="text" class="col-md-2 control-label">Name* </label>
+							<label for="nm1" class="col-md-2 control-label">Name* </label>
 						<div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="reg.name" name="name" placeholder="Enter Name" required>
+                            <input type="char" class="form-control" id="nm1" ng-model="reg.name" name="name" placeholder="Enter Name" required>
 							<span style="color:red" ng-show="myForm.name.$dirty && 	myForm.name.$invalid">
 							<span ng-show="myForm.name.$error.required">name is required.</span>
 							</span>	
@@ -18,9 +18,9 @@
 			</div>
 			
 			<div class="form-group">
-							<label for="Address" class="col-md-2 control-label">Address*</label>
+							<label for="Addr" class="col-md-2 control-label">Address*</label>
 							<div class="col-md-8">
-							<textarea  class="form-control" ng-model="reg.Address" name="Address" placeholder="Enter Address" required></textarea>
+							<textarea  class="form-control" id="Addr"ng-model="reg.Address" name="Address" placeholder="Enter Address" required></textarea>
 							<span style="color:red" ng-show="myForm.Address.$dirty && 	myForm.Address.$invalid">
 							<span ng-show="myForm.Address.$error.required">Address is required.</span>
 							</span>
@@ -28,9 +28,9 @@
 			</div>
 	
 			<div class="form-group">
-				<label for="Country" class="col-md-2 control-label" name="Country" ng-model="reg.Country">Country</label>
+				<label for="Count" class="col-md-2 control-label" name="Country" ng-model="reg.Country">Country</label>
 				<div class="col-md-8">
-						<select class="form-control" name="Country" required>
+						<select class="form-control" name="Country" id="Count" required>
 							<option></option>
 							<option>India</option>
 							<option>Australia</option>
@@ -46,19 +46,20 @@
 			</div>
 			
 			<div class="form-group">
-							<label for="Phone" class="col-md-2 control-label">Phone </label>
+							<label for="Phon" class="col-md-2 control-label">Phone </label>
 						<div class="col-md-8">
-                            <input type="Phone" class="form-control" ng-model="reg.Phone" name="Phone" placeholder="Enter Phone" required>
+                            <input type="Number" class="form-control" id="Phon"ng-model="reg.Phone" name="Phone" placeholder="Enter Phone" required>
 							<span style="color:red" ng-show="myForm.Phone.$dirty && 	myForm.Phone.$invalid">
 							<span ng-show="myForm.Phone.$error.required">Phone is required.</span>
+							<span ng-show="myForm.Phone.$error.number">Enter Number.</span>
 							</span>
                         </div>						
 			</div>
 			
 			<div class="form-group">
-						<label for="Fax " class="col-md-2 control-label">Fax </label>
+						<label for="Fx" class="col-md-2 control-label">Fax </label>
 						<div class="col-md-8">
-                            <input type="Fax " class="form-control" ng-model="reg.Fax " name="Fax " placeholder="Enter Fax " required>
+                            <input type="Fax " class="form-control" id="Fx"ng-model="reg.Fax " name="Fax " placeholder="Enter Fax " required>
 							<span style="color:red" ng-show="myForm.Fax .$dirty && 	myForm.Fax .$invalid">
 							<span ng-show="myForm.Fax.$error.required">Fax  is required.</span>
 							</span>
@@ -69,7 +70,7 @@
 						<label for="URL" class="col-md-2 control-label">Website </label>
 						<div class="col-md-8">
 							<!--<input type="url" name="homepage" required>-->
-                            <input type="url" class="form-control" ng-model="reg.homepage" name="homepage" placeholder="Enter Website " required>
+                            <input type="url" class="form-control" id="URL"ng-model="reg.homepage" name="homepage" placeholder="Enter Website " required>
 							<span style="color:red" ng-show="myForm.homepage.$dirty && 	myForm.homepage.$invalid">
 							<span ng-show="myForm.homepage.$error.required">Website  is required.</span>
 							<span ng-show="myForm.homepage.$error.url">Invalid Web Site.</span>
@@ -80,9 +81,9 @@
 			<h4>Login Details</h4>
 			<hr>
 			<div class="form-group">
-				<label for="UserName" class="col-md-2 control-label">UserName*</label>
+				<label for="UName" class="col-md-2 control-label">UserName*</label>
 						<div class="col-md-6">
-                            <input type="UserName " class="form-control" ng-model="reg.UserName" name="UserName " placeholder="Enter UserName " required>
+                            <input type="UserName " class="form-control" ng-model="reg.UserName" id="UName" name="UserName " placeholder="Enter UserName " required>
 							<span style="color:red" ng-show="myForm.UserName.$dirty && 	myForm.UserName.$invalid">
 							<span ng-show="myForm.UserName.$error.required">UserName  is required.</span>
 							</span>
@@ -93,9 +94,9 @@
 			</div>
 
 			<div class="form-group">
-						<label for="Password" class="col-md-2 control-label">Password* </label>
+						<label for="Pass" class="col-md-2 control-label">Password* </label>
 						<div class="col-md-8">
-                            <input type="Password" class="form-control" ng-model="reg.Password " name="Password" placeholder="Enter Password " required>
+                            <input type="Password" class="form-control" id="Pass" ng-model="reg.Password " name="Password" placeholder="Enter Password " required>
 							<span style="color:red" ng-show="myForm.Password.$dirty && 	myForm.Password.$invalid">
 							<span ng-show="myForm.Password.$error.required">Password is required.</span>
 							</span>
@@ -103,9 +104,9 @@
 			</div>
 			
 			<div class="form-group">
-						<label for="rpassword" class="col-md-2 control-label">Retype Password *</label>
+						<label for="rpass" class="col-md-2 control-label">Retype Password *</label>
 						<div class="col-md-8">
-                            <input type="Password" class="form-control" ng-model="reg.rpassword " name="rpassword" placeholder="Enter Password " required>
+                            <input type="Password" class="form-control" id="rpass" ng-model="reg.rpassword " name="rpassword" placeholder="Enter Password " required>
 							<span style="color:red" ng-show="myForm.rpassword.$dirty && 	myForm.rpassword.$invalid">
 							<span ng-show="myForm.rpassword.$error.required">Password is required.</span>
 							</span>
@@ -115,7 +116,7 @@
 		<div class="form-group">
 			<label for="rdomain" class="col-md-2 control-label" ng-model="reg.rdomain" name="rdomain">Request For Domain</label>
 			<div class="col-md-8">
-			<textarea class="form-control" rows="3" name="Request"  placeholder="Request"></textarea>
+			<textarea class="form-control" rows="3" name="Request" id="rdomain" placeholder="Request"></textarea>
 			</div>
 		</div>
 </form>

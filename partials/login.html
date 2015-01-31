@@ -9,9 +9,9 @@
 			<hr>
 			
 			<div class="form-group">
-							<label for="Email" class="col-md-2 control-label">Email</label>
+							<label for="mail" class="col-md-2 control-label">Email</label>
 						<div class="col-md-8">
-                            <input type="Email" class="form-control" ng-model="login.Email" name="Email" placeholder="Enter Email" required>
+                            <input type="Email" class="form-control" id="mail" ng-model="login.Email" name="Email" placeholder="Enter Email" required>
 							<span style="color:red" ng-show="myForm.Email.$dirty && 	myForm.Email.$invalid">
 							<span ng-show="myForm.Email.$error.required">Email is required.</span>
 							<span ng-show="myForm.Email.$error.email">Invalid Email address.</span>
@@ -21,9 +21,9 @@
 			
 			
 			<div class="form-group">
-						<label for="Password" class="col-md-2 control-label">Password </label>
+						<label for="Passw" class="col-md-2 control-label">Password </label>
 						<div class="col-md-8">
-                            <input type="Password" class="form-control" ng-model="login.Password " name="Password" placeholder="Enter Password " required>
+                            <input type="Password" class="form-control" id="Passw" ng-model="login.Password " name="Password" placeholder="Enter Password " required>
 							<span style="color:red" ng-show="myForm.Password.$dirty && 	myForm.Password.$invalid">
 							<span ng-show="myForm.Password.$error.required">Password is required.</span>
 							</span>
