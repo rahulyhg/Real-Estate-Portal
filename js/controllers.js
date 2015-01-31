@@ -23,9 +23,11 @@ controller('responseCtrl', function($scope,$http, $routeParams, $location) {
 	}
 }).
 controller('projectCtrl', function($scope, $http, $routeParams) {
-	$scope.projects = { title: "vilas title"};
+	
+	
 	//this request for single response data
 	if($routeParams.type) {
+		
 		$http.get("server-api/index.php/project/"+$routeParams.type)
 		.success(function(response) {$scope.projects = response;
 			console.log($scope.projects);
@@ -33,18 +35,20 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 		
 	}else{
 		//this request for all response data
+		
 		$http.get("server-api/index.php/project")
 		.success(function(response) {$scope.projects = response;
-			console.log($scope.projects);
+			//console.log($scope.projects);
 		});
 		
 	}
 	
 	//Add Project
-	$scope.reset = function() {
+	$scope.reset = function() {console.log("Hii");
 	$scope.projects = {};
 		};
 		$scope.addproject = function(){
+			console.log("Hii");
 			console.log($scope.projects);
 			$http.post("server-api/index.php/addproject", $scope.projects)
 			.success(function(response) {
@@ -78,7 +82,7 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	};
 	}	
 }).
-controller('propertyCtrl', function($scope, $http, $routeParams) {
+controller('propertyCtrl',function($scope, $http, $routeParams) {
 
 	//this request for single response data
 	if($routeParams.type) {
@@ -146,12 +150,13 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 			console.log(response);
 		})
 	}
-	if($routeParams.id){
+	if($routeParams.type){
 	//update record
-	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
+	$http.get("server-api/index.php/editprofile/"+$routeParams.type)
     .success(function(response) {
 		$scope.reg = response;
 		$scope.reset = function() {
+			console.log($scope.reg)
 			$scope.reg = angular.copy($scope.reg);
 		};
 		$scope.reset();
