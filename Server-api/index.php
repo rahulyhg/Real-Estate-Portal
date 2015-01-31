@@ -19,7 +19,7 @@ $app->post('/addproject','addProject');
 $app->put('/editproject(/:id)','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty(/:id)','updateProperty');
-
+//$app->post('/login','adminlogin');
 
 //view web response
 function responseData($id=null)
@@ -110,7 +110,7 @@ function registerUser()
 	//$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  echo "Registration successful your Reg-ID is "//.$last_id;
+	  echo "Registration successful your Reg-ID is ";//.$last_id;
 	}
 	else
 	{
@@ -171,10 +171,10 @@ function addproperty()
 		
 	     
 	$result=mysql_query($insertSQL) or die(mysql_error());
-	$last_id = mysql_insert_id($result);
+	//$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  echo "Property Added successful your property-ID is ".$last_id ;
+	  echo "Property Added successful your property-ID is ";//.$last_id ;
 	}
 	else
 	{
@@ -226,14 +226,14 @@ function addProject()
 			}
 			//impolde for array value seperation
 			$col=implode(",",$projectKey);
-			$row=implode(",",$projectVal)
+			$row=implode(",",$projectVal);
 			
 			$insertSQL="INSERT INTO 2_real_project($col)VALUES($row)";
 			$result=mysql_query($insertSQL);
 			//$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  echo "Project Added successful your Project-ID is "//.$last_id;
+	  echo "Project Added successful your Project-ID is ";//.$last_id;
 	}
 	else
 	{
@@ -257,7 +257,7 @@ function addProject()
 				array_push($projectEditKey,$key."='".$value."'");
 			}
 			
-			$data=implode(",",$projectEditKey)			
+			$data=implode(",",$projectEditKey)	;		
 			
 			$updateSQL=mysql_query("UPDATE  2_real_project SET  $data where id='$id' ")or die(mysql_error());
 	
@@ -268,6 +268,16 @@ function addProject()
 		}	
 		
 	}	
+	
+//Login
+/*function adminlogin()
+{
+	$app= new \Slim\Slim();
+		$body = $app->request->getBody();
+		$postdata=json_decode($body);
+			$user= mysql_real_escape_string($postdata->user_name);
+			$password=mysql_real_escape_string($postdata->pwd);
+}*/
 			
 $app->run();
  ?>
