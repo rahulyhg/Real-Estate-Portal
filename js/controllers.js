@@ -133,7 +133,6 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 
 controller('registerCtrl', function($scope,$http,$routeParams) {
 	//Add record
-	
 	$scope.reset = function() {
 	$scope.reg = {};
 	};
@@ -143,50 +142,50 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 		.success(function(response) {
 			alert(response);
 			$scope.reset();
+			console.log(response);
 		})
 	}
-
 	
 	//update record
 	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
-		$scope.editpro = response;
+		$scope.reg = response;
 		$scope.reset = function() {
-			$scope.editpro = angular.copy($scope.editpro);
+			$scope.reg = angular.copy($scope.reg);
 		};
 		$scope.reset();
-		console.log($scope.editpro);
+		console.log($scope.reg);
 		
 	}).error(function(err){
 		console.log(err);
 	});
 	
 	$scope.update = function(){
-	$http.put("server-api/index.php/editprofile/"+$routeParams.id,$scope.editpro)
+	$http.put("server-api/index.php/editprofile/"+$routeParams.id,$scope.reg)
 		.success(function(response) {
 			alert(response);
+			console.log(response);
 		})
 	}
-});
-/*.
+}).
 controller('loginCtrl', function($scope,$http) {
 		//Add data
-	$scope.update = function(){
+		$scope.insert = function(){
 		console.log($scope.login);
 		$http.post("server-api/index.php/login/", $scope.login)
 		.success(function(response) {
-			alert(response);
-			//$scope.reset();
+		alert(response);
+		//$scope.reset();
 		})
-	}
-	//Get data
-	$http.get("server-api/index.php/login")
+		}
+		//Get data
+		$http.get("server-api/index.php/login")
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
 		});
 	
 });
-*/
+
 
 
 
