@@ -280,8 +280,14 @@ function adminlogin()
 			
 		//fetch username & password into db
 			$uname=mysql_query("select user_name From users");
-			$pass=mysql_query("select pwd From users");
-			if(strcmp("$user","$uname")And strcmp("$password","$pass"))
+			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
+			$usersNo = mysql_num_rows($email);
+			if($usersNo === 1){
+				echo "valid user";
+			}else{
+				echo "invalid user";
+			}
+			/*//$pass=mysql_query("select pwd from users");
 			{
 				setcookie($user,$uname,time()+(86400*30),"/");
 			}
@@ -292,6 +298,7 @@ function adminlogin()
 			else
 			{
 				alert("Login Successful User Name is:".$user."password:".$password);
+			
 				
 			}
 			
