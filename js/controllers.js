@@ -168,7 +168,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 	
 	$scope.update = function(){
 		console.log($scope.reg)
-	$http.put("server-api/index.php/editprofile/"+$routeParams.id,$scope.reg)
+	$http.put("server-api/index.php/editprofile/"+$routeParams.type,$scope.reg)
 		.success(function(response) {
 			alert(response);
 			console.log(response);
