@@ -19,7 +19,7 @@ $app->post('/addproject','addProject');
 $app->put('/editproject(/:id)','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty(/:id)','updateProperty');
-//$app->post('/login','adminlogin');
+$app->post('/login','adminlogin');
 
 //view web response
 function responseData($id=null)
@@ -269,15 +269,42 @@ function addProject()
 		
 	}	
 	
+
 //Login
-/*function adminlogin()
+function adminlogin()
 {
 	$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-			$user= mysql_real_escape_string($postdata->user_name);
+
+
+		//to accept data into login form
+			$user= mysql_real_escape_string($postdata->user_email);
+
 			$password=mysql_real_escape_string($postdata->pwd);
-}*/
+			
+		// to accept data into db
+		
+			$email=mysql_query("select user_email from users");
+			$pass=mysql_query("select pwd from users");
+			
+			if(strcmp($user,$email)And strcmp($password,$pass))
+			{
+				setcookie($email,$user,time()+(86400*30),"/");
+				if(!isset($_COOKIE[$email]))
+				{
+					echo "Invalid email adderss";
+				}
+				else
+				{
+					echo "login successfull user:$user password:$pass";
+				}
+			}
+			
+			
+			
+			
+}
 			
 $app->run();
  ?>
