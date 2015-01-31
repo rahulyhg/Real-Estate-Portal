@@ -18,14 +18,13 @@ $app->put('/editprofile/:id','registerUpdate');
 $app->post('/addproject','addProject');
 $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
-<<<<<<< HEAD
 $app->put('/editproperty/:id','updateProperty');
+<<<<<<< HEAD
 $app->post('/login','adminLogin');
 $app->post('forgot','resetPassword');
 =======
-$app->put('/editproperty(/:id)','updateProperty');
 $app->post('/login','adminlogin');
->>>>>>> "index.php changed"
+>>>>>>> "changed index.php"
 
 //view web response
 function responseData($id=null)
@@ -99,8 +98,7 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-	    
-			$regKey=array();
+		$regKey=array();
 			$regVal=array();
 			foreach($postdata as $key => $value)
 			{
@@ -112,7 +110,7 @@ function registerUser()
 			$insertSQL="INSERT INTO users($col)VALUES($row)";
 			
 
-	$result=mysql_query($insertSQL);
+	$result=mysql_query($insertSQL) or die(mysql_error());
 	//$last_id = mysql_insert_id($result);
 	if($result)
 	{
@@ -142,7 +140,7 @@ function registerUser()
 						array_push($regEditKey,$key."='".$value."'");
 						
 			}
-			$data=implode(",",regEditKey);
+			$data=implode(",",$regEditKey);
 			
 				
 		$updateSQL=mysql_query("UPDATE  users SET '$data' where id='$id'")or die(mysql_error());
@@ -277,16 +275,11 @@ function addProject()
 	
 
 //Login
-<<<<<<< HEAD
 function adminLogin()
-=======
-function adminlogin()
->>>>>>> "index.php changed"
 {
 	$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-<<<<<<< HEAD
 
 
 		//to accept data into login form
@@ -330,30 +323,6 @@ function resetPassword($id=null)
 
 		//to accept data into login form
 			$user= mysql_real_escape_string($postdata->user_email);
-=======
-		//to accept data into login form
-			$user= mysql_real_escape_string($postdata->user_name);
-			$password=mysql_real_escape_string($postdata->pwd);
-			
-		//fetch username & password into db
-			$uname=mysql_query("select user_name From users");
-			$pass=mysql_query("select pwd From users");
-			if(strcmp("$user","$uname")And strcmp("$password","$pass"))
-			{
-				setcookie($user,$uname,time()+(86400*30),"/");
-			}
-			if(!isset($_COOKIE[$cookie_name]))
-			{
-				echo "Invalid username and Password";
-			}
-			else
-			{
-				alert("Login Successful User Name is:".$user."password:".$password);
-				
-			}
-			
-			
->>>>>>> "index.php changed"
 }
 			
 $app->run();
