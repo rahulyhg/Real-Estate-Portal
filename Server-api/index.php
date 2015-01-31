@@ -19,7 +19,7 @@ $app->post('/addproject','addProject');
 $app->put('/editproject(/:id)','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty(/:id)','updateProperty');
-//$app->post('/login','adminlogin');
+$app->post('/login','adminlogin');
 
 //view web response
 function responseData($id=null)
@@ -270,14 +270,34 @@ function addProject()
 	}	
 	
 //Login
-/*function adminlogin()
+function adminlogin()
 {
 	$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
+		//to accept data into login form
 			$user= mysql_real_escape_string($postdata->user_name);
 			$password=mysql_real_escape_string($postdata->pwd);
-}*/
+			
+		//fetch username & password into db
+			$uname=mysql_query("select user_name From users");
+			$pass=mysql_query("select pwd From users");
+			if(strcmp("$user","$uname")And strcmp("$password","$pass"))
+			{
+				setcookie($user,$uname,time()+(86400*30),"/");
+			}
+			if(!isset($_COOKIE[$cookie_name]))
+			{
+				echo "Invalid username and Password";
+			}
+			else
+			{
+				alert("Login Successful User Name is:".$user."password:".$password);
+				
+			}
+			
+			
+}
 			
 $app->run();
  ?>
