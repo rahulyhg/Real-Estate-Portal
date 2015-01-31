@@ -56,7 +56,7 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	
 	
 	//Update Project
-	
+	if($routeParams.id){
 	$http.get("server-api/index.php/editproject/"+$routeParams.id)
     .success(function(response) {
 		$scope.projects = response;
@@ -138,14 +138,15 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 	};
 	$scope.insert = function(){
 		//console.log($scope.user);
+		console.log($scope.reg);
 		$http.post("server-api/index.php/register",$scope.reg)
 		.success(function(response) {
-			alert(response);
+			//alert(response);
 			$scope.reset();
 			console.log(response);
 		})
 	}
-	
+	if($routeParams.id){
 	//update record
 	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
@@ -161,6 +162,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 	});
 	
 	$scope.update = function(){
+		console.log($scope.reg)
 	$http.put("server-api/index.php/editprofile/"+$routeParams.id,$scope.reg)
 		.success(function(response) {
 			alert(response);
@@ -182,14 +184,21 @@ controller('loginCtrl', function($scope,$http) {
 		$http.get("server-api/index.php/login")
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
+			console.log(response);
 		});
 	
+}).
+controller('forgotCtrl', function($scope,$http) {
+		//Add email
+		$scope.insert = function(){
+		console.log($scope.forget);
+		$http.post("server-api/index.php/forgot/", $scope.forget)
+		.success(function(response) {
+		alert(response);
+		//$scope.reset();
+		})
+		}
 });
-
-
-
-
-
 
 
 	
