@@ -99,17 +99,18 @@ function registerUser()
 			foreach($postdata as $key => $value)
 			{
 						array_push($regKey,$key);
-						array_push($regVal,$value);
+						array_push($regVal,"'".mysql_real_escape_string($value)."'");
 			}
-			echo "hello";
-			$insertSQL="INSERT INTO users('$regKey')VALUES('$regVal')";
+			$col=implode(",",$regKey);
+			$row=implode(",",$regVal);
+			$insertSQL="INSERT INTO users($col)VALUES($row)";
 			
 
 	$result=mysql_query($insertSQL);
-	$last_id = mysql_insert_id($result);
+	//$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  echo "Registration successful your Reg-ID is ".$last_id;
+	  echo "Registration successful your Reg-ID is "//.$last_id;
 	}
 	else
 	{
@@ -126,36 +127,28 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-			if($id)
-			{
-				$selectSQL = mysql_query("SELECT * FROM users WHERE id=".$id) or die(mysql_error());
-			
-				$row = mysql_fetch_assoc($selectSQL);
-				echo json_encode($row);
-			}
-			else
-			{
+		
 	
 			$regEditKey=array();
-			$regEditVal=array();
+			
 			foreach($postdata as $key => $value)
 			{
-						array_push($regEditKey,$key);
-						array_push($regEditVal,$value);
+						array_push($regEditKey,$key."='".$value."'");
+						
 			}
-			echo "hello";
+			$data=implode(",",regEditKey);
 			
 				
-		$updateSQL=mysql_query("UPDATE  users SET '$regEditKey'='$regEditVal' where id='$id'")or die(mysql_error());
+		$updateSQL=mysql_query("UPDATE  users SET '$data' where id='$id'")or die(mysql_error());
 	
 		if($updateSQL){
-		  echo "Record updated ";
+		  echo "Your profile updated  successfully......";
 		}else{
 			 mysql_error();
 		}	
 		
                 }
-	}
+	
 	
 // Add new Properties
 
@@ -197,15 +190,7 @@ function addproperty()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-		/*if($id)
-			{
-				$selectSQL = mysql_query("SELECT * FROM 2_real_property WHERE id=".$id) or die(mysql_error());
-			
-				$row = mysql_fetch_assoc($selectSQL);
-				echo json_encode($row);
-			}
-			else
-			{*/
+		
 			$propEdit=array();
 
 			foreach($postdata as $key => $value)
@@ -213,11 +198,11 @@ function addproperty()
 						array_push($propEdit,$key."='".$value."'");
 			}
 			$data = implode(",",$propEdit);
-		//echo $data;
+		
 			$updateSQL=mysql_query("UPDATE  2_real_property SET  $data where id='$id'")or die(mysql_error());
 	
 		if($updateSQL){
-		  echo "property updated successfully";
+		  echo "Property details updated successfully.....";
 		}else{
 			 mysql_error();
 		}	
@@ -237,15 +222,18 @@ function addProject()
 			foreach($postdata as $key => $value)
 			{
 						array_push($projectKey,$key);
-						array_push($projectVal,$value);
+						array_push($projectVal,"'".mysql_real_escape_string($value)."'");
 			}
-		
-			$insertSQL="INSERT INTO 2_real_project('$projectKey')VALUES('$projectVal')";
+			//impolde for array value seperation
+			$col=implode(",",$projectKey);
+			$row=implode(",",$projectVal)
+			
+			$insertSQL="INSERT INTO 2_real_project($col)VALUES($row)";
 			$result=mysql_query($insertSQL);
-			$last_id = mysql_insert_id($result);
+			//$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  echo "Project Added successful your Project-ID is ".$last_id;
+	  echo "Project Added successful your Project-ID is "//.$last_id;
 	}
 	else
 	{
@@ -261,33 +249,24 @@ function addProject()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-			if($id)
-			{
-				$selectSQL = mysql_query("SELECT * FROM 2_real_project WHERE id=".$id) or die(mysql_error());
 			
-				$row = mysql_fetch_assoc($selectSQL);
-				echo json_encode($row);
-			}
-			else
-			{
 			$projectEditKey=array();
-			$projectEditVal=array();
+			
 			foreach($postdata as $key => $value)
 			{
-						array_push($projectEditKey,$key);
-						array_push($projectEditVal,$value);
+				array_push($projectEditKey,$key."='".$value."'");
 			}
-			 //$sql_str[] = "{$field_name} = '{$field_value}'";
-			 //mysql_query("UPDATE contactinfo SET ".implode(',', $sql_str)." WHERE `id` = '".$rid."';")
-			 //implode(",",$projectKey) & implode(",",$projectVal)
-			$updateSQL=mysql_query("UPDATE  2_real_project SET  .implode(',',$projectEditKey) AND .implode(',',$projectEditVal). where id='$id' ")or die(mysql_error());
+			
+			$data=implode(",",$projectEditKey)			
+			
+			$updateSQL=mysql_query("UPDATE  2_real_project SET  $data where id='$id' ")or die(mysql_error());
 	
 		if($updateSQL){
 		  echo "project details updated successfully";
 		}else{
 			 mysql_error();
 		}	
-		}
+		
 	}	
 			
 $app->run();
