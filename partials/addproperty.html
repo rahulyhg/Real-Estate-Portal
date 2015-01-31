@@ -2,7 +2,7 @@
 
 	<div ng-include=" 'partials/innernav.html' "></div>
 
-<h4>Property Info:</h4><hr width="100%">
+<h3>Property Info:</h3><hr width="100%">
 	<form class="form-horizontal" name="myForm" novalidate>	
 		  <div class="form-group">
 				<label for="propertyfor" class="col-md-2  ">* Property for</label>
@@ -25,7 +25,7 @@
 				<label for="Category" class="col-md-2 ">* Property Category </label>
 				<div class="col-md-6">
 					<select ng-model="addproper.proCate" class="form-control" required>
-						<option>Select Category</option>
+						<option selected="selected" value="select">Select Category</option>
 						<option>Residential Property</option>
 						<option>Commercial Property</option>
 						<option>Agricultural Land</option>
@@ -170,12 +170,12 @@
 						<option>10</option>
 						
 						
-					</select>&nbsp No's
+					</select>
 				 <span style="color:red" ng-show="myForm.Bedrooms.$dirty && myForm.Bedrooms.$invalid">
 					  <span ng-show="myForm.Bedrooms.$error.required">Select Number of Bedrooms  .</span>
 					</span>
 				</div>
-				
+				No's
 				
 				
 		  </div>
@@ -196,13 +196,13 @@
 						<option>10</option>
 						
 						
-					</select>&nbsp No's
+					</select>
 					 <span style="color:red" ng-show="myForm.Bathrooms.$dirty && myForm.Bathrooms.$invalid">
 					  <span ng-show="myForm.Bathrooms.$error.required">Select Number of Bathrooms  .</span>
 					</span>
 				 
 				</div>
-				
+				No's
 				
 				
 		  </div>
@@ -223,8 +223,8 @@
 			 <!-- end property  -->
 			
 <!--  property Location -->
-		
-			<h4>Property Location:</h4><hr width="100%">
+			<hr>
+			<h3>Property Location:</h3><hr width="100%">
 	
 		  <div class="form-group">
 				<label for="country" class="col-md-2 ">Country</label>
@@ -322,7 +322,8 @@
 		<!--  property Location-->
 		
 		<!--  Discription Title-->	
-			<h4>Discription Title:</h4><hr width="100%">
+		<hr>
+			<h3>Discription Title:</h3><hr width="100%">
 			<div class="form-group">
 				<label for="propTitle" class="col-md-2 ">* Property Title </label>
 				<div class="col-md-6">
@@ -380,7 +381,8 @@
 			</div><!-- property discription -->
 			
 		<!-- property contact details -->
-		<h4>Property contact Detail:</h4><hr width="100%">
+		<hr>
+		<h3>Property contact Detail:</h3><hr width="100%">
 				<div class="form-group">
 						<label for="Name" class="col-md-2 ">* Name:</label>
 						<div class="col-md-6">
@@ -427,8 +429,8 @@
 				  </div>
 				 
 		 <!-- property contact details -->
-		  
-		  <h4>Optional Property Details:</h4><hr width="100%">
+		  <hr>
+		  <h3>Optional Property Details:</h3><hr width="100%">
 				<div class="form-group">
 						<label for="Age" class="col-md-2 ">Age</label>
 						<div class="col-md-6">
@@ -474,46 +476,45 @@
 				
 		  
 		<!--Land  Mark -->	
-			<h4>Land Mark:</h4><hr width="100%">
+		<hr>
+			<h3>Land Mark:</h3><hr width="100%">
 				<div class="form-group">
 						<label for="Hospitals" class="col-md-2 ">Hospitals </label>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="Hospitals" ng-model="addproper.Hospitals" >
-						 &nbsp kms
-						</div>
 						
-						
+						</div>	
+						 kms
 				  </div>
 				  <div class="form-group">
 						<label for="Airport" class="col-md-2">  Airport </label>
 						<div class="col-md-6">
 							<input type="text" class="form-control"  name="Airport" ng-model="addproper.Airport" >
-						 &nbsp kms
+						 
 						</div>
-						
+						kms
 						
 				  </div>
 				  <div class="form-group">
 						<label for="RailwayStation" class="col-md-2 ">  Railway Station</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="RailwayStation" ng-model="addproper.RailwayStation" >
-						 &nbsp kms
+							<input type="text" class="form-control" name="RailwayStation" ng-model="addproper.RailwayStation" > 
 						</div>
-						
+						kms
 						
 				  </div>
 				  <div class="form-group">
 						<label for="School" class="col-md-2 ">  School </label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="School" ng-model="addproper.School" >
-						 &nbsp kms
+							<input type="text" class="form-control" name="School" ng-model="addproper.School" > 
 						</div>
-						
+						kms
 						
 				  </div>
 				<!--land mark-->
 		  <!--Amenities-->
-		  <h4>Amenities:</h4><hr width="100%">
+		  <hr>
+		  <h3>Amenities:</h3><hr width="100%">
 		  <div class="form-group">
 		  <div class="col-md-12">
 				<table class="table table-bordered table-responsive">
@@ -555,7 +556,8 @@
 		  </div> <!--end Amenities-->
 		  
 		  <!--Amenities-->
-		  <h4>Select Sites:</h4><hr width="100%">
+		  <hr>
+		  <h3>Select Sites:</h3><hr width="100%">
 		  <div class="form-group">
 			<div class="col-md-12">
 				<table class="table table-bordered table-responsive">
