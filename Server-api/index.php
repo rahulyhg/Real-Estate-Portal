@@ -94,8 +94,7 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-	    
-			$regKey=array();
+		$regKey=array();
 			$regVal=array();
 			foreach($postdata as $key => $value)
 			{
@@ -107,7 +106,7 @@ function registerUser()
 			$insertSQL="INSERT INTO users($col)VALUES($row)";
 			
 
-	$result=mysql_query($insertSQL);
+	$result=mysql_query($insertSQL) or die(mysql_error());
 	//$last_id = mysql_insert_id($result);
 	if($result)
 	{
@@ -137,7 +136,7 @@ function registerUser()
 						array_push($regEditKey,$key."='".$value."'");
 						
 			}
-			$data=implode(",",regEditKey);
+			$data=implode(",",$regEditKey);
 			
 				
 		$updateSQL=mysql_query("UPDATE  users SET '$data' where id='$id'")or die(mysql_error());
