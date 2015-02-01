@@ -45,12 +45,12 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	
 	//Add Project
 	$scope.reset = function() {console.log("Hii");
-	$scope.projects = {};
+	$scope.project = {};
 		};
 		$scope.addproject = function(){
 			console.log("Hii");
-			console.log($scope.projects);
-			$http.post("server-api/index.php/addproject", $scope.projects)
+			console.log($scope.project);
+			$http.post("server-api/index.php/addproject", $scope.project)
 			.success(function(response) {
 				alert(response);
 				$scope.reset();
@@ -63,19 +63,19 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	if($routeParams.id){
 	$http.get("server-api/index.php/editproject/"+$routeParams.id)
     .success(function(response) {
-		$scope.projects = response;
+		$scope.project = response;
 		$scope.reset = function() {
-			$scope.projects = angular.copy($scope.projects);
+			$scope.project = angular.copy($scope.project);
 		};
 		$scope.reset();
-		console.log($scope.projects);
+		console.log($scope.project);
 		
 	}).error(function(err){
 		console.log(err);
 	});
 	
 	$scope.update = function(){
-		$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.projects)
+		$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.project)
 		.success(function(response) {
 			alert(response);
 		});
@@ -100,11 +100,11 @@ controller('propertyCtrl',function($scope, $http, $routeParams) {
 		
 		// Add property
 		$scope.reset = function() {
-			$scope.properties = {};
+			$scope.property = {};
 		};
 		$scope.addprop = function(){
-			console.log($scope.properties);
-			$http.post("server-api/index.php/addproperty", $scope.properties)
+			console.log($scope.property);
+			$http.post("server-api/index.php/addproperty", $scope.property)
 			.success(function(response) {
 				alert(response);
 				$scope.reset();
@@ -115,19 +115,19 @@ controller('propertyCtrl',function($scope, $http, $routeParams) {
 		//Update Property
 		$http.get("server-api/index.php/editproperty/"+$routeParams.id)
 		.success(function(response) {
-			$scope.properties = response;
+			$scope.property = response;
 			$scope.reset = function() {
-				$scope.properties = angular.copy($scope.properties);
+				$scope.property = angular.copy($scope.property);
 			};
 			$scope.reset();
-			console.log($scope.properties);
+			console.log($scope.property);
 			
 		}).error(function(err){
 			console.log(err);
 		});
 		
 		$scope.update = function(){
-			$http.put("server-api/index.php/editproperty/"+$routeParams.id,$scope.properties)
+			$http.put("server-api/index.php/editproperty/"+$routeParams.id,$scope.property)
 			.success(function(response) {
 				alert(response);
 			});
@@ -150,25 +150,25 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 			console.log(response);
 		})
 	}
-	if($routeParams.type){
+	if($routeParams.id){
 	//update record
-	$http.get("server-api/index.php/editprofile/"+$routeParams.type)
+	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
-		$scope.reg = response;
+		$scope.editpro = response;
 		$scope.reset = function() {
-			console.log($scope.reg)
-			$scope.reg = angular.copy($scope.reg);
+			console.log($scope.editpro)
+			$scope.editpro = angular.copy($scope.editpro);
 		};
 		$scope.reset();
-		console.log($scope.reg);
+		console.log($scope.editpro);
 		
 	}).error(function(err){
 		console.log(err);
 	});
 	
 	$scope.update = function(){
-		console.log($scope.reg)
-	$http.put("server-api/index.php/editprofile/"+$routeParams.type,$scope.reg)
+		console.log($scope.editpro)
+	$http.put("server-api/index.php/editprofile/"+$routeParams.type,$scope.editpro)
 		.success(function(response) {
 			alert(response);
 			console.log(response);
@@ -186,12 +186,8 @@ controller('loginCtrl', function($scope,$http) {
 		//$scope.reset();
 		})
 		}
-		//Get data
-		$http.get("server-api/index.php/login")
-		.success(function(response) {$scope.properties = response;
-			console.log($scope.properties);
-			console.log(response);
-		});
+		
+		
 	
 }).
 controller('forgotCtrl', function($scope,$http) {
@@ -201,7 +197,7 @@ controller('forgotCtrl', function($scope,$http) {
 		$http.post("server-api/index.php/forgot/", $scope.forget)
 		.success(function(response) {
 		alert(response);
-		//$scope.reset();
+		
 		})
 		}
 });
