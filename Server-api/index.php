@@ -20,7 +20,6 @@ $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty/:id','updateProperty');
 $app->post('/login','adminlogin');
-
 //view web response
 function responseData($id=null)
 {
