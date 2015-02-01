@@ -106,7 +106,7 @@
 			<div class="form-group">
 						<label for="rpwd" class="col-md-2 control-label">Retype Password *</label>
 						<div class="col-md-8">
-                            <input type="Password" class="form-control" id="rpwd" ng-model="reg.rpwd" name="rpwd" placeholder="Enter Password " required>
+                            <input type="Password" class="form-control" id="rpwd" ng-model="rpwd" name="rpwd" placeholder="Enter Password " required>
 							<span style="color:red" ng-show="myForm.rpwd.$dirty && 	myForm.rpwd.$invalid">
 							<span ng-show="myForm.rpwd.$error.required">Password is required.</span>
 							</span>
@@ -116,7 +116,7 @@
 		<div class="form-group">
 			<label for="requested_domain" class="col-md-2 control-label">Request For Domain</label>
 			<div class="col-md-8">
-			<textarea class="form-control" rows="3" name="requested_domain" id="requested_domain" placeholder="Request" ng-model="reg.requested_domain"></textarea>
+			<textarea class="form-control" rows="3" name="requested_domain" id="requested_domain" placeholder="Request" ng-model="reg.requested_domains"></textarea>
 			</div>
 		</div>
 	</form>

@@ -211,7 +211,7 @@ function addproperty()
 
  //add new project
 function addProject()
-{
+{	
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
@@ -228,11 +228,13 @@ function addProject()
 			$row=implode(",",$projectVal);
 			
 			$insertSQL="INSERT INTO 2_real_project($col)VALUES($row)";
-			$result=mysql_query($insertSQL);
+			$result=mysql_query($insertSQL)or die(mysql_error());
 			//$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  echo "Project Added successful your Project-ID is ";//.$last_id;
+	  
+	  echo "Project Added successful your Project-ID is ";
+	 
 	}
 	else
 	{
@@ -275,32 +277,18 @@ function adminlogin()
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
 		//to accept data into login form
-			$user= mysql_real_escape_string($postdata->user_name);
+			$user= mysql_real_escape_string($postdata->user_email);
 			$password=mysql_real_escape_string($postdata->pwd);
 			
 		//fetch username & password into db
-			$uname=mysql_query("select user_name From users");
-			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
-			$usersNo = mysql_num_rows($email);
+			
+			$sql=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
+			$usersNo = mysql_num_rows($sql);
 			if($usersNo === 1){
 				echo "valid user";
 			}else{
 				echo "invalid user";
 			}
-			/*//$pass=mysql_query("select pwd from users");
-			{
-				setcookie($user,$uname,time()+(86400*30),"/");
-			}
-			if(!isset($_COOKIE[$cookie_name]))
-			{
-				echo "Invalid username and Password";
-			}
-			else
-			{
-				alert("Login Successful User Name is:".$user."password:".$password);
-			
-				
-			}*/	
 			
 			
 }

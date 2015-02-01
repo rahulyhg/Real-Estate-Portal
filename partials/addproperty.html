@@ -370,16 +370,16 @@
 			<div class="form-group">
 				<label for="projName" class="col-md-2">* Project Name </label>
 				<div class="col-md-6">
-				  <select class="form-control"  id="projName" name="projName" ng-model="property.projName">
+				  <select class="form-control"  id="projName" name="projName" ng-model="projName">
 						<option selected="true" selected >other</option>
-					</select>
+				 </select>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="propDis" class="col-md-2">* Property Discription  </label>
 				<div class="col-md-6">
-					<textarea type="text" class="form-control" name="propDis" ng-model="property.projDis" col="8" rows="5"></textarea>
+					<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" col="8" rows="5"></textarea>
 					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
 				 
 				</div>
@@ -580,9 +580,9 @@
 					<tr>
 					<td><input type="checkbox" name="All" value="All" ng-model="addproper.All">Select All</td>
 					</tr>
-					<tr>
+					<!--<tr>
 					<td><input type="checkbox" name="Landmark" value="Landmark" ng-model="property.landmark">www.jaidevlandmark.in</td>
-					</tr>
+					</tr>-->
 				</table>
 			</div>
 			</div>

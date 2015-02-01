@@ -44,11 +44,11 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	}
 	
 	//Add Project
-	$scope.reset = function() {console.log("Hii");
+	$scope.reset = function() {
 	$scope.project = {};
 		};
 		$scope.addproject = function(){
-			console.log("Hii");
+			//console.log("Hii");
 			console.log($scope.project);
 			$http.post("server-api/index.php/addproject", $scope.project)
 			.success(function(response) {
@@ -180,7 +180,7 @@ controller('loginCtrl', function($scope,$http) {
 		//Add data
 		$scope.insert = function(){
 		console.log($scope.login);
-		$http.post("server-api/index.php/login/", $scope.login)
+		$http.post("server-api/index.php/login", $scope.login)
 		.success(function(response) {
 		alert(response);
 		//$scope.reset();
