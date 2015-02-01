@@ -5,42 +5,42 @@
 		<form class="form-horizontal" role="form">		      
 			<h2>Project Info</h2>
 				<div class="form-group">
-				    <label  for="tile" class="col-md-3">* &nbsp Project Title</label>
+				    <label  for="title" class="col-md-3">* &nbsp Project Title</label>
 					    <div class="col-md-6">
                             
-							<textarea class="form-control" id="tile" rows="1" name="title" ng-model="projects.title"> </textarea>
+							<textarea class="form-control" id="title" rows="1" name="title" ng-model="project.title"> </textarea>
                         </div>
 				</div>
                 <div class="form-group">
-					<label for="btitle" class="col-md-3">* &nbsp Browser Title</label>	   <div class="col-md-6">
-							<textarea class="form-control" id="btitle" rows="1" name="btitle" ng-model="projects.btitle"></textarea>
+					<label for="browsertitle" class="col-md-3">* &nbsp Browser Title</label>	   <div class="col-md-6">
+							<textarea class="form-control" id="browsertitle" rows="1" name="browsertitle" ng-model="project.browsertitle"></textarea>
 						</div>							
                 </div>
                 <div class="form-group">
 					<label for="metakey" class="col-md-3">Meta Keywords</label> 
 						<div class="col-md-9"> 
-                            <textarea class="form-control" rows="3" name="metakey" ng-model="projects.metakey"> </textarea>
+                            <textarea class="form-control" rows="3" name="metakey" ng-model="project.metakey"  id="metakey"> </textarea>
 						</div>							
                 </div>
 	            <div class="form-group"> 
-					<label for="metakey" class="col-md-3">Meta Discription</label> 
+					<label for="metadesc" class="col-md-3">Meta Discription</label> 
 						<div class="col-md-9">
-                            <textarea class="form-control" id="metakey" rows="3" name="metadesc" ng-model="projects.metadesc"></textarea>
+                            <textarea class="form-control" id="metadesc" rows="3" name="metadesc" ng-model="project.metadesc"></textarea>
                         </div>
                 </div>
 			
 	            <div class="form-group"> 
-					<label for="radiobtn" class="col-md-3">* &nbsp Featured</label> 
+					<label for="featured" class="col-md-3">* &nbsp Featured</label> 
                         <div class="col-md-3">
-                            <input type="radio" name="rbtn" id="yes" checked  ng-model="projects.rbtn">Yes
-							<input type="radio" name="rbtn" id="no" ng-model="projects.rbtn">No
+                            <input type="radio" name="featured" id="yes" checked  ng-model="project.featured">Yes
+							<input type="radio" name="featured" id="no" ng-model="project.featured">No
                         </div>	
                 </div>
 						
 				<div class="form-group">
-					<label for="categ" class="col-md-3">* &nbsp Category</label>
+					<label for="category" class="col-md-3">* &nbsp Category</label>
 					    <div class="col-md-9">
-							<select name="category" id="categ" ng-model="projects.category">
+							<select name="category" id="category" ng-model="project.category">
 								<option selected="selected">Select Category</option>
 								<option value="residential">Residential Property</option>
 								<option value="commercial">Commercial Property</option>
@@ -51,98 +51,98 @@
 				</div>	
 					
 				<div class="form-group">
-					<label for="ptype" class="col-md-3"> * &nbsp Project Type</label>
+					<label for="type" class="col-md-3"> * &nbsp Project Type</label>
 						<div class="col-md-9">
-                            <input type="text"  id="ptype" name="ptype" ng-model="projects.ptype">
+                            <input type="text"  id="type" name="type" ng-model="project.type">
                         </div>							
                 </div>
 			    <div class="form-group">
 					<label for="location" class="col-md-3">* &nbsp Location</label>
 						<div class="col-md-9">
-                            <input type="text" id="location" name="location" ng-model="projects.location">
+                            <input type="text" id="location" name="location" ng-model="project.location">
                         </div>							
                 </div>
 			    <div class="form-group">
-                    <label for="location1" class="col-md-3">* &nbsp Overview</label>
+                    <label for="overview" class="col-md-3">* &nbsp Overview</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" id="location1" rows="3" name="overview" ng-model="projects.overview"></textarea>
+                            <textarea class="form-control" id="overview" rows="3" name="overview" ng-model="project.overview"></textarea>
                         </div>
                             					
                 </div>							
                     
 			    <div class="form-group">
-                    <label for="pimg" class="col-md-3">* &nbsp Project Image</label>
+                    <label for="proj_img" class="col-md-3">* &nbsp Project Image</label>
                         <div class="col-md-6">
-							<input type="file" id="pimg" name="pimg" ng-model="projects.pimg">
+							<input type="file" id="proj_img" name="proj_img" ng-model="project.proj_img">
                         </div>		
                 </div>
 				
 				<div class="form-group">
-                    <label for="plogo" class="col-md-3">* &nbsp Project Logo</label>
+                    <label for="logo" class="col-md-3">* &nbsp Project Logo</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="plogo"  id="plogo" ng-model="projects.plogo"></textarea>
+                            <textarea class="form-control" rows="3" name="logo"  id="logo" ng-model="project.logo"></textarea>
                         </div>
 				</div>	
 				
 				 <div class="form-group">
-                    <label for="pimg" class="col-md-3">* &nbsp Project By</label>
+                    <label for="project_by" class="col-md-3">* &nbsp Project By</label>
                         <div class="col-md-6">
-							<input type="text"  id="pby" name="pby" ng-model="projects.pby">
+							<input type="text"  id="project_by" name="project_by" ng-model="project.project_by">
                         </div>	
                 </div>
 				
 				<div class="form-group">
-                    <label for="features" class="col-md-3">* &nbsp Amenities/Features</label>
+                    <label for="amenities" class="col-md-3">* &nbsp Amenities/Features</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="amenities" id="features" ng-model="projects.amenities"></textarea>
+                            <textarea class="form-control" rows="3" name="amenities" id="amenities" ng-model="project.amenities"></textarea>
                         </div>
 				</div>	
 				
 				<div class="form-group">
-                    <label for="spcification" class="col-md-3">* &nbsp Spcifications</label>
+                    <label for="specifications" class="col-md-3">* &nbsp Spcifications</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="specification" id="spcification" ng-model="projects.specification"></textarea>
+                            <textarea class="form-control" rows="3" name="specifications" id="specifications" ng-model="project.specifications"></textarea>
                         </div>
 				</div>	
 					
 				<div class="form-group">
-                    <label for="lmap" class="col-md-3">Location Map</label>
+                    <label for="location_map" class="col-md-3">Location Map</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="locmap" id="lmap" ng-model="projects.locmap"></textarea>
+                            <textarea class="form-control" rows="3" name="location_map" id="location_map" ng-model="project.location_map"></textarea>
                         </div>
 				</div>	
 				
 				<div class="form-group">
-                    <label for="layout" class="col-md-3">Layout Map</label>
+                    <label for="layout_map" class="col-md-3">Layout Map</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="laymap" id="layout" ng-model="projects.laymap"></textarea>
+                            <textarea class="form-control" rows="3" name="layout_map" id="layout_map" ng-model="project.layout_map"></textarea>
                         </div>
 				</div>
 				<div class="form-group">
-                    <label for="bplan" class="col-md-3">Browser Title Floor Plan</label>
+                    <label for="browsertitle_floorplan" class="col-md-3">Browser Title Floor Plan</label>
 						<div class="col-md-6">
-                            <textarea class="form-control" rows="1" name="brtitle" id="bplan"ng-model="projects.brtitle"></textarea>
+                            <textarea class="form-control" rows="1" name="browsertitle_floorplan" id="browsertitle_floorplan"ng-model="project.browsertitle_floorplan"></textarea>
                         </div>
 				</div>	
 				
 				<div class="form-group">
-                    <label for="fplan" class="col-md-3">Floor Plans</label>
+                    <label for="floorplans" class="col-md-3">Floor Plans</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="fplan" id="fplan"  ng-model="projects.fplan"></textarea>
+                            <textarea class="form-control" rows="3" name="floorplans" id="floorplans"  ng-model="project.floorplans"></textarea>
                         </div>
 				</div>	
 					
 				<div class="form-group">
-					<label for="wthrough" class="col-md-3">* &nbsp Walk Through</label>
+					<label for="walkthrough" class="col-md-3">* &nbsp Walk Through</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="walk" id="wthrough" ng-model="projects.walk"></textarea>
+                            <textarea class="form-control" rows="3" name="walkthrough" id="walkthrough" ng-model="project.walkthrough"></textarea>
                         </div>
 				</div>	
 				
 				<div class="form-group">
                     <label for="contact" class="col-md-3">* &nbsp Contact</label>
 						<div class="col-md-9">
-                            <textarea class="form-control" rows="3" name="contact" id="contact" ng-model="projects.contact"></textarea>
+                            <textarea class="form-control" rows="3" name="contact" id="contact" ng-model="project.contact"></textarea>
                         </div>
 				</div>
 					
@@ -154,12 +154,12 @@
 						<table class="table table-bordered">
 							<tr>
 								<td> 
-									<input type="checkbox" name="sall" ng-model="projects.sall">Select All
+									<input type="checkbox" name="selectall" ng-model="project.selectall">Select All
 								</td>
 							</tr>
 							<tr>
 								<td>          	 				    
-									<input type="checkbox" name="jaidev" value="www.jaidevlandmarks.com" ng-model="projects.jaidev">www.jaidevlandmarks.com
+									<input type="checkbox" name="jaidev" value="www.jaidevlandmarks.com" ng-model="project.jaidev">www.jaidevlandmarks.com
 								</td>
 							</tr>
 							<tr>
