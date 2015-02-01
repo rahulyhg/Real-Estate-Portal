@@ -13,13 +13,21 @@
 				</div>
                 <div class="form-group">
 					<label for="btitle" class="col-md-3">* &nbsp Browser Title</label>	   <div class="col-md-6">
+<<<<<<< HEAD
 							<textarea class="form-control" id="btitle" rows="1" name="btitle" ng-model="projects.btitle"></textarea>
+=======
+							<textarea class="form-control" rows="1" name="btitle" ng-model="projects.browsetitle"></textarea>
+>>>>>>> addproject updated
 						</div>							
                 </div>
                 <div class="form-group">
 					<label for="metakey" class="col-md-3">Meta Keywords</label> 
 						<div class="col-md-9"> 
+<<<<<<< HEAD
+                            <textarea class="form-control" id="metakey"rows="3" name="metakey" ng-model="projects.meta"> </textarea>
+=======
                             <textarea class="form-control" rows="3" name="metakey" ng-model="projects.metakey"> </textarea>
+>>>>>>> addproject updated
 						</div>							
                 </div>
 	            <div class="form-group"> 
