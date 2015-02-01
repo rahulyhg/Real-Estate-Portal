@@ -145,7 +145,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 		console.log($scope.reg);
 		$http.post("server-api/index.php/register",$scope.reg)
 		.success(function(response) {
-			//alert(response);
+			alert(response);
 			$scope.reset();
 			console.log(response);
 		})
