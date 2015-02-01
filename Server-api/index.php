@@ -19,8 +19,7 @@ $app->post('/addproject','addProject');
 $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty/:id','updateProperty');
-$app->post('/login','adminLogin');
-$app->post('forgot','resetPassword');
+$app->post('/login','adminlogin');
 
 //view web response
 function responseData($id=null)
@@ -269,22 +268,18 @@ function addProject()
 		
 	}	
 	
-
 //Login
-function adminLogin()
+function adminlogin()
 {
 	$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-
-
 		//to accept data into login form
-			$user= mysql_real_escape_string($postdata->user_email);
-
+			$user= mysql_real_escape_string($postdata->user_name);
 			$password=mysql_real_escape_string($postdata->pwd);
 			
-		// to accept data into db
-		
+		//fetch username & password into db
+			$uname=mysql_query("select user_name From users");
 			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
 			$usersNo = mysql_num_rows($email);
 			if($usersNo === 1){
@@ -294,34 +289,21 @@ function adminLogin()
 			}
 			/*//$pass=mysql_query("select pwd from users");
 			{
-				setcookie($email,$user,time()+(86400*30),"/");
-				if(!isset($_COOKIE[$email]))
-				{
-					echo "Invalid email adderss";
-				}
-				else
-				{
-					echo "login successful user:$user password:$pass";
-				}
+				setcookie($user,$uname,time()+(86400*30),"/");
+			}
+			if(!isset($_COOKIE[$cookie_name]))
+			{
+				echo "Invalid username and Password";
+			}
+			else
+			{
+				alert("Login Successful User Name is:".$user."password:".$password);
+			
+				
 			}
 			
 			
-			
-			
 }
-
-//to forgot password
-
-function resetPassword($id=null)
-{
-	$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-
-
-		//to accept data into login form
-			$user= mysql_real_escape_string($postdata->user_email);
-}
-			
+		*/	
 $app->run();
  ?>
