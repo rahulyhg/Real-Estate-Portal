@@ -300,10 +300,10 @@ function adminlogin()
 				alert("Login Successful User Name is:".$user."password:".$password);
 			
 				
-			}
+			}*/	
 			
 			
 }
-		*/	
+		
 $app->run();
  ?>
