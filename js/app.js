@@ -2,7 +2,8 @@
 // Declare app level module which depends on filters, and services
 angular.module('realEstate', [
   'ngRoute',
-  'realEstate.controllers'
+  'realEstate.controllers',
+  'angularFileUpload'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/:url/:type?/:status?/:id?', {templateUrl: function(urlObj){ return 'partials/' + urlObj.url + '.html'; }});

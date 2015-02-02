@@ -200,6 +200,19 @@ controller('forgotCtrl', function($scope,$http) {
 		
 		})
 		}
+}).controller('PlayerController', function($scope, $http, $upload) {
+$scope.$watch('files', function() {
+    $scope.upload = $upload.upload({
+      url: 'http://localhost/Real-Estate-Portal/server-api/try.php/upload',
+      data: {myObj: $scope.myModelObj},
+      file: $scope.files
+    }).progress(function(evt) {
+      console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.file.name);
+    }).success(function(data, status, headers, config) {
+      console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
+    });
+  });
+  
 });
 
 
