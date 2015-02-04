@@ -167,8 +167,13 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 			alert(response);
 		})
 	}
+<<<<<<< HEAD
 });
-}).
+/*.
+=======
+	}
+})/*.
+>>>>>>> "real-estate portal modified"
 controller('loginCtrl', function($scope,$http) {
 		//Add data
 	$scope.update = function(){
@@ -185,12 +190,19 @@ controller('loginCtrl', function($scope,$http) {
 			console.log($scope.properties);
 		});
 	
-});
-*/
-
-
-
-
+<<<<<<< HEAD
+=======
+}).
+controller('forgotCtrl', function($scope,$http) {
+		//Add email
+		$scope.insert = function(){
+		console.log($scope.forget);
+		$http.post("server-api/index.php/forgot/", $scope.forget)
+		.success(function(response) {
+		alert(response);
+		
+		})
+		}
 }).controller('loginCtrl',['$scope', '$location', 'LoginService',
     function($scope,$location, loginService){
         $scope.login = {
@@ -267,6 +279,13 @@ controller('loginCtrl', function($scope,$http) {
   $scope.setCurrentUser = function (user) {
     $scope.currentUser = user;
   };
+>>>>>>> "real-estate portal modified"
+});
+*/
+
+
+
+
 
 
 	

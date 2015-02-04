@@ -1,6 +1,6 @@
 
 
-<div class="row">
+<div class="row" ng-controller="loginCtrl">
 	<div class="col-md-2" ng-include="'partials/mainnav.html'">
 	</div>
 		<div class="col-md-10">
@@ -10,23 +10,23 @@
 			
 		
 			<div class="form-group">
-							<label for="Email" class="col-md-2 control-label">Email</label>
+							<label for="user_email" class="col-md-2 control-label">Email</label>
 						<div class="col-md-8">
                             <input type="Email" class="form-control" id="user_email" ng-model="login.user_email" name="user_email" placeholder="Enter Email" required >
-							<span style="color:red" ng-show="myForm.Email.$dirty && 	myForm.Email.$invalid">
-							<span ng-show="myForm.Email.$error.required">Email is required.</span>
-							<span ng-show="myForm.Email.$error.email">Invalid Email address.</span>
+							<span style="color:red" ng-show="myForm.user_email.$dirty && myForm.user_email.$invalid">
+							<span ng-show="myForm.user_email.$error.required">Email is required.</span>
+							<span ng-show="myForm.user_email.$error.email">Invalid Email address.</span>
 							</span>
                         </div>						
 			</div>
 			
 			
 			<div class="form-group">
-						<label for="Password" class="col-md-2 control-label">Password </label>
+						<label for="pwd" class="col-md-2 control-label">Password </label>
 						<div class="col-md-8">
                             <input type="Password" class="form-control" id="pwd" ng-model="login.pwd" name="pwd" placeholder="Enter Password " required >
-							<span style="color:red" ng-show="myForm.Password.$dirty && 	myForm.Password.$invalid">
-							<span ng-show="myForm.Password.$error.required">Password is required.</span>
+							<span style="color:red" ng-show="myForm.pwd.$dirty && myForm.pwd.$invalid">
+							<span ng-show="myForm.pwd.$error.required">Password is required.</span>
 							</span>
                         </div>						
 			</div>
@@ -46,8 +46,6 @@
                    ng-click="logIn(login)">Login!</button><br>
 				<a href="#register">Register here</a> | <a href="#forgot">Forgot Password</a>
 				</div>
-			
-		
 			</div>
 			</form>
 		</div>
