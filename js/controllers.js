@@ -167,7 +167,6 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 			alert(response);
 		})
 	}
-});
 }).
 /*controller('loginCtrl', function($scope,$http) {
 		//Add data
@@ -227,7 +226,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
         
     }
 ])*/
-.controller('loginCtrl', function ($scope, $rootScope, AUTH_EVENTS, LoginService,$http) {
+controller('loginCtrl', function ($scope, $rootScope, AUTH_EVENTS, LoginService,$http) {
   
   $scope.errorMessage = '';
   $scope.logIn = function (login) {
@@ -270,7 +269,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 
 
 	
-
+											   });
 
 
 
