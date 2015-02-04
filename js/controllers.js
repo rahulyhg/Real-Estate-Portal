@@ -169,7 +169,7 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 	}
 });
 }).
-controller('loginCtrl', function($scope,$http) {
+/*controller('loginCtrl', function($scope,$http) {
 		//Add data
 	$scope.update = function(){
 		console.log($scope.login);
@@ -186,7 +186,7 @@ controller('loginCtrl', function($scope,$http) {
 		});
 	
 });
-*/
+
 
 
 
