@@ -1,0 +1,46 @@
+
+.propList,.content {
+margin: 10px 0px 10px 0px;
+border: 1px solid rgb(174, 170, 170);
+padding: 15px;
+
+}
+.propListItem
+{
+padding:15px;
+}
+.propList
+{
+border-radius:10px;
+box-shadow:2px 2px 2px #ccc;
+}
+.imglist:hover
+{
+ height: 300px;
+ width:300px;
+   -webkit-transform: rotate(180deg); 
+    transform: rotate(0deg);
+
+z-index:1000;
+position:absolute;
+border-radius:10px;
+box-shadow:4px 4px 4px rgb(174, 170, 170);
+}
+.imglist
+{  
+  -webkit-transition: width 5s, height 5s, -webkit-transform 5s; 
+transition: width 5s, height 5s, transform 5s;
+z-index:0;
+border-radius:10px;
+}
+.featured-property h4 
+{
+background:#0088cc;
+padding:5px;
+
+}
+.featured-property h4 a
+{
+
+color:white;
+}
