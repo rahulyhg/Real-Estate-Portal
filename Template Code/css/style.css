@@ -11,6 +11,7 @@ padding:15px;
 }
 .propList
 {
+
 border-radius:10px;
 box-shadow:2px 2px 2px #ccc;
 }
@@ -49,5 +50,19 @@ color:white;
 background:#0088cc;
 color:white;
 }
+.featured-property,.featured_project
+{
+margin-left:15px;
+margin-right:15px;
+}
+.well
+{
+margin:15px;
+}
+.propdtl
+{
+margin-top:10px;
+}
+
 
 
