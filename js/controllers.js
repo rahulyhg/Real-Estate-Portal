@@ -23,9 +23,11 @@ controller('responseCtrl', function($scope,$http, $routeParams, $location) {
 	}
 }).
 controller('projectCtrl', function($scope, $http, $routeParams) {
-	$scope.projects = { title: "vilas title"};
+	
+	
 	//this request for single response data
 	if($routeParams.type) {
+		
 		$http.get("server-api/index.php/project/"+$routeParams.type)
 		.success(function(response) {$scope.projects = response;
 			console.log($scope.projects);
@@ -33,20 +35,22 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 		
 	}else{
 		//this request for all response data
+		
 		$http.get("server-api/index.php/project")
 		.success(function(response) {$scope.projects = response;
-			console.log($scope.projects);
+			//console.log($scope.projects);
 		});
 		
 	}
 	
 	//Add Project
 	$scope.reset = function() {
-	$scope.projects = {};
+	$scope.project = {};
 		};
 		$scope.addproject = function(){
-			console.log($scope.projects);
-			$http.post("server-api/index.php/addproject", $scope.projects)
+			//console.log("Hii");
+			console.log($scope.project);
+			$http.post("server-api/index.php/addproject", $scope.project)
 			.success(function(response) {
 				alert(response);
 				$scope.reset();
@@ -56,29 +60,29 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 	
 	
 	//Update Project
-	
+	if($routeParams.id){
 	$http.get("server-api/index.php/editproject/"+$routeParams.id)
     .success(function(response) {
-		$scope.projects = response;
+		$scope.project = response;
 		$scope.reset = function() {
-			$scope.projects = angular.copy($scope.projects);
+			$scope.project = angular.copy($scope.project);
 		};
 		$scope.reset();
-		console.log($scope.projects);
+		console.log($scope.project);
 		
 	}).error(function(err){
 		console.log(err);
 	});
 	
 	$scope.update = function(){
-		$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.projects)
+		$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.project)
 		.success(function(response) {
 			alert(response);
 		});
 	};
-		
+	}	
 }).
-controller('propertyCtrl', function($scope, $http, $routeParams) {
+controller('propertyCtrl',function($scope, $http, $routeParams) {
 
 	//this request for single response data
 	if($routeParams.type) {
@@ -96,11 +100,11 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		
 		// Add property
 		$scope.reset = function() {
-			$scope.properties = {};
+			$scope.property = {};
 		};
 		$scope.addprop = function(){
-			console.log($scope.properties);
-			$http.post("server-api/index.php/addproperty", $scope.properties)
+			console.log($scope.property);
+			$http.post("server-api/index.php/addproperty", $scope.property)
 			.success(function(response) {
 				alert(response);
 				$scope.reset();
@@ -111,19 +115,19 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 		//Update Property
 		$http.get("server-api/index.php/editproperty/"+$routeParams.id)
 		.success(function(response) {
-			$scope.properties = response;
+			$scope.property = response;
 			$scope.reset = function() {
-				$scope.properties = angular.copy($scope.properties);
+				$scope.property = angular.copy($scope.property);
 			};
 			$scope.reset();
-			console.log($scope.properties);
+			console.log($scope.property);
 			
 		}).error(function(err){
 			console.log(err);
 		});
 		
 		$scope.update = function(){
-			$http.put("server-api/index.php/editproperty/"+$routeParams.id,$scope.properties)
+			$http.put("server-api/index.php/editproperty/"+$routeParams.id,$scope.property)
 			.success(function(response) {
 				alert(response);
 			});
@@ -133,25 +137,26 @@ controller('propertyCtrl', function($scope, $http, $routeParams) {
 
 controller('registerCtrl', function($scope,$http,$routeParams) {
 	//Add record
-	
 	$scope.reset = function() {
 	$scope.reg = {};
 	};
 	$scope.insert = function(){
 		//console.log($scope.user);
+		console.log($scope.reg);
 		$http.post("server-api/index.php/register",$scope.reg)
 		.success(function(response) {
 			alert(response);
 			$scope.reset();
+			console.log(response);
 		})
 	}
-
-	
+	if($routeParams.id){
 	//update record
 	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
     .success(function(response) {
 		$scope.editpro = response;
 		$scope.reset = function() {
+			console.log($scope.editpro)
 			$scope.editpro = angular.copy($scope.editpro);
 		};
 		$scope.reset();
@@ -162,33 +167,52 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 	});
 	
 	$scope.update = function(){
-	$http.put("server-api/index.php/editprofile/"+$routeParams.id,$scope.editpro)
+		console.log($scope.editpro)
+	$http.put("server-api/index.php/editprofile/"+$routeParams.type,$scope.editpro)
 		.success(function(response) {
 			alert(response);
+			console.log(response);
 		})
+	}
 	}
 }).
-/*controller('loginCtrl', function($scope,$http) {
 		//Add data
-	$scope.update = function(){
+		$scope.insert = function(){
 		console.log($scope.login);
-		$http.post("server-api/index.php/login/", $scope.login)
+		$http.post("server-api/index.php/login", $scope.login)
 		.success(function(response) {
-			alert(response);
-			//$scope.reset();
+		alert(response);
+		//$scope.reset();
 		})
-	}
-	//Get data
-	$http.get("server-api/index.php/login")
-		.success(function(response) {$scope.properties = response;
-			console.log($scope.properties);
-		});
+		}
+		
+		
 	
+}).
+controller('forgotCtrl', function($scope,$http) {
+		//Add email
+		$scope.insert = function(){
+		console.log($scope.forget);
+		$http.post("server-api/index.php/forgot/", $scope.forget)
+		.success(function(response) {
+		alert(response);
+		
+		})
+		}
+}).controller('PlayerController', function($scope, $http, $upload) {
+$scope.$watch('files', function() {
+    $scope.upload = $upload.upload({
+      url: 'http://localhost/Real-Estate-Portal/server-api/try.php/upload',
+      data: {myObj: $scope.myModelObj},
+      file: $scope.files
+    }).progress(function(evt) {
+      console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.file.name);
+    }).success(function(data, status, headers, config) {
+      console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
+    });
+  });
+  
 });
-
-
-
-
 
 }).controller('loginCtrl',['$scope', '$location', 'LoginService',
     function($scope,$location, loginService){

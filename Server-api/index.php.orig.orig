@@ -18,8 +18,25 @@ $app->put('/editprofile/:id','registerUpdate');
 $app->post('/addproject','addProject');
 $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
+<<<<<<< HEAD
 $app->put('/editproperty/:id','updateProperty');
+<<<<<<< HEAD
+$app->post('/login','adminLogin');
+$app->post('forgot','resetPassword');
+=======
 $app->post('/login','adminlogin');
+>>>>>>> "changed index.php"
+=======
+<<<<<<< HEAD
+$app->put('/editproperty/:id','updateProperty');
+$app->post('/login','adminLogin');
+$app->post('forgot','resetPassword');
+=======
+$app->put('/editproperty(/:id)','updateProperty');
+$app->post('/login','adminlogin');
+>>>>>>> "index.php changed"
+>>>>>>> "index.php changed"
+
 //view web response
 function responseData($id=null)
 {
@@ -92,7 +109,12 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
+<<<<<<< HEAD
 		$regKey=array();
+=======
+	    
+			$regKey=array();
+>>>>>>> "index.php changed"
 			$regVal=array();
 			foreach($postdata as $key => $value)
 			{
@@ -104,7 +126,11 @@ function registerUser()
 			$insertSQL="INSERT INTO users($col)VALUES($row)";
 			
 
+<<<<<<< HEAD
 	$result=mysql_query($insertSQL) or die(mysql_error());
+=======
+	$result=mysql_query($insertSQL);
+>>>>>>> "index.php changed"
 	//$last_id = mysql_insert_id($result);
 	if($result)
 	{
@@ -134,7 +160,11 @@ function registerUser()
 						array_push($regEditKey,$key."='".$value."'");
 						
 			}
+<<<<<<< HEAD
 			$data=implode(",",$regEditKey);
+=======
+			$data=implode(",",regEditKey);
+>>>>>>> "index.php changed"
 			
 				
 		$updateSQL=mysql_query("UPDATE  users SET '$data' where id='$id'")or die(mysql_error());
@@ -210,7 +240,7 @@ function addproperty()
 
  //add new project
 function addProject()
-{	
+{
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
@@ -227,13 +257,11 @@ function addProject()
 			$row=implode(",",$projectVal);
 			
 			$insertSQL="INSERT INTO 2_real_project($col)VALUES($row)";
-			$result=mysql_query($insertSQL)or die(mysql_error());
+			$result=mysql_query($insertSQL);
 			//$last_id = mysql_insert_id($result);
 	if($result)
 	{
-	  
-	  echo "Project Added successful your Project-ID is ";
-	 
+	  echo "Project Added successful your Project-ID is ";//.$last_id;
 	}
 	else
 	{
@@ -269,28 +297,81 @@ function addProject()
 		
 	}	
 	
+
 //Login
+<<<<<<< HEAD
+function adminLogin()
+=======
+<<<<<<< HEAD
+function adminLogin()
+=======
 function adminlogin()
+>>>>>>> "index.php changed"
+>>>>>>> "index.php changed"
 {
 	$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> "index.php changed"
+
+
 		//to accept data into login form
 			$user= mysql_real_escape_string($postdata->user_email);
+
+			$password=mysql_real_escape_string($postdata->pwd);
+			
+		// to accept data into db
+		
+			$email=mysql_query("select user_email from users");
+			$pass=mysql_query("select pwd from users");
+			echo "$email";
+			echo "$pass";
+			
+			if(strcmp($user,$email)And strcmp($password,$pass))
+			{
+				setcookie($email,$user,time()+(86400*30),"/");
+				if(!isset($_COOKIE[$email]))
+				{
+					echo "Invalid email adderss";
+				}
+				else
+				{
+					echo "login successful user:$user password:$pass";
+				}
+			}
+			
+			
+			
+			
+}
+
+//to forgot password
+
+function resetPassword($id=null)
+{
+	$app= new \Slim\Slim();
+		$body = $app->request->getBody();
+		$postdata=json_decode($body);
+
+
+		//to accept data into login form
+			$user= mysql_real_escape_string($postdata->user_email);
+<<<<<<< HEAD
+=======
+=======
+		//to accept data into login form
+			$user= mysql_real_escape_string($postdata->user_name);
 			$password=mysql_real_escape_string($postdata->pwd);
 			
 		//fetch username & password into db
 			$uname=mysql_query("select user_name From users");
-			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
-			$usersNo = mysql_num_rows($email);
-			if($usersNo === 1){
-				echo "valid user";
-			}else{
-				echo "invalid user";
-			}
-			
-			
-}
+			$pass=mysql_query("select pwd From users");
+			if(strcmp("$user","$uname")And strcmp("$password","$pass"))
+			{
+				setcookie($user,$uname,time()+(86400*30),"/");
 			}
 			if(!isset($_COOKIE[$cookie_name]))
 			{
@@ -299,12 +380,13 @@ function adminlogin()
 			else
 			{
 				alert("Login Successful User Name is:".$user."password:".$password);
-			
 				
 			}
 			
 			
+>>>>>>> "index.php changed"
+>>>>>>> "index.php changed"
 }
-		
+			
 $app->run();
  ?>

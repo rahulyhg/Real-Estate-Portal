@@ -1,0 +1,16 @@
+<div class="row" ng-controller="PlayerController">
+<div class="col-md-2" ng-include="'partials/mainnav.html'">
+		
+	</div>
+	<div class="col-md-10">
+			Select File: <div class="button" ng-file-select ng-model="files">Select File</div>
+
+   Drop File: <div ng-file-drop ng-model="files" class="drop-box" 
+                   drag-over-class="dragover" multiple="true" 
+                   allow-dir="true" accept="image/*,application/pdf">
+                       Drop Images or PDFs files here
+              </div>
+   <div ng-no-file-drop>File Farg/Drop is not supported for this browser</div>
+			
+	</div>
+</div>
