@@ -4,3 +4,8 @@
 background-color:gainsboro;
 
 }
+ .vertical-scrollbar
+{
+   overflow-x: hidden; /*for hiding horizontal scroll bar*/
+   overflow-y: auto; /*for vertical scroll bar*/
+}

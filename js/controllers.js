@@ -176,7 +176,6 @@ controller('registerCtrl', function($scope,$http,$routeParams) {
 	}
 	}
 }).
-controller('loginCtrl', function($scope,$http) {
 		//Add data
 		$scope.insert = function(){
 		console.log($scope.login);
@@ -215,9 +214,86 @@ $scope.$watch('files', function() {
   
 });
 
+}).controller('loginCtrl',['$scope', '$location', 'LoginService',
+    function($scope,$location, loginService){
+        $scope.login = {
+            user_email: "",
+            pwd: ""
+        };
+        var getCookie= function(name) {
+            var cookiename = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++){
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(cookiename) == 0) return c.substring(cookiename.length,c.length);
+            }
+			console.log(name);
+            return null;
+        }
+        
+        $scope.isLoggedIn = function()
+        {
+            return getCookie("user_email")!=null;
+        }
+        
+        $scope.logIn = function(login){
+            loginService.logIn(login)
+                .success(function(response) {
+                    if(response.result=="no"){
+                        $location.path("server-api/index.php/login");
+                    }else{
+                        $location.path("/");
+                    }
+                });
+        }
+        
+    }
+])*/
+controller('loginCtrl', function ($scope, $rootScope, AUTH_EVENTS, LoginService,$http) {
+  
+  $scope.errorMessage = '';
+  $scope.logIn = function (login) {
+   
+	$http.post('server-api/index.php/login', {email: $scope.user_email, password: $scope.pwd})	
+	 .success(function (response, status, error, config)
+            {
+                if (response.success === true)
+                {
+                   
+					  $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+				// $scope.setCurrentUser(login);
+					console.log($scope.login);
+					 dialog.close();
+                }
+                else
+                {
+                    $scope.errorMessage = 'Invalid username or password.';
+					 $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+                }
+            })
+			 .error(function (response, status, error, config)
+            {
+                $scope.errorMessage = 'Error logging in.';
+            });
+    
+	  
+    };
+  
+}).controller('ApplicationController', function ($scope,
+                                               USER_ROLES,
+                                               LoginService) {
+  $scope.currentUser = null;
+  $scope.userRoles = USER_ROLES;
+  $scope.isAuthorized = AuthService.isAuthorized;
+ 
+  $scope.setCurrentUser = function (user) {
+    $scope.currentUser = user;
+  };
+
 
 	
-
+ });
 
 
 

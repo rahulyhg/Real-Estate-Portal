@@ -1,6 +1,6 @@
 'use strict';
 // Declare app level module which depends on filters, and services
-angular.module('realEstate', [
+var app = angular.module('realEstate', [
   'ngRoute',
   'realEstate.controllers',
   'angularFileUpload'
@@ -19,4 +19,14 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/addproject', {templateUrl: 'partials/add-project.html'});
   $routeProvider.when('/response/:type?/:status?/:id?', {templateUrl: 'partials/response.html', controller: 'responseCtrl'});*/
   $routeProvider.otherwise({redirectTo: '/home'});
-}]);
+}]).constant('AUTH_EVENTS', {
+  loginSuccess: 'auth-login-success',
+  loginFailed: 'auth-login-failed',
+  logoutSuccess: 'auth-logout-success',
+  sessionTimeout: 'auth-session-timeout',
+  notAuthenticated: 'auth-not-authenticated',
+  notAuthorized: 'auth-not-authorized'
+}).constant('USER_ROLES', {
+  all: '*',
+  
+});

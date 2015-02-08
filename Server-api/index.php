@@ -20,7 +20,6 @@ $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty/:id','updateProperty');
 $app->post('/login','adminlogin');
-
 //view web response
 function responseData($id=null)
 {
@@ -281,13 +280,27 @@ function adminlogin()
 			$password=mysql_real_escape_string($postdata->pwd);
 			
 		//fetch username & password into db
-			
-			$sql=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
-			$usersNo = mysql_num_rows($sql);
+			$uname=mysql_query("select user_name From users");
+			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
+			$usersNo = mysql_num_rows($email);
 			if($usersNo === 1){
 				echo "valid user";
 			}else{
 				echo "invalid user";
+			}
+			
+			
+}
+			}
+			if(!isset($_COOKIE[$cookie_name]))
+			{
+				echo "Invalid username and Password";
+			}
+			else
+			{
+				alert("Login Successful User Name is:".$user."password:".$password);
+			
+				
 			}
 			
 			
