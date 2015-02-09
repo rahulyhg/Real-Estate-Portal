@@ -142,6 +142,7 @@ img
 .imgborder
 {
 	border: 1px solid #EFD3F0;
+	border:1px solid #CBCBCB;
 	border-radius:15px;
 	margin-bottom:15px;
 }
@@ -243,13 +244,8 @@ display: block;
 position: absolute;
 bottom: -15px;
 right: 0;
-<<<<<<< HEAD
-border-top: 15px solid #004a70;
-border-right: 20px solid transparent;
-=======
 border-top: 15px solid black;
-border-right: 15px solid transparent;
->>>>>>> style update
+border-right: 20px solid transparent;
 }
 .btn
 {
@@ -272,6 +268,7 @@ a:hover
 	color:black;
 	text-decoration:none;
 }
+<<<<<<< HEAD
 .featured-prop {
     /* padding: 20px 0; */
 }
@@ -294,3 +291,5 @@ a:hover
 .carousel-inner .prev		 { left: -25%; }
 .carousel-control 			 { width:  4%; }
 .carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+=======
+>>>>>>> style index updated
