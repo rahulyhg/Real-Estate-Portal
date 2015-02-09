@@ -141,7 +141,7 @@ img
 }
 .imgborder
 {
-	border:1px solid #CBCBCB;
+	border: 1px solid #EFD3F0;
 	border-radius:15px;
 	margin-bottom:15px;
 }
@@ -200,12 +200,14 @@ background: gray;
 border: 5px solid white;
 }*/
 #ribbon-container {
-/*position: absolute;*/
+position: absolute;
 top: 5px;
-/*right: -20px;*/
+right: -20px;
 overflow: visible;
 font-size: 25px;
 line-height: 18px;
+width: 99%;
+margin: 15px 0 0;
 }
 #ribbon-container a {
 display: block;
@@ -226,11 +228,11 @@ width: 0;
 display: block;
 position: absolute;
 top: 0;
-left: -29px;
+left: -25px;
 border-top: 29px solid #421C52 ;
 border-bottom: 29px solid #421C52 ;
-border-right: 29px solid transparent;
-border-left: 29px solid transparent;
+border-right: 25px solid transparent;
+border-left: 25px solid transparent;
 }
 
 #ribbon-container a:after {
@@ -242,7 +244,7 @@ position: absolute;
 bottom: -15px;
 right: 0;
 border-top: 15px solid #004a70;
-border-right: 15px solid transparent;
+border-right: 20px solid transparent;
 }
 .btn
 {
@@ -265,3 +267,25 @@ a:hover
 	color:black;
 	text-decoration:none;
 }
+.featured-prop {
+    /* padding: 20px 0; */
+}
+
+.content-box {
+    padding-top: 100px;
+    padding-bottom: 40px;
+    border: 1px solid #ccc;
+    box-shadow: 3px 0 2px #ccc;
+}
+.services{
+	margin-top: 25px;
+	
+}
+
+
+/* Bootstrap carousal */
+.carousel-inner .active.left { left: -25%; }
+.carousel-inner .next        { left:  25%; }
+.carousel-inner .prev		 { left: -25%; }
+.carousel-control 			 { width:  4%; }
+.carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
