@@ -1,4 +1,4 @@
-.ca-menu{
+/*.ca-menu{
     padding: 0 0 0 48px;
     margin: 20px auto;
     width: 100%;
@@ -51,7 +51,7 @@
 
 
  /* this is for joomla menu */
-.ca-menu li img{
+/*.ca-menu li img{
     position: absolute;
     width: 70px;
     height: 50px;
@@ -128,7 +128,7 @@ background-color: #EFD3F0;
         -ms-transform: translateY(0%) scale(1);
         opacity: 1;        
     }
-}
+}*/
 .main-content
 {
 	border:1px solid gray;
@@ -170,14 +170,18 @@ img
 {
 	font-weight:bold;
 	text-align:center;
-	padding:15px;
+	padding:5px;
 }
 small
 {
 	font-weight:normal;
 	text-align:center;
 }
-
+.aside
+{
+	display:block;
+	text-decoration:none;
+}
 /*.slide
 {
 	
@@ -301,21 +305,25 @@ a:hover
 
 
 /* Bootstrap carousal */
-.carousel-inner .active.left { left: -25%; }
-.carousel-inner .next        { left:  25%; }
-.carousel-inner .prev		 { left: -25%; }
-.carousel-control 			 { width:  4%; }
+.carousel-inner .active.left 
+{ left: -25%; }
+.carousel-inner .next       
+ { left:  25%; }
+.carousel-inner .prev		
+ { left: -25%; }
+.carousel-control 			
+ { width:  4%; }
 .carousel-control.left,.carousel-control.right 
 {margin-left:15px;background-image:none;}
 
 
 
-/ 3d Block Menu Style / 
-/ basic menu styles /
+/* 3d Block Menu Style */ 
+/* basic menu styles */
 .block-menu 
 {
  display: block;
- background: #000;
+ background: #421C52;
 }
 
 .block-menu li {
@@ -331,20 +339,20 @@ a:hover
  text-transform: uppercase;
  overflow: visible;
  line-height: 20px;
- font-size: 24px;
+ font-size: 20px;
  padding: 15px 10px;
 }
 .block-menu > li > a {
  background: none;
 }
-/ animation domination /
+/* animation domination */
 .three-d {
  perspective: 200px;
  transition: all .07s linear;
  position: relative;
  cursor: pointer;
 }
- / complete the animation! /
+ /* complete the animation! */
  .three-d:hover .three-d-box, 
  .three-d:focus .three-d-box,
  .block-menu > li.active > .three-d:hover .three-d-box
@@ -390,9 +398,9 @@ a:hover
  position: absolute;
  top: 0;
  left: 0;
- background: black;
+ background:#421C52;
  padding: 15px 10px;
- color: white;
+ color: #ffffff;
  pointer-events: none;
  box-sizing: border-box;
 }
