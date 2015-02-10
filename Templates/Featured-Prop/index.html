@@ -11,6 +11,25 @@
 </head>
 <body>
 <div class="container">
+
+	<nav class="navigation" role="navigation">
+		<ul class="nav menu ca-menu">
+			<li class="current active">
+				<a href="#">Home</a>
+			</li>
+			<li>
+				<a href="#">Home</a>
+			</li>
+			<li>
+				<a href="#">Home</a>
+			</li>
+			<li>
+				<a href="#">Home</a>
+			</li>
+		</ul>
+	</nav>
+	
+	
 	<div class="row">	
 		<div class="col-md-12 content-box"> <!-- this is content box inside content box we can use header, row, content etc. -->
 			<h2 id="ribbon-container">
@@ -214,6 +233,10 @@
 		  }
 		});	
 	});
+	$(".block-menu li a").addClass('three-d').append(function(n,txt)
+	{
+            return '<span class="three-d-box"><span class="front">'+ txt +'</span><span class="back">'+ txt +'</span></span>';
+    });
 </script>
 </body>
 </html>
