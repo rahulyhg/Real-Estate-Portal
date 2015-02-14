@@ -9,7 +9,7 @@ define(['app', 'css!modules/home/home'], function (app) {
 	var responseController = function ($scope, $injector, $http,$routeParams, $location) {
 		
 	if(!$routeParams.type && !$routeParams.status){
-		$location.path( "/response/web/all" );
+		$location.path( "/response/web/new" );
 	}
 	$scope.type = $routeParams.type;
 	$scope.status = $routeParams.status;
