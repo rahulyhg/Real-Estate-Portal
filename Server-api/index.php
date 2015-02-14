@@ -272,7 +272,7 @@ function addProject()
 //Login
 function adminlogin()
 {
-	$app= new \Slim\Slim();
+		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
 		//to accept data into login form
@@ -283,7 +283,8 @@ function adminlogin()
 			$uname=mysql_query("select user_name From users");
 			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
 			$usersNo = mysql_num_rows($email);
-			if($usersNo === 1){
+			if($usersNo === 1)
+			{
 				echo "valid user";
 			}else{
 				echo "invalid user";
@@ -291,6 +292,6 @@ function adminlogin()
 			
 			
 }
-			
+
 $app->run();
- ?>
+?>

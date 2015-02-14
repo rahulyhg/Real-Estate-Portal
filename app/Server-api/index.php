@@ -291,20 +291,7 @@ function adminlogin()
 			
 			
 }
-			}
-			if(!isset($_COOKIE[$cookie_name]))
-			{
-				echo "Invalid username and Password";
-			}
-			else
-			{
-				alert("Login Successful User Name is:".$user."password:".$password);
 			
-				
-			}
-			
-			
-}
 		
 $app->run();
  ?>
