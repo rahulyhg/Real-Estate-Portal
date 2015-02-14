@@ -10,7 +10,7 @@
 				<div class="form-group">
 						<label for="mail" class="col-md-2 control-label">Email</label>
 						<div class="col-md-8">
-                            <input type="Email" class="form-control" id="mail" ng-model="forget.Email" name="Email" placeholder="Enter Email" required>
+                            <input type="Email" class="form-control" id="mail" ng-model="forget.user_email" name="Email" placeholder="Enter Email" required>
 							<span style="color:red" ng-show="myForm.Email.$dirty && 	myForm.Email.$invalid">
 							<span ng-show="myForm.Email.$error.required">Email is required.</span>
 							<span ng-show="myForm.Email.$error.email">Invalid Email address.
@@ -19,7 +19,7 @@
                         </div>						
 				</div>
 			</form>
-		<button type="submit" class="btn btn-success center-block" name="btn1" ng-model="forget.btn1" ng-click="insert()">Reset</button>
+		<button type="submit" class="btn btn-success center-block" name="btn1"  ng-click="forgotPass(forget)">Reset</button>
   <br>
     </div>
 	

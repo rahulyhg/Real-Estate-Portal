@@ -9,10 +9,10 @@ define(['app', 'css!modules/home/home'], function (app)
 		   {
 		        //console.log("this is forgot ctrl " + data.value);
 				//Add email
-			$scope.insert = function()
+			$scope.forgotPass = function(forget)
 			{
 			    console.log($scope.forget);
-			    $http.post("server-api/index.php/forgot/", $scope.forget)
+			    $http.post("server-api/index.php/forgot", $scope.forget)
 				.success(function(response) 
 				   {
 				     alert(response);		

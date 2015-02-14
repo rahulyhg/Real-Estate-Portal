@@ -16,8 +16,46 @@ var injectParams = ['$scope', '$injector','$http', '$routeParams'];
 			//console.log($scope.projects);
 		});		
 	}   
+	//add project
+	$scope.reset = function() {
+	$scope.project = {};
+		};
+		$scope.addproject = function(){
+			//console.log("Hii");
+			console.log($scope.project);
+			$http.post("server-api/index.php/addproject", $scope.project)
+			.success(function(response) {
+				alert(response);
+				$scope.reset();
+				
+			});
+		};
+	
+	
+	//Update Project
+	if($routeParams.id){
+	$http.get("server-api/index.php/editproject/"+$routeParams.id)
+    .success(function(response) {
+		$scope.project = response;
+		$scope.reset = function() {
+			$scope.project = angular.copy($scope.project);
+		};
+		$scope.reset();
+		console.log($scope.project);
+		
+	}).error(function(err){
+		console.log(err);
+	});
+	
+	$scope.update = function(){
+		$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.project)
+		.success(function(response) {
+			alert(response);
+		});
+	};
+	}	
     };
-	//this request for single response data
+	
 	 
 	// Inject controller's dependencies
 	projectController.$inject = injectParams;

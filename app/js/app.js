@@ -42,10 +42,11 @@ define(['angular',
 				 .when('/forgot', route.resolve({controller:'forgot', template: 'forgot' }, 'users/'))
 				 .when('/register', route.resolve({controller:'register', template: 'register' }, 'users/'))
 				
-                .otherwise({ redirectTo: '/home' });
+                .otherwise({ redirectTo: '/login' });
 	}]);
 	app.run(['$location', '$rootScope', function($location, $rootScope) {
 		$rootScope.title = "DEFAULT Title";
+		
 	}]);
 	return app;
 });

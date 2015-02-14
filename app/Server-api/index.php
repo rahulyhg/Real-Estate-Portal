@@ -20,6 +20,7 @@ $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty/:id','updateProperty');
 $app->post('/login','adminlogin');
+$app->post('/forgot','adminForgot');
 //view web response
 function responseData($id=null)
 {
@@ -289,6 +290,30 @@ function adminlogin()
 				echo "invalid user";
 			}
 			
+			
+}
+
+//forgot password
+
+function adminForgot()
+{
+		$app= new \Slim\Slim();
+		$body = $app->request->getBody();
+		$postdata=json_decode($body);
+		//to accept data into login form
+		//print_r($postdata) ;
+		$user= mysql_real_escape_string($postdata->user_email);
+			$email=mysql_query("select user_email from users WHERE user_email='$user' ") or die (mysql_error());
+			
+			$totrow=mysql_num_rows($email);
+			
+			if($totrow==1){
+				echo "your password send your email ID";
+			}
+			else
+			{
+				echo "Invalid email ID";
+			} 
 			
 }
 			
