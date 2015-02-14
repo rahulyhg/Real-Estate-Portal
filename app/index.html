@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="realEstate">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -9,24 +9,18 @@
     <title ng-bind="title"></title>	
 	<meta name="keyword" content="">
 	
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    
 </head>
 
-<body>
-         
-		<div  ng-include="'modules/component/header.html'" class="style">
-	</div>	
-    <div ng-view class="container">      	
-    </div>
-	<div  ng-include="'modules/component/footer.html'" class="style">
-	</div>
+<body>         
+	<div  ng-include="'modules/component/header.html'" class="style">	</div>	
+    <div ng-view class="container"></div>
+	<div  ng-include="'modules/component/footer.html'" class="style"></div>
 	<div id="app"></div>
 	
 	    <!-- Require JS -->
     <script data-main="js/main" src="lib/requirejs/require.js"></script>    
-    <script src="lib/bootstrap/bootstrap.min.js"></script>
-	<script src="js/app.js"></script>    
-     	    
+    
 </body>
 
 </html>

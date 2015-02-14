@@ -1,20 +1,20 @@
 'use strict';
 
 define(['app', 'css!modules/property/property'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams'];
+    var injectParams = ['$scope', '$injector','$routeParams','$http'];
 
     // This is controller for this view
-	var propertyController = function ($scope, $injector,$routeParams) {
+	var propertyController = function ($scope, $injector,$routeParams,$http) {
 		
 		if($routeParams.type) {
-		$http.get("server-api/index.php/property/"+$routeParams.type)
+		$http.get("../server-api/index.php/property/"+$routeParams.type)
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
 		});
 		
 	}else{
-		//this request for all response data
-		$http.get("server-api/index.php/property")
+		
+		$http.get("../server-api/index.php/property")
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
 		});
@@ -25,7 +25,7 @@ define(['app', 'css!modules/property/property'], function (app) {
 		};
 		$scope.addprop = function(){
 			console.log($scope.property);
-			$http.post("server-api/index.php/addproperty", $scope.property)
+			$http.post("../server-api/index.php/addproperty", $scope.property)
 			.success(function(response) {
 				alert(response);
 				$scope.reset();
@@ -34,7 +34,7 @@ define(['app', 'css!modules/property/property'], function (app) {
 	}
 	if($routeParams.id){
 		//Update Property
-		$http.get("server-api/index.php/editproperty/"+$routeParams.id)
+		$http.get("../server-api/index.php/editproperty/"+$routeParams.id)
 		.success(function(response) {
 			$scope.property = response;
 			$scope.reset = function() {
