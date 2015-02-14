@@ -8,8 +8,7 @@ define(['app', 'css!modules/forgot/forgot'], function (app)
 	    var homeController = function ($scope, $injector, $http) 
 		   {
 		        //console.log("this is forgot ctrl " + data.value);
-           };
-	//Add email
+				//Add email
 		$scope.insert = function()
 			{
 			    console.log($scope.forget);
@@ -19,12 +18,11 @@ define(['app', 'css!modules/forgot/forgot'], function (app)
 				     alert(response);		
 		           })
 		    }    
+           };	
 	// Inject controller's dependencies
 	    forgotController.$inject = injectParams;
 	// Register/apply controller dynamically
-        app.register.controller('forgotController', forgotController);
-	
-	
+        app.register.controller('forgotController', forgotController);	
 });
 
 

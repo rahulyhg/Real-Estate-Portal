@@ -2,7 +2,7 @@
 
 'use strict';
 
-define(['app', 'css!modules/home/home'], function (app) {
+define(['app', 'css!modules/property/property'], function (app) {
     var injectParams = ['$scope', '$injector','$routeParams'];
 
     // This is controller for this view

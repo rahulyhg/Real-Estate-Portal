@@ -5,8 +5,7 @@ define(['app', 'css!modules/register/register'], function (app) {
 
     // This is controller for this view
 	var registerController = function ($scope, $injector, $http,$routeParams) {		
-    };
-	//Add record
+         //Add record
 	$scope.reset = function() {
 	$scope.reg = {};
 	};
@@ -44,6 +43,8 @@ define(['app', 'css!modules/register/register'], function (app) {
 		})
 	}
 	}    
+	};
+	
 	// Inject controller's dependencies
 	registerController.$inject = injectParams;
 	// Register/apply controller dynamically
