@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 define(['app', 'css!modules/property/property'], function (app) {
@@ -56,8 +54,7 @@ define(['app', 'css!modules/property/property'], function (app) {
 			});
 		}
 	}
-		};
-	
+		};	
     
 	// Inject controller's dependencies
 	propertyController.$inject = injectParams;
