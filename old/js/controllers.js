@@ -37,7 +37,8 @@ controller('projectCtrl', function($scope, $http, $routeParams) {
 		//this request for all response data
 		
 		$http.get("server-api/index.php/project")
-		.success(function(response) {$scope.projects = response;
+		.success(function(response) 
+		{$scope.projects = response;
 			//console.log($scope.projects);
 		});
 		
