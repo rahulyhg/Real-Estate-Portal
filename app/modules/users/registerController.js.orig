@@ -1,0 +1,72 @@
+'use strict';
+
+define(['app', 'css!modules/home/home'], function (app) {
+    var injectParams = ['$scope', '$injector','$http','$routeParams'];
+
+    // This is controller for this view
+	var registerController = function ($scope, $injector, $http,$routeParams) {		
+<<<<<<< HEAD:app/modules/users/register/registerController.js
+         //Add record
+=======
+>>>>>>> "login,forgot,register  controllers added":app/modules/users/registerController.js
+	$scope.reset = function() {
+	$scope.reg = {};
+	};
+	$scope.insert = function(){
+		//console.log($scope.user);
+		console.log($scope.reg);
+		$http.post("server-api/index.php/register",$scope.reg)
+		.success(function(response) {
+			alert(response);
+			$scope.reset();
+			console.log(response);
+		})
+	}
+	if($routeParams.id){
+	//update record
+	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
+    .success(function(response) {
+		$scope.editpro = response;
+		$scope.reset = function() {
+			console.log($scope.editpro)
+			$scope.editpro = angular.copy($scope.editpro);
+		};
+		$scope.reset();
+		console.log($scope.editpro);		
+	}).error(function(err){
+		console.log(err);
+	});
+	
+	$scope.update = function(){
+		console.log($scope.editpro)
+	$http.put("server-api/index.php/editprofile/"+$routeParams.type,$scope.editpro)
+		.success(function(response) {
+			alert(response);
+			console.log(response);
+		})
+	}
+	}    
+<<<<<<< HEAD:app/modules/users/register/registerController.js
+	};
+=======
+    };
+	
+>>>>>>> "login,forgot,register  controllers added":app/modules/users/registerController.js
+	
+	// Inject controller's dependencies
+	registerController.$inject = injectParams;
+	// Register/apply controller dynamically
+    app.register.controller('registerController', registerController);
+	
+});
+
+
+
+
+
+
+
+
+
+
+

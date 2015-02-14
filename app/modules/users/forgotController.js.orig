@@ -1,0 +1,37 @@
+'use strict';
+
+define(['app', 'css!modules/home/home'], function (app) 
+   {
+        var injectParams = ['$scope', '$injector','$http'];
+
+    // This is controller for this view
+	    var forgotController = function ($scope, $injector, $http) 
+		   {
+		        //console.log("this is forgot ctrl " + data.value);
+				//Add email
+<<<<<<< HEAD:app/modules/users/forgot/forgotController.js
+		$scope.insert = function()
+=======
+			$scope.insert = function()
+>>>>>>> "login,forgot,register  controllers added":app/modules/users/forgotController.js
+			{
+			    console.log($scope.forget);
+			    $http.post("server-api/index.php/forgot/", $scope.forget)
+				.success(function(response) 
+				   {
+				     alert(response);		
+		           })
+		    }    
+<<<<<<< HEAD:app/modules/users/forgot/forgotController.js
+           };	
+=======
+           }
+	
+>>>>>>> "login,forgot,register  controllers added":app/modules/users/forgotController.js
+	// Inject controller's dependencies
+	    forgotController.$inject = injectParams;
+	// Register/apply controller dynamically
+        app.register.controller('forgotController', forgotController);	
+});
+
+

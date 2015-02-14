@@ -2,7 +2,7 @@
 
 'use strict';
 
-define(['app', 'css!modules/login/login'], function (app) {
+define(['app', 'css!modules/home/home'], function (app) {
     var injectParams = ['$scope', '$injector','$rootScope', 'AUTH_EVENTS', 'LoginService','$http'];
 
     // This is controller for this view

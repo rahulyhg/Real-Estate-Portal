@@ -1,11 +1,10 @@
 'use strict';
 
-define(['app', 'css!modules/register/register'], function (app) {
+define(['app', 'css!modules/home/home'], function (app) {
     var injectParams = ['$scope', '$injector','$http','$routeParams'];
 
     // This is controller for this view
 	var registerController = function ($scope, $injector, $http,$routeParams) {		
-         //Add record
 	$scope.reset = function() {
 	$scope.reg = {};
 	};
@@ -43,7 +42,8 @@ define(['app', 'css!modules/register/register'], function (app) {
 		})
 	}
 	}    
-	};
+    };
+	
 	
 	// Inject controller's dependencies
 	registerController.$inject = injectParams;
