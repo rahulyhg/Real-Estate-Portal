@@ -1,0 +1,202 @@
+
+
+<section id="input">
+    <!--<div class="container">-->
+        <div class="row">
+	        <div class="col-md-9 center-block">
+				
+				<form name="myForm" class="form-horizontal" role="form" novalidate="novalidate">
+					<h3>Post Your Property</h3>
+					
+					<hr></hr>
+					<label for="propertyfor" class="col-md-3 control-label pull-left">Property for</label>	
+					<div class="form-group">			
+						<div class="col-md-4">
+							<input type="radio" name="properyfor" value="Sale" checked="true">Sale
+							
+							<input type="radio" name="properyfor" value="Rent">Rent/Lease
+							
+						</div>
+					</div>
+					
+					<label for="category" class="col-md-3 control-label">Property Category </label>
+					<div class="form-group">	
+						<div class="col-md-4">
+							<select name="sel" class="form-control" required="required">
+								<option selected="selected">Select Category</option>
+								<option value="resprop">Residential Property</option>
+								<option value="comprop">Commercial Property</option>
+								<option value="agriland">Agricultural Land</option>
+								<option value="indprop">Industrial Property</option>
+							</select>	 
+						</div>
+					</div>
+					
+					<label for="area" class="col-md-3 control-label"> Area</label>
+					<div class="form-group">		
+                        <div class="col-md-4"> 
+							<input type="number" class="form-control" name="area" placeholder="Property Area">
+						</div>
+						<div class="col-sm-4">
+							<select class="form-control" required="required">
+								<option selected="selected" >Sq.Feet</option>
+								<option value="cent">Cent</option>
+								<option value="yard">Sq.Yard</option>
+								<option value="acre">Acre</option>
+								<option value="meter">Sq.Meter</option>
+								<option value="bigha">Bigha</option>
+								<option value="hect">Hectares</option>
+							</select>		 
+						</div>
+					</div>
+					
+					<label for="budget" class="col-md-3 control-label">Budget</label>
+					<div class="form-group">		
+                        <div class="col-md-4"> 
+							<input type="number" class="form-control" name="budget" placeholder="Property Budget">
+						</div>
+						<div class="col-sm-4">
+							<select class="form-control" required="required">
+								<option selected="selected">Select Category</option>
+								<option value="rupee">In Rupees</option>
+								<option value="thousand">Thousand</option>
+								<option value="lac">Lac</option>
+								<option value="crore">Crore</option>
+							</select>		 
+						</div>
+					</div>
+								
+					<label  for="pfacing" class="col-md-3 control-label">Property Facing</label>	
+					<div class="form-group">
+							
+						<div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="pfacing" name="pfacing" required placeholder="Property Facing">
+							<span style="color:red" ng-show="myForm.pfacing.$dirty && 	myForm.pfacing.$invalid">
+							<span ng-show="myForm.pfacing.$error.required">Property Facing is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="pimage" class="col-md-3 control-label">Property Image</label>
+	              	<div class="form-group" > 
+                        <div class="col-md-4">
+							<input type="file"  ng-model="file" name="file" required placeholder="Property Facing">
+							<span style="color:red" ng-show="myForm.file.$dirty && 	myForm.file.$invalid">
+							<span ng-show="myForm.file.$error.required">name is required.</span>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="pdesc" class="col-sm-3 control-label">Property Description  </label>
+						<div class="col-sm-4">
+							<textarea type="text" name="pdesc" ng-model="pdesc" col="8" rows="4" class="form-control"></textarea>			
+						</div>		
+					</div>
+					<hr></hr>
+					
+					<h3>Property Location</h3>
+					<hr></hr>
+					
+					<label  for="country" class="col-md-3 control-label">Country</label>	
+					<div class="form-group">
+							
+						<div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="country" name="country" required placeholder="Country">
+							<span style="color:red" ng-show="myForm.country.$dirty && 	myForm.country.$invalid">
+							<span ng-show="myForm.country.$error.required">Country Name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					
+					<label for="state" class="col-sm-3 control-label">State </label>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option selected="selected">Select State</option>
+								<option>Maharashtra</option>
+								<option>Gujrat</option>
+								<option>Rajasthan</option>
+								<option>keral</option>
+							</select>	 
+						</div>
+					</div>
+					
+					<label  for="city" class="col-md-3 control-label">City</label>	
+					<div class="form-group">
+							
+						<div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="city" name="city" required placeholder="City">
+							<span style="color:red" ng-show="myForm.city.$dirty && 	myForm.city.$invalid">
+							<span ng-show="myForm.city.$error.required">City Name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="location" class="col-md-3 control-label">Area/Location</label>	
+					<div class="form-group">
+							
+						<div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="location" name="location" required placeholder="Property Location">
+							<span style="color:red" ng-show="myForm.location.$dirty && 	myForm.location.$invalid">
+							<span ng-show="myForm.location.$error.required">Area/Locatio is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<hr></hr>
+					<h3>Your Contact Details</h3>
+					<hr></hr>
+					<label  for="name" class="col-md-3 control-label">Name</label>	
+					<div class="form-group">
+							
+						<div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="name" name="name" required placeholder="Enter Your Name">
+							<span style="color:red" ng-show="myForm.name.$dirty && 	myForm.name.$invalid">
+							<span ng-show="myForm.name.$error.required">Name is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="contact" class="col-md-3 control-label">Contact Number</label>	
+					<div class="form-group">
+							
+						<div class="col-md-4">
+                            <input type="number" class="form-control" ng-model="contact" name="contact" required placeholder="Enter Your Number">
+							<span style="color:red" ng-show="myForm.contact.$dirty && 	myForm.contact.$invalid">
+							<span ng-show="myForm.contact.$error.required">Contact Number is required.</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<label  for="email" class="col-md-3 control-label">Email</label>	
+					<div class="form-group">
+							
+						<div class="col-md-4">
+                            <input type="email" class="form-control" ng-model="email" name="email" required placeholder="E-mail">
+							<span style="color:red" ng-show="myForm.email.$dirty && 	myForm.email.$invalid">
+							<span ng-show="myForm.email.$error.required">Email is required.</span>
+							<span ng-show="myForm.email.$error.email">Invalid Email</span>
+							</span>
+                        </div>						
+                    </div>
+					
+					<div class="form-group">
+						<label for="address" class="col-sm-3 control-label">Address </label>
+						<div class="col-sm-4">
+							<textarea type="text" name="address" ng-model="address" col="8" rows="4" class="form-control"></textarea>
+						</div>		
+					</div>
+			
+	              	<div class="form-group" > 
+                        <div class="col-md-3">
+							<button type="submit" class="btn btn-primary pull-right" name="submit" >Submit</button>
+							
+						</div>
+					</div>			
+				</form>
+			</div>
+        </div>
+	<!--/div-->	
+</section>
