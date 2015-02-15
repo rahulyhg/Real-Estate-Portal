@@ -1,16 +1,38 @@
 'use strict';
 define(['app', 'css!modules/property/property'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams','$http'];
+    var injectParams = ['$scope', '$injector','$routeParams','$http','$modal', '$log'];
 
     // This is controller for this view
-	var propertyController = function ($scope, $injector,$routeParams,$http) {
+	var propertyController = function ($scope, $injector,$routeParams,$http, $modal, $log) {
+		
+		
+		$scope.open = function (url) {
+			var modalInstance = $modal.open({
+				//templateUrl: url, /* for open template outside current template */
+				template: '<span class="close" ng-click="cancel()">X</span><img class="img-responsive" src="'+ url +'" />', /* inline template */
+				controller: 'propertyController', /* apply controller to modal template */
+				size: 'lg', /* bootstrap modal size - empty for default, lg for large, sm for small */
+				resolve: {
+					items: function () {
+					return $scope.items;
+					}
+				}
+			});
+			modalInstance.result.then(function (selectedItem) {
+				//$scope.selected = selectedItem;
+				$log.info("selected.")
+			}, function () {
+				$log.info('Modal dismissed at: ' + new Date());
+			});
+		};
+		
 		
 		if($routeParams.type) {
 		$http.get("../server-api/index.php/property/"+$routeParams.type)
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
 		});		
-	}else{		
+		}else{	
 		$http.get("../server-api/index.php/property")
 		.success(function(response) {$scope.properties = response;
 			//console.log($scope.properties);

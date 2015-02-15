@@ -1,5 +1,5 @@
 
-<section ng-controller="propertyController">
+<section> <!-- ng-controller removed from here. No need ng-controller on each page. Bcoz we add it through main angular module(mean from app.js-route provider) -->
    <div ng-include="'modules/component/innernav.html'"></div>
 	<div class="row">
 		<div class="col-md-3">	
@@ -11,33 +11,33 @@
 		 <div class="col-md-3">
 			<label>Sort by Order</label>
 			<select class="form-control" ng-model="id"> 
-                <option>Select Order</option>			
+                <option value="">Select Order</option>		<!-- added value & selected attr -->	
 				<option value="-id">Desending</option>
 				<option value="id">Asending</option>  
 			</select>
 		</div>
 		<div class="col-md-3">
 			<label>Select Status</label>
-			<select class="form-control" ng-model="status"> 
-                <option>Select Status</option>			
+			<select class="form-control" ng-model="status">
+                <option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
 				<option value="1">Active</option>
 				<option value="0">Deleted</option>   
 			</select>
 		</div>
 		<div class="col-md-3">
 		<label>Filter By Featured</label>
-			<select class="form-control" ng-model="featured">            
-				<option selected>Select Featured</option>
-				<option value="1" >Featured</option>  
+			<select class="form-control" ng-model="featured">
+				<option value="" selected>Select Featured</option> <!-- added value & selected attr -->
+				<option value="1" >Featured</option>
 				<option value="0">Not Featured</option> 
 			</select>
 		</div>
 		<div class="col-md-3">
 			<label>Select Domain :</label>
 			<select class="form-control">            
-				<option>All</option>
-				<option>www.jaidevlandmarks.com</option>  
-				<option>www.hinjewadiproperties.com</option>  
+				<option value="">All</option>
+				<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
+				<option value="www.hinjewadiproperties.com">www.hinjewadiproperties.com</option>  
 				<option>www.parkstreetwakad.com</option>  
 				<option>www.propertydemand.com</option>  
 				<option>www.parktitanium.com</option>  
@@ -64,7 +64,7 @@
 				<tbody>
 						<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
 							<td>{{ $index + 1 }}</td>
-							<td><img ng-src="{{x.prop_image}}"></td>
+							<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-responsive"></td> <!-- ng-click added for modal, class added for responsive image -->
 							<td>
 								<table>
 									<tr>

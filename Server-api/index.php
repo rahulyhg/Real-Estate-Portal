@@ -26,8 +26,7 @@ $app->post('/forgot','adminForgot');
 
 //view web response
 function responseData($id=null)
-{
-	
+{	
 	if($id===Null){
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_response")or die(mysql_error());
 		$data = array();
@@ -36,12 +35,10 @@ function responseData($id=null)
 		{
 			array_push($data,$row);
 		}
-	}else{
-	
+	}else{	
 		$where="WHERE id= ".$id;
 		$selectSQL=mysql_query("SELECT * FROM 2_real_response $where");
-		$data=mysql_fetch_assoc($selectSQL);
-		
+		$data=mysql_fetch_assoc($selectSQL);		
 	}
 	echo json_encode($data);	
 }
@@ -49,8 +46,7 @@ function responseData($id=null)
 function responseUpdate($status, $id){
 	//echo $status." ".$id;
 	
-	$updateSQL=mysql_query("UPDATE  2_real_response SET  `status`= '$status' where id='$id' ")or die(mysql_error());
-	
+	$updateSQL=mysql_query("UPDATE  2_real_response SET  `status`= '$status' where id='$id' ")or die(mysql_error());	
 		if($updateSQL){
 		  echo "Msg status added as $status successfully";
 		}else{
@@ -59,44 +55,36 @@ function responseUpdate($status, $id){
 }
 //view project response
 function projectData($id=null)
-{
-	
+{	
 	if($id===Null){
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_project")or die(mysql_error());
-		$data = array();
-		
+		$data = array();		
 		while($row=mysql_fetch_assoc($selectSQL))
 		{
 			array_push($data,$row);
 		}
-	}else{
-	
+	}else{	
 		$where="WHERE id= ".$id;
 		$selectSQL=mysql_query("SELECT * FROM 2_real_project $where");
-		$data=mysql_fetch_assoc($selectSQL);
-		
+		$data=mysql_fetch_assoc($selectSQL);		
 	}
 	echo json_encode($data);	
 }
 
 //view property response
 function propertyData($id=null)
-{
-		
+{		
 	if($id===Null){
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_property")or die(mysql_error());
-		$data = array();
-		
+		$data = array();		
 		while($row=mysql_fetch_assoc($selectSQL))
 		{
 			array_push($data,$row);
 		}
-	}else{
-	
+	}else{	
 		$where="WHERE id= ".$id;
 		$selectSQL=mysql_query("SELECT * FROM 2_real_property $where");
-		$data=mysql_fetch_assoc($selectSQL);
-		
+		$data=mysql_fetch_assoc($selectSQL);		
 	}
 	echo json_encode($data);	
 }
@@ -188,15 +176,12 @@ function addproperty()
 }
 
 //update property details
- function updateProperty($id=null)
- 
+ function updateProperty($id=null) 
  {
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-		
+		$postdata=json_decode($body);		
 			$propEdit=array();
-
 			foreach($postdata as $key => $value)
 			{
 						array_push($propEdit,$key."='".$value."'");
@@ -210,8 +195,6 @@ function addproperty()
 		}else{
 			 mysql_error();
 		}	
-
- 
  }
 
  //add new project
@@ -289,11 +272,8 @@ function adminlogin()
 				echo "valid user";
 			}else{
 				echo "invalid user";
-			}
-			
-			
+			}			
 }
-
 //forgot password
 
 function adminForgot()
@@ -314,27 +294,8 @@ function adminForgot()
 			else
 			{
 				echo "Invalid email ID";
-			} 
-			
-}
-		
-
-/*
-function viewRecord()
-{
-	$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-		
-		$name= mysql_real_escape_string($postdata->first_name,$postdata->last_name);
-	    $record=mysql_query("select first_name,last-name from 2_real_response WHERE first_name='$name' AND last-name='$name' ") or die (mysql_error());
-			
-			$recordData=mysql_num_rows($record);		
-	}
-
-*/
-
-		
+			} 			
+}			
 		
 $app->run();
  ?>
