@@ -1,7 +1,7 @@
 <section ng-controller="propertyController">
 <div class="row">
 	<div class="col-md-12">
-<div ng-include=" 'modules/component/innernav.html' "></div>
+    <div ng-include=" 'modules/component/innernav.html' "></div>
 <div class="row ">
 </div>
 <div class="row">
@@ -20,10 +20,8 @@
 				<label for="Featured" class="col-md-2 ">* Featured </label>
 				<div class="col-md-4">
 				  <input type="radio" name="featured" value="Yes" ng-model="property.featured" checked="true">Yes
-				  <input type="radio" name="featured" value="No" checked="false" ng-model="property.featured">No
-				 
-				</div>
-				
+				  <input type="radio" name="featured" value="No" checked="false" ng-model="property.featured">No				 
+				</div>				
 		  </div>
 		  <div class="form-group">
 				<label for="Category" class="col-md-2 ">* Property Category </label>
@@ -38,8 +36,7 @@
 					</select>
 					<span style="color:red" ng-show="myForm.proCate.$dirty && myForm.proCate.$invalid">
 					  <span ng-show="myForm.proCate.$error.required">Property selection is required .</span>
-					</span>
-				 
+					</span>				 
 				</div>
 		  </div>
 		  <div class="form-group">
@@ -50,8 +47,7 @@
 					  <span ng-show="myForm.proType.$error.required">Property type  is required .</span>
 					</span>
 				</div>
-		  </div>
-		  
+		  </div>		  
 		  <div class="form-group">
 				<label for="BuiltArea" class="col-md-2 ">* Built Up Area </label>
 				<div class="col-md-6">
@@ -68,17 +64,13 @@
 						<option>Bigha</option>
 						<option>Hectares</option>
 						<option>Guntha</option>
-						<option>Marla</option>
-						
+						<option>Marla</option>						
 					</select>
 					<span style="color:red" ng-show="myForm.builtArea.$dirty && myForm.builtArea.$invalid">
 					  <span ng-show="myForm.builtArea.$error.required">Built Area is required .</span>
-					</span>
-				 
+					</span>				 
 				</div>
-				
-		  </div>
-		  
+						  </div>		  
 		  <div class="form-group">
 				<label for="PlotArea" class="col-md-2 ">* Plot/ Land Area</label>
 				<div class="col-md-6">
@@ -95,22 +87,17 @@
 						<option>Bigha</option>
 						<option>Hectares</option>
 						<option>Guntha</option>
-						<option>Marla</option>
-						
+						<option>Marla</option>						
 					</select>
 					<span style="color:red" ng-show="myForm.plotArea.$dirty && myForm.areaUnit.$invalid">
 					  <span ng-show="myForm.areaUnit.$error.required">Built Area is required .</span>
-					</span>
-				 
-				</div>
-				
-		  </div>
-		  
+					</span>				 
+				</div>				
+		  </div>		  
 		  <div class="form-group">
 				<label for="CarpetArea" class="col-md-2 ">Carpet Area </label>
 				<div class="col-md-6">
-					<input type="text" id="CarpetArea" class="form-control" name="carpetArea" ng-model="property.carpet_area" required>
-				 
+					<input type="text" id="CarpetArea" class="form-control" name="carpetArea" ng-model="property.carpet_area" required>				 
 				</div>
 				<div class="col-md-2">
 					<select class="form-control" ng-model="property.carpet_unit" required>
@@ -123,17 +110,13 @@
 						<option>Bigha</option>
 						<option>Hectares</option>
 						<option>Guntha</option>
-						<option>Marla</option>
-						
+						<option>Marla</option>						
 					</select>
 					<span style="color:red" ng-show="myForm.carpetArea.$dirty && myForm.carpetArea.$invalid">
 					  <span ng-show="myForm.carpetArea.$error.required">Carpet Area is required .</span>
-					</span>
-				 
-				</div>
-				
-		  </div>
-		  
+					</span>				 
+				</div>				
+		  </div>	  
 		  <div class="form-group">
 				<label for="PropPrice" class="col-md-2 ">Property Price: </label>
 				<div class="col-md-6">
@@ -145,18 +128,13 @@
 						<option selected>In Rupees</option>
 						<option>Thousand</option>
 						<option>Lac</option>
-						<option>Carore</option>
-						
-						
+						<option>Carore</option>					
 					</select>
 					<span style="color:red" ng-show="myForm.propertyPrice.$dirty && myForm.propertyPrice.$invalid">
 					  <span ng-show="myForm.propertyPrice.$error.required">Property Price is required .</span>
-					</span>
-				 
-				</div>
-				
-		  </div>
-		  
+					</span>				 
+				</div>				
+		  </div>		  
 		  <div class="form-group">
 				<label for="Bedrooms" class="col-md-2 ">Bedrooms </label>
 				<div class="col-md-6">
@@ -171,17 +149,13 @@
 						<option>7</option>
 						<option>8</option>
 						<option>9</option>
-						<option>10</option>
-						
-						
+						<option>10</option>			
 					</select>
 				 <span style="color:red" ng-show="myForm.Bedrooms.$dirty && myForm.Bedrooms.$invalid">
 					  <span ng-show="myForm.Bedrooms.$error.required">Select Number of Bedrooms  .</span>
 					</span>
 				</div>
-				No's
-				
-				
+				No's				
 		  </div>
 		  <div class="form-group">
 				<label for="Bathrooms" class="col-md-2 ">Bathrooms </label>
@@ -197,45 +171,30 @@
 						<option>7</option>
 						<option>8</option>
 						<option>9</option>
-						<option>10</option>
-						
-						
+						<option>10</option>						
 					</select>
 					 <span style="color:red" ng-show="myForm.Bathrooms.$dirty && myForm.Bathrooms.$invalid">
 					  <span ng-show="myForm.Bathrooms.$error.required">Select Number of Bathrooms  .</span>
-					</span>
-				 
+					</span>				 
 				</div>
-				No's
-				
-				
+				No's				
 		  </div>
 		  <div class="form-group">
 			  <label for="imageInputFile" class="col-md-2" >* Property Images </label>
 			<div class="col-md-6">
 				
 				<input type="file"  id="imageInputFile" class="form-control" id="imageInputFile" ng-model="property.prop_image">
-			</div>
-			
-		</div>
-			
-		  
-		  
-		  
-		
-			
-			 <!-- end property  -->
-			
+			</div>			
+		</div>			
+			 <!-- end property  -->			
 <!--  property Location -->
 			<hr>
-			<h3>Property Location:</h3><hr width="100%"></hr>
-	
+			<h3>Property Location:</h3><hr width="100%"></hr>	
 		  <div class="form-group">
 				<label for="country" class="col-md-2 ">Country</label>
 				<div class="col-md-6">
 				  <input type="text" id="country" class="form-control" name="Country" ng-model="property.country" value="INDIA">
-				</div>
-			
+				</div>			
 		  </div>
 		  <div class="form-group">
 				<label for="State" class="col-md-2 ">* State </label>
@@ -269,26 +228,21 @@
 						<option>Nagaland</option>
 						<option>Udisha</option>
 						<option>Pondecheeri</option>
-						<option>Panjab</option>
-						
+						<option>Panjab</option>						
 						<option>Rajastan</option>
-						<option>Sikkim</option>
-						
+						<option>Sikkim</option>						
 						<option>Tamil Nadu</option>
 						<option>Tripura</option>
 						<option>Uttar Pradesh</option>
 						<option>Uttaranchan</option>
 						<option>West Bengal</option>
-						<option>Goa</option>
-						
+						<option>Goa</option>						
 					</select> 
 					<span style="color:red" ng-show="myForm.State.$dirty && myForm.State.$invalid">
 					  <span ng-show="myForm.State.$error.required">State is required .</span>
 					</span>
-				</div>
-				
-		  </div>
-		  
+				</div>				
+		  </div>		  
 		  <div class="form-group">
 				<label for="City" class="col-md-2 ">* City</label>
 				<div class="col-md-6">
@@ -296,8 +250,7 @@
 					<span style="color:red" ng-show="myForm.City.$dirty && myForm.City.$invalid">
 					  <span ng-show="myForm.City.$error.required">City is required .</span>
 					</span>
-				</div>
-				
+				</div>				
 		  </div>
 		  <div class="form-group">
 				<label for="address" class="col-md-2 ">* Address  </label>
@@ -306,12 +259,9 @@
 					<p>Number of characters left: <span ng-bind="left()"></span></p>
 					<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
 					  <span ng-show="myForm.address.$error.required">Address is required .</span>
-					</span>
-				 
-				</div>
-				
-		  </div>
-		  
+					</span>				 
+				</div>				
+		  </div>		  
 		  <div class="form-group">
 				<label for="Area" class="col-md-2 ">*  Area/Location </label>
 				<div class="col-md-6">
@@ -319,12 +269,9 @@
 					<span style="color:red" ng-show="myForm.Area.$dirty && myForm.Area.$invalid">
 					  <span ng-show="myForm.Area.$error.required">Area is required .</span>
 					</span>
-				</div>
-				
-		  </div>
-		  
-		<!--  property Location-->
-		
+				</div>				
+		  </div>		  
+		<!--  property Location-->		
 		<!--  Discription Title-->	
 		<hr>
 			<h3>Discription Title:</h3><hr width="100%"></hr>
@@ -332,38 +279,29 @@
 				<label for="propTitle" class="col-md-2 ">* Property Title </label>
 				<div class="col-md-6">
 					<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" col="8" rows="4"></textarea>
-					<p>Number of characters left:255 <span ng-bind="left()"></span></p>
-				 
-				</div>
-				
-			</div>
-			
+					<p>Number of characters left:255 <span ng-bind="left()"></span></p>				 
+				</div>				
+			</div>			
 			<div class="form-group">
 				<label for="browsertitle" class="col-md-2">* Browser Title<br><small>( Display in your website )</small></label>
 				<div class="col-md-6">
 					<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle" col="8" rows="4"></textarea>
-					<p>Number of characters left:255 <span ng-bind="left()"></span></p>
-				 
-				</div>
-				
+					<p>Number of characters left:255 <span ng-bind="left()"></span></p>				 
+				</div>				
 			</div>
 			<div class="form-group">
 				<label for="metaDis" class="col-md-2">* Meta Discription </label>
 				<div class="col-md-6">
 					<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc" col="8" rows="4" ></textarea>
-					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
-				 
-				</div>
-				
+					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>				 
+				</div>				
 			</div>
 			<div class="form-group">
 				<label for="metaKey" class="col-md-2">* Meta Keywords </label>
 				<div class="col-md-6">
 					<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" col="8" rows="4"></textarea>
-					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
-				 
-				</div>
-				
+					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>				 
+				</div>				
 			</div>
 			<div class="form-group">
 				<label for="projName" class="col-md-2">* Project Name </label>
@@ -372,18 +310,14 @@
 						<option selected="true" selected >other</option>
 				 </select>
 				</div>
-			</div>
-			
+			</div>			
 			<div class="form-group">
 				<label for="propDis" class="col-md-2">* Property Discription  </label>
 				<div class="col-md-6">
 					<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" col="8" rows="5"></textarea>
-					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>
-				 
-				</div>
-				
-			</div><!-- property discription -->
-			
+					<p>Number of characters left:2000 <span ng-bind="left()"></span></p>				 
+				</div>				
+			</div><!-- property discription -->			
 		<!-- property contact details -->
 		<hr>
 		<h3>Property contact Detail:</h3><hr width="100%"></hr>
@@ -394,9 +328,7 @@
 							<span style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
 							  <span ng-show="myForm.Name.$error.required">Name is required .</span>
 							</span>
-						</div>
-						
-						
+						</div>						
 				  </div>
 				  <div class="form-group">
 						<label for="Contact_No" class="col-md-2"> * Contact No:</label>
@@ -405,9 +337,7 @@
 							<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
 							  <span ng-show="myForm.Contact.$error.required">Contact is required .</span>
 							</span>
-						</div>
-						
-						
+						</div>						
 				  </div>
 				  <div class="form-group">
 						<label for="Email" class="col-md-2 ">* Email ID:</label>
@@ -417,9 +347,7 @@
 							  <span ng-show="myForm.Email.$error.required">Email is required.</span>
 							  <span ng-show="myForm.Email.$error.email">Invalid email address.</span>
 							  </span>
-						</div>
-						
-						
+						</div>							
 				  </div>
 				  <div class="form-group">
 						<label for="Address" class="col-md-2 "> * Address </label>
@@ -427,11 +355,8 @@
 							<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" >
 							</textarea>
 							<p>Number of characters left:255 <span ng-bind="left()"></span></p>
-						</div>
-						
-						
-				  </div>
-				 
+						</div>				
+				  </div>				 
 		 <!-- property contact details -->
 		  <hr>
 		  <h3>Optional Property Details:</h3><hr width="100%"></hr>
@@ -443,10 +368,8 @@
 						<option selected="true">Under Construction</option>
 						<option selected="true">New Construction</option>
 							</select>
-						</div>
-						
-				</div>
-				
+						</div>					
+				</div>				
 				<div class="form-group">
 						<label for="Furnished" class="col-md-2 ">Furnished</label>
 						<div class="col-md-6">
@@ -466,7 +389,7 @@
 						<option selected="true">Others</option>
 					</select>
 						</div>
-				</div>
+						</div>
 				<div class="form-group">
 						<label for="TotFloor" class="col-md-2 ">Total Number of Floors</label>
 						<div class="col-md-6">
@@ -487,7 +410,6 @@
 					</select>
 						</div>
 				</div>
-				
 		  
 		<!--Land  Mark -->	
 		<hr>
@@ -495,35 +417,30 @@
 				<div class="form-group">
 						<label for="Hospitals" class="col-md-2 ">Hospitals </label>
 						<div class="col-md-6">
-							<input type="text"  id="Hospitals" class="form-control" name="Hospitals" ng-model="property.hospital" >
-						
+							<input type="text"  id="Hospitals" class="form-control" name="Hospitals" ng-model="property.hospital" />						
 						</div>	
 						 kms
 				  </div>
 				  <div class="form-group">
 						<label for="Airport" class="col-md-2">  Airport </label>
 						<div class="col-md-6">
-							<input type="text" id="Airport" class="form-control"  name="Airport" ng-model="property.airport" >
-						 
+							<input type="text" id="Airport" class="form-control"  name="Airport" ng-model="property.airport" >						 
 						</div>
-						kms
-						
+						kms						
 				  </div>
 				  <div class="form-group">
 						<label for="RailwayStation" class="col-md-2 ">  Railway Station</label>
 						<div class="col-md-6">
 							<input type="text" id="RailwayStation" class="form-control" name="RailwayStation" ng-model="property.railway" > 
 						</div>
-						kms
-						
+						kms						
 				  </div>
 				  <div class="form-group">
 						<label for="School" class="col-md-2 ">  School </label>
 						<div class="col-md-6">
 							<input type="text" id="School" class="form-control" name="School" ng-model="property.school" > 
 						</div>
-						kms
-						
+						kms						
 				  </div>
 				<!--land mark-->
 		  <!--Amenities-->
@@ -563,12 +480,10 @@
 						<td>Servent Quarters</td>
 						<td><input type="checkbox" name="club" value="club" ng-model="property.club"></td>
 						<td>Club House</td>
-					</tr>	
-					
+					</tr>						
 				</table>
 				</div>
-		  </div> <!--end Amenities-->
-		  
+		  </div> <!--end Amenities-->		  
 		  <!--Amenities-->
 		  <hr>
 		  <h3>Select Sites:</h3><hr width="100%"></hr>
@@ -588,10 +503,10 @@
 					<div class="col-md-offset-6 col-md-6">
 					  <button type="submit" ng-click="addprop()" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
 						myForm.email.$dirty && myForm.email.$invalid">Submit</button>
+						<button type="submit" ng-click="update()" class="btn btn-primary text-center " >Update</button>
 					</div>
 				</div>
-		  </form>
-		
+		  </form>		
 	</div>
 	</div>
 </section>

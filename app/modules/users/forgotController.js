@@ -1,9 +1,7 @@
 'use strict';
-
 define(['app', 'css!modules/home/home'], function (app) 
    {
         var injectParams = ['$scope', '$injector','$http'];
-
     // This is controller for this view
 	    var forgotController = function ($scope, $injector, $http) 
 		   {
@@ -17,7 +15,7 @@ define(['app', 'css!modules/home/home'], function (app)
 				   {
 				     alert(response);		
 		           })
-		    }    
+				   }    
            }
 	
 	// Inject controller's dependencies

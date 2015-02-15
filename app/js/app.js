@@ -33,9 +33,9 @@ define(['angular',
 				$routeProvider
 					.when('/home', route.resolve({controller:'home', template: 'home', directive: 'vilas'}, 'home/'))
                 
-				 .when('/response/:type/:status', route.resolve({controller:'response', template: 'response' }, 'response/'))
+				 .when('/response/:type?/:status?/:id?', route.resolve({controller:'response', template: 'response' }, 'response/'))
 				 .when('/property', route.resolve({controller:'property', template: 'property' }, 'property/'))
-				 .when('/addproperty', route.resolve({controller:'property', template: 'addproperty' }, 'property/'))
+				 .when('/addproperty/:id?', route.resolve({controller:'property', template: 'addproperty' }, 'property/'))
 				 .when('/project', route.resolve({controller:'project', template: 'project' }, 'project/'))
 				 .when('/addproject', route.resolve({controller:'project', template: 'addproject' }, 'project/'))
 				 .when('/login', route.resolve({controller:'login', template: 'login' }, 'users/'))

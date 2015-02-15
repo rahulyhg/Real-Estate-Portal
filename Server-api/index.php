@@ -13,6 +13,7 @@ $app->response->headers->set('Content-Type', 'application/json');
 $app->get('/response(/:id)','responseData');
 $app->get('/project(/:id)','projectData');
 $app->get('/property(/:id)','propertyData');
+$app->put('/response/:status/:id','responseUpdate');
 $app->post('/register','registerUser');
 $app->put('/editprofile/:id','registerUpdate');
 $app->post('/addproject','addProject');
@@ -20,6 +21,9 @@ $app->put('/editproject/:id','updateProject');
 $app->post('/addproperty','addProperty');
 $app->put('/editproperty/:id','updateProperty');
 $app->post('/login','adminlogin');
+$app->post('/forgot','adminForgot');
+
+
 //view web response
 function responseData($id=null)
 {
@@ -42,6 +46,17 @@ function responseData($id=null)
 	echo json_encode($data);	
 }
 
+function responseUpdate($status, $id){
+	//echo $status." ".$id;
+	
+	$updateSQL=mysql_query("UPDATE  2_real_response SET  `status`= '$status' where id='$id' ")or die(mysql_error());
+	
+		if($updateSQL){
+		  echo "Msg status added as $status successfully";
+		}else{
+			 mysql_error();
+		}			
+}
 //view project response
 function projectData($id=null)
 {
@@ -113,14 +128,10 @@ function registerUser()
 	else
 	{
 	 mysql_error();
-	}	
-		
+	}			
 }
-
-
 //update User registration details 
- function registerUpdate($id=null)
- 
+ function registerUpdate($id=null) 
  {
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
@@ -131,21 +142,16 @@ function registerUser()
 			
 			foreach($postdata as $key => $value)
 			{
-						array_push($regEditKey,$key."='".$value."'");
-						
+						array_push($regEditKey,$key."='".$value."'");						
 			}
-			$data=implode(",",$regEditKey);
-			
-				
-		$updateSQL=mysql_query("UPDATE  users SET '$data' where id='$id'")or die(mysql_error());
-	
+			$data=implode(",",$regEditKey);				
+		$updateSQL=mysql_query("UPDATE  users SET '$data' where id='$id'")or die(mysql_error());	
 		if($updateSQL){
 		  echo "Your profile updated  successfully......";
 		}else{
 			 mysql_error();
-		}	
-		
-  }
+		}		
+                }
 	
 	
 // Add new Properties
@@ -238,10 +244,8 @@ function addProject()
 	else
 	{
 	 mysql_error();
-	}	
-			
+	}				
 }
-
 //update project details
  function updateProject($id=null)
  
@@ -265,14 +269,12 @@ function addProject()
 		  echo "project details updated successfully";
 		}else{
 			 mysql_error();
-		}	
-		
-	}	
-	
+		}			
+	}		
 //Login
 function adminlogin()
 {
-		$app= new \Slim\Slim();
+	$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
 		//to accept data into login form
@@ -283,8 +285,7 @@ function adminlogin()
 			$uname=mysql_query("select user_name From users");
 			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
 			$usersNo = mysql_num_rows($email);
-			if($usersNo === 1)
-			{
+			if($usersNo === 1){
 				echo "valid user";
 			}else{
 				echo "invalid user";
@@ -293,5 +294,47 @@ function adminlogin()
 			
 }
 
+//forgot password
+
+function adminForgot()
+{
+		$app= new \Slim\Slim();
+		$body = $app->request->getBody();
+		$postdata=json_decode($body);
+		//to accept data into login form
+		//print_r($postdata) ;
+		$user= mysql_real_escape_string($postdata->user_email);
+			$email=mysql_query("select user_email from users WHERE user_email='$user' ") or die (mysql_error());
+			
+			$totrow=mysql_num_rows($email);
+			
+			if($totrow==1){
+				echo "your password send your email ID";
+			}
+			else
+			{
+				echo "Invalid email ID";
+			} 
+			
+}
+		
+
+/*
+function viewRecord()
+{
+	$app= new \Slim\Slim();
+		$body = $app->request->getBody();
+		$postdata=json_decode($body);
+		
+		$name= mysql_real_escape_string($postdata->first_name,$postdata->last_name);
+	    $record=mysql_query("select first_name,last-name from 2_real_response WHERE first_name='$name' AND last-name='$name' ") or die (mysql_error());
+			
+			$recordData=mysql_num_rows($record);		
+	}
+
+*/
+
+		
+		
 $app->run();
-?>
+ ?>

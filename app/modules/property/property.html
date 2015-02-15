@@ -1,32 +1,35 @@
 
 <section ng-controller="propertyController">
+   <div ng-include="'modules/component/innernav.html'"></div>
 	<div class="row">
-		<div class="col-md-12">
-			<div ng-include="'modules/component/innernav.html'">
-			</div>
+		<div class="col-md-3">	
+            <label>Search <label>		
+			<input type="text" "ng-model="searchProp" placeholder="search"/>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
+	<div class="col-md-9"> 
+	    <div class="row">	  
+		 <div class="col-md-3">
 			<label>Sort by Order</label>
-			<select class="form-control">            
-				<option>Desending</option>
-				<option>Asending</option>  
+			<select class="form-control" ng-model="id"> 
+                <option>Select Order</option>			
+				<option value="-id">Desending</option>
+				<option value="id">Asending</option>  
 			</select>
 		</div>
 		<div class="col-md-3">
 			<label>Select Status</label>
-			<select class="form-control">            
-				<option>Active</option>
-				<option>Deleted</option>  
+			<select class="form-control" ng-model="status"> 
+                <option>Select Status</option>			
+				<option value="1">Active</option>
+				<option value="0">Deleted</option>   
 			</select>
 		</div>
 		<div class="col-md-3">
 		<label>Filter By Featured</label>
-			<select class="form-control">            
-				<option>Select Featured</option>
-				<option>Featured</option>  
-				<option>Not Featured</option> 
+			<select class="form-control" ng-model="featured">            
+				<option selected>Select Featured</option>
+				<option value="1" >Featured</option>  
+				<option value="0">Not Featured</option> 
 			</select>
 		</div>
 		<div class="col-md-3">
@@ -40,10 +43,12 @@
 				<option>www.parktitanium.com</option>  
 			</select>
 		</div>
+	</div>	
 	</div>
+</div>
 	<hr>
-	<div class="row">
-		<div class="col-md-12">
+		<div class="row">
+		<div class="col-md-12">		    
 			<table class="table table-bordered table-responsive">
 				<thead>
 					<tr>
@@ -57,7 +62,7 @@
 					</tr>
 				</thead>
 				<tbody>
-						<tr ng-repeat="x in properties">
+						<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
 							<td>{{ $index + 1 }}</td>
 							<td><img ng-src="{{x.prop_image}}"></td>
 							<td>
@@ -83,7 +88,7 @@
 							<td>{{x.featured}}</td>
 							<td>{{x.status}}</td>
 							<td>{{x.other_domain}}</td>				
-							<td><a href="#property/edit/{{x.id}}">Edit</a></td>
+							<td><a href="#addproperty/{{x.id}}">Edit</a></td>
 						</tr>
 				</tbody>
 			</table>

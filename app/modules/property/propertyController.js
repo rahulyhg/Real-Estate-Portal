@@ -1,5 +1,4 @@
 'use strict';
-
 define(['app', 'css!modules/property/property'], function (app) {
     var injectParams = ['$scope', '$injector','$routeParams','$http'];
 
@@ -10,13 +9,11 @@ define(['app', 'css!modules/property/property'], function (app) {
 		$http.get("../server-api/index.php/property/"+$routeParams.type)
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
-		});
-		
-	}else{
-		
+		});		
+	}else{		
 		$http.get("../server-api/index.php/property")
 		.success(function(response) {$scope.properties = response;
-			console.log($scope.properties);
+			//console.log($scope.properties);
 		});
 		
 		// Add property
@@ -34,21 +31,17 @@ define(['app', 'css!modules/property/property'], function (app) {
 	}
 	if($routeParams.id){
 		//Update Property
-		$http.get("../server-api/index.php/editproperty/"+$routeParams.id)
+		$http.get("../server-api/index.php/property/"+$routeParams.id)
 		.success(function(response) {
 			$scope.property = response;
 			$scope.reset = function() {
 				$scope.property = angular.copy($scope.property);
 			};
 			$scope.reset();
-			console.log($scope.property);
-			
-		}).error(function(err){
-			console.log(err);
-		});
-		
+			console.log($scope.property);			
+		})		
 		$scope.update = function(){
-			$http.put("server-api/index.php/editproperty/"+$routeParams.id,$scope.property)
+			$http.put("../server-api/index.php/editproperty/"+$routeParams.id,$scope.property)
 			.success(function(response) {
 				alert(response);
 			});
