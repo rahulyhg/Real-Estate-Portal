@@ -31,17 +31,16 @@ define(['angular',
 				var route = routeResolverProvider.route;
 			
 				$routeProvider
-					.when('/home', route.resolve({controller:'home', template: 'home', directive: 'vilas'}, 'home/'))
-                
+					.when('/home', route.resolve({controller:'home', template: 'home', directive: 'vilas'}, 'home/'))                
 				 .when('/response/:type?/:status?/:id?', route.resolve({controller:'response', template: 'response' }, 'response/'))
 				 .when('/property', route.resolve({controller:'property', template: 'property' }, 'property/'))
+				 .when('/viewProperty/:id?', route.resolve({controller:'property', template: 'viewProperty' }, 'property/'))
 				 .when('/addproperty/:id?', route.resolve({controller:'property', template: 'addproperty' }, 'property/'))
 				 .when('/project', route.resolve({controller:'project', template: 'project' }, 'project/'))
 				 .when('/addproject', route.resolve({controller:'project', template: 'addproject' }, 'project/'))
 				 .when('/login', route.resolve({controller:'login', template: 'login' }, 'users/'))
 				 .when('/forgot', route.resolve({controller:'forgot', template: 'forgot' }, 'users/'))
 				 .when('/register', route.resolve({controller:'register', template: 'register' }, 'users/'))
-				
                 .otherwise({ redirectTo: '/login' });
 	}]);
 	app.run(['$location', '$rootScope', function($location, $rootScope) {

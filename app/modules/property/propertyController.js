@@ -69,6 +69,25 @@ define(['app', 'css!modules/property/property'], function (app) {
 			});
 		}
 	}
+	$scope.view1 = function () {
+			var modalInstance = $modal.open({
+				templateUrl: '<span class="close" ng-click="cancel()">X</span> <a href="#/viewProperty"', /* for open template outside current template */
+				//template: '<span class="close" ng-click="cancel()">X</span><a class="responsive" href="#/viewProperty"></a>', /* inline template */
+				controller: 'propertyController', /* apply controller to modal template */
+				size: 'lg', /* bootstrap modal size - empty for default, lg for large, sm for small */
+				resolve: {
+					items: function () {
+					return $scope.items;
+					}
+				}
+			});
+			modalInstance.result.then(function (selectedItem) {
+				//$scope.selected = selectedItem;
+				$log.info("selected.")
+			}, function () {
+				$log.info('Modal dismissed at: ' + new Date());
+			});
+		};
 		};	
     
 	// Inject controller's dependencies
