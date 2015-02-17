@@ -89,7 +89,7 @@
 							<td>{{x.status}}</td>
 							<td>{{x.other_domain}}</td>				
 							<td><a href="#addproperty/{{x.id}}" class="btn btn-info"> Edit </a><br><br>
-							<a href="#viewProperty/{{x.id}}" ng-click="view1()" class="btn btn-success responsive"> View</a></td>	
+							<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive"> View</a></td>	
 					</tr>				
 				</tbody>
 			</table>				

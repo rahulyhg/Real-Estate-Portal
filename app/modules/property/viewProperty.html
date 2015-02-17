@@ -1,47 +1,107 @@
-                        <div class="row">   
-						   <div class="col-md-12">
-							   <h2>Property Details</h2>
-							     
-                                 <div class="row">								 
-									<label class="col-md-3">Image</label>
-										<p class="col-md-9">{{property.prop_image}}</p>
-								 </div>
-                                 <div class="row">								 
-									<label class="col-md-3">Property Title</label>
-										<p class="col-md-9">{{property.title}}</p>	
-								 </div>
-                                 <div class="row">								 
-                                    <label class="col-md-3">Property For</label>						
-									    <p class="col-md-9">{{property.property_for}}</p>
-								  </div>
-                                  <div class="row">								  
-                                        <label class="col-md-3">Type</label>							
-										<p class="col-md-9">{{property.type}}</p>
-									</div>
-                                    <div class="row">									
-										<label class="col-md-3">Address</label>
-										<p class="col-md-9">{{property.address}}</p>
-									</div>
-                                     <div class="row">									
-										<label class="col-md-3">Location</label>
-										<p class="col-md-9">{{property.location}}</p>
-									</div>	
-									<div class="row">
-										<label class="col-md-3">City</label>
-										<p class="col-md-9">{{property.city}}</p>
-									</div>
-                                    <div class="row"> 									
-                                        <label class="col-md-3">Bathrooms</label>						
-										<p class="col-md-9">{{property.bathrooms}}</p>
-									</div>
-                                    <div class="row">									
-										<label class="col-md-3">Bedrooms</label>
-										<p class="col-md-9">{{property.bedrooms}}</p>
-									</div>
-                                    <div class="row"> 									
-										<label class="col-md-3">Price</label>
-										<p class="col-md-9">{{property.price}}</p>		
-                                      </div>
-									</div>	
-								</div>	
-																					
+<section ng-controller="propertyController">
+<h3>{{property.title}}</h3>
+<div class="content">
+	<blockquote>
+		<p>{{property.prop_desc}}</p>
+	</blockquote>
+</div>
+<div class="row">
+	<div class="col-md-10">
+		<div class="row">
+			<div class="col-md-4">Property For</div>
+			<div class="col-md-8">{{property.property_for}}</div>			
+		</div>
+		<div class="row">
+			<div class="col-md-4">Property Type</div>
+			<div class="col-md-8">{{property.type}}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">Location</div>
+			<div class="col-md-8">{{property.location}}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">Area</div>
+			<div class="col-md-8">{{property.buildup_area}}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">Price</div>
+			<div class="col-md-8">{{property.price}}</div>
+		</div>	
+		<div class="row">	
+			<div class="col-md-4">Contact US!</div>
+		</div>			
+	</div>
+	<div class="col-md-2">
+		<img src="img1.jpg" width="100%">
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Property Built Up Details</h3>
+		<table class="table table-bordered table-responsive">
+			<thead>
+				<th>Furnishing</th>
+				<th>Transaction</th>
+				<th>Bedrooms</th>
+				<th>Bathrooms</th>
+				<th>Reserved Parking</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{property.furnished}}</td>
+					<td>{{property.transaction_type}}</td>
+					<td>{{property.bedrooms}}</td>
+					<td>{{property.bathrooms}}</td>
+					<td>{{property.res_parking}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>	
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Amenities</h3>
+		<ul><li>{{property.power}}</li>		
+			<li>{{property.water}}</li>
+			<li>{{property.res_parking}}</li>
+			<li>{{property.security}}</li>
+			<li>{{property.quarters}}</li>
+		</ul>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Property Address</h3>
+		<p>{{property.address}}</p>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Property Seller Detail</h3>
+		<table class="table table-bordered table-responsive">
+			<tbody>
+				<tr>
+					<td>Contact Person</td>
+					<td>{{property.cont_name}}</td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td>{{property.contact}}</td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td>{{property.email}}</td>
+				</tr>
+				<tr>
+					<td>Contact Address</td>
+					<td>{{property.cont_address}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</section>

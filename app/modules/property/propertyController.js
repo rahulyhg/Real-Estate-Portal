@@ -1,21 +1,26 @@
 'use strict';
 define(['app', 'css!modules/property/property'], function (app) {
     var injectParams = ['$scope', '$injector','$routeParams','$http','$modal', '$log'];
-
     // This is controller for this view
 	var propertyController = function ($scope, $injector,$routeParams,$http, $modal, $log) {
 		
-		
-		$scope.open = function (url) {
+		$scope.open = function (url, propId) {
 			var modalInstance = $modal.open({
-				//templateUrl: url, /* for open template outside current template */
-				template: '<span class="close" ng-click="cancel()">X</span><img class="img-responsive" src="'+ url +'" />', /* inline template */
+				templateUrl: url, /* for open template outside current template */
+				//template: '<span class="close" ng-click="cancel()">X</span><img class="img-responsive" src="'+ url +'" />', /* inline template */
 				controller: 'propertyController', /* apply controller to modal template */
 				size: 'lg', /* bootstrap modal size - empty for default, lg for large, sm for small */
 				resolve: {
-					items: function () {
-					return $scope.items;
+					property : function (){
+						$http.get("../server-api/index.php/property/"+propId)
+						.success(function(response) {
+							return $scope.property = response;
+							console.log($scope.property);
+						});	
 					}
+					/* items: function () {
+					return $scope.items;
+					} */
 				}
 			});
 			modalInstance.result.then(function (selectedItem) {
@@ -27,8 +32,8 @@ define(['app', 'css!modules/property/property'], function (app) {
 		};
 		
 		
-		if($routeParams.type) {
-		$http.get("../server-api/index.php/property/"+$routeParams.type)
+		if($routeParams.id) {
+		$http.get("../server-api/index.php/property/"+$routeParams.id)
 		.success(function(response) {$scope.properties = response;
 			console.log($scope.properties);
 		});		
@@ -71,7 +76,7 @@ define(['app', 'css!modules/property/property'], function (app) {
 	}
 	$scope.view1 = function () {
 			var modalInstance = $modal.open({
-				templateUrl: '<span class="close" ng-click="cancel()">X</span> <a href="#/viewProperty"', /* for open template outside current template */
+				templateUrl: '<span class="close" ng-click="cancel()">X</span> <a href="#/viewProperty">', /* for open template outside current template */
 				//template: '<span class="close" ng-click="cancel()">X</span><a class="responsive" href="#/viewProperty"></a>', /* inline template */
 				controller: 'propertyController', /* apply controller to modal template */
 				size: 'lg', /* bootstrap modal size - empty for default, lg for large, sm for small */
