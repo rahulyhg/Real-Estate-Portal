@@ -23,22 +23,20 @@ define(['app', 'css!modules/home/home'], function (app) {
 				return ""
 			};
 		};
-		
+		 
 		//this request for single response data
 		if($routeParams.id) {
 			$http.get("../server-api/index.php/response/"+$routeParams.id)
-			.success(function(response) {$scope.response = response;
-			console.log(response);});
+			.success(function(response) {$scope.resopnse = response;});
 		}
 		
 		else{
 			//this request for all response data
 			$http.get("../server-api/index.php/response")
-			.success(function(response) {$scope.responses = response;
-			console.log($scope.responses);
+			.success(function(response) {$scope.resopnses = response;
+			console.log($scope.resopnses);
 			});
 		}
-		 //$scope.paramId =true;
 		$scope.setStatus = function(status, id){
 			$http.put("../server-api/index.php/response/" + status + "/" + id)
 			.success(function(response) {
