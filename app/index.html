@@ -12,12 +12,17 @@
     
 </head>
 
-<body>         
-	<div  ng-include="'modules/component/header.html'" class="style">	</div>	
-    <div ng-view class="container"></div>
-	<div  ng-include="'modules/component/footer.html'" class="style"></div>
-	<div id="app"></div>
-	
+<body>  
+	<header>
+		<div  ng-include="'modules/component/header.html'" class="style">	</div>	
+	</header>
+	<main>
+		<div ng-view class="container"></div>
+	</main>
+	<footer>
+		<div  ng-include="'modules/component/footer.html'" class="style"></div>
+		<div id="app"></div>
+	</footer>
 	    <!-- Require JS -->
     <script data-main="js/main" src="lib/requirejs/require.js"></script>    
     

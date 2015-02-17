@@ -1,0 +1,9 @@
+header {
+  background-color: rgba(0, 136, 204, 0.55);
+}
+header a {
+  margin-top: 10px;
+}
+header .im1 {
+  height: 70px;
+}

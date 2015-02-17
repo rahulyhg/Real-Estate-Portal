@@ -4,7 +4,7 @@ define(['angular',
 	'angularRoute',
 	'routeResolver',
 	'bootstrap',
-	'css!../css/bootstrap.min'
+	'css!../css/bootstrap.min','css!../css/mystyle.css'
 ], function(angular, angularRoute) {
 	// Declare app level module which depends on views, and components
 	var app =  angular.module('realEstate', [
