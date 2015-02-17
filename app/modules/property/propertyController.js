@@ -1,5 +1,5 @@
 'use strict';
-define(['app', 'css!modules/property/property'], function (app) {
+define(['app'], function (app) {
     var injectParams = ['$scope', '$injector','$routeParams','$http','$modal', '$log'];
     // This is controller for this view
 	var propertyController = function ($scope, $injector,$routeParams,$http, $modal, $log) {

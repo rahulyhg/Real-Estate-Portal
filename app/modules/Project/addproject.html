@@ -1,13 +1,11 @@
 
 <div ng-include="'modules/component/innernav.html'" ></div>
-	<div class="row" ng-controller="projectController">
+	<div class="row main-content" ng-controller="projectController">
 	<div class="col-md-12">
 		<form class="form-horizontal vertical-scrollbar" role="form" >		      
-			<h2>Project Info</h2>
-			
-			
+			<h2 class="text-center">Project Info</h2>
 			<div class="form-group">
-				    <label  for="projtitle" class="col-md-3">* &nbsp Project Title</label>
+				    <label  for="projtitle" class="col-md-3 text-right">* &nbsp Project Title</label>
 					    <div class="col-md-6">
                             
 							<textarea class="form-control" id="projtitle" rows="1" name="projtitle" ng-model="project.title" required> </textarea>
@@ -17,7 +15,7 @@
                         </div>
 				</div>
                 <div class="form-group">
-					<label for="browserTitle" class="col-md-3">* &nbsp Browser Title</label>	   <div class="col-md-6">
+					<label for="browserTitle" class="col-md-3 text-right">* &nbsp Browser Title</label>	   <div class="col-md-6">
 							<textarea class="form-control" id="browserTitle" rows="1" name="browserTitle" ng-model="project.browsertitle" required></textarea>
 							<span style="color:red" ng-show="myForm.browserTitle.$dirty && myForm.browserTitle.$invalid">
 							  <span ng-show="myForm.browserTitle.$error.required">Browser is required .</span>
@@ -25,7 +23,7 @@
 						</div>							
                 </div>
                 <div class="form-group">
-					<label for="metaKey" class="col-md-3">Meta Keywords</label> 
+					<label for="metaKey" class="col-md-3 text-right">Meta Keywords</label> 
 						<div class="col-md-6"> 
                             <textarea class="form-control" rows="3" name="metaKey" ng-model="project.metakey"  id="metaKey" required> </textarea>
 							<span style="color:red" ng-show="myForm.metaKey.$dirty && myForm.metaKey.$invalid">
@@ -34,7 +32,7 @@
 						</div>							
                 </div>
 	            <div class="form-group"> 
-					<label for="metaDesc" class="col-md-3">Meta Discription</label> 
+					<label for="metaDesc" class="col-md-3 text-right">Meta Discription</label> 
 						<div class="col-md-6">
                             <textarea class="form-control" id="metaDesc" rows="3" name="metaDesc" ng-model="project.metadesc" required></textarea>
 							<span style="color:red" ng-show="myForm.metaDesc.$dirty && myForm.metaDesc.$invalid">
@@ -44,7 +42,7 @@
                 </div>
 			
 	            <div class="form-group"> 
-					<label for="Featured" class="col-md-3">* &nbsp Featured</label> 
+					<label for="Featured" class="col-md-3 text-right">* &nbsp Featured</label> 
                         <div class="col-md-3">
                             <input type="radio" name="Featured" id="yes" checked  ng-model="project.featured" required>Yes
 							<input type="radio" name="Featured" id="no" ng-model="project.featured">No
@@ -52,7 +50,7 @@
                 </div>
 						
 				<div class="form-group">
-					<label for="Category" class="col-md-3">* &nbsp Category</label>
+					<label for="Category" class="col-md-3 text-right">* &nbsp Category</label>
 					    <div class="col-md-6">
 							<select name="Category" id="Category" ng-model="project.category" required>
 								<option selected="selected">Select Category</option>
@@ -68,7 +66,7 @@
 				</div>	
 					
 				<div class="form-group">
-					<label for="Type" class="col-md-3"> * &nbsp Project Type</label>
+					<label for="Type" class="col-md-3 text-right"> * &nbsp Project Type</label>
 						<div class="col-md-6">
                             <input type="text"  id="Type" name="Type" ng-model="project.type" required>
 							<span style="color:red" ng-show="myForm.Type.$dirty && myForm.Type.$invalid">
@@ -77,7 +75,7 @@
                         </div>							
                 </div>
 			    <div class="form-group">
-					<label for="Location" class="col-md-3">* &nbsp Location</label>
+					<label for="Location" class="col-md-3 text-right">* &nbsp Location</label>
 						<div class="col-md-6">
                             <input type="text" id="Location" name="Location" ng-model="project.location" required>
 							<span style="color:red" ng-show="myForm.Location.$dirty && myForm.Location.$invalid">
@@ -86,7 +84,7 @@
                         </div>							
                 </div>
 			    <div class="form-group">
-                    <label for="Overview" class="col-md-3">* &nbsp Overview</label>
+                    <label for="Overview" class="col-md-3 text-right">* &nbsp Overview</label>
 						<div class="col-md-6">
                             <textarea class="form-control" id="Overview" rows="3" name="Overview" ng-model="project.overview" required></textarea>
 							<span style="color:red" ng-show="myForm.Overview.$dirty && myForm.Overview.$invalid">
@@ -97,7 +95,7 @@
                 </div>							
                     
 			    <div class="form-group">
-                    <label for="projimg" class="col-md-3">* &nbsp Project Image</label>
+                    <label for="projimg" class="col-md-3 text-right">* &nbsp Project Image</label>
                         <div class="col-md-6">
 							<input type="file" id="projimg" name="projimg" ng-model="project.proj_img" required>
 							<span style="color:red" ng-show="myForm.projimg.$dirty && myForm.projimg.$invalid">
@@ -107,7 +105,7 @@
                 </div>
 				
 				<div class="form-group">
-                    <label for="Logo" class="col-md-3">* &nbsp Project Logo</label>
+                    <label for="Logo" class="col-md-3 text-right">* &nbsp Project Logo</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="Logo"  id="Logo" ng-model="project.logo" required></textarea>
 							<span style="color:red" ng-show="myForm.Logo.$dirty && myForm.Logo.$invalid">
@@ -117,7 +115,7 @@
 				</div>	
 				
 				 <div class="form-group">
-                    <label for="projectby" class="col-md-3">* &nbsp Project By</label>
+                    <label for="projectby" class="col-md-3 text-right">* &nbsp Project By</label>
                         <div class="col-md-6">
 							<input type="text"  id="projectby" name="projectby" ng-model="project.project_by" required>
 							<span style="color:red" ng-show="myForm.projectby.$dirty && myForm.projectby.$invalid">
@@ -127,7 +125,7 @@
                 </div>
 				
 				<div class="form-group">
-                    <label for="Amenities" class="col-md-3">* &nbsp Amenities/Features</label>
+                    <label for="Amenities" class="col-md-3 text-right">* &nbsp Amenities/Features</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="Amenities" id="Amenities" ng-model="project.amenities" required></textarea>
 							<span style="color:red" ng-show="myForm.Amenities.$dirty && myForm.Amenities.$invalid">
@@ -137,7 +135,7 @@
 				</div>	
 				
 				<div class="form-group">
-                    <label for="Specifications" class="col-md-3">* &nbsp Specifications</label>
+                    <label for="Specifications" class="col-md-3 text-right">* &nbsp Specifications</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="Specifications" id="Specifications" ng-model="project.specifications" required></textarea>
 							<span style="color:red" ng-show="myForm.Specifications.$dirty && myForm.Specifications.$invalid">
@@ -147,7 +145,7 @@
 				</div>	
 					
 				<div class="form-group">
-                    <label for="locationmap" class="col-md-3">Location Map</label>
+                    <label for="locationmap" class="col-md-3 text-right">Location Map</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="locationmap" id="locationmap" ng-model="project.location_map" required></textarea>
 							<span style="color:red" ng-show="myForm.locationmap.$dirty && myForm.locationmap.$invalid">
@@ -157,7 +155,7 @@
 				</div>	
 				
 				<div class="form-group">
-                    <label for="layoutmap" class="col-md-3">Layout Map</label>
+                    <label for="layoutmap" class="col-md-3 text-right">Layout Map</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="layoutmap" id="layoutmap" ng-model="project.layout_map" required></textarea>
 							<span style="color:red" ng-show="myForm.layoutmap.$dirty && myForm.layoutmap.$invalid">
@@ -166,7 +164,7 @@
                         </div>
 				</div>
 				<div class="form-group">
-                    <label for="bfloorplan" class="col-md-3">Browser Title Floor Plan</label>
+                    <label for="bfloorplan" class="col-md-3 text-right">Browser Title Floor Plan</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="1" name="bfloorplan" id="bfloorplan"ng-model="project.browsertitle_floorplan" required></textarea>
 							<span style="color:red" ng-show="myForm.bfloorplan.$dirty && myForm.bfloorplan.$invalid">
@@ -176,7 +174,7 @@
 				</div>	
 				
 				<div class="form-group">
-                    <label for="Floorplans" class="col-md-3">Floor Plans</label>
+                    <label for="Floorplans" class="col-md-3 text-right">Floor Plans</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="Floorplans" id="Floorplans"  ng-model="project.floor_plans" required></textarea>
 							<span style="color:red" ng-show="myForm.Floorplans.$dirty && myForm.Floorplans.$invalid">
@@ -186,7 +184,7 @@
 				</div>	
 					
 				<div class="form-group">
-					<label for="Walkthrough" class="col-md-3">* &nbsp Walk Through</label>
+					<label for="Walkthrough" class="col-md-3 text-right">* &nbsp Walk Through</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="Walkthrough" id="Walkthrough" ng-model="walkthrough" required></textarea>
 							<span style="color:red" ng-show="myForm.Walkthrough.$dirty && myForm.Walkthrough.$invalid">
@@ -196,7 +194,7 @@
 				</div>	
 				
 				<div class="form-group">
-                    <label for="Contact" class="col-md-3">* &nbsp Contact</label>
+                    <label for="Contact" class="col-md-3 text-right">* &nbsp Contact</label>
 						<div class="col-md-6">
                             <textarea class="form-control" rows="3" name="Contact" id="Contact" ng-model="project.contact" required></textarea>
 							<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">

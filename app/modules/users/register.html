@@ -1,8 +1,9 @@
+
 <section id="input" ng-controller="registerController">
-<div class="row">
+<div class="row main-content">
 	<div class="col-md-2" ng-include="'modules/component/mainnav.html'"></div>
 	<div class="col-md-10">
-		<form class="form-horizontal" role="form" name="myForm" novalidate="novalidate" >
+		<form class="form-horizontal center-block" role="form" name="myForm" novalidate="novalidate" >
 			<h3>Free Registration / Sign up</h3>
 			<hr>
 			<p>Please register a free account, before you can start posting your ads. Registration is quick and free! Please note that fields marked * are required.</p>
@@ -48,8 +49,8 @@
 			<div class="form-group">
 						<label for="Tel" class="col-md-2 control-label">Phone </label>
 						<div class="col-md-8">
-                            <input type="Number" class="form-control" id="Tel" ng-model="reg.tel" name="Tel" placeholder="Enter Phone" required>
-							<span style="color:red" ng-show="myForm.tel.$dirty && myForm.Tel.$invalid">
+                            <input type="Number" class="form-control" min="10" max="10" id="Tel" ng-model="reg.tel" name="Tel" placeholder="Enter Phone" required>
+							<span style="color:red" ng-show="myForm.Tel.$dirty && myForm.Tel.$invalid">
 							<span ng-show="myForm.Tel.$error.required">Phone is required.</span>
 							<span ng-show="myForm.Tel.$error.number">Enter Number.</span>
 							</span>
@@ -59,7 +60,7 @@
 			<div class="form-group">
 						<label for="Fax" class="col-md-2 control-label">Fax </label>
 						<div class="col-md-8">
-                            <input type="Fax " class="form-control" id="Fax" ng-model="reg.fax " name="fax " placeholder="Enter Fax " required>
+                            <input type="fax " class="form-control" id="Fax" ng-model="reg.fax " name="fax " placeholder="Enter Fax " required>
 							<span style="color:red" ng-show="myForm.Fax.$dirty && myForm.Fax.$invalid">
 							<span ng-show="myForm.Fax.$error.required">Fax  is required.</span>
 							</span>
