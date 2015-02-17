@@ -1,15 +1,41 @@
 'use strict';
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams','$http','$modal', '$log'];
+    var injectParams = ['$scope', '$injector','$routeParams','$http','$modal', '$log', 'modalService'];
     // This is controller for this view
-	var propertyController = function ($scope, $injector,$routeParams,$http, $modal, $log) {
+	var propertyController = function ($scope, $injector,$routeParams,$http, $modal, $log, modalService) {
 		
 		$scope.open = function (url, propId) {
+			
+			
+			$http.get("../server-api/index.php/property/"+propId)
+			.success(function(response) 
+			{
+				$scope.propert = response;
+				console.log($scope.propert);
+			});
+			var modalDefaults = {
+				templateUrl: url,
+				backdrop: true,
+				properties: {}
+			};
+			var modalOptions = {
+				closeButtonText: 'Cancel',
+				actionButtonText: 'Delete Customer',
+				headerText: 'Delete?',
+				bodyText: 'Are you sure you want to delete this customer?',
+				properties: $scope.propert
+			};
+			console.log(modalOptions);
+			modalService.showModal(modalDefaults, modalOptions).then(function (result) {
+				console.log("modalOpened");
+			});
+		};
+		/* $scope.open = function (url, propId) {
 			var modalInstance = $modal.open({
-				templateUrl: url, /* for open template outside current template */
-				//template: '<span class="close" ng-click="cancel()">X</span><img class="img-responsive" src="'+ url +'" />', /* inline template */
-				controller: 'propertyController', /* apply controller to modal template */
-				size: 'lg', /* bootstrap modal size - empty for default, lg for large, sm for small */
+				templateUrl: url, /* for open template outside current template * /
+				//template: '<span class="close" ng-click="cancel()">X</span><img class="img-responsive" src="'+ url +'" />', /* inline template * /
+				controller: 'propertyController', /* apply controller to modal template * /
+				size: 'lg', /* bootstrap modal size - empty for default, lg for large, sm for small * /
 				resolve: 
 				{
 					property : function (){
@@ -22,7 +48,7 @@ define(['app'], function (app) {
 					}
 					/* items: function () {
 					return $scope.items;
-					} */
+					} * /
 				}
 			});
 			modalInstance.result.then(function (selectedItem) {
@@ -32,7 +58,7 @@ define(['app'], function (app) {
 			function () {
 				$log.info('Modal dismissed at: ' + new Date());
 			});
-		};		
+		};	 */	
 		
 		if($routeParams.id) {
 		$http.get("../server-api/index.php/property/"+$routeParams.id)

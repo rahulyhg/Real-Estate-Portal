@@ -4,6 +4,9 @@ require.config({
 	paths: {
 		angular: '../lib/angular/angular',
 		routeResolver: '../js/routeResolver',
+		directives: '../js/directives', 
+		services: '../js/services',
+		filters: '../js/filters',
 		jquery: '../lib/jquery/jquery',
 		angularRoute: '../lib/angular/angular-route',
 		angularMocks: '../lib/angular/angular-mocks',
@@ -21,6 +24,7 @@ require.config({
 			deps:['angular'],
 			'exports':'angular.mock'
 		}
+		
 	},
 	priority: [
 		"angular"
