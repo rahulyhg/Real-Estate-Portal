@@ -28,7 +28,7 @@
 			  </tr>
 			</thead>
 			<tbody>
-			{{responses + "subject "}}
+			
 			  <tr ng-repeat="x in resopnses | filter : { respo_for : type, status: status }">
 				 <td>{{ $index + 1 }}</td>
 				 <td><a ng-click="setStatus('Read', x.id)" href="#response/{{type}}/{{status}}/{{x.id}}">{{ x.first_name +" " +x.last_name}}</a></td>

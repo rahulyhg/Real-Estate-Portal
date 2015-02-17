@@ -1,31 +1,31 @@
 <section ng-controller="propertyController">
-<h3>{{property.title}}</h3>
+<h3>{{properties.title}}</h3>
 <div class="content">
 	<blockquote>
-		<p>{{property.prop_desc}}</p>
+		<p>{{properties.prop_desc}}</p>
 	</blockquote>
 </div>
 <div class="row">
 	<div class="col-md-10">
 		<div class="row">
-			<div class="col-md-4">Property For</div>
-			<div class="col-md-8">{{property.property_for}}</div>			
+			<div class="col-md-4">properties For</div>
+			<div class="col-md-8">{{properties.property_for}}</div>			
 		</div>
 		<div class="row">
-			<div class="col-md-4">Property Type</div>
-			<div class="col-md-8">{{property.type}}</div>
+			<div class="col-md-4">properties Type</div>
+			<div class="col-md-8">{{properties.type}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Location</div>
-			<div class="col-md-8">{{property.location}}</div>
+			<div class="col-md-8">{{properties.location}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Area</div>
-			<div class="col-md-8">{{property.buildup_area}}</div>
+			<div class="col-md-8">{{properties.buildup_area}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Price</div>
-			<div class="col-md-8">{{property.price}}</div>
+			<div class="col-md-8">{{properties.price}}</div>
 		</div>	
 		<div class="row">	
 			<div class="col-md-4">Contact US!</div>
@@ -38,7 +38,7 @@
 <hr>
 <div class="row">
 	<div class="col-md-12">
-		<h3>Property Built Up Details</h3>
+		<h3>properties Built Up Details</h3>
 		<table class="table table-bordered table-responsive">
 			<thead>
 				<th>Furnishing</th>
@@ -49,11 +49,11 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{property.furnished}}</td>
-					<td>{{property.transaction_type}}</td>
-					<td>{{property.bedrooms}}</td>
-					<td>{{property.bathrooms}}</td>
-					<td>{{property.res_parking}}</td>
+					<td>{{properties.furnished}}</td>
+					<td>{{properties.transaction_type}}</td>
+					<td>{{properties.bedrooms}}</td>
+					<td>{{properties.bathrooms}}</td>
+					<td>{{properties.res_parking}}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -63,42 +63,42 @@
 <div class="row">
 	<div class="col-md-12">
 		<h3>Amenities</h3>
-		<ul><li>{{property.power}}</li>		
-			<li>{{property.water}}</li>
-			<li>{{property.res_parking}}</li>
-			<li>{{property.security}}</li>
-			<li>{{property.quarters}}</li>
+		<ul><li>{{properties.power}}</li>		
+			<li>{{properties.water}}</li>
+			<li>{{properties.res_parking}}</li>
+			<li>{{properties.security}}</li>
+			<li>{{properties.quarters}}</li>
 		</ul>
 	</div>
 </div>
 <hr>
 <div class="row">
 	<div class="col-md-12">
-		<h3>Property Address</h3>
-		<p>{{property.address}}</p>
+		<h3>properties Address</h3>
+		<p>{{properties.address}}</p>
 	</div>
 </div>
 <hr>
 <div class="row">
 	<div class="col-md-12">
-		<h3>Property Seller Detail</h3>
+		<h3>properties Seller Detail</h3>
 		<table class="table table-bordered table-responsive">
 			<tbody>
 				<tr>
 					<td>Contact Person</td>
-					<td>{{property.cont_name}}</td>
+					<td>{{properties.cont_name}}</td>
 				</tr>
 				<tr>
 					<td>Mobile</td>
-					<td>{{property.contact}}</td>
+					<td>{{properties.contact}}</td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td>{{property.email}}</td>
+					<td>{{properties.email}}</td>
 				</tr>
 				<tr>
 					<td>Contact Address</td>
-					<td>{{property.cont_address}}</td>
+					<td>{{properties.cont_address}}</td>
 				</tr>
 			</tbody>
 		</table>
