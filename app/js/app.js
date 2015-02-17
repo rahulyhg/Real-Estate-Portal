@@ -41,6 +41,7 @@ define(['angular',
 				 .when('/login', route.resolve({controller:'login', template: 'login' }, 'users/'))
 				 .when('/forgot', route.resolve({controller:'forgot', template: 'forgot' }, 'users/'))
 				 .when('/register', route.resolve({controller:'register', template: 'register' }, 'users/'))
+				 .when('/dashboard', route.resolve({controller:'dashboard', template: 'dashboard' }, 'dashboard/'))
                 .otherwise({ redirectTo: '/login' });
 	}]);
 	app.run(['$location', '$rootScope', function($location, $rootScope) {
