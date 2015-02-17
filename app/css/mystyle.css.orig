@@ -23,6 +23,8 @@ header .im1 {
   box-shadow: 4px 4px 4px #e5dede;
   background-color: #EAEAEA;
 }
+<<<<<<< HEAD
+=======
 .main-content .f1 {
   border: 1px solid gray;
   margin-top: 10px;
@@ -37,3 +39,4 @@ header .im1 {
 .main-content .f1 .borderimg {
   border: 1px solid #ccc;
 }
+>>>>>>> "login page modified"
