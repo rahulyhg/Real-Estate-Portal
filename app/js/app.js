@@ -97,7 +97,7 @@ define(['angular',
             });
  }]);
     app.run(['$location', '$rootScope', 'breadcrumbs', function ($location, $rootScope, breadcrumbs) {
-        $rootScope.title = "DEFAULT Title";
+        $rootScope.metaTitle = "Real Estate Portal";
         $rootScope.breadcrumbs = breadcrumbs;
  }]);
     return app;
