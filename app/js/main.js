@@ -3,6 +3,7 @@
 require.config({
 	paths: {
 		angular: '../lib/angular/angular',
+		breadcrumbs: '../lib/angular/ng-breadcrumbs',
 		routeResolver: '../js/routeResolver',
 		directives: '../js/directives', 
 		services: '../js/services',
@@ -17,6 +18,7 @@ require.config({
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
+		'breadcrumbs':  { "deps": ['angular', 'angularRoute'] },
 		'routeResolver': { "deps": ['angular', 'angularRoute'] },
 		'bootstrap': { "deps": ['angular'] },
 		'angularRoute': ['angular'],

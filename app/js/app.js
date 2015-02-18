@@ -5,13 +5,14 @@ define(['angular',
 	'routeResolver',
 	'bootstrap',
 	'directives',
+	'breadcrumbs',
 	'services',
 	'css!../css/bootstrap.min','css!../css/mystyle.css'
 ], function(angular, angularRoute) {
 	// Declare app level module which depends on views, and components
 	var app =  angular.module('realEstate', [
 	  'ngRoute',
-	  'routeResolverServices','ui.bootstrap', 'customDirectives','customServices'
+	  'routeResolverServices','ui.bootstrap', 'customDirectives','customServices', 'ng-breadcrumbs',
 	]);
 	app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
                 '$compileProvider', '$filterProvider', '$provide', '$httpProvider',
@@ -33,14 +34,16 @@ define(['angular',
 				var route = routeResolverProvider.route;
 			
 				$routeProvider
-					.when('/home', route.resolve({controller:'home', template: 'home', directive: 'vilas'}, 'home/'))                
-				 .when('/response/:type?/:status?/:id?', route.resolve({controller:'response', template: 'response' }, 'response/'))
+				
+				.when('/', route.resolve({controller:'login', template: 'login', label: "Home" }, 'users/'))                
+				.when('/login', route.resolve({controller:'login', template: 'login' }, 'users/'))                
+				.when('/response/:type?/:status?/:id?', route.resolve({controller:'response', template: 'response' }, 'response/'))
 				 .when('/property', route.resolve({controller:'property', template: 'property' }, 'property/'))
 				 .when('/viewProperty/:id?', route.resolve({controller:'property', template: 'viewProperty' }, 'property/'))
 				 .when('/addproperty/:id?', route.resolve({controller:'property', template: 'addproperty' }, 'property/'))
 				 .when('/project', route.resolve({controller:'project', template: 'project' }, 'project/'))
 				 .when('/addproject', route.resolve({controller:'project', template: 'addproject' }, 'project/'))
-				 .when('/login', route.resolve({controller:'login', template: 'login' }, 'users/'))
+				 
 				 .when('/forgot', route.resolve({controller:'forgot', template: 'forgot' }, 'users/'))
 				 .when('/register', route.resolve({controller:'register', template: 'register' }, 'users/'))
 				 .when('/dashboard', route.resolve({controller:'dashboard', template: 'dashboard' }, 'dashboard/'))
@@ -48,11 +51,11 @@ define(['angular',
 				 .when('/mywebsites/requestnewsite', route.resolve({controller:'mywebsites', template: 'requestnewsite' }, 'websites/')) 
 				 .when('/mywebsites/requestedsitelist', route.resolve({controller:'mywebsites', template: 'requestedsitelist' }, 'websites/')) 
 				 
-                .otherwise({ redirectTo: '/login' });
+                .otherwise({ redirectTo: '/' });
 	}]);
-	app.run(['$location', '$rootScope', function($location, $rootScope) {
+	app.run(['$location', '$rootScope', 'breadcrumbs', function($location, $rootScope, breadcrumbs) {
 		$rootScope.title = "DEFAULT Title";
-		
+		$rootScope.breadcrumbs = breadcrumbs;
 	}]);
 	return app;
 });
