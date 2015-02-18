@@ -15,7 +15,10 @@ var injectParams = ['$scope', '$injector','$http', '$routeParams'];
 		.success(function(response) {$scope.projects = response;
 			//console.log($scope.projects);
 		});		
-	}   
+	}
+	
+   
+	
 	//add project
 	$scope.reset = function() {
 	$scope.project = {};
