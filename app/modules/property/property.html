@@ -89,9 +89,12 @@
 											<td>{{x.address}}</td>
 										</tr>
 									</table>
-								</td>	
-								<td>{{x.featured}}</td>
-								<td>{{x.status}}</td>
+								</td>	<!--{{x.featured}} -->
+								<td><a class="btn btn-success">Featured </a>
+								    <a class="btn btn-warning"> Not Featured </a></td>
+								<!--{{x.status}}-->
+								<td><a class="btn btn-success">Active</a>
+							  	    <a class="btn btn-warning">Delete</a></td>
 								<td>{{x.other_domain}}</td>				
 								<td><a href="#addproperty/{{x.id}}" class="btn btn-info"> Edit </a><br><br>
 								<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive"> View</a></td>	
