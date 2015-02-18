@@ -18,7 +18,9 @@ require.config({
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
-		'breadcrumbs':  { "deps": ['angular', 'angularRoute'] },
+		'filters':  { "deps": ['angular', 'angularRoute', 'routeResolver'] },
+		'directives':  { "deps": ['angular', 'angularRoute', 'routeResolver'] },
+		'services':  { "deps": ['angular', 'angularRoute', 'routeResolver'] },
 		'routeResolver': { "deps": ['angular', 'angularRoute'] },
 		'bootstrap': { "deps": ['angular'] },
 		'angularRoute': ['angular'],
