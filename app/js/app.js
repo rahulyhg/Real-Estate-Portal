@@ -42,6 +42,14 @@ define(['angular',
                     controller: 'login',
                     template: 'login'
                 }, 'users/'))
+				.when('/changepass',route.resolve({
+                    controller: 'login',
+                    template: 'chagepass'
+                }, 'users/'))
+				.when('/editprofile', route.resolve({
+                    controller: 'login',
+                    template: 'editprofile'
+                }, 'users/'))
                 .when('/response/:type?/:status?/:id?', route.resolve({
                     controller: 'response',
                     template: 'response'
@@ -62,6 +70,7 @@ define(['angular',
                     controller: 'project',
                     template: 'project'
                 }, 'project/'))
+				
                 .when('/addproject', route.resolve({
                     controller: 'project',
                     template: 'addproject'
