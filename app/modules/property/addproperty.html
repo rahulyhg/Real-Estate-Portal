@@ -8,8 +8,9 @@
 	<div class="col-md-12">
 	
 	<form class="form-horizontal center-block" name="myForm" novalidate>	
-	<h2 class="text-center">Property Info:</h2>
+	<h2 class="text-center">Add New Property</h2>
 		  <div class="form-group">
+			<h3>Property Information:</h2><hr width="100%"></hr>
 				<label for="profor" class="col-md-2  ">* Property for</label>
 				<div class="col-md-8">
 				  <input type="radio" id="propfor" name="propertyfor" value="Sale" checked="true" ng-model="property.property_for" checked="true">Sale
@@ -511,3 +512,31 @@
 	</div>
 	</div>
 </section>
+
+
+
+<div ng-controller="TabsDemoCtrl">
+  
+
+  
+
+  <tabset justified="true">
+    <tab heading="Justified">Justified content</tab>
+    <tab heading="SJ">Short Labeled Justified content</tab>
+    <tab heading="Long Justified">Long Labeled Justified content</tab>
+  </tabset>
+</div>
+<script>
+angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope, $window) {
+  $scope.tabs = [
+    { title:'Dynamic Title 1', content:'Dynamic content 1' },
+    { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+  ];
+
+  $scope.alertMe = function() {
+    setTimeout(function() {
+      $window.alert('You\'ve selected the alert tab!');
+    });
+  };
+});
+</script>
