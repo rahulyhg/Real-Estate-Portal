@@ -1,45 +1,34 @@
-<!-- 
 <div class="modal-header">
-  <h3>{{modalOptions.properties.title}}</h3>
+	<button type="button" class="close" ng-click="modalOptions.close()"><span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
-  <p>{{modalOptions.bodyText}}</p>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn" 
-          data-ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>
-  <button class="btn btn-primary" 
-          data-ng-click="modalOptions.ok();">{{modalOptions.actionButtonText}}</button>
-</div> -->
-
-<section ng-controller="propertyController">
-<h3>{{modalOptions.properties.title}}</h3>
+<h3>{{modalOptions.property.title}}</h3>
 <div class="content">
 	<blockquote>
-		<p>{{properties.prop_desc}}</p>
+		<p>{{modalOptions.property.prop_desc}}</p>
 	</blockquote>
 </div>
 <div class="row">
 	<div class="col-md-10">
 		<div class="row">
-			<div class="col-md-4">properties For</div>
-			<div class="col-md-8">{{properties.property_for}}</div>			
+			<div class="col-md-4">Property For</div>
+			<div class="col-md-8">{{modalOptions.property.property_for}}</div>			
 		</div>
 		<div class="row">
-			<div class="col-md-4">properties Type</div>
-			<div class="col-md-8">{{properties.type}}</div>
+			<div class="col-md-4">Property Type</div>
+			<div class="col-md-8">{{modalOptions.property.type}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Location</div>
-			<div class="col-md-8">{{properties.location}}</div>
+			<div class="col-md-8">{{modalOptions.property.location}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Area</div>
-			<div class="col-md-8">{{properties.buildup_area}}</div>
+			<div class="col-md-8">{{modalOptions.property.buildup_area}}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">Price</div>
-			<div class="col-md-8">{{properties.price}}</div>
+			<div class="col-md-8">{{modalOptions.property.price}}</div>
 		</div>	
 		<div class="row">	
 			<div class="col-md-4">Contact US!</div>
@@ -52,7 +41,7 @@
 <hr>
 <div class="row">
 	<div class="col-md-12">
-		<h3>properties Built Up Details</h3>
+		<h3>Property Built Up Details</h3>
 		<table class="table table-bordered table-responsive">
 			<thead>
 				<th>Furnishing</th>
@@ -63,11 +52,11 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{properties.furnished}}</td>
-					<td>{{properties.transaction_type}}</td>
-					<td>{{properties.bedrooms}}</td>
-					<td>{{properties.bathrooms}}</td>
-					<td>{{properties.res_parking}}</td>
+					<td>{{modalOptions.property.furnished}}</td>
+					<td>{{modalOptions.property.transaction_type}}</td>
+					<td>{{modalOptions.property.bedrooms}}</td>
+					<td>{{modalOptions.property.bathrooms}}</td>
+					<td>{{modalOptions.property.res_parking}}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -77,45 +66,45 @@
 <div class="row">
 	<div class="col-md-12">
 		<h3>Amenities</h3>
-		<ul><li>{{properties.power}}</li>		
-			<li>{{properties.water}}</li>
-			<li>{{properties.res_parking}}</li>
-			<li>{{properties.security}}</li>
-			<li>{{properties.quarters}}</li>
+		<ul><li>{{modalOptions.property.power}}</li>		
+			<li>{{modalOptions.property.water}}</li>
+			<li>{{modalOptions.property.res_parking}}</li>
+			<li>{{modalOptions.property.security}}</li>
+			<li>{{modalOptions.property.quarters}}</li>
 		</ul>
 	</div>
 </div>
 <hr>
 <div class="row">
 	<div class="col-md-12">
-		<h3>properties Address</h3>
-		<p>{{properties.address}}</p>
+		<h3>Property Address</h3>
+		<p>{{modalOptions.property.address}}</p>
 	</div>
 </div>
 <hr>
 <div class="row">
 	<div class="col-md-12">
-		<h3>properties Seller Detail</h3>
+		<h3>Property Seller Detail</h3>
 		<table class="table table-bordered table-responsive">
 			<tbody>
 				<tr>
 					<td>Contact Person</td>
-					<td>{{properties.cont_name}}</td>
+					<td>{{modalOptions.property.cont_name}}</td>
 				</tr>
 				<tr>
 					<td>Mobile</td>
-					<td>{{properties.contact}}</td>
+					<td>{{modalOptions.property.contact}}</td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td>{{properties.email}}</td>
+					<td>{{modalOptions.property.email}}</td>
 				</tr>
 				<tr>
 					<td>Contact Address</td>
-					<td>{{properties.cont_address}}</td>
+					<td>{{modalOptions.property.cont_address}}</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
-</section> 
+</div> 
