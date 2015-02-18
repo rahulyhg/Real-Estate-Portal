@@ -15,7 +15,7 @@
 				<div class="row ">	  
 					 <div class="col-md-3">
 						<label>Sort by Order</label>
-						<select class="form-control" ng-model="id"> 
+						<select class="form-control" ng-model="sort"> 
 							<option value="">Select Order</option>		<!-- added value & selected attr -->	
 							<option value="-id">Desending</option>
 							<option value="id">Asending</option>  
@@ -67,7 +67,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
+						<tr ng-repeat="x in properties | filter:searchProp | orderBy:sort | filter:{status:status} | filter:{featured:featured}">
 								<td>{{ $index + 1 }}</td>
 								<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-responsive"></td> <!-- ng-click added for modal, class added for responsive image -->
 								<td>
