@@ -51,10 +51,6 @@ header .im1 {
   padding-bottom: 10px;
   text-align: center;
 }
-.main-content h3,
-.main-content row ng-scope h3 {
-  color: #2368CE;
-}
 .main-content form > p,
 .main-content row ng-scope form > p {
   color: cadetblue;
@@ -81,4 +77,18 @@ tab {
 }
 .paraMand {
   color: red;
+}
+.ulmenu,
+.dropdown-menu {
+  left: auto;
+  right: 0;
+}
+h3 {
+  color: #2368CE;
+}
+.dropimg {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  padding: 5px;
 }
