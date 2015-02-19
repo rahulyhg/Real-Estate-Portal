@@ -40,65 +40,80 @@ define(['angular',
                 }, 'users/'))
                 .when('/login', route.resolve({
                     controller: 'login',
-                    template: 'login'
+                    template: 'login',
+					label: "Login"
                 }, 'users/'))
 				.when('/changepass',route.resolve({
                     controller: 'login',
-                    template: 'changepass'
+                    template: 'changepass',
+					label: "ChangePassword"
                 }, 'users/'))
 				.when('/editprofile', route.resolve({
                     controller: 'login',
-                    template: 'editprofile'
+                    template: 'editprofile',
+					label: "EditProfile"
                 }, 'users/'))
                 .when('/response/:type?/:status?/:id?', route.resolve({
                     controller: 'response',
-                    template: 'response'
+                    template: 'response',
+					label: "Response"
                 }, 'response/'))
                 .when('/property', route.resolve({
                     controller: 'property',
-                    template: 'property'
+                    template: 'property',
+					label: "Property"
                 }, 'property/'))
                 .when('/viewProperty/:id?', route.resolve({
                     controller: 'property',
-                    template: 'viewProperty'
+                    template: 'viewProperty',
+					label: "ViewProperty"
                 }, 'property/'))
                 .when('/addproperty/:id?', route.resolve({
                     controller: 'property',
-                    template: 'addproperty'
+                    template: 'addproperty',
+					label: "AddProperty"
                 }, 'property/'))
                 .when('/project', route.resolve({
                     controller: 'project',
-                    template: 'project'
+                    template: 'project',
+					label: "Project"
                 }, 'project/'))
 				
                 .when('/addproject', route.resolve({
                     controller: 'project',
-                    template: 'addproject'
+                    template: 'addproject',
+					label: "AddProject"
                 }, 'project/'))
 
 				.when('/forgot', route.resolve({
                     controller: 'forgot',
-                    template: 'forgot'
+                    template: 'forgot',
+					label: "ForgotPassword"
                 }, 'users/'))
                 .when('/register', route.resolve({
                     controller: 'register',
-                    template: 'register'
+                    template: 'register',
+					label: "Register"
                 }, 'users/'))
                 .when('/dashboard', route.resolve({
                     controller: 'dashboard',
-                    template: 'dashboard'
+                    template: 'dashboard',
+					label: "Dashboard"
                 }, 'dashboard/'))
                 .when('/dashboard/mywebsites', route.resolve({
                     controller: 'mywebsites',
-                    template: 'mywebsites'
+                    template: 'mywebsites',
+					label: "MyWebsites"
                 }, 'websites/'))
                 .when('/mywebsites/requestnewsite', route.resolve({
                     controller: 'mywebsites',
-                    template: 'requestnewsite'
+                    template: 'requestnewsite',
+					label: "RequestNewWebsite"
                 }, 'websites/'))
                 .when('/mywebsites/requestedsitelist', route.resolve({
                     controller: 'mywebsites',
-                    template: 'requestedsitelist'
+                    template: 'requestedsitelist',
+					label: "Requestedsitelist"
                 }, 'websites/'))
 
             .otherwise({
