@@ -32,12 +32,13 @@
 {
 	background-color:#E7E7E7;
 }
-header {
-top: 0;
-left: 0;
-right: 0;
-height: 80px;
-background:#ccc;
+header 
+{
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 80px;
+	background:#ccc;
 }
 
 .dropimage
@@ -46,17 +47,18 @@ background:#ccc;
 }
 .dropimg
 {
-	font-size:15px;
-	padding:5px 5px 5px 5px;
-	height:40px;
-	width:40px;
-	margin-bottom:5px;
+	font-size: 15px;
+	padding: 5px 5px 5px 5px;
+	height: 40px;
+	width: 40px;
+	margin-bottom: 5px;
 	
 }
 .spanimg
 {
 	border-radius:10px;
 }
+
 ul span:hover
 {
 	border:1px solid #ccc;
