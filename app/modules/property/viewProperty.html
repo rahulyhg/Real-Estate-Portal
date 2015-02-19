@@ -1,111 +1,112 @@
-<body>
-	<div class="modal-header">
-		<button type="button" class="close" ng-click="modalOptions.close()"><span aria-hidden="true">&times;</span></button>
-	</div>
 
-	<h3>{{modalOptions.property.title}}</h3>
-	<div class="content">
-		<blockquote>
-			<p>{{modalOptions.property.prop_desc}}</p>
-		</blockquote>
-	</div>
+	
+<div class="modal-header">
+	<button type="button" class="close" ng-click="modalOptions.close()"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
 	<div class="row">
-		<div class="col-md-10">
-			<div class="row">
-				<div class="col-md-4">Property For</div>
-				<div class="col-md-8">{{modalOptions.property.property_for}}</div>			
-			</div>
-			<div class="row">
-				<div class="col-md-4">Property Type</div>
-				<div class="col-md-8">{{modalOptions.property.type}}</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">Location</div>
-				<div class="col-md-8">{{modalOptions.property.location}}</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">Area</div>
-				<div class="col-md-8">{{modalOptions.property.buildup_area}}</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">Price</div>
-				<div class="col-md-8">{{modalOptions.property.price}}</div>
-			</div>	
-			<div class="row">	
-				<div class="col-md-4">Contact US!</div>
+	    <div class="col-md-12">
+			<h3>{{modalOptions.property.title}}</h3>
+			<div class="content">
+				<blockquote>
+					<p>{{modalOptions.property.prop_desc}}</p>
+				</blockquote>
 			</div>			
-		</div>
-		<div class="col-md-2">
-			<img src="img1.jpg" width="100%">
+			<div class="row">
+			    <div class="col-md-9">
+					<table class="table table-hover table-responsive">
+					    
+						<tr>
+							 <td><b>Property For </b></td>
+							 <td>{{modalOptions.property.property_for}}</td>	
+						</tr>
+						<tr>
+							<td><b>Property Type</b> </td>
+							<td>{{modalOptions.property.type}}</td>					
+						</tr>
+						<tr>
+							<td><b>Location </b></td>
+							<td>{{modalOptions.property.location}}</td>					
+						</tr>
+						<tr>
+							<td><b>Area</b> </label>
+							<td>{{modalOptions.property.buildup_area}}</td>					
+						</tr>
+						<tr>
+							<td><b>Price </b></label>
+							<td>{{modalOptions.property.price}}</td>			
+						</tr>
+						<tr>
+							<td><b>Contact US! </b></td>
+						</tr>
+					</table>	
+				</div>
+				<div class="col-md-3">
+					<img src="img1.jpg" width="100%">
+				</div>
+			</div>
+			<hr>
+			
+					<h3>Property Built Up Details</h3>
+					<table class="table table-bordered table-responsive">
+						<thead>
+							<th>Furnishing</th>
+							<th>Transaction</th>
+							<th>Bedrooms</th>
+							<th>Bathrooms</th>
+							<th>Reserved Parking</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{modalOptions.property.furnished}}</td>
+								<td>{{modalOptions.property.transaction_type}}</td>
+								<td>{{modalOptions.property.bedrooms}}</td>
+								<td>{{modalOptions.property.bathrooms}}</td>
+								<td>{{modalOptions.property.res_parking}}</td>
+							</tr>
+						</tbody>
+					</table>
+				
+			<hr>
+			
+					<h3>Amenities</h3>
+					<ul><li>{{modalOptions.property.power}}</li>		
+						<li>{{modalOptions.property.water}}</li>
+						<li>{{modalOptions.property.res_parking}}</li>
+						<li>{{modalOptions.property.security}}</li>
+						<li>{{modalOptions.property.quarters}}</li>
+					</ul>
+			
+			<hr>
+			
+					<h3>Property Address</h3>
+					<p>{{modalOptions.property.address}}</p>
+			
+			<hr>
+			
+					<h3>Property Seller Detail</h3>
+					<table class="table table-bordered table-responsive">
+						<tbody>
+							<tr>
+								<td>Contact Person</td>
+								<td>{{modalOptions.property.cont_name}}</td>
+							</tr>
+							<tr>
+								<td>Mobile</td>
+								<td>{{modalOptions.property.contact}}</td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td>{{modalOptions.property.email}}</td>
+							</tr>
+							<tr>
+								<td>Contact Address</td>
+								<td>{{modalOptions.property.cont_address}}</td>
+							</tr>
+						</tbody>
+					</table>
+				
 		</div>
 	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-12">
-			<h3>Property Built Up Details</h3>
-			<table class="table table-bordered table-responsive">
-				<thead>
-					<th>Furnishing</th>
-					<th>Transaction</th>
-					<th>Bedrooms</th>
-					<th>Bathrooms</th>
-					<th>Reserved Parking</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td>{{modalOptions.property.furnished}}</td>
-						<td>{{modalOptions.property.transaction_type}}</td>
-						<td>{{modalOptions.property.bedrooms}}</td>
-						<td>{{modalOptions.property.bathrooms}}</td>
-						<td>{{modalOptions.property.res_parking}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>	
-	<hr>
-	<div class="row">
-		<div class="col-md-12">
-			<h3>Amenities</h3>
-			<ul><li>{{modalOptions.property.power}}</li>		
-				<li>{{modalOptions.property.water}}</li>
-				<li>{{modalOptions.property.res_parking}}</li>
-				<li>{{modalOptions.property.security}}</li>
-				<li>{{modalOptions.property.quarters}}</li>
-			</ul>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-12">
-			<h3>Property Address</h3>
-			<p>{{modalOptions.property.address}}</p>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-12">
-			<h3>Property Seller Detail</h3>
-			<table class="table table-bordered table-responsive">
-				<tbody>
-					<tr>
-						<td>Contact Person</td>
-						<td>{{modalOptions.property.cont_name}}</td>
-					</tr>
-					<tr>
-						<td>Mobile</td>
-						<td>{{modalOptions.property.contact}}</td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td>{{modalOptions.property.email}}</td>
-					</tr>
-					<tr>
-						<td>Contact Address</td>
-						<td>{{modalOptions.property.cont_address}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</body>
+</div>
+

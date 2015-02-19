@@ -39,10 +39,7 @@ define(['app', 'css!modules/home/home'], function (app) {
 		}
 		$scope.setStatus = function(status, id){
 			$http.put("../server-api/index.php/response/" + status + "/" + id)
-			.success(function(response) {
-				$scope.msg = response;
-				alert($scope.msg);
-			});
+			
 		};
     };    
 	// Inject controller's dependencies

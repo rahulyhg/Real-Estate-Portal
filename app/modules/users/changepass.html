@@ -1,33 +1,32 @@
 <body>
-	<div class="row">
-	    <div class="col-md-12">
-			<form class="form-horizontal f1 center-block form-content" role="form" name="myForm"  novalidate="novalidate" method="post" >
-				<div class="form-group">
-					<label for="oldpwd" class="col-md-2 control-label">Old Password </label>
-						<div class="col-md-8">
-							<input type="Password" class="form-control" id="oldpwd" ng-model="login.pwd" name="pwd" placeholder="Enter Old Password " required >
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="newpwd" class="col-md-2 control-label">New Password </label>
-						<div class="col-md-8">
-							<input type="Password" class="form-control" id="newpwd" ng-model="login.pwd" name="pwd" placeholder="Enter New Password " required >
-						</div>
-				</div>	
-				<div class="form-group">
-					<label for="cnfpwd" class="col-md-2 control-label">Confirm Password</label>
-						<div class="col-md-8">
-							<input type="Password" class="form-control" id="cnfpwd" ng-model="login.pwd" name="pwd" placeholder="Enter  Password " required >
-						</div>
-				</div>						
-				<div class="form-group">
-					<div class="col-md-offset-2 col-md-10">
-						<a class="btn btn-default" name="btn1" 
-						   >Save
-						</a>
+<div class="row">
+	<div class="col-md-12">
+	    <h3 class="text-center">Change Password</h3>
+		<form class="form-horizontal" role="form" name="myForm"  novalidate="novalidate" method="post" >
+			<div class="form-group">
+				<label for="oldpwd" class="col-md-2 control-label">Old Password </label>
+					<div class="col-md-8">
+						<input type="Password" class="form-control" id="oldpwd" ng-model="login.pwd" name="pwd" placeholder="Enter Old Password " required >
 					</div>
+			</div>
+			<div class="form-group">
+				<label for="newpwd" class="col-md-2 control-label">New Password </label>
+					<div class="col-md-8">
+						<input type="Password" class="form-control" id="newpwd" ng-model="login.pwd" name="pwd" placeholder="Enter New Password " required >
+					</div>
+			</div>	
+			<div class="form-group">
+				<label for="cnfpwd" class="col-md-2 control-label">Confirm Password</label>
+					<div class="col-md-8">
+						<input type="Password" class="form-control" id="cnfpwd" ng-model="login.pwd" name="pwd" placeholder="Enter  Password " required >
+					</div>
+			</div>						
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<a class="btn btn-success" name="btn1">Save</a>
 				</div>
-			</form>	
-	    </div>
-	</div>	
+			</div>
+		</form>	
+	</div>
+</div>	
 </body>

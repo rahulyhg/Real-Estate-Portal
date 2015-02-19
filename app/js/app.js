@@ -44,7 +44,7 @@ define(['angular',
                 }, 'users/'))
 				.when('/changepass',route.resolve({
                     controller: 'login',
-                    template: 'chagepass'
+                    template: 'changepass'
                 }, 'users/'))
 				.when('/editprofile', route.resolve({
                     controller: 'login',
