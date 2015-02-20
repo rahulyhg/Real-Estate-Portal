@@ -1,5 +1,8 @@
-<section id="response" ng-controller="responseController">
-	<div ng-include="'modules/component/innernav.html'"></div>
+<section id="response">
+		 <div class="row border-bottom">
+			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
+			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
+		</div>	
 		<ul class="nav nav-pills">
 			 <li role="presentation" ng-class="getClass('/response/web')"><a href="#/response/web/new">Web Response</a></li>
 			  <li role="presentation"  ng-class="getClass('/response/property')"><a href="#/response/property/new">Property Response</a></li>

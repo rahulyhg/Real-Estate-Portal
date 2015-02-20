@@ -91,3 +91,14 @@ h3 {
   box-shadow: 4px 4px 4px #e5dede;
   background-color: #EAEAEA;
 }
+.breadcrumb-back {
+  background-color: #C3D3E0;
+  margin-bottom: 10px;
+}
+.breadcrumb-back .breadcrumb {
+  background: transparent;
+  margin-bottom: 0px;
+}
+.toolbar {
+  padding: 5px;
+}
