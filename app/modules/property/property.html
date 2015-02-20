@@ -86,14 +86,14 @@
 										</tr>
 									</table>
 								</td>	
-								<td><a class="btn btn-success" ng-if="featured==0">Featured </a>
-									<a class="btn btn-warning" ng-if="featured==1" > Not Featured </a>
+								<td><a class="btn btn-success" ng-if="featured==0" title="Featured">Featured </a>
+									<a class="btn btn-warning" ng-if="featured==1" title="Not featured"> Not Featured </a>
 								</td>			
-								<td><a class="btn btn-success" ng-if="status==0" >Active</a>
-									<a class="btn btn-warning" ng-if="status==1">Delete</a></td>
+								<td><a class="btn btn-success" ng-if="status==0" title="Active"title="Active">Active</a>
+									<a class="btn btn-warning" ng-if="status==1" title="Delete"title="Delete">Delete</a></td>
 								<td>{{x.other_domain}}</td>				
-								<td><a href="#addproperty/{{x.id}}" class="btn btn-info"> Edit </a><br><br>
-								<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive"> View</a></td>	
+								<td><a href="#addproperty/{{x.id}}" class="btn btn-info" title="Edit"> Edit </a><br><br>
+								<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive" title="View"> View</a></td>	
 						</tr>				
 					</tbody>
 				</table>				

@@ -1,5 +1,3 @@
-
-
 <div class="row main-content">
 	<div class="col-md-12">
 		<div class="row breadcrumb-back">
@@ -36,8 +34,7 @@
 								</label>
 								<label class="radio-inline">
 								  <input type="radio" name="featured" id="No" value="No"> No
-								</label>
-								
+								</label>								
 						</div>	
 					</div>
 					<div class="form-group">
@@ -48,11 +45,10 @@
 								<option value="Residential">Residential Property</option>
 								<option value="Commercial">Commercial Property</option>
 								<option value="Agricultural">Agricultural Land</option>
-								<option value="Industrial">Industrial Property</option>
-								
+								<option value="Industrial">Industrial Property</option>			
 							</select>
 							<span style="color:red" ng-show="myForm.proCate.$dirty && myForm.proCate.$invalid">
-							  <span ng-show="myForm.proCate.$error.required">Property selection is required .</span>
+								<span ng-show="myForm.proCate.$error.required">Property selection is required .</span>
 							</span>				 
 						</div>
 					</div>
@@ -61,28 +57,28 @@
 						<div class="col-sm-9">
 							<input type="text"  id="type" class="form-control" name="proType" ng-model="property.type" required>
 							<span style="color:red" ng-show="myForm.proType.$dirty && myForm.proType.$invalid">
-							  <span ng-show="myForm.proType.$error.required">Property type  is required .</span>
+								<span ng-show="myForm.proType.$error.required">Property type  is required .</span>
 							</span>
 						</div>
 					</div>	
-					  <div class="form-group">
-					<label for="PropPrice" class="col-md-3 control-label ">Property Price: </label>
-					<div class="col-md-6">
-						<input type="text" id="PropPrice" class="form-control" name="propertyPrice" ng-model="property.price" required>
-					 
-					</div>
-					<div class="col-md-3">
-						<select class="form-control" ng-model="property.currency" required>
-							<option value="" selected>In Rupees</option>
-							<option value="Thousand">Thousand</option>
-							<option value="Lac">Lac</option>
-							<option value="Carore">Carore</option>					
-						</select>
-						<span style="color:red" ng-show="myForm.propertyPrice.$dirty && myForm.propertyPrice.$invalid">
-						  <span ng-show="myForm.propertyPrice.$error.required">Property Price is required .</span>
-						</span>				 
-					</div>				
-			  </div>	
+					<div class="form-group">
+						<label for="PropPrice" class="col-md-3 control-label ">Property Price: </label>
+						<div class="col-md-6">
+							<input type="text" id="PropPrice" class="form-control" name="propertyPrice" ng-model="property.price" required>
+						 
+						</div>
+						<div class="col-md-3">
+							<select class="form-control" ng-model="property.currency" required>
+								<option value="" selected>In Rupees</option>
+								<option value="Thousand">Thousand</option>
+								<option value="Lac">Lac</option>
+								<option value="Carore">Carore</option>					
+							</select>
+							<span style="color:red" ng-show="myForm.propertyPrice.$dirty && myForm.propertyPrice.$invalid">
+								<span ng-show="myForm.propertyPrice.$error.required">Property Price is required .</span>
+							</span>				 
+						</div>				
+					</div>	
 				</tab>
 				<tab heading="Area Details" title="Property Area Details">
 					<h3>Property Area Details</h3>
@@ -91,8 +87,8 @@
 						<div class="col-md-6">
 							<input type="text"  id="BuiltArea" class="form-control" name="builtArea" ng-model="property.buildup_area" required>
 						</div>
-						 <div class="col-md-3">
-							<select class="form-control" ng-model="property.build_unit" required>
+						<div class="col-md-3">
+							<select class="form-control" ng-model="property.build_unit"  title="" required>
 								<option selected value="">Unit Area</option>
 								<option value="Feet">Sq. Feet</option>
 								<option value="Cent">Cent</option>
@@ -393,36 +389,31 @@
 					</div>
 			</tab>
 			<tab heading="Landmark" title="Landmark Details">
-			<!--Land  Mark -->	
-			
+			<!--Land  Mark -->				
 				<h3>Land Mark:</h3>
 				<div class="form-group">
 						<label for="Hospitals" class="col-md-3 control-label">Hospitals </label>
 						<div class="col-md-9">
 							<input type="text"  id="Hospitals" class="form-control" name="Hospitals" ng-model="property.hospital" /> kms						
-						</div>	
-						
+						</div>							
 				  </div>
 				  <div class="form-group">
 						<label for="Airport" class="col-md-3 control-label">  Airport </label>
 						<div class="col-md-9">
 							<input type="text" id="Airport" class="form-control"  name="Airport" ng-model="property.airport" >	kms						 
-						</div>
-											
+						</div>											
 				  </div>
 				  <div class="form-group">
 						<label for="RailwayStation" class="col-md-3 control-label">  Railway Station</label>
 						<div class="col-md-9">
 							<input type="text" id="RailwayStation" class="form-control" name="RailwayStation" ng-model="property.railway" > kms	
-						</div>
-											
+						</div>											
 				  </div>
 				  <div class="form-group">
 						<label for="School" class="col-md-3 control-label">  School </label>
 						<div class="col-md-9">
 							<input type="text" id="School" class="form-control" name="School" ng-model="property.school" > kms	
-						</div>
-											
+						</div>											
 				  </div>
 			</tab>	<!--land mark-->
 			  <!--Amenities-->
@@ -467,8 +458,7 @@
 					<h3>Select Sites</h3>			    
 						<table class="table table-bordered">
 							<tr>
-								<td class="checkbox"> 
-							
+								<td class="checkbox"> 							
 								  <label>
 									<input type="checkbox" value="" name="selectall" ng-model="selectall">
 									Select All
@@ -485,9 +475,9 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-offset-5 col-md-6">
-				  <button type="submit" ng-click="addprop()" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+					<button type="submit" ng-click="addprop()" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
 					myForm.email.$dirty && myForm.email.$invalid" title="Add new your property">Add New Property</button>
-					<button type="submit" ng-click="update()" title="Update your property" class="btn btn-primary text-center " >Edit Property</button>
+					<button type="submit" ng-click="update()" title="Update your property" class="btn btn-primary text-center ">Edit Property</button>
 				</div>
 			</div>
 		</form>		
