@@ -1,16 +1,13 @@
 
 <section id="input">
-	<div class="row main-content">
-	
-			<div  class="breadcrumb-back" ng-include="'modules/component/breadcrumb.html'"></div>
-			
+	<div class="row main-content">	
+			<div  class="breadcrumb-back" ng-include="'modules/component/breadcrumb.html'"></div>			
 		<div class="col-md-2" ng-include="'modules/component/mainnav.html'"></div>
 		<div class="col-md-10">
 			<form class="form-horizontal center-block" role="form" name="myForm" novalidate="novalidate" >
 				<h3>Free Registration / Sign up</h3>
 				<hr>
-				<p>Please register a free account, before you can start posting your ads. Registration is quick and free! Please note that fields marked * are required.</p>	
-					
+				<p>Please register a free account, before you can start posting your ads. Registration is quick and free! Please note that fields marked * are required.</p>						
 				<div class="form-group">
 					<label for="fullname" class="col-md-3 control-label">Name* </label>
 					<div class="col-md-9">
@@ -26,15 +23,16 @@
 						<textarea  class="form-control" id="Address" ng-model="reg.address" name="Address" placeholder="Enter address" required>
 						</textarea>
 						<span style="color:red" ng-show="myForm.Address.$dirty && 	myForm.Address.$invalid">
-								<span ng-show="myForm.Address.$error.required">Address is required.</span>
+						<span style="color:red" ng-show="myForm.reg.address.$error.maxlength">
+						Sorry You are Exceeding the Limit</span>
+						<span ng-show="myForm.Address.$error.required">Address is required.</span>
 						</span>
 					</div>						
 				</div>		
 				<div class="form-group">
 					<label for="Country" class="col-md-3 control-label" name="Country" >Country</label>
 					<div class="col-md-9">
-						<select class="form-control" name="Country" id="Country"  ng-model="reg.country" required>
-							
+						<select class="form-control" name="Country" id="Country"  ng-model="reg.country" required>							
 							<option value="">India</option>
 							<option value="Australia">Australia</option>
 							<option value="China">China</option>
@@ -42,7 +40,7 @@
 							<option value="Belgium">Belgium</option>
 						</select>
 						<span style="color:red" ng-show="myForm.Country.$dirty && myForm.Country.$invalid">
-						<span ng-show="myForm.Country.$error.required">Country is required.</span>
+							<span ng-show="myForm.Country.$error.required">Country is required.</span>
 						</span>				
 					</div>
 				</div>				
@@ -61,7 +59,7 @@
 					<div class="col-md-9">
 						<input type="fax " class="form-control" id="Fax" ng-model="reg.fax " name="fax " placeholder="Enter Fax " required>
 						<span style="color:red" ng-show="myForm.Fax.$dirty && myForm.Fax.$invalid">
-						<span ng-show="myForm.Fax.$error.required">Fax  is required.</span>
+							<span ng-show="myForm.Fax.$error.required">Fax  is required.</span>
 						</span>
 					</div>						
 				</div>				
@@ -82,7 +80,7 @@
 					<div class="col-md-6">
 						<input type="UserName " class="form-control" ng-model="reg.user_name" id="username" name="username" placeholder="Enter UserName " required>
 						<span style="color:red" ng-show="myForm.username.$dirty && 	myForm.username.$invalid">
-						<span ng-show="myForm.username.$error.required">UserName  is required.</span>
+							<span ng-show="myForm.username.$error.required">UserName  is required.</span>
 						</span>
 					</div>						
 					<div class="col-md-3">
@@ -110,12 +108,14 @@
 				<div class="form-group">
 					<label for="requesteddomain" class="col-md-3 control-label">Request For Domain</label>
 					<div class="col-md-9">
-					<textarea class="form-control" rows="3" name="requesteddomain" id="requesteddomain" placeholder="Request" ng-model="reg.requested_domains"></textarea>
+					<textarea class="form-control" rows="3" name="requesteddomain" id="requesteddomain" placeholder="Request" ng-model="reg.requested_domains"ng-minlength="*" ng-maxlength="256"></textarea>
+					<span style="color:red" ng-show="myForm.reg.requested_domains.$error.maxlength">
+					Sorry You are Exceeding the Limit</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-12">
-						<button type="submit" ng-click="insert()" class="btn btn-primary center-block">Register</button>
+						<button type="submit" ng-click="insert()" class="btn btn-primary center-block" title="Register">Register</button>
 					</div>
 				</div>
 			</form>
