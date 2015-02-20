@@ -6,12 +6,12 @@
 			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
 			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
 		</div>
-		<h2 class="text-center">Add New Property</h2>
+		<h2 class="text-center" title="Add new Property">Add New Property</h2>
 		<form class="form-horizontal " name="myForm" novalidate>	
 		
 			<tabset>
 			<p class="paraMand">* Fields are mandatory</p>
-				<tab heading="Property">
+				<tab heading="Property" title="Property information">
 					<div class="form-group">
 						<h3>Property Information:</h2>
 						<label for="profor" class="col-md-3  control-label">* Property for</label>
@@ -84,7 +84,7 @@
 					</div>				
 			  </div>	
 				</tab>
-				<tab heading="Area Details">
+				<tab heading="Area Details" title="Property Area Details">
 					<h3>Property Area Details</h3>
 					<div class="form-group">
 						<label for="BuiltArea" class="col-md-3 control-label">* Built Up Area </label>
@@ -139,7 +139,7 @@
 					</div>				
 				</div>	  
 			</tab>
-			<tab heading="Structure">
+			<tab heading="Structure" title="Property Structure">
 			<h3>Property Structure</h3>
 				<div class="form-group">
 					<label for="Bedrooms" class="col-md-3 control-label">Bedrooms </label>
@@ -180,7 +180,7 @@
 				</div>	 <!-- end property  -->		
 			</tab>
 			<!--  property Location -->
-			<tab heading="Location">
+			<tab heading="Location" title="Property Location">
 				<h3>Property Location:</h3>	
 				<div class="form-group">
 					<label for="country" class="col-md-3 control-label">Country</label>
@@ -216,11 +216,11 @@
 			  <div class="form-group">
 					<label for="address" class="col-md-3 control-label">* Address  </label>
 					<div class="col-md-9">
-						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address" col="8" rows="4" required></textarea>
-						<p>Number of characters left: <span ng-bind="left()"></span></p>
-						<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
-						  <span ng-show="myForm.address.$error.required">Address is required .</span>
-						</span>				 
+						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"  required  cols="30" rows="4" ng-maxlength="256"></textarea>
+						<p>{{ 256 - address.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="form1.address.$error.maxlength">
+							Sorry You are Exceeding the Limit</span>
+									 
 					</div>				
 			  </div>		  
 			  <div class="form-group">
@@ -234,34 +234,47 @@
 			  </div>		  
 			</tab><!--  property Location-->		
 			<!--  Discription Title-->	
-			<tab heading="Discription">
+			<tab heading="Discription" title="Property Discription">
 				<h3>Discription Title:</h3>
 				<div class="form-group">
 					<label for="propTitle" class="col-md-3 control-label">* Property Title </label>
 					<div class="col-md-9">
-						<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" col="8" rows="4"></textarea>
-						<p>Number of characters left:255 <span ng-bind="left()"></span></p>				 
+						<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" cols="30" rows="4" ng-maxlength="156"></textarea>
+						<p>{{ 156 - title.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.title.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>
+										 
 					</div>				
 				</div>			
 				<div class="form-group">
 					<label for="browsertitle" class="col-md-3 control-label">* Browser Title<br><small>( Display in your website )</small></label>
 					<div class="col-md-9">
-						<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle" col="8" rows="4"></textarea>
-						<p>Number of characters left:255 <span ng-bind="left()"></span></p>				 
+						<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle"  cols="30" rows="4" ng-maxlength="256"></textarea>
+						<p>{{ 256 - browsertitle.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.browsertitle.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>			 
 					</div>				
 				</div>
 				<div class="form-group">
 					<label for="metaDis" class="col-md-3 control-label">* Meta Discription </label>
 					<div class="col-md-9">
-						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc" col="8" rows="4" ></textarea>
-						<p>Number of characters left:2000 <span ng-bind="left()"></span></p>				 
+						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="10" ng-maxlength="256"></textarea>
+						<p>{{ 256 - meta_desc.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.meta_desc.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>			  			 
 					</div>				
 				</div>
 				<div class="form-group">
 					<label for="metaKey" class="col-md-3 control-label">* Meta Keywords </label>
 					<div class="col-md-9">
-						<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" col="8" rows="4"></textarea>
-						<p>Number of characters left:2000 <span ng-bind="left()"></span></p>				 
+						<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" cols="30" rows="4" ng-maxlength="256"></textarea>
+						<p>{{ 256 - meta_key.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.meta_key.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>				 
 					</div>				
 				</div>
 				<div class="form-group">
@@ -275,12 +288,15 @@
 				<div class="form-group">
 					<label for="propDis" class="col-md-3 control-label">* Property Discription  </label>
 					<div class="col-md-9">
-						<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" col="8" rows="5"></textarea>
-						<p>Number of characters left:2000 <span ng-bind="left()"></span></p>				 
+						<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" cols="30" rows="4" ng-maxlength="256"></textarea>
+						<p>{{ 256 - prop_desc.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.prop_desc.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>	
 					</div>				
 				</div><!-- property discription -->		
 			</tab>
-			<tab heading="Contact">
+			<tab heading="Contact" title="Property Contact Details">
 			<!-- property contact details -->
 			
 				<h3>Property contact Detail:</h3>
@@ -315,13 +331,15 @@
 					  <div class="form-group">
 							<label for="Address" class="col-md-3 control-label"> * Address </label>
 							<div class="col-md-9">
-								<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" >
-								</textarea>
-								<p>Number of characters left:255 <span ng-bind="left()"></span></p>
+								<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" cols="30" rows="4" ng-maxlength="256"></textarea>
+						<p>{{ 256 - cont_address.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.cont_address.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>	
 							</div>				
 					  </div>				 
 			</tab> <!-- property contact details -->
-			<tab heading="Optional Details">
+			<tab heading="Optional Details" title="Optional Property Details">
 			  <h3>Optional Property Details:</h3>
 					<div class="form-group">
 						<label for="Age" class="col-md-3 control-label">Property Age</label>
@@ -374,7 +392,7 @@
 							</div>
 					</div>
 			</tab>
-			<tab heading="Landmark">
+			<tab heading="Landmark" title="Landmark Details">
 			<!--Land  Mark -->	
 			
 				<h3>Land Mark:</h3>
@@ -408,7 +426,7 @@
 				  </div>
 			</tab>	<!--land mark-->
 			  <!--Amenities-->
-			<tab heading="Amenities">
+			<tab heading="Amenities" title="Amenities">
 				<h3>Amenities:</h3>
 				<div class="form-group">
 					<div class="col-md-12">
@@ -468,8 +486,8 @@
 			<div class="form-group">
 				<div class="col-md-offset-5 col-md-6">
 				  <button type="submit" ng-click="addprop()" class="btn btn-primary text-center " ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
-					myForm.email.$dirty && myForm.email.$invalid">Add New Property</button>
-					<button type="submit" ng-click="update()" class="btn btn-primary text-center " >Edit Property</button>
+					myForm.email.$dirty && myForm.email.$invalid" title="Add new your property">Add New Property</button>
+					<button type="submit" ng-click="update()" title="Update your property" class="btn btn-primary text-center " >Edit Property</button>
 				</div>
 			</div>
 		</form>		
