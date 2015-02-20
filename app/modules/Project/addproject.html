@@ -8,7 +8,7 @@
 		<form class="form-horizontal vertical-scrollbar" role="form">			
 			<tabset>
 				<p class="paraMand">* Fields are mandatory</p>		
-				<tab heading="Project" title="project information">
+				<tab heading="Project" title="Project information">
 						<h3>Project Information</h3>
 							<div class="form-group">
 								<label  for="projtitle" class="col-md-3 control-label">* &nbsp Project Title</label>
@@ -91,7 +91,7 @@
 								</div>							
 							</div>
 					</tab>
-					<tab heading="Overview">
+					<tab heading="Overview" title="Overview">
 					<h3>Overview</h3>
 						<div class="form-group">
 							<label for="projimg" class="col-md-3 control-label">* &nbsp Project Image</label>
@@ -133,7 +133,7 @@
 								</div>													
 						</div>						
 					</tab>
-					<tab heading="Amenities">
+					<tab heading="Amenities" title="Amenities">
 					<h3>Amenities</h3>					
 					<div class="form-group">
 						<label for="Amenities" class="col-md-3 control-label">* &nbsp Amenities/Features</label>
@@ -145,7 +145,7 @@
 						</div>
 					</div>	
 				</tab>
-				<tab heading="Specifications">
+				<tab heading="Specifications" title="Specification">
 					<h3>Specification</h3>				
 					<div class="form-group">
 					<label for="Specifications" class="col-md-3 control-label">* &nbsp Specifications</label>
@@ -157,12 +157,12 @@
 						</div>
 					</div>	
 				</tab>
-				<tab heading="Location Map">
+				<tab heading="Location Map" title="This is location map">
 					<h3>Location Map</h3>
 					<div class="form-group">
 						<label for="locationmap" class="col-md-3 control-label">Location Map</label>
 							<div class="col-md-9">
-								<textarea class="form-control" rows="3" name="locationmap" id="locationmap" ng-model="project.location_map" ng-minlength="*" ng-maxlength="256"  required></textarea>
+								<textarea class="form-control" rows="3" name="locationmap" id="locationmap" ng-model="project.location_map" ng-minlength="*" ng-maxlength="256" required></textarea>
 								<span style="color:red" ng-show="myForm.locationmap.$dirty && myForm.locationmap.$invalid">
 									<span ng-show="myForm.locationmap.$error.required">Location Map is required .</span>
 								</span>
@@ -178,7 +178,7 @@
 						</div>
 					</div>					
 				</tab>
-				<tab heading="Floor Plans">
+				<tab heading="Floor Plans" title="Floor plans">
 					<h3>Floor Plans</h3>
 					<div class="form-group">
 						<label for="Floorplans" class="col-md-3 control-label">Floor Plans</label>
@@ -199,7 +199,7 @@
 							</div>
 					</div>					
 				</tab>
-				<tab heading="Walk Through">
+				<tab heading="Walk Through" title="Walk through">
 					<h3>Walk Through</h3>
 					<div class="form-group">
 						<label for="Walkthrough" class="col-md-3 control-label">* &nbsp Walk Through</label>
@@ -211,7 +211,7 @@
 							</div>
 					</div>	
 				</tab>
-				<tab heading="Contact">
+				<tab heading="Contact" title="Contact">
 					<h3>Contact Details</h3>
 					<div class="form-group">
 						<label for="Contact" class="col-md-3 control-label">* &nbsp Contact</label>
