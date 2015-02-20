@@ -6,6 +6,7 @@ define(['angular',
  'bootstrap',
  'directives',
  'services',
+ 
  'filters',
  'css!../css/bootstrap.min', 'css!../css/mystyle.css'
 ], function (angular, angularRoute) {
@@ -76,7 +77,7 @@ define(['angular',
                 .when('/project', route.resolve({
                     controller: 'project',
                     template: 'project',
-					label: "Project"
+					label: "dashboard/Project"
                 }, 'project/'))
 				
                 .when('/addproject', route.resolve({
@@ -100,18 +101,18 @@ define(['angular',
                     template: 'dashboard',
 					label: "Dashboard"
                 }, 'dashboard/'))
-                .when('/dashboard/mywebsites', route.resolve({
-                    controller: 'mywebsites',
-                    template: 'mywebsites',
-					label: "MyWebsites"
+                .when('/dashboard/websites', route.resolve({
+                    controller: 'websites',
+                    template: 'websites',
+					label: "Websites"
                 }, 'websites/'))
-                .when('/mywebsites/requestnewsite', route.resolve({
-                    controller: 'mywebsites',
+                .when('/websites/requestnewsite', route.resolve({
+                    controller: 'websites',
                     template: 'requestnewsite',
 					label: "RequestNewWebsite"
                 }, 'websites/'))
-                .when('/mywebsites/requestedsitelist', route.resolve({
-                    controller: 'mywebsites',
+                .when('/websites/requestedsitelist', route.resolve({
+                    controller: 'websites',
                     template: 'requestedsitelist',
 					label: "Requestedsitelist"
                 }, 'websites/'))
