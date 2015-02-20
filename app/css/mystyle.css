@@ -68,6 +68,17 @@ body {
 .main-content row ng-scope .website-menu .btn-default:hover {
   border-color: #AEBCC4;
 }
+.main-content li.dropdown-header,
+.main-content row ng-scope li.dropdown-header {
+  background-color: #1A68C6;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+.main-content .dropdown-toggle ul,
+.main-content row ng-scope .dropdown-toggle ul {
+  background-color: #769cd3;
+}
 .innernav {
   padding: 10px;
 }
@@ -112,4 +123,7 @@ h3 {
 }
 .toolbar {
   padding: 5px;
+}
+.nav .nav-tabs {
+  padding-top: 20px;
 }
