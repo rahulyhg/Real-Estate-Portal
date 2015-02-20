@@ -1,105 +1,95 @@
-
-<div class="row main-content">
-		
+<div class="row main-content">		
 	<div class="col-md-12">
 		<div class="row breadcrumb-back">
 			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
 			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
 		</div>
 		<h2 class="text-center">Add Project Details</h2>
-		<form class="form-horizontal vertical-scrollbar" role="form" >	
-			
+		<form class="form-horizontal vertical-scrollbar" role="form">			
 			<tabset>
-				<p class="paraMand">* Fields are mandatory</p>
-		
+				<p class="paraMand">* Fields are mandatory</p>		
 				<tab heading="Project">
 						<h3>Project Information</h3>
 							<div class="form-group">
 								<label  for="projtitle" class="col-md-3 control-label">* &nbsp Project Title</label>
-									<div class="col-md-9">
-									
-									<textarea class="form-control" id="projtitle" rows="1" name="projtitle" ng-model="project.title" required> </textarea>
-									<span style="color:red" ng-show="myForm.projtitle.$dirty && myForm.projtitle.$invalid">
-									  <span ng-show="myForm.projtitle.$error.required">Title is required .</span>
-									</span>
+									<div class="col-md-9">									
+										<textarea class="form-control" id="projtitle" rows="1" name="projtitle" ng-model="project.title" ng-minlength="*" ng-maxlength="256" required> </textarea>
+										<span style="color:red" ng-show="myForm.projtitle.$dirty && myForm.projtitle.$invalid">
+											<span ng-show="myForm.projtitle.$error.required">Title is required .</span>
+										</span>
 									</div>
 							</div>
 							<div class="form-group">
-								<label for="browserTitle" class="col-md-3 control-label">* &nbsp Browser Title</label>	   <div class="col-md-9">
-										<textarea class="form-control" id="browserTitle" rows="1" name="browserTitle" ng-model="project.browsertitle" required></textarea>
-										<span style="color:red" ng-show="myForm.browserTitle.$dirty && myForm.browserTitle.$invalid">
-										  <span ng-show="myForm.browserTitle.$error.required">Browser is required .</span>
-										</span>
-									</div>							
-							</div>
-				
-						<div class="form-group">
+								<label for="browserTitle" class="col-md-3 control-label">* &nbsp Browser Title</label>
+								<div class="col-md-9">
+									<textarea class="form-control" id="browserTitle" rows="1" name="browserTitle" ng-model="project.browsertitle" ng-minlength="*" ng-maxlength="256"  required></textarea>
+									<span style="color:red" ng-show="myForm.browserTitle.$dirty && myForm.browserTitle.$invalid">
+									    <span ng-show="myForm.browserTitle.$error.required">Browser is required .</span>
+									</span>
+								</div>							
+							</div>				
+							<div class="form-group">
 								<label for="metaKey" class="col-md-3 control-label">Meta Keywords</label> 
 								<div class="col-md-9"> 
-									<textarea class="form-control" rows="3" name="metaKey" ng-model="project.metakey"  id="metaKey" required> </textarea>
+									<textarea class="form-control" rows="3" name="metaKey" ng-model="project.metakey"  id="metaKey" ng-minlength="*" ng-maxlength="256" required> </textarea>
 									<span style="color:red" ng-show="myForm.metaKey.$dirty && myForm.metaKey.$invalid">
-									  <span ng-show="myForm.metaKey.$error.required">Meta Keywords is required .</span>
+									    <span ng-show="myForm.metaKey.$error.required">Meta Keywords is required .</span>
 									</span>
 								</div>							
 							</div>
 							<div class="form-group"> 
 								<label for="metaDesc" class="col-md-3 control-label">Meta Discription</label> 
-									<div class="col-md-9">
-										<textarea class="form-control" id="metaDesc" rows="3" name="metaDesc" ng-model="project.metadesc" required></textarea>
-										<span style="color:red" ng-show="myForm.metaDesc.$dirty && myForm.metaDesc.$invalid">
-										  <span ng-show="myForm.metaDesc.$error.required">Meta Discription is required .</span>
-										</span>
-									</div>
-							</div>
-						
+								<div class="col-md-9">
+									<textarea class="form-control" id="metaDesc" rows="3" name="metaDesc" ng-model="project.metadesc" ng-minlength="*" ng-maxlength="256" required></textarea>
+									<span style="color:red" ng-show="myForm.metaDesc.$dirty && myForm.metaDesc.$invalid">
+										<span ng-show="myForm.metaDesc.$error.required">Meta Discription is required .</span>
+									</span>
+								</div>
+							</div>						
 							<div class="form-group"> 
 								<label for="Featured" class="col-md-3 control-label">* &nbsp Featured</label> 
-									<div class="col-md-9"  ng-model="project.featured">
-										<label class="radio-inline">
-										  <input type="radio" name="featured" id="Yes" value="yes"> Yes
-										</label>
-										<label class="radio-inline">
-										  <input type="radio" name="featured" id="No" value="No"> No
-										</label>
-										
-									</div>	
-							</div>
-									
+								<div class="col-md-9"  ng-model="project.featured">
+									<label class="radio-inline">
+										<input type="radio" name="featured" id="Yes" value="yes"> Yes
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="featured" id="No" value="No"> No
+									</label>										
+								</div>	
+							</div>									
 							<div class="form-group">
 								<label for="Category" class="col-md-3 control-label">* &nbsp Category</label>
-									<div class="col-md-9">
-										<select name="Category"  class="form-control" id="Category" ng-model="project.category" required>
-											<option value="" selected="selected">Select Category</option>
-											<option value="residential">Residential Property</option>
-											<option value="commercial">Commercial Property</option>
-											<option value="agricultural">Agricultural Land</option>
-											<option value="industrial">Industrial Property</option>
-										</select> 
-										<span style="color:red" ng-show="myForm.Category.$dirty && myForm.Category.$invalid">
-										  <span ng-show="myForm.Category.$error.required">Category is required .</span>
-										</span>
-									</div>
-							</div>	
-				
-					
-						<div class="form-group">
-							<label for="Type" class="col-md-3 control-label"> * &nbsp Project Type</label>
+								<div class="col-md-9">
+									<select name="Category"  class="form-control" id="Category" ng-model="project.category" required>
+										<option value="" selected="selected">Select Category</option>
+										<option value="residential">Residential Property</option>
+										<option value="commercial">Commercial Property</option>
+										<option value="agricultural">Agricultural Land</option>
+										<option value="industrial">Industrial Property</option>
+									</select> 
+									<span style="color:red" ng-show="myForm.Category.$dirty && myForm.Category.$invalid">
+										<span ng-show="myForm.Category.$error.required">Category is required .</span>
+									</span>
+								</div>
+							</div>						
+							<div class="form-group">
+								<label for="Type" class="col-md-3 control-label"> * &nbsp Project Type</label>
 								<div class="col-md-9">
 									<input type="text" class="form-control" id="Type" name="Type" ng-model="project.type" required>
 									<span style="color:red" ng-show="myForm.Type.$dirty && myForm.Type.$invalid">
-									  <span ng-show="myForm.Type.$error.required">Project Type is required .</span>
+										<span ng-show="myForm.Type.$error.required">Project Type is required .</span>
 									</span>
 								</div>							
-						</div>
-						<div class="form-group">
-							<label for="Location" class="col-md-3 control-label">* &nbsp Location</label>
+							</div>
+							<div class="form-group">
+								<label for="Location" class="col-md-3 control-label">* &nbsp Location</label>
 								<div class="col-md-9">
 									<input type="text" class="form-control" id="Location" name="Location" ng-model="project.location" required>
 									<span style="color:red" ng-show="myForm.Location.$dirty && myForm.Location.$invalid">
-									  <span ng-show="myForm.Location.$error.required">Location is required .</span>
+										<span ng-show="myForm.Location.$error.required">Location is required .</span>
 									</span>
 								</div>							
-						</div>
+							</div>
 					</tab>
 					<tab heading="Overview">
 					<h3>Overview</h3>
@@ -108,171 +98,153 @@
 								<div class="col-md-9">
 									<input type="file"  id="projimg" name="projimg" ng-model="project.proj_img" required>
 									<span style="color:red" ng-show="myForm.projimg.$dirty && myForm.projimg.$invalid">
-									  <span ng-show="myForm.projimg.$error.required">Project Image is required .</span>
+										<span ng-show="myForm.projimg.$error.required">Project Image is required .</span>
 									</span>
 								</div>		
-						</div>
-						
+						</div>						
 						<div class="form-group">
 							<label for="Logo" class="col-md-3 control-label">* &nbsp Project Logo</label>
 								<div class="col-md-9">
-									<textarea class="form-control" rows="3" name="Logo"  id="Logo" ng-model="project.logo" required></textarea>
+									<textarea class="form-control" rows="3" name="Logo"  id="Logo" ng-model="project.logo" ng-minlength="*" ng-maxlength="256" required></textarea>
 									<span style="color:red" ng-show="myForm.Logo.$dirty && myForm.Logo.$invalid">
-									  <span ng-show="myForm.Logo.$error.required">Project Logo is required .</span>
+										<span ng-show="myForm.Logo.$error.required">Project Logo is required .</span>
 									</span>
 								</div>
-						</div>	
-						
-							 <div class="form-group">
-								<label for="projectby" class="col-md-3 control-label">* &nbsp Project By</label>
-									<div class="col-md-9">
-										<input type="text"  class="form-control" id="projectby" name="projectby" ng-model="project.project_by" required>
-										<span style="color:red" ng-show="myForm.projectby.$dirty && myForm.projectby.$invalid">
-										  <span ng-show="myForm.projectby.$error.required">Project By is required .</span>
-										</span>
-									</div>	
-							</div>
-							<div class="form-group">
+						</div>							
+						 <div class="form-group">
+							<label for="projectby" class="col-md-3 control-label">* &nbsp Project By</label>
+							<div class="col-md-9">
+								<input type="text"  class="form-control" id="projectby" name="projectby" ng-model="project.project_by" required>
+								<span style="color:red" ng-show="myForm.projectby.$dirty && myForm.projectby.$invalid">
+									<span ng-show="myForm.projectby.$error.required">Project By is required .</span>
+								</span>
+							</div>	
+						</div>
+						<div class="form-group">
 							<label for="Overview" class="col-md-3 control-label">* &nbsp Overview</label>
 								<div class="col-md-9">
-									<textarea class="form-control" id="Overview" rows="3" name="Overview" ng-model="project.overview" required></textarea>
+									<textarea class="form-control" id="Overview" rows="3" name="Overview" ng-model="project.overview" ng-minlength="*" ng-maxlength="256" required></textarea>
 									<span style="color:red" ng-show="myForm.Overview.$dirty && myForm.Overview.$invalid">
-									  <span ng-show="myForm.Overview.$error.required">Overview is required .</span>
+										<span ng-show="myForm.Overview.$error.required">Overview is required .</span>
 									</span>
-								</div>
-														
-						</div>		
-							
+								</div>													
+						</div>						
 					</tab>
 					<tab heading="Amenities">
-					<h3>Amenities</h3>
-					
-						<div class="form-group">
+					<h3>Amenities</h3>					
+					<div class="form-group">
 						<label for="Amenities" class="col-md-3 control-label">* &nbsp Amenities/Features</label>
-							<div class="col-md-9">
-								<textarea class="form-control" rows="3" name="Amenities" id="Amenities" ng-model="project.amenities" required></textarea>
-								<span style="color:red" ng-show="myForm.Amenities.$dirty && myForm.Amenities.$invalid">
-								  <span ng-show="myForm.Amenities.$error.required">Amenities is required .</span>
-								</span>
-							</div>
-						</div>	
-					</tab>
-					<tab heading="Specifications">
-						<h3>Specification</h3>
-					
-						<div class="form-group">
-						<label for="Specifications" class="col-md-3 control-label">* &nbsp Specifications</label>
-							<div class="col-md-9">
-								<textarea class="form-control" rows="3" name="Specifications" id="Specifications" ng-model="project.specifications" required></textarea>
-								<span style="color:red" ng-show="myForm.Specifications.$dirty && myForm.Specifications.$invalid">
-								  <span ng-show="myForm.Specifications.$error.required">Specifications is required .</span>
-								</span>
-							</div>
-						</div>	
-					</tab>
-					<tab heading="Location Map">
-						<h3>Location Map</h3>
-						<div class="form-group">
-							<label for="locationmap" class="col-md-3 control-label">Location Map</label>
-								<div class="col-md-9">
-									<textarea class="form-control" rows="3" name="locationmap" id="locationmap" ng-model="project.location_map" required></textarea>
-									<span style="color:red" ng-show="myForm.locationmap.$dirty && myForm.locationmap.$invalid">
-									  <span ng-show="myForm.locationmap.$error.required">Location Map is required .</span>
-									</span>
-								</div>
-						</div>	
-					
-						<div class="form-group">
-							<label for="layoutmap" class="col-md-3 control-label">Layout Map</label>
-							<div class="col-md-9">
-								<textarea class="form-control" rows="3" name="layoutmap" id="layoutmap" ng-model="project.layout_map" required></textarea>
-								<span style="color:red" ng-show="myForm.layoutmap.$dirty && myForm.layoutmap.$invalid">
-								  <span ng-show="myForm.layoutmap.$error.required">Layout Map is required .</span>
-								</span>
-							</div>
+						<div class="col-md-9">
+							<textarea class="form-control" rows="3" name="Amenities" id="Amenities" ng-model="project.amenities" ng-minlength="*" ng-maxlength="256" required></textarea>
+							<span style="color:red" ng-show="myForm.Amenities.$dirty && myForm.Amenities.$invalid">
+								<span ng-show="myForm.Amenities.$error.required">Amenities is required .</span>
+							</span>
 						</div>
-					
-					
-						
-					</tab>
-					<tab heading="Floor Plans">
-						<h3>Floor Plans</h3>
-						<div class="form-group">
-						<label for="Floorplans" class="col-md-3 control-label">Floor Plans</label>
+					</div>	
+				</tab>
+				<tab heading="Specifications">
+					<h3>Specification</h3>				
+					<div class="form-group">
+					<label for="Specifications" class="col-md-3 control-label">* &nbsp Specifications</label>
+						<div class="col-md-9">
+							<textarea class="form-control" rows="3" name="Specifications" id="Specifications" ng-model="project.specifications"  ng-minlength="*" ng-maxlength="256" required></textarea>
+							<span style="color:red" ng-show="myForm.Specifications.$dirty && myForm.Specifications.$invalid">
+								<span ng-show="myForm.Specifications.$error.required">Specifications is required .</span>
+							</span>
+						</div>
+					</div>	
+				</tab>
+				<tab heading="Location Map">
+					<h3>Location Map</h3>
+					<div class="form-group">
+						<label for="locationmap" class="col-md-3 control-label">Location Map</label>
 							<div class="col-md-9">
-								<textarea class="form-control" rows="3" name="Floorplans" id="Floorplans"  ng-model="project.floor_plans" required></textarea>
-								<span style="color:red" ng-show="myForm.Floorplans.$dirty && myForm.Floorplans.$invalid">
-								  <span ng-show="myForm.Floorplans.$error.required">Floor Plans is required .</span>
+								<textarea class="form-control" rows="3" name="locationmap" id="locationmap" ng-model="project.location_map" ng-minlength="*" ng-maxlength="256"  required></textarea>
+								<span style="color:red" ng-show="myForm.locationmap.$dirty && myForm.locationmap.$invalid">
+									<span ng-show="myForm.locationmap.$error.required">Location Map is required .</span>
 								</span>
 							</div>
-						</div>	
-						<div class="form-group">
+					</div>					
+					<div class="form-group">
+						<label for="layoutmap" class="col-md-3 control-label">Layout Map</label>
+						<div class="col-md-9">
+							<textarea class="form-control" rows="3" name="layoutmap" id="layoutmap" ng-model="project.layout_map" ng-minlength="*" ng-maxlength="256" required></textarea>
+							<span style="color:red" ng-show="myForm.layoutmap.$dirty && myForm.layoutmap.$invalid">
+								<span ng-show="myForm.layoutmap.$error.required">Layout Map is required .</span>
+							</span>
+						</div>
+					</div>					
+				</tab>
+				<tab heading="Floor Plans">
+					<h3>Floor Plans</h3>
+					<div class="form-group">
+						<label for="Floorplans" class="col-md-3 control-label">Floor Plans</label>
+						<div class="col-md-9">
+							<textarea class="form-control" rows="3" name="Floorplans" id="Floorplans"  ng-model="project.floor_plans" ng-minlength="*" ng-maxlength="256" required></textarea>
+							<span style="color:red" ng-show="myForm.Floorplans.$dirty && myForm.Floorplans.$invalid">
+								<span ng-show="myForm.Floorplans.$error.required">Floor Plans is required .</span>
+							</span>
+						</div>
+					</div>	
+					<div class="form-group">
 						<label for="bfloorplan" class="col-md-3 control-label">Browser Title Floor Plan</label>
 							<div class="col-md-9">
-								<textarea class="form-control" rows="1" name="bfloorplan" id="bfloorplan"ng-model="project.browsertitle_floorplan" required></textarea>
+								<textarea class="form-control" rows="1" name="bfloorplan" id="bfloorplan"ng-model="project.browsertitle_floorplan" ng-minlength="*" ng-maxlength="256"  required></textarea>
 								<span style="color:red" ng-show="myForm.bfloorplan.$dirty && myForm.bfloorplan.$invalid">
-								  <span ng-show="myForm.bfloorplan.$error.required">Floor Plan is required .</span>
+									<span ng-show="myForm.bfloorplan.$error.required">Floor Plan is required .</span>
 								</span>
 							</div>
-						</div>	
-					
-					</tab>
-					<tab heading="Walk Through">
-						<h3>Walk Through</h3>
-						<div class="form-group">
-							<label for="Walkthrough" class="col-md-3 control-label">* &nbsp Walk Through</label>
-								<div class="col-md-9">
-									<textarea class="form-control" rows="3" name="Walkthrough" id="Walkthrough" ng-model="walkthrough" required></textarea>
-									<span style="color:red" ng-show="myForm.Walkthrough.$dirty && myForm.Walkthrough.$invalid">
-									  <span ng-show="myForm.Walkthrough.$error.required">Walk Through is required .</span>
-									</span>
-								</div>
-						</div>	
-					</tab>
-					<tab heading="Contact">
-						<h3>Contact Details</h3>
-						<div class="form-group">
-						<label for="Contact" class="col-md-3 control-label">* &nbsp Contact</label>
+					</div>					
+				</tab>
+				<tab heading="Walk Through">
+					<h3>Walk Through</h3>
+					<div class="form-group">
+						<label for="Walkthrough" class="col-md-3 control-label">* &nbsp Walk Through</label>
 							<div class="col-md-9">
-								<textarea class="form-control" rows="3" name="Contact" id="Contact" ng-model="project.contact" required></textarea>
-								<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
-								  <span ng-show="myForm.Contact.$error.required">Contact is required .</span>
+								<textarea class="form-control" rows="3" name="Walkthrough" id="Walkthrough" ng-model="walkthrough" ng-minlength="*" ng-maxlength="256" required></textarea>
+								<span style="color:red" ng-show="myForm.Walkthrough.$dirty && myForm.Walkthrough.$invalid">
+									<span ng-show="myForm.Walkthrough.$error.required">Walk Through is required .</span>
 								</span>
 							</div>
+					</div>	
+				</tab>
+				<tab heading="Contact">
+					<h3>Contact Details</h3>
+					<div class="form-group">
+						<label for="Contact" class="col-md-3 control-label">* &nbsp Contact</label>
+						<div class="col-md-9">
+							<textarea class="form-control" rows="3" name="Contact" id="Contact" ng-model="project.contact" ng-minlength="*" ng-maxlength="256" required></textarea>
+							<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
+								<span ng-show="myForm.Contact.$error.required">Contact is required .</span>
+							</span>
 						</div>
-					</tab>
-				</tabset>
-				<div class="form-group">
-					<div class="col-md-12 ">	
-						<h3>Select Sites</h3>			    
-							<table class="table table-bordered">
-								<tr>
-									<td class="checkbox"> 
-								
-									  <label>
-										<input type="checkbox" value="" name="selectall" ng-model="selectall">
-										Select All
-									  </label>
-									</td>
-									<td class="checkbox ">
-									  <label>
-										<input type="checkbox" value="" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
-									  </label>
-									</td>
-								</tr>
-							</table>
-						</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-offset-5 col-md-9">
-						<button type="submit" ng-click="addproject()" class="btn btn-primary text-center">Add new Project</button>
 					</div>
-				</div>							
+				</tab>
+			</tabset>
+			<div class="form-group">
+				<div class="col-md-12 ">	
+					<h3>Select Sites</h3>			    
+					<table class="table table-bordered">
+						<tr>
+							<td class="checkbox"> 							
+								<label>
+									<input type="checkbox" value="" name="selectall" ng-model="selectall">Select All
+								</label>
+							</td>
+							<td class="checkbox ">
+								<label>
+									<input type="checkbox" value="" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
+								</label>
+							</td>
+						</tr>
+					</table>
+					</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-5 col-md-9">
+					<button type="submit" ng-click="addproject()" title="Add your new project" class="btn btn-primary text-center">Add new Project</button>
+				</div>
+			</div>							
 		</form>	
 	</div>
 </div>
-
-
-
-
-

@@ -47,12 +47,12 @@ define(['angular',
 				.when('/changepass',route.resolve({
                     controller: 'login',
                     template: 'changepass',
-					label: " ChangePassword"
+					label: " Change Password"
                 }, 'users/'))
 				.when('/editprofile', route.resolve({
                     controller: 'login',
                     template: 'editprofile',
-					label: " EditProfile"
+					label: " Edit Profile"
                 }, 'users/'))
                 .when('/response/:type?/:status?/:id?', route.resolve({
                     controller: 'response',
@@ -67,12 +67,12 @@ define(['angular',
                 .when('/viewProperty/:id?', route.resolve({
                     controller: 'property',
                     template: 'viewProperty',
-					label: " property / ViewProperty"
+					label: " property / View Property"
                 }, 'property/'))
                 .when('/addproperty/:id?', route.resolve({
                     controller: 'property',
                     template: 'addproperty',
-					label: " property / AddProperty"
+					label: " property / Add Property"
                 }, 'property/'))
                 .when('/project', route.resolve({
                     controller: 'project',
@@ -83,13 +83,13 @@ define(['angular',
                 .when('/addproject', route.resolve({
                     controller: 'project',
                     template: 'addproject',
-					label: " Project / AddProject"
+					label: " Project / Add Project"
                 }, 'project/'))
 
 				.when('/forgot', route.resolve({
                     controller: 'forgot',
                     template: 'forgot',
-					label: " Login / ForgotPassword"
+					label: " Login / Forgot Password"
                 }, 'users/'))
                 .when('/register', route.resolve({
                     controller: 'register',
