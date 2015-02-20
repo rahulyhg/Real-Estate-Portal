@@ -85,11 +85,11 @@
 									</tr>
 								</table>
 							</td>	
-							<td><a class="btn btn-success" ng-if="featured==0">Featured </a>
-									<a class="btn btn-warning" ng-if="featured==1"> Not Featured </a>
-								</td>			
-								<td><a class="btn btn-success" ng-if="status==0">Active</a>
-									<a class="btn btn-warning" ng-if="status==1">Delete</a></td>
+							<td><a class="btn btn-success" ng-if="featured==0" title="Featured">Featured </a>
+									<a class="btn btn-warning" ng-if="featured==1" title="Not Featured"> Not Featured </a>
+							</td>			
+								<td><a class="btn btn-success" ng-if="status==0" title="Active">Active</a>
+									<a class="btn btn-warning" ng-if="status==1" title="Delete">Delete</a></td>
 							<td>{{x.domain}}</td>					
 							
 							<td><a href="#project/edit/{{x.id}}">Edit</a></td>
