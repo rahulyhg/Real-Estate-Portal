@@ -21,7 +21,26 @@ define(['app'], function (app) {
 			
 		};
 		
+		//Code For Pagination
+		$scope.maxSize = 5;
+		$scope.totalRecords = "";
+		$scope.currentPage = 1;
 		
+
+		$scope.pageChanged = function() {
+			$log.log('Page changed to: ' + $scope.currentPage);
+			$http.get("../server-api/index.php/properties/"+$scope.currentPage+"/10")
+			.success(function(response) {
+				$scope.properties = response.properties;
+				//$scope.totalRecords = response.totalRecords;
+				//console.log($scope.properties);
+			});
+		};
+
+		
+		
+		
+		// Single Property view
 		if($routeParams.id) {
 			$http.get("../server-api/index.php/property/"+$routeParams.id)
 			.success(function(response) {
@@ -29,26 +48,29 @@ define(['app'], function (app) {
 				console.log($scope.properties);
 		    });		
 		}
+		// Multiple Property View
 		else{	
-			$http.get("../server-api/index.php/property")
+			$http.get("../server-api/index.php/properties/"+$scope.currentPage+"/10")
 			.success(function(response) {
-				$scope.properties = response;
+				$scope.properties = response.properties;
+				$scope.totalRecords = response.totalRecords;
 				//console.log($scope.properties);
 			});
 	
-			// Add property
-			$scope.reset = function() {
-				$scope.property = {};
-			};
-			$scope.addprop = function(){
-				console.log($scope.property);
-				$http.post("../server-api/index.php/addproperty", $scope.property)
-				.success(function(response) {
-					alert(response);
-					$scope.reset();
-				});
-			};
+			
 		}
+		// Add property
+		$scope.reset = function() {
+			$scope.property = {};
+		};
+		$scope.addprop = function(){
+			console.log($scope.property);
+			$http.post("../server-api/index.php/addproperty", $scope.property)
+			.success(function(response) {
+				alert(response);
+				$scope.reset();
+			});
+		};
 		if($routeParams.id){
 			//Update Property
 			$http.get("../server-api/index.php/property/"+$routeParams.id)

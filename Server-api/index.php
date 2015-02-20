@@ -12,7 +12,8 @@ $app->response->headers->set('Content-Type', 'application/json');
 
 $app->get('/response(/:id)','responseData');
 $app->get('/project(/:id)','projectData');
-$app->get('/property(/:id)','propertyData');
+$app->get('/properties/:limit(/:records)','propertiesData');
+$app->get('/property/:id','propertyData');
 $app->put('/response/:status/:id','responseUpdate');
 $app->post('/register','registerUser');
 $app->put('/editprofile/:id','registerUpdate');
@@ -74,19 +75,35 @@ function projectData($id=null)
 //view property response
 function propertyData($id=null)
 {		
-	if($id===Null){
-		$selectSQL=mysql_query( "SELECT * FROM 2_real_property")or die(mysql_error());
+	
+	
+		$where="WHERE id= $id";
+		$selectSQL=mysql_query("SELECT * FROM 2_real_property $where");
+		$data=mysql_fetch_assoc($selectSQL);		
+	
+	echo json_encode($data);	
+}
+
+function propertiesData($limit = 0, $records = 10)
+{		
+		$limit = ($limit === 0 ) ? $limit : $limit - 1;
+		$startLimit = $limit * $records; // start on record $startLimit
+			
+		$selectSQL=mysql_query( "SELECT * FROM 2_real_property LIMIT $startLimit, $records")or die(mysql_error());
+		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM 2_real_property")) or die(mysql_error());
+		//$jsonTot = [];
+		$jsonTot['totalRecords'] = $totalRecords;
+		//print_r($totalRecords);
+		//echo json_encode($jsonTot);
+		
 		$data = array();		
 		while($row=mysql_fetch_assoc($selectSQL))
 		{
 			array_push($data,$row);
 		}
-	}else{	
-		$where="WHERE id= ".$id;
-		$selectSQL=mysql_query("SELECT * FROM 2_real_property $where");
-		$data=mysql_fetch_assoc($selectSQL);		
-	}
-	echo json_encode($data);	
+		$propData['totalRecords'] = $totalRecords;
+		$propData['properties'] = $data;
+	echo json_encode($propData);
 }
 
 //Register for new user

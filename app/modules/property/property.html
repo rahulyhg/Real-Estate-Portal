@@ -101,27 +101,11 @@
 		</div>	
 			<div class="text-center">
 				
-				<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages">
+				<pagination total-items="totalRecords" items-per-page="10"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>
 				</pagination>
-				<pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
+				<pre>Page: {{currentPage}} / {{numPages}}</pre>
 			</div>		
-		<script>
-		     angular.module('ui.bootstrap.demo').controller('propertyController', function ($scope, $log) {
-				  
-
-				  $scope.setPage = function (pageNo) {
-						$scope.currentPage = pageNo;
-				  };
-
-				  $scope.pageChanged = function() {
-						$log.log('Page changed to: ' + $scope.currentPage);
-				  };
-
-				$scope.maxSize = 5;
-				$scope.bigTotalItems = 175;
-				$scope.bigCurrentPage = 1;
-			});
-		</script>
+		
 	</div>
 </div>			
 								
