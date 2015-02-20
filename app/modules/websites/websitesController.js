@@ -6,7 +6,7 @@ define(['app'], function (app) {
 		console.log("this is websites controller");
     };    
 	// Inject controller's dependencies
-	mywebsitesController.$inject = injectParams;
+	websitesController.$inject = injectParams;
 	// Register/apply controller dynamically
     app.register.controller('websitesController', websitesController);	
 });
