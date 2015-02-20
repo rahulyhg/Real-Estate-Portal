@@ -60,6 +60,14 @@ body {
   border: 1px solid gray;
   padding: 20px;
 }
+.main-content .website-menu,
+.main-content row ng-scope .website-menu {
+  padding-bottom: 10px;
+}
+.main-content .website-menu .btn-default:hover,
+.main-content row ng-scope .website-menu .btn-default:hover {
+  border-color: #AEBCC4;
+}
 .innernav {
   padding: 10px;
 }
