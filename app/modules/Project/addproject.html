@@ -4,11 +4,11 @@
 			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
 			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
 		</div>
-		<h2 class="text-center">Add Project Details</h2>
+		<h2 class="text-center" title="Add project">Add Project Details</h2>
 		<form class="form-horizontal vertical-scrollbar" role="form">			
 			<tabset>
 				<p class="paraMand">* Fields are mandatory</p>		
-				<tab heading="Project">
+				<tab heading="Project" title="project information">
 						<h3>Project Information</h3>
 							<div class="form-group">
 								<label  for="projtitle" class="col-md-3 control-label">* &nbsp Project Title</label>
@@ -106,6 +106,9 @@
 							<label for="Logo" class="col-md-3 control-label">* &nbsp Project Logo</label>
 								<div class="col-md-9">
 									<textarea class="form-control" rows="3" name="Logo"  id="Logo" ng-model="project.logo" ng-minlength="*" ng-maxlength="256" required></textarea>
+									 <div>{{ 256 - logo.length + " Chars left" }}</div>
+									   <span style="color:red" ng-show="form1.logo.$error.maxlength">
+											Sorry You are Exceeding the Limit</span>
 									<span style="color:red" ng-show="myForm.Logo.$dirty && myForm.Logo.$invalid">
 										<span ng-show="myForm.Logo.$error.required">Project Logo is required .</span>
 									</span>
