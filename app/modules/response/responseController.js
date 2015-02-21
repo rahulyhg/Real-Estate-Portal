@@ -3,12 +3,12 @@
 'use strict';
 
 define(['app', 'css!modules/home/home'], function (app) {
-    var injectParams = ['$scope', '$injector','$http','$routeParams', '$location'];
+    var injectParams = ['$scope', '$injector','$http','$routeParams', '$location',$rootScope'];
 
     // This is controller for this view
 	var responseController = function ($scope, $injector, $http,$routeParams, $location) {
 		
-		
+		$rootScope.metaTitle = "Real Estate Response";
 		if(!$routeParams.type && !$routeParams.status){
 			$location.path( "/response/web/new" );
 		}

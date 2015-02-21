@@ -3,7 +3,7 @@ define(['app'], function (app) {
     var injectParams = ['$scope', '$injector','$routeParams','$http','$log', 'modalService', '$rootScope'];
     // This is controller for this view
 	var propertyController = function ($scope, $injector,$routeParams,$http, $log, modalService, $rootScope) {
-		$rootScope.title = "Real Estate Properties";
+		$rootScope.metaTitle = "Real Estate Properties";
 		$scope.open = function (url, propId) {
 			$http.get("../server-api/index.php/property/"+propId)
 			.success(function(response) 
@@ -25,20 +25,18 @@ define(['app'], function (app) {
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
 		$scope.currentPage = 1;
-		
+		$scope.pageItems = 10;
+		$scope.numPages = "";		
 
 		$scope.pageChanged = function() {
-			$log.log('Page changed to: ' + $scope.currentPage);
-			$http.get("../server-api/index.php/properties/"+$scope.currentPage+"/10")
+			//$log.log('Page changed to: ' + $scope.currentPage);
+			$http.get("../server-api/index.php/properties/"+$scope.currentPage+"/"+$scope.pageItems)
 			.success(function(response) {
 				$scope.properties = response.properties;
 				//$scope.totalRecords = response.totalRecords;
 				//console.log($scope.properties);
 			});
-		};
-
-		
-		
+		};		
 		
 		// Single Property view
 		if($routeParams.id) {

@@ -1,22 +1,40 @@
 'use strict';
 define(['app', 'css!modules/home/home'], function (app) {
-var injectParams = ['$scope', '$injector','$http', '$routeParams'];
+var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
   // This is controller for this view
 	var projectController = function ($scope, $injector,$http,$routeParams) {
-		if($routeParams.type) {		
-		$http.get("server-api/index.php/project/"+$routeParams.type)
+		$rootScope.metaTitle = "Real Estate Project";
+		if($routeParams.type) {					
+		$http.get("../server-api/index.php/project/"+$routeParams.type)
 		.success(function(response) {$scope.projects = response;
 			console.log($scope.projects);
 		});
 		
 	}else{
 		//this request for all response data		
-		$http.get("server-api/index.php/project")
+		$http.get("../server-api/index.php/project")
 		.success(function(response) {$scope.projects = response;
 			//console.log($scope.projects);
 		});		
 	}
 	
+	//Code For Pagination
+		$scope.maxSize = 5;
+		$scope.totalRecords = "";
+		$scope.currentPage = 1;
+		$scope.pageItems = 10;
+		$scope.numPages = "";		
+
+		$scope.pageChanged = function() {
+			//$log.log('Page changed to: ' + $scope.currentPage);
+			$http.get("../server-api/index.php/projects/"+$scope.currentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.projects = response.projects;
+				console.log(projects);
+				//$scope.totalRecords = response.totalRecords;
+				
+			});
+		}; 
    
 	
 	//add project
@@ -57,8 +75,7 @@ var injectParams = ['$scope', '$injector','$http', '$routeParams'];
 		});
 	};
 	}	
-    };
-	
+    };	
 	 
 	// Inject controller's dependencies
 	projectController.$inject = injectParams;

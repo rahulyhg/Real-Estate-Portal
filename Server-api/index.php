@@ -13,6 +13,7 @@ $app->response->headers->set('Content-Type', 'application/json');
 $app->get('/response(/:id)','responseData');
 $app->get('/project(/:id)','projectData');
 $app->get('/properties/:limit(/:records)','propertiesData');
+$app->get('/projects/:limit(/:records)','projectData2');
 $app->get('/property/:id','propertyData');
 $app->put('/response/:status/:id','responseUpdate');
 $app->post('/register','registerUser');
@@ -55,7 +56,7 @@ function responseUpdate($status, $id){
 		}			
 }
 //view project response
-function projectData($id=null)
+function projectData1($id=null)
 {	
 	if($id===Null){
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_project")or die(mysql_error());
@@ -83,10 +84,10 @@ function propertyData($id=null)
 	
 	echo json_encode($data);	
 }
-
+//properties pagination
 function propertiesData($limit = 0, $records = 10)
 {		
-		$limit = ($limit === 0 ) ? $limit : $limit - 1;
+		$limit = ($limit == 0 ) ? $limit : $limit - 1;
 		$startLimit = $limit * $records; // start on record $startLimit
 			
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_property LIMIT $startLimit, $records")or die(mysql_error());
@@ -105,6 +106,34 @@ function propertiesData($limit = 0, $records = 10)
 		$propData['properties'] = $data;
 	echo json_encode($propData);
 }
+
+//project pagination
+function projectData2($limit = 0, $records = 10)
+{		
+		$limit = ($limit == 0 ) ? $limit : $limit - 1;
+		$startLimit = $limit * $records; // start on record $startLimit
+			
+		$selectSQL=mysql_query( "SELECT * FROM `2_real_project` LIMIT $startLimit, $records")or die(mysql_error());
+		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM `2_real_project`")) or die(mysql_error());
+		//$jsonTot = [];
+		$jsonTot['totalRecords'] = $totalRecords;
+		//print_r($totalRecords);
+		//echo json_encode($jsonTot);
+		
+		$data = array();		
+		while($row=mysql_fetch_assoc($selectSQL))
+		{
+			array_push($data,$row);
+		}
+		$projData['totalRecords'] = $totalRecords;
+		$projData['projects'] = $data;
+	echo json_encode($projData);
+}
+
+
+
+
+
 
 //Register for new user
 function registerUser()
