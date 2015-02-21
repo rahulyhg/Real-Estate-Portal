@@ -5,8 +5,7 @@ define(['angular',
  'routeResolver',
  'bootstrap',
  'directives',
- 'services',
- 
+ 'services', 
  'filters',
  'css!../css/bootstrap.min', 'css!../css/mystyle.css'
 ], function (angular, angularRoute) {

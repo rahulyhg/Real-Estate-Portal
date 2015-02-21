@@ -6,8 +6,7 @@ define(['app', 'css!modules/home/home'], function (app) {
     var injectParams = ['$scope', '$injector','$http','$routeParams', '$location',$rootScope'];
 
     // This is controller for this view
-	var responseController = function ($scope, $injector, $http,$routeParams, $location) {
-		
+	var responseController = function ($scope, $injector, $http,$routeParams, $location) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		if(!$routeParams.type && !$routeParams.status){
 			$location.path( "/response/web/new" );
@@ -23,6 +22,23 @@ define(['app', 'css!modules/home/home'], function (app) {
 				return ""
 			};
 		};
+		
+		//Code For Pagination
+		$scope.maxSize = 5;
+		$scope.totalRecords = "";
+		$scope.currentPage = 1;
+		$scope.pageItems = 10;
+		$scope.numPages = "";		
+
+		$scope.pageChanged = function() {
+			//$log.log('Page changed to: ' + $scope.currentPage);
+			$http.get("../server-api/index.php/responses/"+$scope.currentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.responses = response.responses;
+				//$scope.totalRecords = response.totalRecords;
+				//console.log($scope.properties);
+			});
+		};		
 		 
 		//this request for single response data
 		if($routeParams.id) {

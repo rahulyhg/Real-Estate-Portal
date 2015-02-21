@@ -14,6 +14,7 @@ $app->get('/response(/:id)','responseData');
 $app->get('/project(/:id)','projectData');
 $app->get('/properties/:limit(/:records)','propertiesData');
 $app->get('/projects/:limit(/:records)','projectData2');
+$app->get('/responses/:limit(/:records)','resData');
 $app->get('/property/:id','propertyData');
 $app->put('/response/:status/:id','responseUpdate');
 $app->post('/register','registerUser');
@@ -129,6 +130,29 @@ function projectData2($limit = 0, $records = 10)
 		$projData['projects'] = $data;
 	echo json_encode($projData);
 }
+/*//Response pagination
+function resData($limit = 0, $records = 10)
+{		
+		$limit = ($limit == 0 ) ? $limit : $limit - 1;
+		$startLimit = $limit * $records; // start on record $startLimit
+			
+		$selectSQL=mysql_query( "SELECT * FROM 2_real_response LIMIT $startLimit, $records")or die(mysql_error());
+		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM 2_real_response")) or die(mysql_error());
+		//$jsonTot = [];
+		$jsonTot['totalRecords'] = $totalRecords;
+		//print_r($totalRecords);
+		//echo json_encode($jsonTot);
+		
+		$data = array();		
+		while($row=mysql_fetch_assoc($selectSQL))
+		{
+			array_push($data,$row);
+		}
+		$resData['totalRecords'] = $totalRecords;
+		$resData['responses'] = $data;
+	echo json_encode($resData);
+}
+*/
 
 
 
