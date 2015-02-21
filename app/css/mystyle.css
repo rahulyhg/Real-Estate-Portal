@@ -70,9 +70,8 @@ body {
 }
 .main-content li.dropdown-header,
 .main-content row ng-scope li.dropdown-header {
-  background-color: #1A68C6;
   text-align: center;
-  color: white;
+  color: #41547c;
   font-size: 16px;
 }
 .main-content .dropdown-toggle ul,
