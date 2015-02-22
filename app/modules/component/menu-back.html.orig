@@ -6,8 +6,13 @@
 		</span>
 		</a>
 	</div>
+<<<<<<< HEAD
 	<div class="btn-group " role="group" aria-label="" dropdown title="Site main menu">
+      <a class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+=======
+	<div class="btn-group " role="group" aria-label="" dropdown is-open="status.isopen" title="Site main menu">
       <a class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled" tooltip-placement="top" tooltip="Menu!">
+>>>>>>> 6bc15268962cea75adae68e9b14d6070c3e64597
          <span title="Menu" class="glyphicon glyphicon-th-large dropdown-toggle"></span>
       </a>
 		 <ul class="dropdown-menu" role="menu"  aria-labelledby="dropdownMenuDivider">
