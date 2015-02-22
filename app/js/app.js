@@ -105,17 +105,13 @@ define(['angular',
                     template: 'websites',
 					label: "Websites"
                 }, 'websites/'))
-                /*.when('/websites/requestnewsite', route.resolve({
-                    controller: 'websites',
-                    template: 'requestnewsite',
-					label: " Request New Website"
-                }, 'websites/'))
-                .when('/websites/requestedsitelist', route.resolve({
-                    controller: 'websites',
-                    template: 'requestedsitelist',
-					label: " Requested Site list"
-                }, 'websites/'))*/
-				.when('/templates', route.resolve({
+				.when('/dashboard/templates/:tempPart?', route.resolve({
+                    controller: 'templates',
+                    template: 'templates',
+					label: "Templates"
+                }, 'templates/'))
+                
+				/* .when('/templates', route.resolve({
                     controller: 'templates',
                     template: 'templates',
 					label: "Project Templates"
@@ -129,7 +125,7 @@ define(['angular',
                     controller: 'templates',
                     template: 'websitesTemplate',
 					label: "Websites Templates"
-                }, 'templates/'))
+                }, 'templates/')) */
 	
             .otherwise({redirectTo: '/'
             });
