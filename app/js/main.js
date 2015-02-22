@@ -9,6 +9,7 @@ require.config({
 		services: '../js/services',
 		filters: '../js/filters',
 		jquery: '../lib/jquery/jquery',
+		tinymce: '../lib/tinymce/tinymce.min',
 		angularRoute: '../lib/angular/angular-route',
 		angularMocks: '../lib/angular/angular-mocks',
 		text: '../lib/requirejs-text/text',
@@ -18,17 +19,17 @@ require.config({
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
-		'filters':  { "deps": ['angular', 'angularRoute', 'routeResolver'] },
-		'directives':  { "deps": ['angular', 'angularRoute', 'routeResolver'] },
-		'services':  { "deps": ['angular', 'angularRoute', 'routeResolver'] },
 		'routeResolver': { "deps": ['angular', 'angularRoute'] },
+		'breadcrumbs':  { "deps": ['angular', 'angularRoute'] },
 		'bootstrap': { "deps": ['angular'] },
+		'filters':  { "deps": ['angular'] },
+		'services':  { "deps": ['angular'] },
+		'directives':  { "deps": ['angular'] },
 		'angularRoute': ['angular'],
 		'angularMocks': {
 			deps:['angular'],
 			'exports':'angular.mock'
 		}
-		
 	},
 	priority: [
 		"angular"

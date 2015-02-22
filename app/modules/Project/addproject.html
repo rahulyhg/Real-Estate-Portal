@@ -126,7 +126,7 @@
 						<div class="form-group">
 							<label for="Overview" class="col-md-3 control-label">* &nbsp Overview</label>
 								<div class="col-md-9">
-									<textarea class="form-control" id="Overview" rows="3" name="Overview" ng-model="project.overview" ng-minlength="*" ng-maxlength="256" required></textarea>
+									<textarea class="form-control" id="Overview" rows="3" name="Overview" ui-tinymce ng-model="project.overview" ng-minlength="*" ng-maxlength="256" required></textarea>
 									<span style="color:red" ng-show="myForm.Overview.$dirty && myForm.Overview.$invalid">
 										<span ng-show="myForm.Overview.$error.required">Overview is required .</span>
 									</span>
