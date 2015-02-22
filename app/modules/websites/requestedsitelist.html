@@ -1,19 +1,74 @@
-<div class="row">		
-	<div class="col-md-12 main-content">	
-		<div class="row breadcrumb-back">
-			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
-			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
-		</div>
-		<div class="row ">
-			<div class="col-md-12 text-right website-menu">
-				<a href="#websites" class="btn btn-default">Website List</a>
-				<a href="#websites/requestnewsite" title="You request for new site" class="btn btn-default">Request New Site</a>
-				<a href="#websites/requestedsitelist" title="View requested site list" class="btn btn-default">Requested Site List</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3" ng-include="'modules/component/sidebarRquestList.html'"></div>
-		</div>		
+<h3> Requested Website Details</h3>
+<div class="row ">
+	 <div class="col-md-4"> 
+		<label for="search" class="control-label">Search </label>		
+		<input id="search" type="text" class="form-control" ng-model="searchSite" placeholder="search"/>
+	</div>			 				  
+	 <div class="col-md-2">
+		<label for="sort" class="control-label">Sort by Order</label>
+		<select id="sort" class="form-control" ng-model="id"> 
+			<option value="">Select Order</option>		<!-- added value & selected attr -->	
+			<option value="-id">Desending</option>
+			<option value="id">Asending</option>  
+		</select>
 	</div>
-</div>
+	<div class="col-md-2">
+		<label for="status" class="control-label">Select Status</label>
+		<select id="status" class="form-control" ng-model="status">
+			<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
+			<option value="1">In Progress</option>
+			<option value="2">Approved</option>
+			<option value="3">Pending</option>
+			<option value="4">Rejected</option> 
+		</select>
+	</div>
 	
+	<div class="col-md-2">
+			<label for="website" class="control-label">Select Site :</label>
+			<select id="website" class="form-control">            
+				<option value="">All</option>
+				<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
+				<option value="www.hinjewadiproperties.com">www.hinjewadiproperties.com</option>  
+				
+			</select>
+	</div>
+</div>	
+<hr/>
+<div class="row">
+	<div class="col-md-12 table-responsive">
+		<table class="table table-hover table-bordered">
+		<thead>
+			<th>Sr.No.</th>
+			<th>WebSite Names</th>
+			<th>Start Date</th>
+			<th>Expiry Date</th>
+			<th>Status</th>
+			<th>Manage Site</th>
+		</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
+			<td>22/02/2015</td>
+			<td>22/02/2016</td>
+			<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
+			<td>
+				<a href="#"  class="glyphicon glyphicon-pencil btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
+				<a href="#"  class="glyphicon glyphicon-trash btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+			</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
+			<td>22/02/2015</td>
+			<td>22/02/2016</td>
+			<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
+			<td>
+				<a href="#"  class="glyphicon glyphicon-pencil btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
+				<a href="#"  class="glyphicon glyphicon-trash btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+			</td>
+		</tr>
+	</tbody>					
+</table>
+</div>
+

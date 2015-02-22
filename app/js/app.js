@@ -100,12 +100,12 @@ define(['angular',
                     template: 'dashboard',
 					label: " Dashboard"
                 }, 'dashboard/'))
-                .when('/websites', route.resolve({
+                .when('/dashboard/websites/:webPart?', route.resolve({
                     controller: 'websites',
                     template: 'websites',
-					label: " Dashboard  / Websites"
+					label: "Websites"
                 }, 'websites/'))
-                .when('/websites/requestnewsite', route.resolve({
+                /*.when('/websites/requestnewsite', route.resolve({
                     controller: 'websites',
                     template: 'requestnewsite',
 					label: " Request New Website"
@@ -114,7 +114,7 @@ define(['angular',
                     controller: 'websites',
                     template: 'requestedsitelist',
 					label: " Requested Site list"
-                }, 'websites/'))
+                }, 'websites/'))*/
 				.when('/templates', route.resolve({
                     controller: 'templates',
                     template: 'templates',
