@@ -64,7 +64,7 @@
 					<tbody>
 						<tr ng-repeat="x in projects | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
 							<td>{{ $index + 1 }}</td>
-							<td><img ng-src="/img/{{x.proj_image}}"></td>
+							<td><img class="img-thumbnail img-responsive prop-img" ng-src="/img/{{x.proj_image}}"></td>
 							<td>
 								<table>
 									<tr>

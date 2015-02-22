@@ -256,7 +256,7 @@
 				<div class="form-group">
 					<label for="metaDis" class="col-md-3 control-label">* Meta Discription </label>
 					<div class="col-md-9">
-						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="10" ng-maxlength="256"></textarea>
+						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="4" ng-maxlength="256"></textarea>
 						<p>{{ 256 - meta_desc.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.meta_desc.$error.maxlength">
 							Sorry You are Exceeding the Limit
