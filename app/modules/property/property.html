@@ -65,7 +65,7 @@
 					<tbody>
 						<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
 								<td>{{ $index + 1 }}</td>
-								<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-responsive prop-img" title="Property image"></td> <!-- ng-click added for modal, class added for responsive image -->
+								<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-thumbnail   img-responsive prop-img" title="Property image"></td> <!-- ng-click added for modal, class added for responsive image -->
 								<td>
 									<table class="table table-bordered table-responsive">
 										<tr>
