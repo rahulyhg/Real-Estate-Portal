@@ -2,35 +2,37 @@
 define(['app', 'css!modules/home/home'], function (app) {
 var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
   // This is controller for this view
-	var projectController = function ($scope, $injector,$http,$routeParams) {
+	var projectController = function ($scope, $injector,$http,$routeParams,$rootScope) {
 		$rootScope.metaTitle = "Real Estate Project";
-		if($routeParams.type) {					
-		$http.get("../server-api/index.php/project/"+$routeParams.type)
-		.success(function(response) {$scope.projects = response;
-			console.log($scope.projects);
-		});
-		
-	}else{
-		//this request for all response data		
-		$http.get("../server-api/index.php/project")
-		.success(function(response) {$scope.projects = response;
-			//console.log($scope.projects);
-		});		
-	}
-	
 	//Code For Pagination
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
 		$scope.currentPage = 1;
 		$scope.pageItems = 10;
-		$scope.numPages = "";		
+		$scope.numPages = "";	
+		if($routeParams.type) {					
+		$http.get("../server-api/index.php/project/"+$routeParams.type)
+		.success(function(response) {
+			$scope.project = response;
+			console.log($scope.project);
+		});
+		
+		}else{
+		//this request for all project data	
+		$http.get("../server-api/index.php/projects/"+$scope.currentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.projects = response.projects;
+				$scope.totalRecords=response.totalRecords;
+			//console.log($scope.projects);
+			});		
+		}		
 
 		$scope.pageChanged = function() {
 			//$log.log('Page changed to: ' + $scope.currentPage);
 			$http.get("../server-api/index.php/projects/"+$scope.currentPage+"/"+$scope.pageItems)
 			.success(function(response) {
 				$scope.projects = response.projects;
-				console.log(projects);
+				//console.log(projects);
 				//$scope.totalRecords = response.totalRecords;
 				
 			});
@@ -39,12 +41,12 @@ var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
 	
 	//add project
 	$scope.reset = function() {
-	$scope.project = {};
+	$scope.projectForm = {};
 		};
 		$scope.addproject = function(){
 			//console.log("Hii");
-			console.log($scope.project);
-			$http.post("server-api/index.php/addproject", $scope.project)
+			console.log($scope.projectForm);
+			$http.post("server-api/index.php/addproject", $scope.projectForm)
 			.success(function(response) {
 				alert(response);
 				$scope.reset();

@@ -115,9 +115,23 @@ define(['angular',
                     template: 'requestedsitelist',
 					label: " Requested Site list"
                 }, 'websites/'))
-
-            .otherwise({
-                redirectTo: '/'
+				.when('/templates', route.resolve({
+                    controller: 'templates',
+                    template: 'templates',
+					label: "Project Templates"
+                }, 'templates/'))
+				.when('/templates/propertyTemplate', route.resolve({
+                    controller: 'templates',
+                    template: 'propertyTemplate',
+					label: "Property Template"
+                }, 'templates/')) 					
+				.when('/templates/websitesTemplate', route.resolve({
+                    controller: 'templates',
+                    template: 'websitesTemplate',
+					label: "Websites Templates"
+                }, 'templates/'))
+	
+            .otherwise({redirectTo: '/'
             });
  }]);
     app.run(['$location', '$rootScope', 'breadcrumbs', function ($location, $rootScope, breadcrumbs) {

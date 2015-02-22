@@ -1,20 +1,12 @@
-
-
 'use strict';
-
 define(['app'], function (app) {
     var injectParams = ['$scope', '$injector'];
-
     // This is controller for this view
-	var templatesController = function ($scope, $injector) {
-		console.log("this is templates ctrl ");
-    };
-	
-    
+	var templateController = function ($scope, $injector) {
+		console.log("this is template controller");
+    };    
 	// Inject controller's dependencies
-	templatesController.$inject = injectParams;
+	templateController.$inject = injectParams;
 	// Register/apply controller dynamically
-    app.register.controller('templatesController', templatesController);
-	
-	
+    app.register.controller('templateController',templateController);	
 });

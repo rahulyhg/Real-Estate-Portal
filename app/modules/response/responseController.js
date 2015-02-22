@@ -3,10 +3,10 @@
 'use strict';
 
 define(['app', 'css!modules/home/home'], function (app) {
-    var injectParams = ['$scope', '$injector','$http','$routeParams', '$location',$rootScope'];
+    var injectParams = ['$scope', '$injector','$http','$routeParams', '$location','$rootScope'];
 
     // This is controller for this view
-	var responseController = function ($scope, $injector, $http,$routeParams, $location) {		
+	var responseController = function ($scope, $injector, $http,$routeParams, $location,$rootScope) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		if(!$routeParams.type && !$routeParams.status){
 			$location.path( "/response/web/new" );
@@ -27,7 +27,7 @@ define(['app', 'css!modules/home/home'], function (app) {
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
 		$scope.currentPage = 1;
-		$scope.pageItems = 10;
+		$scope.pageItems = 2;
 		$scope.numPages = "";		
 
 		$scope.pageChanged = function() {
@@ -36,7 +36,7 @@ define(['app', 'css!modules/home/home'], function (app) {
 			.success(function(response) {
 				$scope.responses = response.responses;
 				//$scope.totalRecords = response.totalRecords;
-				//console.log($scope.properties);
+				
 			});
 		};		
 		 
@@ -48,8 +48,9 @@ define(['app', 'css!modules/home/home'], function (app) {
 		
 		else{
 			//this request for all response data
-			$http.get("../server-api/index.php/response")
-			.success(function(response) {$scope.resopnses = response;
+			$http.get("../server-api/index.php/responses/"+$scope.currentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+			$scope.resopnses = response.responses;
 			console.log($scope.resopnses);
 			});
 		}

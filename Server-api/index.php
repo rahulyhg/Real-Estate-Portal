@@ -11,7 +11,7 @@ $body = $app->request->getBody();
 $app->response->headers->set('Content-Type', 'application/json');
 
 $app->get('/response(/:id)','responseData');
-$app->get('/project(/:id)','projectData');
+$app->get('/project/:id','projectData');
 $app->get('/properties/:limit(/:records)','propertiesData');
 $app->get('/projects/:limit(/:records)','projectData2');
 $app->get('/responses/:limit(/:records)','resData');
@@ -57,7 +57,7 @@ function responseUpdate($status, $id){
 		}			
 }
 //view project response
-function projectData1($id=null)
+function projectData($id=null)
 {	
 	if($id===Null){
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_project")or die(mysql_error());
@@ -130,7 +130,7 @@ function projectData2($limit = 0, $records = 10)
 		$projData['projects'] = $data;
 	echo json_encode($projData);
 }
-/*//Response pagination
+//Response pagination
 function resData($limit = 0, $records = 10)
 {		
 		$limit = ($limit == 0 ) ? $limit : $limit - 1;
@@ -141,8 +141,7 @@ function resData($limit = 0, $records = 10)
 		//$jsonTot = [];
 		$jsonTot['totalRecords'] = $totalRecords;
 		//print_r($totalRecords);
-		//echo json_encode($jsonTot);
-		
+		//echo json_encode($jsonTot);		
 		$data = array();		
 		while($row=mysql_fetch_assoc($selectSQL))
 		{
@@ -152,13 +151,6 @@ function resData($limit = 0, $records = 10)
 		$resData['responses'] = $data;
 	echo json_encode($resData);
 }
-*/
-
-
-
-
-
-
 //Register for new user
 function registerUser()
 {
