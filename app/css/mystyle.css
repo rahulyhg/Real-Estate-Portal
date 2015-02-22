@@ -17,6 +17,7 @@ header .im1 {
 }
 body {
   overflow: scroll;
+  background-color: #EAEAEA;
 }
 .main-content,
 .main-content row ng-scope {
@@ -78,6 +79,18 @@ body {
 .main-content row ng-scope .dropdown-toggle ul {
   background-color: #769cd3;
 }
+.main-content .sidebar-border,
+.main-content row ng-scope .sidebar-border {
+  border: 1px solid #ccc;
+}
+.main-content .sidebar-border li,
+.main-content row ng-scope .sidebar-border li {
+  padding: 5px;
+}
+.main-content .nav .nav-pills .nav-stacked,
+.main-content row ng-scope .nav .nav-pills .nav-stacked {
+  boder: 1px solid #ccc;
+}
 .innernav {
   padding: 10px;
 }
@@ -125,4 +138,7 @@ h3 {
 }
 .nav .nav-tabs {
   padding-top: 20px;
+}
+.prop-img {
+  width: 200px;
 }

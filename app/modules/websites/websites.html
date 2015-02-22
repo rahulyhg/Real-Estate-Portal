@@ -1,49 +1,21 @@
-<div class="row">		
-	<div class="col-md-12 main-content">	
+<div class="row main-content">		
+	<div class="col-md-12 ">	
 		<div class="row breadcrumb-back">
 			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
-			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
+			<div class="col-md-2" ng-include="'modules/component/dashboard-dropdown.html'"></div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-right website-menu">
-				<a href="#websites" class="btn btn-default">Website List</a>
-				<a href="#websites/requestnewsite" class="btn btn-default">Request New Site</a>
-				<a href="#websites/requestedsitelist" class="btn btn-default">Requested Site List</a>
+				<a href="#/dashboard/websites/" class="btn btn-default">Website List</a>
+				<a href="#/dashboard/websites/requestnewsite" class="btn btn-default">Request New WebSite</a>
+				<a href="#/dashboard/websites/requestedsitelist" class="btn btn-default">Requested Website List</a>
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-12">
-				<table class="table table-striped table-bordered">
-					<thead>
-						<th>Sr.No.</th>
-						<th>Site Names</th>
-						<th>Start Date</th>
-						<th>Exp Date</th>
-						<th>Manage</th>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>
-								<a href="#" title="Renew Site" class="glyphicon glyphicon-refresh btn btn-default" aria-hidden="true"></a>
-								<a href="#" title="Review Site" class="glyphicon glyphicon-search btn btn-default" aria-hidden="true"></a>
-								<a href="#" title="Delete Site" class="glyphicon glyphicon-remove btn btn-default" aria-hidden="true"></a>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>
-								<a href="#" title="Renew Site" class="glyphicon glyphicon-refresh btn btn-default" aria-hidden="true"></a>
-								<a href="#" title="Review Site" class="glyphicon glyphicon-search btn btn-default" aria-hidden="true"></a>
-								<a href="#" title="Delete Site" class="glyphicon glyphicon-remove btn btn-default" aria-hidden="true"></a>
-							</td>
-						</tr>
-					</tbody>					
-				</table>
+				<ng-include ng-if="webPart=='mywebsites'" src="'modules/websites/mywebsites.html'"></ng-include>
+				<ng-include ng-if="webPart=='requestnewsite'" src="'modules/websites/requestnewsite.html'"></ng-include>
+				<ng-include ng-if="webPart=='requestedsitelist'" src="'modules/websites/requestedsitelist.html'"></ng-include>
 			</div>
 		</div>
 	</div>

@@ -65,7 +65,7 @@
 					<tbody>
 						<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
 								<td>{{ $index + 1 }}</td>
-								<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-responsive"></td> <!-- ng-click added for modal, class added for responsive image -->
+								<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-responsive prop-img" title="Property image"></td> <!-- ng-click added for modal, class added for responsive image -->
 								<td>
 									<table class="table table-bordered table-responsive">
 										<tr>
@@ -90,10 +90,10 @@
 									<a class="btn btn-warning" ng-if="featured==1" title="Not featured"> Not Featured </a>
 								</td>			
 								<td><a class="btn btn-success" ng-if="status==0" title="Active"title="Active">Active</a>
-									<a class="btn btn-warning" ng-if="status==1" title="Delete"title="Delete">Delete</a></td>
+									<a class="btn btn-warning" ng-if="status==1" title="Delete" title="Delete Selected property">Delete</a></td>
 								<td>{{x.other_domain}}</td>				
-								<td><a href="#addproperty/{{x.id}}" class="btn btn-info" title="Edit"> Edit </a><br><br>
-								<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive" title="View"> View</a></td>	
+								<td><a href="#addproperty/{{x.id}}" class="btn btn-info" title="Edit Single Property"> Edit </a><br><br>
+								<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive" title="View Single Property"> View</a></td>	
 						</tr>				
 					</tbody>
 				</table>				
