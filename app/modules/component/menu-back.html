@@ -1,13 +1,13 @@
 
 <div class="btn-toolbar pull-right toolbar" role="toolbar">
 	<div class="btn-group" role="group" aria-label="goBack" title="Go to previous page">
-		<a title="Go Back" class="btn btn-primary" type="button" go-back>
+		<a title="Go Back" class="btn btn-primary" type="button" tooltip-placement="top" tooltip="Go Back!" go-back>
 		<span class="glyphicon glyphicon glyphicon-arrow-left">
 		</span>
 		</a>
 	</div>
 	<div class="btn-group " role="group" aria-label="" dropdown is-open="status.isopen" title="Site main menu">
-      <a class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+      <a class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled" tooltip-placement="top" tooltip="Menu!">
          <span title="Menu" class="glyphicon glyphicon-th-large dropdown-toggle"></span>
       </a>
 		 <ul class="dropdown-menu" role="menu"  aria-labelledby="dropdownMenuDivider">
@@ -20,12 +20,12 @@
 				
 			<li class="divider"></li>
             <li role="presentation" class="dropdown-header">Property</li>
-			<li class="divider"></li>
+	
 			<li><a href="#/addproperty" title="Add property">Add Property</a></li>
 			<li><a href="#/property" title="View property">Manage Property</a></li>
 			<li class="divider"></li>
 			<li role="presentation" class="dropdown-header">Project</li>
-			<li class="divider"></li>
+			
 			<li><a href="#/addproject" title="Add projects">Add Projects</a></li>
 			<li><a href="#/project" title="Manage projects">Manage Projects</a></li>
 		</ul>

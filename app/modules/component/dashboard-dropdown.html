@@ -1,0 +1,23 @@
+
+<div class="btn-toolbar pull-right toolbar" role="toolbar">
+	<div class="btn-group" role="group" aria-label="goBack" title="Go to previous page">
+		<a title="Go Back" class="btn btn-primary" type="button" tooltip-placement="top" tooltip="Go Back!" go-back>
+		<span class="glyphicon glyphicon glyphicon-arrow-left">
+		</span>
+		</a>
+	</div>
+	<div class="btn-group " role="group" aria-label="" dropdown is-open="status.isopen" title="Site main menu">
+      <a class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled" tooltip-placement="top" tooltip="Dashboard Menu">
+         <span title="Menu" class="glyphicon glyphicon-th-large dropdown-toggle"></span>
+      </a>
+		 <ul class="dropdown-menu" role="menu"  aria-labelledby="dropdownMenuDivider">
+            <li role="presentation" class="dropdown-header"> Dashboard </li>
+			<li><a href="#/response" title="User Response">Response</a></li>
+			<li><a href="#/property" title="Property Information">Property</a></li>
+			<li><a href="#/Project" title="Projects Information">Projects</a></li>
+			<li><a href="#/websites" title="Website Information">Websites</a></li>
+			<li><a href="#/templates" title="Template Information">Manage Templates</a></li>
+			
+		</ul>
+	</div>
+</div>
