@@ -1,5 +1,5 @@
 'use strict';
-define(['app', 'css!modules/home/home'], function (app) {
+define(['app', 'css!modules/project/project'], function (app) {
 var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
   // This is controller for this view
 	var projectController = function ($scope, $injector,$http,$routeParams,$rootScope) {
@@ -38,45 +38,6 @@ var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
 			});
 		}; 
    
-	
-	//add project
-	$scope.reset = function() {
-	$scope.projectForm = {};
-		};
-		$scope.addproject = function(){
-			//console.log("Hii");
-			console.log($scope.projectForm);
-			$http.post("server-api/index.php/addproject", $scope.projectForm)
-			.success(function(response) {
-				alert(response);
-				$scope.reset();
-				
-			});
-		};
-	
-	
-	//Update Project
-	if($routeParams.id){
-	$http.get("server-api/index.php/editproject/"+$routeParams.id)
-    .success(function(response) {
-		$scope.project = response;
-		$scope.reset = function() {
-			$scope.project = angular.copy($scope.project);
-		};
-		$scope.reset();
-		console.log($scope.project);
-		
-	}).error(function(err){
-		console.log(err);
-	});
-	
-	$scope.update = function(){
-		$http.put("server-api/index.php/editproject/"+$routeParams.id,$scope.project)
-		.success(function(response) {
-			alert(response);
-		});
-	};
-	}	
     };	
 	 
 	// Inject controller's dependencies

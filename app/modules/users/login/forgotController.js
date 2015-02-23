@@ -5,17 +5,15 @@ define(['app', 'css!modules/home/home'], function (app)
     // This is controller for this view
 	    var forgotController = function ($scope, $injector, $http) 
 		   {
-		        //console.log("this is forgot ctrl " + data.value);
-				//Add email
-			$scope.forgotPass = function(forget)
-			{
-			    console.log($scope.forget);
-			    $http.post("server-api/index.php/forgot", $scope.forget)
-				.success(function(response) 
-				   {
-				     alert(response);		
-		           })
-				   }    
+		       //Add email
+				$scope.forgotPass = function(forget)
+				{
+					console.log($scope.forget);
+					$http.post("server-api/index.php/forgot", $scope.forget)
+					.success(function(response) {
+						 alert(response);		
+					})
+				}    
            }
 	
 	// Inject controller's dependencies

@@ -6,8 +6,7 @@ define(['app'], function (app) {
 		$rootScope.metaTitle = "Real Estate Properties";
 		$scope.open = function (url, propId) {
 			$http.get("../server-api/index.php/property/"+propId)
-			.success(function(response) 
-			{
+			.success(function(response) {
 				var modalDefaults = {
 					templateUrl: url,	// apply template to modal
 				};
@@ -54,46 +53,10 @@ define(['app'], function (app) {
 				$scope.totalRecords = response.totalRecords;
 				//console.log($scope.properties);
 			});
-	
-			
-		}
-		// Add property
-		$scope.reset = function() {
-			$scope.property = {};
-		};
-		$scope.addprop = function(){
-			console.log($scope.property);
-			$http.post("../server-api/index.php/addproperty", $scope.property)
-			.success(function(response) {
-				alert(response);
-				$scope.reset();
-			});
-		};
-		if($routeParams.id){
-			//Update Property
-			$http.get("../server-api/index.php/property/"+$routeParams.id)
-			.success(function(response) {
-					$scope.property = response;
-					$scope.reset = function() {
-						$scope.property = angular.copy($scope.property);
-					};
-					$scope.reset();
-					console.log($scope.property);			
-			});	
-			$scope.update = function(){
-				$http.put("../server-api/index.php/editproperty/"+$routeParams.id,$scope.property)
-				.success(function(response) {
-					alert(response);
-				});
-			};
 		}
 	};		
 	// Inject controller's dependencies
 	propertyController.$inject = injectParams;
 	// Register/apply controller dynamically
     app.register.controller('propertyController', propertyController);
-	
-	
-
-
 });

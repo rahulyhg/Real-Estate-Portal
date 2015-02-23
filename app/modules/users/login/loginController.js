@@ -8,13 +8,14 @@ define(['app', 'css!modules/users/login/login'], function (app) {
     // This is controller for this view
 	var loginController = function ($scope, $injector,$http) {
 		$scope.logIn = function(login){
-		console.log($scope.login);
-		$http.post("server-api/index.php/login", $scope.login)
-		.success(function(response) {
-		alert(response);
-		//$scope.reset();
-		})
+			console.log($scope.login);
+			$http.post("server-api/index.php/login", $scope.login)
+			.success(function(response) {
+					alert(response);
+					//$scope.reset();
+			})
 		}
+		
     };
 	
     
@@ -22,7 +23,6 @@ define(['app', 'css!modules/users/login/login'], function (app) {
 	loginController.$inject = injectParams;
 	// Register/apply controller dynamically
     app.register.controller('loginController', loginController);
-	
 	
 });
 
