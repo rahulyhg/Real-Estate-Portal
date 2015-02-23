@@ -20,7 +20,7 @@
 				<div class="form-group">
 					<label for="Address" class="col-md-3 control-label">Address*</label>
 					<div class="col-md-9">
-						<textarea  class="form-control" id="Address" ng-model="reg.address" name="Address" placeholder="Enter address" required ui-tinymce>
+						<textarea  class="form-control" id="Address" ng-model="reg.address" name="Address" placeholder="Enter address" required>
 						</textarea>
 						<span style="color:red" ng-show="myForm.Address.$dirty && 	myForm.Address.$invalid">
 						<span style="color:red" ng-show="myForm.reg.address.$error.maxlength">
@@ -108,7 +108,7 @@
 				<div class="form-group">
 					<label for="requesteddomain" class="col-md-3 control-label">Request For Domain</label>
 					<div class="col-md-9">
-						<textarea class="form-control" rows="3" name="requesteddomain" id="requesteddomain" placeholder="Request" ng-model="reg.requested_domains"ng-minlength="*" ng-maxlength="256" ui-tinymce></textarea>
+						<textarea class="form-control" rows="3" name="requesteddomain" id="requesteddomain" placeholder="Request" ng-model="reg.requested_domains"ng-minlength="*" ng-maxlength="256"></textarea>
 						<span style="color:red" ng-show="myForm.reg.requested_domains.$error.maxlength">
 						Sorry You are Exceeding the Limit</span>
 					</div>
