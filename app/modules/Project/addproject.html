@@ -13,7 +13,7 @@
 							<div class="form-group">
 								<label  for="projtitle" class="col-md-3 control-label">* &nbsp Project Title</label>
 									<div class="col-md-9">									
-										<textarea class="form-control" id="projtitle" rows="1" name="projtitle" ng-model="project.title" ng-minlength="*" ng-maxlength="256" required ui-tinymce> </textarea>
+										<textarea class="form-control" id="projtitle" rows="1" name="projtitle" ng-model="project.title" ng-minlength="*" ng-maxlength="256" required > </textarea>
 										<span style="color:red" ng-show="myForm.projtitle.$dirty && myForm.projtitle.$invalid">
 											<span ng-show="myForm.projtitle.$error.required">Title is required .</span>
 										</span>
@@ -22,7 +22,7 @@
 							<div class="form-group">
 								<label for="browserTitle" class="col-md-3 control-label">* &nbsp Browser Title</label>
 								<div class="col-md-9">
-									<textarea class="form-control" id="browserTitle" rows="1" name="browserTitle" ng-model="project.browsertitle" ng-minlength="*" ng-maxlength="256"  required ui-tinymce></textarea>
+									<textarea class="form-control" id="browserTitle" rows="1" name="browserTitle" ng-model="project.browsertitle" ng-minlength="*" ng-maxlength="256"  required ></textarea>
 									<span style="color:red" ng-show="myForm.browserTitle.$dirty && myForm.browserTitle.$invalid">
 									    <span ng-show="myForm.browserTitle.$error.required">Browser is required .</span>
 									</span>
@@ -31,7 +31,7 @@
 							<div class="form-group">
 								<label for="metaKey" class="col-md-3 control-label">Meta Keywords</label> 
 								<div class="col-md-9"> 
-									<textarea class="form-control" rows="3" name="metaKey" ng-model="project.metakey"  id="metaKey" ng-minlength="*" ng-maxlength="256" required ui-tinymce> </textarea>
+									<textarea class="form-control" rows="3" name="metaKey" ng-model="project.metakey"  id="metaKey" ng-minlength="*" ng-maxlength="256" required > </textarea>
 									<span style="color:red" ng-show="myForm.metaKey.$dirty && myForm.metaKey.$invalid">
 									    <span ng-show="myForm.metaKey.$error.required">Meta Keywords is required .</span>
 									</span>
@@ -40,7 +40,7 @@
 							<div class="form-group"> 
 								<label for="metaDesc" class="col-md-3 control-label">Meta Discription</label> 
 								<div class="col-md-9">
-									<textarea class="form-control" id="metaDesc" rows="3" name="metaDesc" ng-model="project.metadesc" ng-minlength="*" ng-maxlength="256" required ui-tinymce></textarea>
+									<textarea class="form-control" id="metaDesc" rows="3" name="metaDesc" ng-model="project.metadesc" ng-minlength="*" ng-maxlength="256" required ></textarea>
 									<span style="color:red" ng-show="myForm.metaDesc.$dirty && myForm.metaDesc.$invalid">
 										<span ng-show="myForm.metaDesc.$error.required">Meta Discription is required .</span>
 									</span>
