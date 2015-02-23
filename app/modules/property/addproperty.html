@@ -213,7 +213,7 @@
 			  <div class="form-group">
 					<label for="address" class="col-md-3 control-label">* Address  </label>
 					<div class="col-md-9">
-						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"  required  cols="30" rows="4" ng-maxlength="256"></textarea>
+						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"  required  cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
 						<p>{{ 256 - address.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="form1.address.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
@@ -236,7 +236,7 @@
 				<div class="form-group">
 					<label for="propTitle" class="col-md-3 control-label">* Property Title </label>
 					<div class="col-md-9">
-						<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" cols="30" rows="4" ng-maxlength="156"></textarea>
+						<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" cols="30" rows="4" ng-maxlength="156" ui-tinymce></textarea>
 						<p>{{ 156 - title.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.title.$error.maxlength">
 							Sorry You are Exceeding the Limit
@@ -247,7 +247,7 @@
 				<div class="form-group">
 					<label for="browsertitle" class="col-md-3 control-label">* Browser Title<br><small>( Display in your website )</small></label>
 					<div class="col-md-9">
-						<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle"  cols="30" rows="4" ng-maxlength="256"></textarea>
+						<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle"  cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
 						<p>{{ 256 - browsertitle.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.browsertitle.$error.maxlength">
 							Sorry You are Exceeding the Limit
@@ -257,7 +257,7 @@
 				<div class="form-group">
 					<label for="metaDis" class="col-md-3 control-label">* Meta Discription </label>
 					<div class="col-md-9">
-						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="4" ng-maxlength="256"></textarea>
+						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
 						<p>{{ 256 - meta_desc.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.meta_desc.$error.maxlength">
 							Sorry You are Exceeding the Limit
@@ -267,7 +267,7 @@
 				<div class="form-group">
 					<label for="metaKey" class="col-md-3 control-label">* Meta Keywords </label>
 					<div class="col-md-9">
-						<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" cols="30" rows="4" ng-maxlength="256"></textarea>
+						<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
 						<p>{{ 256 - meta_key.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.meta_key.$error.maxlength">
 							Sorry You are Exceeding the Limit
@@ -285,7 +285,7 @@
 				<div class="form-group">
 					<label for="propDis" class="col-md-3 control-label">* Property Discription  </label>
 					<div class="col-md-9">
-						<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" cols="30" rows="4" ng-maxlength="256"></textarea>
+						<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
 						<p>{{ 256 - prop_desc.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.prop_desc.$error.maxlength">
 							Sorry You are Exceeding the Limit
@@ -328,7 +328,7 @@
 					  <div class="form-group">
 							<label for="Address" class="col-md-3 control-label"> * Address </label>
 							<div class="col-md-9">
-								<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" cols="30" rows="4" ng-maxlength="256"></textarea>
+								<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
 						<p>{{ 256 - cont_address.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.cont_address.$error.maxlength">
 							Sorry You are Exceeding the Limit
