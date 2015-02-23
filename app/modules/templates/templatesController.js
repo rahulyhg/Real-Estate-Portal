@@ -1,9 +1,9 @@
 'use strict';
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$location','$routeParams'];
+    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope'];
     // This is controller for this view
-	var templatesController = function ($scope, $injector,$location,$routeParams) {
-		console.log("this is template controller");
+	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope) {
+		$rootScope.metaTitle = "Real Estate Template";
 		
 		$scope.tempPart = $routeParams.tempPart; 		
 		console.log($scope.tempPart);

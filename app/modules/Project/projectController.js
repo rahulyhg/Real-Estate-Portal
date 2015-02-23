@@ -36,10 +36,8 @@ var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
 				//$scope.totalRecords = response.totalRecords;
 				
 			});
-		}; 
-   
-    };	
-	 
+		};    
+    };		 
 	// Inject controller's dependencies
 	projectController.$inject = injectParams;
 	// Register/apply controller dynamically
