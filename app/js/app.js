@@ -111,7 +111,7 @@ define(['angular',
                 }, 'project/'))
 				
 				// In this view you can see add project form
-                .when('/dashboard/project/addproject', route.resolve({
+                .when('/dashboard/project/addproject/:id?', route.resolve({
                     controller: 'addproject',
                     template: 'addproject',
 					label: "Add Project"

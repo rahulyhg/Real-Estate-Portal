@@ -21,7 +21,7 @@ define(['app', 'css!modules/project/addproject/addproject'], function (app) {
 	
 		//Update Project
 		if($routeParams.id){
-			$http.get("server-api/index.php/editproject/"+$routeParams.id)
+			$http.get("server-api/index.php/project/"+$routeParams.id)
 			.success(function(response) {
 				$scope.project = response;
 				$scope.reset = function() {
