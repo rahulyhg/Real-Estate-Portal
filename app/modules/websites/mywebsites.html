@@ -1,36 +1,76 @@
-<div class="table-responsive reqList">
+
+
+
 <h3> Website Details</h3>
-<table class="table  table-hover table-bordered">
-	<thead>
-		<th>Sr.No.</th>
-		<th>Site Names</th>
-		<th>Start Date</th>
-		<th>Exp Date</th>
-		<th>Manage</th>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>
-				<a href="#"  class="glyphicon glyphicon-refresh btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
-				<a href="#"  class="glyphicon glyphicon-search btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
-				<a href="#"  class="glyphicon glyphicon-trash btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
-			</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>
-				<a href="#"  class="glyphicon glyphicon-refresh btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
-				<a href="#"  class="glyphicon glyphicon-search btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
-				<a href="#"  class="glyphicon glyphicon-trash btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
-			</td>
-		</tr>
-	</tbody>					
-</table>
+<div class="row ">
+	 <div class="col-md-4"> 
+		<label for="search" class="control-label">Search </label>		
+		<input id="search" type="text" class="form-control" ng-model="searchSite" placeholder="search"/>
+	</div>			 				  
+	 <div class="col-md-2">
+		<label for="sort" class="control-label">Sort by Order</label>
+		<select id="sort" class="form-control" ng-model="id"> 
+			<option value="">Select Order</option>		<!-- added value & selected attr -->	
+			<option value="-id">Desending</option>
+			<option value="id">Asending</option>  
+		</select>
+	</div>
+	<div class="col-md-2">
+		<label for="status" class="control-label">Select Status</label>
+		<select id="status" class="form-control" ng-model="status">
+			<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
+			<option value="1">In Progress</option>
+			<option value="2">Approved</option>
+			<option value="3">Pending</option>
+			<option value="4">Rejected</option> 
+		</select>
+	</div>
+	
+	<div class="col-md-2">
+			<label for="website" class="control-label">Select Site :</label>
+			<select id="website" class="form-control">            
+				<option value="">All</option>
+				<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
+				<option value="www.hinjewadiproperties.com">www.hinjewadiproperties.com</option>  
+				
+			</select>
+	</div>
+</div>	
+<hr/>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table  table-hover table-bordered">
+			<thead>
+				<th>Sr.No.</th>
+				<th>Site Names</th>
+				<th>Start Date</th>
+				<th>Exp Date</th>
+				<th>Manage</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<a href="#"  class="glyphicon glyphicon-refresh btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
+						<a href="#"  class="glyphicon glyphicon-search btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
+						<a href="#"  class="glyphicon glyphicon-trash btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<a href="#"  class="glyphicon glyphicon-refresh btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
+						<a href="#"  class="glyphicon glyphicon-search btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
+						<a href="#"  class="glyphicon glyphicon-trash btn btn-default" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+					</td>
+				</tr>
+			</tbody>					
+		</table>
+	</div>
 </div>
