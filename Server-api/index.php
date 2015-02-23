@@ -2,8 +2,7 @@
 
 // load required files
 require 'Slim/Slim.php';
-//require 'dbcon.php';
-require_once 'databaseHelper/dbHelper.php';
+require 'dbcon.php';
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
@@ -31,9 +30,7 @@ $app->post('/forgot','adminForgot');
 //view web response
 function responseData($id=null)
 {	
-
-	$rows = $db->select("2_real_response",[]]);
-	/* if($id===Null){
+	if($id===Null){
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_response")or die(mysql_error());
 		$data = array();
 		
@@ -45,8 +42,8 @@ function responseData($id=null)
 		$where="WHERE id= ".$id;
 		$selectSQL=mysql_query("SELECT * FROM 2_real_response $where");
 		$data=mysql_fetch_assoc($selectSQL);		
-	} */
-	echo json_encode($rows);	
+	}
+	echo json_encode($data);	
 }
 
 function responseUpdate($status, $id){
@@ -88,12 +85,14 @@ function propertyData($id=null)
 	
 	echo json_encode($data);	
 }
+require_once 'databaseHelper/dbHelper.php';
 //properties pagination
 function propertiesData($limit = 0, $records = 10)
 {		
 		$limit = ($limit == 0 ) ? $limit : $limit - 1;
 		$startLimit = $limit * $records; // start on record $startLimit
-			
+		
+		
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_property LIMIT $startLimit, $records")or die(mysql_error());
 		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM 2_real_property")) or die(mysql_error());
 		//$jsonTot = [];
@@ -108,7 +107,7 @@ function propertiesData($limit = 0, $records = 10)
 		}
 		$propData['totalRecords'] = $totalRecords;
 		$propData['properties'] = $data;
-	echo json_encode($propData);
+	echo json_encode($propData); 
 }
 
 //project pagination
@@ -160,8 +159,8 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-			$regKey=[];
-			$regVal=[];
+		$regKey=array();
+			$regVal=array();
 			foreach($postdata as $key => $value)
 			{
 						array_push($regKey,$key);
