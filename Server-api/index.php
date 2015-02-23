@@ -2,7 +2,8 @@
 
 // load required files
 require 'Slim/Slim.php';
-require 'dbcon.php';
+//require 'dbcon.php';
+require_once 'databaseHelper/dbHelper.php';
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
@@ -30,7 +31,9 @@ $app->post('/forgot','adminForgot');
 //view web response
 function responseData($id=null)
 {	
-	if($id===Null){
+
+	$rows = $db->select("2_real_response",[]]);
+	/* if($id===Null){
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_response")or die(mysql_error());
 		$data = array();
 		
@@ -42,8 +45,8 @@ function responseData($id=null)
 		$where="WHERE id= ".$id;
 		$selectSQL=mysql_query("SELECT * FROM 2_real_response $where");
 		$data=mysql_fetch_assoc($selectSQL);		
-	}
-	echo json_encode($data);	
+	} */
+	echo json_encode($rows);	
 }
 
 function responseUpdate($status, $id){
@@ -157,8 +160,8 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata=json_decode($body);
-		$regKey=array();
-			$regVal=array();
+			$regKey=[];
+			$regVal=[];
 			foreach($postdata as $key => $value)
 			{
 						array_push($regKey,$key);

@@ -71,6 +71,9 @@ function registerUser()
 			array_push($dataCol,$key);
 			array_push($dataVal,$value);
 		}
+		print_r($dataCol);
+		echo " : ";
+		print_r($dataVal);
 		
 		$col=implode(",",$dataCol);
 		$col1=implode(",",$dataVal);
