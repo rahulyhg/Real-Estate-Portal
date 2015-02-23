@@ -1,17 +1,17 @@
-<div class="row">		
-	<div class="col-md-12 main-content">	
+<div class="row main-content">		
+	<div class="col-md-12 ">	
 		<div class="row breadcrumb-back">
 			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
-			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
+			<div class="col-md-2" ng-include="'modules/component/dashboard-dropdown.html'"></div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-right website-menu">
-				<a href="#templates" class="btn btn-default" title="Project Template">Project Template</a>
-				<a href="#templates/propertyTemplate" class="btn btn-default" title="Property Template">Property Template</a>
-				<a href="#templates/websitesTemplate" class="btn btn-default" title="Websites Template">Websites Template</a>
+				<a href="#/dashboard/templates" class="btn btn-default" title="Project Template">Project Template</a>
+				<a href="#/dashboard/templates/propertyTemplate" class="btn btn-default" title="Property Template">Property Template</a>
+				<a href="#/dashboard/templates/websitesTemplate" class="btn btn-default" title="Websites Template">Websites Template</a>
 				<a href="#" class="btn btn-primary" title="Request Project Custom Template">Request Custom Template</a>
 			</div>
-		</div>
+		</div>		
 		<div class="row">
 			 <div class="col-md-3"> 
 				<label class="control-label">Search </label>		
@@ -42,9 +42,10 @@
 				</select>
 			</div>			
 		</div>	
+		<hr/>
 		<div class="row">
-			<div class="col-md-12">
-				<ng-include ng-if="tempPart=='Project'" src="'modules/templates/projectTemplate.html'"></ng-include>	
+			<div class="col-md-12 table-responsive">
+				<ng-include ng-if="tempPart=='projectTemplate'" src="'modules/templates/projectTemplate.html'"></ng-include>	
 				
 				<ng-include ng-if="tempPart=='propertyTemplate'" src="'modules/templates/propertyTemplate.html'"></ng-include>	
 				
