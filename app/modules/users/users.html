@@ -1,3 +1,10 @@
-<div>
-	<h1>{{page}}</h1>
-</div>
+<div class="row">
+	<div class="col-md-12 table-responsive">
+		<ng-include ng-if="userPart=='Login'" src="'modules/users/login.html'"></ng-include>	
+		
+		<ng-include ng-if="userPart=='forgot'" src="'modules/users/forgot.html'"></ng-include>	
+		
+		<ng-include ng-if="userPart=='Changepass'" src="'modules/users/changepass.html'"></ng-include>
+		
+	</div>
+</div>	
