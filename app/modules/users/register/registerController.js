@@ -17,33 +17,8 @@ define(['app', 'css!modules/home/home'], function (app) {
 			$scope.reset();
 			console.log(response);
 		})
-	}
-	if($routeParams.id){
-	//update record
-	$http.get("server-api/index.php/editprofile/"+$routeParams.id)
-    .success(function(response) {
-		$scope.editpro = response;
-		$scope.reset = function() {
-			console.log($scope.editpro)
-			$scope.editpro = angular.copy($scope.editpro);
-		};
-		$scope.reset();
-		console.log($scope.editpro);		
-	}).error(function(err){
-		console.log(err);
-	});
-	
-	$scope.update = function(){
-		console.log($scope.editpro)
-	$http.put("server-api/index.php/editprofile/"+$routeParams.type,$scope.editpro)
-		.success(function(response) {
-			alert(response);
-			console.log(response);
-		})
-	}
-	}    
-    };
-	
+	}	
+    };	
 	
 	// Inject controller's dependencies
 	registerController.$inject = injectParams;
