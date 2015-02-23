@@ -9,7 +9,7 @@ define(['app', 'css!modules/home/home'], function (app) {
 	var responseController = function ($scope, $injector, $http,$routeParams, $location,$rootScope) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		if(!$routeParams.type && !$routeParams.status){
-			$location.path( "/response/web/new" );
+			$location.path( "/dashboard/response/web/new" );
 		}
 		$scope.type = $routeParams.type;
 		$scope.status = $routeParams.status;

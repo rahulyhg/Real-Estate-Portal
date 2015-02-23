@@ -37,85 +37,86 @@ define(['angular',
                     controller: 'login',
                     template: 'login',
                     label: "Home"
-                }, 'users/'))
+                }, 'users/login/'))
 				
-				 /* .when('/users/login/:userPart?', route.resolve({
-                    controller: 'users',
-                    template: 'users',
-					label: "Login"
-                }, 'users/')) */
-				
-                 .when('/login', route.resolve({
+				// Below routes will use login submodule folder
+                .when('/login', route.resolve({
                     controller: 'login',
                     template: 'login',
-					label: " Login"
-                }, 'users/'))
+					label: "Login"
+                }, 'users/login/'))
 				
 				.when('/changepass',route.resolve({
                     controller: 'login',
                     template: 'changepass',
-					label: " Change Password"
-                }, 'users/')) 
+					label: "Change Password"
+                }, 'users/login/')) 
+				
+				.when('/forgot', route.resolve({
+                    controller: 'forgot',
+                    template: 'forgot',
+					label: "Forgot Password"
+                }, 'users/login/'))
+				
+				// Below routes will use register submodule folder
+                .when('/register', route.resolve({
+                    controller: 'register',
+                    template: 'register',
+					label: "Register"
+                }, 'users/register/'))
 				
 				.when('/editprofile', route.resolve({
-                    controller: 'login',
+                    controller: 'editprofile',
                     template: 'editprofile',
-					label: " Edit Profile"
-                }, 'users/'))
+					label: "Edit Profile"
+                }, 'users/register/'))
 				
-                .when('/response/:type?/:status?/:id?', route.resolve({
+				// Below routes will use dashboard module folder
+                .when('/dashboard', route.resolve({
+                    controller: 'dashboard',
+                    template: 'dashboard',
+					label: "Dashboard"
+                }, 'dashboard/'))
+				
+				
+				// Below routes will use response module folder
+				.when('/dashboard/response/:type?/:status?/:id?', route.resolve({
                     controller: 'response',
                     template: 'response',
 					label: " Response"
                 }, 'response/'))
 				
-                .when('/property', route.resolve({
+				// Below routes will use Property module folder
+				// In this view you can see list of all properties
+                .when('/dashboard/property', route.resolve({
                     controller: 'property',
                     template: 'property',
-					label: " Dashboard / Property"
+					label: "Property"
                 }, 'property/'))
 				
-                .when('/viewProperty/:id?', route.resolve({
-                    controller: 'property',
-                    template: 'viewProperty',
-					label: " property / View Property"
-                }, 'property/'))
 				
-                .when('/addproperty/:id?', route.resolve({
-                    controller: 'property',
+				// In this view you can see addproperty form
+                .when('/dashboard/property/addproperty/:id?', route.resolve({
+                    controller: 'addproperty',
                     template: 'addproperty',
-					label: " property / Add Property"
-                }, 'property/'))
+					label: "Add Property"
+                }, 'property/addproperty/'))
 				
-                .when('/project', route.resolve({
+				// Below routes will use Project module folder
+				// In this view you can see list of all projects
+                .when('/dashboard/project', route.resolve({
                     controller: 'project',
                     template: 'project',
-					label: " Dashboard / Project"
+					label: "Project"
                 }, 'project/'))
 				
-                .when('/addproject', route.resolve({
-                    controller: 'project',
+				// In this view you can see add project form
+                .when('/dashboard/project/addproject', route.resolve({
+                    controller: 'addproject',
                     template: 'addproject',
-					label: " Project / Add Project"
-                }, 'project/'))
-
-				.when('/forgot', route.resolve({
-                    controller: 'forgot',
-                    template: 'forgot',
-					label: " Login / Forgot Password"
-                }, 'users/'))
+					label: "Add Project"
+                }, 'project/addproject/'))
 				
-                .when('/register', route.resolve({
-                    controller: 'register',
-                    template: 'register',
-					label: " Register"
-                }, 'users/'))
-				
-                .when('/dashboard', route.resolve({
-                    controller: 'dashboard',
-                    template: 'dashboard',
-					label: " Dashboard"
-                }, 'dashboard/'))
 				
                 .when('/dashboard/websites/:webPart?', route.resolve({
                     controller: 'websites',
@@ -129,8 +130,7 @@ define(['angular',
 					label: "Templates"
                 }, 'templates/'))
 	
-            .otherwise({redirectTo: '/'
-            });
+            .otherwise({redirectTo: '/'});
  }]);
     app.run(['$location', '$rootScope', 'breadcrumbs', function ($location, $rootScope, breadcrumbs) {
         $rootScope.metaTitle = "Real Estate Portal";

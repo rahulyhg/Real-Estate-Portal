@@ -6,22 +6,22 @@
 				<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
 			</div>	
 			<ul class="nav nav-pills">
-				 <li role="presentation" ng-class="getClass('/response/web')"><a href="#/response/web/new" title="Web response">Web Response</a></li>
-				  <li role="presentation"  ng-class="getClass('/response/property')"><a href="#/response/property/new" title="Property resopnse">Property Response</a></li>
-				  <li role="presentation" ng-class="getClass('/response/project')"><a href="#/response/project/new" title="Project Response">Project Response</a></li>
+				 <li role="presentation" ng-class="getClass('/dashboard/response/web')"><a href="#/dashboard/response/web/new" title="Web response">Web Response</a></li>
+				  <li role="presentation"  ng-class="getClass('/dashboard/response/property')"><a href="#/dashboard/response/property/new" title="Property resopnse">Property Response</a></li>
+				  <li role="presentation" ng-class="getClass('/dashboard/response/project')"><a href="#/dashboard/response/project/new" title="Project Response">Project Response</a></li>
 			</ul>				
 			<div class="table-responsive" ng-hide="paramId">
 				<ul class="nav nav-tabs">		
-						<li role="presentation" ng-class="getClass('/response/{{type}}/new')">
-						   <a ng-href="#/response/{{type}}/new" title="New">New</a>
+						<li role="presentation" ng-class="getClass('/dashboard/response/{{type}}/new')">
+						   <a ng-href="#/dashboard/response/{{type}}/new" title="New">New</a>
 						</li>
-						<li role="presentation" ng-class="getClass('/response/{{type}}/read')">
-							<a href="#/response/{{type}}/read" title="Read">Read</a>
+						<li role="presentation" ng-class="getClass('/dashboard/response/{{type}}/read')">
+							<a href="#/dashboard/response/{{type}}/read" title="Read">Read</a>
 						</li>
-						<li role="presentation" ng-class="getClass('/response/{{type}}/delete')">
-							<a href="#/response/{{type}}/delete" title="Delete">Delete</a>
+						<li role="presentation" ng-class="getClass('/dashboard/response/{{type}}/delete')">
+							<a href="#/dashboard/response/{{type}}/delete" title="Delete">Delete</a>
 						</li>
-				</ul>		
+				</ul>
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
