@@ -62,8 +62,22 @@ function registerUser()
 		$app= new \Slim\Slim();
 		$body = $app->request->getBody();
 		$postdata = json_decode($body);
-		print_r($postdata);
 		
+		$dataCol = [];
+		$dataVal = [];
+		foreach($postdata as $key => $val){
+			$value = (is_object($val)) ? json_encode($val) : $val ;
+			//echo $value;
+			array_push($dataCol,$key);
+			array_push($dataVal,$value);
+		}
+		
+		$col=implode(",",$dataCol);
+		$col1=implode(",",$dataVal);
+		
+		print_r($col);
+		echo " : ";
+		print_r($col1);
 }
 
 
