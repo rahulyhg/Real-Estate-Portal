@@ -66,7 +66,7 @@
 							<td>{{ $index + 1 }}</td>
 							<td><img class="img-thumbnail img-responsive prop-img" ng-src="/img/{{x.proj_image}}"></td>
 							<td>
-								<table>
+								<table class="table table-bordered table-responsive">
 									<tr>
 										<td>Property Title</td>
 										<td>{{x.title}}</td>
@@ -93,7 +93,7 @@
 									<a class="btn btn-warning" ng-if="status==1" title="Delete">Delete</a></td>
 							<td>{{x.domain}}</td>					
 							
-							<td><a href="#/project/edit/{{x.id}}" title="Edit">Edit</a></td>
+							<td><a href="#/dashboard/project/addproject/{{x.id}}" title="Edit">Edit</a></td>
 						</tr>				
 					</tbody>
 				</table>
