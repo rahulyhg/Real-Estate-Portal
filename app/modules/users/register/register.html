@@ -11,10 +11,9 @@
 				<div class="form-group">
 					<label for="fullname" class="col-md-3 control-label">Name* </label>
 					<div class="col-md-9">
-						<input type="char" class="form-control" id="fullname" ng-model="reg.full_name" name="fullname" placeholder="Enter Name" required>
-							<span style="color:red" ng-show="myForm.fullname.$dirty && myForm.fullname.$invalid">
-								<span ng-show="myForm.fullname.$error.required">name is required.</span>
-							</span>	
+						<input type="text" class="form-control" id="fullname" ng-model="reg.full_name" name="full_name" placeholder="Enter Your Name" ng-required="true">	
+							<span style="color:red" ng-show="myForm.full_name.$error.required && (myForm.full_name.$dirty || submitted)" class="help-block">Name is required.</span>
+						
 					</div>						
 				</div>				
 				<div class="form-group">
@@ -30,10 +29,10 @@
 					</div>						
 				</div>		
 				<div class="form-group">
-					<label for="Country" class="col-md-3 control-label" name="Country" >Country</label>
-					<div class="col-md-9">
-						<select class="form-control" name="Country" id="Country"  ng-model="reg.country" required>			
-							<option value="">India</option>
+					<label for="Country" class="col-md-3 control-label" name="Country" >Select</label>
+					<div class="col-md-3">
+						<select class="form-control" name="Country" id="Country"  ng-model="reg.country" ng-required="true">	<option value="">Select Country</option>		
+							<option value="India">India</option>
 							<option value="Australia">Australia</option>
 							<option value="China">China</option>
 							<option value="America">America</option>
@@ -43,14 +42,37 @@
 							<span ng-show="myForm.Country.$error.required">Country is required.</span>
 						</span>				
 					</div>
+					<div class="col-md-3">
+						<select class="form-control" name="state" id="state"  ng-model="reg.state" ng-required="true">		  <option value="">Select State</option>	
+							<option value="Maharastra">Maharastra</option>
+							<option value="Goa">Goa</option>
+							<option value="Nagpur">Nagpur</option>
+							<option value="Panjab">Panjab</option>
+							<option value="Gujarat">Gujarat</option>
+						</select>
+						<span style="color:red" ng-show="myForm.state.$dirty && myForm.state.$invalid">
+							<span ng-show="myForm.state.$error.required">State is required.</span>
+						</span>				
+					</div>
+					<div class="col-md-3">
+						<select class="form-control" name="city" id="city"  ng-model="reg.city" ng-required="true">		  <option value="">Select City</option>	
+							<option value="Ahmednagar">Ahmednagar</option>
+							<option value="Pune">Pune</option>
+							<option value="Nashik">Nashik</option>
+							<option value="Mumbai">Mumbai</option>
+							<option value="Aurangabad">Aurangabad</option>
+						</select>
+						<span style="color:red" ng-show="myForm.city.$dirty && myForm.city.$invalid">
+							<span ng-show="myForm.city.$error.required">City is required.</span>
+						</span>				
+					</div>
 				</div>				
 				<div class="form-group">
 					<label for="Tel" class="col-md-3 control-label">Phone </label>
 					<div class="col-md-9">
-						<input type="Number" class="form-control" min="10" max="10" id="Tel" ng-model="reg.tel" name="Tel" placeholder="Enter Phone" required>
+						<input type="text" class="form-control"  maxlength="10" id="Tel" ng-model="reg.tel" name="Tel" placeholder="Enter Phone" required>
 						<span style="color:red" ng-show="myForm.Tel.$dirty && myForm.Tel.$invalid">
-							<span ng-show="myForm.Tel.$error.required">Phone is required.</span>
-							<span ng-show="myForm.Tel.$error.number">Enter Number.</span>
+							<span ng-show="myForm.Tel.$error.required">Number is required</span>							
 						</span>
 					</div>						
 				</div>				
@@ -76,12 +98,12 @@
 				<h4>Login Details</h4>
 				<hr>
 				<div class="form-group">
-					<label for="username" class="col-md-3 control-label">UserName*</label>
+					<label for="user_name" class="col-md-3 control-label">UserName*</label>
 					<div class="col-md-6">
-						<input type="UserName " class="form-control" ng-model="reg.user_name" id="username" name="username" placeholder="Enter UserName " required>
-						<span style="color:red" ng-show="myForm.username.$dirty && 	myForm.username.$invalid">
-							<span ng-show="myForm.username.$error.required">UserName  is required.</span>
-						</span>
+						<input type="text" class="form-control" ng-model="reg.user_name" id="user_name" name="user_name" placeholder="Enter User Name " ng-minlength="3" ng-maxlength="8" ng-required="true">
+																
+						<span style="color:red" ng-show="myForm.user_name.$error.required&& (myForm.user_name.$dirty || submitted)" class="help-block">User Name is required.</span>
+						
 					</div>						
 					<div class="col-md-3">
 						<button type="submit" class="btn btn-success">Check Availability</button>
@@ -90,7 +112,7 @@
 				<div class="form-group">
 					<label for="pass" class="col-md-3 control-label">Password* </label>
 					<div class="col-md-9">
-						<input type="Password" class="form-control" id="pass" ng-model="reg.pwd " name="pass" placeholder="Enter Password " required>
+						<input type="Password" class="form-control" id="pass" ng-model="reg.pwd " name="pass" placeholder="Enter Password " ng-required="true">
 						<span style="color:red" ng-show="myForm.pass.$dirty && 	myForm.pass.$invalid">
 						<span ng-show="myForm.pass.$error.required">Password is required.</span>
 						</span>
