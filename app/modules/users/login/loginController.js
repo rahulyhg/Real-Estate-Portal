@@ -16,6 +16,14 @@ define(['app', 'css!modules/users/login/login'], function (app) {
 			})
 		}
 		
+		// This is for Forgot Password
+		$scope.forgotPass = function(forget){
+			console.log($scope.forget);
+			$http.post("server-api/index.php/forgot", $scope.forget)
+			.success(function(response) {
+				alert(response);		
+			})
+		}    
     };
 	
     

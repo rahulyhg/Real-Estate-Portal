@@ -53,7 +53,7 @@ define(['angular',
                 }, 'users/login/')) 
 				
 				.when('/forgot', route.resolve({
-                    controller: 'forgot',
+                    controller: 'login',
                     template: 'forgot',
 					label: "Forgot Password"
                 }, 'users/login/'))
