@@ -100,12 +100,6 @@ body {
   border: 1px solid black;
   padding: 10px;
 }
-.main-content a .btn1,
-.main-content row ng-scope a .btn1 {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
 .main-content .bottomspace,
 .main-content row ng-scope .bottomspace {
   padding-bottom: 10px;
@@ -163,4 +157,11 @@ h3 {
 }
 .box-border {
   border: 1px solid #000;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.btn1 {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
