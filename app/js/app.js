@@ -79,11 +79,11 @@ define(['angular',
                 }, 'dashboard/'))
 				
 				
-				// Below routes will use response module folder
-				.when('/dashboard/response/:type?/:status?/:id?', route.resolve({
+				// Below routes will use response module folder	{Sunita- To display mailbox single view remove status add mailID }
+				.when('/dashboard/response/:mailId?', route.resolve({
                     controller: 'response',
                     template: 'response',
-					label: " Response"
+					label: " Mail Box"
                 }, 'response/'))
 				
 				// Below routes will use Property module folder

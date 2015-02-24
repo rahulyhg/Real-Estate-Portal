@@ -8,8 +8,11 @@ define(['app', 'css!modules/home/home'], function (app) {
     // This is controller for this view
 	var responseController = function ($scope, $injector, $http,$routeParams, $location,$rootScope) {		
 		$rootScope.metaTitle = "Real Estate Response";
+		$scope.MailView = $routeParams.mailId; /* this object will check list of mails show or single mail show */
+		
+		templateUrl:'#/dashboard/response/mailview.html';
 		if(!$routeParams.type && !$routeParams.status){
-			$location.path( "/dashboard/response/web/new" );
+			$location.path( "/dashboard/response" );
 		}
 		$scope.type = $routeParams.type;
 		$scope.status = $routeParams.status;
