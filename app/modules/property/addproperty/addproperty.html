@@ -1,8 +1,7 @@
 <div class="row main-content">
 	<div class="col-md-12">
-		<div class="row breadcrumb-back">
-			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
-			<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
+		<div class="row">
+				<ng-include src="'modules/component/toolbar.html'"></ng-include>				
 		</div>
 		<h2 class="text-center" title="Add new Property">Add New Property</h2>
 		<form class="form-horizontal " name="myForm" novalidate>	
@@ -23,8 +22,7 @@
 							</label>
 							<label class="radio-inline">
 							  <input type="radio" name="property_for"  id="PG" value="PG"> PG
-							</label>
-												
+							</label>												
 						</div>	
 					</div>
 					<div class="form-group"> 

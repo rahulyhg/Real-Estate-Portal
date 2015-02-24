@@ -1,17 +1,26 @@
 <div class="row main-content">		
 	<div class="col-md-12 ">	
-		<div class="row breadcrumb-back">
-			<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
-			<div class="col-md-2" ng-include="'modules/component/dashboard-dropdown.html'"></div>
-		</div>
 		<div class="row">
-			<div class="col-md-12 text-right website-menu">
-				<a href="#/dashboard/templates" class="btn btn-default" title="Project Template">Project Template</a>
-				<a href="#/dashboard/templates/propertyTemplate" class="btn btn-default" title="Property Template">Property Template</a>
-				<a href="#/dashboard/templates/websitesTemplate" class="btn btn-default" title="Websites Template">Websites Template</a>
-				<a href="#" class="btn btn-primary" title="Request Project Custom Template">Request Custom Template</a>
+				<ng-include src="'modules/component/toolbar.html'"></ng-include>				
+		</div>
+		<div class="row pull-right">
+			<div class="col-md-3"> 	
+				<select id="template" class="form-control ng-pristine ng-valid" ng-model="template" title="Select template type"> 
+					<option value="">Select Template Type</option>		
+					<option value="projectTemplate">Project</option>
+					<option value="propertyTemplate">Property</option> 
+					<option value="websitesTemplate">Websites</option> 
+				</select>
 			</div>
+			<div class="col-md-9">
+				<a href="#/dashboard/templates" class="btn btn-default">List of Templates</a>
+				<a href="#/dashboard/templates/mytemplates" class="btn btn-default">My Templates</a>
+				<a href="#/dashboard/templates/requestcustomtemplates" class="btn btn-default">Request Custom Template</a>
+				<a href="#/dashboard/templates/custometemplates" class="btn btn-default">Custom Templates</a>
+			</div>	
 		</div>		
+			<div class="clearfix"></div>
+			<hr/>
 		<div class="row">
 			 <div class="col-md-3"> 
 				<label class="control-label">Search </label>		

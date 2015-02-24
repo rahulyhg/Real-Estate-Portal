@@ -1,11 +1,14 @@
 <div class="row main-content">
 	<div class="col-md-12">
-	   <div class="row breadcrumb-back">
-				<div class="col-md-10" ng-include="'modules/component/breadcrumb.html'"></div>
-				<div class="col-md-2" ng-include="'modules/component/menu-back.html'"></div>
+	   <div class="row">
+				<ng-include src="'modules/component/toolbar.html'"></ng-include>				
 		</div>		
 		<div class="row ">
-				 <div class="col-md-4"> 
+				<div class="col-md-2"> 
+					<label class="control-label"> </label><br>
+					<a href="#/dashboard/project/addproject" class="btn btn-primary" title="Add new project">Add New Project</a>				
+				</div>	
+				 <div class="col-md-2"> 
 					<label class="control-label">Search </label>		
 					<input type="text" class="form-control" ng-model="searchProp" placeholder="search" title="Search"/>
 				</div>			 				  
