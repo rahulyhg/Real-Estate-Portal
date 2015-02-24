@@ -1,6 +1,7 @@
 'use strict';
 define(['app', 'css!modules/project/addproject/addproject'], function (app) {
-var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
+	
+	   var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
   // This is controller for this view
 	var addprojectController = function ($scope, $injector,$http,$routeParams,$rootScope) {
 		$rootScope.metaTitle = "Real Estate Add Project";
@@ -14,14 +15,13 @@ var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
 			$http.post("server-api/index.php/addproject", $scope.projectForm)
 			.success(function(response) {
 				alert(response);
-				$scope.reset();
-					
+				$scope.reset();					
 			});
 		};
 	
 		//Update Project
 		if($routeParams.id){
-			$http.get("server-api/index.php/editproject/"+$routeParams.id)
+			$http.get("server-api/index.php/project/"+$routeParams.id)
 			.success(function(response) {
 				$scope.project = response;
 				$scope.reset = function() {

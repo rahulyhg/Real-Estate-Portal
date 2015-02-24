@@ -22,12 +22,20 @@
             <li  class="dropdown-header">Property</li>
 	
 			<li><a href="#/dashboard/property/addproperty" title="Add property">Add Property</a></li>
+<<<<<<< HEAD
 			<li><a href="#/dashboard/property" title="View property">Manage Property</a></li>
+=======
+			<li><a href="#/property" title="View property">Manage Property</a></li>
+>>>>>>> f317d9b41567354c5a5628a683fdde04fe0e7c7c
 			<li class="divider"></li>
 			<li  class="dropdown-header">Project</li>
 			
 			<li><a href="#/dashboard/project/addproject" title="Add projects">Add Projects</a></li>
+<<<<<<< HEAD
 			<li><a href="#/dashboard/project" title="Manage projects">Manage Projects</a></li>
+=======
+			<li><a href="#/project" title="Manage projects">Manage Projects</a></li>
+>>>>>>> f317d9b41567354c5a5628a683fdde04fe0e7c7c
 		</ul>
 	</div>
 </div>

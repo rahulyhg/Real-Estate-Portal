@@ -85,12 +85,14 @@ function propertyData($id=null)
 	
 	echo json_encode($data);	
 }
+require_once 'databaseHelper/dbHelper.php';
 //properties pagination
 function propertiesData($limit = 0, $records = 10)
 {		
 		$limit = ($limit == 0 ) ? $limit : $limit - 1;
 		$startLimit = $limit * $records; // start on record $startLimit
-			
+		
+		
 		$selectSQL=mysql_query( "SELECT * FROM 2_real_property LIMIT $startLimit, $records")or die(mysql_error());
 		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM 2_real_property")) or die(mysql_error());
 		//$jsonTot = [];
@@ -105,7 +107,7 @@ function propertiesData($limit = 0, $records = 10)
 		}
 		$propData['totalRecords'] = $totalRecords;
 		$propData['properties'] = $data;
-	echo json_encode($propData);
+	echo json_encode($propData); 
 }
 
 //project pagination
