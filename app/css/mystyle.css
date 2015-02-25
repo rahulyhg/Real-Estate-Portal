@@ -165,3 +165,7 @@ body .btn1 {
   margin-right: auto;
   margin-left: auto;
 }
+body .btn-link:hover {
+  text-decoration: none;
+  background-color: #ccc;
+}
