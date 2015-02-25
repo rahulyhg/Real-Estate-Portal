@@ -12,6 +12,8 @@ $app->response->headers->set('Content-Type', 'application/json');
 
 $app->get('/response(/:id)','responseData');
 $app->get('/project/:id','projectData');
+$app->get('/template/:limit(/:records)','templates');
+$app->get('/website/:limit(/:records)','websites');
 $app->get('/properties/:limit(/:records)','propertiesData');
 $app->get('/projects/:limit(/:records)','projectData2');
 $app->get('/responses/:limit(/:records)','resData');
@@ -109,6 +111,53 @@ function propertiesData($limit = 0, $records = 10)
 		$propData['properties'] = $data;
 	echo json_encode($propData); 
 }
+
+//Templates pagination
+function templates($limit = 0, $records = 10)
+{		
+		$limit = ($limit == 0 ) ? $limit : $limit - 1;
+		$startLimit = $limit * $records; // start on record $startLimit
+			
+		$selectSQL=mysql_query( "SELECT * FROM `templates` LIMIT $startLimit, $records")or die(mysql_error());
+		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM `templates`")) or die(mysql_error());
+		//$jsonTot = [];
+		$jsonTot['totalRecords'] = $totalRecords;
+		//print_r($totalRecords);
+		//echo json_encode($jsonTot);
+		
+		$data = array();		
+		while($row=mysql_fetch_assoc($selectSQL))
+		{
+			array_push($data,$row);
+		}
+		$tempData['totalRecords'] = $totalRecords;
+		$tempData['template'] = $data;
+	echo json_encode($tempData);
+}
+//Websites pagination
+function templates($limit = 0, $records = 10)
+{		
+		$limit = ($limit == 0 ) ? $limit : $limit - 1;
+		$startLimit = $limit * $records; // start on record $startLimit
+			
+		$selectSQL=mysql_query( "SELECT * FROM `websites` LIMIT $startLimit, $records")or die(mysql_error());
+		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM `websites`")) or die(mysql_error());
+		//$jsonTot = [];
+		$jsonTot['totalRecords'] = $totalRecords;
+		//print_r($totalRecords);
+		//echo json_encode($jsonTot);
+		
+		$data = array();		
+		while($row=mysql_fetch_assoc($selectSQL))
+		{
+			array_push($data,$row);
+		}
+		$webData['totalRecords'] = $totalRecords;
+		$webData['website'] = $data;
+	echo json_encode($webData);
+}
+
+
 
 //project pagination
 function projectData2($limit = 0, $records = 10)

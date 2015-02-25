@@ -1,4 +1,4 @@
-
+3
 <h3> Requested Website Details</h3>
 
 <div class="row ">
@@ -73,6 +73,11 @@
 			</tbody>					
 		</table>
 	</div>
+	<div class="text-center">				
+		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="requSiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+		<pre>Page: {{currentPage}} / {{numPages}}</pre>
+	</div>		
+	
 </div>
 
 

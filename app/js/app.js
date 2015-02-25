@@ -39,7 +39,7 @@ define(['angular',
                     label: "Home"
                 }, 'users/login/'))
 				
-				// Below routes will use login submodule folder
+				// Below routes will use login sub module folder
                 .when('/login', route.resolve({
                     controller: 'login',
                     template: 'login',
