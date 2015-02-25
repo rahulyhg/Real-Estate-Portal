@@ -1,10 +1,10 @@
 <div class="row main-content">
-	<div class="col-md-12">
+	<div class="col-md-13">
 		<div class="row">
 				<ng-include src="'modules/component/toolbar.html'"></ng-include>				
 		</div>
-		<h2 class="text-center" title="Add new Property">Add New Property</h2>
-		<form class="form-horizontal " name="myForm" novalidate>	
+		<h3 class="text-center" title="Add new Property">Add New Property</h3>
+		<form class="form-horizontal myForm " name="myForm" novalidate>	
 		
 			<tabset>
 			<p class="paraMand">* Fields are mandatory</p>
@@ -12,8 +12,8 @@
 				<h3>Property Information:</h3>
 					<div class="form-group">
 						
-						<label for="profor" class="col-md-2  control-label">* Property for</label>
-						<div class="col-md-8"  ng-model="property.property_for">
+						<label for="profor" class="col-md-3  control-label">* Property for</label>
+						<div class="col-md-9"  ng-model="property.property_for">
 							<label class="radio-inline">
 								<input type="radio" name="property_for"  id="Sale" value="Sale" checked="true">Sale
 							</label>
@@ -26,8 +26,8 @@
 						</div>	
 					</div>
 					<div class="form-group"> 
-						<label for="Featured" class="col-md-2 control-label">* &nbsp Featured</label> 
-							<div class="col-md-8 "  ng-model="property.featured">
+						<label for="Featured" class="col-md-3 control-label">* &nbsp Featured</label> 
+							<div class="col-md-9 "  ng-model="property.featured">
 								<label class="radio-inline">
 								  <input type="radio" name="featured" id="Yes" value="yes" checked="true"> Yes
 								</label>
@@ -37,8 +37,8 @@
 						</div>	
 					</div>
 					<div class="form-group">
-						<label for="Category" class="col-md-2 control-label">* Property Category </label>
-						<div class="col-md-8">
+						<label for="Category" class="col-md-3 control-label">* Property Category </label>
+						<div class="col-md-9">
 							<select  id="Category"  name="proCate" ng-model="property.category" class="form-control" required>
 								<option selected value="">Select Category</option>
 								<option value="Residential">Residential Property</option>
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="type" class="col-md-2  control-label">* Property Type </label>
+						<label for="type" class="col-md-3  control-label">* Property Type </label>
 						<div class="col-sm-9">
 							<input type="text"  id="type" class="form-control" name="proType" ng-model="property.type" required>
 							<span style="color:red" ng-show="myForm.proType.$dirty && myForm.proType.$invalid">
@@ -61,12 +61,12 @@
 						</div>
 					</div>	
 					<div class="form-group">
-						<label for="PropPrice" class="col-md-2 control-label ">Property Price: </label>
+						<label for="PropPrice" class="col-md-3 control-label ">Property Price: </label>
 						<div class="col-md-6">
 							<input type="text" id="PropPrice" class="form-control" name="propertyPrice" ng-model="property.price" required>
 						 
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<select class="form-control" ng-model="property.currency" required>
 								<option value="" selected>In Rupees</option>
 								<option value="Thousand">Thousand</option>
@@ -82,11 +82,11 @@
 				<tab heading="Area Details" title="Property Area Details">
 					<h3>Property Area Details</h3>
 					<div class="form-group">
-						<label for="BuiltArea" class="col-md-2 control-label">* Built Up Area </label>
+						<label for="BuiltArea" class="col-md-3 control-label">* Built Up Area </label>
 						<div class="col-md-6">
 							<input type="text"  id="BuiltArea" class="form-control" name="builtArea" ng-model="property.buildup_area" required>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<select class="form-control" ng-model="property.build_unit"  title="" required>
 								<option selected value="">Unit Area</option>
 								<option value="Feet">Sq. Feet</option>
@@ -100,11 +100,11 @@
 						</div>
 					</div>		  
 					<div class="form-group">
-						<label for="PlotArea" class="col-md-2 control-label ">* Plot/ Land Area</label>
+						<label for="PlotArea" class="col-md-3 control-label ">* Plot/ Land Area</label>
 						<div class="col-md-6">
 							<input type="text" id="PlotArea" class="form-control" name="plotArea" ng-model="property.land_area" required>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<select class="form-control" ng-model="property.land_unit" required>
 								<option selected value="">Unit Area</option>
 								<option value="Feet">Sq. Feet</option>
@@ -117,11 +117,11 @@
 						</div>				
 					</div>		  
 				<div class="form-group">
-					<label for="CarpetArea" class="col-md-2 control-label">Carpet Area </label>
+					<label for="CarpetArea" class="col-md-3 control-label">Carpet Area </label>
 					<div class="col-md-6">
 						<input type="text" id="CarpetArea" class="form-control" name="carpetArea" ng-model="property.carpet_area" required>				 
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<select class="form-control" ng-model="property.carpet_unit" required>
 							<option selected value="">Unit Area</option>
 								<option value="Feet">Sq. Feet</option>
@@ -137,12 +137,12 @@
 			<tab heading="Structure" title="Property Structure">
 			<h3>Property Structure</h3>
 				<div class="form-group">
-					<label for="Bedrooms" class="col-md-2 control-label">Bedrooms </label>
-					<div class="col-md-8">
+					<label for="Bedrooms" class="col-md-3 control-label">Bedrooms </label>
+					<div class="col-md-9">
 						<select class="form-control" id="Bedrooms" name="Bedrooms" ng-model="property.bedrooms" required>
 							<option value="" selected>Select one</option>
 							<option value="1">1</option>
-							<option value="2">2</option>
+							<option value="3">3</option>
 							
 									
 						</select>No's
@@ -153,12 +153,12 @@
 									
 				</div>
 				<div class="form-group">
-					<label for="Bathrooms" class="col-md-2 control-label">Bathrooms </label>
+					<label for="Bathrooms" class="col-md-3 control-label">Bathrooms </label>
 					<div class="col-sm-9">
 						<select class="form-control" id="Bathrooms"  name="Bathrooms" ng-model="property.bathrooms" required>
 							<option value="" selected>Select one</option>
 							<option value="1">1</option>
-							<option value="2">2</option>
+							<option value="3">3</option>
 												
 						</select>No's	
 						 <span style="color:red" ng-show="myForm.Bathrooms.$dirty && myForm.Bathrooms.$invalid">
@@ -168,8 +168,8 @@
 								
 				</div>
 				<div class="form-group">
-					  <label for="imageInputFile" class="col-md-2" >* Property Images </label>
-					<div class="col-md-8">
+					  <label for="imageInputFile" class="col-md-3" >* Property Images </label>
+					<div class="col-md-9">
 						<input type="file"    id="imageInputFile" ng-model="property.prop_image">
 					</div>			
 				</div>	 <!-- end property  -->		
@@ -178,14 +178,14 @@
 			<tab heading="Location" title="Property Location">
 				<h3>Property Location:</h3>	
 				<div class="form-group">
-					<label for="country" class="col-md-2 control-label">Country</label>
-					<div class="col-md-8">
+					<label for="country" class="col-md-3 control-label">Country</label>
+					<div class="col-md-9">
 					  <input type="text" id="country" class="form-control" name="Country" ng-model="property.country" value="INDIA" placeholder="INDIA">
 					</div>			
 				</div>
 				<div class="form-group">
-					<label for="State" class="col-md-2 control-label ">* State </label>
-					<div class="col-md-8">
+					<label for="State" class="col-md-3 control-label ">* State </label>
+					<div class="col-md-9">
 					  <select id="State" class="form-control" name="State" ng-model="property.state">
 							<option value="" selected="selected">Select State</option>
 							<option value="Andaman Nikobar">Andaman Nikobar</option>
@@ -200,8 +200,8 @@
 					</div>				
 			  </div>		  
 			  <div class="form-group">
-					<label for="City" class="col-md-2 control-label">* City</label>
-					<div class="col-md-8">
+					<label for="City" class="col-md-3 control-label">* City</label>
+					<div class="col-md-9">
 						<input  type="text"  id="City" class="form-control" name="City" ng-model="property.city" required>
 						<span style="color:red" ng-show="myForm.City.$dirty && myForm.City.$invalid">
 						  <span ng-show="myForm.City.$error.required">City is required .</span>
@@ -209,10 +209,10 @@
 					</div>				
 			  </div>
 			  <div class="form-group">
-					<label for="address" class="col-md-2 control-label">* Address  </label>
-					<div class="col-md-8">
-						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"    cols="30" rows="4" ng-maxlength="256" ui-tinymce required></textarea>
-						<p>{{ 256 - property.address.length + " Chars left" }}</p>
+					<label for="address" class="col-md-3 control-label">* Address  </label>
+					<div class="col-md-9">
+						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"    cols="30" rows="4" ng-maxlength="356" ui-tinymce required></textarea>
+						<p>{{ 356 - property.address.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="form1.address.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
 							<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
@@ -221,8 +221,8 @@
 					</div>				
 			  </div>		  
 			  <div class="form-group">
-					<label for="Area" class="col-md-2 control-label">*  Area/Location </label>
-					<div class="col-md-8">
+					<label for="Area" class="col-md-3 control-label">*  Area/Location </label>
+					<div class="col-md-9">
 						<input type="text"  id="Area" class="form-control" name="Area" ng-model="property.location" required>
 						<span style="color:red" ng-show="myForm.Area.$dirty && myForm.Area.$invalid">
 						  <span ng-show="myForm.Area.$error.required">Area is required .</span>
@@ -235,8 +235,8 @@
 			<tab heading="Discription" title="Property Discription">
 				<h3>Discription Title:</h3>
 				<div class="form-group">
-					<label for="propTitle" class="col-md-2 control-label">* Property Title </label>
-					<div class="col-md-8">
+					<label for="propTitle" class="col-md-3 control-label">* Property Title </label>
+					<div class="col-md-9">
 						<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" cols="30" rows="4" ng-maxlength="156" ui-tinymce></textarea>
 						<p>{{ 156 - property.title.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.title.$error.maxlength">
@@ -248,10 +248,10 @@
 					</div>				
 				</div>			
 				<div class="form-group">
-					<label for="browsertitle" class="col-md-2 control-label">* Browser Title<br><small>( Display in your website )</small></label>
-					<div class="col-md-8">
-						<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle"  cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
-						<p>{{ 256 - property.browsertitle.length + " Chars left" }}</p>
+					<label for="browsertitle" class="col-md-3 control-label">* Browser Title<br><small>( Display in your website )</small></label>
+					<div class="col-md-9">
+						<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle"  cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
+						<p>{{ 356 - property.browsertitle.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.browsertitle.$error.maxlength">
 							Sorry You are Exceeding the Limit
 						</span>		
@@ -260,10 +260,10 @@
 					</div>				
 				</div>
 				<div class="form-group">
-					<label for="metaDis" class="col-md-2 control-label">* Meta Discription </label>
-					<div class="col-md-8">
-						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
-						<p>{{ 256 - property.meta_desc.length + " Chars left" }}</p>
+					<label for="metaDis" class="col-md-3 control-label">* Meta Discription </label>
+					<div class="col-md-9">
+						<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
+						<p>{{ 356 - property.meta_desc.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.meta_desc.$error.maxlength">
 							Sorry You are Exceeding the Limit
 						</span>	
@@ -272,10 +272,10 @@
 					</div>				
 				</div>
 				<div class="form-group">
-					<label for="metaKey" class="col-md-2 control-label">* Meta Keywords </label>
-					<div class="col-md-8">
-						<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
-						<p>{{ 256 - property.meta_key.length + " Chars left" }}</p>
+					<label for="metaKey" class="col-md-3 control-label">* Meta Keywords </label>
+					<div class="col-md-9">
+						<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
+						<p>{{ 356 - property.meta_key.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.meta_key.$error.maxlength">
 							Sorry You are Exceeding the Limit
 						</span>
@@ -284,18 +284,18 @@
 					</div>				
 				</div>
 				<div class="form-group">
-					<label for="projName" class="col-md-2 control-label">* Project Name </label>
-					<div class="col-md-8">
+					<label for="projName" class="col-md-3 control-label">* Project Name </label>
+					<div class="col-md-9">
 					  <select class="form-control"  id="projName" name="projName" ng-model="projName">
 							<option selected="true" selected >other</option>
 					 </select>
 					</div>
 				</div>			
 				<div class="form-group">
-					<label for="propDis" class="col-md-2 control-label">* Property Discription  </label>
-					<div class="col-md-8">
-						<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
-						<p>{{ 256 - property.prop_desc.length + " Chars left" }}</p>
+					<label for="propDis" class="col-md-3 control-label">* Property Discription  </label>
+					<div class="col-md-9">
+						<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
+						<p>{{ 356 - property.prop_desc.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.prop_desc.$error.maxlength">
 							Sorry You are Exceeding the Limit
 						</span>	
@@ -310,8 +310,8 @@
 			
 				<h3>Property contact Detail:</h3>
 					<div class="form-group">
-							<label for="Name" class="col-md-2 control-label">* Name:</label>
-							<div class="col-md-8">
+							<label for="Name" class="col-md-3 control-label">* Name:</label>
+							<div class="col-md-9">
 								<input type="text"  id="Name" class="form-control" name="Name" ng-model="property.cont_name" required>
 								<span style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
 								  <span ng-show="myForm.Name.$error.required">Name is required .</span>
@@ -319,8 +319,8 @@
 							</div>						
 					  </div>
 					  <div class="form-group">
-							<label for="Contact_No" class="col-md-2 control-label"> * Contact No:</label>
-							<div class="col-md-8">
+							<label for="Contact_No" class="col-md-3 control-label"> * Contact No:</label>
+							<div class="col-md-9">
 								<input type="Number"  id="Contact_No" class="form-control"  name="Contact" ng-model="property.contact" max-length="10" required >
 								<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
 								  <span ng-show="myForm.Contact.$error.required">Contact is required .</span>
@@ -328,8 +328,8 @@
 							</div>						
 					  </div>
 					  <div class="form-group">
-							<label for="Email" class="col-md-2 control-label">* Email ID:</label>
-							<div class="col-md-8">
+							<label for="Email" class="col-md-3 control-label">* Email ID:</label>
+							<div class="col-md-9">
 								<input type="email"  id="Email" class="form-control" name="Email" ng-model="property.email" >
 								<span style="color:red" ng-show="myForm.Email.$dirty && myForm.Email.$invalid">
 								  <span ng-show="myForm.Email.$error.required">Email is required.</span>
@@ -338,10 +338,10 @@
 							</div>							
 					  </div>
 					  <div class="form-group">
-							<label for="Address" class="col-md-2 control-label"> * Address </label>
-							<div class="col-md-8">
-								<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" cols="30" rows="4" ng-maxlength="256" ui-tinymce></textarea>
-						<p>{{ 256 - property.cont_address.length + " Chars left" }}</p>
+							<label for="Address" class="col-md-3 control-label"> * Address </label>
+							<div class="col-md-9">
+								<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
+						<p>{{ 356 - property.cont_address.length + " Chars left" }}</p>
 						 <span style="color:red" ng-show="myForm.cont_address.$error.maxlength">
 							Sorry You are Exceeding the Limit
 						</span>	
@@ -353,8 +353,8 @@
 			<tab heading="Optional Details" title="Optional Property Details">
 			  <h3>Optional Property Details:</h3>
 					<div class="form-group">
-						<label for="Age" class="col-md-2 control-label">Property Age</label>
-						<div class="col-md-8">
+						<label for="Age" class="col-md-3 control-label">Property Age</label>
+						<div class="col-md-9">
 							<select class="form-control"  id="Age" ng-model="property.prop_age">
 								<option value="" selected>Select One</option>
 								<option value="Under Construction">Under Construction</option>
@@ -363,8 +363,8 @@
 						</div>					
 					</div>				
 					<div class="form-group">
-						<label for="Furnished" class="col-md-2 control-label">Furnished</label>
-						<div class="col-md-8">
+						<label for="Furnished" class="col-md-3 control-label">Furnished</label>
+						<div class="col-md-9">
 							<select class="form-control" id="Furnished" ng-model="property.furnished">
 								<option value="" selected>Select One</option>
 								<option value="Unfurnished">Unfurnished</option>
@@ -373,8 +373,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-							<label for="owner" class="col-md-2 control-label">Ownership</label>
-							<div class="col-md-8">
+							<label for="owner" class="col-md-3 control-label">Ownership</label>
+							<div class="col-md-9">
 								<select class="form-control" id="owner" ng-model="property.prop_owner">
 									<option value="" selected>Select One</option>
 									<option value="Indivisual">Indivisual</option>
@@ -383,18 +383,18 @@
 							</div>
 					</div>
 					<div class="form-group">
-							<label for="TotFloor" class="col-md-2 control-label">Total Number of Floors</label>
-							<div class="col-md-8">
+							<label for="TotFloor" class="col-md-3 control-label">Total Number of Floors</label>
+							<div class="col-md-9">
 								<select class="form-control" id="TotFloor" ng-model="property.floors">
 									<option value="" selected>Select One</option>
 									<option value="1">1</option>
-									<option value="2">2</option>
+									<option value="3">3</option>
 								</select>
 							</div>
 					</div>
 					<div class="form-group">
-							<label for="Facing" class="col-md-2 control-label">Facing</label>
-							<div class="col-md-8">
+							<label for="Facing" class="col-md-3 control-label">Facing</label>
+							<div class="col-md-9">
 								<select class="form-control" id="Facing" ng-model="property.facing">
 									<option value="">Select One</option>
 									<option value="East">East</option>
@@ -407,26 +407,26 @@
 			<!--Land  Mark -->				
 				<h3>Land Mark:</h3>
 				<div class="form-group">
-						<label for="Hospitals" class="col-md-2 control-label">Hospitals </label>
-						<div class="col-md-8">
+						<label for="Hospitals" class="col-md-3 control-label">Hospitals </label>
+						<div class="col-md-9">
 							<input type="text"  id="Hospitals" class="form-control" name="Hospitals" ng-model="property.hospital" /> kms						
 						</div>							
 				  </div>
 				  <div class="form-group">
-						<label for="Airport" class="col-md-2 control-label">  Airport </label>
-						<div class="col-md-8">
+						<label for="Airport" class="col-md-3 control-label">  Airport </label>
+						<div class="col-md-9">
 							<input type="text" id="Airport" class="form-control"  name="Airport" ng-model="property.airport" >	kms						 
 						</div>											
 				  </div>
 				  <div class="form-group">
-						<label for="RailwayStation" class="col-md-2 control-label">  Railway Station</label>
-						<div class="col-md-8">
+						<label for="RailwayStation" class="col-md-3 control-label">  Railway Station</label>
+						<div class="col-md-9">
 							<input type="text" id="RailwayStation" class="form-control" name="RailwayStation" ng-model="property.railway" > kms	
 						</div>											
 				  </div>
 				  <div class="form-group">
-						<label for="School" class="col-md-2 control-label">  School </label>
-						<div class="col-md-8">
+						<label for="School" class="col-md-3 control-label">  School </label>
+						<div class="col-md-9">
 							<input type="text" id="School" class="form-control" name="School" ng-model="property.school" > kms	
 						</div>											
 				  </div>
@@ -435,7 +435,7 @@
 			<tab heading="Amenities" title="Amenities">
 				<h3>Amenities:</h3>
 				<div class="form-group">
-					<div class="col-md-12">
+					<div class="col-md-13">
 						<table class="table table-bordered table-responsive">
 							<tr>
 								<td>
@@ -469,7 +469,7 @@
 			</tab>
 		</tabset>
 			<div class="form-group">
-				<div class="col-md-12 ">	
+				<div class="col-md-13 ">	
 					<h3>Select Sites</h3>			    
 						<table class="table table-bordered">
 							<tr>
