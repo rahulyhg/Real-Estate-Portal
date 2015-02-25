@@ -18,119 +18,119 @@ header .im1 {
 body {
   overflow: scroll;
 }
-.main-content,
-.main-content row ng-scope {
+body .main-content,
+body .main-content row ng-scope {
   padding: 10px;
   margin-top: 10px;
 }
-.main-content .f1,
-.main-content row ng-scope .f1,
-.main-content myForm,
-.main-content row ng-scope myForm {
+body .main-content .f1,
+body .main-content row ng-scope .f1,
+body .main-content myForm,
+body .main-content row ng-scope myForm {
   border: 1px solid gray;
   margin-top: 10px;
 }
-.main-content .f1 .dropimg,
-.main-content row ng-scope .f1 .dropimg,
-.main-content myForm .dropimg,
-.main-content row ng-scope myForm .dropimg {
+body .main-content .f1 .dropimg,
+body .main-content row ng-scope .f1 .dropimg,
+body .main-content myForm .dropimg,
+body .main-content row ng-scope myForm .dropimg {
   font-size: 15px;
   padding: 5px 5px 5px 5px;
   height: 40px;
   width: 40px;
   margin-bottom: 5px;
 }
-.main-content .f1 .borderimg,
-.main-content row ng-scope .f1 .borderimg,
-.main-content myForm .borderimg,
-.main-content row ng-scope myForm .borderimg {
+body .main-content .f1 .borderimg,
+body .main-content row ng-scope .f1 .borderimg,
+body .main-content myForm .borderimg,
+body .main-content row ng-scope myForm .borderimg {
   border: 1px solid #ccc;
 }
-.main-content h2,
-.main-content row ng-scope h2 {
+body .main-content h2,
+body .main-content row ng-scope h2 {
   color: #a01ba1;
   padding-bottom: 10px;
   text-align: center;
 }
-.main-content form > p,
-.main-content row ng-scope form > p {
+body .main-content form > p,
+body .main-content row ng-scope form > p {
   color: cadetblue;
 }
-.main-content .form-horizontal .control-label,
-.main-content row ng-scope .form-horizontal .control-label,
-.main-content label,
-.main-content row ng-scope label {
+body .main-content .form-horizontal .control-label,
+body .main-content row ng-scope .form-horizontal .control-label,
+body .main-content label,
+body .main-content row ng-scope label {
   color: #41547c;
 }
-.main-content .form-horizontal,
-.main-content row ng-scope .form-horizontal {
-  border: 1px solid gray;
+body .main-content .form-horizontal,
+body .main-content row ng-scope .form-horizontal {
+  border: 1px solid #ccc;
   padding: 20px;
 }
-.main-content .website-menu,
-.main-content row ng-scope .website-menu {
+body .main-content .website-menu,
+body .main-content row ng-scope .website-menu {
   padding-bottom: 10px;
 }
-.main-content .website-menu .btn-default:hover,
-.main-content row ng-scope .website-menu .btn-default:hover {
+body .main-content .website-menu .btn-default:hover,
+body .main-content row ng-scope .website-menu .btn-default:hover {
   border-color: #AEBCC4;
 }
-.main-content .dropdown-toggle ul,
-.main-content row ng-scope .dropdown-toggle ul {
+body .main-content .dropdown-toggle ul,
+body .main-content row ng-scope .dropdown-toggle ul {
   background-color: #769cd3;
 }
-.main-content .sidebar-border,
-.main-content row ng-scope .sidebar-border {
+body .main-content .sidebar-border,
+body .main-content row ng-scope .sidebar-border {
   border: 1px solid #ccc;
 }
-.main-content .sidebar-border li,
-.main-content row ng-scope .sidebar-border li {
+body .main-content .sidebar-border li,
+body .main-content row ng-scope .sidebar-border li {
   padding: 5px;
 }
-.main-content .nav .nav-pills .nav-stacked,
-.main-content row ng-scope .nav .nav-pills .nav-stacked {
+body .main-content .nav .nav-pills .nav-stacked,
+body .main-content row ng-scope .nav .nav-pills .nav-stacked {
   boder: 1px solid #ccc;
 }
-.main-content .req-hr,
-.main-content row ng-scope .req-hr {
+body .main-content .req-hr,
+body .main-content row ng-scope .req-hr {
   color: red;
 }
-.main-content .reqList,
-.main-content row ng-scope .reqList {
+body .main-content .reqList,
+body .main-content row ng-scope .reqList {
   border: 1px solid black;
   padding: 10px;
 }
-.main-content .bottomspace,
-.main-content row ng-scope .bottomspace {
+body .main-content .bottomspace,
+body .main-content row ng-scope .bottomspace {
   padding-bottom: 10px;
 }
-.innernav {
+body .innernav {
   padding: 10px;
 }
-thead {
+body thead {
   background-color: rgba(130, 127, 137, 0.38);
 }
-tab {
+body tab {
   padding: 20px;
 }
-.paraMand {
+body .paraMand {
   color: red;
 }
-.ulmenu,
-.dropdown-menu {
+body .ulmenu,
+body .dropdown-menu {
   left: auto;
   right: 0;
 }
-h3 {
+body h3 {
   color: #2368CE;
 }
-.dropimg {
+body .dropimg {
   height: 40px;
   width: 40px;
   text-align: center;
   padding: 5px;
 }
-.gridblock {
+body .gridblock {
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid gray;
@@ -138,29 +138,29 @@ h3 {
   box-shadow: 4px 4px 4px #e5dede;
   background-color: #EAEAEA;
 }
-.breadcrumb-back {
+body .breadcrumb-back {
   background-color: #C3D3E0;
   margin-bottom: 10px;
 }
-.breadcrumb-back .breadcrumb {
+body .breadcrumb-back .breadcrumb {
   background: transparent;
   margin-bottom: 0px;
 }
-.toolbar {
+body .toolbar {
   padding: 5px;
 }
-.nav .nav-tabs {
+body .nav .nav-tabs {
   padding-top: 20px;
 }
-.prop-img {
+body .prop-img {
   width: 200px;
 }
-.box-border {
+body .box-border {
   border: 1px solid #000;
   padding-top: 15px;
   padding-bottom: 15px;
 }
-.btn1 {
+body .btn1 {
   display: block;
   margin-right: auto;
   margin-left: auto;
