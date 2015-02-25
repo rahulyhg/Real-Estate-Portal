@@ -80,7 +80,7 @@ define(['angular',
 				
 				
 				// Below routes will use response module folder	{Sunita- To display mailbox single view remove status add mailID }
-				.when('/dashboard/response/:mailPart?', route.resolve({
+				.when('/dashboard/response/:mailId?', route.resolve({
                     controller: 'response',
                     template: 'response',
 					label: " Mail Box"

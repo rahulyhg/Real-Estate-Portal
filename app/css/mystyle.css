@@ -62,8 +62,8 @@ body .main-content label,
 body .main-content row ng-scope label {
   color: #41547c;
 }
-body .main-content .form-horizontal,
-body .main-content row ng-scope .form-horizontal {
+body .main-content .myForm,
+body .main-content row ng-scope .myForm {
   border: 1px solid #ccc;
   padding: 20px;
 }

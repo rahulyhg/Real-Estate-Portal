@@ -1,21 +1,30 @@
-<section id="input">
-	<div class="row main-content">
-	<div  class="breadcrumb-back" ng-include="'modules/component/breadcrumb.html'"></div>
-		<div class="col-md-2" ng-include="'modules/component/mainnav.html'"></div>
-			<div class="col-md-10">
-				<form class="form-horizontal" role="form" name="myForm" novalidate="novalidate" >
+
+<div class="row ">
+	<div class="main-content">
+	<ng-include src="'modules/component/toolbar.html'"></ng-include>
+			
+			<div class="col-md-12">
+				<form class="form-horizontal myForm" role="form" name="myForm" novalidate="novalidate" >
 					<h3 class="text-center">Edit Profile</h3>
 					<div class="form-group">
-						<label for="fullname" class="col-md-2 control-label">Name</label>
+						<label for="full_name" class="col-md-2 control-label">Name</label>
 						<div class="col-md-8">
-							<input type="char" class="form-control" id="fullname" ng-model="edit.full_name" name="fullname" placeholder="Enter Name" required>
+							<input type="char" class="form-control" id="full_name" ng-model="edit.full_name" name="full_name" placeholder="Enter Name" required>
+							<span style="color:red" ng-show="myForm.full_name.$error.required && (myForm.full_name.$dirty || submitted)" class="help-block">Name is required.</span>
 						</div>						
 					</div>
 					<div class="form-group">
 						<label for="Address" class="col-md-2 control-label">Address</label>
 						<div class="col-md-8">
-							<textarea  class="form-control" id="Address" ng-model="edit.address" name="Address" placeholder="Enter address" required>
+							<textarea  class="form-control" id="Address" ng-model="edit.address" name="Address" placeholder="Enter address" cols="30" rows="4" ng-maxlength="256" required>
 							</textarea>
+							
+						<p>{{ 256 - property.address.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.address.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>	
+							<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+						  <span ng-show="myForm.address.$error.required">Address is required .</span>
 						</div>
 					</div>	
 					<div class="form-group">
@@ -29,20 +38,36 @@
 								<option value="America">America</option>
 								<option value="Belgium">Belgium</option>
 							</select>
+							<span style="color:red" ng-show="myForm.full_name.$error.required && (myForm.full_name.$dirty || submitted)" class="help-block">Name is required.</span>
 						</div>						
 					</div>
 					<div class="form-group">
-						<label for="Tel" class="col-md-2 control-label">Phone </label>
+					
+						<label for="tel" class="col-md-2 control-label">Phone </label>
 						<div class="col-md-8">
-							<input type="Number" class="form-control" min="10" max="10" id="Tel" ng-model="edit.tel" name="Tel" placeholder="Enter Phone" required>
-						</div>							
+						  <input type="text" class="form-control" id="tel" ng-model="edit.tel" name="tel" placeholder="Enter Your Phno" ng-maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >       
+						  <p ng-show="myForm.tel.$error.pattern && (myForm.tel.$dirty || submitted)" class="help-block">Enter a valid contact no.</p>
+						</div>					
 					</div>	
+					<div class="form-group">
+							<label  for="date" class="col-sm-2 control-label">Date</label>
+							<div class="col-md-8">
+								<p class="input-group">
+								  <input type="text" id="date" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+								  <span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								  </span>
+								</p>
+							</div>
+						</div>
 					<div class="form-group">
 						<label for="Website" class="col-md-2 control-label">Website </label>
 						<div class="col-md-8">
 							<input type="url" class="form-control" id="Website" ng-model="edit.website" name="Website" placeholder="Enter Website " required>
+							<span style="color:red" ng-show="myForm.full_name.$error.required && (myForm.full_name.$dirty || submitted)" class="help-block">Name is required.</span>
 						</div>						
 					</div>	
+						
 					<div class="form-group">
 						<div class="col-sm-offset-5">
 							<button type="submit" class="btn btn-success" title="Save">Save</button>
@@ -51,4 +76,4 @@
 				</form>	
 			</div>	
 	</div>	
-</section>	
+</div>
