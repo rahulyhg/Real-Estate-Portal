@@ -3,21 +3,25 @@
 	<div class="col-md-12">
 		<div  class="breadcrumb-back" ng-include="'modules/component/breadcrumb.html'"></div>		 
 		<form class="form-horizontal" role="form" name="myForm"  method="post" novalidate>
-		    <h3 class="text-center">Change Password</h3>
+		    <div class="form-group">
+				   <div class="col-offset-3 col-md-9">
+						<h3> Change Password</h3>
+					</div>
+				</div>
 			<div class="form-group">
-				<label for="oldpwd" class="col-md-3 control-label">Old Password </label>
+				<label for="oldpwd" class="col-md-2 control-label">Old Password </label>
 					<div class="col-md-9">
 						<input type="Password" class="form-control" id="oldpwd" ng-model="chng.oldpwd" name="oldpwd" placeholder="Enter Old Password " required >
 					</div>
 			</div>
 			<div class="form-group">
-				<label for="newpwd" class="col-md-3 control-label">New Password </label>
+				<label for="newpwd" class="col-md-2 control-label">New Password </label>
 					<div class="col-md-9">
 						<input type="Password" class="form-control" id="newpwd" ng-model="chng.newpwd" name="newpwd" placeholder="Enter New Password " required >
 					</div>
 			</div>	
 			<div class="form-group">
-				<label for="cnfpwd" class="col-md-3 control-label">Confirm Password</label>
+				<label for="cnfpwd" class="col-md-2 control-label">Confirm Password</label>
 					<div class="col-md-9">
 						<input type="Password" class="form-control" id="cnfpwd" ng-model="chng.cifrmpwd" name="pwd" placeholder="Enter  Password " required >
 					</div>

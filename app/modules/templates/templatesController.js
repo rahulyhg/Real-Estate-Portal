@@ -22,6 +22,21 @@ define(['app'], function (app) {
 				$scope.templates = response.template;
 				
 			});
+			$http.get("../server-api/index.php/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.templates = response.template;
+				
+			});
+			$http.get("../server-api/index.php/template/"+$scope.myTempCurrentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.templates = response.template;
+				
+			});
+			$http.get("../server-api/index.php/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.templates = response.template;
+				
+			});
 		};		
 		
 		
