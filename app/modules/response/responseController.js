@@ -8,9 +8,15 @@ define(['app', 'css!modules/home/home'], function (app) {
     // This is controller for this view
 	var responseController = function ($scope, $injector, $http,$routeParams, $location,$rootScope) {		
 		$rootScope.metaTitle = "Real Estate Response";
-		$scope.MailView = $routeParams.mailId; /* this object will check list of mails show or single mail show */
 		
-		templateUrl:'http://localhost/Sunita/Real-Estate-Portal/app/modules/dashboard/dashboard/response/mailview.html';
+		console.log($scope.mailPart);
+		if(!$routeParams.mailPart){
+			$location.path('/dashboard/response/mails');
+		}
+		templateUrl:'http://localhost/sunita/Real-Estate-Portal/app/modules/response/response.html';
+		//$scope.MailView = $routeParams.mailId; /* this object will check list of mails show or single mail show */
+		
+		//templateUrl:'http://localhost/Sunita/Real-Estate-Portal/app/modules/dashboard/dashboard/response/mailview.html';
 		/*if(!$routeParams.type && !$routeParams.status){
 			$location.path( "/dashboard/response" );
 		}
@@ -25,7 +31,7 @@ define(['app', 'css!modules/home/home'], function (app) {
 				return ""
 			};
 		};
-		
+		*/
 		//Code For Pagination
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
@@ -34,14 +40,14 @@ define(['app', 'css!modules/home/home'], function (app) {
 		$scope.numPages = "";		
 
 		$scope.pageChanged = function() {
-			//$log.log('Page changed to: ' + $scope.currentPage);
+			
 			$http.get("../server-api/index.php/responses/"+$scope.currentPage+"/"+$scope.pageItems)
 			.success(function(response) {
 				$scope.responses = response.responses;
 				//$scope.totalRecords = response.totalRecords;
 				
 			});
-		};		*/
+		};		
 		 
 		//this request for single response data
 		if($routeParams.id) {

@@ -1,38 +1,40 @@
  <div class="clearfix">
-	<div class="toolbar pull-left">
+	<div class="col-md-6 pull-left">
 		<div class="btn-group" role="group" aria-label="first group">
-			<button type="button"  tooltip-animation="true" tooltip="Back" class="btn btn-default glyphicon glyphicon-arrow-left" go-back></button>
-			<button type="button" tooltip-animation="true"  tooltip="compose"  class="btn btn-default glyphicon glyphicon-envelope"></button>
-			<button type="button" tooltip-animation="true"  tooltip="refresh"  class="btn btn-default glyphicon glyphicon-refresh"></button>
+			<a  tooltip-animation="true" tooltip="Back" class="btn btn-default glyphicon glyphicon-arrow-left" go-back></a>
+			<a class="btn btn-default glyphicon glyphicon-envelope" href="#/dashboard/response/composemailview" tooltip-animation="true"  tooltip="compose" ></a>
+			<a  tooltip-animation="true"  tooltip="refresh"  class="btn btn-default glyphicon glyphicon-refresh"></a>
 		</div>
 		<div class="btn-group" role="group" aria-label="Second group">
-			<button type="button" tooltip="delete" class="btn btn-default glyphicon glyphicon-trash">
-			</button>
+			<a tooltip="delete" class="btn btn-default glyphicon glyphicon-trash">
+			</a>
 		</div>
 		<div class="btn-group" role="group" aria-label="Third group">
-			<button type="button"  tooltip-animation="true" tooltip="Cancle send mail" class="btn btn-default glyphicon glyphicon glyphicon-remove" go-back></button>
+			<a  tooltip-animation="true" tooltip="Cancle send mail" class="btn btn-default glyphicon glyphicon glyphicon-remove" go-back></a>
 		</div>
 		<div class="btn-group" role="group" aria-label="Fourth group">
-			<button type="button" tooltip-animation="true"  tooltip="Send" class="btn btn-default glyphicon glyphicon-send"></button>
-			<button type="button" tooltip-animation="true"  tooltip="Save To Draft"  class="btn btn-default glyphicon glyphicon-download-alt"></button>
+			<a tooltip-animation="true"  tooltip="Send" class="btn btn-default glyphicon glyphicon-send"></a>
+			<a tooltip-animation="true"  tooltip="Save To Draft"  class="btn btn-default glyphicon glyphicon-download-alt"></a>
 		</div>
 		<div class="btn-group" role="group" aria-label="Fifth group">
-			<button type="button" tooltip-animation="true" tooltip="Attach File" class="btn btn-default glyphicon glyphicon-paperclip" name="attachfile" value="attachfile"></button>
-			<button type="button" tooltip-animation="true" tooltip="Add Signature" class="btn btn-default glyphicon glyphicon-pencil"></button>
+			<a tooltip-animation="true" tooltip="Attach File" class="btn btn-default glyphicon glyphicon-paperclip" name="attachfile" value="attachfile"></a>
+			<a tooltip-animation="true" tooltip="Add Signature" class="btn btn-default glyphicon glyphicon-pencil"></a>
 		</div>
-		<div class="btn-group" role="group" aria-label="Sixth group">
-			<button type="button" tooltip-animation="true" aria-hidden="true" tooltip="Previous Message" class="btn btn-default glyphicon glyphicon-arrow-left" name="prevmsg" value="prevmsg">
-			</button>
-			<button type="button" tooltip-animation="true" aria-hidden="true" tooltip="Next Message" class="btn btn-default glyphicon glyphicon-arrow-right" name="nextmsg" value="nextmsg">
-			</button>
-		</div>
+		
 	</div>
 	<div class="toolbar pull-right">
-		<form class="form-inline">
+	
+		<div class="btn-group" role="group" aria-label="Sixth group">
+			<a tooltip-animation="true" aria-hidden="true" tooltip="Previous Message" class="btn btn-default glyphicon glyphicon-arrow-left" name="prevmsg" value="prevmsg">
+			</a>
+			<a tooltip-animation="true" aria-hidden="true" tooltip="Next Message" class="btn btn-default glyphicon glyphicon-arrow-right" name="nextmsg" value="nextmsg">
+			</a>
+		</div>
+		<form class="form-inline pull-right">
 			<div class="input-group">
-				<input type="text" class="form-control iconback" placeholder="Search">
+				<input type="text" class="form-control iconback" placeholder="Search " title="search your mail">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search iconsearch"></span></button>
+					<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search iconsearch"></span></a>
 				</span>
 			</div>
 		</form>
