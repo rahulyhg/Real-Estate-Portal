@@ -7,11 +7,12 @@ define(['angular',
  'directives',
  'services', 
  'filters',
+ 'upload','uploadShim',
  'css!../css/bootstrap.min', 'css!../css/mystyle.css'
 ], function (angular, angularRoute) {
     // Declare app level module which depends on views, and components
     var app = angular.module('realEstate', [
-   'ngRoute', 'routeResolverServices', 'ui.bootstrap', 'customDirectives', 'customServices', 'customFilters',
+   'ngRoute', 'routeResolverServices', 'ui.bootstrap', 'customDirectives', 'customServices', 'customFilters', 'angularFileUpload'
  ]);
     app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
                 '$compileProvider', '$filterProvider', '$provide', '$httpProvider',

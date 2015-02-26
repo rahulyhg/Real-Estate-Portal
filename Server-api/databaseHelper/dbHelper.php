@@ -1,10 +1,11 @@
 <?php
-require_once 'config.php'; // Database setting constants [DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD]
+require_once 'databaseHelper/config.php'; // Database setting constants [DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD]
 class dbHelper {
     private $db;
     private $err;
     function __construct() {
-        $dsn = 'mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8';
+	
+        $dsn = 'mysql:host='.DB_HOST.';dbname='.DB_NAME;
         try {
             $this->db = new PDO($dsn, DB_USERNAME, DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch (PDOException $e) {
@@ -22,6 +23,7 @@ class dbHelper {
                 $w .= " and " .$key. " like :".$key;
                 $a[":".$key] = $value;
             }
+			
             $stmt = $this->db->prepare("select * from ".$table." where 1=1 ". $w);
             $stmt->execute($a);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);

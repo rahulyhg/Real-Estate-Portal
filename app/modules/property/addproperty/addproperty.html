@@ -170,7 +170,7 @@
 				<div class="form-group">
 					  <label for="imageInputFile" class="col-md-3" >* Property Images </label>
 					<div class="col-md-9">
-						<input type="file"    id="imageInputFile" ng-model="property.prop_image">
+						<input type="file" id="imageInputFile" ng-file-select  ng-multiple="true" accept="image/*" ng-file-change="upload($files)" ng-model="property.prop_image"> <img ng-show="property.prop_image[0].dataUrl != null" ng-src="{{property.prop_image[0].dataUrl"}}/>
 					</div>			
 				</div>	 <!-- end property  -->		
 			</tab>

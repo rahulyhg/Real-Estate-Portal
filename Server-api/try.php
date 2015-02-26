@@ -2,7 +2,8 @@
 
 // load required files
 require 'Slim/Slim.php';
-require 'dbcon.php';
+//require 'dbcon.php';
+require_once 'databaseHelper/dbHelper.php';
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
@@ -35,7 +36,7 @@ function uploadFile () {
         $errors[]='File size cannot exceed 2 MB';
     }               
     if(empty($errors)==true){
-        move_uploaded_file($file_tmp,"PlayerAvatar/".$file_name);
+        move_uploaded_file($file_tmp,"images/".$file_name);
         echo " uploaded file: " . "images/" . $file_name;
     }else{
         print_r($errors);
@@ -52,6 +53,11 @@ else{
 
 // Get Method here
 function getUser(){
+	$db = new dbHelper();
+	$whr["id"] = "1";
+	$rows = $db->select("2_real_property",$whr);
+	print_r(($rows));
+	//print_r(json_encode($rows));
 	echo "this is get request:";
 }
 

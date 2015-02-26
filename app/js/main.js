@@ -3,6 +3,8 @@
 require.config({
 	paths: {
 		angular: '../lib/angular/angular',
+		upload: '../lib/upload/angular-file-upload.min',
+		uploadShim: '../lib/upload/angular-file-upload-shim.min',
 		breadcrumbs: '../lib/angular/ng-breadcrumbs',
 		routeResolver: '../js/routeResolver',
 		directives: '../js/directives', 
@@ -25,6 +27,8 @@ require.config({
 		'filters':  { "deps": ['angular'] },
 		'services':  { "deps": ['angular'] },
 		'directives':  { "deps": ['angular'] },
+		'upload':  { "deps": ['angular'] },
+		'uploadShim':  { "deps": ['angular'] },
 		'angularRoute': ['angular'],
 		'angularMocks': {
 			deps:['angular'],
