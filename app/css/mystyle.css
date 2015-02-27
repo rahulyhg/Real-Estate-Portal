@@ -89,7 +89,7 @@ body .main-content row ng-scope .sidebar-border li {
 }
 body .main-content .nav .nav-pills .nav-stacked,
 body .main-content row ng-scope .nav .nav-pills .nav-stacked {
-  boder: 1px solid #ccc;
+  border: 1px solid #ccc;
 }
 body .main-content .req-hr,
 body .main-content row ng-scope .req-hr {
@@ -145,6 +145,10 @@ body .breadcrumb-back {
 body .breadcrumb-back .breadcrumb {
   background: transparent;
   margin-bottom: 0px;
+}
+body .user-img {
+  border: 1px solid #ccc;
+  width: 80px;
 }
 body .toolbar {
   padding: 5px;
