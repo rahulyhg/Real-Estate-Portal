@@ -79,6 +79,19 @@ define(['angular',
 					label: "Dashboard"
                 }, 'dashboard/'))
 				
+				//Below routes will use users module folder {sunita}
+				
+				.when('/dashboard/users', route.resolve({
+					controller:'manageuser', 
+					template: 'manageuser',
+					label: 'Users'
+				}, 'users/manageuser/'))
+				
+				.when('/dashboard/users/:userViews?', route.resolve({
+					controller:'manageuser', 
+					template: 'manageuser'
+				}, 'users/manageuser/'))
+				
 				
 				// Below routes will use response module folder	{Sunita- To display mailbox single view remove status add mailID }
 				.when('/dashboard/response/:mailId?', route.resolve({
