@@ -51,6 +51,7 @@
 						</div>
 						<div class="form-group">
 						
+<<<<<<< HEAD
 							<label for="tel" class="col-md-2 control-label">Phone </label>
 							<div class="col-md-8">
 							  <input type="text" class="form-control" id="tel" ng-model="edit.tel" name="tel" placeholder="Enter Your Phone Number" ng-maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >       
@@ -80,7 +81,7 @@
 						</div>	
 							
 						<div class="form-group">
-						<div class="col-md-offset-2 col-md-9">
+							<div class="col-sm-offset-5">
 								<button type="submit" class="btn btn-success"  title="Edit Profile">Save Profile</button>
 								<button type="reset" class="btn btn-danger" title="Cancel" >Cancel</button>
 							</div>						
@@ -90,4 +91,15 @@
 				
 		</div>
 	</div>
+=======
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-9">
+							<button type="submit" class="btn btn-success"  title="Edit Profile">Save Profile</button>
+							<button type="reset" class="btn btn-danger" title="Cancel" >Cancel</button>
+						</div>						
+					</div>
+				</form>	
+			</div>	
+	</div>	
+>>>>>>> btn left alignment
 </div>

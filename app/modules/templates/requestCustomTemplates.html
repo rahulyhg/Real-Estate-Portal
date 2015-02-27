@@ -1,7 +1,7 @@
 
 <form name="myForm" class="form-horizontal" role="form" novalidate="novalidate">
 	<div class="form-group">
-	   <div class="col-md-offset-3 col-md-9">
+	   <div class="col-md-offset-2 col-md-10">
 			<h3> Request For Custom Template</h3>
 		</div>
 	</div>
@@ -31,22 +31,21 @@
         </div>						
 	</div> 	
 	<div class="form-group">
-		<label for="requirement" class="col-md-2 control-label">Custom Requirement</label>	
-		<div class="col-md-9">
-			<textarea  class="form-control" id="requirement" ng-model="requirement.title" name="requirement" placeholder="Your Custom Requirement" cols="30" rows="4" ng-minlength="10" ng-maxlength="256" ui-tinymce required>
-			</textarea>
-			<p>{{ 256 - project.title.length + " Chars left"}}</p>
-			<span style="color:red" ng-show="myForm.title.$error.maxlength">Sorry You are Exceeding the Limit</span>
-			<span style="color:red" ng-show="myForm.requirement.$dirty && myForm.requirement.$invalid">
-				<span ng-show="myForm.requirement.$error.required">Custom Requirement are Required.</span>
-				<span ng-show="myForm.requirement.$error.minlength">Please Enter minimum 10 character</span>
-			</span>
+		<label for="req" class="col-md-2 control-label">Custom Requirement</label>	
+		<div class="col-md-9">			  
+			<textarea type="text" id="req" class="form-control" placeholder="Your Custom Requirement" name="req" ng-model="requirement.req" ng-minlength="10"  cols="30" rows="4" ng-maxlength="356" ui-tinymce required></textarea>			
+			<p>{{ 356 - requirement.req.length + " Chars left"}}</p>
+			<span style="color:red" ng-show="myForm.req.$error.maxlength">Sorry You are Exceeding the Limit</span>
+			<span style="color:red" ng-show="myForm.req.$dirty && myForm.req.$invalid"></span>
+			<span  ng-show="myForm.req.$error.required">Custom Requirement are Required.</span>
+			<span style="color:red" ng-show="myForm.req.$error.minlength">Please Enter minimum 10 character</span>
+			
 		</div>					
 	</div>
 	<div class="form-group">
 		<label for="custom" class="col-md-2 control-label">Sketch</label>
 		<div class="col-md-3">
-			<img src="img/n4.jpg">
+			<img src="img/n4.jpg" />
 		</div>
 		<div class="col-md-6">
 			<input type="file" id="sketch" name="sketch">	
@@ -56,7 +55,7 @@
 		<label for="custom" class="col-md-2 control-label">Make it</label>
 		<div class="col-md-9">
 			<label class="radio-inline">
-				<input type="radio" name="radio" id="Public" value="Public">Public
+				<input type="radio" name="radio" id="Public" value="Public" checked>Public
 			</label>
 			<label class="radio-inline">
 				<input type="radio" name="radio" id="Private" value="Private">Private
@@ -64,7 +63,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-md-offset-5 col-md-7">
+		<div class="col-md-offset-2 col-md-9">
 			<button type="submit" class="btn btn-success" tooltip="Send Request">Send Request</button>
 			<button type="reset" class="btn btn-danger" tooltip="Cancle">Reset</button>
 		</div>

@@ -32,10 +32,13 @@
 		<div class="form-group">
 			<label  for="product" class="col-md-2 control-label">Product/Services:</label>	
 			<div class="col-md-8">
-				<textarea  class="form-control" id="product" ng-model="product" name="product" placeholder="Product/Services" required></textarea>
-				<span style="color:red" ng-show="myForm.product.$dirty && myForm.product.$invalid">
-					<span ng-show="myForm.product.$error.required">Product/Services is Required:</span>
-				</span>
+			<textarea class="form-control"  id="product" name="product" ng-model="websites.product" cols="30" rows="4" ng-maxlength="356" placeholder="Product/Services" required></textarea>
+			<p>{{ 356 - websites.product.length + " Chars left" }}</p>
+			<span style="color:red" ng-show="myForm.product.$error.maxlength">
+				Sorry You are Exceeding the Limit
+			</span>	
+			<span style="color:red" ng-show="myForm.product.$dirty && myForm.product.$invalid">Product/Services is Required:
+			  <span ng-show="myForm.product.$error.required">Product/Services is Required</span></span>				
 			</div>						
 		</div>						
 		<div class="form-group">
@@ -50,7 +53,7 @@
 			</div>
 		</div>				
 		<div class="form-group"> 
-			<div class="col-sm-offset-5 col-sm-7">
+			<div class="col-md-offset-2 col-md-9">
 			  <button type="submit" name="submit " class="btn btn-primary" title="Add new Website">Add New Site</button>
 			  <button type="reset" name="reset" class="btn btn-danger" title="Cancel Website Request">Cancel</button>		  
 			</div>
