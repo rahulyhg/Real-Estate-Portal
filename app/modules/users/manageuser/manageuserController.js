@@ -13,9 +13,7 @@ define(['app'], function (app) {
 		$location.path('/dashboard/users/userslist');
 		console.log($location);
 		}
-		templateUrl:'http://localhost/sunita/Real-Estate-Portal/app/modules/users/manageuser/userslist.html';
 		
-	
 		$scope.today = function() 
 		{
 			$scope.dt = new Date();
