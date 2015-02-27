@@ -12,7 +12,7 @@ define(['app'], function (app) {
 		if(!$routeParams.userPart) {
 		$location.path('/dashboard/users/userslist');
 		}
-		templateUrl:'http://localhost/trupti/SmallBusiness/app/modules/users/manageuser/userslist.html';
+		templateUrl:'http://localhost/sunita/Real-Estate-Portal/app/modules/users/manageuser/userslist.html';
 		
 	//datepicker {sonali}	
 		$scope.today = function() 
