@@ -1,11 +1,12 @@
 <div class="row ">		
 	<div class="col-md-12 ">	
 		<div class="main-content">
-			<div class="row ">	
+		<ng-include src="'modules/component/toolbar.html'"></ng-include>
+			<div class="row">	
 				<ng-include src="'modules/users/manageuser/userstoolbar.html'"></ng-include>
 			</div>
 			<div class="row ">
-				<div class="col-md-12">	
+				<div class="col-md-12 ">	
 					<ng-include ng-if="userViews=='userslist'" src="'modules/users/manageuser/userslist.html'"></ng-include>
 					<ng-include ng-if="userViews=='usersgroup'" src="'modules/users/manageuser/usersgroup.html'"></ng-include>
 					<ng-include ng-if="userViews=='adduser'" src="'modules/users/manageuser/adduser.html'"></ng-include>

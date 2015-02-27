@@ -6,15 +6,16 @@ define(['app'], function (app) {
 	var manageuserController = function ($scope, $injector, $routeParams,$location) {
 		console.log("this is manageuserController");
 		
-		$scope.userPart = $routeParams.userPart; 
-		console.log($scope.userPart);
-		//For display by default userslist.html page{trupti}
-		if(!$routeParams.userPart) {
+		$scope.userViews = $routeParams.userViews; 
+		console.log($scope.userViews);
+		//For display by default userslist.html page
+		if(!$routeParams.userViews) {
 		$location.path('/dashboard/users/userslist');
+		console.log($location);
 		}
 		templateUrl:'http://localhost/sunita/Real-Estate-Portal/app/modules/users/manageuser/userslist.html';
 		
-	//datepicker {sonali}	
+	
 		$scope.today = function() 
 		{
 			$scope.dt = new Date();
@@ -33,7 +34,7 @@ define(['app'], function (app) {
 
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = $scope.formats[0];
-	/* Date Picker Ended here --------------------------------------------------------------------------------------*/
+	//End  Date Picker 
 	};
 
 	// Inject controller's dependencies
