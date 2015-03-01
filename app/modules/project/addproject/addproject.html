@@ -1,291 +1,291 @@
-<div class="row main-content">		
+<div class="row">		
 	<div class="col-md-12">
-		<div class="row">
-				<ng-include src="'modules/component/toolbar.html'"></ng-include>				
-		</div>
-		<h3 class="text-center" title="Add project">Add Project Details</h3>
-		<form class="form-horizontal vertical-scrollbar myForm" role="form" name="myForm">			
-			<tabset>
-				<p class="paraMand">* Fields are mandatory</p>		
-				<tab heading="Project" title="Project information">
-						<h3>Project Information</h3>
-							<div class="form-group">
-								<label  for="projtitle" class="col-md-2 control-label">* &nbsp Project Title</label>
-									<div class="col-md-9">									
-										<textarea type="text"  id="projtitle" class="form-control" name="projtitle" ng-model="project.title"    cols="20" rows="4" ng-maxlength="256" ui-tinymce required></textarea>
-										<p>{{ 256 - project.title.length + " Chars left" }}</p>
-										 <span style="color:red" ng-show="myForm.title.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-											<span style="color:red" ng-show="myForm.projtitle.$dirty && myForm.projtitle.$invalid">
-										  <span ng-show="myForm.projtitle.$error.required">Project title is required .</span>
+		<div class="main-content">		
+			<ng-include src="'modules/component/toolbar.html'"></ng-include>						
+			<h3 class="text-center" title="Add project">Add Project Details</h3>
+			<form class="form-horizontal vertical-scrollbar myForm" role="form" name="myForm">			
+				<tabset>
+					<p class="paraMand">* Fields are mandatory</p>		
+					<tab heading="Project" title="Project information">
+							<h3>Project Information</h3>
+								<div class="form-group">
+									<label  for="projtitle" class="col-md-2 control-label">* &nbsp Project Title</label>
+										<div class="col-md-9">									
+											<textarea type="text"  id="projtitle" class="form-control" name="projtitle" ng-model="project.title"    cols="20" rows="4" ng-maxlength="256" ui-tinymce required></textarea>
+											<p>{{ 256 - project.title.length + " Chars left" }}</p>
+											 <span style="color:red" ng-show="myForm.title.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+												<span style="color:red" ng-show="myForm.projtitle.$dirty && myForm.projtitle.$invalid">
+											  <span ng-show="myForm.projtitle.$error.required">Project title is required .</span>
+										</div>
+								</div>
+								<div class="form-group">
+									<label for="browserTitle" class="col-md-2 control-label">* &nbsp Browser Title</label>
+									<div class="col-md-9">
+										<textarea class="form-control" id="browserTitle" rows="1" name="browserTitle" ng-model="project.browsertitle"   cols="20" rows="4" ng-maxlength="256" ui-tinymce required ></textarea>
+										<p>{{ 256 - project.browsertitle.length + " Chars left" }}</p>
+											 <span style="color:red" ng-show="myForm.browsertitle.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+										<span style="color:red" ng-show="myForm.browserTitle.$dirty && myForm.browserTitle.$invalid">
+											<span ng-show="myForm.browserTitle.$error.required">Browser is required .</span>
+										</span>
+									</div>							
+								</div>				
+								<div class="form-group">
+									<label for="metakey" class="col-md-2 control-label">Meta Keywords</label> 
+									<div class="col-md-9"> 
+										<textarea class="form-control" name="metakey" ng-model="project.metakey"  id="metakey" cols="20" rows="4" ng-maxlength="256" required > </textarea>
+										<p>{{ 256 - project.metakey.length + " Chars left" }}</p>
+											 <span style="color:red" ng-show="myForm.metakey.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+											<span style="color:red" ng-show="myForm.metakey.$dirty && myForm.metakey.$invalid">
+											<span ng-show="myForm.metakey.$error.required">Meta Keywords is required .</span>
+										</span>
+									</div>							
+								</div>
+								<div class="form-group"> 
+									<label for="metaDesc" class="col-md-2 control-label">Meta Discription</label> 
+									<div class="col-md-9">
+										<textarea class="form-control" id="metaDesc"  name="metaDesc" ng-model="project.metadesc" cols="20" rows="4" ng-maxlength="256" required ></textarea>
+										<p>{{ 256 - project.metadesc.length + " Chars left" }}</p>
+											 <span style="color:red" ng-show="myForm.metadesc.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+										<span style="color:red" ng-show="myForm.metaDesc.$dirty && myForm.metaDesc.$invalid">
+											<span ng-show="myForm.metaDesc.$error.required">Meta Discription is required .</span>
+										</span>
 									</div>
-							</div>
-							<div class="form-group">
-								<label for="browserTitle" class="col-md-2 control-label">* &nbsp Browser Title</label>
-								<div class="col-md-9">
-									<textarea class="form-control" id="browserTitle" rows="1" name="browserTitle" ng-model="project.browsertitle"   cols="20" rows="4" ng-maxlength="256" ui-tinymce required ></textarea>
-									<p>{{ 256 - project.browsertitle.length + " Chars left" }}</p>
-										 <span style="color:red" ng-show="myForm.browsertitle.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="myForm.browserTitle.$dirty && myForm.browserTitle.$invalid">
-									    <span ng-show="myForm.browserTitle.$error.required">Browser is required .</span>
-									</span>
-								</div>							
-							</div>				
-							<div class="form-group">
-								<label for="metakey" class="col-md-2 control-label">Meta Keywords</label> 
-								<div class="col-md-9"> 
-									<textarea class="form-control" name="metakey" ng-model="project.metakey"  id="metakey" cols="20" rows="4" ng-maxlength="256" required > </textarea>
-									<p>{{ 256 - project.metakey.length + " Chars left" }}</p>
-										 <span style="color:red" ng-show="myForm.metakey.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-										<span style="color:red" ng-show="myForm.metakey.$dirty && myForm.metakey.$invalid">
-									    <span ng-show="myForm.metakey.$error.required">Meta Keywords is required .</span>
-									</span>
-								</div>							
-							</div>
-							<div class="form-group"> 
-								<label for="metaDesc" class="col-md-2 control-label">Meta Discription</label> 
-								<div class="col-md-9">
-									<textarea class="form-control" id="metaDesc"  name="metaDesc" ng-model="project.metadesc" cols="20" rows="4" ng-maxlength="256" required ></textarea>
-									<p>{{ 256 - project.metadesc.length + " Chars left" }}</p>
-										 <span style="color:red" ng-show="myForm.metadesc.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="myForm.metaDesc.$dirty && myForm.metaDesc.$invalid">
-										<span ng-show="myForm.metaDesc.$error.required">Meta Discription is required .</span>
-									</span>
+								</div>						
+								<div class="form-group"> 
+									<label for="Featured" class="col-md-2 control-label">* &nbsp Featured</label> 
+									<div class="col-md-9"  ng-model="project.featured">
+										<label class="radio-inline">
+											<input type="radio" name="featured" id="Yes" value="yes" checked="true"> Yes
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="featured" id="No" value="No"> No
+										</label>										
+									</div>	
+								</div>									
+								<div class="form-group">
+									<label for="Category" class="col-md-2 control-label">* &nbsp Category</label>
+									<div class="col-md-9">
+										<select name="Category"  class="form-control" id="Category" ng-model="project.category" required>
+											<option value="" selected="selected">Select Category</option>
+											<option value="residential">Residential Property</option>
+											<option value="commercial">Commercial Property</option>
+											<option value="agricultural">Agricultural Land</option>
+											<option value="industrial">Industrial Property</option>
+										</select> 
+										<span style="color:red" ng-show="myForm.Category.$dirty && myForm.Category.$invalid">
+											<span ng-show="myForm.Category.$error.required">Category is required .</span>
+										</span>
+									</div>
+								</div>						
+								<div class="form-group">
+									<label for="Type" class="col-md-2 control-label"> * &nbsp Project Type</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="Type" name="Type" ng-model="project.type" required>
+										<span style="color:red" ng-show="myForm.Type.$dirty && myForm.Type.$invalid">
+											<span ng-show="myForm.Type.$error.required">Project Type is required .</span>
+										</span>
+									</div>							
 								</div>
+								<div class="form-group">
+									<label for="Location" class="col-md-2 control-label">* &nbsp Location</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="Location" name="Location" ng-model="project.location" required>
+										<span style="color:red" ng-show="myForm.Location.$dirty && myForm.Location.$invalid">
+											<span ng-show="myForm.Location.$error.required">Location is required .</span>
+										</span>
+									</div>							
+								</div>
+						</tab>
+						<tab heading="Overview" title="Overview">
+						<h3>Overview</h3>
+							<div class="form-group">
+								<label for="projimg" class="col-md-2 control-label">* &nbsp Project Image</label>
+									<div class="col-md-9">
+										<input type="file"  id="projimg" name="projimg" ng-model="project.proj_img" required>
+										<span style="color:red" ng-show="myForm.projimg.$dirty && myForm.projimg.$invalid">
+											<span ng-show="myForm.projimg.$error.required">Project Image is required .</span>
+										</span>
+									</div>		
 							</div>						
-							<div class="form-group"> 
-								<label for="Featured" class="col-md-2 control-label">* &nbsp Featured</label> 
-								<div class="col-md-9"  ng-model="project.featured">
-									<label class="radio-inline">
-										<input type="radio" name="featured" id="Yes" value="yes" checked="true"> Yes
-									</label>
-									<label class="radio-inline">
-										<input type="radio" name="featured" id="No" value="No"> No
-									</label>										
+							<div class="form-group">
+								<label for="Logo" class="col-md-2 control-label">* &nbsp Project Logo</label>
+									<div class="col-md-9">
+										<textarea class="form-control"  name="logo"  id="logo" ng-model="project.logo" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+											<p>{{ 256 - project.logo.length + " Chars left" }}</p>
+											 <span style="color:red" ng-show="myForm.logo.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+										<span style="color:red" ng-show="myForm.logo.$dirty && myForm.logo.$invalid">
+											<span ng-show="myForm.logo.$error.required">Project Logo is required .</span>
+										</span>
+									</div>
+							</div>							
+							 <div class="form-group">
+								<label for="projectby" class="col-md-2 control-label">* &nbsp Project By</label>
+								<div class="col-md-9">
+									<input type="text"  class="form-control" id="projectby" name="projectby" ng-model="project.project_by" required>
+									<span style="color:red" ng-show="myForm.projectby.$dirty && myForm.projectby.$invalid">
+										<span ng-show="myForm.projectby.$error.required">Project By is required .</span>
+									</span>
 								</div>	
-							</div>									
+							</div>
 							<div class="form-group">
-								<label for="Category" class="col-md-2 control-label">* &nbsp Category</label>
-								<div class="col-md-9">
-									<select name="Category"  class="form-control" id="Category" ng-model="project.category" required>
-										<option value="" selected="selected">Select Category</option>
-										<option value="residential">Residential Property</option>
-										<option value="commercial">Commercial Property</option>
-										<option value="agricultural">Agricultural Land</option>
-										<option value="industrial">Industrial Property</option>
-									</select> 
-									<span style="color:red" ng-show="myForm.Category.$dirty && myForm.Category.$invalid">
-										<span ng-show="myForm.Category.$error.required">Category is required .</span>
-									</span>
-								</div>
+								<label for="Overview" class="col-md-2 control-label">* &nbsp Overview</label>
+									<div class="col-md-9">
+										<textarea class="form-control" id="Overview"  name="Overview" ui-tinymce ng-model="project.overview" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+										 <p>{{ 256 - project.overview.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.overview.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+										<span style="color:red" ng-show="myForm.Overview.$dirty && myForm.Overview.$invalid">
+											<span ng-show="myForm.Overview.$error.required">Overview is required .</span>
+										</span>
+									</div>													
 							</div>						
-							<div class="form-group">
-								<label for="Type" class="col-md-2 control-label"> * &nbsp Project Type</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" id="Type" name="Type" ng-model="project.type" required>
-									<span style="color:red" ng-show="myForm.Type.$dirty && myForm.Type.$invalid">
-										<span ng-show="myForm.Type.$error.required">Project Type is required .</span>
-									</span>
-								</div>							
+						</tab>
+						<tab heading="Amenities" title="Amenities">
+						<h3>Amenities</h3>					
+						<div class="form-group">
+							<label for="Amenities" class="col-md-2 control-label">* &nbsp Amenities/Features</label>
+							<div class="col-md-9">
+								<textarea class="form-control"  name="Amenities" id="Amenities" ng-model="project.amenities" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+								 <p>{{ 256 - project.amenities.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.amenities.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+								<span style="color:red" ng-show="myForm.Amenities.$dirty && myForm.Amenities.$invalid">
+									<span ng-show="myForm.Amenities.$error.required">Amenities is required .</span>
+								</span>
 							</div>
-							<div class="form-group">
-								<label for="Location" class="col-md-2 control-label">* &nbsp Location</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" id="Location" name="Location" ng-model="project.location" required>
-									<span style="color:red" ng-show="myForm.Location.$dirty && myForm.Location.$invalid">
-										<span ng-show="myForm.Location.$error.required">Location is required .</span>
-									</span>
-								</div>							
-							</div>
+						</div>	
 					</tab>
-					<tab heading="Overview" title="Overview">
-					<h3>Overview</h3>
+					<tab heading="Specifications" title="Specification">
+						<h3>Specification</h3>				
 						<div class="form-group">
-							<label for="projimg" class="col-md-2 control-label">* &nbsp Project Image</label>
-								<div class="col-md-9">
-									<input type="file"  id="projimg" name="projimg" ng-model="project.proj_img" required>
-									<span style="color:red" ng-show="myForm.projimg.$dirty && myForm.projimg.$invalid">
-										<span ng-show="myForm.projimg.$error.required">Project Image is required .</span>
-									</span>
-								</div>		
-						</div>						
+						<label for="Specifications" class="col-md-2 control-label">* &nbsp Specifications</label>
+							<div class="col-md-9">
+								<textarea class="form-control"  name="Specifications" id="Specifications" ng-model="project.specifications"  cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+								<p>{{ 256 - project.specifications.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.specifications.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+								<span style="color:red" ng-show="myForm.Specifications.$dirty && myForm.Specifications.$invalid">
+									<span ng-show="myForm.Specifications.$error.required">Specifications is required .</span>
+								</span>
+							</div>
+						</div>	
+					</tab>
+					<tab heading="Location Map" title="This is location map">
+						<h3>Location Map</h3>
 						<div class="form-group">
-							<label for="Logo" class="col-md-2 control-label">* &nbsp Project Logo</label>
+							<label for="locationmap" class="col-md-2 control-label">Location Map</label>
 								<div class="col-md-9">
-									<textarea class="form-control"  name="logo"  id="logo" ng-model="project.logo" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-									 	<p>{{ 256 - project.logo.length + " Chars left" }}</p>
-										 <span style="color:red" ng-show="myForm.logo.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="myForm.logo.$dirty && myForm.logo.$invalid">
-										<span ng-show="myForm.logo.$error.required">Project Logo is required .</span>
+									<textarea class="form-control"  name="locationmap" id="locationmap" ng-model="project.location_map" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+									<p>{{ 256 - project.location_map.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.location_map.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+									<span style="color:red" ng-show="myForm.locationmap.$dirty && myForm.locationmap.$invalid">
+										<span ng-show="myForm.locationmap.$error.required">Location Map is required .</span>
 									</span>
 								</div>
-						</div>							
-						 <div class="form-group">
-							<label for="projectby" class="col-md-2 control-label">* &nbsp Project By</label>
-							<div class="col-md-9">
-								<input type="text"  class="form-control" id="projectby" name="projectby" ng-model="project.project_by" required>
-								<span style="color:red" ng-show="myForm.projectby.$dirty && myForm.projectby.$invalid">
-									<span ng-show="myForm.projectby.$error.required">Project By is required .</span>
-								</span>
-							</div>	
-						</div>
+						</div>					
 						<div class="form-group">
-							<label for="Overview" class="col-md-2 control-label">* &nbsp Overview</label>
-								<div class="col-md-9">
-									<textarea class="form-control" id="Overview"  name="Overview" ui-tinymce ng-model="project.overview" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-									 <p>{{ 256 - project.overview.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.overview.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="myForm.Overview.$dirty && myForm.Overview.$invalid">
-										<span ng-show="myForm.Overview.$error.required">Overview is required .</span>
-									</span>
-								</div>													
-						</div>						
+							<label for="layoutmap" class="col-md-2 control-label">Layout Map</label>
+							<div class="col-md-9">
+								<textarea class="form-control"  name="layoutmap" id="layoutmap" ng-model="project.layout_map" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+								<p>{{ 256 - project.layout_map.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.layout_map.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+								<span style="color:red" ng-show="myForm.layoutmap.$dirty && myForm.layoutmap.$invalid">
+									<span ng-show="myForm.layoutmap.$error.required">Layout Map is required .</span>
+								</span>
+							</div>
+						</div>					
 					</tab>
-					<tab heading="Amenities" title="Amenities">
-					<h3>Amenities</h3>					
-					<div class="form-group">
-						<label for="Amenities" class="col-md-2 control-label">* &nbsp Amenities/Features</label>
-						<div class="col-md-9">
-							<textarea class="form-control"  name="Amenities" id="Amenities" ng-model="project.amenities" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-							 <p>{{ 256 - project.amenities.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.amenities.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="myForm.Amenities.$dirty && myForm.Amenities.$invalid">
-								<span ng-show="myForm.Amenities.$error.required">Amenities is required .</span>
-							</span>
-						</div>
-					</div>	
-				</tab>
-				<tab heading="Specifications" title="Specification">
-					<h3>Specification</h3>				
-					<div class="form-group">
-					<label for="Specifications" class="col-md-2 control-label">* &nbsp Specifications</label>
-						<div class="col-md-9">
-							<textarea class="form-control"  name="Specifications" id="Specifications" ng-model="project.specifications"  cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-							<p>{{ 256 - project.specifications.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.specifications.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="myForm.Specifications.$dirty && myForm.Specifications.$invalid">
-								<span ng-show="myForm.Specifications.$error.required">Specifications is required .</span>
-							</span>
-						</div>
-					</div>	
-				</tab>
-				<tab heading="Location Map" title="This is location map">
-					<h3>Location Map</h3>
-					<div class="form-group">
-						<label for="locationmap" class="col-md-2 control-label">Location Map</label>
+					<tab heading="Floor Plans" title="Floor plans">
+						<h3>Floor Plans</h3>
+						<div class="form-group">
+							<label for="Floorplans" class="col-md-2 control-label">Floor Plans</label>
 							<div class="col-md-9">
-								<textarea class="form-control"  name="locationmap" id="locationmap" ng-model="project.location_map" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-								<p>{{ 256 - project.location_map.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.location_map.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="myForm.locationmap.$dirty && myForm.locationmap.$invalid">
-									<span ng-show="myForm.locationmap.$error.required">Location Map is required .</span>
+								<textarea class="form-control"  name="Floorplans" id="Floorplans"  ng-model="project.floor_plans" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+								<p>{{ 256 - project.floor_plans.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.floor_plans.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+								<span style="color:red" ng-show="myForm.Floorplans.$dirty && myForm.Floorplans.$invalid">
+									<span ng-show="myForm.Floorplans.$error.required">Floor Plans is required .</span>
 								</span>
 							</div>
-					</div>					
-					<div class="form-group">
-						<label for="layoutmap" class="col-md-2 control-label">Layout Map</label>
-						<div class="col-md-9">
-							<textarea class="form-control"  name="layoutmap" id="layoutmap" ng-model="project.layout_map" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-							<p>{{ 256 - project.layout_map.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.layout_map.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="myForm.layoutmap.$dirty && myForm.layoutmap.$invalid">
-								<span ng-show="myForm.layoutmap.$error.required">Layout Map is required .</span>
-							</span>
-						</div>
-					</div>					
-				</tab>
-				<tab heading="Floor Plans" title="Floor plans">
-					<h3>Floor Plans</h3>
-					<div class="form-group">
-						<label for="Floorplans" class="col-md-2 control-label">Floor Plans</label>
-						<div class="col-md-9">
-							<textarea class="form-control"  name="Floorplans" id="Floorplans"  ng-model="project.floor_plans" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-							<p>{{ 256 - project.floor_plans.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.floor_plans.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="myForm.Floorplans.$dirty && myForm.Floorplans.$invalid">
-								<span ng-show="myForm.Floorplans.$error.required">Floor Plans is required .</span>
-							</span>
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="bfloorplan" class="col-md-2 control-label">Browser Title Floor Plan</label>
+						</div>	
+						<div class="form-group">
+							<label for="bfloorplan" class="col-md-2 control-label">Browser Title Floor Plan</label>
+								<div class="col-md-9">
+									<textarea class="form-control"  name="bfloorplan" id="bfloorplan"ng-model="project.browsertitle_floorplan" cols="20" rows="4" ng-maxlength="256"  required ui-tinymce></textarea>
+									<p>{{ 256 - project.browsertitle_floorplan.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.browsertitle_floorplan.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+									<span style="color:red" ng-show="myForm.bfloorplan.$dirty && myForm.bfloorplan.$invalid">
+										<span ng-show="myForm.bfloorplan.$error.required">Floor Plan is required .</span>
+									</span>
+								</div>
+						</div>					
+					</tab>
+					<tab heading="Walk Through" title="Walk through">
+						<h3>Walk Through</h3>
+						<div class="form-group">
+							<label for="Walkthrough" class="col-md-2 control-label">* &nbsp Walk Through</label>
+								<div class="col-md-9">
+									<textarea class="form-control"  name="Walkthrough" id="Walkthrough" ng-model="project.walkthrough" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+									<p>{{ 256 - project.walkthrough.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.walkthrough.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+									<span style="color:red" ng-show="myForm.Walkthrough.$dirty && myForm.Walkthrough.$invalid">
+										<span ng-show="myForm.Walkthrough.$error.required">Walk Through is required .</span>
+									</span>
+								</div>
+						</div>	
+					</tab>
+					<tab heading="Contact" title="Contact">
+						<h3>Contact Details</h3>
+						<div class="form-group">
+							<label for="Contact" class="col-md-2 control-label">* &nbsp Contact</label>
 							<div class="col-md-9">
-								<textarea class="form-control"  name="bfloorplan" id="bfloorplan"ng-model="project.browsertitle_floorplan" cols="20" rows="4" ng-maxlength="256"  required ui-tinymce></textarea>
-								<p>{{ 256 - project.browsertitle_floorplan.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.browsertitle_floorplan.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="myForm.bfloorplan.$dirty && myForm.bfloorplan.$invalid">
-									<span ng-show="myForm.bfloorplan.$error.required">Floor Plan is required .</span>
+								<textarea class="form-control"  name="Contact" id="Contact" ng-model="project.contact" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
+								<p>{{ 256 - project.contact.length + " Chars left" }}</p>
+										   <span style="color:red" ng-show="myForm.contact.$error.maxlength">
+												Sorry You are Exceeding the Limit</span>
+								<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
+									<span ng-show="myForm.Contact.$error.required">Contact is required .</span>
 								</span>
 							</div>
-					</div>					
-				</tab>
-				<tab heading="Walk Through" title="Walk through">
-					<h3>Walk Through</h3>
-					<div class="form-group">
-						<label for="Walkthrough" class="col-md-2 control-label">* &nbsp Walk Through</label>
-							<div class="col-md-9">
-								<textarea class="form-control"  name="Walkthrough" id="Walkthrough" ng-model="project.walkthrough" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-								<p>{{ 256 - project.walkthrough.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.walkthrough.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="myForm.Walkthrough.$dirty && myForm.Walkthrough.$invalid">
-									<span ng-show="myForm.Walkthrough.$error.required">Walk Through is required .</span>
-								</span>
-							</div>
-					</div>	
-				</tab>
-				<tab heading="Contact" title="Contact">
-					<h3>Contact Details</h3>
-					<div class="form-group">
-						<label for="Contact" class="col-md-2 control-label">* &nbsp Contact</label>
-						<div class="col-md-9">
-							<textarea class="form-control"  name="Contact" id="Contact" ng-model="project.contact" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
-							<p>{{ 256 - project.contact.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="myForm.contact.$error.maxlength">
-											Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="myForm.Contact.$dirty && myForm.Contact.$invalid">
-								<span ng-show="myForm.Contact.$error.required">Contact is required .</span>
-							</span>
 						</div>
-					</div>
-				</tab>
-			</tabset>
-			<div class="form-group">
-				<div class="col-md-12 ">	
-					<h3>Select Sites</h3>			    
-					<table class="table table-bordered">
-						<tr>
-							<td class="checkbox"> 							
-								<label>
-									<input type="checkbox" value="" name="selectall" ng-model="selectall">Select All
-								</label>
-							</td>
-							<td class="checkbox ">
-								<label>
-									<input type="checkbox" value="" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
-								</label>
-							</td>
-						</tr>
-					</table>
-					</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-offset-2 col-md-9">
-					<button type="submit" ng-click="addproject()" title="Add your new project" class="btn btn-primary text-center">Add new Project</button>
-					<button type="submit" ng-click="update()" title="Edit your project Details" class="btn btn-primary text-center">Edit Project</button>
+					</tab>
+				</tabset>
+				<div class="form-group">
+					<div class="col-md-12 ">	
+						<h3>Select Sites</h3>			    
+						<table class="table table-bordered">
+							<tr>
+								<td class="checkbox"> 							
+									<label>
+										<input type="checkbox" value="" name="selectall" ng-model="selectall">Select All
+									</label>
+								</td>
+								<td class="checkbox ">
+									<label>
+										<input type="checkbox" value="" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
+									</label>
+								</td>
+							</tr>
+						</table>
+						</div>
 				</div>
-			</div>							
-		</form>	
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-9">
+						<button type="submit" ng-click="addproject()" title="Add your new project" class="btn btn-primary text-center">Add new Project</button>
+						<button type="submit" ng-click="update()" title="Edit your project Details" class="btn btn-primary text-center">Edit Project</button>
+					</div>
+				</div>							
+			</form>	
+		</div>	
 	</div>
 </div>
