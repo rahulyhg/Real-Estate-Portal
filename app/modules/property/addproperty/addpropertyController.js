@@ -45,7 +45,7 @@ define(['app'], function (app) {
 				for (var i = 0; i < files.length; i++) {
 					var file = files[i];
 					$upload.upload({
-						url: 'http://localhost/Real-Estate-Portal/server-api/try.php/upload',
+						url: '../server-api/try.php/upload',
 						file: file
 					}).progress(function (evt) {
 						var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
