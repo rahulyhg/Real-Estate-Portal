@@ -5,16 +5,14 @@
 				<div class="col-md-9">
 					<div class="bottomspace" ng-include="'modules/response/toolbars.html'"></div>
 					<!-- This is conditional include 
-						if not mailId set in url this html includes in view -->
+						if not mailId set in url this html includes in view 
 					<ng-include ng-if="!MailView" src="'modules/response/mails.html'"></ng-include> 
 					<!-- if mailId set in url this html includes in view -->
-					<ng-include ng-if="MailView" src="'modules/response/mailview.html'"></ng-include>
-					
-					
-						<!-- For multiview -->
-					<!--<ng-include ng-if="mailPart=='mails'" src="'modules/response/mails.html'"></ng-include>
+					<ng-include ng-if="mailPart=='mailview'" src="'modules/response/mailview.html'"></ng-include>
+					<ng-include ng-if="mailPart=='mails'" src="'modules/response/mails.html'"></ng-include>
+					<ng-include ng-if="mailPart=='inbox'" src="'modules/response/mails.html'"></ng-include>
 					<ng-include ng-if="mailPart=='composemailview'" src="'modules/response/composemailview.html'"></ng-include>
-					<ng-include ng-if="mailPart=='MailView'" src="'modules/response/mailview.html'"></ng-include>-->
+					
 				</div>
 		</div>
 </div>
