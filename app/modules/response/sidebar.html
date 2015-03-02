@@ -1,16 +1,16 @@
 <div class="sidebar-border">
-	<ul class="list-unstyled ">
-		<li class="bottomspace">
-			<a href="#/dashboard/response" class="btn btn-link"><span class=" glyphicon glyphicon-inbox" title="inbox"> Inbox</span> 
+	<ul class="nav nav-pill nav-stacked ">
+		<li ng-class="active:mailPart=='inbox'">
+			<a href="#/dashboard/response" class="btn btn-link" ng-click="mailPart('inbox')"><span class=" glyphicon glyphicon-inbox" title="inbox"> </span>&nbsp Inbox
 			</a>
 		</li>
-		<li class="bottomspace">
-			<a href="#/dashboard/response" class="btn btn-link"><span class=" glyphicon glyphicon-circle-arrow-down" title="Sent mail"> Sent mail</span>
+		<li >
+			<a href="#/dashboard/response" class="btn btn-link" ng-click="mailPart('sentmail')"><span class=" glyphicon glyphicon-circle-arrow-down" title="Sent mail"> </span>&nbsp Sent mail
 			</a>
 		</li>
-		<li class="bottomspace">
-			<a href="#/dashboard/response" class="btn btn-link"><span class=" glyphicon glyphicon-pencil" title="Drafts"> Drafts 
-			</span></a>
+		<li >
+			<a href="#/dashboard/response" class="btn btn-link" ng-click="mailPart('drafts')"><span class=" glyphicon glyphicon-pencil" title="Drafts"></span> &nbsp Drafts 
+			</a>
 		</li>
 		
 	</ul>

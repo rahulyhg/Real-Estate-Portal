@@ -104,6 +104,11 @@ body .main-content .bottomspace,
 body .main-content row ng-scope .bottomspace {
   padding-bottom: 10px;
 }
+body .main-content .main-border,
+body .main-content row ng-scope .main-border {
+  border: 1px solid #000;
+  padding-top: 10px;
+}
 body .innernav {
   padding: 10px;
 }
