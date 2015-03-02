@@ -2,73 +2,65 @@
 <div class="row">
 	<div class="col-md-12 table-responsive">
 		<table class="table table-bordered">
-			<tr>
-						
-				<td>Website Enquiry From -{{resopnse.subject}}</td> 
-							
+			<tr>						
+				<td>Website Enquiry From -{{mailView.subject}}</td> 							
 			</tr>
-			<tr>
-					
-				<td>{{resopnse.first_name + " " + resopnse.last_name}}&nbsp &nbsp <b>Email :</b>&nbsp {{resopnse.email}}</span></td> 				
-				
+			<tr>					
+				<td>{{mailView.first_name + " " + mailView.last_name}}&nbsp &nbsp <b>Email :</b>&nbsp {{mailView.email}}</span></td> 				
 			</tr>
-			<tr>
-				
+			<tr>				
 				 <td>
 					<h4>Message -</h4>
 					<p>This is system generated mail</p>
 					<label class="control-label">Date -</label> 
-					<span>{{resopnse.date}}</span><br>
+					<span>{{mailView.date}}</span><br>
 					<label class="control-label">From -</label> 
-					<span>{{resopnse.email}}</span><br>
+					<span>{{mailView.email}}</span><br>
 					<label class="control-label">Full Name -</label> 
-					<span>{{resopnse.first_name + " " + resopnse.last_name}}</span><br>
+					<span>{{mailView.first_name + " " + mailView.last_name}}</span><br>
 					<label class="control-label">Company -</label>
-					<span>{{resopnse.company}}</span><br>
+					<span>{{mailView.company}}</span><br>
 					<label class="control-label">Phone -</label>
-					 <span>{{resopnse.phone}}</span><br>
+					 <span>{{mailView.phone}}</span><br>
 					 <label class="control-label">Message</label><br>
-					 <textarea   id="message" class="form-control" name="message" ng-model="response.message"    cols="10" rows="3" ng-maxlength="256" placeholder="Message"></textarea>
-				</td>
-				
+					 <textarea   id="message" class="form-control" name="message" ng-model="mailView.message"    cols="10" rows="3" ng-maxlength="256" placeholder="Message"></textarea>
+				</td>				
 			</tr>
 		</table>
 	</div>
 </div>
-	
-
 <div class="row">
 	<div class="col-md-12 ">
 		<h4> Reply </h4>
-			<form class="form-horizontal myForm" name="myForm" novalidate>
+			<form class="form-horizontal mailView" name="mailView" novalidate>
 				<div class="form-group">
 					<label for="Subject" class="col-sm-2 control-label">Subject</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject" ng-model="resopnse.subject"  ng-required="true">
-						<span style="color:red" ng-show="myForm.Subject.$dirty && myForm.Subject.$invalid">
-						  <span ng-show="myForm.Subject.$error.required">Message is required .</span>
+						<input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject" ng-model="mailView.subject"  ng-required="true">
+						<span style="color:red" ng-show="mailView.Subject.$dirty && mailView.Subject.$invalid">
+						  <span ng-show="mailView.Subject.$error.required">Message is required .</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="Email" class="col-sm-2 control-label">From</label>
 					<div class="col-sm-10">
-						<input type="email"  id="Email" class="form-control" name="Email" ng-model="resopnse.email" placeholder="example@gmail.com"  ng-required="true">
-						<span style="color:red" ng-show="myForm.Email.$dirty && myForm.Email.$invalid">
-						  <span ng-show="myForm.Email.$error.required">Email is required.</span>
-						  <span ng-show="myForm.Email.$error.email">Invalid email address.</span>
+						<input type="email"  id="Email" class="form-control" name="Email" ng-model="mailView.email" placeholder="example@gmail.com"  ng-required="true">
+						<span style="color:red" ng-show="mailView.Email.$dirty && mailView.Email.$invalid">
+						  <span ng-show="mailView.Email.$error.required">Email is required.</span>
+						  <span ng-show="mailView.Email.$error.email">Invalid email address.</span>
 						  </span>
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label for="replymsg" class="col-sm-2 control-label"> Message</label>
+					<label for="reply_message" class="col-sm-2 control-label"> Message</label>
 					<div class="col-sm-10">
-						<textarea   id="replymsg" class="form-control" name="Replymsg" ng-model="response.reply_message"    cols="30" rows="3" ng-maxlength="256" ui-tinymce  ng-required="true"></textarea>
-						<p>{{ 256 - response.reply_message.length + " Chars left" }}</p>
-						 <span style="color:red" ng-show="form1.Replymsg.$error.maxlength">
+						<textarea   id="reply_message" class="form-control" name="reply_message" ng-model="mailView.reply_message"    cols="30" rows="3" ng-maxlength="256" ui-tinymce  ng-required="true"></textarea>
+						<p>{{ 256 - mailView.reply_message.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="form1.reply_message.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="myForm.Replymsg.$dirty && myForm.Replymsg.$invalid">
-						  <span ng-show="myForm.Replymsg.$error.required">Message is required .</span>
+							<span style="color:red" ng-show="mailView.reply_message.$dirty && mailView.reply_message.$invalid">
+						  <span ng-show="mailView.reply_message.$error.required">Message is required .</span>
 					</div>
 				</div>
 				<div class="form-group">
