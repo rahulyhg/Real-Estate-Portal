@@ -86,21 +86,16 @@ function postRecord($getRequest){
 	$posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
 	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; 
 	
-	$id = (int)$id;
 	try{
-		if($id === 0 || $getRequest===null){
-			if($id === 0){
-				throw new Exception('Please Use proper id for record.');
-			}
-			if($getRequest===null){
-				throw new Exception('Please Use proper Module Name for record.');
-			}
+		if($body===""){
+				throw new Exception('There is no input!');
 		}else{
 			include 'modules/'.$getRequest.'.php';
 		}
 	}
 	catch(Exception $e) {
-        return $app->response()->redirect($baseUrl.'/notfound');
+		echo "Error: '".$e->getMessage()."'";
+        //return $app->response()->redirect($baseUrl.'/notfound');
     }
 };
 
