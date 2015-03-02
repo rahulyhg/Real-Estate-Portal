@@ -13,12 +13,12 @@
 				<hr>
 				<p>If you have forgot the account password, you can reset password and a new password will be sent to your email address..</p>
 				<div class="form-group">
-					<label for="mail" class="col-md-2 control-label">Email</label>
+					<label for="user_email" class="col-md-2 control-label">Email</label>
 					<div class="col-md-8">
-						<input type="Email" class="form-control" id="mail" ng-model="forget.user_email" name="Email" placeholder="Enter Email" required>
-							<span style="color:red" ng-show="forgotPass.Email.$dirty && forgotPass.Email.$invalid">
-								<span ng-show="forgotPass.Email.$error.required">Email is required.</span>
-								<span ng-show="forgotPass.Email.$error.email">Invalid Email address.</span>
+						<input type="Email" class="form-control" id="user_email" ng-model="forget.user_email" name="Email" placeholder="Enter Email" required>
+							<span style="color:red" ng-show="forgotPass.user_email.$dirty && forgotPass.user_email.$invalid">
+								<span ng-show="forgotPass.user_email.$error.required">Email is required.</span>
+								<span ng-show="forgotPass.user_email.$error.email">Invalid Email address.</span>
 							</span>
 					</div>			
 				</div>

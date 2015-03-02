@@ -27,15 +27,24 @@
 				</div>			 				  
 				 <div class="col-md-3">
 					<label for="id" class="control-label">Sort by Order</label>
+<<<<<<< HEAD
+					<select id="id" class="form-control ng-pristine ng-valid" ng-model="templates.id" title="Select order"> 
+=======
 					<select id="id" class="form-control ng-pristine ng-valid" ng-model="id" title="Select order"> 
+>>>>>>> "naming convention are done"
 						<option value="">Select Order</option>		<!-- added value & selected attr -->	
 						<option value="-id">Desending</option>
 						<option value="id">Asending</option>  
 					</select>
 				</div>
 				<div class="col-md-3">
+<<<<<<< HEAD
+					<label for="Status" class="control-label">Select Status</label>
+					<select id="Status" class="form-control ng-pristine ng-valid" ng-model="templates.status" title="Status">
+=======
 					<label for="status" class="control-label">Select Status</label>
 					<select id="status" class="form-control ng-pristine ng-valid" ng-model="status" title="Status">
+>>>>>>> "naming convention are done"
 						<option value="" selected="">Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
 						<option value="1">Active</option>
 						<option value="0">Deleted</option>   
@@ -43,7 +52,11 @@
 				</div>	
 				<div class="col-md-3">
 					<label for="T_type" class="control-label">Template Type</label>
+<<<<<<< HEAD
+					<select id="T_type" class="form-control ng-pristine ng-valid" ng-model="templates.T_type" title="Select type">
+=======
 					<select id="T_type" class="form-control ng-pristine ng-valid" ng-model="T_type" title="Select type">
+>>>>>>> "naming convention are done"
 						<option value="" selected="">Select Template</option> <!-- add value attribute empty & selected for initial selected option -->
 						<option value="free">Free</option>
 						<option value="buy">Buy</option>

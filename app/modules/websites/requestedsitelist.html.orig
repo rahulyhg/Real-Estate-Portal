@@ -5,7 +5,11 @@
 	</div>			 				  
 	 <div class="col-md-3">
 		<label for="id" class="control-label">Sort by Order</label>
+<<<<<<< HEAD
+		<select id="id" class="form-control" ng-model="reqSite.id"> 
+=======
 		<select id="id" class="form-control" ng-model="id"> 
+>>>>>>> "naming convention are done"
 			<option value="">Select Order</option>		<!-- added value & selected attr -->	
 			<option value="-id">Desending</option>
 			<option value="id">Asending</option>  
