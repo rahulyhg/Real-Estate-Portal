@@ -46,8 +46,7 @@ else{
     $errors= array();
     $errors[]="No image found";
     print_r($errors);
-}
- 
+} 
 }
 
 

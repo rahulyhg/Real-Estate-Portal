@@ -9,23 +9,24 @@ define(['app'], function (app) {
 		// for date picker {Pooja}
 		$scope.today = function() 
 		{
-			$scope.date1 = new Date();
+			$scope.userRegDt = new Date();
+			$scope.birthdate= new Date();
 		};
 		$scope.today();
 
-		$scope.open = function($event,opened1)
+		$scope.open = function($event,opened)
 		{
 			$event.preventDefault();
 			$event.stopPropagation();
-			 $scope[opened1] = ($scope[opened1] ===true) ? false : true;
+			 $scope[opened] = ($scope[opened] ===true) ? false : true;
 		};
-		$scope.dateOptions = {
+		/* $scope.dateOptions = {
 			formatYear: 'yy',
 			startingDay: 1
 		};
 
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-		$scope.format = $scope.formats[0];
+		$scope.format = $scope.formats[0]; */
 	//End  Date Picker 
 		
 		

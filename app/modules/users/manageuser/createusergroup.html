@@ -1,10 +1,10 @@
 <div class="row main-content">
-	<div class="col-sm-12">	
-		<h3 class="col-sm-offset-2 col-sm-9"> Create New User Group</h3>
+	<div class="col-md-12">	
+		<h3 class="col-md-offset-2 col-md-9"> Create New User Group</h3>
 		<form name="addGroup" class="form-horizontal myForm" role="form" novalidate="novalidate">	
 			<div class="form-group">
-				<label  for="groupname" class="col-sm-2 control-label">Group Name</label>
-				<div class="col-sm-9">
+				<label  for="groupname" class="col-md-2 control-label">Group Name</label>
+				<div class="col-md-9">
 					<input type="text" id="groupname" class="form-control" name="groupname" placeholder="Group Name" ng-model="groupname" required >
 					<span style="color:red" ng-show="addGroup.groupname.$dirty && addGroup.groupname.$invalid">
 					<span ng-show="addGroup.groupname.$error.required">Group Name is required.</span>
@@ -12,7 +12,7 @@
 				</div>
 			</div>
 			<div class="form-group">	
-				<label  for="groupdesc" class="col-sm-2 control-label">Group Description </label>
+				<label  for="groupdesc" class="col-md-2 control-label">Group Description </label>
 				<div class="col-md-9">
 					<input type="text" id="groupdesc" class="form-control" name="groupdesc" placeholder="Group Description" ng-model="groupdesc" required >
 					<span style="color:red" ng-show="addGroup.groupdesc.$dirty && addGroup.groupdesc.$invalid">
@@ -22,23 +22,23 @@
 			</div>	
 			
 			<div class="form-group">
-				<label  for="date1" class="col-sm-2 control-label">Date</label>
+				<label  for="userRegDt" class="col-md-2 control-label">Date</label>
 				<div class="col-md-9">
 					<p class="input-group">
-						<input type="text" id="date1" class="form-control" datepicker-popup="{{format}}"  ng-model="date1" is-open="opened1" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-click="open($event,'opened1') />
-						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" ng-click="open($event,'opened1')">
-							<i class="glyphicon glyphicon-calendar"></i></button>
-						</span>
+					   <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy"  name="userRegDt" ng-model="userRegDt" is-open="opened1" min="minDate" ng-click="open($event,'opened1')" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+					   
+					  <span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="open($event,'opened1')"><i class="glyphicon glyphicon-calendar"></i></button>
+					  </span>
 					</p>
 				</div>
 			</div>		
 			
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Group Permission/Access</label>
-				<div class="col-sm-10">
+				<label class="col-md-2 control-label">Group Permission/Access</label>
+				<div class="col-md-10">
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-md-4">
 							<label class="control-label">User Module</label>
 							<div class="checkbox">
 								<label>
@@ -66,7 +66,7 @@
 								</label>
 							</div>
 						</div>
-						<div class="col-sm-4">
+						<div class="col-md-4">
 							<label class="control-label">Template Module</label>
 							<div class="checkbox">
 								<label>
@@ -99,7 +99,7 @@
 								</label>
 							</div>
 						</div>		
-						<div class="col-sm-4">
+						<div class="col-md-4">
 							<label class="control-label">Business Module</label>
 							<div class="checkbox">
 								<label>
@@ -137,8 +137,8 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Other Settings</label>
-				<div class="col-sm-4">
+				<label class="col-md-2 control-label">Other Settings</label>
+				<div class="col-md-4">
 					<div class="checkbox">
 						<label>
 							<input type="checkbox">Setting 1
@@ -153,7 +153,7 @@
 			</div>
 				
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-9">
+				<div class="col-md-offset-2 col-md-9">
 				  <button type="submit" class="btn btn-success" title="Add User">Add User</button>
 				  <button type="reset" class="btn btn-danger" title="Reset">Reset</button>
 				</div>
