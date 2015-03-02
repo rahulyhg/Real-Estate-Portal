@@ -1,7 +1,7 @@
 <div class="row">
 		<div class="col-md-12" >
 		<div class="main-content">	
-			<form class="form-horizontal" name="myForm">
+			<form class="form-horizontal myForm" name="ComposeMail">
 				<div class="form-group">
 					<label for="from" class="col-sm-2 control-label">From</label>
 					<div class="col-sm-10">
@@ -12,8 +12,8 @@
 					<label for="to" class="col-sm-2 control-label">To</label>
 					<div class="col-sm-8">
 						<input type="email" class="form-control" id="to" name="to" placeholder="To" ng-model="to" required>
-						<span style="color:red" ng-show="myForm.to.$dirty && myForm.to.$invalid">
-							<span ng-show="myForm.to.$error.required" class="required">Email is required to send mail</span>
+						<span style="color:red" ng-show="ComposeMail.to.$dirty && ComposeMail.to.$invalid">
+							<span ng-show="ComposeMail.to.$error.required" class="required">Email is required to send mail</span>
 						</span>
 					</div>
 					<div class="col-sm-2">
@@ -33,8 +33,8 @@
 					<label for="subject" class="col-sm-2 control-label">Subject</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="subject" name="subject" placeholder="Reply-to" ng-model="subject" required>
-						<span style="color:red" ng-show="myForm.subject.$dirty && myForm.subject.$invalid">
-							<span ng-show="myForm.subject.$error.required" class="required">Please Enter subject.</span>
+						<span style="color:red" ng-show="ComposeMail.subject.$dirty && ComposeMail.subject.$invalid">
+							<span ng-show="ComposeMail.subject.$error.required" class="required">Please Enter subject.</span>
 						</span>
 					</div>
 				</div>
@@ -46,7 +46,9 @@
 				</div>
 				<div class="form-group">	
 					<div class="col-sm-offset-2 col-sm-4">
-						<input type="file" name="attachfile" value="Attach File">
+						
+						<input type="file" id="attachfile" ng-file-select ng-file-preview ng-multiple="true" accept="file/*" ng-file-change="upload($files)" ng-model="attachfile">
+						<input type="hidden" ng-model="compose.attachfile">
 					</div>
 				</div>
 			</form>

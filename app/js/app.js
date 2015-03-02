@@ -59,7 +59,7 @@ define(['angular',
 					label: "Forgot Password"
                 }, 'users/login/'))
 				
-				// Below routes will use register submodule folder
+				// Below routes will use register sub module folder
                 .when('/register', route.resolve({
                     controller: 'register',
                     template: 'register',
@@ -94,7 +94,14 @@ define(['angular',
 				
 				
 				// Below routes will use response module folder	{Sunita- To display mailbox single view remove status add mailID }
-				.when('/dashboard/response/:mailId?', route.resolve({
+				/*.when('/dashboard/response/:mailId?', route.resolve({
+                    controller: 'response',
+                    template: 'response',
+					label: " Mail Box"
+                }, 'response/'))*/
+				
+				// this is to display mail views {sunita}
+				.when('/dashboard/response/:mailPart?', route.resolve({
                     controller: 'response',
                     template: 'response',
 					label: " Mail Box"

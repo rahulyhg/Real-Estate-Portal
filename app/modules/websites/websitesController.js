@@ -31,7 +31,7 @@ define(['app'], function (app) {
 		if(!$routeParams.webPart){
 			$location.path('/dashboard/websites/mywebsites');
 		}
-		templateUrl:'http://localhost/sunita/Real-Estate-Portal/app/modules/websites/websites.html';
+		
     };    
 	// Inject controller's dependencies
 	websitesController.$inject = injectParams;

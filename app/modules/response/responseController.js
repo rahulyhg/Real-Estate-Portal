@@ -9,9 +9,14 @@ define(['app', 'css!modules/home/home'], function (app) {
 	var responseController = function ($scope, $injector, $http,$routeParams, $location,$rootScope) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		
-		$scope.MailView = $routeParams.mailId; /* this object will check list of mails show or single mail show */
+		//$scope.MailView = $routeParams.mailId; /* this object will check list of mails show or single mail show */
 		
-		templateUrl:'http://localhost/Sunita/Real-Estate-Portal/app/modules/dashboard/dashboard/response/mailview.html';
+		$scope.mailPart=$routeParams.mailPart;
+		console.log($scope.mailPart);
+		if(!$routeParams.mailPart){
+			$location.path('/dashboard/response/mails');
+		}
+		
 		
 		/*if(!$routeParams.type && !$routeParams.status){
 			$location.path( "/dashboard/response" );
