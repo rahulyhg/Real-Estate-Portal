@@ -47,7 +47,7 @@
 								<label for="metaDesc" class="col-md-2 control-label">Meta Discription</label> 
 								<div class="col-md-9">
 									<textarea class="form-control" id="metaDesc"  name="metaDesc" ng-model="project.metadesc" cols="20" rows="4" ng-maxlength="256" required ></textarea>
-									<p ng-hide="project.metakey.$error.maxlength">{{ 256 - project.metadesc.length + " Chars left" }}</p>
+									<p ng-hide="project.metadesc.$error.maxlength">{{ 256 - project.metadesc.length + " Chars left" }}</p>
 										 <span style="color:red" ng-show="addProj.metadesc.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
 									<span style="color:red" ng-show="addProj.metaDesc.$dirty && addProj.metaDesc.$invalid">
@@ -152,7 +152,7 @@
 						<div class="col-md-9">
 							<textarea class="form-control"  name="amenities" id="amenities" ng-model="project.amenities" cols="20" rows="4" ng-maxlength="256" required ui-tinymce></textarea>
 							 <p ng-hide="project.amenities.$error.maxlength">{{ 256 - project.amenities.length + " Chars left" }}</p>
-									   <span style="color:red" ng-show="addProj.amenities.$error.maxlength">
+							<span style="color:red" ng-show="addProj.amenities.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
 							<span style="color:red" ng-show="addProj.amenities.$dirty && addProj.amenities.$invalid">
 								<span ng-show="addProj.amenities.$error.required">Amenities is required .</span>
