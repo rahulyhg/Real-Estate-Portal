@@ -21,32 +21,29 @@ $app->get('/getsingle/:getRequest(/:id)', 'getRecord' );
 //use this uri for post new record into database - like create
 $app->post('/post/:getRequest', 'postRecord' );
 //use this uri for put/update record from database
-$app->put('/put/:getRequest(/:id)', 'putRecord' );
+$app->put('/put/:getRequest/:id', 'putRecord' );
 //use this uri for delete record from database
-$app->delete('/delete/:getRequest(/:id)', 'deleteRecord' );
+$app->delete('/delete/:getRequest/:id', 'deleteRecord' );
 
 function getRecord($getRequest, $id){
 	$app = new \Slim\Slim();
 	$body = $app->request->getBody();
 	// this will get current url
-	$posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
-	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; 
+	/* $posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; */ 
 	
 	$id = (int)$id;
 	try{
-		if($id === 0 || $getRequest===null){
+		if($id === 0){
 			if($id === 0){
 				throw new Exception('Please Use proper id for record.');
-			}
-			if($getRequest===null){
-				throw new Exception('Please Use proper Module Name for record.');
 			}
 		}else{
 			include 'modules/'.$getRequest.'.php';
 		}
 	}
 	catch(Exception $e) {
-        return $app->response()->redirect($baseUrl.'/notfound');
+        echo "Error: '".$e->getMessage()."'";
     }
 };
 
@@ -55,8 +52,8 @@ function getRecords($getRequest, $pageNo=1, $records = 10){
 	$app = new \Slim\Slim();
 	$body = $app->request->getBody();
 	// this will get current url
-	$posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
-	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; 
+	/* $posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php';  */
 	
 	$pageNo = (int)$pageNo;
 	$records = (int)$records;
@@ -74,7 +71,7 @@ function getRecords($getRequest, $pageNo=1, $records = 10){
 	}
 	catch(Exception $e) {
         //return $app->response()->redirect($baseUrl.'/notfound');
-		echo "Requested Page not Found";
+		echo "Error: '".$e->getMessage()."'";
     }
 		
 };
@@ -120,7 +117,7 @@ function putRecord($getRequest, $id){
 		}
 	}
 	catch(Exception $e) {
-        return $app->response()->redirect($baseUrl.'/notfound');
+        echo "Error: '".$e->getMessage()."'";
     }
 };
 
@@ -145,7 +142,7 @@ function deleteRecord($getRequest, $id){
 		}
 	}
 	catch(Exception $e) {
-        return $app->response()->redirect($baseUrl.'/notfound');
+        echo "Error: '".$e->getMessage()."'";
     }
 };
 
