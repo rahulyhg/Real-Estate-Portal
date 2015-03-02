@@ -1,10 +1,9 @@
 <div class="row">
-	<div class="col-md-13">
+	<div class="col-md-12">
 		<div class="main-content">		
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>						
 			<h3 class="text-center" title="Add new Property">Add New Property</h3>
 			<form class="form-horizontal myForm " name="addProperty" novalidate>	
-			
 				<tabset>
 				<p class="paraMand">* Fields are mandatory</p>
 					<tab heading="Property" title="Property information">
@@ -244,7 +243,7 @@
 								Sorry You are Exceeding the Limit
 							</span>
 								<span style="color:red" ng-show="addProperty.title.$dirty && addProperty.title.$invalid">
-							  <span ng-show="addProperty.title.$error.required">Title is required .</span>
+							  <span ng-show="addProperty.title.$error.required">Title is required .</span></span>
 											 
 						</div>				
 					</div>			
@@ -258,6 +257,7 @@
 							</span>		
 							<span style="color:red" ng-show="addProperty.browsertitle.$dirty && addProperty.browsertitle.$invalid">
 							  <span ng-show="addProperty.browsertitle.$error.required">Browser title is required .</span>
+							</span>
 						</div>				
 					</div>
 					<div class="form-group">
@@ -269,7 +269,8 @@
 								Sorry You are Exceeding the Limit
 							</span>	
 								<span style="color:red" ng-show="addProperty.meta_desc.$dirty && addProperty.meta_desc.$invalid">
-							  <span ng-show="addProperty.meta_desc.$error.required">Meta discription is required .</span>						
+							  <span ng-show="addProperty.meta_desc.$error.required">Meta discription is required .</span>
+							 </span>						
 						</div>				
 					</div>
 					<div class="form-group">
@@ -281,7 +282,8 @@
 								Sorry You are Exceeding the Limit
 							</span>
 							<span style="color:red" ng-show="addProperty.meta_key.$dirty && addProperty.meta_key.$invalid">
-							  <span ng-show="addProperty.meta_key.$error.required">Meta Key is required .</span>						
+							  <span ng-show="addProperty.meta_key.$error.required">Meta Key is required .</span>
+								</span>
 						</div>				
 					</div>
 					<div class="form-group">
@@ -300,8 +302,9 @@
 							 <span style="color:red" ng-show="addProperty.prop_desc.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
-								<span style="color:red" ng-show="addProperty.prop_desc.$dirty && addProperty.prop_desc.$invalid">
-							  <span ng-show="addProperty.prop_desc.$error.required">Property Discription is required .</span>						
+							<span style="color:red" ng-show="addProperty.prop_desc.$dirty && addProperty.prop_desc.$invalid">
+							 <span ng-show="addProperty.prop_desc.$error.required">Property Discription is required .</span>
+							</span>						
 						
 						</div>				
 					</div><!-- property discription -->		
@@ -322,8 +325,8 @@
 						  <div class="form-group">
 								<label for="contact" class="col-md-2 control-label"> * Contact No:</label>
 								<div class="col-md-9">
-									<input type="text"  id="contact" class="form-control"  name="contact" ng-model="property.contact" placeholder="Enter Your Phno" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
-									<p style="color:red" ng-show="addProperty.contact.$error.pattern && (addProperty.contact.$dirty || submitted)" class="help-block">Enter a valid contact no.</p>
+									<input type="text"  id="contact" class="form-control help-block"  name="contact" ng-model="property.contact" placeholder="Enter Your Phno" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
+									<p style="color:red" ng-show="addProperty.contact.$error.pattern && (addProperty.contact.$dirty || submitted)" style="color:red">Enter a valid contact no.</p>
 								</div>						
 						  </div>
 						  <div class="form-group">
@@ -432,42 +435,45 @@
 				<tab heading="Amenities" title="Amenities">
 					<h3>Amenities:</h3>
 					<div class="form-group">
-						<div class="col-md-13">
-							<table class="table table-bordered table-responsive">
-								<tr>
-									<td>
-										<label>
-											<input type="checkbox" value="power" name="power" value="power" ng-model="property.power">
-											Power Backup
-										</label>
-									</td>
-									<td>
-										<label>
-											<input type="checkbox" value="water" name="water" value="water" ng-model="property.water">
-											Power Backup
-										</label>
-									</td>
-									<td>
-										<label>
-											<input type="checkbox" value="lift" name="lift" value="lift" ng-model="property.lift">
-											Lift
-										</label>
-									</td>
-									<td>
-										<label>
-											<input type="checkbox" value="res_park" name="res_park" value="res_park" ng-model="property.res_park">
-											Reserve Parking
-										</label>
-									</td>
-								</tr>
-							</table>
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-bordered ">
+									<tr>
+										<td>
+											<label>
+												<input type="checkbox" value="power" name="power" value="power" ng-model="property.power"/>
+												Power Backup
+											</label>
+										</td>
+										<td>
+											<label>
+												<input type="checkbox" value="water" name="water" value="water" ng-model="property.water"/>
+												Power Backup
+											</label>
+										</td>
+										<td>
+											<label>
+												<input type="checkbox" value="lift" name="lift" value="lift" ng-model="property.lift"/>
+												Lift
+											</label>
+										</td>
+										<td>
+											<label>
+												<input type="checkbox" value="res_park" name="res_park" value="res_park" ng-model="property.res_park"/>
+												Reserve Parking
+											</label>
+										</td>
+									</tr>
+								</table>
+							</div>
 						</div>
 					</div> <!--end Amenities-->		
 				</tab>
 			</tabset>
 				<div class="form-group">
-					<div class="col-md-13 ">					
-							<h3>Select Sites</h3>			    
+					<div class="col-md-12 ">					
+						<h3>Select Sites</h3>
+						<div class="table-responsive">
 							<table class="table table-bordered">
 								<tr>
 									<td class="checkbox"> 							
@@ -484,6 +490,7 @@
 								</tr>
 							</table>
 						</div>
+					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-offset-2 col-md-9">

@@ -49,60 +49,62 @@
 						</select>
 				</div>
 			</div>		
-			<hr>
+			<hr/>
 			<div class="row">
-				<div class="col-md-12 table-responsive">		    
-					<table class="table table-bordered ">
-						<thead>
-							<tr>
-								<th>Sr. No.</th>
-								<th>Image</th>
-								<th> Property Details</th>
-								<th>Featured</th>
-								<th>Status</th>
-								<th>Other Domains</th>
-								<th>Manage</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
-									<td>{{ $index + 1 }}</td>
-									<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-thumbnail   img-responsive prop-img" title="Property image"></td> <!-- ng-click added for modal, class added for responsive image -->
-									<td>
-										<table class="table table-bordered table-responsive">
-											<tr>
-												<td>Property Title</td>
-												<td>{{x.title}}</td>
-											</tr>
-											<tr>
-												<td>Property For</td>
-												<td>{{x.property_for}}</td>
-											</tr>
-											<tr>
-												<td>Type</td>
-												<td>{{x.type}}</td>		
-											</tr>
-											<tr>
-												<td>Address</td>
-												<td>{{x.address}}</td>
-											</tr>
-										</table>
-									</td>	
-									<td><a class="btn btn-success" ng-if="featured==0" title="Featured">Featured </a>
-										<a class="btn btn-warning" ng-if="featured==1" title="Not featured"> Not Featured </a>
-									</td>			
-									<td>
-										<a class="btn btn-success" ng-if="status==0" title="Active" >Active</a>
-										<a class="btn btn-warning" ng-if="status==1" title="Delete">Delete</a>
-									</td>
-									<td>{{x.other_domain}}</td>				
-									<td>
-										<a href="#/dashboard/property/addproperty/{{x.id}}" class="btn btn-info" title="Edit"> Edit </a><br><br>
-										<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive" title="View"> View</a>
-									</td>	
-							</tr>				
-						</tbody>
-					</table>				
+				<div class="col-md-12 ">
+					<div class="table-responsive">
+						<table class="table table-bordered ">
+							<thead>
+								<tr>
+									<th>Sr. No.</th>
+									<th>Image</th>
+									<th> Property Details</th>
+									<th>Featured</th>
+									<th>Status</th>
+									<th>Other Domains</th>
+									<th>Manage</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
+										<td>{{ $index + 1 }}</td>
+										<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-thumbnail   img-responsive prop-img" title="Property image"></td> <!-- ng-click added for modal, class added for responsive image -->
+										<td>
+											<table class="table table-bordered table-responsive">
+												<tr>
+													<td>Property Title</td>
+													<td>{{x.title}}</td>
+												</tr>
+												<tr>
+													<td>Property For</td>
+													<td>{{x.property_for}}</td>
+												</tr>
+												<tr>
+													<td>Type</td>
+													<td>{{x.type}}</td>		
+												</tr>
+												<tr>
+													<td>Address</td>
+													<td>{{x.address}}</td>
+												</tr>
+											</table>
+										</td>	
+										<td><a class="btn btn-success" ng-if="featured==0" title="Featured">Featured </a>
+											<a class="btn btn-warning" ng-if="featured==1" title="Not featured"> Not Featured </a>
+										</td>			
+										<td>
+											<a class="btn btn-success" ng-if="status==0" title="Active" >Active</a>
+											<a class="btn btn-warning" ng-if="status==1" title="Delete">Delete</a>
+										</td>
+										<td>{{x.other_domain}}</td>				
+										<td>
+											<a href="#/dashboard/property/addproperty/{{x.id}}" class="btn btn-info" title="Edit"> Edit </a><br><br>
+											<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive" title="View"> View</a>
+										</td>	
+								</tr>				
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>	
 				<div class="text-center">				
