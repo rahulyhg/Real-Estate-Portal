@@ -168,10 +168,9 @@
 									
 					</div>
 					<div class="form-group">
-					  <label for="propImages" class="col-md-2" >* Property Images </label>
+						  <label for="imageInputFile" class="col-md-2" >* Property Images </label>
 						<div class="col-md-9">
-						<input type="file" id="propImages" ng-file-select ng-file-preview ng-multiple="true" accept="image/png, image/gif, image/jpeg" ng-file-change="upload($files)" ng-model="propImages">
-						<input type="hidden" ng-model="property.prop_image">
+							<input type="file" id="imageInputFile" ng-file-select  ng-multiple="true" accept="image/*" ng-file-change="upload($files)" ng-model="property.prop_image"> <img ng-show="property.prop_image[0].dataUrl != null" ng-src="{{property.prop_image[0].dataUrl"}}/>
 						</div>			
 					</div>	 <!-- end property  -->		
 				</tab>
@@ -194,6 +193,7 @@
 								<option value="Arunachal Pradesh">Arunachal Pradesh</option>
 								<option value="Aasam">Aasam</option>
 												
+<<<<<<< Updated upstream
 							</select> 
 							<span style="color:red" ng-show="myForm.State.$dirty && myForm.State.$invalid">
 							  <span ng-show="myForm.State.$error.required">State is required .</span>
@@ -218,6 +218,93 @@
 								Sorry You are Exceeding the Limit</span>
 								<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
 							  <span ng-show="myForm.address.$error.required">Address is required .</span>
+=======
+						</select>No's	
+						 <span style="color:red" ng-show="myForm.Bathrooms.$dirty && myForm.Bathrooms.$invalid">
+						  <span ng-show="myForm.Bathrooms.$error.required">Select Number of Bathrooms  .</span>
+						</span>				 
+					</div>
+								
+				</div>
+				<div class="form-group">
+					  <label for="propImages" class="col-md-2" >* Property Images </label>
+					<div class="col-md-9">
+						<input type="file" id="propImages" ng-file-select ng-file-preview ng-multiple="true" accept="image/png, image/gif, image/jpeg" ng-file-change="upload($files)" ng-model="propImages">
+						<input type="hidden" ng-model="property.prop_image">
+					</div>			
+				</div>	 <!-- end property  -->		
+			</tab>
+			<!--  property Location -->
+			<tab heading="Location" title="Property Location">
+				<h3>Property Location:</h3>	
+				<div class="form-group">
+					<label for="country" class="col-md-2 control-label">Country</label>
+					<div class="col-md-9">
+					  <input type="text" id="country" class="form-control" name="Country" ng-model="property.country" value="INDIA" placeholder="INDIA">
+					</div>			
+				</div>
+				<div class="form-group">
+					<label for="State" class="col-md-2 control-label ">* State </label>
+					<div class="col-md-9">
+					  <select id="State" class="form-control" name="State" ng-model="property.state">
+							<option value="" selected="selected">Select State</option>
+							<option value="Andaman Nikobar">Andaman Nikobar</option>
+							<option value="Andhra Pradesh">Andhra Pradesh</option>
+							<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+							<option value="Aasam">Aasam</option>
+											
+						</select> 
+						<span style="color:red" ng-show="myForm.State.$dirty && myForm.State.$invalid">
+						  <span ng-show="myForm.State.$error.required">State is required .</span>
+						</span>
+					</div>				
+			  </div>		  
+			  <div class="form-group">
+					<label for="City" class="col-md-2 control-label">* City</label>
+					<div class="col-md-9">
+						<input  type="text"  id="City" class="form-control" name="City" ng-model="property.city" required>
+						<span style="color:red" ng-show="myForm.City.$dirty && myForm.City.$invalid">
+						  <span ng-show="myForm.City.$error.required">City is required .</span>
+						</span>
+					</div>				
+			  </div>
+			  <div class="form-group">
+					<label for="address" class="col-md-2 control-label">* Address  </label>
+					<div class="col-md-9">
+						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"    cols="30" rows="4" ng-maxlength="356" ui-tinymce required></textarea>
+						<p>{{ 356 - property.address.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="form1.address.$error.maxlength">
+							Sorry You are Exceeding the Limit</span>
+							<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+						  <span ng-show="myForm.address.$error.required">Address is required .</span>
+									 
+					</div>				
+			  </div>		  
+			  <div class="form-group">
+					<label for="Area" class="col-md-2 control-label">*  Area/Location </label>
+					<div class="col-md-9">
+						<input type="text"  id="Area" class="form-control" name="Area" ng-model="property.location" required>
+						<span style="color:red" ng-show="myForm.Area.$dirty && myForm.Area.$invalid">
+						  <span ng-show="myForm.Area.$error.required">Area is required .</span>
+						</span>
+						
+					</div>				
+			  </div>		  
+			</tab><!--  property Location-->		
+			<!--  Discription Title-->	
+			<tab heading="Discription" title="Property Discription">
+				<h3>Discription Title:</h3>
+				<div class="form-group">
+					<label for="propTitle" class="col-md-2 control-label">* Property Title </label>
+					<div class="col-md-9">
+						<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
+						<p>{{ 356 - property.title.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.title.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>
+							<span style="color:red" ng-show="myForm.title.$dirty && myForm.title.$invalid">
+						  <span ng-show="myForm.title.$error.required">Title is required .</span>
+>>>>>>> Stashed changes
 										 
 						</div>				
 				  </div>		  
