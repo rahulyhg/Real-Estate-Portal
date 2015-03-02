@@ -6,24 +6,18 @@ define(['app'], function (app) {
 	var manageuserController = function ($scope, $injector, $routeParams,$location) {
 		console.log("this is manageuserController");
 		
-		$scope.userViews = $routeParams.userViews; 
-		console.log($scope.userViews);
-		//For display by default userslist.html page
-		if(!$routeParams.userViews) {
-		$location.path('/dashboard/users/userslist');
-		console.log($location);
-		}
-	// for date picker
+		// for date picker {Pooja}
 		$scope.today = function() 
 		{
-			$scope.dt = new Date();
+			$scope.date1 = new Date();
 		};
 		$scope.today();
-		$scope.open = function($event)
+
+		$scope.open = function($event,opened1)
 		{
 			$event.preventDefault();
 			$event.stopPropagation();
-			$scope.opened = true;
+			 $scope[opened1] = ($scope[opened1] ===true) ? false : true;
 		};
 		$scope.dateOptions = {
 			formatYear: 'yy',
@@ -33,6 +27,15 @@ define(['app'], function (app) {
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = $scope.formats[0];
 	//End  Date Picker 
+		
+		
+		$scope.userViews = $routeParams.userViews; 
+		console.log($scope.userViews);
+		//For display by default userslist.html page
+		if(!$routeParams.userViews) {
+		$location.path('/dashboard/users/userslist');
+		console.log($location);
+		}
 	
 	
 	//Code For Pagination

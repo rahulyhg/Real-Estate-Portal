@@ -15,7 +15,7 @@ define(['app', 'css!modules/users/register/edit'], function (app) {
 		{
 			$event.preventDefault();
 			$event.stopPropagation();
-			$scope.opened = true;
+			$scope.opened= true;
 		};
 		$scope.dateOptions = {
 			formatYear: 'yy',

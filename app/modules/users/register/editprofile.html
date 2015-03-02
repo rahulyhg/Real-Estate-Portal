@@ -4,22 +4,18 @@
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>	
 			<div class="row main-border">
 				<div class="col-sm-2">
-					<img class="user-img" src="img/user.jpg">
-					
+					<img class="user-img" src="img/user.jpg">					
 					<input type="file" id="userImg" name="userImg" ng-file-select accept="image/*" ng-file-change="upload($files)" ng-model="userImg">
 					<input type="hidden" ng-model="edit.user_image">					<br>
 					<caption>Upload Your Photo here..!</caption>
-				</div>
-			
-				<div class="col-sm-10">
-					
+				</div>			
+				<div class="col-sm-10">					
 					<form name="editProfile" class="form-horizontal " role="form" novalidate="novalidate">	
 						<div class="form-group">
 						   <div class="col-md-offset-2  col-md-8">
-								<h3>Edit Profile</h3>
+								<h3 col-md-offset-2 col-md-9>Edit Profile</h3>
 							</div>
 						</div>	
-
 						<div class="form-group">
 							<label for="full_name" class="col-md-2 control-label">Name</label>
 							<div class="col-md-8">
@@ -31,8 +27,7 @@
 							<label for="address" class="col-md-2 control-label">Address</label>
 							<div class="col-md-8">
 								<textarea  class="form-control" id="address" ng-model="edit.address" name="address" placeholder="Enter address" cols="30" rows="3" ng-maxlength="356" ng-required="true" maxlength="356">
-								</textarea>
-								
+								</textarea>								
 							<p ng-hide="editProfile.address.$error.maxlength">{{ 356 - edit.address.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="editProfile.address.$error.maxlength">
 								Sorry You are Exceeding the Limit
