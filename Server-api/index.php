@@ -1,414 +1,151 @@
 <?php
 
 // load required files
-require 'Slim/Slim.php';
-require 'dbcon.php';
+require_once 'lib/Slim/Slim.php';
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
-$body = $app->request->getBody();
 
 $app->response->headers->set('Content-Type', 'application/json');
+// this will get input
+$body = $app->request->getBody();
 
-$app->get('/response(/:id)','responseData');
-$app->get('/project/:id','projectData');
-$app->get('/template/:limit(/:records)','templates');
-$app->get('/website/:limit(/:records)','websites');
-$app->get('/properties/:limit(/:records)','propertiesData');
-$app->get('/projects/:limit(/:records)','projectData2');
-$app->get('/responses/:limit(/:records)','resData');
-$app->get('/property/:id','propertyData');
-$app->put('/response/:status/:id','responseUpdate');
-$app->post('/register','registerUser');
-$app->put('/editprofile/:id','registerUpdate');
-$app->post('/addproject','addProject');
-$app->put('/editproject/:id','updateProject');
-$app->post('/addproperty','addProperty');
-$app->put('/editproperty/:id','updateProperty');
-$app->post('/login','adminlogin');
-$app->post('/forgot','adminForgot');
+/* $app->get('/notfound', function()use ($app, $baseUrl){
+	echo "Not Found";
+}); */
+//use these uri for all get requests {Vilas}
+//Use this uri for multiple records with limit {Vilas}
+$app->get('/getmultiple/:getRequest/:pageNo(/:records)','getRecords');
+// use thi uri for single record {Vilas}
+$app->get('/getsingle/:getRequest(/:id)', 'getRecord' );
+//use this uri for post new record into database - like create
+$app->post('/post/:getRequest', 'postRecord' );
+//use this uri for put/update record from database
+$app->put('/put/:getRequest/:id', 'putRecord' );
+//use this uri for delete record from database
+$app->delete('/delete/:getRequest/:id', 'deleteRecord' );
 
-
-//view web response
-function responseData($id=null)
-{	
-	if($id===Null){
-		$selectSQL=mysql_query( "SELECT * FROM 2_real_response")or die(mysql_error());
-		$data = array();
-		
-		while($row=mysql_fetch_assoc($selectSQL))
-		{
-			array_push($data,$row);
-		}
-	}else{	
-		$where="WHERE id= ".$id;
-		$selectSQL=mysql_query("SELECT * FROM 2_real_response $where");
-		$data=mysql_fetch_assoc($selectSQL);		
-	}
-	echo json_encode($data);	
-}
-
-function responseUpdate($status, $id){
-	//echo $status." ".$id;
+function getRecord($getRequest, $id){
+	$app = new \Slim\Slim();
+	$body = $app->request->getBody();
+	// this will get current url
+	/* $posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; */ 
 	
-	$updateSQL=mysql_query("UPDATE  2_real_response SET  `status`= '$status' where id='$id' ")or die(mysql_error());	
-		if($updateSQL){
-		  echo "Msg status added as $status successfully";
+	$id = (int)$id;
+	try{
+		if($id === 0){
+			if($id === 0){
+				throw new Exception('Please Use proper id for record.');
+			}
 		}else{
-			 mysql_error();
-		}			
-}
-//view project response
-function projectData($id=null)
-{	
-	if($id===Null){
-		$selectSQL=mysql_query( "SELECT * FROM 2_real_project")or die(mysql_error());
-		$data = array();		
-		while($row=mysql_fetch_assoc($selectSQL))
-		{
-			array_push($data,$row);
+			include 'modules/'.$getRequest.'.php';
 		}
-	}else{	
-		$where="WHERE id= ".$id;
-		$selectSQL=mysql_query("SELECT * FROM 2_real_project $where");
-		$data=mysql_fetch_assoc($selectSQL);		
 	}
-	echo json_encode($data);	
-}
+	catch(Exception $e) {
+        echo "Error: '".$e->getMessage()."'";
+    }
+};
 
-//view property response
-function propertyData($id=null)
-{		
+//this function will help to add modules & fetch records from database {vilas}
+function getRecords($getRequest, $pageNo=1, $records = 10){
+	$app = new \Slim\Slim();
+	$body = $app->request->getBody();
+	// this will get current url
+	/* $posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php';  */
 	
-	
-		$where="WHERE id= $id";
-		$selectSQL=mysql_query("SELECT * FROM 2_real_property $where");
-		$data=mysql_fetch_assoc($selectSQL);		
-	
-	echo json_encode($data);	
-}
-require_once 'databaseHelper/dbHelper.php';
-//properties pagination
-function propertiesData($limit = 0, $records = 10)
-{		
-		$limit = ($limit == 0 ) ? $limit : $limit - 1;
-		$startLimit = $limit * $records; // start on record $startLimit
-		
-		
-		$selectSQL=mysql_query( "SELECT * FROM 2_real_property LIMIT $startLimit, $records")or die(mysql_error());
-		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM 2_real_property")) or die(mysql_error());
-		//$jsonTot = [];
-		$jsonTot['totalRecords'] = $totalRecords;
-		//print_r($totalRecords);
-		//echo json_encode($jsonTot);
-		
-		$data = array();		
-		while($row=mysql_fetch_assoc($selectSQL))
-		{
-			array_push($data,$row);
-		}
-		$propData['totalRecords'] = $totalRecords;
-		$propData['properties'] = $data;
-	echo json_encode($propData); 
-}
-
-//Templates pagination
-function templates($limit = 0, $records = 10)
-{		
-		$limit = ($limit == 0 ) ? $limit : $limit - 1;
-		$startLimit = $limit * $records; // start on record $startLimit
-			
-		$selectSQL=mysql_query( "SELECT * FROM `templates` LIMIT $startLimit, $records")or die(mysql_error());
-		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM `templates`")) or die(mysql_error());
-		//$jsonTot = [];
-		$jsonTot['totalRecords'] = $totalRecords;
-		//print_r($totalRecords);
-		//echo json_encode($jsonTot);
-		
-		$data = array();		
-		while($row=mysql_fetch_assoc($selectSQL))
-		{
-			array_push($data,$row);
-		}
-		$tempData['totalRecords'] = $totalRecords;
-		$tempData['template'] = $data;
-	echo json_encode($tempData);
-}
-//Websites pagination
-function templates($limit = 0, $records = 10)
-{		
-		$limit = ($limit == 0 ) ? $limit : $limit - 1;
-		$startLimit = $limit * $records; // start on record $startLimit
-			
-		$selectSQL=mysql_query( "SELECT * FROM `websites` LIMIT $startLimit, $records")or die(mysql_error());
-		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM `websites`")) or die(mysql_error());
-		//$jsonTot = [];
-		$jsonTot['totalRecords'] = $totalRecords;
-		//print_r($totalRecords);
-		//echo json_encode($jsonTot);
-		
-		$data = array();		
-		while($row=mysql_fetch_assoc($selectSQL))
-		{
-			array_push($data,$row);
-		}
-		$webData['totalRecords'] = $totalRecords;
-		$webData['website'] = $data;
-	echo json_encode($webData);
-}
-
-
-
-//project pagination
-function projectData2($limit = 0, $records = 10)
-{		
-		$limit = ($limit == 0 ) ? $limit : $limit - 1;
-		$startLimit = $limit * $records; // start on record $startLimit
-			
-		$selectSQL=mysql_query( "SELECT * FROM `2_real_project` LIMIT $startLimit, $records")or die(mysql_error());
-		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM `2_real_project`")) or die(mysql_error());
-		//$jsonTot = [];
-		$jsonTot['totalRecords'] = $totalRecords;
-		//print_r($totalRecords);
-		//echo json_encode($jsonTot);
-		
-		$data = array();		
-		while($row=mysql_fetch_assoc($selectSQL))
-		{
-			array_push($data,$row);
-		}
-		$projData['totalRecords'] = $totalRecords;
-		$projData['projects'] = $data;
-	echo json_encode($projData);
-}
-//Response pagination
-function resData($limit = 0, $records = 10)
-{		
-		$limit = ($limit == 0 ) ? $limit : $limit - 1;
-		$startLimit = $limit * $records; // start on record $startLimit
-			
-		$selectSQL=mysql_query( "SELECT * FROM 2_real_response LIMIT $startLimit, $records")or die(mysql_error());
-		$totalRecords =mysql_num_rows(mysql_query( "SELECT * FROM 2_real_response")) or die(mysql_error());
-		//$jsonTot = [];
-		$jsonTot['totalRecords'] = $totalRecords;
-		//print_r($totalRecords);
-		//echo json_encode($jsonTot);		
-		$data = array();		
-		while($row=mysql_fetch_assoc($selectSQL))
-		{
-			array_push($data,$row);
-		}
-		$resData['totalRecords'] = $totalRecords;
-		$resData['responses'] = $data;
-	echo json_encode($resData);
-}
-//Register for new user
-function registerUser()
-{
-		$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-		$regKey=array();
-			$regVal=array();
-			foreach($postdata as $key => $value)
-			{
-						array_push($regKey,$key);
-						array_push($regVal,"'".mysql_real_escape_string($value)."'");
+	$pageNo = (int)$pageNo;
+	$records = (int)$records;
+	try{
+		if($pageNo === 0 || $records === 0){
+			if($pageNo === 0){
+				throw new Exception('Page No is not a number');
 			}
-			$col=implode(",",$regKey);
-			$row=implode(",",$regVal);
-			$insertSQL="INSERT INTO users($col)VALUES($row)";
-			
-
-	$result=mysql_query($insertSQL) or die(mysql_error());
-	//$last_id = mysql_insert_id($result);
-	if($result)
-	{
-	  echo "Registration successful your Reg-ID is ";//.$last_id;
-	}
-	else
-	{
-	 mysql_error();
-	}			
-}
-//update User registration details 
- function registerUpdate($id=null) 
- {
-		$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-		
-	
-			$regEditKey=array();
-			
-			foreach($postdata as $key => $value)
-			{
-						array_push($regEditKey,$key."='".$value."'");						
+			if($records===0){
+				throw new Exception('Records is not a number');
 			}
-			$data=implode(",",$regEditKey);				
-		$updateSQL=mysql_query("UPDATE  users SET '$data' where id='$id'")or die(mysql_error());	
-		if($updateSQL){
-		  echo "Your profile updated  successfully......";
 		}else{
-			 mysql_error();
-		}		
-                }
-	
-	
-// Add new Properties
-
-function addproperty()
-{
-		$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-			$propKey=array();
-			$propVal=array();
-			foreach($postdata as $key => $value)
-			{
-						array_push($propKey,$key);
-						array_push($propVal,"'".mysql_real_escape_string($value)."'");
-			}
-			$col = implode(",",$propKey);
-			$val = implode(",",$propVal);
-			//echo $col;
-			$insertSQL="INSERT INTO 2_real_property($col)VALUES($val)";
-		
-	     
-	$result=mysql_query($insertSQL) or die(mysql_error());
-	//$last_id = mysql_insert_id($result);
-	if($result)
-	{
-	  echo "Property Added successful your property-ID is ";//.$last_id ;
+			include 'modules/'.$getRequest.'.php';
+		}
 	}
-	else
-	{
-	 mysql_error();
-	}	
+	catch(Exception $e) {
+        //return $app->response()->redirect($baseUrl.'/notfound');
+		echo "Error: '".$e->getMessage()."'";
+    }
 		
-}
+};
 
-//update property details
- function updateProperty($id=null) 
- {
-		$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);		
-			$propEdit=array();
-			foreach($postdata as $key => $value)
-			{
-						array_push($propEdit,$key."='".$value."'");
-			}
-			$data = implode(",",$propEdit);
-		
-			$updateSQL=mysql_query("UPDATE  2_real_property SET  $data where id='$id'")or die(mysql_error());
+function postRecord($getRequest){
+	$app = new \Slim\Slim();
+	$body = $app->request->getBody();
+	// this will get current url
+	$posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; 
 	
-		if($updateSQL){
-		  echo "Property details updated successfully.....";
+	try{
+		if($body===""){
+				throw new Exception('There is no input!');
 		}else{
-			 mysql_error();
-		}	
- }
-
- //add new project
-function addProject()
-{	
-		$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-		
-			$projectKey=array();
-			$projectVal=array();
-			foreach($postdata as $key => $value)
-			{
-						array_push($projectKey,$key);
-						array_push($projectVal,"'".mysql_real_escape_string($value)."'");
-			}
-			//impolde for array value seperation
-			$col=implode(",",$projectKey);
-			$row=implode(",",$projectVal);
-			
-			$insertSQL="INSERT INTO 2_real_project($col)VALUES($row)";
-			$result=mysql_query($insertSQL)or die(mysql_error());
-			//$last_id = mysql_insert_id($result);
-	if($result)
-	{
-	  
-	  echo "Project Added successful your Project-ID is ";
-	 
+			include 'modules/'.$getRequest.'.php';
+		}
 	}
-	else
-	{
-	 mysql_error();
-	}				
-}
-//update project details
- function updateProject($id=null)
- 
- {
-		$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-			
-			$projectEditKey=array();
-			
-			foreach($postdata as $key => $value)
-			{
-				array_push($projectEditKey,$key."='".$value."'");
-			}
-			
-			$data=implode(",",$projectEditKey)	;		
-			
-			$updateSQL=mysql_query("UPDATE  2_real_project SET  $data where id='$id' ")or die(mysql_error());
-	
-		if($updateSQL){
-		  echo "project details updated successfully";
-		}else{
-			 mysql_error();
-		}			
-	}		
-//Login
-function adminlogin()
-{
-	$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-		//to accept data into login form
-			$user= mysql_real_escape_string($postdata->user_email);
-			$password=mysql_real_escape_string($postdata->pwd);
-			
-		//fetch username & password into db
-			$uname=mysql_query("select user_name From users");
-			$email=mysql_query("select * from users WHERE user_email='$user' AND pwd='$password'");
-			$usersNo = mysql_num_rows($email);
-			if($usersNo === 1){
-				echo "valid user";
-			}else{
-				echo "invalid user";
-			}			
-}
-//forgot password
+	catch(Exception $e) {
+		echo "Error: '".$e->getMessage()."'";
+        //return $app->response()->redirect($baseUrl.'/notfound');
+    }
+};
 
-function adminForgot()
-{
-		$app= new \Slim\Slim();
-		$body = $app->request->getBody();
-		$postdata=json_decode($body);
-		//to accept data into login form
-		//print_r($postdata) ;
-		$user= mysql_real_escape_string($postdata->user_email);
-			$email=mysql_query("select user_email from users WHERE user_email='$user' ") or die (mysql_error());
-			
-			$totrow=mysql_num_rows($email);
-			
-			if($totrow==1){
-				echo "your password send your email ID";
+function putRecord($getRequest, $id){
+	$app = new \Slim\Slim();
+	$body = $app->request->getBody();
+	// this will get current url
+	$posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; 
+	
+	$id = (int)$id;
+	try{
+		if($id === 0 || $getRequest===null){
+			if($id === 0){
+				throw new Exception('Please Use proper id for record.');
 			}
-			else
-			{
-				echo "Invalid email ID";
-			} 			
-}			
-		
+			if($getRequest===null){
+				throw new Exception('Please Use proper Module Name for record.');
+			}
+		}else{
+			include 'modules/'.$getRequest.'.php';
+		}
+	}
+	catch(Exception $e) {
+        echo "Error: '".$e->getMessage()."'";
+    }
+};
+
+function deleteRecord($getRequest, $id){
+	$app = new \Slim\Slim();
+	$body = $app->request->getBody();
+	// this will get current url
+	$posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; 
+	
+	$id = (int)$id;
+	try{
+		if($id === 0 || $getRequest===null){
+			if($id === 0){
+				throw new Exception('Please Use proper id for record.');
+			}
+			if($getRequest===null){
+				throw new Exception('Please Use proper Module Name for record.');
+			}
+		}else{
+			include 'modules/'.$getRequest.'.php';
+		}
+	}
+	catch(Exception $e) {
+        echo "Error: '".$e->getMessage()."'";
+    }
+};
+
+
 $app->run();
  ?>

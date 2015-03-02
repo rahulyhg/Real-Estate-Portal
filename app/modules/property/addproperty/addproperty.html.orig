@@ -3,7 +3,7 @@
 		<div class="main-content">		
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>						
 			<h3 class="text-center" title="Add new Property">Add New Property</h3>
-			<form class="form-horizontal addNewProp " name="addNewProp" novalidate>	
+			<form class="form-horizontal myForm " name="myForm" novalidate>	
 			
 				<tabset>
 				<p class="paraMand">* Fields are mandatory</p>
@@ -36,17 +36,17 @@
 							</div>	
 						</div>
 						<div class="form-group">
-							<label for="category" class="col-md-2 control-label">* Property Category </label>
+							<label for="Category" class="col-md-2 control-label">* Property Category </label>
 							<div class="col-md-9">
-								<select  id="category"  name="category" ng-model="property.category" class="form-control" required>
+								<select  id="Category"  name="proCate" ng-model="property.category" class="form-control" required>
 									<option selected value="">Select Category</option>
 									<option value="Residential">Residential Property</option>
 									<option value="Commercial">Commercial Property</option>
 									<option value="Agricultural">Agricultural Land</option>
 									<option value="Industrial">Industrial Property</option>			
 								</select>
-								<span style="color:red" ng-show="addNewProp.proCate.$dirty && addNewProp.proCate.$invalid">
-									<span ng-show="addNewProp.proCate.$error.required">Property selection is required .</span>
+								<span style="color:red" ng-show="myForm.proCate.$dirty && myForm.proCate.$invalid">
+									<span ng-show="myForm.proCate.$error.required">Property selection is required .</span>
 								</span>				 
 							</div>
 						</div>
@@ -54,8 +54,8 @@
 							<label for="type" class="col-md-2  control-label">* Property Type </label>
 							<div class="col-sm-9">
 								<input type="text"  id="type" class="form-control" name="proType" ng-model="property.type" required>
-								<span style="color:red" ng-show="addNewProp.proType.$dirty && addNewProp.proType.$invalid">
-									<span ng-show="addNewProp.proType.$error.required">Property type  is required .</span>
+								<span style="color:red" ng-show="myForm.proType.$dirty && myForm.proType.$invalid">
+									<span ng-show="myForm.proType.$error.required">Property type  is required .</span>
 								</span>
 							</div>
 						</div>	
@@ -63,7 +63,7 @@
 							<label for="PropPrice" class="col-md-2 control-label ">Property Price: </label>
 							<div class="col-md-6">
 								<input type="text" id="PropPrice" class="form-control" name="propertyPrice" ng-model="property.propertyPrice" ng-pattern="/^\d{0,9}[0-9]$/" required>
-								<p ng-show="addNewProp.propertyPrice.$error.pattern && (addNewProp.propertyPrice.$dirty || submitted)" class="help-block">Enter only no.</p>
+								<p ng-show="myForm.propertyPrice.$error.pattern && (myForm.propertyPrice.$dirty || submitted)" class="help-block">Enter only no.</p>
 							</div>
 							<div class="col-md-3">
 								<select class="form-control" ng-model="property.currency" required>
@@ -72,8 +72,8 @@
 									<option value="Lac">Lac</option>
 									<option value="Carore">Carore</option>					
 								</select>
-								<span style="color:red" ng-show="addNewProp.propertyPrice.$dirty && addNewProp.propertyPrice.$invalid">
-									<span ng-show="addNewProp.propertyPrice.$error.required">Property Price is required .</span>
+								<span style="color:red" ng-show="myForm.propertyPrice.$dirty && myForm.propertyPrice.$invalid">
+									<span ng-show="myForm.propertyPrice.$error.required">Property Price is required .</span>
 								</span>				 
 							</div>				
 						</div>	
@@ -84,7 +84,7 @@
 							<label for="BuiltArea" class="col-md-2 control-label">* Built Up Area </label>
 							<div class="col-md-6">
 								<input type="text"  id="BuiltArea" class="form-control" name="builtArea" ng-model="property.buildup_area" ng-pattern="/^\d{0,9}[0-9]$/" required>
-								<p ng-show="addNewProp.builtArea.$error.pattern && (addNewProp.builtArea.$dirty || submitted)" class="help-block">Enter only no.</p>
+								<p ng-show="myForm.builtArea.$error.pattern && (myForm.builtArea.$dirty || submitted)" class="help-block">Enter only no.</p>
 							</div>
 							<div class="col-md-3">
 								<select class="form-control" ng-model="property.build_unit"  title="" required >
@@ -94,8 +94,8 @@
 									<option value="Yard">Sq. Yard</option>
 													
 								</select>
-								<span style="color:red" ng-show="addNewProp.builtArea.$dirty && addNewProp.builtArea.$invalid">
-								  <span ng-show="addNewProp.builtArea.$error.required">Built Area is required .</span>
+								<span style="color:red" ng-show="myForm.builtArea.$dirty && myForm.builtArea.$invalid">
+								  <span ng-show="myForm.builtArea.$error.required">Built Area is required .</span>
 								</span>				 
 							</div>
 						</div>		  
@@ -103,7 +103,7 @@
 							<label for="PlotArea" class="col-md-2 control-label ">* Plot/ Land Area</label>
 							<div class="col-md-6">
 								<input type="text" id="PlotArea" class="form-control" name="plotArea" ng-model="property.land_area"  ng-pattern="/^\d{0,9}[0-9]$/" required>
-								<p ng-show="addNewProp.plotArea.$error.pattern && (addNewProp.plotArea.$dirty || submitted)" class="help-block">Enter only no.</p>
+								<p ng-show="myForm.plotArea.$error.pattern && (myForm.plotArea.$dirty || submitted)" class="help-block">Enter only no.</p>
 							</div>
 							<div class="col-md-3">
 								<select class="form-control" ng-model="property.land_unit" required>
@@ -112,8 +112,8 @@
 									<option value="Cent">Cent</option>
 									<option value="Yard">Sq. Yard</option>					
 								</select>
-								<span style="color:red" ng-show="addNewProp.plotArea.$dirty && addNewProp.areaUnit.$invalid">
-								  <span ng-show="addNewProp.areaUnit.$error.required">Built Area is required .</span>
+								<span style="color:red" ng-show="myForm.plotArea.$dirty && myForm.areaUnit.$invalid">
+								  <span ng-show="myForm.areaUnit.$error.required">Built Area is required .</span>
 								</span>				 
 							</div>				
 						</div>		  
@@ -121,7 +121,7 @@
 						<label for="CarpetArea" class="col-md-2 control-label">Carpet Area </label>
 						<div class="col-md-6">
 							<input type="text" id="CarpetArea" class="form-control" name="carpetArea" ng-model="property.carpet_area" ng-pattern="/^\d{0,9}[0-9]$/" required>
-							<p ng-show="addNewProp.carpetArea.$error.pattern && (addNewProp.carpetArea.$dirty || submitted)" class="help-block">Enter only no.</p>				 
+							<p ng-show="myForm.carpetArea.$error.pattern && (myForm.carpetArea.$dirty || submitted)" class="help-block">Enter only no.</p>				 
 						</div>
 						<div class="col-md-3">
 							<select class="form-control" ng-model="property.carpet_unit" required>
@@ -130,8 +130,8 @@
 									<option value="Cent">Cent</option>
 									<option value="Yard">Sq. Yard</option>					
 							</select>
-							<span style="color:red" ng-show="addNewProp.carpetArea.$dirty && addNewProp.carpetArea.$invalid">
-							  <span ng-show="addNewProp.carpetArea.$error.required">Carpet Area is required .</span>
+							<span style="color:red" ng-show="myForm.carpetArea.$dirty && myForm.carpetArea.$invalid">
+							  <span ng-show="myForm.carpetArea.$error.required">Carpet Area is required .</span>
 							</span>				 
 						</div>				
 					</div>	  
@@ -146,8 +146,8 @@
 								<option value="1">1</option>
 								<option value="3">3</option>									
 							</select>No's
-						 <span style="color:red" ng-show="addNewProp.Bedrooms.$dirty && addNewProp.Bedrooms.$invalid">
-							  <span ng-show="addNewProp.Bedrooms.$error.required">Select Number of Bedrooms  .</span>
+						 <span style="color:red" ng-show="myForm.Bedrooms.$dirty && myForm.Bedrooms.$invalid">
+							  <span ng-show="myForm.Bedrooms.$error.required">Select Number of Bedrooms  .</span>
 							</span>
 						</div>
 										
@@ -161,17 +161,16 @@
 								<option value="3">3</option>
 													
 							</select>No's	
-							 <span style="color:red" ng-show="addNewProp.Bathrooms.$dirty && addNewProp.Bathrooms.$invalid">
-							  <span ng-show="addNewProp.Bathrooms.$error.required">Select Number of Bathrooms  .</span>
+							 <span style="color:red" ng-show="myForm.Bathrooms.$dirty && myForm.Bathrooms.$invalid">
+							  <span ng-show="myForm.Bathrooms.$error.required">Select Number of Bathrooms  .</span>
 							</span>				 
 						</div>
 									
 					</div>
 					<div class="form-group">
-					  <label for="propImages" class="col-md-2" >* Property Images </label>
+						  <label for="imageInputFile" class="col-md-2" >* Property Images </label>
 						<div class="col-md-9">
-						<input type="file" id="propImages" ng-file-select ng-file-preview ng-multiple="true" accept="image/png, image/gif, image/jpeg" ng-file-change="upload($files)" ng-model="propImages">
-						<input type="hidden" ng-model="property.prop_image">
+							<input type="file" id="imageInputFile" ng-file-select  ng-multiple="true" accept="image/*" ng-file-change="upload($files)" ng-model="property.prop_image"> <img ng-show="property.prop_image[0].dataUrl != null" ng-src="{{property.prop_image[0].dataUrl"}}/>
 						</div>			
 					</div>	 <!-- end property  -->		
 				</tab>
@@ -194,9 +193,10 @@
 								<option value="Arunachal Pradesh">Arunachal Pradesh</option>
 								<option value="Aasam">Aasam</option>
 												
+<<<<<<< Updated upstream
 							</select> 
-							<span style="color:red" ng-show="addNewProp.State.$dirty && addNewProp.State.$invalid">
-							  <span ng-show="addNewProp.State.$error.required">State is required .</span>
+							<span style="color:red" ng-show="myForm.State.$dirty && myForm.State.$invalid">
+							  <span ng-show="myForm.State.$error.required">State is required .</span>
 							</span>
 						</div>				
 				  </div>		  
@@ -204,8 +204,8 @@
 						<label for="City" class="col-md-2 control-label">* City</label>
 						<div class="col-md-9">
 							<input  type="text"  id="City" class="form-control" name="City" ng-model="property.city" required>
-							<span style="color:red" ng-show="addNewProp.City.$dirty && addNewProp.City.$invalid">
-							  <span ng-show="addNewProp.City.$error.required">City is required .</span>
+							<span style="color:red" ng-show="myForm.City.$dirty && myForm.City.$invalid">
+							  <span ng-show="myForm.City.$error.required">City is required .</span>
 							</span>
 						</div>				
 				  </div>
@@ -216,8 +216,95 @@
 							<p>{{ 356 - property.address.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="form1.address.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="addNewProp.address.$dirty && addNewProp.address.$invalid">
-							  <span ng-show="addNewProp.address.$error.required">Address is required .</span>
+								<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+							  <span ng-show="myForm.address.$error.required">Address is required .</span>
+=======
+						</select>No's	
+						 <span style="color:red" ng-show="myForm.Bathrooms.$dirty && myForm.Bathrooms.$invalid">
+						  <span ng-show="myForm.Bathrooms.$error.required">Select Number of Bathrooms  .</span>
+						</span>				 
+					</div>
+								
+				</div>
+				<div class="form-group">
+					  <label for="propImages" class="col-md-2" >* Property Images </label>
+					<div class="col-md-9">
+						<input type="file" id="propImages" ng-file-select ng-file-preview ng-multiple="true" accept="image/png, image/gif, image/jpeg" ng-file-change="upload($files)" ng-model="propImages">
+						<input type="hidden" ng-model="property.prop_image">
+					</div>			
+				</div>	 <!-- end property  -->		
+			</tab>
+			<!--  property Location -->
+			<tab heading="Location" title="Property Location">
+				<h3>Property Location:</h3>	
+				<div class="form-group">
+					<label for="country" class="col-md-2 control-label">Country</label>
+					<div class="col-md-9">
+					  <input type="text" id="country" class="form-control" name="Country" ng-model="property.country" value="INDIA" placeholder="INDIA">
+					</div>			
+				</div>
+				<div class="form-group">
+					<label for="State" class="col-md-2 control-label ">* State </label>
+					<div class="col-md-9">
+					  <select id="State" class="form-control" name="State" ng-model="property.state">
+							<option value="" selected="selected">Select State</option>
+							<option value="Andaman Nikobar">Andaman Nikobar</option>
+							<option value="Andhra Pradesh">Andhra Pradesh</option>
+							<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+							<option value="Aasam">Aasam</option>
+											
+						</select> 
+						<span style="color:red" ng-show="myForm.State.$dirty && myForm.State.$invalid">
+						  <span ng-show="myForm.State.$error.required">State is required .</span>
+						</span>
+					</div>				
+			  </div>		  
+			  <div class="form-group">
+					<label for="City" class="col-md-2 control-label">* City</label>
+					<div class="col-md-9">
+						<input  type="text"  id="City" class="form-control" name="City" ng-model="property.city" required>
+						<span style="color:red" ng-show="myForm.City.$dirty && myForm.City.$invalid">
+						  <span ng-show="myForm.City.$error.required">City is required .</span>
+						</span>
+					</div>				
+			  </div>
+			  <div class="form-group">
+					<label for="address" class="col-md-2 control-label">* Address  </label>
+					<div class="col-md-9">
+						<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"    cols="30" rows="4" ng-maxlength="356" ui-tinymce required></textarea>
+						<p>{{ 356 - property.address.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="form1.address.$error.maxlength">
+							Sorry You are Exceeding the Limit</span>
+							<span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+						  <span ng-show="myForm.address.$error.required">Address is required .</span>
+									 
+					</div>				
+			  </div>		  
+			  <div class="form-group">
+					<label for="Area" class="col-md-2 control-label">*  Area/Location </label>
+					<div class="col-md-9">
+						<input type="text"  id="Area" class="form-control" name="Area" ng-model="property.location" required>
+						<span style="color:red" ng-show="myForm.Area.$dirty && myForm.Area.$invalid">
+						  <span ng-show="myForm.Area.$error.required">Area is required .</span>
+						</span>
+						
+					</div>				
+			  </div>		  
+			</tab><!--  property Location-->		
+			<!--  Discription Title-->	
+			<tab heading="Discription" title="Property Discription">
+				<h3>Discription Title:</h3>
+				<div class="form-group">
+					<label for="propTitle" class="col-md-2 control-label">* Property Title </label>
+					<div class="col-md-9">
+						<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
+						<p>{{ 356 - property.title.length + " Chars left" }}</p>
+						 <span style="color:red" ng-show="myForm.title.$error.maxlength">
+							Sorry You are Exceeding the Limit
+						</span>
+							<span style="color:red" ng-show="myForm.title.$dirty && myForm.title.$invalid">
+						  <span ng-show="myForm.title.$error.required">Title is required .</span>
+>>>>>>> Stashed changes
 										 
 						</div>				
 				  </div>		  
@@ -225,8 +312,8 @@
 						<label for="Area" class="col-md-2 control-label">*  Area/Location </label>
 						<div class="col-md-9">
 							<input type="text"  id="Area" class="form-control" name="Area" ng-model="property.location" required>
-							<span style="color:red" ng-show="addNewProp.Area.$dirty && addNewProp.Area.$invalid">
-							  <span ng-show="addNewProp.Area.$error.required">Area is required .</span>
+							<span style="color:red" ng-show="myForm.Area.$dirty && myForm.Area.$invalid">
+							  <span ng-show="myForm.Area.$error.required">Area is required .</span>
 							</span>
 							
 						</div>				
@@ -240,11 +327,11 @@
 						<div class="col-md-9">
 							<textarea type="text"  id="propTitle" class="form-control" name="propTitle" ng-model="property.title" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
 							<p>{{ 356 - property.title.length + " Chars left" }}</p>
-							 <span style="color:red" ng-show="addNewProp.title.$error.maxlength">
+							 <span style="color:red" ng-show="myForm.title.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>
-								<span style="color:red" ng-show="addNewProp.title.$dirty && addNewProp.title.$invalid">
-							  <span ng-show="addNewProp.title.$error.required">Title is required .</span>
+								<span style="color:red" ng-show="myForm.title.$dirty && myForm.title.$invalid">
+							  <span ng-show="myForm.title.$error.required">Title is required .</span>
 											 
 						</div>				
 					</div>			
@@ -252,36 +339,36 @@
 						<label for="browsertitle" class="col-md-2 control-label">* Browser Title<br><small>( Display in your website )</small></label>
 						<div class="col-md-9">
 							<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle"  cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="addNewProp.property.browsertitle.$error.maxlength">{{ 356 - property.browsertitle.length + " Chars left" }}</p>
-							 <span style="color:red" ng-show="addNewProp.browsertitle.$error.maxlength">
+							<p>{{ 356 - property.browsertitle.length + " Chars left" }}</p>
+							 <span style="color:red" ng-show="myForm.browsertitle.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>		
-							<span style="color:red" ng-show="addNewProp.browsertitle.$dirty && addNewProp.browsertitle.$invalid">
-							  <span ng-show="addNewProp.browsertitle.$error.required">Browser title is required .</span>
+							<span style="color:red" ng-show="myForm.browsertitle.$dirty && myForm.browsertitle.$invalid">
+							  <span ng-show="myForm.browsertitle.$error.required">Browser title is required .</span>
 						</div>				
 					</div>
 					<div class="form-group">
 						<label for="metaDis" class="col-md-2 control-label">* Meta Discription </label>
 						<div class="col-md-9">
 							<textarea type="text" id="metaDis" class="form-control" name="metaDis" ng-model="property.meta_desc"cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="addNewProp.property.meta_desc.$error.maxlength">{{ 356 - property.meta_desc.length + " Chars left" }}</p>
-							 <span style="color:red" ng-show="addNewProp.meta_desc.$error.maxlength">
+							<p>{{ 356 - property.meta_desc.length + " Chars left" }}</p>
+							 <span style="color:red" ng-show="myForm.meta_desc.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
-								<span style="color:red" ng-show="addNewProp.meta_desc.$dirty && addNewProp.meta_desc.$invalid">
-							  <span ng-show="addNewProp.meta_desc.$error.required">Meta discription is required .</span>						
+								<span style="color:red" ng-show="myForm.meta_desc.$dirty && myForm.meta_desc.$invalid">
+							  <span ng-show="myForm.meta_desc.$error.required">Meta discription is required .</span>						
 						</div>				
 					</div>
 					<div class="form-group">
 						<label for="metaKey" class="col-md-2 control-label">* Meta Keywords </label>
 						<div class="col-md-9">
 							<textarea type="text"  id="metaKey" class="form-control" name="metaKey" ng-model="property.meta_key" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="addNewProp.property.meta_key.$error.maxlength">{{ 356 - property.meta_key.length + " Chars left" }}</p>
-							 <span style="color:red" ng-show="addNewProp.meta_key.$error.maxlength">
+							<p>{{ 356 - property.meta_key.length + " Chars left" }}</p>
+							 <span style="color:red" ng-show="myForm.meta_key.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>
-							<span style="color:red" ng-show="addNewProp.meta_key.$dirty && addNewProp.meta_key.$invalid">
-							  <span ng-show="addNewProp.meta_key.$error.required">Meta Key is required .</span>						
+							<span style="color:red" ng-show="myForm.meta_key.$dirty && myForm.meta_key.$invalid">
+							  <span ng-show="myForm.meta_key.$error.required">Meta Key is required .</span>						
 						</div>				
 					</div>
 					<div class="form-group">
@@ -296,12 +383,12 @@
 						<label for="propDis" class="col-md-2 control-label">* Property Discription  </label>
 						<div class="col-md-9">
 							<textarea type="text" class="form-control" name="propDis" ng-model="property.prop_desc" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="addNewProp.property.prop_desc.$error.maxlength">{{ 356 - property.prop_desc.length + " Chars left" }}</p>
-							 <span style="color:red" ng-show="addNewProp.prop_desc.$error.maxlength">
+							<p>{{ 356 - property.prop_desc.length + " Chars left" }}</p>
+							 <span style="color:red" ng-show="myForm.prop_desc.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
-								<span style="color:red" ng-show="addNewProp.prop_desc.$dirty && addNewProp.prop_desc.$invalid">
-							  <span ng-show="addNewProp.prop_desc.$error.required">Property Discription is required .</span>						
+								<span style="color:red" ng-show="myForm.prop_desc.$dirty && myForm.prop_desc.$invalid">
+							  <span ng-show="myForm.prop_desc.$error.required">Property Discription is required .</span>						
 						
 						</div>				
 					</div><!-- property discription -->		
@@ -314,8 +401,8 @@
 								<label for="Name" class="col-md-2 control-label">* Name:</label>
 								<div class="col-md-9">
 									<input type="text"  id="Name" class="form-control" name="Name" ng-model="property.cont_name" required>
-									<span style="color:red" ng-show="addNewProp.Name.$dirty && addNewProp.Name.$invalid">
-									  <span ng-show="addNewProp.Name.$error.required">Name is required .</span>
+									<span style="color:red" ng-show="myForm.Name.$dirty && myForm.Name.$invalid">
+									  <span ng-show="myForm.Name.$error.required">Name is required .</span>
 									</span>
 								</div>						
 						  </div>
@@ -323,27 +410,27 @@
 								<label for="Contact_No" class="col-md-2 control-label"> * Contact No:</label>
 								<div class="col-md-9">
 									<input type="text"  id="Contact_No" class="form-control"  name="Contact" ng-model="property.contact" placeholder="Enter Your Phno" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
-									<p style="color:red" ng-show="addNewProp.Contact.$error.pattern && (addNewProp.Contact.$dirty || submitted)" class="help-block">Enter a valid contact no.</p>
+									<p style="color:red" ng-show="myForm.Contact.$error.pattern && (myForm.Contact.$dirty || submitted)" class="help-block">Enter a valid contact no.</p>
 								</div>						
 						  </div>
 						  <div class="form-group">
 								<label for="email" class="col-md-2 control-label">* Email ID:</label>
 								<div class="col-md-9">
 									<input type="email"  id="email" class="form-control" name="email" ng-model="property.email" ng-pattern=" /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>					
-									<span style="color:red" ng-show="addNewProp.email.$error.pattern && (addNewProp.email.$dirty || submitted)"> invalid email! </span>
-									<p style="color:red" ng-show="addNewProp.email.$error.required && (addNewProp.email.$dirty || submitted)" class="help-block">Email is required.</p>								
+									<span style="color:red" ng-show="myForm.email.$error.pattern && (myForm.email.$dirty || submitted)"> invalid email! </span>
+									<p style="color:red" ng-show="myForm.email.$error.required && (myForm.email.$dirty || submitted)" class="help-block">Email is required.</p>								
 								</div>							
 						  </div>
 						  <div class="form-group">
 								<label for="Address" class="col-md-2 control-label"> * Address </label>
 								<div class="col-md-9">
 									<textarea class="form-control"  id="Address" name="Address" ng-model="property.cont_address" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="addNewProp.property.cont_address.$error.maxlength">{{ 356 - property.cont_address.length + " Chars left" }}</p>
-							 <span style="color:red" ng-show="addNewProp.cont_address.$error.maxlength">
+							<p>{{ 356 - property.cont_address.length + " Chars left" }}</p>
+							 <span style="color:red" ng-show="myForm.cont_address.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
-							<span style="color:red" ng-show="addNewProp.cont_address.$dirty && addNewProp.cont_address.$invalid">
-							  <span ng-show="addNewProp.cont_address.$error.required">Contactor is required .</span>
+							<span style="color:red" ng-show="myForm.cont_address.$dirty && myForm.cont_address.$invalid">
+							  <span ng-show="myForm.cont_address.$error.required">Contactor is required .</span>
 								</div>				
 						  </div>				 
 				</tab> <!-- property contact details -->
@@ -472,7 +559,7 @@
 								<tr>
 									<td class="checkbox"> 							
 									  <label>
-										<input type="checkbox" value="" name="selectall" ng-model="property.selectall">
+										<input type="checkbox" value="" name="selectall" ng-model="selectall">
 										Select All
 									  </label>
 									</td>
@@ -487,8 +574,8 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-offset-2 col-md-9">
-						<button type="submit" ng-click="addprop()" class="btn btn-primary" ng-disabled="addNewProp.user.$dirty && addNewProp.user.$invalid ||
-						addNewProp.email.$dirty && addNewProp.email.$invalid" title="Add new your property">Add New Property</button>
+						<button type="submit" ng-click="addprop()" class="btn btn-primary" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+						myForm.email.$dirty && myForm.email.$invalid" title="Add new your property">Add New Property</button>
 						<button type="submit" ng-click="update()" title="Update your property" class="btn btn-primary text-center ">Edit Property</button>
 					</div>
 				</div>

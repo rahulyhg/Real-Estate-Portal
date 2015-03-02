@@ -13,7 +13,11 @@ define(['app'], function (app) {
 		$location.path('/dashboard/users/userslist');
 		console.log($location);
 		}
+		
+<<<<<<< HEAD
+=======
 	// for date picker
+>>>>>>> "users modified"
 		$scope.today = function() 
 		{
 			$scope.dt = new Date();

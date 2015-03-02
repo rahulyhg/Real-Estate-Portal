@@ -1,49 +1,52 @@
-<div class="row main-content"> 
+<div class="main-content">
+<div class="row "> 
 	<div  class="breadcrumb-back" ng-include="'modules/component/breadcrumb.html'"></div>			
 	<div class="col-md-2" ng-include="'modules/component/mainnav.html'"></div>
 		<div class="col-md-10">
-			<form class="form-horizontal myForm" role="form" name="myForm"  method="post" novalidate>
-				<div class="form-group">
-				   <div class="col-md-offset-2 col-md-10">
-						<h3> Login</h3>
-					</div>
-				</div>													
-				<div class="form-group">
-					<label for="user_email" class="col-md-2 control-label">Email</label>
-					<div class="col-md-8">
-						<input type="Email" class="form-control" id="user_email" ng-model="login.user_email" name="user_email" placeholder="Enter Email" required >
-							<span style="color:red" ng-show="myForm.user_email.$dirty && myForm.user_email.$invalid">
-								<span ng-show="myForm.user_email.$error.required">Email is required.</span>
-								<span ng-show="myForm.user_email.$error.email">Invalid Email address.</span>
-							</span>
-					</div>						
-				</div>			
-				<div class="form-group">
-					<label for="pwd" class="col-md-2 control-label">Password </label>
-					<div class="col-md-8">
-						<input type="Password" class="form-control" id="pwd" ng-model="login.pwd" name="pwd" placeholder="Enter Password " required >
-							<span style="color:red" ng-show="myForm.pwd.$dirty && myForm.pwd.$invalid">
-								<span ng-show="myForm.pwd.$error.required">Password is required.</span>
-							</span>
-					</div>						
-				</div>	
-				<div class="form-group">
-					<div class="col-md-offset-2 col-md-10">
-						<div class="checkbox">
-						    <label>
-								<input type="checkbox" name="remember" ng-model="login.remember">Remember me	
-							</label>			
+			
+				<form class="form-horizontal myForm" role="form" name="loginForm"  method="post" novalidate>
+					<div class="form-group">
+					   <div class="col-md-offset-2 col-md-10">
+							<h3> Login</h3>
+						</div>
+					</div>													
+					<div class="form-group">
+						<label for="user_email" class="col-md-2 control-label">Email</label>
+						<div class="col-md-8">
+							<input type="Email" class="form-control" id="user_email" ng-model="login.user_email" name="user_email" placeholder="Enter Email" required >
+								<span style="color:red" ng-show="loginForm.user_email.$dirty && loginForm.user_email.$invalid">
+									<span ng-show="loginForm.user_email.$error.required">Email is required.</span>
+									<span ng-show="loginForm.user_email.$error.email">Invalid Email address.</span>
+								</span>
+						</div>						
+					</div>			
+					<div class="form-group">
+						<label for="pwd" class="col-md-2 control-label">Password </label>
+						<div class="col-md-8">
+							<input type="Password" class="form-control" id="pwd" ng-model="login.pwd" name="pwd" placeholder="Enter Password " required >
+								<span style="color:red" ng-show="loginForm.pwd.$dirty && loginForm.pwd.$invalid">
+									<span ng-show="loginForm.pwd.$error.required">Password is required.</span>
+								</span>
+						</div>						
+					</div>	
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="remember" ng-model="login.remember">Remember me	
+								</label>			
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-offset-2 col-md-10">
-						<a href="#/dashboard" class="btn btn-default" name="btn1" 
-						   ng-click="logIn(login)">Login!</a><br>
-						<a href="#register" title="Register here">Register here</a> | <a href="#/forgot" title="Forgot password">Forgot Password</a>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+							<a href="#/dashboard" class="btn btn-default" name="btn1" 
+							   ng-click="logIn(login)">Login!</a><br>
+							<a href="#register" title="Register here">Register here</a> | <a href="#/forgot" title="Forgot password">Forgot Password</a>
+						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 </div>	
 <?php

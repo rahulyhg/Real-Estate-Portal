@@ -22,11 +22,9 @@ define(['app'], function (app) {
 			});
 			$http.get("../server-api/index.php/website/"+$scope.requSiteCurrentPage+"/"+$scope.pageItems)
 			.success(function(response) {
-				$scope.website = response.website;
-				
+				$scope.website = response.website;				
 			});
-		};		
-		
+		};	
 		
 		$scope.webPart=$routeParams.webPart;
 		console.log($scope.webPart);
