@@ -20,13 +20,13 @@ define(['app'], function (app) {
 			$event.stopPropagation();
 			 $scope[opened] = ($scope[opened] ===true) ? false : true;
 		};
-		/* $scope.dateOptions = {
+		/*  $scope.dateOptions = {
 			formatYear: 'yy',
 			startingDay: 1
 		};
 
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-		$scope.format = $scope.formats[0]; */
+		$scope.format = $scope.formats[0];  */
 	//End  Date Picker 
 		
 		
