@@ -25,7 +25,7 @@
 					<div class="col-md-9">
 						<textarea  class="form-control" id="address" ng-model="reg.address" name="address" placeholder="Enter Address" required maxlength="50">
 						</textarea>
-						<p ng-hide="Registration.reg.address.$error.maxlength">{{ 50 - reg.address.length + " Chars left"}}</p>
+						<p ng-hide="Registration.address.$error.maxlength">{{ 50 - reg.address.length + " Chars left"}}</p>
 						<span style="color:red" ng-show="Registration.address.$dirty && 	Registration.address.$invalid">
 						<span style="color:red" ng-show="Registration.address.$error.maxlength">
 						Sorry You are Exceeding the Limit</span>

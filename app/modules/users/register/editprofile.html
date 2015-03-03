@@ -27,9 +27,9 @@
 							<div class="form-group">
 								<label for="address" class="col-md-2 control-label">Address</label>
 								<div class="col-md-8">
-									<textarea  class="form-control" id="address" ng-model="edit.address" name="address" placeholder="Enter address" cols="30" rows="3" ng-maxlength="356" ng-required="true" maxlength="356">
-									</textarea>								
-								<p ng-hide="editProfile.address.$error.maxlength">{{ 356 - edit.address.length + " Chars left" }}</p>
+								<textarea class="form-control"  id="address" name="address" ng-model="editProf.address" cols="30" rows="4" ng-maxlength="20" placeholder="Enter Your Address"></textarea>
+			      
+								<p ng-hide="editProfile.address.$error.maxlength">{{ 20 - editProf.address.length + " Chars left" }}</p>
 								 <span style="color:red" ng-show="editProfile.address.$error.maxlength">
 									Sorry You are Exceeding the Limit
 								</span>	

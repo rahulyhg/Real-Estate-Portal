@@ -211,13 +211,12 @@
 				  <div class="form-group">
 						<label for="address" class="col-md-2 control-label">* Address  </label>
 						<div class="col-md-9">
-							<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"    cols="30" rows="4" ng-maxlength="356" ui-tinymce required></textarea>
-							<p ng-hide="property.address.$error.maxlength">{{ 356 - property.address.length + " Chars left" }}</p>
-							 <span style="color:red" ng-show="form1.address.$error.maxlength">
+							<textarea type="text"  id="address" class="form-control" name="address" ng-model="property.address"    cols="30" rows="4" ng-maxlength="356" ui-tinymce ></textarea>
+							<p ng-hide="addProperty.address.$error.maxlength">{{ 356 - property.address.length + " Chars left" }}</p>
+							 <span style="color:red" ng-show="addProperty.address.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 								<span style="color:red" ng-show="addProperty.address.$dirty && addProperty.address.$invalid">
-							  <span ng-show="addProperty.address.$error.required">Address is required .</span>
-										 
+							  <span ng-show="addProperty.address.$error.required">Address is required .</span>	 
 						</div>				
 				  </div>		  
 				  <div class="form-group">
@@ -238,7 +237,7 @@
 						<label for="title" class="col-md-2 control-label">* Property Title </label>
 						<div class="col-md-9">
 							<textarea type="text"  id="title" class="form-control" name="title" ng-model="property.title" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="property.title.$error.maxlength">{{ 356 - property.title.length + " Chars left" }}</p>
+							<p ng-hide="addProperty.title.$error.maxlength">{{ 356 - property.title.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="addProperty.title.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>
@@ -251,7 +250,7 @@
 						<label for="browsertitle" class="col-md-2 control-label">* Browser Title<br><small>( Display in your website )</small></label>
 						<div class="col-md-9">
 							<textarea type="text" id="browsertitle" class="form-control" name="browsertitle" ng-model="property.browsertitle"  cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="property.browsertitle.$error.maxlength">{{ 356 - property.browsertitle.length + " Chars left" }}</p>
+							<p ng-hide="addProperty.browsertitle.$error.maxlength">{{ 356 - property.browsertitle.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="addProperty.browsertitle.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>		
@@ -264,7 +263,7 @@
 						<label for="meta_desc" class="col-md-2 control-label">* Meta Discription </label>
 						<div class="col-md-9">
 							<textarea type="text" id="meta_desc" class="form-control" name="meta_desc" ng-model="property.meta_desc"cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="addNewProp.property.meta_desc.$error.maxlength">{{ 356 - property.meta_desc.length + " Chars left" }}</p>
+							<p ng-hide="addProperty.property.meta_desc.$error.maxlength">{{ 356 - property.meta_desc.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="addProperty.meta_desc.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
@@ -277,7 +276,7 @@
 						<label for="meta_key" class="col-md-2 control-label">* Meta Keywords </label>
 						<div class="col-md-9">
 							<textarea type="text"  id="meta_key" class="form-control" name="meta_key" ng-model="property.meta_key" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="property.meta_key.$error.maxlength">{{ 356 - property.meta_key.length + " Chars left" }}</p>
+							<p ng-hide="addProperty.meta_key.$error.maxlength">{{ 356 - property.meta_key.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="addProperty.meta_key.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>
@@ -298,7 +297,7 @@
 						<label for="prop_desc" class="col-md-2 control-label">* Property Discription  </label>
 						<div class="col-md-9">
 							<textarea type="text" class="form-control" name="prop_desc" ng-model="property.prop_desc" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="property.prop_desc.$error.maxlength">{{ 356 - property.prop_desc.length + " Chars left" }}</p>
+							<p ng-hide="addProperty.prop_desc.$error.maxlength">{{ 356 - property.prop_desc.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="addProperty.prop_desc.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
@@ -341,7 +340,7 @@
 								<label for="cont_address" class="col-md-2 control-label"> * Address </label>
 								<div class="col-md-9">
 									<textarea class="form-control"  id="cont_address" name="cont_address" ng-model="property.cont_address" cols="30" rows="4" ng-maxlength="356" ui-tinymce></textarea>
-							<p ng-hide="property.cont_address.$error.maxlength">{{ 356 - property.cont_address.length + " Chars left" }}</p>
+							<p ng-hide="addProperty.cont_address.$error.maxlength">{{ 356 - property.cont_address.length + " Chars left" }}</p>
 							 <span style="color:red" ng-show="addProperty.cont_address.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
