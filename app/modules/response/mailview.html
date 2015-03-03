@@ -1,53 +1,55 @@
 
 <div class="row">
-	<div class="col-sm-12 table-responsive">
-		<table class="table table-bordered">
-			<tr>						
-				<td>Website Enquiry From -{{mailView.subject}}</td> 							
-			</tr>
-			<tr>					
-				<td>{{mailView.first_name + " " + mailView.last_name}}&nbsp &nbsp <b>Email :</b>&nbsp {{mailView.email}}</span></td> 				
-			</tr>
-			<tr>				
-				 <td>
-					<h4>Message -</h4>
-					<p>This is system generated mail</p>
-					<label class="control-label">Date -</label> 
-					<span>{{mailView.date}}</span><br>
-					<label class="control-label">From -</label> 
-					<span>{{mailView.email}}</span><br>
-					<label class="control-label">Full Name -</label> 
-					<span>{{mailView.first_name + " " + mailView.last_name}}</span><br>
-					<label class="control-label">Company -</label>
-					<span>{{mailView.company}}</span><br>
-					<label class="control-label">Phone -</label>
-					 <span>{{mailView.phone}}</span><br>
-					 <label class="control-label">Message</label><br>
-					 <textarea   id="message" class="form-control" name="message" ng-model="mailView.message"    cols="10" rows="3" ng-maxlength="256" placeholder="Message"></textarea>
-				</td>				
-			</tr>
-		</table>
+	<div class="col-sm-12 ">
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<tr>						
+					<td>Website Enquiry From -{{mailView.subject}}</td> 							
+				</tr>
+				<tr>					
+					<td>{{mailView.first_name + " " + mailView.last_name}}&nbsp &nbsp <b>Email :</b>&nbsp {{mailView.email}}</span></td> 				
+				</tr>
+				<tr>				
+					 <td>
+						<h4>Message -</h4>
+						<p>This is system generated mail</p>
+						<label class="control-label">Date -</label> 
+						<span>{{mailView.date}}</span><br>
+						<label class="control-label">From -</label> 
+						<span>{{mailView.email}}</span><br>
+						<label class="control-label">Full Name -</label> 
+						<span>{{mailView.first_name + " " + mailView.last_name}}</span><br>
+						<label class="control-label">Company -</label>
+						<span>{{mailView.company}}</span><br>
+						<label class="control-label">Phone -</label>
+						 <span>{{mailView.phone}}</span><br>
+						 <label class="control-label">Message</label><br>
+						 <textarea   id="message" class="form-control" name="message" ng-model="mailView.message"    cols="10" rows="3" ng-maxlength="256" placeholder="Message"></textarea>
+					</td>				
+				</tr>
+			</table>
+		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12 ">
 		<h4> Reply </h4>
-			<form class="form-horizontal mailView" name="mailView" novalidate>
+			<form class="form-horizontal myForm" name="mailView" novalidate>
 				<div class="form-group">
-					<label for="Subject" class="col-sm-2 control-label">Subject</label>
+					<label for="subject" class="col-sm-2 control-label">Subject</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject" ng-model="mailView.subject"  ng-required="true">
-						<span style="color:red" ng-show="mailView.Subject.$dirty && mailView.Subject.$invalid">
-						  <span ng-show="mailView.Subject.$error.required">Message is required .</span>
+						<input type="text" class="form-control" id="subject" name="Subject" placeholder="Subject" ng-model="mailView.subject"  ng-required="true">
+						<span style="color:red" ng-show="mailView.subject.$dirty && mailView.subject.$invalid">
+						  <span ng-show="mailView.subject.$error.required">Message is required .</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="Email" class="col-sm-2 control-label">From</label>
+					<label for="email" class="col-sm-2 control-label">From</label>
 					<div class="col-sm-10">
-						<input type="email"  id="Email" class="form-control" name="Email" ng-model="mailView.email" placeholder="example@gmail.com"  ng-required="true">
-						<span style="color:red" ng-show="mailView.Email.$dirty && mailView.Email.$invalid">
-						  <span ng-show="mailView.Email.$error.required">Email is required.</span>
-						  <span ng-show="mailView.Email.$error.email">Invalid email address.</span>
+						<input type="email"  id="email" class="form-control" name="Email" ng-model="mailView.email" placeholder="example@gmail.com"  ng-required="true">
+						<span style="color:red" ng-show="mailView.email.$dirty && mailView.email.$invalid">
+						  <span ng-show="mailView.email.$error.required">Email is required.</span>
+						  <span ng-show="mailView.email.$error.email">Invalid email address.</span>
 						  </span>
 					</div>
 				</div>
@@ -66,6 +68,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-default" title="Send replay">Send Reply</button>
+						<button type="reset" class="btn btn-danger" title="Send replay">Cancel</button>
 					</div>
 				</div>
 			</form>

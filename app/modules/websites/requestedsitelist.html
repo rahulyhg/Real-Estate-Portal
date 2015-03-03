@@ -34,42 +34,44 @@
 </div>	
 <hr/>
 <div class="row">
-	<div class="col-md-12 table-responsive">
+	<div class="col-md-12 ">
 	<h3 class="text-center"> Requested Website Details</h3>
-		<table class="table table-hover table-bordered">
-			<thead>
-				<th>Sr.No.</th>
-				<th>WebSite Names</th>
-				<th>Start Date</th>
-				<th>Expiry Date</th>
-				<th>Status</th>
-				<th>Manage Site</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
-					<td>22/02/2015</td>
-					<td>22/02/2016</td>
-					<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
-					<td>
-						<a href="#"  class="glyphicon glyphicon-pencil btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
-						<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
-					</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
-					<td>22/02/2015</td>
-					<td>22/02/2016</td>
-					<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
-					<td>
-						<a href="#"  class="glyphicon glyphicon-pencil btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
-						<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
-					</td>
-				</tr>
-			</tbody>					
-		</table>
+		<div class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<th>Sr.No.</th>
+					<th>WebSite Names</th>
+					<th>Start Date</th>
+					<th>Expiry Date</th>
+					<th>Status</th>
+					<th>Manage Site</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
+						<td>22/02/2015</td>
+						<td>22/02/2016</td>
+						<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
+						<td>
+							<a href="#"  class="glyphicon glyphicon-pencil btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
+							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+						</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
+						<td>22/02/2015</td>
+						<td>22/02/2016</td>
+						<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
+						<td>
+							<a href="#"  class="glyphicon glyphicon-pencil btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
+							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+						</td>
+					</tr>
+				</tbody>					
+			</table>
+		</div>
 	</div>
 	<div class="text-center">				
 		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="requSiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				

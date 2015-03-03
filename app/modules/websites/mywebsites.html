@@ -37,39 +37,41 @@
 <div class="row">
 	<div class="col-md-12">
 	<h3 class="text-center"> Website Details</h3>
-		<table class="table  table-hover table-bordered">
-			<thead>
-				<th>Sr.No.</th>
-				<th>Site Names</th>
-				<th>Start Date</th>
-				<th>Exp Date</th>
-				<th>Manage</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<a href="#"  class="glyphicon glyphicon-refresh btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
-						<a href="#"  class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
-						<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
-					</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<a href="#"  class="glyphicon glyphicon-refresh btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
-						<a href="#"  class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
-						<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
-					</td>
-				</tr>
-			</tbody>					
-		</table>
+		<div class="table-responsive">
+			<table class="table  table-hover table-bordered">
+				<thead>
+					<th>Sr.No.</th>
+					<th>Site Names</th>
+					<th>Start Date</th>
+					<th>Exp Date</th>
+					<th>Manage</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<a href="#"  class="glyphicon glyphicon-refresh btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
+							<a href="#"  class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
+							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+						</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<a href="#"  class="glyphicon glyphicon-refresh btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
+							<a href="#"  class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites"></a>
+							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+						</td>
+					</tr>
+				</tbody>					
+			</table>
+		</div>
 	</div>	
 	<div class="text-center">				
 		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				

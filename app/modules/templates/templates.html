@@ -1,76 +1,80 @@
 <div class="row ">		
 	<div class="col-md-12 ">	
 		<div class="main-content">		
-			<ng-include src="'modules/component/toolbar.html'"></ng-include>						
-			<div class="row pull-right">
-				<div class="col-md-3"> 	
-					<select id="template" class="form-control ng-pristine ng-valid" ng-model="templates.template" title="Select template type"> 
-						<option value="">Select Template Type</option>		
-						<option value="projectTemplate">Project</option>
-						<option value="propertyTemplate">Property</option> 
-						<option value="websitesTemplate">Websites</option> 
-					</select>
-				</div>
-				<div class="col-md-9">
-					<a href="#/dashboard/templates" class="btn btn-default" title="List of Template">List of Templates</a>
-					<a href="#/dashboard/templates/myTemplates" class="btn btn-default" title="My Template">My Templates</a>
-					<a href="#/dashboard/templates/requestCustomTemplates" class="btn btn-default" title="Request Custom Template">Request Custom Template</a>
-					<a href="#/dashboard/templates/customTemplates" class="btn btn-default" title="Custom Template">Custom Templates</a>
+			<ng-include src="'modules/component/toolbar.html'"></ng-include>
+			<div class="pull-right">						
+				<div class="row ">
+					<div class="col-md-3"> 	
+						<select id="template" class="form-control ng-pristine ng-valid" ng-model="templates.template" title="Select template type"> 
+							<option value="">Select Template Type</option>		
+							<option value="projectTemplate">Project</option>
+							<option value="propertyTemplate">Property</option> 
+							<option value="websitesTemplate">Websites</option> 
+						</select>
+					</div>
+					<div class="col-md-9">
+						<a href="#/dashboard/templates" class="btn btn-default" title="List of Template">List of Templates</a>
+						<a href="#/dashboard/templates/myTemplates" class="btn btn-default" title="My Template">My Templates</a>
+						<a href="#/dashboard/templates/requestCustomTemplates" class="btn btn-default" title="Request Custom Template">Request Custom Template</a>
+						<a href="#/dashboard/templates/customTemplates" class="btn btn-default" title="Custom Template">Custom Templates</a>
+					</div>	
 				</div>	
-			</div>		
-				<div class="clearfix"></div>
+			</div>
+					<div class="clearfix"></div>
+					<hr/>
+				<div class="row">
+					 <div class="col-md-3"> 
+						<label class="control-label">Search </label>		
+						<input class="form-control ng-pristine ng-valid" ng-model="templates.searchProp" placeholder="search" title="Search" type="text">
+					</div>			 				  
+					 <div class="col-md-3">
+						<label for="id" class="control-label">Sort by Order</label>
+						<select id="id" class="form-control ng-pristine ng-valid" ng-model="id" title="Select order"> 
+							<option value="">Select Order</option>		<!-- added value & selected attr -->	
+							<option value="-id">Desending</option>
+							<option value="id">Asending</option>  
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label for="status" class="control-label">Select Status</label>
+						<select id="status" class="form-control ng-pristine ng-valid" ng-model="status" title="Status">
+							<option value="" selected="">Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
+							<option value="1">Active</option>
+							<option value="0">Deleted</option>   
+						</select>
+					</div>	
+					<div class="col-md-3">
+						<label for="T_type" class="control-label">Template Type</label>
+						<select id="T_type" class="form-control ng-pristine ng-valid" ng-model="T_type" title="Select type">
+							<option value="" selected="">Select Template</option> <!-- add value attribute empty & selected for initial selected option -->
+							<option value="free">Free</option>
+							<option value="buy">Buy</option>
+							<option value="preview">Preview</option>	
+						</select>
+					</div>			
+				</div>	
 				<hr/>
-			<div class="row">
-				 <div class="col-md-3"> 
-					<label class="control-label">Search </label>		
-					<input class="form-control ng-pristine ng-valid" ng-model="templates.searchProp" placeholder="search" title="Search" type="text">
-				</div>			 				  
-				 <div class="col-md-3">
-					<label for="id" class="control-label">Sort by Order</label>
-					<select id="id" class="form-control ng-pristine ng-valid" ng-model="id" title="Select order"> 
-						<option value="">Select Order</option>		<!-- added value & selected attr -->	
-						<option value="-id">Desending</option>
-						<option value="id">Asending</option>  
-					</select>
-				</div>
-				<div class="col-md-3">
-					<label for="status" class="control-label">Select Status</label>
-					<select id="status" class="form-control ng-pristine ng-valid" ng-model="status" title="Status">
-						<option value="" selected="">Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
-						<option value="1">Active</option>
-						<option value="0">Deleted</option>   
-					</select>
-				</div>	
-				<div class="col-md-3">
-					<label for="T_type" class="control-label">Template Type</label>
-					<select id="T_type" class="form-control ng-pristine ng-valid" ng-model="T_type" title="Select type">
-						<option value="" selected="">Select Template</option> <!-- add value attribute empty & selected for initial selected option -->
-						<option value="free">Free</option>
-						<option value="buy">Buy</option>
-						<option value="preview">Preview</option>	
-					</select>
-				</div>			
-			</div>	
-			<hr/>
-			<div class="row">
-				<div class="col-md-12 table-responsive">
-					<ng-include ng-if="tempPart=='projectTemplate'" src="'modules/templates/projectTemplate.html'"></ng-include>	
-					
-					<ng-include ng-if="tempPart=='propertyTemplate'" src="'modules/templates/propertyTemplate.html'"></ng-include>	
-					
-					<ng-include ng-if="tempPart=='websitesTemplate'" src="'modules/templates/websitesTemplate.html'"></ng-include>	
-					
-					<ng-include ng-if="tempPart=='myTemplates'"
-					src="'modules/templates/myTemplates.html'"></ng-include>	
-					
-					<ng-include ng-if="tempPart=='requestCustomTemplates'" src="'modules/templates/requestCustomTemplates.html'"></ng-include>	
-					
-					<ng-include ng-if="tempPart=='customTemplates'" 
-					src="'modules/templates/customTemplates.html'"></ng-include>
-					
-					<!-- <ng-include ng-if="tempPart=='customTemplates'" src="'modules/templates/customTemplates.html'"></ng-include>	 -->
-				</div>
-			</div>		
+				<div class="row">
+					<div class="col-md-12 ">
+						<div class="table-responsive">
+							<ng-include ng-if="tempPart=='projectTemplate'" src="'modules/templates/projectTemplate.html'"></ng-include>	
+							
+							<ng-include ng-if="tempPart=='propertyTemplate'" src="'modules/templates/propertyTemplate.html'"></ng-include>	
+							
+							<ng-include ng-if="tempPart=='websitesTemplate'" src="'modules/templates/websitesTemplate.html'"></ng-include>	
+							
+							<ng-include ng-if="tempPart=='myTemplates'"
+							src="'modules/templates/myTemplates.html'"></ng-include>	
+							
+							<ng-include ng-if="tempPart=='requestCustomTemplates'" src="'modules/templates/requestCustomTemplates.html'"></ng-include>	
+							
+							<ng-include ng-if="tempPart=='customTemplates'" 
+							src="'modules/templates/customTemplates.html'"></ng-include>
+							
+							<!-- <ng-include ng-if="tempPart=='customTemplates'" src="'modules/templates/customTemplates.html'"></ng-include>	 -->
+						</div>
+					</div>
+				</div>		
 		</div>
 	</div>
 </div>
