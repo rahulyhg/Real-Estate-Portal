@@ -65,3 +65,20 @@ expiry_date DATETIME( 6 ) NOT NULL ,
 domain_price VARCHAR( 255 ) NOT NULL ,
 STATUS ENUM(  'active',  'expired',  'deleted' ) NOT NULL
 )
+
+'create table "contacts" '
+
+CREATE TABLE contacts(
+id INT( 10 ) PRIMARY KEY NOT NULL ,
+user_id INT( 10 ) NOT NULL ,
+first_name VARCHAR( 255 ) NOT NULL ,
+last_name VARCHAR( 255 ) NOT NULL ,
+email VARCHAR( 255 ) NOT NULL ,
+phone INT( 20 ) NOT NULL ,
+mobile INT( 12 ) NOT NULL ,
+website VARCHAR( 255 ) NOT NULL ,
+address TEXT( 255 ) NOT NULL ,
+dob DATETIME( 6 ) NOT NULL ,
+domain_name VARCHAR( 255 ) NOT NULL ,
+status ENUM(  'YES',  'NO' ) NOT NULL
+)
