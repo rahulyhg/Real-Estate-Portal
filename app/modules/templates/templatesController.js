@@ -5,18 +5,25 @@ define(['app'], function (app) {
 	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope) {
 		$rootScope.metaTitle = "Real Estate Template";
 		
-		//Code For Pagination
+		//Code For Pagination{pooja}
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
+		$scope.currentPage=1;		
 		$scope.projTempCurrentPage = 1;
 		$scope.customTempCurrentPage=1;
-		$scope.myTempCurrentPage=1;
+		$scope.myTemplate=1;
+		$scope.listTempCurrentPage=1;
 		$scope.webTempCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
 
 		$scope.pageChanged = function() {
 			//$log.log('Page changed to: ' + $scope.currentPage);
+			$http.get("../server-api/index.php/template/"+$scope.currentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.templates = response.template;
+				
+			});
 			$http.get("../server-api/index.php/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems)
 			.success(function(response) {
 				$scope.templates = response.template;
@@ -27,12 +34,17 @@ define(['app'], function (app) {
 				$scope.templates = response.template;
 				
 			});
-			$http.get("../server-api/index.php/template/"+$scope.myTempCurrentPage+"/"+$scope.pageItems)
+			$http.get("../server-api/index.php/template/"+$scope.myTemplate+"/"+$scope.pageItems)
 			.success(function(response) {
 				$scope.templates = response.template;
 				
 			});
 			$http.get("../server-api/index.php/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems)
+			.success(function(response) {
+				$scope.templates = response.template;
+				
+			});
+			$http.get("../server-api/index.php/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems)
 			.success(function(response) {
 				$scope.templates = response.template;
 				
@@ -46,7 +58,7 @@ define(['app'], function (app) {
 		if(!$routeParams.tempPart) {
 		$location.path('/dashboard/templates/projectTemplate');
 		}	
-		templateUrl:'http://localhost/pooja/Real-Estate-Portal/app/modules/templates/templates.html';
+		
     };
        
 	// Inject controller's dependencies

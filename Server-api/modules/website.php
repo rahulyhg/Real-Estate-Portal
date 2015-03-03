@@ -6,7 +6,7 @@
 	if($reqMethod=="GET"){
 		if(isset($id)){
 			$where['id'] = $id;
-			$data = $db->select("2_real_property", $where);
+			$data = $db->select("websites", $where);
 			echo json_encode($data);
 			
 		}else{
@@ -15,10 +15,10 @@
 			$limit['records'] = $records; // how many records to select
 			
 			// this is used to select data with LIMIT & where clause
-			$data = $db->select("2_real_property", $where, $limit);
+			$data = $db->select("websites", $where, $limit);
 			
 			// this is used to count totalRecords with only where clause
-			$totalRecords['totalRecords'] = count($db->select("2_real_property", $where)['data']);		
+			$totalRecords['totalRecords'] = count($db->select("websites", $where)['data']);		
 			
 			// $data is array & $totalRecords is also array. So for final output we just merge these two arrays into $data array
 			$data = array_merge($totalRecords,$data);
@@ -27,13 +27,13 @@
 	}
 	
 	if($reqMethod=="POST"){
-		$insert = $db->insert("2_real_property", $body);
+		$insert = $db->insert("websites", $body);
 		echo json_encode($insert);
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){
 		$where['id'] = $id; // need where clause to update/delete record
-		$update = $db->update("2_real_property", $body, $where);
+		$update = $db->update("websites", $body, $where);
 		echo json_encode($update);
 	}
  ?>

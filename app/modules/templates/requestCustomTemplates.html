@@ -33,9 +33,10 @@
 	<div class="form-group">
 		<label for="req" class="col-md-2 control-label">Custom Requirement</label>	
 		<div class="col-md-9">	  
-			<textarea type="text" id="req" class="form-control" placeholder="Your Custom Requirement" name="req" ng-model="requirement.req" ng-minlength="10"  cols="30" rows="4" ng-maxlength="11" ui-tinymce required></textarea>			
-					
-			<p ng-hide="reqCustTemplate.requirement.req.$error.maxlength">{{ 11 - requirement.req.length + " Chars left"}}</p>
+			<textarea class="form-control"  id="req" name="req" ng-model="templates.req" cols="30" rows="4" ng-maxlength="356" placeholder="Custom Template Requirement" ui-tinymce></textarea>
+			      
+			<p ng-hide="reqCustTemplate.req.$error.maxlength">{{ 356 - templates.req.length + " Chars left" }}</p>
+			
 			<span style="color:red" ng-show="reqCustTemplate.req.$error.maxlength">Sorry You are Exceeding the Limit</span>
 			<span style="color:red" ng-show="reqCustTemplate.req.$dirty && reqCustTemplate.req.$invalid"></span>
 			<span  ng-show="reqCustTemplate.req.$error.required">Custom Requirement are Required.</span>
