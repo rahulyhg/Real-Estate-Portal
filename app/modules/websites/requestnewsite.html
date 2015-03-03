@@ -32,13 +32,15 @@
 		<div class="form-group">
 			<label  for="product" class="col-md-2 control-label">Product/Services:</label>	
 			<div class="col-md-8">
-			<textarea class="form-control"  id="product" name="product" ng-model="websites.product" cols="30" rows="4" ng-maxlength="356" placeholder="Product/Services" required></textarea>
-			<p ng-hide="requestNewSite.websites.product.$error.maxlength">{{ 356 - websites.product.length + " Chars left" }}</p>
+			<textarea class="form-control"  id="product" name="product" ng-model="websites.product" cols="30" rows="4" ng-maxlength="20" placeholder="Product/Services"></textarea>
+			      
+			<p ng-hide="requestNewSite.product.$error.maxlength">{{ 20 - websites.product.length + " Chars left" }}</p>
 			<span style="color:red" ng-show="requestNewSite.product.$error.maxlength">
 				Sorry You are Exceeding the Limit
 			</span>	
 			<span style="color:red" ng-show="requestNewSite.product.$dirty && requestNewSite.product.$invalid">Product/Services is Required:
-			  <span ng-show="requestNewSite.product.$error.required">Product/Services is Required</span></span>				
+				<span ng-show="requestNewSite.product.$error.required">Product/Services is Required</span>
+			</span>				
 			</div>						
 		</div>						
 		<div class="form-group">
