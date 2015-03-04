@@ -35,5 +35,9 @@
 		$where['id'] = $id; // need where clause to update/delete record
 		$update = $db->update("templates", $body, $where);
 		echo json_encode($update);
+		//to delete record {sunita}
+		$delete = $db->delete("templates",$where);
+			echo $delete;
+		
 	}
  ?>
