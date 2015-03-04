@@ -20,6 +20,8 @@ $app->get('/getmultiple/:getRequest/:pageNo(/:records)','getRecords');
 $app->get('/getsingle/:getRequest(/:id)', 'getRecord' );
 //use this uri for post new record into database - like create
 $app->post('/post/:getRequest', 'postRecord' );
+
+$app->post('/upload', 'uploadFiles' );
 //use this uri for put/update record from database
 $app->put('/put/:getRequest/:id', 'putRecord' );
 //use this uri for delete record from database
@@ -75,6 +77,23 @@ function getRecords($getRequest, $pageNo=1, $records = 10){
     }
 		
 };
+
+function uploadFiles(){
+	$app = new \Slim\Slim();
+	$body = $app->request->getBody();
+
+	try{
+		if(!isset($_FILES)){
+				throw new Exception('There is no file input!');
+		}else{
+			include 'modules/upload.php';
+		}
+	}
+	catch(Exception $e) {
+		echo "Error: '".$e->getMessage()."'";
+        //return $app->response()->redirect($baseUrl.'/notfound');
+    }
+}
 
 function postRecord($getRequest){
 	$app = new \Slim\Slim();

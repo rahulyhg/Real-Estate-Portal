@@ -158,5 +158,62 @@ define(['app'], function (app) {
       }
     ]);
 	
+	app.factory('upload', [
+      '$rootScope',
+	  
+      '$upload',
+	  '$timeout',
+      function ($rootScope, $upload, $timeout) {
+		return {
+			fileReaderSupported : window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false),
+			upload : function (files,path,userinfo,success,error) {
+				if (files && files.length) {
+					for (var i = 0; i < files.length; i++) {
+						var file = files[i];
+						$upload.upload({
+							url: '../server-api/index.php/upload',
+							fields: {'path': path, 'userinfo': userinfo},
+							file: file
+						}).progress(function (evt) {
+							var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+							//console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+										
+							file.progress = progressPercentage;
+						}).success(function (data, status, headers, config) {
+							//console.log('file ' + config.file.name + 'uploaded. Response: ' + JSON.stringify(data));
+							success(data, status, headers, config);
+						}).error(function(err,err1,err2, err3){
+							error(err,err1,err2,err3);
+							//console.log(err3);
+						});
+					}
+				}
+			},
+			generateThumb : function(file) {
+				if (file != null) {
+					if (this.fileReaderSupported && file.type.indexOf('image') > -1) {
+						$timeout(function() {
+							var fileReader = new FileReader();
+							fileReader.readAsDataURL(file);
+							fileReader.onload = function(e) {
+								$timeout(function() {
+									file.dataUrl = e.target.result;
+								});
+							}
+						});
+					}
+				}
+			},
+			generateThumbs : function(files) {
+				if (files && files.length) {
+					for (var i = 0; i < files.length; i++) {
+						var file = files[i];
+						this.generateThumb(file);
+					}
+				}
+			}
+		}
+	  }]);
+	
 	return app;
 });

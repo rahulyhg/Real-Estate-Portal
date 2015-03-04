@@ -1,8 +1,8 @@
 'use strict';
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams','$http','$rootScope','$upload'];
+    var injectParams = ['$scope', '$injector','$routeParams','$http','$rootScope','upload', '$timeout'];
     // This is controller for this view
-	var addpropertyController = function ($scope, $injector,$routeParams,$http,$rootScope, $upload) {
+	var addpropertyController = function ($scope, $injector,$routeParams,$http,$rootScope, upload, $timeout) {
 		$rootScope.metaTitle = "Add Real Estate Property";
 		
 		// Add property
@@ -37,28 +37,15 @@ define(['app'], function (app) {
 		}
 		
 		//Upload Function for uploading files
-		$scope.$watch('files', function () {
-			$scope.upload($scope.files);
-		});
-		$scope.upload = function (files) {
-			if (files && files.length) {
-				for (var i = 0; i < files.length; i++) {
-					var file = files[i];
-					$upload.upload({
-						url: '../server-api/try.php/upload',
-						file: file
-					}).progress(function (evt) {
-						var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-						console.log('progress: ' + progressPercentage + '% ' +
-									evt.config.file.name);
-					}).success(function (data, status, headers, config) {
-						console.log('file ' + config.file.name + 'uploaded. Response: ' +
-									JSON.stringify(data));
-					}).error(function(err,err1,err2, err3){
-						console.log(err3 );
-					});
-				}
-			}
+		$scope.uploadResponse="";
+		$scope.upload = function(files,path,userinfo){
+			upload.upload(files,path,userinfo,function(data){
+				$scope.uploadResponse = data;
+			});
+		};
+		
+		$scope.generateThumb = function(files){
+			upload.generateThumbs(files);
 		};
 	
 	};		

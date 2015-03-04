@@ -170,7 +170,15 @@
 					<div class="form-group">
 					  <label for="propImages" class="col-md-2" >* Property Images </label>
 						<div class="col-md-9">
-						<input type="file" id="propImages" ng-file-select ng-file-preview ng-multiple="true" accept="image/png, image/gif, image/jpeg" ng-file-change="upload($files)" ng-model="propImages">
+						<input type="file" id="propImages" ng-file-select ng-file-preview ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="propImages">
+						
+						<file-preview url="propImages"></file-preview>
+						
+						<button ng-show="propImages" ng-click="upload(propImages)" type="button">Upload</button>
+						
+						
+						<span ng-show="propImages[0].result">Upload Successful</span>
+						
 						<input type="hidden" ng-model="property.prop_image">
 						</div>			
 					</div>	 <!-- end property  -->		
