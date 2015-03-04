@@ -47,23 +47,12 @@
 					<th>Manage Site</th>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
-						<td>22/02/2015</td>
-						<td>22/02/2016</td>
-						<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
-						<td>
-							<a href="#"  class="glyphicon glyphicon-pencil btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
-							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td><a href="www.parkxpress.in">www.parkxpress.in</a></td>
-						<td>22/02/2015</td>
-						<td>22/02/2016</td>
-						<td><button class="btn btn-primary" name="Progress">In Progress</button></td>
+					<tr ng-repeat="x in reqwebsites">
+						<td>{{x.id}}</td>
+						<td>{{x.domain_name}}</td>
+						<td>{{x.registered_date}}</td>
+						<td>{{x.expiry_date}}</td>
+						<td>{{x.status}}</td>
 						<td>
 							<a href="#"  class="glyphicon glyphicon-pencil btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Edit Requested Sites"></a>
 							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
