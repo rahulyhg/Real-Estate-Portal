@@ -6,7 +6,7 @@
 	if($reqMethod=="GET"){
 		if(isset($id)){
 			$where['id'] = $id;
-			$data = $db->select("websites", $where);
+			$data = $db->select("website", $where);
 			echo json_encode($data);
 			
 		}else{
@@ -27,13 +27,13 @@
 	}
 	
 	if($reqMethod=="POST"){
-		$insert = $db->insert("websites", $body);
+		$insert = $db->insert("website", $body);
 		echo json_encode($insert);
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){
 		$where['id'] = $id; // need where clause to update/delete record
-		$update = $db->update("websites", $body, $where);
+		$update = $db->update("website", $body, $where);
 		echo json_encode($update);
 	}
  ?>
