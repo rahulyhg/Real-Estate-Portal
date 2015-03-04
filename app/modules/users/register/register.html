@@ -14,10 +14,10 @@
 				<hr>
 				<p>Please register a free account, before you can start posting your ads. Registration is quick and free! Please note that fields marked * are required.</p>						
 				<div class="form-group">
-					<label for="full_name" class="col-md-2 control-label">Name* </label>
+					<label for="name" class="col-md-2 control-label">Name* </label>
 					<div class="col-md-9">
-						<input type="text" class="form-control" id="full_name" ng-model="reg.full_name" name="full_name" placeholder="Enter Your Name" ng-required="true">	
-							<span style="color:red" ng-show="Registration.full_name.$error.required && (Registration.full_name.$dirty || submitted)" class="help-block">Name is required.</span>						
+						<input type="text" class="form-control" id="name" ng-model="reg.name" name="name" placeholder="Enter Your Name" ng-required="true">	
+							<span style="color:red" ng-show="Registration.name.$error.required && (Registration.name.$dirty || submitted)" class="help-block">Name is required.</span>						
 					</div>						
 				</div>				
 				<div class="form-group">
@@ -60,7 +60,7 @@
 						</span>				
 					</div>
 					<div class="col-md-3">
-						<select class="form-control" name="city" id="city"  ng-model="reg.city" ng-required="true">		  <option value="">Select City</option>	
+						<select class="form-control" name="city" id="city"  ng-model="city" ng-required="true">		  <option value="">Select City</option>	
 							<option value="Ahmednagar">Ahmednagar</option>
 							<option value="Pune">Pune</option>
 							<option value="Nashik">Nashik</option>
@@ -73,16 +73,16 @@
 					</div>
 				</div>				
 				<div class="form-group">
-					<label for="tel" class="col-md-2 control-label">Phone </label>
+					<label for="phone" class="col-md-2 control-label">Phone </label>
 					<div class="col-md-9">
-						<input type="text" class="form-control help-block" id="tel" ng-model="reg.tel" name="tel" placeholder="Your Phone number" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
-						<p ng-show="Registration.tel.$error.pattern && (Registration.tel.$dirty || submitted)" style="color:red" >Enter a valid contact no.</p>
+						<input type="text" class="form-control help-block" id="phone" ng-model="reg.phone" name="phone" placeholder="Your Phone number" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
+						<p ng-show="Registration.phone.$error.pattern && (Registration.phone.$dirty || submitted)" style="color:red" >Enter a valid contact no.</p>
 					</div>						
 				</div>				
 				<div class="form-group">
 					<label for="fax" class="col-md-2 control-label">Fax </label>
 					<div class="col-md-9">
-						<input type="fax " class="form-control" id="fax" ng-model="reg.fax " name="fax " placeholder="Enter Fax " required>
+						<input type="fax " class="form-control" id="fax" ng-model="fax " name="fax" placeholder="Enter Fax " required>
 						<span style="color:red" ng-show="Registration.fax.$dirty && Registration.fax.$invalid">
 							<span ng-show="Registration.fax.$error.required">Fax  is required.</span>
 						</span>
@@ -91,7 +91,7 @@
 				<div class="form-group">
 					<label for="website" class="col-md-2 control-label">Website </label>
 					<div class="col-md-9">
-						<input type="url" class="form-control" id="website" ng-model="reg.website" name="website" placeholder="Enter Website " required>
+						<input type="url" class="form-control" id="website" ng-model="website" name="website" placeholder="Enter Website " required>
 						<span style="color:red" ng-show="Registration.website.$dirty && 	Registration.website.$invalid">
 							<span ng-show="Registration.website.$error.required">Website  is required.</span>
 							<span ng-show="Registration.website.$error.url">Invalid Web Site.</span>
@@ -101,11 +101,11 @@
 				<h4 class="col-md-12">Login Details</h4>
 				<hr>
 				<div class="form-group">
-					<label for="user_name" class="col-md-2 control-label">UserName*</label>
+					<label for="username" class="col-md-2 control-label">UserName*</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control" ng-model="reg.user_name" id="user_name" name="user_name" placeholder="Enter User Name " ng-minlength="3" ng-maxlength="8" ng-required="true">
+						<input type="text" class="form-control" ng-model="reg.username" id="username" name="username" placeholder="Enter User Name " ng-minlength="3" ng-maxlength="8" ng-required="true">
 																
-						<span style="color:red" ng-show="Registration.user_name.$error.required&& (Registration.user_name.$dirty || submitted)" class="help-block">User Name is required.</span>
+						<span style="color:red" ng-show="Registration.username.$error.required&& (Registration.username.$dirty || submitted)" class="help-block">User Name is required.</span>
 						
 					</div>						
 					<div class="col-md-3">
@@ -113,27 +113,27 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="pwd" class="col-md-2 control-label">Password* </label>
+					<label for="password" class="col-md-2 control-label">Password* </label>
 					<div class="col-md-9">
-						<input type="Password" class="form-control" id="pwd" ng-model="reg.pwd " name="pwd" placeholder="Enter Password " ng-required="true">
-						<span style="color:red" ng-show="Registration.pwd.$dirty && 	Registration.pwd.$invalid">
-						<span ng-show="Registration.pwd.$error.required">Password is required.</span>
+						<input type="Password" class="form-control" id="password" ng-model="reg.password " name="password" placeholder="Enter Password " ng-required="true">
+						<span style="color:red" ng-show="Registration.password.$dirty && 	Registration.password.$invalid">
+						<span ng-show="Registration.password.$error.required">Password is required.</span>
 						</span>
 					</div>						
 				</div>				
 				<div class="form-group">
-					<label for="rpwd" class="col-md-2 control-label">Retype Password *</label>
+					<label for="password" class="col-md-2 control-label">Retype Password *</label>
 					<div class="col-md-9">
-						<input type="Password" class="form-control" id="rpwd" ng-model="reg.rpwd" name="rpwd" placeholder="Enter Password " required>
-						<span style="color:red" ng-show="Registration.rpwd.$dirty && 	Registration.rpwd.$invalid">
-							<span ng-show="Registration.rpwd.$error.required">Password is required.</span>
+						<input type="Password" class="form-control" id="password" ng-model="password" name="password" placeholder="Enter Password " required>
+						<span style="color:red" ng-show="Registration.password.$dirty && 	Registration.password.$invalid">
+							<span ng-show="Registration.password.$error.required">Password is required.</span>
 						</span>
 					</div>						
 				</div>				
 				<div class="form-group">
 					<label for="requested_domains" class="col-md-2 control-label">Request For Domain</label>
 					<div class="col-md-9">
-						<input type="url" class="form-control" id="requested_domains" ng-model="reg.requested_domains" name="requested_domains" placeholder="Enter Website " required>
+						<input type="url" class="form-control" id="requested_domains" ng-model="requested_domains" name="requested_domains" placeholder="Enter Website " required>
 						<span style="color:red" ng-show="Registration.requested_domains.$dirty && 	Registration.requested_domains.$invalid">
 							<span ng-show="Registration.requested_domains.$error.required">Domain Name  is required.</span>
 							<span ng-show="Registration.requested_domains.$error.url">Invalid Domain Name.</span>
@@ -142,7 +142,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-offset-2 col-md-9">
-						<button type="submit" ng-click="insert()" class="btn btn-success" title="Register">Register</button>
+						<button type="submit" ng-click="insert(reg)" class="btn btn-success" title="Register">Register</button>
 						<button type="Reset" ng-click="reset()" class="btn btn-danger" title="Reset">Cancel</button>
 					</div>
 				</div>

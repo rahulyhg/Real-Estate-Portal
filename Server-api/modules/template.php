@@ -37,7 +37,7 @@
 		echo json_encode($update);
 		//to delete record {sunita}
 		$delete = $db->delete("templates",$where);
-			echo $delete;
+			echo json_encode($delete);
 		
 	}
  ?>
