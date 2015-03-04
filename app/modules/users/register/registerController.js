@@ -9,7 +9,7 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 		$scope.insert = function(reg){
 			//console.log($scope.user);
 			console.log($scope.reg);
-			$http.post("../server-api/index.php/post/user")
+			$http.post("../server-api/index.php/post/user",$scope.reg)
 			.success(function(response) {
 				
 				//$scope.reset();

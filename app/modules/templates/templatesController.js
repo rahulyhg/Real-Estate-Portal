@@ -1,8 +1,8 @@
 'use strict';
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope'];
+    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','$http'];
     // This is controller for this view
-	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope) {
+	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,$http) {
 		$rootScope.metaTitle = "Real Estate Template";
 		
 		//Code For Pagination{pooja}
@@ -51,15 +51,77 @@ define(['app'], function (app) {
 			});
 		};		
 		
+		// to View Templatelist
 		
-		$scope.tempPart = $routeParams.tempPart; 		
-		console.log($scope.tempPart);
-		/*For display by default projectTemplate.html page*/
-		if(!$routeParams.tempPart) {
-		$location.path('/dashboard/templates/projectTemplate');
-		}	
-		
-    };
+		//this request for single templates data
+			if($routeParams.id) {
+				
+				$http.get("../server-api/index.php/getsingle/template/"+$routeParams.pageNo,$routeParams.id)
+				.success(function(response) {$scope.templates = response;
+					console.log($scope.templates);
+				});
+				
+			}else{
+			//this request for all templates data
+				
+					$http.get("../server-api/index.php/getmultiple/template/"+$routeParams.pageNo,$routeParams.id)
+					.success(function(response) 
+					{$scope.templates = response;
+						console.log($scope.templates);
+					});
+				
+				
+			}//end templatelist code
+			
+			//add template
+			
+			$scope.reset = function() {
+				$scope.templates = {};
+			};
+			$scope.addproject = function(){
+				
+				console.log($scope.templates);
+				$http.post("../server-api/index.php/post/template/", $scope.templates)
+				.success(function(response) {
+					alert(response);
+					$scope.reset();
+					
+				});
+			};
+
+			//update template 
+			if($routeParams.id){
+				$http.get("../server-api/index.php/put/template/"+$routeParams.id)
+				.success(function(response) {
+					$scope.templates = response;
+					$scope.reset = function() {
+						$scope.templates = angular.copy($scope.templates);
+					};
+					$scope.reset();
+					console.log($scope.templates);
+					
+				}).error(function(err){
+					console.log(err);
+				});
+				
+				$scope.update = function(){
+					$http.put("../server-api/index.php/put/template/"+$routeParams.id,$scope.templates)
+					.success(function(response) {
+						alert(response);
+					});
+				};
+			}	
+
+			
+				
+				$scope.tempPart = $routeParams.tempPart; 		
+				console.log($scope.tempPart);
+				/*For display by default projectTemplate.html page*/
+				if(!$routeParams.tempPart) {
+				$location.path('/dashboard/templates/projectTemplate');
+				}	
+				
+	};
        
 	// Inject controller's dependencies
 	templatesController.$inject = injectParams;

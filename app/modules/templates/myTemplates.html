@@ -11,11 +11,11 @@
 				
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr ng-repeat="x in templates">
+				<td>{{x.id}}</td>
+				<td>{{x.template_name}}</td>
+				<td>{{x.date}}</td>
+				<td>{{x.modified_date}}</td>
 					<td>
 						<a class="btn btn-success" title="Active">Active</a>
 						<a class="btn btn-warning" title="Delete">Delete</a>
