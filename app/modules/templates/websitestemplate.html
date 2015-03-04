@@ -10,36 +10,21 @@
 			<th>Template Type</th>						
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr ng-repeat="x in templates">
+				<td>{{x.id}}</td>
+				<td>{{x.template_name}}</td>
+				<td>{{x.date}}</td>
+				<td>{{x.modified_date}}</td>
 				<td>
 						<a class="btn btn-success"  title="Active">Active</a>
 						<a class="btn btn-warning"  title="Delete">Delete</a>
-					</td>
+				</td>
 				<td><a href="#" class="btn btn-success" title="Apply for Template">Apply</a>
 					<a href="#" class="btn btn-warning" title="Buy Template">Buy</a>
 					<a href="#" class="btn btn-primary" title="Preview Template">Preview</a>
 				</td>
 			</tr>
-			<tr>
-				<td>2</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td><a href="#" class="btn btn-warning" title="Buy Template">&nbsp Buy&nbsp </a></td>
-			</tr>	
-			<tr>
-				<td>3</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td><a href="#" class="btn btn-success" title="Apply for Template">Apply</a></td>
-			</tr>	
+			
 		</tbody>					
 	</table>
 </div>
