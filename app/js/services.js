@@ -217,6 +217,44 @@ define(['app'], function (app) {
 			}
 		}
 	  }]);
+	  
+	  /* $HTTP Service for server request
+	  *************************************************************************/
+	  
+	  app.factory("dataService", ['$http',
+		function ($http) { // This service connects to our REST API
+
+			var serviceBase = '../server-api/index.php/';
+
+			var obj = {};
+			obj.setBase = function(path){
+				serviceBase = path;
+			};
+			obj.get = function (q) {
+				return $http.get(serviceBase + q).then(function (results) {
+					return results.data;
+				});
+			};
+			obj.post = function (q, object) {
+				return $http.post(serviceBase + q, object).then(function (results) {
+					return results.data;
+				});
+			};
+			obj.put = function (q, object) {
+				return $http.put(serviceBase + q, object).then(function (results) {
+					return results.data;
+				});
+			};
+			obj.delete = function (q, object) {
+				return $http.delete(serviceBase + q, object).then(function (results) {
+					return results.data;
+				});
+			};
+
+			return obj;
+	}]);
+	  
+	  
 	
 	return app;
 });

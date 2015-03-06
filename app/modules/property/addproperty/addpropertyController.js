@@ -1,8 +1,8 @@
 'use strict';
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams','$http','$rootScope','upload', '$timeout'];
+    var injectParams = ['$scope', '$injector','$routeParams','$http','$rootScope','upload', '$timeout', 'dataService'];
     // This is controller for this view
-	var addpropertyController = function ($scope, $injector,$routeParams,$http,$rootScope, upload, $timeout) {
+	var addpropertyController = function ($scope, $injector,$routeParams,$http,$rootScope, upload, $timeout,dataService) {
 		$rootScope.metaTitle = "Add Real Estate Property";
 		
 		// Add property
@@ -11,16 +11,16 @@ define(['app'], function (app) {
 		};
 		$scope.addprop = function(){
 			console.log($scope.property);
-			$http.post("../server-api/index.php/addproperty", $scope.property)
-			.success(function(response) {
+			dataService.post("post/property", $scope.property)
+			.then(function(response) {
 				alert(response);
 				$scope.reset();
 			});
 		};
 		if($routeParams.id){
 			//Update Property
-			$http.get("../server-api/index.php/property/"+$routeParams.id)
-			.success(function(response) {
+			dataService.get("getsingle/property/"+$routeParams.id)
+			.then(function(response) {
 					$scope.property = response;
 					$scope.reset = function() {
 						$scope.property = angular.copy($scope.property);

@@ -12,15 +12,15 @@
 						<div class="form-group">
 							
 							<label for="property_for" class="col-md-2  control-label">* Property for</label>
-							<div class="col-md-9"  ng-model="property.property_for">
+							<div class="col-md-9"  ng-model="property.property_for"> {{property.property_for | json}}
 								<label class="radio-inline">
-									<input type="radio" name="property_for"  id="Sale" value="Sale" checked="true">Sale
+									<input type="radio" name="property_for" ng-model="property.property_for"  id="Sale" value="Sale" checked="true">Sale
 								</label>
 								<label class="radio-inline">
-								  <input type="radio" name="property_for"  id="Rent" value="Rent"> Rent
+								  <input type="radio" name="property_for" ng-model="property.property_for"  id="Rent" value="Rent"> Rent
 								</label>
 								<label class="radio-inline">
-								  <input type="radio" name="property_for"  id="PG" value="PG"> PG
+								  <input type="radio" name="property_for" ng-model="property.property_for"  id="PG" value="PG"> PG
 								</label>												
 							</div>	
 						</div>
@@ -489,13 +489,13 @@
 								<tr>
 									<td class="checkbox"> 							
 									  <label>
-										<input type="checkbox" value="" name="selectall" ng-model="property.selectall">
-										Select All
+										<input type="checkbox" value="" name="other_domain[]" ng-model="property.other_domain">
+										Select All {{property.other_domain | json}}
 									  </label>
 									</td>
 									<td class="checkbox ">
 									  <label>
-										<input type="checkbox" value="" name="other_domain[]" value="www.hinjewadiproperties.com">www.hinjewadiproperties.com
+										<input type="checkbox" value="" name="other_domain[]" value="www.hinjewadiproperties.com" ng-model="property.other_domain">www.hinjewadiproperties.com
 									  </label>
 									</td>
 								</tr>
