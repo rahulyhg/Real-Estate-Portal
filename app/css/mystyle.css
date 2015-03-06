@@ -20,8 +20,9 @@ body {
 }
 body .main-content,
 body .main-content row ng-scope {
-  padding: 10px;
+  padding: 15px;
   margin-top: 10px;
+  border:solid 1px;
 }
 body .main-content .f1,
 body .main-content row ng-scope .f1,
@@ -103,6 +104,7 @@ body .main-content row ng-scope .reqList {
 body .main-content .bottomspace,
 body .main-content row ng-scope .bottomspace {
   padding-bottom: 10px;
+  border-bottom:1px solid;
 }
 body .main-content .main-border,
 body .main-content row ng-scope .main-border {
@@ -145,6 +147,7 @@ body .gridblock {
 }
 body .breadcrumb-back {
   margin-bottom: 10px;
+  border-bottom:solid 1px;
 }
 body .breadcrumb-back .breadcrumb {
   background: transparent;
