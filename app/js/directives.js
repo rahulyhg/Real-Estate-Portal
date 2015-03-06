@@ -17,27 +17,23 @@ define(['app', 'tinymce'], function (app) {
 	});
 	/* go-back directive ends here */
 	
-	app.directive('filePreview', function () {
+	app.directive('filePreview', ['$compile','upload',function ($compile,upload) {
 		return {
-			restrict: 'E',
-			template: "<ul class='list-inline'><li ng-repeat='img in url'><img ng-src='{{img.dataUrl}}' class='img-thumbnail' width='50' ng-click='click($index)'><div class='progress'> <div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='{{img.progress}}' aria-valuemin='0' aria-valuemax='100' style='width: {{img.progress}}%'></div></div></li></ul>",
+			restrict: 'EA',
+			require: "?ngModel",
+			template: "<ul class='list-inline'><li ng-repeat='img in url'><img ng-src='{{img.dataUrl}}' class='img-thumbnail' width='50' ng-click='click(img)'><div class='progress'> <div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='{{img.progress}}' aria-valuemin='0' aria-valuemax='100' style='width: {{img.progress}}%'></div></div></li></ul>",
 			scope: {
 				url : "="
 			},
-			controller: function($scope, $element, upload){
-				$scope.click = function(ind){
-					console.log(ind + "clicked");
-				}
+			link: function(scope, element, attrs, ngModel) {
+				scope.click = function(ind){
+					console.log(ind);
+				};
 			},
-			link: function(scope, element, attrs) {
-				element.on('change', function() {
-					console.log("scope");
-					element.after();
-				});
-			}
+			replace:true
 			
 		};
-	});
+	}]);
 	
 	
 	

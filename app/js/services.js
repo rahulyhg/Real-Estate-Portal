@@ -158,6 +158,8 @@ define(['app'], function (app) {
       }
     ]);
 	
+	/* File Upload Service 
+	**********************************************************************/
 	app.factory('upload', [
       '$rootScope',
 	  
@@ -168,6 +170,7 @@ define(['app'], function (app) {
 			fileReaderSupported : window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false),
 			upload : function (files,path,userinfo,success,error) {
 				if (files && files.length) {
+					var progressArr = {};
 					for (var i = 0; i < files.length; i++) {
 						var file = files[i];
 						$upload.upload({
@@ -177,8 +180,8 @@ define(['app'], function (app) {
 						}).progress(function (evt) {
 							var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 							//console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-										
 							file.progress = progressPercentage;
+							
 						}).success(function (data, status, headers, config) {
 							//console.log('file ' + config.file.name + 'uploaded. Response: ' + JSON.stringify(data));
 							success(data, status, headers, config);

@@ -27,9 +27,42 @@
 	}
 	
 	if($reqMethod=="POST"){
-		//$insert = $db->insert("websites", $body);
-		print_r($_FILES);
-		print_r($_POST);
+		//$insert = $db->insert("media", $body);
+		function asBytes($ini_v) {
+		   $ini_v = trim($ini_v);
+		   $s = array('g'=> 1<<30, 'm' => 1<<20, 'k' => 1<<10);
+		   return intval($ini_v) * ($s[strtolower(substr($ini_v,-1))] ?: 1);
+		}
+		// user parameters 
+		$path = ($_POST['path']) ? "uploads/images/".$_POST['path'] : "uploads/images/";
+		$userInfo = json_decode($_POST['userinfo']);
+		$userId = ($userInfo->userId) ? $userInfo->userId : null;
+		if(isset($_FILES['file']) && $userId !== null){
+		
+			$errors= array();        
+			$file_name = $_FILES['file']['name'];
+			$file_size = $_FILES['file']['size'];
+			$file_tmp = $_FILES['file']['tmp_name'];
+			$file_type = $_FILES['file']['type'];   
+			
+			if($file_size > asBytes(ini_get('upload_max_filesize'))){
+				$response["status"] = "error";
+				$response['message'] = 'File size cannot exceed '.ini_get('upload_max_filesize');
+				echoResponse(200,$response);
+			}               
+			else{
+				move_uploaded_file($file_tmp,"uploads/images/".$file_name);
+				$response["status"] = "success";
+				$response["message"] = $file_name." uploaded successfully!";
+				$response['details'] = $path . $file_name;
+				echoResponse(200,$response);
+			}
+		}
+		else{
+			$response["status"] = "error";
+			$response['message'] = 'No image found';
+			echoResponse(200,$response);
+		}
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){

@@ -36,17 +36,27 @@ define(['app'], function (app) {
 			};
 		}
 		
-		//Upload Function for uploading files
-		$scope.uploadResponse="";
-		$scope.upload = function(files,path,userinfo){
+		//Upload Function for uploading files {Vilas}
+		$scope.property={}; // this is form object
+		$scope.userinfo = {userId:1, name:"vilas"}; // this is for uploading credentials
+		$scope.path = "property/"; // path to store images on server
+		$scope.property.prop_image = []; // uploaded images will store in this array
+		$scope.upload = function(files,path,userinfo){ // this function for uploading files
 			upload.upload(files,path,userinfo,function(data){
-				$scope.uploadResponse = data;
+				if(data.status !== 'error'){
+					$scope.property.prop_image.push(JSON.stringify(data.details));
+					console.log(data.message);
+				}else{
+					alert(data.message);
+				}
+				
 			});
 		};
 		
-		$scope.generateThumb = function(files){
+		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
 			upload.generateThumbs(files);
 		};
+		// End upload function {Vilas}
 	
 	};		
 	// Inject controller's dependencies
