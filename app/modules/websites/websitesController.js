@@ -1,5 +1,5 @@
 'use strict';
-define(['app','css!modules/websites/websites'], function (app) {
+define(['app'], function (app) {
     var injectParams = ['$scope', '$injector','$routeParams','$location','$http'];
     // This is controller for this view
 	var websitesController = function ($scope, $injector,$routeParams,$location,$http) {

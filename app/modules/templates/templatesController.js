@@ -1,5 +1,5 @@
 'use strict';
-define(['app','css!modules/templates/templates'], function (app) {
+define(['app'], function (app) {
     var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','$http','upload'];
     // This is controller for this view
 	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,$http,upload) {

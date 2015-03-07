@@ -147,3 +147,15 @@ h3 {
 .nav .nav-pills .nav-stacked{
 	border:1px solid #ccc;
 }
+.dropdown-menu {
+  left: auto;
+  right: 0;
+}
+.btn1 {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.sidebar-border{
+	border:1px solid #ccc;
+}
