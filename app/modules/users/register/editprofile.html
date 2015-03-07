@@ -6,9 +6,17 @@
 				<div class="row ">
 					<div class="col-sm-2">
 						<img class="user-img" src="img/user.jpg">					
-						<input type="file" id="user_img" name="user_img" ng-file-select accept="image/*" ng-file-change="upload($files)" ng-model="user_img">
-						<input type="hidden" ng-model="edit.user_img">					<br>
-						<caption>Upload Your Photo here..!</caption>
+						<input type="file" id="user_img" name="user_img" ng-file-select ng-model="user_img" ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)">
+						<!-- This will show thumbnails & progress of images -->
+						<file-preview url="userImages" ng-model="editpro.user_img"></file-preview>
+						
+						<!-- This button will show if file/s selected -->
+						<button ng-show="user_img" ng-click="upload(user_img,path,userinfo)" type="button">Upload</button>
+						
+						<!-- This hidden input will store image path in array after successful uploading -->
+						<input type="hidden" ng-model="editpro.user_img">
+						<!-- Changed by Pooja -->
+						<caption>Upload Your Photo</caption>
 					</div>			
 					<div class="col-sm-10">					
 						<form name="editProfile" class="form-horizontal " role="form" novalidate="novalidate">	
@@ -21,7 +29,7 @@
 								<label for="name" class="col-md-2 control-label">Name</label>
 								<div class="col-md-8">
 									<input type="text" class="form-control" id="name" ng-model="edit.name" name="name" placeholder="Enter Name" required>
-									<span style="color:red" ng-show="editProfile.name.$error.required && (editProfile.name.$dirty || submitted)" class="help-block">Name is required.</span>
+									<span class="text-danger" ng-show="editProfile.name.$error.required && (editProfile.name.$dirty || submitted)" class="help-block">Name is required.</span>
 								</div>						
 							</div>
 							<div class="form-group">
@@ -30,10 +38,10 @@
 								<textarea class="form-control"  id="address" name="address" ng-model="editProf.address" cols="30" rows="4" ng-maxlength="20" placeholder="Enter Your Address"></textarea>
 			      
 								<p ng-hide="editProfile.address.$error.maxlength">{{ 20 - editProf.address.length + " Chars left" }}</p>
-								 <span style="color:red" ng-show="editProfile.address.$error.maxlength">
+								 <span class="text-danger" ng-show="editProfile.address.$error.maxlength">
 									Sorry You are Exceeding the Limit
 								</span>	
-									<span style="color:red" ng-show="editProfile.address.$dirty && editProfile.address.$invalid">
+									<span class="text-danger" ng-show="editProfile.address.$dirty && editProfile.address.$invalid">
 								  <span ng-show="editProfile.address.$error.required">Address is required .</span>
 								</div>
 							</div>	
@@ -48,14 +56,14 @@
 										<option value="America">America</option>
 										<option value="Belgium">Belgium</option>
 									</select>
-									<span style="color:red" ng-show="editProfile.country.$error.required && (editProfile.country.$dirty || submitted)" class="help-block">Country is required.</span>
+									<span class="text-danger" ng-show="editProfile.country.$error.required && (editProfile.country.$dirty || submitted)" class="help-block">Country is required.</span>
 								</div>						
 							</div>
 							<div class="form-group">
 								<label for="phone" class="col-md-2 control-label">Phone </label>
 								<div class="col-md-8">
 									<input type="text" class="form-control help-block" id="phone" ng-model="edit.phone" name="phone" placeholder="Your Phone number" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
-									<p ng-show="editProfile.phone.$error.pattern && (editProfile.phone.$dirty || submitted)" style="color:red" >Enter a valid contact no.</p>
+									<p ng-show="editProfile.phone.$error.pattern && (editProfile.phone.$dirty || submitted)" class="text-danger" >Enter a valid contact no.</p>
 								</div>					
 							</div>	
 							<div class="form-group">
@@ -75,7 +83,7 @@
 								<label for="website" class="col-md-2 control-label">Website </label>
 								<div class="col-md-8">
 									<input type="url" class="form-control" id="website" ng-model="reg.website" name="website" placeholder="Enter Website " required>
-									<span style="color:red" ng-show="editProfile.website.$dirty && 	editProfile.website.$invalid">
+									<span class="text-danger" ng-show="editProfile.website.$dirty && 	editProfile.website.$invalid">
 										<span ng-show="editProfile.website.$error.required">Website  is required.</span>
 										<span ng-show="editProfile.website.$error.url">Invalid Web Site.</span>
 									</span>

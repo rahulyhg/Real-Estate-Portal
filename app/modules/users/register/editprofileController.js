@@ -1,8 +1,8 @@
 'use strict';
 define(['app', 'css!modules/users/register/edit'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams','$http'];
+    var injectParams = ['$scope', '$injector','$routeParams','upload','$http'];
     // This is controller for this view
-	var editprofileController = function ($scope, $injector,$routeParams,$http) {
+	var editprofileController = function ($scope, $injector,$routeParams,$http,$upload) {
 		console.log("this is edit controller");	
 		// for date picker{Sunita}
 		
@@ -51,7 +51,32 @@ define(['app', 'css!modules/users/register/edit'], function (app) {
 				})
 			};
 		}
-	};	
+		
+		
+		//Upload Function for uploading files {Pooja}
+		$scope.editpro={}; // this is form object
+		$scope.userinfo = {userId:1, name:"vilas"}; // this is for uploading credentials
+		$scope.path = "property/"; // path to store images on server
+		$scope.property.user_img0 = []; // uploaded images will store in this array
+		$scope.upload = function(files,path,userinfo){ // this function for uploading files
+			upload.upload(files,path,userinfo,function(data){
+				if(data.status !== 'error'){
+					$scope.editpro.user_img.push(JSON.stringify(data.details));
+					console.log(data.message);
+				}else{
+					alert(data.message);
+				}
+				
+			});
+		};
+		
+		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
+			upload.generateThumbs(files);
+		};
+		// End upload function {Pooja}
+		
+	};		
+		
 		
 	// Inject controller's dependencies
 	editprofileController.$inject = injectParams;

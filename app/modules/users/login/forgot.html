@@ -16,7 +16,7 @@
 					<label for="user_email" class="col-md-2 control-label">Email</label>
 					<div class="col-md-8">
 						<input type="Email" class="form-control" id="user_email" ng-model="forget.user_email" name="Email" placeholder="Enter Email" required>
-							<span style="color:red" ng-show="forgotPass.user_email.$dirty && forgotPass.user_email.$invalid">
+							<span class="text-danger" ng-show="forgotPass.user_email.$dirty && forgotPass.user_email.$invalid">
 								<span ng-show="forgotPass.user_email.$error.required">Email is required.</span>
 								<span ng-show="forgotPass.user_email.$error.email">Invalid Email address.</span>
 							</span>

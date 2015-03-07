@@ -13,9 +13,9 @@
 									<div class="col-md-9">									
 											<textarea type="text"  id="title" class="form-control" name="title" ng-model="project.title"    cols="20" rows="4" ng-maxlength="356" ui-tinymce required></textarea>
 										<p ng-hide="addProject.title.$error.maxlength">{{ 356 - project.title.length + " Chars left" }}</p>
-											 <span style="color:red" ng-show="addProject.title.$error.maxlength">
+											 <span class="text-danger" ng-show="addProject.title.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-												<span style="color:red" ng-show="addProject.title.$dirty && addProject.title.$invalid">
+												<span class="text-danger" ng-show="addProject.title.$dirty && addProject.title.$invalid">
 											  <span ng-show="addProject.title.$error.required">Project title is required .</span>
 									</div>
 							</div>
@@ -26,9 +26,9 @@
 			      
 									<p ng-hide="addProject.browsertitle.$error.maxlength">{{ 356 - project.browsertitle.length + " Chars left" }}</p>
 									
-									<span style="color:red" ng-show="addProject.browsertitle.$error.maxlength">
+									<span class="text-danger" ng-show="addProject.browsertitle.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="addProject.browsertitle.$dirty && addProject.browsertitle.$invalid">
+									<span class="text-danger" ng-show="addProject.browsertitle.$dirty && addProject.browsertitle.$invalid">
 											<span ng-show="addProject.browsertitle.$error.required">Browser is required .</span>
 									</span>
 								</div>							
@@ -38,9 +38,9 @@
 								<div class="col-md-9"> 
 									<textarea class="form-control" name="metakey" ng-model="project.metakey"  id="metakey" cols="20" rows="4" ng-maxlength="356" > </textarea>
 									<p ng-hide="addProject.metakey.$error.maxlength">{{ 356 - project.metakey.length + " Chars left" }}</p>
-											 <span style="color:red" ng-show="addProject.metakey.$error.maxlength">
+											 <span class="text-danger" ng-show="addProject.metakey.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-											<span style="color:red" ng-show="addProject.metakey.$dirty && addProject.metakey.$invalid">
+											<span class="text-danger" ng-show="addProject.metakey.$dirty && addProject.metakey.$invalid">
 											<span ng-show="addProject.metakey.$error.required">Meta Keywords is required .</span>
 									</span>
 								</div>							
@@ -50,9 +50,9 @@
 								<div class="col-md-9">
 										<textarea class="form-control" id="metadesc"  name="metadesc" ng-model="project.metadesc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
 									<p ng-hide="addProject.metadesc.$error.maxlength">{{ 356 - project.metadesc.length + " Chars left" }}</p>
-											 <span style="color:red" ng-show="addProject.metadesc.$error.maxlength">
+											 <span class="text-danger" ng-show="addProject.metadesc.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-										<span style="color:red" ng-show="addProject.metadesc.$dirty && addProject.metadesc.$invalid">
+										<span class="text-danger" ng-show="addProject.metadesc.$dirty && addProject.metadesc.$invalid">
 											<span ng-show="addProject.metadesc.$error.required">Meta Discription is required .</span>
 									</span>
 								</div>
@@ -78,7 +78,7 @@
 										<option value="agricultural">Agricultural Land</option>
 										<option value="industrial">Industrial Property</option>
 									</select> 
-										<span style="color:red" ng-show="addProject.category.$dirty && addProject.category.$invalid">
+										<span class="text-danger" ng-show="addProject.category.$dirty && addProject.category.$invalid">
 											<span ng-show="addProject.category.$error.required">Category is required .</span>
 									</span>
 								</div>
@@ -87,7 +87,7 @@
 									<label for="type" class="col-md-2 control-label"> * &nbsp Project Type</label>
 								<div class="col-md-9">
 										<input type="text" class="form-control" id="Type" name="type" ng-model="project.type" required>
-										<span style="color:red" ng-show="addProject.type.$dirty && addProject.type.$invalid">
+										<span class="text-danger" ng-show="addProject.type.$dirty && addProject.type.$invalid">
 											<span ng-show="addProject.type.$error.required">Project Type is required .</span>
 									</span>
 								</div>							
@@ -96,7 +96,7 @@
 									<label for="location" class="col-md-2 control-label">* &nbsp Location</label>
 								<div class="col-md-9">
 										<input type="text" class="form-control" id="Location" name="location" ng-model="project.location" required>
-										<span style="color:red" ng-show="addProject.location.$dirty && addProject.location.$invalid">
+										<span class="text-danger" ng-show="addProject.location.$dirty && addProject.location.$invalid">
 											<span ng-show="addProject.location.$error.required">Location is required .</span>
 									</span>
 								</div>							
@@ -111,7 +111,7 @@
 										
 										<input type="hidden" ng-model="project.proj_img">
 										
-										<span style="color:red" ng-show="addProject.proj_img.$dirty && addProject.proj_img.$invalid">
+										<span class="text-danger" ng-show="addProject.proj_img.$dirty && addProject.proj_img.$invalid">
 											<span ng-show="addProject.proj_img.$error.required">Project Image is required .</span>
 									</span>
 								</div>		
@@ -121,9 +121,9 @@
 								<div class="col-md-9">
 									<textarea class="form-control"  name="logo"  id="logo" ng-model="project.logo" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 										<p ng-hide="addProject.logo.$error.maxlength">{{ 356 - project.logo.length + " Chars left" }}</p>
-											 <span style="color:red" ng-show="addProject.logo.$error.maxlength">
+											 <span class="text-danger" ng-show="addProject.logo.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-										<span style="color:red" ng-show="addProject.logo.$dirty && addProject.logo.$invalid">
+										<span class="text-danger" ng-show="addProject.logo.$dirty && addProject.logo.$invalid">
 											<span ng-show="addProject.logo.$error.required">Project Logo is required .</span>
 									</span>
 								</div>
@@ -132,7 +132,7 @@
 								<label for="project_by" class="col-md-2 control-label">* &nbsp Project By</label>
 							<div class="col-md-9">
 									<input type="text"  class="form-control" id="project_by" name="project_by" ng-model="project.project_by" required>
-									<span style="color:red" ng-show="addProject.project_by.$dirty && addProject.project_by.$invalid">
+									<span class="text-danger" ng-show="addProject.project_by.$dirty && addProject.project_by.$invalid">
 										<span ng-show="addProject.project_by.$error.required">Project By is required .</span>
 								</span>
 							</div>	
@@ -142,9 +142,9 @@
 								<div class="col-md-9">
 										<textarea class="form-control" id="Overview"  name="overview" ui-tinymce ng-model="project.overview" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 									 <p ng-hide="addProject.overview.$error.maxlength">{{ 356 - project.overview.length + " Chars left" }}</p>
-										   <span style="color:red" ng-show="addProject.overview.$error.maxlength">
+										   <span class="text-danger" ng-show="addProject.overview.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-										<span style="color:red" ng-show="addProject.overview.$dirty && addProject.overview.$invalid">
+										<span class="text-danger" ng-show="addProject.overview.$dirty && addProject.overview.$invalid">
 											<span ng-show="addProject.overview.$error.required">Overview is required .</span>
 									</span>
 								</div>													
@@ -157,9 +157,9 @@
 						<div class="col-md-9">
 								<textarea class="form-control"  name="amenities" id="amenities" ng-model="project.amenities" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 							 <p ng-hide="addProject.amenities.$error.maxlength">{{ 356 - project.amenities.length + " Chars left" }}</p>
-							<span style="color:red" ng-show="addProject.amenities.$error.maxlength">
+							<span class="text-danger" ng-show="addProject.amenities.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="addProject.amenities.$dirty && addProject.amenities.$invalid">
+							<span class="text-danger" ng-show="addProject.amenities.$dirty && addProject.amenities.$invalid">
 								<span ng-show="addProject.amenities.$error.required">Amenities is required .</span>
 							</span>
 						</div>
@@ -172,9 +172,9 @@
 						<div class="col-md-9">
 								<textarea class="form-control"  name="specifications" id="specifications" ng-model="project.specifications"  cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 								<p ng-hide="addProject.specifications.$error.maxlength">{{ 356 - project.specifications.length + " Chars left" }}</p>
-								<span style="color:red" ng-show="addProject.specifications.$error.maxlength">
+								<span class="text-danger" ng-show="addProject.specifications.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="addProject.specifications.$dirty && addProject.specifications.$invalid">
+								<span class="text-danger" ng-show="addProject.specifications.$dirty && addProject.specifications.$invalid">
 									<span ng-show="addProject.specifications.$error.required">Specifications is required .</span>
 							</span>
 						</div>
@@ -187,9 +187,9 @@
 							<div class="col-md-9">
 									<textarea class="form-control"  name="location_map" id="location_map" ng-model="project.location_map" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 								<p ng-hide="addProject.location_map.$error.maxlength">{{ 356 - project.location_map.length + " Chars left" }}</p>
-										   <span style="color:red" ng-show="addProject.location_map.$error.maxlength">
+										   <span class="text-danger" ng-show="addProject.location_map.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="addProject.location_map.$dirty && addProject.location_map.$invalid">
+									<span class="text-danger" ng-show="addProject.location_map.$dirty && addProject.location_map.$invalid">
 										<span ng-show="addProject.location_map.$error.required">Location Map is required .</span>
 								</span>
 							</div>
@@ -199,9 +199,9 @@
 						<div class="col-md-9">
 								<textarea class="form-control"  name="layout_map" id="layout_map" ng-model="project.layout_map" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 								<p ng-hide="addProject.layout_map.$error.maxlength">{{ 356 - project.layout_map.length + " Chars left" }}</p>
-								<span style="color:red" ng-show="addProject.layout_map.$error.maxlength">
+								<span class="text-danger" ng-show="addProject.layout_map.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="addProject.layout_map.$dirty && addProject.layout_map.$invalid">
+								<span class="text-danger" ng-show="addProject.layout_map.$dirty && addProject.layout_map.$invalid">
 									<span ng-show="addProject.layout_map.$error.required">Layout Map is required .</span>
 							</span>
 						</div>
@@ -214,9 +214,9 @@
 						<div class="col-md-9">
 								<textarea class="form-control"  name="floor_plans" id="floor_plans"  ng-model="project.floor_plans" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 								<p ng-hide="addProject.floor_plans.$error.maxlength">{{ 356 - project.floor_plans.length + " Chars left" }}</p>
-								<span style="color:red" ng-show="addProject.floor_plans.$error.maxlength">
+								<span class="text-danger" ng-show="addProject.floor_plans.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="addProject.floor_plans.$dirty && addProject.floor_plans.$invalid">
+								<span class="text-danger" ng-show="addProject.floor_plans.$dirty && addProject.floor_plans.$invalid">
 									<span ng-show="addProject.floor_plans.$error.required">Floor Plans is required .</span>
 							</span>
 						</div>
@@ -226,9 +226,9 @@
 							<div class="col-md-9">
 									<textarea class="form-control"  name="browsertitle_floorplan" id="browsertitle_floorplan" ng-model="project.browsertitle_floorplan" cols="20" rows="4" ng-maxlength="356"  required ui-tinymce></textarea>
 									<p ng-hide="addProject.browsertitle_floorplan.$error.maxlength">{{ 356 - project.browsertitle_floorplan.length + " Chars left" }}</p>
-									<span style="color:red" ng-show="addProject.browsertitle_floorplan.$error.maxlength">
+									<span class="text-danger" ng-show="addProject.browsertitle_floorplan.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="addProject.browsertitle_floorplan.$dirty && addProject.browsertitle_floorplan.$invalid">
+									<span class="text-danger" ng-show="addProject.browsertitle_floorplan.$dirty && addProject.browsertitle_floorplan.$invalid">
 										<span ng-show="addProject.browsertitle_floorplan.$error.required">Floor Plan is required .</span>
 								</span>
 							</div>
@@ -242,9 +242,9 @@
 									<textarea class="form-control"  name="walkthrough" id="walkthrough" ng-model="project.walkthrough" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 									<p ng-hide="addProject.walkthrough.$error.maxlength">{{ 356 - project.walkthrough.length + " Chars left" }}</p>
 									<p>{{ 356 - project.walkthrough.length + " Chars left" }}</p>
-									<span style="color:red" ng-show="addProject.walkthrough.$error.maxlength">
+									<span class="text-danger" ng-show="addProject.walkthrough.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-									<span style="color:red" ng-show="addProject.walkthrough.$dirty && addProject.walkthrough.$invalid">
+									<span class="text-danger" ng-show="addProject.walkthrough.$dirty && addProject.walkthrough.$invalid">
 										<span ng-show="addProject.walkthrough.$error.required">Walk Through is required .</span>
 								</span>
 							</div>
@@ -257,9 +257,9 @@
 						<div class="col-md-9">
 								<textarea class="form-control"  name="contact" id="contact" ng-model="project.contact" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
 								<p ng-hide="addProject.contact.$error.maxlength">{{ 356 - project.contact.length + " Chars left" }}</p>
-								<span style="color:red" ng-show="addProject.contact.$error.maxlength">
+								<span class="text-danger" ng-show="addProject.contact.$error.maxlength">
 											Sorry You are Exceeding the Limit</span>
-								<span style="color:red" ng-show="addProject.contact.$dirty && addProject.contact.$invalid">
+								<span class="text-danger" ng-show="addProject.contact.$dirty && addProject.contact.$invalid">
 									<span ng-show="addProject.contact.$error.required">Contact is required .</span>
 							</span>
 						</div>
