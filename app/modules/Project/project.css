@@ -1,1 +1,6 @@
-body .main-content{border:1px solid #000}body .bottom-space{margin-bottom:10px}
+body .main-content {
+  border: 1px solid black;
+}
+body .bottom-space {
+  margin-bottom: 10px;
+}
