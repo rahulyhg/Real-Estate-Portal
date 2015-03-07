@@ -1,0 +1,184 @@
+
+ <!-- ng-controller removed from here. No need ng-controller on each page. Bcoz we add it through main angular module(mean from app.js-route provider) -->
+<div class="row">
+<<<<<<< HEAD
+	<div class="col-md-12">
+		<div class="main-content">
+				<ng-include src="'modules/component/toolbar.html'"></ng-include>						
+<<<<<<< HEAD
+			<div class="row bottom-space ">
+=======
+			<div class="row bottom-space">
+>>>>>>> 4cde42cb5b6d69e38e8a5cfcf55d61331836f18b
+				<div class="col-md-2"> 
+					<label class="control-label"> </label><br>
+					<a href="#/dashboard/property/addproperty" class="btn btn-primary" title="Add new property">Add New Property</a>				
+				</div>			 		
+				 <div class="col-md-2"> 
+					<label for="searchProp" class="control-label">Search </label>		
+					<input id="searchProp" type="text" class="form-control" ng-model="property.searchProp" placeholder="search property"/>
+				</div>			 				  
+				 <div class="col-md-2">
+=======
+	<div class="col-sm-12">
+		<div class="main-content">
+			<ng-include src="'modules/component/toolbar.html'"></ng-include>						
+			<div class="row bottom-space">
+				<div class="col-sm-2"> 
+					<label class="control-label"> </label><br>
+					<a href="#/dashboard/property/addproperty" class="btn btn-primary" title="Add new property">Add New Property</a>				
+				</div>			 		
+				 <div class="col-sm-2"> 
+					<label for="searchProp" class="control-label">Search </label>		
+					<div class="input-group">
+						  <input id="searchProp" type="text" class="form-control" placeholder="Search for..." ng-model="property.searchProp">
+						  <span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go!</button>
+						  </span>
+					</div><!-- /input-group -->
+				</div>			 				  
+				 <div class="col-sm-2">
+>>>>>>> d91bd827f33227f7ef6c543df8204240964412c7
+					<label for="id" class="control-label">Sort by Order</label>
+					<select id="id" class="form-control" ng-model="id"> 
+						<option value="">Select Order</option>		<!-- added value & selected attr -->	
+						<option value="-id">Desending</option>
+						<option value="id">Asending</option>  
+					</select>
+				</div>
+<<<<<<< HEAD
+				<div class="col-md-2">
+=======
+				<div class="col-sm-2">
+>>>>>>> d91bd827f33227f7ef6c543df8204240964412c7
+					<label for="status" class="control-label">Select Status</label>
+					<select id="status" class="form-control" ng-model="property.status">
+						<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
+						<option value="1">Active</option>
+						<option value="0">Deleted</option>   
+					</select>
+				</div>
+<<<<<<< HEAD
+				<div class="col-md-2">
+=======
+				<div class="col-sm-2">
+>>>>>>> d91bd827f33227f7ef6c543df8204240964412c7
+					<label for="featured" class="control-label">Filter By Featured</label>
+						<select id="featured" class="form-control" ng-model="property.featured">
+							<option value="" selected>Select Featured</option> <!-- added value & selected attr -->
+							<option value="1" >Featured</option>
+							<option value="0">Not Featured</option> 
+						</select>
+				</div>
+<<<<<<< HEAD
+				<div class="col-md-2">
+=======
+				<div class="col-sm-2">
+>>>>>>> d91bd827f33227f7ef6c543df8204240964412c7
+						<label for="domain" class="control-label">Select Domain :</label>
+						<select id="domain" class="form-control">            
+							<option value="">All</option>
+							<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
+							<option value="www.hinjewadiproperties.com">www.hinjewadiproperties.com</option>  
+							<option>www.parkstreetwakad.com</option>  
+							<option>www.propertydemand.com</option>  
+							<option>www.parktitanium.com</option>  
+						</select>
+				</div>
+			</div>		
+<<<<<<< HEAD
+<<<<<<< HEAD
+			
+			<div class="row" >
+=======
+			<h3 class="text-center"> Property List</h3>
+			<div class="row">
+>>>>>>> 4cde42cb5b6d69e38e8a5cfcf55d61331836f18b
+				<div class="col-md-12 ">
+=======
+			<h3 class="text-center"> Property List</h3>
+			<div class="row" >
+				<div class="col-md-12 ">
+=======
+			<h3> Property List</h3>
+			<div class="row">
+				<div class="col-sm-12 ">
+>>>>>>> "all modules markup checked"
+>>>>>>> d91bd827f33227f7ef6c543df8204240964412c7
+					<div class="table-responsive">
+						<table class="table table-bordered ">
+							<thead>
+								<tr>
+									<th>Sr. No.</th>
+									<th>Image</th>
+									<th> Property Details</th>
+									<th>Featured</th>
+									<th>Status</th>
+									<th>Other Domains</th>
+									<th>Manage</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in properties | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
+										<td>{{ $index + 1 }}</td>
+										<td><img ng-src="{{x.prop_image}}" ng-click="open(x.prop_image)" class="img-thumbnail   img-responsive prop-img" title="Property image"></td> <!-- ng-click added for modal, class added for responsive image -->
+										<td>
+											<table class="table table-bordered table-responsive">
+												<tr>
+													<td>Property Title</td>
+													<td>{{x.title}}</td>
+												</tr>
+												<tr>
+													<td>Property For</td>
+													<td>{{x.property_for}}</td>
+												</tr>
+												<tr>
+													<td>Type</td>
+													<td>{{x.type}}</td>		
+												</tr>
+												<tr>
+													<td>Address</td>
+													<td>{{x.address}}</td>
+												</tr>
+											</table>
+										</td>	
+										<td><a class="btn btn-success" ng-if="featured==0" title="Featured">Featured </a>
+											<a class="btn btn-warning" ng-if="featured==1" title="Not featured"> Not Featured </a>
+										</td>			
+										<td>
+											<a class="btn btn-success" ng-if="status==0" title="Active" >Active</a>
+											<a class="btn btn-warning" ng-if="status==1" title="Delete">Delete</a>
+										</td>
+										<td>{{x.other_domain}}</td>				
+										<td>
+											<a href="#/dashboard/property/addproperty/{{x.id}}" class="btn btn-info" title="Edit"> Edit </a><br><br>
+											<a ng-click="open('modules/property/viewProperty.html', x.id)" class="btn btn-success responsive" title="View"> View</a>
+										</td>	
+								</tr>				
+							</tbody>
+						</table>
+					</div>
+<<<<<<< HEAD
+				</div>
+			</div>	
+				<div class="text-center">				
+					<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+					<pre>Page: {{currentPage}} / {{numPages}}</pre>
+				</div>
+=======
+					
+					<div class="text-center">				
+						<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+						<pre>Page: {{currentPage}} / {{numPages}}</pre>
+					</div>
+				</div>
+			</div>
+>>>>>>> d91bd827f33227f7ef6c543df8204240964412c7
+		</div>		
+	</div>
+</div>			
+								
+										 
+
+							
+												
