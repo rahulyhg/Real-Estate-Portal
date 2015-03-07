@@ -1,14 +1,14 @@
 
-<form name="reqCustTemplate" class="form-horizontal myForm" role="form" novalidate="novalidate">
+<form name="reqCustTemplate" class="form-horizontal " role="form" novalidate="novalidate">
 	<div class="form-group">
-	   <div class="col-md-offset-2 col-md-10">
+	   <div class="col-md-offset-2 col-md-9">
 			<h3> Request For Custom Template</h3>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="name" class="col-md-2 control-label">Template Name</label>		
 		<div class="col-md-9">
-            <input type="text" id="name" class="form-control" name="name" placeholder="Enter Your Name" ng-model="name" required >
+            <input type="text" id="name" class="form-control" name="name" placeholder="Enter Your Name" ng-model="template.name" required >
 			<span class="text-danger" ng-show="reqCustTemplate.name.$dirty && reqCustTemplate.name.$invalid">
 				<span ng-show="reqCustTemplate.name.$error.required">Name is required.</span>
 			</span>
@@ -17,7 +17,7 @@
 	<div class="form-group">	
 		<label  for="domain" class="col-md-2 control-label">Domain Name</label>
 		<div class="col-md-9">
-            <input type="text" id="domain" class="form-control" name="domain" placeholder="Domain Name" ng-model="domain" required >
+            <input type="text" id="domain" class="form-control" name="domain" placeholder="Domain Name" ng-model="template.domain" required >
 			<span class="text-danger" ng-show="reqCustTemplate.domain.$dirty && reqCustTemplate.domain.$invalid">
 				<span ng-show="reqCustTemplate.domain.$error.required">Domain Name is required.</span>
 			</span>
@@ -26,7 +26,7 @@
 	<div class="form-group" ng-class="{ 'has-error' : reqCustTemplate.contact.$invalid && (reqCustTemplate.contact.$dirty || submitted) }">	
 		<label  for="contact" class="col-md-2 control-label">Contact Number</label>	
 		<div class="col-md-9">
-            <input type="text" id="contact" class="form-control" name="contact" placeholder="Enter Your Phno" ng-model="reqCustTemplate.contact" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
+            <input type="text" id="contact" class="form-control" name="contact" placeholder="Enter Your Phno" ng-model="template.contact" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
 			  <p ng-show="reqCustTemplate.contact.$error.pattern && (reqCustTemplate.contact.$dirty || submitted)" class="help-block">Enter a valid contact no.</p>
         </div>						
 	</div> 	
@@ -50,7 +50,19 @@
 			<img src="img/n4.jpg" />
 		</div>
 		<div class="col-md-6">
-			<input type="file" id="sketch" name="sketch">	
+			
+			<input type="file" id="sketch" ng-file-select ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="sketch">
+			
+			<!-- This will show thumbnails & progress of images -->
+			<file-preview url="sketch" ng-model="template.sketch"></file-preview>
+			
+			<!-- This button will show if file/s selected -->
+			<button ng-show="sketch" ng-click="upload(sketch,path,userinfo)" type="button">Upload</button>
+			
+			<!-- This hidden input will store image path in array after successful uploading -->
+			<input type="hidden" ng-model="template.sketch">
+			
+			</div>						
 		</div>
 	</div>					
 	<div class="form-group">
