@@ -9,7 +9,7 @@
 		<label for="name" class="col-md-2 control-label">Template Name</label>		
 		<div class="col-md-9">
             <input type="text" id="name" class="form-control" name="name" placeholder="Enter Your Name" ng-model="name" required >
-			<span style="color:red" ng-show="reqCustTemplate.name.$dirty && reqCustTemplate.name.$invalid">
+			<span class="text-danger" ng-show="reqCustTemplate.name.$dirty && reqCustTemplate.name.$invalid">
 				<span ng-show="reqCustTemplate.name.$error.required">Name is required.</span>
 			</span>
 		</div>						
@@ -18,7 +18,7 @@
 		<label  for="domain" class="col-md-2 control-label">Domain Name</label>
 		<div class="col-md-9">
             <input type="text" id="domain" class="form-control" name="domain" placeholder="Domain Name" ng-model="domain" required >
-			<span style="color:red" ng-show="reqCustTemplate.domain.$dirty && reqCustTemplate.domain.$invalid">
+			<span class="text-danger" ng-show="reqCustTemplate.domain.$dirty && reqCustTemplate.domain.$invalid">
 				<span ng-show="reqCustTemplate.domain.$error.required">Domain Name is required.</span>
 			</span>
 		</div>						
@@ -37,10 +37,10 @@
 			      
 			<p ng-hide="reqCustTemplate.req.$error.maxlength">{{ 356 - templates.req.length + " Chars left" }}</p>
 			
-			<span style="color:red" ng-show="reqCustTemplate.req.$error.maxlength">Sorry You are Exceeding the Limit</span>
-			<span style="color:red" ng-show="reqCustTemplate.req.$dirty && reqCustTemplate.req.$invalid"></span>
+			<span class="text-danger" ng-show="reqCustTemplate.req.$error.maxlength">Sorry You are Exceeding the Limit</span>
+			<span class="text-danger" ng-show="reqCustTemplate.req.$dirty && reqCustTemplate.req.$invalid"></span>
 			<span  ng-show="reqCustTemplate.req.$error.required">Custom Requirement are Required.</span>
-			<span style="color:red" ng-show="reqCustTemplate.req.$error.minlength">Please Enter minimum 10 character</span>
+			<span class="text-danger" ng-show="reqCustTemplate.req.$error.minlength">Please Enter minimum 10 character</span>
 			
 		</div>					
 	</div>
