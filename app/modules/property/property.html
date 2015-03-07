@@ -1,19 +1,24 @@
 
  <!-- ng-controller removed from here. No need ng-controller on each page. Bcoz we add it through main angular module(mean from app.js-route provider) -->
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-sm-12">
 		<div class="main-content">
-				<ng-include src="'modules/component/toolbar.html'"></ng-include>						
+			<ng-include src="'modules/component/toolbar.html'"></ng-include>						
 			<div class="row bottom-space">
-				<div class="col-md-2"> 
+				<div class="col-sm-2"> 
 					<label class="control-label"> </label><br>
 					<a href="#/dashboard/property/addproperty" class="btn btn-primary" title="Add new property">Add New Property</a>				
 				</div>			 		
-				 <div class="col-md-2"> 
+				 <div class="col-sm-2"> 
 					<label for="searchProp" class="control-label">Search </label>		
-					<input id="searchProp" type="text" class="form-control" ng-model="property.searchProp" placeholder="search property"/>
+					<div class="input-group">
+						  <input id="searchProp" type="text" class="form-control" placeholder="Search for..." ng-model="property.searchProp">
+						  <span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go!</button>
+						  </span>
+					</div><!-- /input-group -->
 				</div>			 				  
-				 <div class="col-md-2">
+				 <div class="col-sm-2">
 					<label for="id" class="control-label">Sort by Order</label>
 					<select id="id" class="form-control" ng-model="id"> 
 						<option value="">Select Order</option>		<!-- added value & selected attr -->	
@@ -21,7 +26,7 @@
 						<option value="id">Asending</option>  
 					</select>
 				</div>
-				<div class="col-md-2">
+				<div class="col-sm-2">
 					<label for="status" class="control-label">Select Status</label>
 					<select id="status" class="form-control" ng-model="property.status">
 						<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
@@ -29,7 +34,7 @@
 						<option value="0">Deleted</option>   
 					</select>
 				</div>
-				<div class="col-md-2">
+				<div class="col-sm-2">
 					<label for="featured" class="control-label">Filter By Featured</label>
 						<select id="featured" class="form-control" ng-model="property.featured">
 							<option value="" selected>Select Featured</option> <!-- added value & selected attr -->
@@ -37,7 +42,7 @@
 							<option value="0">Not Featured</option> 
 						</select>
 				</div>
-				<div class="col-md-2">
+				<div class="col-sm-2">
 						<label for="domain" class="control-label">Select Domain :</label>
 						<select id="domain" class="form-control">            
 							<option value="">All</option>
@@ -49,9 +54,9 @@
 						</select>
 				</div>
 			</div>		
-			<h3 class="text-center"> Property List</h3>
+			<h3> Property List</h3>
 			<div class="row" >
-				<div class="col-md-12 ">
+				<div class="col-sm-12 ">
 					<div class="table-responsive">
 						<table class="table table-bordered ">
 							<thead>
@@ -105,12 +110,13 @@
 							</tbody>
 						</table>
 					</div>
+					
+					<div class="text-center">				
+						<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+						<pre>Page: {{currentPage}} / {{numPages}}</pre>
+					</div>
 				</div>
-			</div>	
-				<div class="text-center">				
-					<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
-					<pre>Page: {{currentPage}} / {{numPages}}</pre>
-				</div>
+			</div>
 		</div>		
 	</div>
 </div>			

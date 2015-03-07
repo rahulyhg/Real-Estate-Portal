@@ -1,5 +1,5 @@
 'use strict';
-define(['app', 'css!modules/project/addproject/addproject'], function (app) {
+define(['app'], function (app) {
 	
 	   var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
   // This is controller for this view
