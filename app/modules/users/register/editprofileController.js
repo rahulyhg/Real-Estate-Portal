@@ -1,8 +1,8 @@
 'use strict';
 define(['app', 'css!modules/users/register/edit'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams','upload','$http'];
+    var injectParams = ['$scope', '$injector','$routeParams','$http'];
     // This is controller for this view
-	var editprofileController = function ($scope, $injector,$routeParams,$http,$upload) {
+	var editprofileController = function ($scope, $injector,$routeParams,$http) {
 		console.log("this is edit controller");	
 		// for date picker{Sunita}
 		
@@ -52,7 +52,7 @@ define(['app', 'css!modules/users/register/edit'], function (app) {
 			};
 		}
 		
-		
+		/* 
 		//Upload Function for uploading files {Pooja}
 		$scope.editpro={}; // this is form object
 		$scope.userinfo = {userId:1, name:"vilas"}; // this is for uploading credentials
@@ -73,7 +73,7 @@ define(['app', 'css!modules/users/register/edit'], function (app) {
 		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
 			upload.generateThumbs(files);
 		};
-		// End upload function {Pooja}
+		// End upload function {Pooja} */
 		
 	};		
 		
