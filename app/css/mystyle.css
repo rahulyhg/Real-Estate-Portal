@@ -1,135 +1,149 @@
+body
+{
+	overflow:scroll;
+}
+
+.main-content
+{
+	border:1px solid gray;
+	margin: 15px 0px 15px 0px;
+	padding:15px;
+	padding-left:15px;
+	padding-right:15px;
+}
+.gridblock
+{	
+	padding:10px;
+	margin-bottom:20px;
+	border:1px solid gray;
+	/*border-radius:10px 10px 10px 10px;*/
+	box-shadow:4px 4px 4px rgb(229, 222, 222);
+	background-color:#EAEAEA;
+}
+.border-bottom 
+{ 
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+	padding-left:-15px;
+}
+.toolcolor
+{
+	background-color:#E7E7E7;
+}
+
+
+.breadcrum
+{
+	background-color:#E7E7E7;
+}
+
 header {
   background-color: rgba(0, 136, 204, 0.55);
 }
 header #brand {
   height: 90px;
-  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 header h1 {
   color: #fff;
 }
-header a {
-  margin-top: 10px;
-}
 header .im1 {
   height: 70px;
-  padding: 10px;
+  
 }
-body {
-  overflow: scroll;
+/*.dropimage
+{
+	font-size:20px;
 }
-body .main-content {
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid black;
+.dropimg
+{
+	font-size:15px;
+	padding:5px 5px 5px 5px;
+	height:40px;
+	width:40px;
+	margin-bottom:5px;
+	
+}*/
+.spanimg
+{
+	border-radius:10px;
 }
-body .main-content .dropimg {
-  font-size: 15px;
-  padding: 5px 5px 5px 5px;
-  height: 40px;
-  width: 40px;
-  margin-bottom: 5px;
+
+.sidebar
+{
+	border:1px solid black;
 }
-body .main-content .borderimg {
-  border: 1px solid #ccc;
+header a
+{
+	margin-top:10px;
 }
-body h2 {
-  color: #a01ba1;
-  padding-bottom: 10px;
-  text-align: center;
+header .im1
+{
+	height:70px;
+	
 }
-body form > p {
+.btn-group
+{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+.f1
+{
+ width:500px;
+ 
+}
+.form-content
+{
+	
+	border: 1px solid #ccc;
+	margin: 0% auto;
+	padding: 15px 15px;
+	width: 100%;
+min-width: 250px;
+max-width: 350px;
+}
+.borderimg
+{
+	
+	border:1px solid #ccc;
+}
+.dropimage1
+{
+	font-size:60px;
+}
+.toolbar .form-inline{
+	display: inline-block;
+}
+.dropd
+{
+	left:auto;
+	right:0;
+}
+.bottom-space
+{
+	margin-bottom:10px;
+}
+
+.border{
+border: 2px solid red;
+border-radius: 16px;}
+.border h3{
+color:blue}
+h3 {
+  color: #2368CE;
+  }
+  
+  body form > p {
   color: cadetblue;
 }
-body .form-horizontal .control-label,
-body label {
+.paraMand {
+  color: red;
+}
+ label {
   color: #41547c;
 }
-body .website-menu {
-  padding-bottom: 10px;
-}
-body .website-menu .btn-default:hover {
-  border-color: #AEBCC4;
-}
-body .dropdown-toggle ul {
-  background-color: #769cd3;
-}
-body .req-hr {
-  color: red;
-}
-body .reqList {
-  border: 1px solid black;
-  padding: 10px;
-}
-body .bottom-space {
-  padding-bottom: 10px;
-}
-body .main-border {
-  border: 1px solid #000;
-  padding-top: 10px;
-}
-body .innernav {
-  padding: 10px;
-}
-body thead {
-  background-color: rgba(130, 127, 137, 0.38);
-}
-body tab {
-  padding: 20px;
-}
-body .paraMand {
-  color: red;
-}
-body .ulmenu,
-body .dropdown-menu {
-  left: auto;
-  right: 0;
-}
-body h3 {
-  color: #2368CE;
-}
-body .dropimg {
-  height: 40px;
-  width: 40px;
-  text-align: center;
-  padding: 5px;
-}
-body .gridblock {
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid gray;
-  /*border-radius:10px 10px 10px 10px;*/
-  box-shadow: 4px 4px 4px #e5dede;
-  background-color: #EAEAEA;
-}
-body .breadcrumb-back {
-  border-bottom: 1px solid black;
-  margin-bottom: 10px;
-}
-body .breadcrumb-back .breadcrumb {
-  background: transparent;
-  margin-bottom: 0px;
-}
-body .user-img {
-  border: 1px solid #ccc;
-  width: 80px;
-}
-.toolbar {
-  padding: 5px;
-}
-.nav .nav-tabs {
-  padding-top: 20px;
-}
-.prop-img {
-  width: 200px;
-}
-.box-border {
-  border: 1px solid #000;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-.btn1 {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+.nav .nav-pills .nav-stacked{
+	border:1px solid #ccc;
 }
