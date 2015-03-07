@@ -33,7 +33,7 @@
 			</select>
 	</div>
 </div>	
-<hr/>
+
 <div class="row">
 	<div class="col-md-12">
 	<h3 class="text-center"> Website Details</h3>
@@ -62,10 +62,10 @@
 				</tbody>					
 			</table>
 		</div>
-	</div>	
-	<div class="text-center">				
-		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
-		<pre>Page: {{currentPage}} / {{numPages}}</pre>
-	</div>	
 	
+		<div class="text-center">				
+			<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+			<pre>Page: {{currentPage}} / {{numPages}}</pre>
+		</div>	
+	</div>	
 </div>

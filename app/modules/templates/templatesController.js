@@ -1,8 +1,8 @@
 'use strict';
-define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','$http'];
+define(['app','css!modules/templates/templates'], function (app) {
+    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','$http','upload'];
     // This is controller for this view
-	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,$http) {
+	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,$http,upload) {
 		$rootScope.metaTitle = "Real Estate Template";
 		
 		//Code For Pagination{pooja}
@@ -121,6 +121,22 @@ define(['app'], function (app) {
 				$location.path('/dashboard/templates/projectTemplate');
 				}	
 				
+			//Upload Function for uploading files {sunita}
+				$scope.template={}; 
+				$scope.userinfo = {userId:1}; 
+				$scope.path = "template/"; // path to store images on server
+				$scope.template.sketch = []; // uploaded images will store in this array
+				$scope.upload = function(files,path,userinfo){ // this function for uploading files
+					upload.upload(files,path,userinfo,function(data){
+						if(data.status !== 'error'){
+							$scope.template.sketch.push(JSON.stringify(data.details));
+							console.log(data.message);
+						}else{
+							alert(data.message);
+						}
+						
+					});
+				};
 	};
        
 	// Inject controller's dependencies
