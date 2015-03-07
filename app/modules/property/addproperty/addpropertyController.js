@@ -17,16 +17,22 @@ define(['app'], function (app) {
 				$scope.reset();
 			});
 		};
-		if($routeParams.id){
+		var where = {name : "vilas"};
+		dataService.get("getsingle/property/2", where)
+			.then(function(response) {
+				//$scope.property = response.data;
+				console.log(response);
+			});
+		/* if($routeParams.id){
 			//Update Property
-			dataService.get("getsingle/property/"+$routeParams.id)
+			dataService.get("getsingle/property/"+$routeParams.id, where)
 			.then(function(response) {
 					$scope.property = response;
 					$scope.reset = function() {
 						$scope.property = angular.copy($scope.property);
 					};
 					$scope.reset();
-					console.log($scope.property);			
+					//console.log($scope.property);			
 			});	
 			$scope.update = function(){
 				$http.put("../server-api/index.php/editproperty/"+$routeParams.id,$scope.property)
@@ -34,7 +40,7 @@ define(['app'], function (app) {
 					alert(response);
 				});
 			};
-		}
+		} */
 		
 		//Upload Function for uploading files {Vilas}
 		$scope.property={}; // this is form object

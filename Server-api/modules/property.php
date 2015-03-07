@@ -4,6 +4,7 @@
 	$reqMethod = $app->request->getMethod();
 	
 	if($reqMethod=="GET"){
+		print_r($_GET);
 		if(isset($id)){
 			$where['id'] = $id;
 			$data = $db->select("property", $where);
