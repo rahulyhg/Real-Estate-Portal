@@ -1,10 +1,15 @@
 
 <div class="row ">
-	 <div class="col-md-3"> 
+	 <div class="col-sm-3"> 
 		<label for="searchSite" class="control-label">Search </label>		
-		<input id="searchSite" type="text" class="form-control" ng-model="myWebsite.searchSite" placeholder="search"/>
+		<div class="input-group">
+			  <input id="searchSite" type="text" class="form-control" placeholder="Search for..." ng-model="myWebsite.searchSite">
+			  <span class="input-group-btn">
+				<button class="btn btn-default" type="button">Go!</button>
+			  </span>
+		</div><!-- /input-group -->
 	</div>			 				  
-	 <div class="col-md-3">
+	 <div class="col-sm-3">
 		<label for="id" class="control-label">Sort by Order</label>
 		<select id="id" class="form-control" ng-model="id"> 
 			<option value="">Select Order</option>		<!-- added value & selected attr -->	
@@ -12,7 +17,7 @@
 			<option value="id">Asending</option>  
 		</select>
 	</div>
-	<div class="col-md-3">
+	<div class="col-sm-3">
 		<label for="status" class="control-label">Select Status</label>
 		<select id="status" class="form-control" ng-model="myWebsite.status">
 			<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
@@ -23,20 +28,20 @@
 		</select>
 	</div>
 	
-	<div class="col-md-3">
-			<label for="website" class="control-label">Select Site :</label>
-			<select id="website" class="form-control">            
-				<option value="">Select Site</option>
-				<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
-				<option value="www.hinjewadiproperties.com">www.hinjewadiproperties.com</option>  
-				
-			</select>
+	<div class="col-sm-3">
+		<label for="website" class="control-label">Select Site :</label>
+		<select id="website" class="form-control">            
+			<option value="">Select Site</option>
+			<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
+			<option value="www.hinjewadiproperties.com">www.hinjewadiproperties.com</option>  
+			
+		</select>
 	</div>
 </div>	
 
 <div class="row">
-	<div class="col-md-12">
-	<h3 class="text-center"> Website Details</h3>
+	<div class="col-sm-12">
+	<h3> Website Details</h3>
 		<div class="table-responsive">
 			<table class="table  table-hover table-bordered">
 				<thead>
