@@ -44,16 +44,17 @@ define(['app'], function (app) {
 			
 			dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems).then(function(response){
 					$scope.mailList = response.data;
-					console.log(response.data);
-				});
-		};		
-		 
-		dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems)
-		.then(function(response) {  
-			$scope.totalRecords = response.totalRecords;
-			$scope.mailList = response.data;
-			console.log(response);
-		});
+					console.log(response);
+			});
+			
+		 };
+			dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems)
+			.then(function(response) {  
+				$scope.totalRecords = response.totalRecords;
+				$scope.mailList = response.data;
+				console.log(response);
+			});
+			
     };    
 	// Inject controller's dependencies
 	responseController.$inject = injectParams;
