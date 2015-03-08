@@ -16,13 +16,10 @@
 						<label class="control-label">Date -</label> 
 						<span>{{mailView.date}}</span><br>
 						<label class="control-label">From -</label> 
-						<span>{{mailView.email}}</span><br>
+						<span>{{mailView.from_email}}</span><br>
 						<label class="control-label">Full Name -</label> 
 						<span>{{mailView.first_name + " " + mailView.last_name}}</span><br>
-						<label class="control-label">Company -</label>
-						<span>{{mailView.company}}</span><br>
-						<label class="control-label">Phone -</label>
-						 <span>{{mailView.phone}}</span><br>
+						
 						 <label class="control-label">Message</label><br>
 						 <textarea   id="message" class="form-control" name="message" ng-model="mailView.message"    cols="10" rows="3" ng-maxlength="256" placeholder="Message"></textarea>
 					</td>				
@@ -34,22 +31,22 @@
 <div class="row">
 	<div class="col-sm-12 ">
 		<h4> Reply </h4>
-			<form class="form-horizontal myForm" name="mailView" novalidate>
+			<form class="form-horizontal " name="mailView" novalidate>
 				<div class="form-group">
 					<label for="subject" class="col-sm-2 control-label">Subject</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="subject" name="Subject" placeholder="Subject" ng-model="mailView.subject"  ng-required="true">
-						<span style="color:red" ng-show="mailView.subject.$dirty && mailView.subject.$invalid">
+						<span class="text-danger" ng-show="mailView.subject.$dirty && mailView.subject.$invalid">
 						  <span ng-show="mailView.subject.$error.required">Message is required .</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="col-sm-2 control-label">From</label>
+					<label for="from_email" class="col-sm-2 control-label">From</label>
 					<div class="col-sm-10">
-						<input type="email"  id="email" class="form-control" name="Email" ng-model="mailView.email" placeholder="example@gmail.com"  ng-required="true">
-						<span style="color:red" ng-show="mailView.email.$dirty && mailView.email.$invalid">
-						  <span ng-show="mailView.email.$error.required">Email is required.</span>
-						  <span ng-show="mailView.email.$error.email">Invalid email address.</span>
+						<input type="from_email"  id="from_email" class="form-control" name="Email" ng-model="mailView.from_email" placeholder="example@gmail.com"  ng-required="true">
+						<span class="text-danger" ng-show="mailView.from_email.$dirty && mailView.from_email.$invalid">
+						  <span ng-show="mailView.from_email.$error.required">Email is required.</span>
+						  <span ng-show="mailView.from_email.$error.email">Invalid email address.</span>
 						  </span>
 					</div>
 				</div>
@@ -59,15 +56,15 @@
 					<div class="col-sm-10">
 						<textarea   id="reply_message" class="form-control" name="reply_message" ng-model="mailView.reply_message"    cols="30" rows="3" ng-maxlength="256" ui-tinymce  ng-required="true"></textarea>
 						<p>{{ 256 - mailView.reply_message.length + " Chars left" }}</p>
-						 <span style="color:red" ng-show="form1.reply_message.$error.maxlength">
+						 <span class="text-danger" ng-show="form1.reply_message.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
-							<span style="color:red" ng-show="mailView.reply_message.$dirty && mailView.reply_message.$invalid">
+							<span class="text-danger" ng-show="mailView.reply_message.$dirty && mailView.reply_message.$invalid">
 						  <span ng-show="mailView.reply_message.$error.required">Message is required .</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default" title="Send replay">Send Reply</button>
+						<button type="submit" class="btn btn-default" title="Send replay" ng-click="replymail()">Send Reply</button>
 						<button type="reset" class="btn btn-danger" title="Send replay">Cancel</button>
 					</div>
 				</div>
