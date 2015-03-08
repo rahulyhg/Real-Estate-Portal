@@ -18,21 +18,6 @@ define(['app'], function (app) {
 		}
 		
 		
-		/*if(!$routeParams.type && !$routeParams.status){
-			$location.path( "/dashboard/response" );
-		}
-		$scope.type = $routeParams.type;
-		$scope.status = $routeParams.status;
-		$scope.paramId = $routeParams.id;
-	//	console.log($scope.status);
-		$scope.getClass = function(path) {
-			if ($location.path().substr(0, path.length) == path){
-				return "active"
-			} else {
-				return ""
-			};
-		};
-		*/
 		//Code For Pagination
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
@@ -40,20 +25,35 @@ define(['app'], function (app) {
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
 
-		$scope.pageChanged = function() {
+		$scope.pageChanged = function(page) {
 			
-			dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems).then(function(response){
+			dataService.get("/getmultiple/enquiry/"+page+"/"+$scope.pageItems).then(function(response){
 					$scope.mailList = response.data;
 					console.log(response);
 			});
 			
-		 };
+		}
+		 // show mail box list {sunita}
 			dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems)
 			.then(function(response) {  
 				$scope.totalRecords = response.totalRecords;
 				$scope.mailList = response.data;
 				console.log(response);
 			});
+				 			
+			//to compose mail{sunita}
+			
+			$scope.reset = function() {
+				$scope.property = {};
+			};
+			$scope.addprop = function(){
+				console.log($scope.property);
+				dataService.post("post/property", $scope.property)
+				.then(function(response) {
+					alert(response);
+					$scope.reset();
+				});
+			};
 			
     };    
 	// Inject controller's dependencies
