@@ -10,16 +10,16 @@
 			<th>Template Type</th>						
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates">
+			<tr ng-repeat="x in templates  filter:{status:status}">
 				<td>{{x.id}}</td>
 				<td>{{x.template_name}}</td>
 				<td>{{x.date}}</td>
 				<td>{{x.modified_date}}</td>
 				<td>
-						<a class="btn btn-success"  title="Active">Active</a>
-						<a class="btn btn-warning"  title="Delete">Delete</a>
+						<a class="btn btn-success"  ng-if="status==0" title="Active">Active</a>
+						<a class="btn btn-warning"  ng-if="status==1" title="Delete">Delete</a>
 				</td>
-				<td><a href="#" class="btn btn-success" title="Apply for Template">Apply</a>
+				<td><a href="#" class="btn btn-success" ng-if="==free" title="Apply for Template">Apply</a>
 					<a href="#" class="btn btn-warning" title="Buy Template">Buy</a>
 					<a href="#" class="btn btn-primary" title="Preview Template">Preview</a>
 				</td>
@@ -29,6 +29,6 @@
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="webTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="webTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(webTempCurrentPage)"></pagination>				
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>		

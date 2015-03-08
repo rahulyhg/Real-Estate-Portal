@@ -11,35 +11,26 @@
 			<th>Template Type</th>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Template 1</td>
-				<td>01/01/014</td>
-				<td>31/12/020</td>
+			<tr ng-repeat="x in templates">
+				<td>{{((projTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
+				<td>{{x.template_name}}</td>
+				<td>{{x.date | date:'MM/dd/yyyy'}}</td>
+				<td>{{x.modified_date}}</td>
 				<td>
 						<a class="btn btn-success"  title="Active">Active</a>
 						<a class="btn btn-warning"  title="Delete">Delete</a>
-					</td>
-				<td><a href="#" class="btn btn-success" title="Apply for Template">Apply</a>
+				</td>
+				<td>
+					<a href="#" class="btn btn-success" title="Apply for Template">Apply</a>
 					<a href="#" class="btn btn-warning" title="Buy Template">Buy</a>
 					<a href="#" class="btn btn-primary" title="Preview Template">Preview</a>
 				</td>
 			</tr>						
-			<tr>
-				<td>3</td>
-				<td>Template 3</td>
-				<td>01/01/014</td>
-				<td>31/12/020</td>
-				<td></td>
-				<td><a href="#" class="btn btn-success" title="Apply for Template">Apply</a>
-					<a href="#" class="btn btn-warning" title="Buy Template">Buy</a>
-					<a href="#" class="btn btn-primary" title="Preview Template">Preview</a>
-				</td>
-			</tr>												
+															
 		</tbody>					
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="projTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="projTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(projTempCurrentPage)"></pagination>				
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>	

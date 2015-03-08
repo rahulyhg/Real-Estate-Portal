@@ -1,14 +1,14 @@
 'use strict';
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','$http','upload'];
+    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','upload','dataService','$http'];
     // This is controller for this view
-	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,$http,upload) {
+	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,upload,dataService,$http) {
 		$rootScope.metaTitle = "Real Estate Template";
 		
 		//Code For Pagination{pooja}
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
-		$scope.currentPage=1;		
+		$scope.propTemplate=1;		
 		$scope.projTempCurrentPage = 1;
 		$scope.customTempCurrentPage=1;
 		$scope.myTemplate=1;
@@ -17,46 +17,78 @@ define(['app'], function (app) {
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
 
-		$scope.pageChanged = function() {
-			//$log.log('Page changed to: ' + $scope.currentPage);
-			$http.get("../server-api/index.php/template/"+$scope.currentPage+"/"+$scope.pageItems)
+		$scope.pageChanged = function(page) {
+			//$log.log('Page changed to: ' + $scope.propTemplate);
+			dataService.get("/getmultiple/template/"+page+"/"+$scope.pageItems)
 			.success(function(response) {
 				$scope.templates = response.template;
 				
 			});
-			$http.get("../server-api/index.php/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.templates = response.template;
-				
+			
+		}; //end pagination		
+		
+		dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems)
+		.then(function(response) {  //function for templatelist response
+			$scope.totalRecords = response.totalRecords;
+			$scope.templates = response.data;
+			console.log(response.data);
+		});
+		
+		dataService.get("/getmultiple/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems)
+		.then(function(response) {  //function for templatelist response
+			$scope.totalRecords = response.totalRecords;
+			$scope.templates = response.data;
+			console.log(response.data);
+		});
+		
+		dataService.get("/getmultiple/template/"+$scope.propTemplate+"/"+$scope.pageItems)
+		.then(function(response) {  //function for templatelist response
+			$scope.totalRecords = response.totalRecords;
+			$scope.templates = response.data;
+			console.log(response.data);
+		});		
+		
+		dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems)
+		.then(function(response) {  //function for templatelist response
+			$scope.totalRecords = response.totalRecords;
+			$scope.templates = response.data;
+			console.log(response.data);
+		});
+		
+		dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems)
+		.then(function(response) {  //function for templatelist response
+			$scope.totalRecords = response.totalRecords;
+			$scope.templates = response.data;
+			console.log(response.data);
+		});
+		dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems)
+		.then(function(response) {  //function for templatelist response
+			$scope.totalRecords = response.totalRecords;
+			$scope.templates = response.data;
+			console.log(response.data);
+		});
+		
+		
+		
+		//post method for insert data in request template form{Pooja}
+		$scope.postData = function() { 
+			dataService.post("/post/template",$scope.reqTemp)
+			.then(function(response) {  //function for response of request temp
+				$scope.reqTemp = response.reqTemp;
+				console.log(response.reqTemp);
 			});
-			$http.get("../server-api/index.php/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.templates = response.template;
-				
-			});
-			$http.get("../server-api/index.php/template/"+$scope.myTemplate+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.templates = response.template;
-				
-			});
-			$http.get("../server-api/index.php/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.templates = response.template;
-				
-			});
-			$http.get("../server-api/index.php/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.templates = response.template;
-				
-			});
-		};		
+		}
+		
+		
+		 
+		
 		
 		// to View Templatelist
 		
 		//this request for single templates data
 			if($routeParams.id) {
 				
-				$http.get("../server-api/index.php/getsingle/template/"+$routeParams.pageNo,$routeParams.id)
+				$http.get("/getsingle/template/"+$routeParams.pageNo,$routeParams.id)
 				.success(function(response) {$scope.templates = response;
 					console.log($scope.templates);
 				});
@@ -64,7 +96,7 @@ define(['app'], function (app) {
 			}else{
 			//this request for all templates data
 				
-					$http.get("../server-api/index.php/getmultiple/template/"+$routeParams.pageNo,$routeParams.id)
+					$http.get("/getmultiple/template/"+$routeParams.pageNo,$routeParams.id)
 					.success(function(response) 
 					{$scope.templates = response;
 						console.log($scope.templates);
@@ -73,7 +105,9 @@ define(['app'], function (app) {
 				
 			}//end templatelist code
 			
-			//add template
+			
+			
+			/* //add template
 			
 			$scope.reset = function() {
 				$scope.templates = {};
@@ -87,7 +121,7 @@ define(['app'], function (app) {
 					$scope.reset();
 					
 				});
-			};
+			}; 
 
 			//update template 
 			if($routeParams.id){
@@ -110,7 +144,7 @@ define(['app'], function (app) {
 						alert(response);
 					});
 				};
-			}	
+			}	*/
 
 			
 				

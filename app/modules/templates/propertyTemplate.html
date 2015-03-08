@@ -11,41 +11,27 @@
 				
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td></td>
+				<tr ng-repeat="x in templates  filter:{status:status}">
+				<td>{{((propTemplate - 1) * pageItems) + $index + 1}}</td>
+				<td>{{x.template_name}}</td>
 					<td></td>
 					<td></td>
 					<td>
-						<a class="btn btn-success" title="Active">Active</a>
-						<a class="btn btn-warning" title="Delete">Delete</a>
+						<a class="btn btn-success" ng-if="status==0" title="Active">Active</a>
+						<a class="btn btn-danger" ng-if="status==1" title="Delete">Delete</a>
 					</td>
-					<td><a href="#" class="btn btn-success" title="Apply for Template">Apply</a>
+					<td>
+						<a href="#" class="btn btn-success" title="Apply for Template">Apply</a>
 						<a href="#" class="btn btn-warning" title="Buy Template">Buy</a>
 						<a href="#" class="btn btn-primary" title="Preview Template">Preview</a>
 					</td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><a href="#" class="btn btn-warning" title="Buy Template">&nbsp Buy&nbsp </a></td>
-				</tr>	
-				<tr>
-					<td>3</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><a href="#" class="btn btn-success" title="Apply for Template">Apply</a></td>
-				</tr>	
+				
 			</tbody>					
 		</table>
 	</div>
 	<div class="text-center">				
-		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="propTemplate" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(propTemplate)"></pagination>				
 		<pre>Page: {{currentPage}} / {{numPages}}</pre>
 	</div>	
 			

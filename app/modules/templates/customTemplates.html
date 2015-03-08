@@ -4,27 +4,25 @@
 		<thead>
 			<th>Sr.No.</th>
 			<th>Template Name</th>
-			<th>Status</th>
+			<th>Devlopment Status</th>
 			<th>Create Date</th>
-			<th>Exp Date</th>
+			<th>Modified Date</th>
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Template 1</td>
-				<td>
-					<p>Pending</p>
-				</td>
-				<td>01/01/014</td>
-				<td>31/12/020</td>
+			<tr ng-repeat="x in templates">
+				<td>{{((customTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
+				<td>{{x.template_name}}</td>
+				<td>{{x.development_status}}</td>
+				<td>{{x.date | date:'MM/dd/yyyy'}}</td>
+				<td>{{x.modified_date}}</td>
 				<td><a href="#" class="glyphicon glyphicon-refresh btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a></td>				
 			</tr>		
 		</tbody>					
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="customTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="customTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(customTempCurrentPage)"></pagination>				
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>		
 

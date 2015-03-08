@@ -23,6 +23,7 @@ define(['app'], function (app) {
 				//$scope.property = response.data;
 				console.log(response);
 			});
+			
 		/* if($routeParams.id){
 			//Update Property
 			dataService.get("getsingle/property/"+$routeParams.id, where)
