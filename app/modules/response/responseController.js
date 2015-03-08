@@ -3,72 +3,119 @@
 'use strict';
 
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$http','$routeParams', '$location','$rootScope'];
+    var injectParams = ['$scope', '$injector','$routeParams', '$location','$rootScope','dataService'];
 
     // This is controller for this view
-	var responseController = function ($scope, $injector, $http,$routeParams, $location,$rootScope) {		
+	var responseController = function ($scope, $injector,$routeParams, $location,$rootScope,dataService) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		
-		//$scope.MailView = $routeParams.mailId; /* this object will check list of mails show or single mail show */
+		//all $scope objects
+		$scope.maxSize = 5;
+		$scope.totalRecords = "";
+		$scope.mailListCurrentPage = 1;
+		$scope.pageItems = 10;
+		$scope.numPages = "";		
+		$scope.user_id = {user_id : 1,status : 3}; 
 		
 		$scope.mailPart=$routeParams.mailPart;
-		console.log($scope.mailPart);
+		
+		//to display default mails page
 		if(!$routeParams.mailPart){
 			$location.path('/dashboard/response/mails');
 		}
 		
-		
-		/*if(!$routeParams.type && !$routeParams.status){
-			$location.path( "/dashboard/response" );
+		//$scope all methods
+		$scope.pageChanged = function(page) { //Code For Pagination
+			dataService.get("/getmultiple/enquiry/"+page+"/"+$scope.pageItems,$scope.user_id).then(function(response){
+					$scope.mailList = response.data;
+					console.log(response);
+			});
 		}
-		$scope.type = $routeParams.type;
-		$scope.status = $routeParams.status;
-		$scope.paramId = $routeParams.id;
-	//	console.log($scope.status);
-		$scope.getClass = function(path) {
-			if ($location.path().substr(0, path.length) == path){
-				return "active"
-			} else {
-				return ""
-			};
-		};
-		*/
-		//Code For Pagination
-		$scope.maxSize = 5;
-		$scope.totalRecords = "";
-		$scope.currentPage = 1;
-		$scope.pageItems = 2;
-		$scope.numPages = "";		
-
-		$scope.pageChanged = function() {
-			
-			$http.get("../server-api/index.php/responses/"+$scope.currentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.responses = response.responses;
-				//$scope.totalRecords = response.totalRecords;
+		// code for uploading file
+		
+		$scope.compose={}; // this is form object
+		$scope.userinfo = {userId:1}; // this is for uploading credentials
+		$scope.path = "compose/"; // path to store images on server
+		$scope.compose.attachfile = []; // uploaded images will store in this array
+		$scope.upload = function(files,path,userinfo){ // this function for uploading files
+			upload.upload(files,path,userinfo,function(data){
+				if(data.status !== 'error'){
+					$scope.compose.attachfile.push(JSON.stringify(data.details));
+					console.log(data.message);
+				}else{
+					alert(data.message);
+				}
 				
 			});
-		};		
-		 
-		//this request for single response data
-		if($routeParams.id) {
-			$http.get("../server-api/index.php/response/"+$routeParams.id)
-			.success(function(response) {$scope.resopnse = response;});
-		}
+		};
 		
-		else{
-			//this request for all response data
-			$http.get("../server-api/index.php/responses/"+$scope.currentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-			$scope.resopnses = response.responses;
-			console.log($scope.resopnses);
+		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
+			upload.generateThumbs(files);
+		};
+		
+		// switch functions
+		var composemailview= function(){
+			$scope.reset = function() {
+				$scope.compose = {};
+			};
+			$scope.composeMail = function(){
+				console.log($scope.compose);
+				dataService.post("post/enquiry", $scope.compose)
+				.then(function(response) {
+					alert(response);
+					$scope.reset();
+				});
+			};
+		}
+		//show all maillist
+		var mails= function(){
+			dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems ,$scope.user_id)
+			.then(function(response) {  
+				$scope.totalRecords = response.totalRecords;
+				$scope.mailList = response.data;
+				console.log(response);
 			});
 		}
-		$scope.setStatus = function(status, id){
-			$http.put("../server-api/index.php/response/" + status + "/" + id)
-			
+		// show single mailview
+		var mailview= function(){
+			if($routeParams.id){
+				dataService.get("/getsingle/enquiry/"+$scope.mailListCurrentPage+"/"+$routeParams.id)
+				.then(function(response) {  
+					$scope.mailView = response.data;
+					console.log(response);
+				});
+			}
+		}
+		var sentmail= function(){
+			dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems ,$scope.user_id)
+			.then(function(response) {  
+				$scope.totalRecords = response.totalRecords;
+				$scope.sentMail = response.data;
+				console.log(response.data);
+			});
+		}
+		
+		//switch case
+		switch($scope.mailPart) {
+			case 'mailview':
+				mailview();
+				break;
+			case 'mails':
+				mails();
+				break;
+			case 'inbox':
+				inbox();
+				break;
+			case 'sentmail':
+				sentmail();
+				break;
+			case 'composemailview':
+				composemailview();
+				break;	
+			default:
+				mails();
 		};
-    };    
+	};    
 	// Inject controller's dependencies
 	responseController.$inject = injectParams;
 	// Register/apply controller dynamically

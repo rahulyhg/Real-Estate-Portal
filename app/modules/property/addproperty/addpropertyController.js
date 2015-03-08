@@ -64,7 +64,20 @@ define(['app'], function (app) {
 			upload.generateThumbs(files);
 		};
 		// End upload function {Vilas}
-	
+		$scope.property = {};
+		$scope.property.other_domain = ['all'];
+		$scope.roles = [
+			'guest', 
+			'user', 
+			'customer', 
+			'admin'
+		  ];
+		  $scope.user = {
+			roles: ['guest']
+		  };
+		  $scope.checkAll = function() {
+			$scope.user.roles = angular.copy($scope.roles);
+		  };
 	};		
 	// Inject controller's dependencies
 	addpropertyController.$inject = injectParams;

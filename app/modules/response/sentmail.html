@@ -13,7 +13,7 @@
 		  </tr>
 		</thead>
 		<tbody>			
-			<tr ng-repeat="m in mailList">
+			<tr ng-repeat="m in sentMail | filter:{status:status}">
 				<td>
 					<input type="checkbox" value="Select">
 				</td>
@@ -28,7 +28,7 @@
 	</table>
 	<!-- pagination for mail list -->
 	<div class="text-center">				
-		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="mailListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(mailListCurrentPage)"></pagination>				
+		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="sentListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(sentListCurrentPage)"></pagination>				
 		<pre>Page: {{mailListCurrentPage}} / {{numPages}}</pre>
 	</div>		
 </div>

@@ -1,15 +1,20 @@
 <div class="sidebar-border">
 	<ul class="list-unstyled">
 		<li>
+			<a href="#/dashboard/response/composemailview" class="btn btn-link" ng-click="mailPart('composemailview')"><span class=" glyphicon glyphicon-envelope" title="Compose mail view"> </span> Compose
+			</a>
+		</li>
+		
+		<li>
 			<a href="#/dashboard/response/mails" class="btn btn-link" ng-click="mailPart('inbox')"><span class=" glyphicon glyphicon-inbox" title="inbox"> </span> Inbox
 			</a>
 		</li>
 		<li >
-			<a href="#/dashboard/response/mails" class="btn btn-link" ng-click="mailPart('sentmail')"><span class=" glyphicon glyphicon-circle-arrow-down" title="Sent mail"> </span>Sent mail
+			<a href="#/dashboard/response/sentmail" class="btn btn-link" ng-click="mailPart('sentmail')"><span class=" glyphicon glyphicon-circle-arrow-down" title="Sent mail"> </span>Sent mail
 			</a>
 		</li>
 		<li >
-			<a href="#/dashboard/response/mails" class="btn btn-link" ng-click="mailPart('drafts')"><span class=" glyphicon glyphicon-pencil" title="Drafts"></span>Drafts 
+			<a href="#/dashboard/response/mails" class="btn btn-link" ng-click="mailPart('trash')"><span class=" glyphicon glyphicon-trash" title="Drafts"></span>Trash
 			</a>
 		</li>
 		
