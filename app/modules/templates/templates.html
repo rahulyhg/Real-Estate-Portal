@@ -34,7 +34,7 @@
 					<select id="id" class="form-control ng-pristine ng-valid" ng-model="templates.id" title="Select order"> 
 						<option value="">Select Order</option>		<!-- added value & selected attr -->	
 						<option value="-id">Desending</option>
-						<option value="id">Asending</option>  
+						<option value="id">Ascending</option>  
 					</select>
 				</div>
 				<div class="col-sm-3">
@@ -58,21 +58,23 @@
 			<div class="row">
 				<div class="col-sm-12 ">
 					
-						<ng-include ng-if="tempPart=='projectTemplate'" src="'modules/templates/projectTemplate.html'"></ng-include>	
-						
-						<ng-include ng-if="tempPart=='propertyTemplate'" src="'modules/templates/propertyTemplate.html'"></ng-include>	
-						
-						<ng-include ng-if="tempPart=='websitesTemplate'" src="'modules/templates/websitesTemplate.html'"></ng-include>	
-						
-						<ng-include ng-if="tempPart=='myTemplates'"
-						src="'modules/templates/myTemplates.html'"></ng-include>	
-						
-						<ng-include ng-if="tempPart=='requestCustomTemplates'" src="'modules/templates/requestCustomTemplates.html'"></ng-include>	
-						
-						<ng-include ng-if="tempPart=='customTemplates'" 
-						src="'modules/templates/customTemplates.html'"></ng-include>
-						
-						<!-- <ng-include ng-if="tempPart=='customTemplates'" src="'modules/templates/customTemplates.html'"></ng-include>	 -->
+					<ng-include ng-if="tempPart=='projectTemplate'" src="'modules/templates/projectTemplate.html'"></ng-include>	
+					
+					<ng-include ng-if="tempPart=='propertyTemplate'" src="'modules/templates/propertyTemplate.html'"></ng-include>	
+					
+					<ng-include ng-if="tempPart=='websitesTemplate'" src="'modules/templates/websitesTemplate.html'"></ng-include>	
+					
+					<ng-include ng-if="tempPart=='listTemplate'" src="'modules/templates/listTemplate.html'"></ng-include>	
+					
+					<ng-include ng-if="tempPart=='myTemplates'"
+					src="'modules/templates/myTemplates.html'"></ng-include>	
+					
+					<ng-include ng-if="tempPart=='requestCustomTemplates'" src="'modules/templates/requestCustomTemplates.html'"></ng-include>	
+					
+					<ng-include ng-if="tempPart=='customTemplates'" 
+					src="'modules/templates/customTemplates.html'"></ng-include>
+					
+					<!-- <ng-include ng-if="tempPart=='customTemplates'" src="'modules/templates/customTemplates.html'"></ng-include>	 -->
 					
 				</div>
 			</div>		

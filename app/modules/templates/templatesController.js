@@ -5,7 +5,7 @@ define(['app'], function (app) {
 	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,upload,dataService,$http) {
 		$rootScope.metaTitle = "Real Estate Template";
 		
-		//Code For Pagination{pooja}
+		// all $scope object goes here{pooja}
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
 		$scope.propTemplate=1;		
@@ -16,7 +16,15 @@ define(['app'], function (app) {
 		$scope.webTempCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
-
+		$scope.tempPart = $routeParams.tempPart;
+ 		
+		/*For display by default websitesTemplate.html page*/
+		console.log($scope.tempPart);		
+		if(!$routeParams.tempPart) {
+			$location.path('/dashboard/templates/websitesTemplate');
+		}	
+		
+		// All $scope methods
 		$scope.pageChanged = function(page) {
 			//$log.log('Page changed to: ' + $scope.propTemplate);
 			dataService.get("/getmultiple/template/"+page+"/"+$scope.pageItems)
@@ -24,66 +32,105 @@ define(['app'], function (app) {
 				$scope.templates = response.template;
 				
 			});
-			
-		}; //end pagination		
+		}; //end pagination	
 		
-		dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems)
-		.then(function(response) {  //function for templatelist response
-			$scope.totalRecords = response.totalRecords;
-			$scope.templates = response.data;
-			console.log(response.data);
-		});
-		
-		dataService.get("/getmultiple/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems)
-		.then(function(response) {  //function for templatelist response
-			$scope.totalRecords = response.totalRecords;
-			$scope.templates = response.data;
-			console.log(response.data);
-		});
-		
-		dataService.get("/getmultiple/template/"+$scope.propTemplate+"/"+$scope.pageItems)
-		.then(function(response) {  //function for templatelist response
-			$scope.totalRecords = response.totalRecords;
-			$scope.templates = response.data;
-			console.log(response.data);
-		});		
-		
-		dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems)
-		.then(function(response) {  //function for templatelist response
-			$scope.totalRecords = response.totalRecords;
-			$scope.templates = response.data;
-			console.log(response.data);
-		});
-		
-		dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems)
-		.then(function(response) {  //function for templatelist response
-			$scope.totalRecords = response.totalRecords;
-			$scope.templates = response.data;
-			console.log(response.data);
-		});
-		dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems)
-		.then(function(response) {  //function for templatelist response
-			$scope.totalRecords = response.totalRecords;
-			$scope.templates = response.data;
-			console.log(response.data);
-		});
-		
-		
-		
-		//post method for insert data in request template form{Pooja}
-		$scope.postData = function() { 
-			dataService.post("/post/template",$scope.reqTemp)
-			.then(function(response) {  //function for response of request temp
-				$scope.reqTemp = response.reqTemp;
-				console.log(response.reqTemp);
+		// switch functions 
+		var projectTemplate = function(){
+			dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems)
+			.then(function(response) {  //function for templatelist response
+				$scope.totalRecords = response.totalRecords;
+				$scope.templates = response.data;
+				console.log(response.data);
 			});
+		};
+		
+		var websitesTemplate = function(){
+			dataService.get("/getmultiple/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems)
+			.then(function(response) {  //function for templatelist response
+				$scope.totalRecords = response.totalRecords;
+				$scope.templates = response.data;
+				console.log(response.data);
+			});
+		};
+		
+		var propertyTemplate = function(){
+			dataService.get("/getmultiple/template/"+$scope.propTemplate+"/"+$scope.pageItems)
+			.then(function(response) {  //function for templatelist response
+				$scope.totalRecords = response.totalRecords;
+				$scope.templates = response.data;
+				console.log(response.data);
+			});	
+		};
+		
+		var customTemplates = function(){
+			dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems)
+			.then(function(response) {  //function for templatelist response
+				$scope.totalRecords = response.totalRecords;
+				$scope.templates = response.data;
+				console.log(response.data);
+			});
+		};
+		
+		var listTemplates = function(){
+			dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems)
+			.then(function(response) {  //function for templatelist response
+				$scope.totalRecords = response.totalRecords;
+				$scope.templates = response.data;
+				console.log(response.data);
+			});
+		};
+		
+		var myTemplates = function(){
+			dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems)
+			.then(function(response) {  //function for templatelist response
+				$scope.totalRecords = response.totalRecords;
+				$scope.templates = response.data;
+				console.log(response.data);
+			});
+		};
+		
+		var requestCustomTemplates = function(){
+			$scope.reset = function() {
+				$scope.reqtemp = {};
+			};
+			//post method for insert data in request template form{Pooja}
+			$scope.postData = function() { 
+				dataService.post("/post/template",$scope.reqTemp)
+				.then(function(response) {  //function for response of request temp
+					$scope.reqTemp = response.reqTemp;
+					console.log(response.reqTemp);
+				});
+			}
 		}
 		
+		switch($scope.tempPart) {
+			case 'listTemplates':
+				listTemplates();
+				break;
+			case 'myTemplates':
+				myTemplates();
+				break;
+			case 'websitesTemplate':
+				websitesTemplate();
+				break;	
+			case 'propertyTemplate':
+				propertyTemplate();
+				break;
+			case 'projectTemplate':
+				projectTemplate();
+				break;
+			case 'customTemplates':
+				customTemplates();
+				break;			
+			case 'requestCustomTemplates':
+				requestCustomTemplates();
+				break;	
+			default:
+				websitesTemplate();
+		};
+
+				
 		
-		 
-		
-		
-		// to View Templatelist
 		
 		//this request for single templates data
 			if($routeParams.id) {
@@ -146,15 +193,6 @@ define(['app'], function (app) {
 				};
 			}	*/
 
-			
-				
-				$scope.tempPart = $routeParams.tempPart; 		
-				console.log($scope.tempPart);
-				/*For display by default projectTemplate.html page*/
-				if(!$routeParams.tempPart) {
-				$location.path('/dashboard/templates/projectTemplate');
-				}	
-				
 			//Upload Function for uploading files {sunita}
 				$scope.template={}; 
 				$scope.userinfo = {userId:1}; 
