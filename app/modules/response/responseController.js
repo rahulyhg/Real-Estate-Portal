@@ -3,10 +3,10 @@
 'use strict';
 
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$http','$routeParams', '$location','$rootScope'];
+    var injectParams = ['$scope', '$injector','$routeParams', '$location','$rootScope','dataService'];
 
     // This is controller for this view
-	var responseController = function ($scope, $injector, $http,$routeParams, $location,$rootScope) {		
+	var responseController = function ($scope, $injector,$routeParams, $location,$rootScope,dataService) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		
 		//$scope.MailView = $routeParams.mailId; /* this object will check list of mails show or single mail show */
@@ -36,38 +36,24 @@ define(['app'], function (app) {
 		//Code For Pagination
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
-		$scope.currentPage = 1;
-		$scope.pageItems = 2;
+		$scope.mailListCurrentPage = 1;
+		$scope.pageItems = 10;
 		$scope.numPages = "";		
 
 		$scope.pageChanged = function() {
 			
-			$http.get("../server-api/index.php/responses/"+$scope.currentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.responses = response.responses;
-				//$scope.totalRecords = response.totalRecords;
-				
-			});
+			dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems).then(function(response){
+					$scope.mailList = response.data;
+					console.log(response.data);
+				});
 		};		
 		 
-		//this request for single response data
-		if($routeParams.id) {
-			$http.get("../server-api/index.php/response/"+$routeParams.id)
-			.success(function(response) {$scope.resopnse = response;});
-		}
-		
-		else{
-			//this request for all response data
-			$http.get("../server-api/index.php/responses/"+$scope.currentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-			$scope.resopnses = response.responses;
-			console.log($scope.resopnses);
-			});
-		}
-		$scope.setStatus = function(status, id){
-			$http.put("../server-api/index.php/response/" + status + "/" + id)
-			
-		};
+		dataService.get("/getmultiple/enquiry/"+$scope.mailListCurrentPage+"/"+$scope.pageItems)
+		.then(function(response) {  
+			$scope.totalRecords = response.totalRecords;
+			$scope.mailList = response.data;
+			console.log(response);
+		});
     };    
 	// Inject controller's dependencies
 	responseController.$inject = injectParams;

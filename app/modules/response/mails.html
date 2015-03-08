@@ -7,28 +7,28 @@
 				<th>Sr.No.</th>
 				<th>From</th>
 				<th>Subject</th>
-				<th>Replied</th>
+				<th>Reply Status</th>
 				<th>Date</th>
-				<th>Status</th>
+				
 		  </tr>
 		</thead>
 		<tbody>			
-			<tr>
+			<tr ng-repeat="m in mailList">
 				<td>
 					<input type="checkbox" value="Select">
 				</td>
-				<td>1</td>
-				<td><a  href="#/dashboard/response/mailview">Vilas Shetkar</a></td>
-				<td>Purchase Flat</td>
-				<td>purchase</td>
-				<td>24/02/2015</td>
-				<td>0</td>
+				<td>{{$index + 1}}</td>
+				<td><a  href="#/dashboard/response/mailview">{{m.first_name+""+m.last_name}}</a></td>
+				<td>{{m.subject}}</td>
+				<td>{{m.reply_status}}</td>
+				<td>{{m.date}}</td>
+				
 			</tr>
 		</tbody>
 	</table>
 	<!-- pagination for mail list -->
 	<div class="text-center">				
-		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
-		<pre>Page: {{currentPage}} / {{numPages}}</pre>
+		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="mailListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+		<pre>Page: {{mailListCurrentPage}} / {{numPages}}</pre>
 	</div>		
 </div>
