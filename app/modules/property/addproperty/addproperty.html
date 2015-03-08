@@ -452,30 +452,30 @@
 									<tr>
 										<td>
 											<label>
-												<input type="checkbox" value="power" name="power" value="power" ng-model="property.power"/>
+												<input type="checkbox" value="power" name="power" value="power" ng-model="property.amenities.power"/>
 												Power Backup
 											</label>
 										</td>
 										<td>
 											<label>
-												<input type="checkbox" value="water" name="water" value="water" ng-model="property.water"/>
+												<input type="checkbox" value="water" name="water" value="water" ng-model="property.amenities.water"/>
 												Power Backup
 											</label>
 										</td>
 										<td>
 											<label>
-												<input type="checkbox" value="lift" name="lift" value="lift" ng-model="property.lift"/>
+												<input type="checkbox" value="lift" name="lift" value="lift" ng-model="property.amenities.lift"/>
 												Lift
 											</label>
 										</td>
 										<td>
 											<label>
-												<input type="checkbox" value="res_park" name="res_park" value="res_park" ng-model="property.res_park"/>
+												<input type="checkbox" value="res_park" name="res_park" value="res_park" ng-model="property.amenities.res_park"/>
 												Reserve Parking
 											</label>
 										</td>
 									</tr>
-								</table>
+								</table>{{property.amenities}}
 							</div>
 						</div>
 					</div> <!--end Amenities-->		
@@ -487,16 +487,19 @@
 						<div class="table-responsive">
 							<table class="table table-bordered">
 								<tr>
-									<td class="checkbox"> 							
+									<td class="checkbox"> 
+<label ng-repeat="role in roles">
+  <input type="checkbox" checklist-model="user.roles" checklist-value="role"> {{role}}
+</label> {{user.roles}}
 									  <label>
-										<input type="checkbox" value="" name="other_domain[]" ng-model="property.other_domain">
-										Select All {{property.other_domain | json}}
-									  </label>
+										<input type="checkbox" checklist-value="all" checklist-model="property.other_domain">
+										all 
+									  </label>{{property.other_domain | json}}
 									</td>
 									<td class="checkbox ">
 									  <label>
-										<input type="checkbox" value="" name="other_domain[]" value="www.hinjewadiproperties.com" ng-model="property.other_domain">www.hinjewadiproperties.com
-									  </label>
+										<input type="checkbox" checklist-value="www.hinjewadiproperties.com" checklist-model="property.other_domain">www.hinjewadiproperties.com
+									  </label>{{property.other_domain | json}}
 									</td>
 								</tr>
 							</table>
