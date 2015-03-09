@@ -56,6 +56,9 @@ define(['app'], function (app) {
 			});
 		};
 		
+		$scope.reset = function() {
+				$scope.compose = {};
+		};
 		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
 			upload.generateThumbs(files);
 		};// end file upload function
@@ -129,9 +132,7 @@ define(['app'], function (app) {
 		//send email
 		var composemailview= function(){
 			
-			$scope.reset = function() {
-				$scope.compose = {};
-			};
+			
 			$scope.composemail = function(){
 				console.log($scope.compose);
 				dataService.post("post/enquiry", $scope.compose)
@@ -164,6 +165,13 @@ define(['app'], function (app) {
 					$scope.mail = response;
 					console.log($scope.mail);
 				});		
+			}
+			$scope.replymail=function(){
+				console.log($scope.compose);
+				dataService.post("post/enquiry", $scope.compose)
+				.then(function(response) {
+					console.log(response);
+					$scope.reset();
 			}
 		}
 		//switch case
