@@ -3,9 +3,32 @@ define(['app'], function (app) {
     var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','upload','dataService','$http'];
     // This is controller for this view
 	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,upload,dataService,$http) {
-		$rootScope.metaTitle = "Real Estate Template";
-		
-		// for date picker {Pooja}
+		$rootScope.metaTitle = "Real Estate Template";		
+	
+		// all $scope object goes here{pooja}
+		$scope.maxSize = 5;
+		$scope.totalRecords = "";
+		$scope.propTemplate=1;		
+		$scope.projTempCurrentPage = 1;
+		$scope.customTempCurrentPage=1;
+		$scope.myTemplate=1;
+		$scope.listTempCurrentPage=1;
+		$scope.webTempCurrentPage=1;
+		$scope.pageItems = 10;
+		$scope.numPages = "";		
+		$scope.tempPart = $routeParams.tempPart;
+ 		$scope.alerts = [];
+         //for alert {Pooja}
+		 
+		if($scope.status=="success"){     
+			 $scope.alerts.push({type: 'error', msg: "Error to load data" 
+			 });
+			 $scope.closeAlert = function(index) {
+				$scope.alerts.splice(index, 1);
+			 };
+		}
+		  
+		 // for date picker {Pooja}
 		$scope.today = function() 
 		{
 			$scope.userRegDt = new Date();
@@ -22,19 +45,6 @@ define(['app'], function (app) {
 		
 	//End  Date Picker 
 	
-		// all $scope object goes here{pooja}
-		$scope.maxSize = 5;
-		$scope.totalRecords = "";
-		$scope.propTemplate=1;		
-		$scope.projTempCurrentPage = 1;
-		$scope.customTempCurrentPage=1;
-		$scope.myTemplate=1;
-		$scope.listTempCurrentPage=1;
-		$scope.webTempCurrentPage=1;
-		$scope.pageItems = 10;
-		$scope.numPages = "";		
-		$scope.tempPart = $routeParams.tempPart;
- 		 //$scope.tempName=[];
 		/*For display by default websitesTemplate.html page*/
 		//console.log($scope.tempPart);		
 		if(!$routeParams.tempPart) {
@@ -189,22 +199,29 @@ define(['app'], function (app) {
 				};
 			}	*/
 
-			//Upload Function for uploading files {sunita}
-				$scope.template={}; 
-				$scope.userinfo = {userId:1}; 
-				$scope.path = "template/"; // path to store images on server
-				$scope.template.template_image = []; // uploaded images will store in this array
-				$scope.upload = function(files,path,userinfo){ // this function for uploading files
-					upload.upload(files,path,userinfo,function(data){
-						if(data.status !== 'error'){
-							$scope.template.template_image.push(JSON.stringify(data.details));
-							console.log(data.message);
-						}else{
-							alert(data.message);
-						}
-						
-					});
-				};
+			
+		//Upload Function for uploading files {Pooja}
+		$scope.template={}; // this is form object
+		$scope.userinfo = {userId:1, name:"Pooja"}; // this is for uploading credentials
+		$scope.path = "template/"; // path to store images on server
+		$scope.template.template_image = []; // uploaded images will store in this array
+		$scope.upload = function(files,path,userinfo){ // this function for uploading files
+			upload.upload(files,path,userinfo,function(data){
+				if(data.status !== 'error'){
+					$scope.template.template_image.push(JSON.stringify(data.details));
+					console.log(data.message);
+				}else{
+					alert(data.message);
+				}
+				
+			});
+		};
+		
+		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
+			upload.generateThumbs(files);
+		};
+		// End upload function {pooja}
+		
 	};
        
 	// Inject controller's dependencies

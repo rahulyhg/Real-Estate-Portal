@@ -59,7 +59,8 @@
 			</div>	
 			<div class="row">
 				<div class="col-sm-12 ">
-					
+					 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+					 
 					<ng-include ng-if="tempPart=='projectTemplate'" src="'modules/templates/projectTemplate.html'"></ng-include>	
 					
 					<ng-include ng-if="tempPart=='propertyTemplate'" src="'modules/templates/propertyTemplate.html'"></ng-include>	
@@ -79,6 +80,7 @@
 					<!-- <ng-include ng-if="tempPart=='customTemplates'" src="'modules/templates/customTemplates.html'"></ng-include>	 -->
 					
 				</div>
+				
 			</div>		
 		</div>
 	</div>
