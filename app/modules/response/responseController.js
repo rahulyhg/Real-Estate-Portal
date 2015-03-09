@@ -115,10 +115,9 @@ define(['app'], function (app) {
 			.then(function(response) {  
 				$scope.totalRecords = response.totalRecords;
 				$scope.delList = response.data;
-				if($scope.status=="success"){
-					$scope.alerts.push({type: 'success', msg: "Record displayed"});
-				}else{
-					$scope.alerts.push({type: 'warning', msg: "Error to load data" 
+				if($scope.status=="warning"){
+					
+					$scope.alerts.push({type: 'error', msg: "Error to load data" 
 					});
 					$scope.closeAlert = function(index) {
 						$scope.alerts.splice(index, 1);
@@ -157,7 +156,15 @@ define(['app'], function (app) {
 		
 		//view single mail
 		var mailview= function(){
-			
+			if($routeParams.id) {
+				console.log($scope.mail);
+				dataService.get("getsingle/enquiry/",+ $routeParams.id, $scope.compose)
+				.then(function(response) {
+					console.log(response);
+					$scope.mail = response;
+					console.log($scope.mail);
+				});		
+			}
 		}
 		//switch case
 		switch($scope.mailPart) {
@@ -176,7 +183,7 @@ define(['app'], function (app) {
 			case 'deletemail':
 				deletemail();
 				break;
-			case 'mailview':
+			case 'mailview/:id':
 				mailview();
 				break;				
 			default:
