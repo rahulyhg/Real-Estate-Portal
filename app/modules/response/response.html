@@ -3,6 +3,7 @@
 		<div class="row ">
 			<div class="col-sm-3 " ng-include="'modules/response/sidebar.html'"></div>
 				<div class="col-sm-9">
+					<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 					<div class="bottom-space" ng-include="'modules/response/toolbars.html'"></div>
 					<!-- This is conditional include 
 						if not mailId set in url this html includes in view 
@@ -10,8 +11,9 @@
 					<!-- if mailId set in url this html includes in view -->
 					<ng-include ng-if="mailPart=='mailview'" src="'modules/response/mailview.html'"></ng-include>
 					<ng-include ng-if="mailPart=='mails'" src="'modules/response/mails.html'"></ng-include>
-					<ng-include ng-if="mailPart=='inbox'" src="'modules/response/mails.html'"></ng-include>
+					<ng-include ng-if="mailPart=='sentmail'" src="'modules/response/sentmail.html'"></ng-include>
 					<ng-include ng-if="mailPart=='composemailview'" src="'modules/response/composemailview.html'"></ng-include>
+					<ng-include ng-if="mailPart=='deletemail'" src="'modules/response/deletemail.html'"></ng-include>
 					
 				</div>
 		</div>

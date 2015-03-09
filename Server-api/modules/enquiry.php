@@ -10,8 +10,11 @@
 			echo json_encode($data);
 			
 		}else{
-			$where['user_id']=$_GET['user_id'];
-			$where['status']=$_GET['status'];
+			$where=[]; 
+			// to check user_id is set or not
+			(isset($_GET['user_id'])) ? $where['user_id'] = $_GET['user_id'] : "";
+			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
+			
 					// this will used for user specific data selection.
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select

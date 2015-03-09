@@ -1,0 +1,24 @@
+<div class="table-responsive">
+	<table class="table table-striped table-bordered">
+		<thead> 
+			<th>Sr.No.</th>
+			<th>Subject</th>
+			<th>From</th>
+			<th>To</th>
+			<th>Date</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="m in delList">
+				<td>{{((delListCurrentPage - 1) * pageItems ) + $index + 1}}</td>
+				<td><a href="#/dashboard/response/mailview{{m.id}}">{{m.subject}}</a></td>
+				<td>{{m.from_email}}</td>
+				<td>{{m.to_email}}</td>
+				<td>{{m.date}}</td>
+			</tr>
+		</tbody>					
+	</table>
+</div>
+<div class="text-center">				
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="delListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(delListCurrentPage,status)"></pagination>Total Deleted Mails:{{totalRecords}}				
+	<pre>Page: {{delListCurrentPage}} / {{numPages}}</pre>
+</div>

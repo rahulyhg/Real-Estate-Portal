@@ -13,11 +13,11 @@
 		  </tr>
 		</thead>
 		<tbody>			
-			<tr ng-repeat="m in sentMail | filter:{status:status}">
+			<tr ng-repeat="m in sentMail">
 				<td>
 					<input type="checkbox" value="Select">
 				</td>
-				<td>{{((mailListCurrentPage - 1) * pageItems) + $index + 1 }}</td>
+				<td>{{((sentListCurrentPage - 1) * pageItems) + $index + 1 }}</td>
 				<td><a  href="#/dashboard/response/mailview{{x.id}}">{{m.first_name+""+m.last_name}}</a></td>
 				<td>{{m.subject}}</td>
 				<td>{{m.reply_status}}</td>
@@ -28,7 +28,7 @@
 	</table>
 	<!-- pagination for mail list -->
 	<div class="text-center">				
-		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="sentListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(sentListCurrentPage)"></pagination>				
-		<pre>Page: {{mailListCurrentPage}} / {{numPages}}</pre>
+		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="sentListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(sentListCurrentPage,status)"></pagination>				
+		<pre>Page: {{sentListCurrentPage}} / {{numPages}}</pre>
 	</div>		
 </div>
