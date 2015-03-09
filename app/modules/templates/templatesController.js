@@ -5,6 +5,23 @@ define(['app'], function (app) {
 	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,upload,dataService,$http) {
 		$rootScope.metaTitle = "Real Estate Template";
 		
+		// for date picker {Pooja}
+		$scope.today = function() 
+		{
+			$scope.userRegDt = new Date();
+			$scope.birthdate= new Date();
+		};
+		$scope.today();
+
+		$scope.open = function($event,opened)
+		{
+			$event.preventDefault();
+			$event.stopPropagation();
+			 $scope[opened] = ($scope[opened] ===true) ? false : true;
+		};
+		
+	//End  Date Picker 
+	
 		// all $scope object goes here{pooja}
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
@@ -17,9 +34,9 @@ define(['app'], function (app) {
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
 		$scope.tempPart = $routeParams.tempPart;
- 		
+ 		 //$scope.tempName=[];
 		/*For display by default websitesTemplate.html page*/
-		console.log($scope.tempPart);		
+		//console.log($scope.tempPart);		
 		if(!$routeParams.tempPart) {
 			$location.path('/dashboard/templates/websitesTemplate');
 		}	
@@ -91,18 +108,37 @@ define(['app'], function (app) {
 		
 		var requestCustomTemplates = function(){
 			$scope.reset = function() {
-				$scope.reqtemp = {};
+				$scope.template = {};
 			};
-			//post method for insert data in request template form{Pooja}
-			$scope.postData = function() { 
-				dataService.post("/post/template",$scope.reqTemp)
+			//post method for insert data in request data form{Pooja}
+			$scope.postData = function(template) { 
+				dataService.post("/post/template",$scope.template)
 				.then(function(response) {  //function for response of request temp
-					$scope.reqTemp = response.reqTemp;
-					console.log(response.reqTemp);
+					$scope.template = response.data;
+					console.log(response);
+					$scope.reset();
 				});
 			}
 		}
-		
+		 //this request for single templates data
+			if($routeParams.id) {
+				
+				$http.get("/getsingle/templates/"+$routeParams.pageNo,$routeParams.id)
+				.success(function(response) {$scope.templates = response;
+					console.log($scope.templates);
+				});
+				
+			}else{
+		//this request for all templates data
+				$http.get("/getmultiple/templates/"+$routeParams.pageNo,$routeParams.id)
+					.success(function(response) 
+					{$scope.templates = response;
+						console.log($scope.templates);
+					});
+				
+				
+			}//end templatelist code
+			 
 		switch($scope.tempPart) {
 			case 'listTemplates':
 				listTemplates();
@@ -128,48 +164,8 @@ define(['app'], function (app) {
 			default:
 				websitesTemplate();
 		};
-
-				
 		
-		
-		//this request for single templates data
-			if($routeParams.id) {
-				
-				$http.get("/getsingle/template/"+$routeParams.pageNo,$routeParams.id)
-				.success(function(response) {$scope.templates = response;
-					console.log($scope.templates);
-				});
-				
-			}else{
-			//this request for all templates data
-				
-					$http.get("/getmultiple/template/"+$routeParams.pageNo,$routeParams.id)
-					.success(function(response) 
-					{$scope.templates = response;
-						console.log($scope.templates);
-					});
-				
-				
-			}//end templatelist code
-			
-			
-			
-			/* //add template
-			
-			$scope.reset = function() {
-				$scope.templates = {};
-			};
-			$scope.addproject = function(){
-				
-				console.log($scope.templates);
-				$http.post("../server-api/index.php/post/template/", $scope.templates)
-				.success(function(response) {
-					alert(response);
-					$scope.reset();
-					
-				});
-			}; 
-
+					/* 
 			//update template 
 			if($routeParams.id){
 				$http.get("../server-api/index.php/put/template/"+$routeParams.id)
@@ -197,11 +193,11 @@ define(['app'], function (app) {
 				$scope.template={}; 
 				$scope.userinfo = {userId:1}; 
 				$scope.path = "template/"; // path to store images on server
-				$scope.template.sketch = []; // uploaded images will store in this array
+				$scope.template.template_image = []; // uploaded images will store in this array
 				$scope.upload = function(files,path,userinfo){ // this function for uploading files
 					upload.upload(files,path,userinfo,function(data){
 						if(data.status !== 'error'){
-							$scope.template.sketch.push(JSON.stringify(data.details));
+							$scope.template.template_image.push(JSON.stringify(data.details));
 							console.log(data.message);
 						}else{
 							alert(data.message);

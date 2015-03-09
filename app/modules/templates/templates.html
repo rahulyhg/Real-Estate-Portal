@@ -23,10 +23,12 @@
 				 <div class="col-sm-3"> 
 					<label for="searchTemp" class="control-label">Search </label>  
 					  <div class="input-group">
-						 <input id="searchTemp" type="text" class="form-control" placeholder="Search for..." ng-model="myWebsite.searchTemp">
+						 <input id="searchTemp" type="text" class="form-control" placeholder="Search for..." ng-model="myWebsite.searchTemp"  typeahead="template_name for templates in search | filter:{template_name:$viewValue}" typeahead-template-url="customTemplate.html">
 						 <span class="input-group-btn">
-							<button class="btn btn-success" type="button">Go!</button>
-						 </span>
+							<button class="btn btn-success" type="button">
+								<span class="glyphicon glyphicon-search iconsearch"></span>
+						</span>
+						
 					  </div><!-- /input-group -->
 				</div>			 				  
 				 <div class="col-sm-3">
