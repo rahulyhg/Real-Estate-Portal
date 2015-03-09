@@ -131,9 +131,7 @@ define(['app'], function (app) {
 		
 		//send email
 		var composemailview= function(){
-			
-			
-			$scope.composemail = function(){
+			$scope.composemail = function(compose){
 				console.log($scope.compose);
 				dataService.post("post/enquiry", $scope.compose)
 				.then(function(response) {
@@ -159,7 +157,7 @@ define(['app'], function (app) {
 		var mailview= function(){
 			if($routeParams.id) {
 				console.log($scope.mail);
-				dataService.get("getsingle/enquiry/",+ $routeParams.id, $scope.compose)
+				dataService.get("getsingle/enquiry/"+ $routeParams.id, $scope.mail)
 				.then(function(response) {
 					console.log(response);
 					$scope.mail = response;
@@ -172,6 +170,7 @@ define(['app'], function (app) {
 				.then(function(response) {
 					console.log(response);
 					$scope.reset();
+				});
 			}
 		}
 		//switch case
@@ -191,7 +190,7 @@ define(['app'], function (app) {
 			case 'deletemail':
 				deletemail();
 				break;
-			case 'mailview/:id':
+			case 'mailview':
 				mailview();
 				break;				
 			default:
