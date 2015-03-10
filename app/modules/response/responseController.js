@@ -43,11 +43,11 @@ define(['app'], function (app) {
 		$scope.compose={}; 
 		$scope.userinfo = {userId:1, name:"vilas"};
 		$scope.path = "property/"; 
-		$scope.compose.attach_image = []; // uploaded images will store in this array
+		$scope.compose.attachment = []; // uploaded images will store in this array
 		$scope.upload = function(files,path,userinfo){ // this function for uploading files
 			upload.upload(files,path,userinfo,function(data){
 				if(data.status !== 'error'){
-					$scope.compose.attach_image.push(JSON.stringify(data.details));
+					$scope.compose.aattachment.push(JSON.stringify(data.details));
 					console.log(data.message);
 				}else{
 					alert(data.message);
@@ -56,6 +56,9 @@ define(['app'], function (app) {
 			});
 		};
 		
+		$scope.reset = function() {
+				$scope.compose = {};
+		};
 		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
 			upload.generateThumbs(files);
 		};// end file upload function
@@ -74,9 +77,7 @@ define(['app'], function (app) {
 				$scope.status=response.status;
 				$scope.message=response.message;
 				$scope.error=response.error;
-				if($scope.status=="success"){
-					$scope.alerts.push({type: 'success', msg: "Record displayed"});
-				}else{
+				if($scope.status=="warning"){
 					$scope.alerts.push({type: 'warning', msg: "Error to load data"});
 					$scope.closeAlert = function(index) {
 						$scope.alerts.splice(index, 1);
@@ -128,11 +129,7 @@ define(['app'], function (app) {
 		
 		//send email
 		var composemailview= function(){
-			
-			$scope.reset = function() {
-				$scope.compose = {};
-			};
-			$scope.composemail = function(){
+			$scope.composemail = function(compose){
 				console.log($scope.compose);
 				dataService.post("post/enquiry", $scope.compose)
 				.then(function(response) {
@@ -158,12 +155,20 @@ define(['app'], function (app) {
 		var mailview= function(){
 			if($routeParams.id) {
 				console.log($scope.mail);
-				dataService.get("getsingle/enquiry/",+ $routeParams.id, $scope.compose)
+				dataService.get("getsingle/enquiry/"+ $routeParams.id, $scope.mail)
 				.then(function(response) {
 					console.log(response);
 					$scope.mail = response;
 					console.log($scope.mail);
 				});		
+			}
+			$scope.replymail=function(){
+				console.log($scope.compose);
+				dataService.post("post/enquiry", $scope.compose)
+				.then(function(response) {
+					console.log(response);
+					$scope.reset();
+				});
 			}
 		}
 		//switch case
@@ -183,7 +188,7 @@ define(['app'], function (app) {
 			case 'deletemail':
 				deletemail();
 				break;
-			case 'mailview/:id':
+			case 'mailview':
 				mailview();
 				break;				
 			default:
