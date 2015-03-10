@@ -52,10 +52,10 @@ define(['app'], function (app) {
 		}	
 		
 		// All $scope methods
-		$scope.pageChanged = function(page) {
-			//$log.log('Page changed to: ' + $scope.propTemplate);
-			dataService.get("/getmultiple/template/"+page+"/"+$scope.pageItems)
-			.success(function(response) {
+		$scope.pageChanged = function(page,where) {			
+			angular.extend(where, $scope.user_id);		
+			dataService.get("/getmultiple/templates/"+page+"/"+$scope.pageItems,where)
+			.then(function(response) {
 				$scope.templates = response.template;
 				
 			});
@@ -63,7 +63,9 @@ define(['app'], function (app) {
 		
 		// switch functions 
 		var projectTemplate = function(){
-			dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems)
+			$scope.status = {status : 1};
+			angular.extend($scope.status, $scope.user_id);
+			dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems, $scope.status)
 			.then(function(response) {  //function for templatelist response
 				$scope.totalRecords = response.totalRecords;
 				$scope.templates = response.data;
@@ -72,16 +74,20 @@ define(['app'], function (app) {
 		};
 		
 		var websitesTemplate = function(){
-			dataService.get("/getmultiple/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems)
+			$scope.status = {status : 1};
+			angular.extend($scope.status, $scope.user_id);
+			dataService.get("/getmultiple/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems,$scope.status)
 			.then(function(response) {  //function for templatelist response
 				$scope.totalRecords = response.totalRecords;
 				$scope.templates = response.data;
-				console.log(response.data);
+			//	console.log(response.data);
 			});
 		};
 		
 		var propertyTemplate = function(){
-			dataService.get("/getmultiple/template/"+$scope.propTemplate+"/"+$scope.pageItems)
+			$scope.status = {status : 1};
+			angular.extend($scope.status, $scope.user_id);
+			dataService.get("/getmultiple/template/"+$scope.propTemplate+"/"+$scope.pageItems,$scope.status)
 			.then(function(response) {  //function for templatelist response
 				$scope.totalRecords = response.totalRecords;
 				$scope.templates = response.data;
@@ -90,7 +96,9 @@ define(['app'], function (app) {
 		};
 		
 		var customTemplates = function(){
-			dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems)
+			$scope.status = {status : 1};
+			angular.extend($scope.status, $scope.user_id);
+			dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems,$scope.status)
 			.then(function(response) {  //function for templatelist response
 				$scope.totalRecords = response.totalRecords;
 				$scope.templates = response.data;
@@ -99,7 +107,9 @@ define(['app'], function (app) {
 		};
 		
 		var listTemplates = function(){
-			dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems)
+			$scope.status = {status : 1};
+			angular.extend($scope.status, $scope.user_id);
+			dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems,$scope.status)
 			.then(function(response) {  //function for templatelist response
 				$scope.totalRecords = response.totalRecords;
 				$scope.templates = response.data;
@@ -108,7 +118,9 @@ define(['app'], function (app) {
 		};
 		
 		var myTemplates = function(){
-			dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems)
+			$scope.status = {status : 1};
+			angular.extend($scope.status, $scope.user_id);
+			dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems,$scope.status)
 			.then(function(response) {  //function for templatelist response
 				$scope.totalRecords = response.totalRecords;
 				$scope.templates = response.data;
@@ -117,6 +129,8 @@ define(['app'], function (app) {
 		};
 		
 		var requestCustomTemplates = function(){
+			$scope.status = {status : 1};
+			angular.extend($scope.status, $scope.user_id);
 			$scope.reset = function() {
 				$scope.template = {};
 			};

@@ -10,7 +10,7 @@
 			<th>Template Type</th>						
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates | filter:{status:status} | filter:searchTemp">
+			<tr ng-repeat="x in templates">
 				<td>{{x.id}}</td>
 				<td>{{x.template_name}}</td>
 				<td>{{x.date | date:'MM/dd/yyyy'}}</td>
@@ -30,6 +30,6 @@
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="webTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(webTempCurrentPage)"></pagination>				
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="webTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(webTempCurrentPage,status)"></pagination>				
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>		

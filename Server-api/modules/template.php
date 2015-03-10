@@ -9,8 +9,13 @@
 			$data = $db->select("templates", $where);
 			echo json_encode($data);
 			
+			
 		}else{
-			$where=[]; // this will used for user specific data selection.
+			$where=[]; 
+			// to check user_id is set or not
+			(isset($_GET['user_id'])) ? $where['user_id'] = $_GET['user_id'] : "";
+			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : ""; // this will used for user specific data selection.
+			
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select
 			
@@ -33,6 +38,7 @@
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){
 		$where['id'] = $id; // need where clause to update/delete record
+		
 		$update = $db->update("templates", $body, $where);
 		echo json_encode($update);
 		//to delete record {sunita}
