@@ -11,10 +11,10 @@
 			<th>Template Type</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates | filter:{status:status} | filter:searchTemp">
+			<tr ng-repeat="x in templates">
 				<td>{{((projTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.template_name}}</td>
-				<td>{{x.date | date:'MM/dd/yyyy'}}</td>
+				<td>{{x.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
 				<td>{{x.modified_date}}</td>
 				<td>
 					<a class="btn btn-success"  ng-show="x.status==1" title="Active">Active</a>
@@ -31,6 +31,6 @@
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="projTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(projTempCurrentPage,status)"></pagination>				
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="projTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(projTempCurrentPage,custom)"></pagination>				
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>	

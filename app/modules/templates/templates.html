@@ -20,7 +20,7 @@
 			</div>	
 			<div class="clearfix"></div>
 			<div class="row bottom-space">
-				 <div class="col-sm-3"> 
+				<div class="col-sm-2"> 
 					<label for="searchTemp" class="control-label">Search </label>  
 					  <div class="input-group">
 						 <input id="searchTemp" type="text" class="form-control" placeholder="Search for..." ng-model="myWebsite.searchTemp"  typeahead="template_name for templates in search | filter:{template_name:$viewValue}" typeahead-template-url="customTemplate.html">
@@ -31,7 +31,7 @@
 						
 					  </div><!-- /input-group -->
 				</div>			 				  
-				 <div class="col-sm-3">
+				 <div class="col-sm-2">
 					<label for="id" class="control-label">Sort by Order</label>
 					<select id="id" class="form-control ng-pristine ng-valid" ng-model="templates.id" title="Select order"> 
 						<option value="">Select Order</option>		<!-- added value & selected attr -->	
@@ -39,15 +39,17 @@
 						<option value="id">Ascending</option>  
 					</select>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<label for="status" class="control-label">Select Status</label>
-					<select id="status" class="form-control ng-pristine ng-valid" ng-model="templates.status" title="Status">
+					<select id="status" class="form-control ng-pristine ng-valid" ng-model="templates.status" title="status"  ng-change="changeValue(status)">
 						<option value="" selected="">Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
+						
 						<option value="1">Active</option>
-						<option value="0">Deleted</option>   
+						<option value="0">Deleted</option>		
+						
 					</select>
 				</div>	
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<label for="T_type" class="control-label">Template Type</label>
 					<select id="T_type" class="form-control ng-pristine ng-valid" ng-model="template.templates_type" title="Select type">
 						<option value="" selected="">Select Template</option> <!-- add value attribute empty & selected for initial selected option -->
@@ -55,7 +57,30 @@
 						<option value="buy">Buy</option>
 						<option value="preview">Preview</option>	
 					</select>
-				</div>			
+				</div>	
+				<div class="col-sm-2" ng-if="tempPart=='websitesTemplate'" >
+					<label for="category" class="control-label">Template Category</label>
+					<select id="category" class="form-control ng-pristine ng-valid" ng-model="templates.category" title="Template category">
+						<option value="" selected="">Select Category</option> <!-- add value attribute empty & selected for initial selected option -->
+						
+						<option value="">Hospital Template</option>
+						<option value="">Online Shopping Template</option>		
+						<option value="">College Template</option>	
+					</select>
+				</div>	
+				<div class="col-sm-2" ng-if="tempPart=='customTemplates'">
+					<label for="devlpement_status" class="control-label">Devlpement Status</label>
+					<select id="devlpement_status" class="form-control ng-pristine ng-valid" ng-model="templates.devlpement_status" title="devlpement_status">
+						<option value="" selected="">Select Devlpement Status</option> <!-- add value attribute empty & selected for initial selected option -->
+						
+						<option value="">Pending</option>
+						<option value="">In-progress</option>
+						<option value="">Completed</option>
+						<option value="">Rejected</option>
+						<option value="">In-review</option>
+						
+					</select>
+				</div>		
 			</div>	
 			<div class="row">
 				<div class="col-sm-12 ">

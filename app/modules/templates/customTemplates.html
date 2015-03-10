@@ -6,26 +6,26 @@
 			<th>Template Name</th>			
 			<th>Devlopment Status</th>
 			<th>Create Date</th>
-			<th>Modified Date</th>
-			<th>Status</th>
+			<th>Modified Date</th>			
 			<th>Manage</th>
 		</thead>
 		<tbody>
 			<tr ng-repeat="x in templates | filter:searchTemp">
 				<td>{{((customTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.template_name}}</td>				
-				<td>{{x.development_status}}</td>
-				<td>{{x.date | date:'MM/dd/yyyy'}}</td>
-				<td>{{x.modified_date}}</td>
 				<td>
-						<a class="btn btn-success" ng-show="x.status==1" title="Active">Active</a>
-						<a class="btn btn-warning" ng-if="x.status==0" title="Delete">Delete</a></td>
-				<td>
-					<a tooltip-animation="true" tooltip="delete" class="btn btn-danger">
-						<span class="glyphicon glyphicon glyphicon-remove" ></span>
+					<a class="btn btn-success" ng-show="x.development_status=='rejected'" tooltip="Resend request">
+						<span class="glyphicon glyphicon-refresh"></span>
 					</a>
-					<a tooltip-animation="true" tooltip="" class="btn btn-success">
-						<span class="glyphicon glyphicon glyphicon-ok" ></span>
+					<span ng-show="x.development_status!='rejected'">{{x.development_status}}</span>
+				</td>
+				<td>{{x.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+				<td>{{x.modified_date}}</td>
+				
+				<td>
+					<a class="btn btn-success" ng-show="x.status==1" title="Active">Active</a>
+					<a class="btn btn-warning" ng-show="x.status==0" title="Delete">Delete</a>					
+					<a tooltip-animation="true" title="Preview" class="btn btn-primary">Preview					
 					</a>
 				</td>				
 			</tr>		
@@ -33,7 +33,7 @@
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="customTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(customTempCurrentPage,status)"></pagination>				
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="customTempCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(customTempCurrentPage,custom)"></pagination>				
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>		
 

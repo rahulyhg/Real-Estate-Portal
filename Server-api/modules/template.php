@@ -15,6 +15,8 @@
 			// to check user_id is set or not
 			(isset($_GET['user_id'])) ? $where['user_id'] = $_GET['user_id'] : "";
 			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : ""; // this will used for user specific data selection.
+			/* (isset($_GET['custom'])) ? $where['custom'] = $_GET['custom'] : ""; // this will used for user specific data selection.
+			(isset($_GET['template_type'])) ? $where['template_type'] = $_GET['template_type'] : ""; // this will used for user specific data selection. */
 			
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select
