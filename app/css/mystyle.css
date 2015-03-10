@@ -52,19 +52,7 @@ header .im1 {
   height: 70px;
   
 }
-/*.dropimage
-{
-	font-size:20px;
-}
-.dropimg
-{
-	font-size:15px;
-	padding:5px 5px 5px 5px;
-	height:40px;
-	width:40px;
-	margin-bottom:5px;
-	
-}*/
+
 .spanimg
 {
 	border-radius:10px;
@@ -101,8 +89,8 @@ header .im1
 	margin: 0% auto;
 	padding: 15px 15px;
 	width: 100%;
-min-width: 250px;
-max-width: 350px;
+	min-width: 250px;
+	max-width: 350px;
 }
 .borderimg
 {
@@ -127,13 +115,15 @@ max-width: 350px;
 }
 
 .border{
-border: 2px solid red;
-border-radius: 16px;}
+	border: 2px solid red;
+	border-radius: 16px;
+}
 .border h3{
-color:blue}
+	color:blue
+}
 h3 {
   color: #2368CE;
-  }
+}
   
   body form > p {
   color: cadetblue;
@@ -144,9 +134,7 @@ h3 {
  label {
   color: #41547c;
 }
-.nav .nav-pills .nav-stacked{
-	border:1px solid #ccc;
-}
+
 .dropdown-menu {
   left: auto;
   right: 0;

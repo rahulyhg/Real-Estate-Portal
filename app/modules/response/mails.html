@@ -5,10 +5,11 @@
 			<tr>
 				
 				<th>Sr.No.</th>
-				<th>From</th>
+				
 				<th>Subject</th>
-				<th>Reply Status</th>
 				<th>Date</th>
+				<th>Reply Status</th>
+				
 				<th>Remove</th>
 		  </tr>
 		</thead>
@@ -16,11 +17,24 @@
 			<tr ng-repeat="m in mailList">
 				
 				<td>{{((mailListCurrentPage - 1) * pageItems) + $index + 1 }}</td>
-				<td><a  href="#/dashboard/response/mailview">{{m.first_name+""+m.last_name}}</a></td>
-				<td>{{m.subject}}</td>
-				<td>{{m.reply_status}}</td>
+				<td>
+					<a href="#/dashboard/response/mailview/{{m.id}}" ng-if="m.read_status==0"><b>{{m.subject}}</b></a>
+					<a href="#/dashboard/response/mailview/{{m.id}}"ng-if="m.read_status==1">{{m.subject}}</a>
+				</td>
+				
 				<td>{{m.date}}</td>
-				<td> <button class="btn btn-danger glyphicon glyphicon-trash" ng-click="deletemail({{m.id}})"></button></td>
+				<td>
+					<button type="button" ng-if="(m.read_status==1)" ng-model="m.read_status" >
+						<span>Read</span>
+					</button> 
+					<button type="button" ng-if="(m.read_status==0)" ng-model="m.read_status" ng-click="changestatus(m.id,m.read_status, $index)">
+						<span>Unread</span>
+					</button>  
+				</td>
+				
+				<td> <button class="btn btn-danger glyphicon glyphicon-trash" ng-click="deletemail(m.id)"></button>
+				 
+				</td>
 			</tr>
 		</tbody>
 	</table>

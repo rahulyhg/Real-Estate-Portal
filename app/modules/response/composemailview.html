@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-sm-12" >
 	<div class="main-content">
-		<form class="form-horizontal " name="ComposeMail">
+		<form class="form-horizontal " name="ComposeMail" ng-submit="ComposeMail.$valid"novalidate>
 				<div class="form-group">
 					<label for="from" class="col-sm-2 control-label">From</label>
 					<div class="col-sm-10">
@@ -11,7 +11,7 @@
 				<div class="form-group">
 					<label for="to_email" class="col-sm-2 control-label">To</label>
 					<div class="col-sm-8">
-						<input type="email" class="form-control" id="to_email" name="to_email" placeholder="To" ng-model="compose.to_email" required>
+						<input type="email" class="form-control" id="to_email" name="to_email" placeholder="To" ng-model="compose.to_email.to" required>
 						<span  ng-show="ComposeMail.to_email.$dirty && ComposeMail.to_email.$invalid">
 							<span class="text-danger" ng-show="ComposeMail.to_email.$error.required">Email is required.</span>
 							<span class="text-danger" ng-show="ComposeMail.to_email.$error.email">Invalid Email address.</span>
@@ -27,7 +27,7 @@
 				<div class="form-group">
 					<label for="cc" class="col-sm-2 control-label">Cc</label>
 					<div class="col-sm-10">
-						<input type="email" class="form-control" id="cc" name="cc" placeholder="Cc" ng-model="cc">
+						<input type="email" class="form-control" id="cc" name="cc" placeholder="Cc" ng-model="compose.to_email.cc">
 						<span class="help-block" ng-show="ComposeMail.cc.$dirty && ComposeMail.cc.$invalid">
 							<span class="text-danger" ng-show="ComposeMail.cc.$error.email">Invalid Email address.</span>
 						</span>
@@ -44,7 +44,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<textarea id="message" name="message" class="form-control" rows="3" ng-model="compose.message" ng-minlength="5" ng-maxlength="10" ui-tinymce required>
+						<textarea id="message" name="message" class="form-control" rows="3" ng-model="compose.message" ng-minlength="2" ng-maxlength="356" ui-tinymce required>
 						</textarea>
 					</div>
 				</div>
@@ -60,6 +60,19 @@
 						<button ng-show="attachImages" ng-click="upload(attachImages,path,userinfo)" type="button">Upload</button>
 						<input type="hidden" ng-model="compose.attachment">
 						
+					</div>	
+					
+				</div>
+				<div class="form-group">	
+					<div class="col-sm-offset-2 col-sm-4">
+						<input type="hidden" name="status" ng-model="compose.status" ng-init="compose.status = 2" value="{{compose.status}}">
+					</div>
+				</div>
+				
+				<div class="form-group">	
+					<div class="col-sm-offset-2 col-sm-4">
+						<button class="btn btn-primary" id="send" ng-click="composemail(compose)" ng-disabled="ComposeMail.$invalid" > Send</button>
+						<button class="btn btn-danger" id="cancel" ng-click="reset()"> Cancel</button>
 					</div>			
 				</div>
 			</div>

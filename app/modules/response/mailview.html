@@ -1,50 +1,49 @@
 
 <div class="main-content">
-	<div class="row">
+	<div class="row"> 
 		<div class="col-md-12">
 			<div class="table-responsive">
 				<table>
 					<thead>
-						<th colspan="3">{{mail.subject}}</th>
+						<th colspan="3">{{
+						singlemail.subject}}</th>
 					</thead>
 					<tbody>
 						<tr>
 							<td rowspan="4"><img src="img/user.jpg"/></td>
 							<td>From</td>
-							<td>{{mail.from_email}}</td>
+							<td>{{singlemail.from_email}}</td>
 						</tr>
 						<tr>
 							<td>To </td>
-							<td><a>{{mail.first_name}}</a></td>
+							<td><a>{{singlemail.first_name}}</a></td>
 						</tr>
 						<tr>
 							<td>Reply-To </td>
-							<td><a>{{mail.from_email}}</a></td>
+							<td><a>{{singlemail.from_email}}</a></td>
 						</tr>
 						<tr>
 							<td>Date </td>
-							<td>{{mail.date}}</td>
+							<td>{{singlemail.date}}</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<textarea class="form-control" rows="3" placeholder="Text of Mail"></textarea>
-		</div>
+	<div>
+		<p>{{singlemail.message}}</p>
 	</div>			
 </div>	
 <div class="row">
 	<div class="col-sm-12 ">
-	<div class="main-content">
+	<div ng-if="singlemail" class="main-content">
 		<h4> Reply </h4>
-			<form class="form-horizontal " name="mailView" novalidate>
+			<form class="form-horizontal " name="mailView" ng-submit="mailView.$valid"  novalidate>
 				<div class="form-group">
 					<label for="subject" class="col-sm-2 control-label">Subject</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="subject" name="Subject" placeholder="Subject" ng-model="replyemail.subject"  ng-required="true">
+						<input readonly type="text" class="form-control" id="subject" name="subject" placeholder="Subject" ng-model="replyMail.reply_message.subject"  ng-required="true">
 						<span class="text-danger" ng-show="mailView.subject.$dirty && mailView.subject.$invalid">
 						  <span ng-show="mailView.subject.$error.required">Message is required .</span>
 					</div>
@@ -52,28 +51,35 @@
 				<div class="form-group">
 					<label for="to_email" class="col-sm-2 control-label">To</label>
 					<div class="col-sm-10">
-						<input type="to_email"  id="to_email" class="form-control" name="Email" ng-model="replyemail.to_email" placeholder="example@gmail.com"  ng-required="true">
-						<span class="text-danger" ng-show="mailView.to_email.$dirty && mailView.to_email.$invalid">
-						  <span ng-show="mailView.to_email.$error.required">Email is required.</span>
-						  <span ng-show="mailView.to_email.$error.email">Invalid email address.</span>
-						  </span>
+						<input readonly type="email" class="form-control" id="to_email" name="to_email" placeholder="example@gmail.com" ng-model="replyMail.to_email" required>
+						<span  ng-show="mailView.to_email.$dirty && mailView.to_email.$invalid">
+							<span class="text-danger" ng-show="mailView.to_email.$error.required">Email is required.</span>
+							<span class="text-danger" ng-show="mailView.to_email.$error.email">Invalid Email address.</span>
+						</span>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="reply_message" class="col-sm-2 control-label"> Message</label>
 					<div class="col-sm-10">
-						<textarea   id="reply_message" class="form-control" name="reply_message" ng-model="replyemail.reply_message"    cols="30" rows="3" ng-maxlength="256" ui-tinymce  ng-required="true"></textarea>
-						<p>{{ 256 - replyemail.reply_message.length + " Chars left" }}</p>
-						 <span class="text-danger" ng-show="form1.reply_message.$error.maxlength">
+						<textarea ng-if="singlemail.reply_status!=1" id="reply_message" class="form-control" name="reply_message" ng-model="replyMail.reply_message.message"  cols="30" rows="3" ng-maxlength="256" ui-tinymce  ng-required="true"></textarea>
+						<div ng-if="singlemail.reply_status==1">{{replyMail.reply_message.message}}</div>
+						<p>{{ 256 - replyMail.reply_message.length + " Chars left" }}</p>
+						 <span class="text-danger" ng-show="mailView.reply_message.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
 							<span class="text-danger" ng-show="mailView.reply_message.$dirty && mailView.reply_message.$invalid">
-						  <span ng-show="mailView.reply_message.$error.required">Message is required .</span>
+								<span ng-show="mailView.reply_message.$error.required">Message is required .</span>
+							</span>
+					</div>
+				</div>
+				<div class="form-group">	
+					<div class="col-sm-offset-2 col-sm-4">
+						<input type="hidden" name="reply_status" ng-model="replyMail.reply_status" ng-init="replyMail.reply_status = 1" value="{{replyMail.reply_status}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default" title="Send replay" ng-click="replymail(replyemail)">Send Reply</button>
+						<button type="submit" class="btn btn-primary" title="Send replay" ng-click="update(singlemail.id, replyMail)" ng-disabled="mailView.$invalid" ng-disabled="true">Send Reply</button>
 						<button type="reset" class="btn btn-danger" title="Send replay">Cancel</button>
 					</div>
 				</div>
