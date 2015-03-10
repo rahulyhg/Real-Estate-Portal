@@ -3,22 +3,29 @@
 	<table class="table table-bordered ">
 		<thead>
 			<th>Sr.No.</th>
-			<th>Template Name</th>
+			<th>Template Name</th>			
 			<th>Devlopment Status</th>
 			<th>Create Date</th>
 			<th>Modified Date</th>
+			<th>Status</th>
 			<th>Manage</th>
 		</thead>
 		<tbody>
 			<tr ng-repeat="x in templates | filter:searchTemp">
 				<td>{{((customTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
-				<td>{{x.template_name}}</td>
+				<td>{{x.template_name}}</td>				
 				<td>{{x.development_status}}</td>
 				<td>{{x.date | date:'MM/dd/yyyy'}}</td>
 				<td>{{x.modified_date}}</td>
 				<td>
+						<a class="btn btn-success" ng-show="x.status==1" title="Active">Active</a>
+						<a class="btn btn-warning" ng-if="x.status==0" title="Delete">Delete</a></td>
+				<td>
 					<a tooltip-animation="true" tooltip="delete" class="btn btn-danger">
-						<span class="glyphicon glyphicon glyphicon-remove" go-back=""></span>
+						<span class="glyphicon glyphicon glyphicon-remove" ></span>
+					</a>
+					<a tooltip-animation="true" tooltip="" class="btn btn-success">
+						<span class="glyphicon glyphicon glyphicon-ok" ></span>
 					</a>
 				</td>				
 			</tr>		

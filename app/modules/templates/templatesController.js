@@ -20,7 +20,7 @@ define(['app'], function (app) {
  		$scope.alerts = [];
          //for alert {Pooja}
 		 
-		if($scope.status=="success"){     
+		if($scope.status=="warning"){     
 			 $scope.alerts.push({type: 'error', msg: "Error to load data" 
 			 });
 			 $scope.closeAlert = function(index) {

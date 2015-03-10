@@ -42,33 +42,33 @@
         </div>						
 	</div> 	
 	<div class="form-group">
-		<label for="req" class="col-sm-2 control-label">Custom Requirement</label>	
+		<label for="requirement" class="col-sm-2 control-label">Custom Requirement</label>	
 		<div class="col-sm-9">	  
-			<textarea class="form-control" ng-model="template.custom_requirement.req" id="req" name="req" cols="30" rows="4" ng-maxlength="356" placeholder="Custom Template Requirement"></textarea>
+			<textarea class="form-control" ng-model="template.custom_requirement.requirement" id="requirement" name="requirement" cols="30" rows="4" ng-maxlength="356" placeholder="Custom Template Requirement"></textarea>
 			      
-			<p ng-hide="reqCustTemplate.req.$error.maxlength">{{ 356 - template.custom_requirement.req.length + " Chars left" }}</p>			
-			<span class="text-danger" ng-show="reqCustTemplate.req.$error.maxlength">Sorry You are Exceeding the Limit</span>
-			<span class="text-danger" ng-show="reqCustTemplate.req.$dirty && reqCustTemplate.custom_requirement.$invalid"></span>
-			<span  ng-show="reqCustTemplate.req.$error.required">Custom Requirement are Required.</span>
-			<span class="text-danger" ng-show="reqCustTemplate.req.$error.minlength">Please Enter minimum 10 character</span>
+			<p ng-hide="reqCustTemplate.requirement.$error.maxlength">{{ 356 - template.custom_requirement.requirement.length + " Chars left" }}</p>			
+			<span class="text-danger" ng-show="reqCustTemplate.requirement.$error.maxlength">Sorry You are Exceeding the Limit</span>
+			<span class="text-danger" ng-show="reqCustTemplate.requirement.$dirty && reqCustTemplate.custom_requirement.$invalid"></span>
+			<span  ng-show="reqCustTemplate.requirement.$error.required">Custom Requirement are Required.</span>
+			<span class="text-danger" ng-show="reqCustTemplate.requirement.$error.minlength">Please Enter minimum 10 character</span>
 			
 		</div>					
 	</div>
 	<div class="form-group">
-		<label for="template_image" class="col-sm-2 control-label">Template Image</label>
+		<label for="scrible" class="col-sm-2 control-label">Template Image</label>
 		
 		<div class="col-sm-10">
 			
-			<input type="file" id="template_image" ng-file-select ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="template_image">
+			<input type="file" id="template_image" ng-file-select ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="scrible">
 						
 				<!-- This will show thumbnails & progress of images -->
-				<file-preview url="template_image" ng-model="template.template_image"></file-preview>
+				<file-preview url="scrible" ng-model="template.scrible"></file-preview>
 				
 				<!-- This button will show if file/s selected -->
-				<button ng-show="template_image" ng-click="upload(template_image,path,userinfo)" type="button">Upload</button>
+				<button ng-show="scrible" ng-click="upload(scrible,path,userinfo)" type="button">Upload</button>
 				
 				<!-- This hidden input will store image path in array after successful uploading -->
-				<input type="hidden" ng-model="template.template_image">
+				<input type="hidden" ng-model="template.scrible">
 			<!-- Changed by pooja -->
 		</div>
 	</div>					
