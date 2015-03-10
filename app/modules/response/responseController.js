@@ -43,11 +43,11 @@ define(['app'], function (app) {
 		$scope.compose={}; 
 		$scope.userinfo = {userId:1, name:"vilas"};
 		$scope.path = "property/"; 
-		$scope.compose.attach_image = []; // uploaded images will store in this array
+		$scope.compose.attachment = []; // uploaded images will store in this array
 		$scope.upload = function(files,path,userinfo){ // this function for uploading files
 			upload.upload(files,path,userinfo,function(data){
 				if(data.status !== 'error'){
-					$scope.compose.attach_image.push(JSON.stringify(data.details));
+					$scope.compose.aattachment.push(JSON.stringify(data.details));
 					console.log(data.message);
 				}else{
 					alert(data.message);
@@ -77,9 +77,7 @@ define(['app'], function (app) {
 				$scope.status=response.status;
 				$scope.message=response.message;
 				$scope.error=response.error;
-				if($scope.status=="success"){
-					$scope.alerts.push({type: 'success', msg: "Record displayed"});
-				}else{
+				if($scope.status=="warning"){
 					$scope.alerts.push({type: 'warning', msg: "Error to load data"});
 					$scope.closeAlert = function(index) {
 						$scope.alerts.splice(index, 1);
