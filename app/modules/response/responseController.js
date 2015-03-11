@@ -190,7 +190,13 @@ define(['app'], function (app) {
 		var mailview= function(){
 			$scope.mailSingleId = ($routeParams.id) ? $routeParams.id : "";
 			$scope.prev=function(){
+				
 					$scope.mailSingleId = $scope.mailSingleId - 1;
+					console.log('/mailview/'+$scope.mailSingleId);
+					$location.path('/dashboard/response/mailview/'+$scope.mailSingleId);
+			}
+			$scope.next=function(){
+					$scope.mailSingleId = $scope.mailSingleId + 1;
 					console.log('/mailview/'+$scope.mailSingleId);
 					$location.path('/dashboard/response/mailview/'+$scope.mailSingleId);
 			}

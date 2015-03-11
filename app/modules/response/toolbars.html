@@ -19,13 +19,13 @@
 				<div class="btn-group" role="group" aria-label="Sixth group" ng-if="mailPart=='mailview'">
 					<a class="btn btn-default" tooltip-animation="true" aria-hidden="true" tooltip="Previous Message" ng-click="prev()" ><span class=" glyphicon glyphicon-arrow-left" name="prevmsg" value="prevmsg"></span></a>
 					
-					<button class="btn btn-default" tooltip-animation="true" aria-hidden="true" tooltip="Next Message"><span class="glyphicon glyphicon-arrow-right" name="nextmsg" value="nextmsg"></span>
-					</button>
+					<a class="btn btn-default" tooltip-animation="true" aria-hidden="true" tooltip="Next Message" ng-click="next()"><span class="glyphicon glyphicon-arrow-right" name="nextmsg" value="nextmsg"></span>
+					</a>
 					<button class="btn btn-default" tooltip="delete"><span class="glyphicon glyphicon-trash"></span></button>
 				</div>
 				<form class="form-inline">
 					<div class="input-group">
-						<input id="search" type="text" class="form-control" ng-change="searchFilter('subject', searchProp)" ng-model="searchProp" placeholder="search"/>
+						<input id="search" type="text" class="form-control" ng-change="searchFilter('subject', searchProp)" ng-model="searchProp" placeholder="search" ng-if="mailPart!='composemailview' && mailPart!='mailview'"/>
 					</div>
 				</form>
 			</div>
