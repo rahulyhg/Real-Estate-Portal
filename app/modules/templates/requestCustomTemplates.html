@@ -14,12 +14,12 @@
 			</span>
 		</div>						
 	</div>
-	<div class="form-group" ng-class="{ 'has-error' : reqCustTemplate.date.$invalid && (reqCustTemplate.date.$dirty || submitted) }">	
+	<div class="form-group">	
 		<label  for="date" class="col-sm-2 control-label">Date</label>
 		<div class="col-sm-9">
-            <input name="dateInput" class="form-control" placeholder="Enter Date" name="date" type="date" ng-model="template.date" ng-pattern="/^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/" required>
+            <input name="dateInput" class="form-control" placeholder="Enter Date" name="date" type="date" ng-model="template.date" >
 			<span>YYYY-MM-DD</span>
-			<p ng-show="reqCustTemplate.date.$error.pattern && (reqCustTemplate.date.$dirty || submitted)" class="help-block">Enter a valid date</p>
+			
 		</div>						
 	</div>
 	<div class="form-group">	

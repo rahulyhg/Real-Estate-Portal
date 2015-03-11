@@ -15,8 +15,7 @@
 			if(isset($_GET['search']) && $_GET['search'] == true){	
               
 				(isset($_GET['template_name'])) ? $like['template_name'] = $_GET['template_name'] : "";
-			}
-			print_r ($like);
+			}			
 			$where=[]; 
 			// to check user_id is set or not
 			((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
@@ -28,9 +27,7 @@
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select		
 			// this is used to select data with LIMIT & where clause with like filter
-			$data = $db->select("templates", $where, $limit,$like);
-			
-			
+			$data = $db->select("templates", $where, $limit,$like);		
 			
 			// this is used to count totalRecords with only where clause
 			$totalRecords['totalRecords'] = count($db->select("templates", $where)['data']);		

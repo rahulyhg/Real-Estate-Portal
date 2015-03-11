@@ -10,7 +10,7 @@
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates | filter:searchTemp">
+			<tr ng-repeat="x in templates | orderBy:id">
 				<td>{{((customTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.template_name}}</td>				
 				<td>

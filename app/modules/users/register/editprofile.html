@@ -54,7 +54,7 @@
 							<div class="form-group">
 								<label for="phone" class="col-md-2 control-label">Phone </label>
 								<div class="col-md-8">
-									<input type="text" class="form-control help-block" id="phone" ng-model="edit.phone" name="phone" placeholder="Your Phone number" maxlength="10" ng-pattern="/^\d{0,9}[0-9]$/" required >							
+									<input type="text" class="form-control help-block" id="phone" ng-model="edit.phone" name="phone" placeholder="Your Phone number" maxlength="10" ng-pattern="/^[789]\d{9}$/" required >							
 									<p ng-show="editProfile.phone.$error.pattern && (editProfile.phone.$dirty || submitted)" class="text-danger" >Enter a valid contact no.</p>
 								</div>					
 							</div>	

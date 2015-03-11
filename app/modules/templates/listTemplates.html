@@ -10,7 +10,7 @@
 			<th>Select Template</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates">
+			<tr ng-repeat="x in templates | orderBy:id">
 				<td>{{((listTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.template_name}}</td>
 				<td>{{x.category}}</td>

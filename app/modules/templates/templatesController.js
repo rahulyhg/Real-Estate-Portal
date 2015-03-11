@@ -1,8 +1,8 @@
 'use strict';
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','upload','dataService','$http'];
+    var injectParams = ['$scope', '$injector','$location','$routeParams','$rootScope','upload','dataService','$http','modalService'];
     // This is controller for this view
-	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,upload,dataService,$http) {
+	var templatesController = function ($scope, $injector,$location,$routeParams,$rootScope,upload,dataService,$http,modalService) {
 		$rootScope.metaTitle = "Real Estate Template";		
 	
 		// all $scope object goes here{pooja}
@@ -19,6 +19,31 @@ define(['app'], function (app) {
 		$scope.user_id = {user_id : 2};
 		$scope.tempPart = $routeParams.tempPart;
  		$scope.alerts = [];
+		$scope.currentDate = dataService.currentDate;
+		console.log($scope.currentDate);
+		
+		//single view modal fun
+		$scope.open = function (url, tempId) {
+			dataService.get("getsingle/template/"+tempId)
+			.then(function(response) {
+				var modalDefaults = {
+					templateUrl: url,	// apply template to modal
+					size : 'lg'
+				};
+				var modalOptions = {
+					tempList: response.data[0]  // assign data to modal
+				};
+				console.log(response.data[0]);
+				modalService.showModal(modalDefaults, modalOptions).then(function (result) {
+					console.log("modalOpened");
+				});
+			});
+			
+		};
+		$scope.ok = function () {
+			$modalOptions.close('ok');
+		};		
+		
 		
 		/* // for date  {Pooja}
 			
@@ -46,6 +71,10 @@ define(['app'], function (app) {
 				$scope.alerts.splice(index, 1);
 			 };
 		}	 
+		//function for close alert
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
 	
 		/*For display by default websitesTemplate.html page*/
 		//console.log($scope.tempPart);		
@@ -102,12 +131,7 @@ define(['app'], function (app) {
 				}
 				//console.log($scope.properties);
 			});
-		};
-		
-		//function for close alert
-		$scope.closeAlert = function(index) {
-			$scope.alerts.splice(index, 1);
-		};
+		};	
 		
 		// switch functions 
 		var projectTemplate = function(){

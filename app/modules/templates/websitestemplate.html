@@ -11,8 +11,8 @@
 			<th>Template Type</th>						
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates">
-				<td>{{x.id}}</td>
+			<tr ng-repeat="x in templates | orderBy:id">
+				<td>{{((webTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.template_name}}</td>
 				<td>{{x.category}}</td>
 				<td>{{x.date | date:'yyyy-MM-dd'}}</td>
@@ -23,11 +23,10 @@
 				</td>
 				<td>
 					<button class="btn btn-success" ng-show="x.template_price=='free'" title="Apply for Template">Apply</button>
-					<button href="#" class="btn btn-warning" title="Buy Template" ng-show="x.template_price!='free'"> Buy </button>
-					<button href="#" class="btn btn-primary" title="Preview Template">Preview</button>
+					<button class="btn btn-warning" title="Buy Template" ng-show="x.template_price!='free'"> Buy </button>
+					<a href="#" ng-click="open('modules/templates/viewTemplate.html', x.id)" class="btn btn-primary" title="Preview Template">Preview</a>
 				</td>
-			</tr>
-			
+			</tr>			
 		</tbody>					
 	</table>
 </div>
