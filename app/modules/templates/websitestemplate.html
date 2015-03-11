@@ -24,7 +24,7 @@
 				<td>
 					<button class="btn btn-success" ng-show="x.template_price=='free'" title="Apply for Template">Apply</button>
 					<button class="btn btn-warning" title="Buy Template" ng-show="x.template_price!='free'"> Buy </button>
-					<a href="#" ng-click="open('modules/templates/viewTemplate.html', x.id)" class="btn btn-primary" title="Preview Template">Preview</a>
+					<a ng-click="open('modules/templates/viewTemplate.html', x.id)" class="btn btn-primary" title="Preview Template">Preview</a>
 				</td>
 			</tr>			
 		</tbody>					
