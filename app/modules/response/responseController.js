@@ -1,10 +1,10 @@
 'use strict';
 
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams', '$location','$rootScope','dataService','upload'];
+    var injectParams = ['$scope', '$injector','$routeParams', '$location','$rootScope','dataService','upload','$route'];
 
     // This is controller for this view
-	var responseController = function ($scope, $injector,$routeParams, $location,$rootScope,dataService,upload) {		
+	var responseController = function ($scope, $injector,$routeParams, $location,$rootScope,dataService,upload,$route) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		
 		//all $scope objects
@@ -18,6 +18,7 @@ define(['app'], function (app) {
 		$scope.user_id = {user_id : 1}; 
 		$scope.mailPart=$routeParams.mailPart;
 		$scope.alerts = [];
+		$scope.tinymceConfig = {};
 		//to display default mails page
 		if(!$routeParams.mailPart){
 			$location.path('/dashboard/response/mails');
@@ -42,12 +43,12 @@ define(['app'], function (app) {
 		// code for uploading file
 		$scope.compose={}; 
 		$scope.userinfo = {userId:1, name:"vilas"};
-		$scope.path = "property/"; 
+		$scope.path = "enquiry/"; 
 		$scope.compose.attachment = []; // uploaded images will store in this array
 		$scope.upload = function(files,path,userinfo){ // this function for uploading files
 			upload.upload(files,path,userinfo,function(data){
 				if(data.status !== 'error'){
-					$scope.compose.aattachment.push(JSON.stringify(data.details));
+					$scope.compose.attachment.push(JSON.stringify(data.details));
 					console.log(data.message);
 				}else{
 					alert(data.message);
@@ -55,7 +56,12 @@ define(['app'], function (app) {
 				
 			});
 		};
-		
+		// code for refresh page
+		$scope.refreshpage=function(){
+			//$window.location.reload();
+			//$location.path('/');
+			$route.reload();
+		}
 		$scope.reset = function() {
 				$scope.compose = {};
 		};
@@ -63,8 +69,55 @@ define(['app'], function (app) {
 			upload.generateThumbs(files);
 		};// end file upload function
 		
-		// switch functions
+		// code for read & unread emails
+			$scope.changestatus = function(id, read_status, index){
+				if(read_status==0){
+					$scope.status = {read_status : 1};
+					
+					
+					dataService.put("put/enquiry/"+id, $scope.status)
+					.then(function(response) { 
+						console.log(response.message);
+						$scope.mailList[index].read_status = 1
+						//$scope.readStatus = 1;
+						
+					});
+				}
+			};
+			
+		//code for delete single mail
+		$scope.deletestatus = function(id, status, index){
+			if(status==1){
+				$scope.status = {status : 0};
+				dataService.put("put/enquiry/"+id, $scope.status)
+				.then(function(response) { 
+					console.log(response.message);
+					$scope.mailList[index].status = 0
+					//$scope.readStatus = 1;
+					
+				});
+			}
+		};
 		
+		//code for search filter
+		$scope.searchFilter = function(statusCol, showStatus) {
+			$scope.search = {search: true};
+			$scope.filterStatus= {};
+			(showStatus =="") ? delete $scope.subject[statusCol] : $scope.filterStatus[statusCol] = showStatus;
+			angular.extend($scope.subject, $scope.filterStatus);
+			angular.extend($scope.subject, $scope.search);
+			dataService.get("/getmultiple/enquiry/1/"+$scope.pageItems, $scope.subject)
+			.then(function(response) {  //function for templatelist response
+				if(response.status == 'warning'){
+					$scope.alerts.push({type: response.status, msg: "No data Found"});
+					$scope.closeAlert = function(index) {
+						$scope.alerts.splice(index, 1);
+					};
+				}
+			});
+		};
+		
+		// switch functions
 		//show all inbox maillist
 		var inbox = function(){
 			$scope.status = {status : 1};
@@ -83,11 +136,13 @@ define(['app'], function (app) {
 						$scope.alerts.splice(index, 1);
 					};
 				}
-		});
+				
+			});
 		}
 		//view sentmail list
 		var sentmail= function(){
-			$scope.status = {status : 3};
+			
+			$scope.status = {status : 2};
 			angular.extend($scope.status, $scope.user_id);
 			dataService.get("/getmultiple/enquiry/"+$scope.sentListCurrentPage+"/"+$scope.pageItems ,$scope.status)
 			.then(function(response) {  
@@ -96,9 +151,7 @@ define(['app'], function (app) {
 				$scope.status=response.status;
 				$scope.message=response.message;
 				$scope.error=response.error;
-				if($scope.status=="success"){
-					$scope.alerts.push({type: 'success', msg: "Record Displayed successfully"});
-				}else{
+				if($scope.status=="warning"){
 					$scope.alerts.push({type: 'warning', msg: "Error to load data"});
 					$scope.closeAlert = function(index) {
 						$scope.alerts.splice(index, 1);
@@ -134,7 +187,7 @@ define(['app'], function (app) {
 				dataService.post("post/enquiry", $scope.compose)
 				.then(function(response) {
 					console.log(response);
-					$scope.reset();
+					
 					$scope.status=response.status;
 					$scope.message=response.message;
 					$scope.error=response.error;
@@ -146,36 +199,54 @@ define(['app'], function (app) {
 							$scope.alerts.splice(index, 1);
 						};
 					}
+					$scope.reset();
 				});
 				
 			};
 		}
 		
-		//view single mail
+		//view single mail 
 		var mailview= function(){
-			if($routeParams.id) {
-				console.log($scope.mail);
-				dataService.get("getsingle/enquiry/"+ $routeParams.id, $scope.mail)
+			
+			if($routeParams.id){
+				dataService.get("getsingle/enquiry/"+$routeParams.id)
 				.then(function(response) {
-					console.log(response);
-					$scope.mail = response;
-					console.log($scope.mail);
-				});		
-			}
-			$scope.replymail=function(){
-				console.log($scope.compose);
-				dataService.post("post/enquiry", $scope.compose)
-				.then(function(response) {
-					console.log(response);
-					$scope.reset();
+					$scope.singlemail = response.data;
+					$scope.totalRecords = response.totalRecords;
+					$scope.replyMail = {};
+					$scope.replyMail.reply_message ={};
+					$scope.replyMail.to_email = $scope.singlemail.from_email;
+					$scope.replyMail.from_email = $scope.singlemail.to_email;
+					$scope.replyMail.reply_message.subject = "RE: "+$scope.singlemail.subject;
+					$scope.replyMsg = ($scope.singlemail.reply_message!="")? JSON.parse($scope.singlemail.reply_message) : {message:""};
+					$scope.replyMail.reply_message.message = $scope.replyMsg.message;
+					
+					if($scope.singlemail.reply_status == 1){
+						$scope.tinymceConfig = {
+							readonly: true,
+							//toolbar: false,
+							//menubar: false,
+							//statusbar: false
+						  }
+					}
+					
+					$scope.update = function(id,replyMail){
+						dataService.put("put/enquiry/"+id,replyMail)
+						.then(function(response) {
+							console.log(response);
+						});
+					};
+				},function(error) {
+					console.log(error);
 				});
-			}
+				$scope.prevmail=function(){
+					
+				}
+			}	
 		}
 		//switch case
 		switch($scope.mailPart) {
-			case 'mailview':
-				mailview();
-				break;
+			
 			case 'mails':
 				inbox();
 				break;
@@ -189,9 +260,11 @@ define(['app'], function (app) {
 				deletemail();
 				break;
 			case 'mailview':
+				//console.log($routeParams.id);
 				mailview();
 				break;				
 			default:
+			console.log($scope.mailPart+"/"+$routeParams.id);
 				inbox();
 		};
 	};    

@@ -107,6 +107,11 @@ define(['angular',
 					label: " Mail Box"
                 }, 'response/'))
 				
+				.when('/dashboard/response/:mailPart?/:id', route.resolve({
+                    controller: 'response',
+                    template: 'response',
+					label: " Mail Box"
+                }, 'response/'))
 				// Below routes will use Property module folder
 				// In this view you can see list of all properties
                 .when('/dashboard/property', route.resolve({
