@@ -196,7 +196,7 @@ define(['app'], function (app) {
 					$location.path('/dashboard/response/mailview/'+$scope.mailSingleId);
 			}
 			$scope.next=function(){
-					$scope.mailSingleId = $scope.mailSingleId + 1;
+					$scope.mailSingleId = parseInt($scope.mailSingleId) + 1;
 					console.log('/mailview/'+$scope.mailSingleId);
 					$location.path('/dashboard/response/mailview/'+$scope.mailSingleId);
 			}
