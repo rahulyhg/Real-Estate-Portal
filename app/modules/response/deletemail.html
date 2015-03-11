@@ -10,7 +10,7 @@
 		<tbody>
 			<tr ng-repeat="m in mailList">
 				<td>{{((delListCurrentPage - 1) * pageItems ) + $index + 1}}</td>
-				<td><a href="#/dashboard/response/mailview{{m.id}}">{{m.subject}}</a></td>
+				<td><a href="#/dashboard/response/mailview/{{m.id}}">{{m.subject}}</a></td>
 				<td>{{m.from_email}}</td>
 				<td>{{m.to_email}}</td>
 				<td>{{m.date}}</td>
