@@ -5,9 +5,8 @@
 			<tr>
 				
 				<th>Sr.No.</th>
-				<th>From</th>
 				<th>Subject</th>
-				
+				<th>To</th>
 				<th>Date</th>
 				
 		  </tr>
@@ -16,8 +15,8 @@
 			<tr ng-repeat="m in mailList">
 				
 				<td>{{((sentListCurrentPage - 1) * pageItems) + $index + 1 }}</td>
-				<td><a  href="#/dashboard/response/mailview/{{m.id}}">{{m.first_name+""+m.last_name}}</a></td>
-				<td>{{m.subject}}</td>
+				<td><a  href="#/dashboard/response/mailview/{{m.id}}">{{m.subject}}</a></td>
+				<td><a>{{m.to_email}}</a></td>
 				
 				<td>{{m.date}}</td>
 				

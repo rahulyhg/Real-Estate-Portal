@@ -24,10 +24,7 @@
 						<a href="#/dashboard/response/mailview/{{m.id}}" ng-if="m.read_status==0"><b>{{m.subject}}</b></a>
 					</span>
 				</td>
-				<td>{{m.date}}
-				<span type="hidden" name="reply_date" ng-model="m.reply_date" ng-init="m.reply_date = today.date()" value="{{m.reply_date}}"></span>
-				
-				</td>
+				<td>{{m.date}}</td>
 				<td>
 					<span  ng-if="(m.reply_status==1)" ng-model="m.reply_status" >
 						<p> Replied</p>

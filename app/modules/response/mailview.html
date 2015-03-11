@@ -79,7 +79,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-primary" title="Send replay" ng-click="update(singlemail.id, replyMail)" ng-disabled="mailView.$invalid" ng-disabled="true">Send Reply</button>
-						<button type="reset" class="btn btn-danger" title="Send replay">Cancel</button>
+						<button type="reset" ng-click="reset()" class="btn btn-danger" title="Cancel Sending">Cancel</button>
 					</div>
 				</div>
 			</form>
