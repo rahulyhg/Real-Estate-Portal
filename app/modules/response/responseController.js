@@ -1,10 +1,10 @@
 'use strict';
 
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams', '$location','$rootScope','dataService','upload'];
+    var injectParams = ['$scope', '$injector','$routeParams', '$location','$rootScope','dataService','upload','$route'];
 
     // This is controller for this view
-	var responseController = function ($scope, $injector,$routeParams, $location,$rootScope,dataService,upload) {		
+	var responseController = function ($scope, $injector,$routeParams, $location,$rootScope,dataService,upload,$route) {		
 		$rootScope.metaTitle = "Real Estate Response";
 		
 		//all $scope objects
@@ -56,7 +56,12 @@ define(['app'], function (app) {
 				
 			});
 		};
-		
+		// code for refresh page
+		$scope.refreshpage=function(){
+			//$window.location.reload();
+			//$location.path('/');
+			$route.reload();
+		}
 		$scope.reset = function() {
 				$scope.compose = {};
 		};
@@ -103,7 +108,7 @@ define(['app'], function (app) {
 			angular.extend($scope.subject, $scope.search);
 			dataService.get("/getmultiple/enquiry/1/"+$scope.pageItems, $scope.subject)
 			.then(function(response) {  //function for templatelist response
-				if(response.status == 'error'){
+				if(response.status == 'warning'){
 					$scope.alerts.push({type: response.status, msg: "No data Found"});
 					$scope.closeAlert = function(index) {
 						$scope.alerts.splice(index, 1);
@@ -131,6 +136,7 @@ define(['app'], function (app) {
 						$scope.alerts.splice(index, 1);
 					};
 				}
+				
 			});
 		}
 		//view sentmail list
@@ -205,7 +211,8 @@ define(['app'], function (app) {
 			if($routeParams.id){
 				dataService.get("getsingle/enquiry/"+$routeParams.id)
 				.then(function(response) {
-					$scope.singlemail = response.data[0];
+					$scope.singlemail = response.data;
+					$scope.totalRecords = response.totalRecords;
 					$scope.replyMail = {};
 					$scope.replyMail.reply_message ={};
 					$scope.replyMail.to_email = $scope.singlemail.from_email;
@@ -229,14 +236,12 @@ define(['app'], function (app) {
 							console.log(response);
 						});
 					};
-
-					
-					console.log($scope.replyMail);
-					
 				},function(error) {
 					console.log(error);
 				});
-				
+				$scope.prevmail=function(){
+					
+				}
 			}	
 		}
 		//switch case

@@ -9,7 +9,7 @@
 				
 				<div class="btn-group" role="group" aria-label="Fourth group">
 					
-					<button class="btn btn-default" tooltip-animation="true" tooltip="refresh" ng-if="mailPart!='composemailview'"><span class=" glyphicon glyphicon-refresh"></span></button>
+					<button class="btn btn-default" tooltip-animation="true" tooltip="refresh" ng-if="mailPart!='composemailview'" ng-click="refreshpage()" data-translate><span class=" glyphicon glyphicon-refresh"></span></button>
 					<button class="btn btn-default" tooltip-animation="true" tooltip="Send" ng-click="composemail(compose)" ng-if="mailPart=='composemailview'"><span class="glyphicon glyphicon-send"></span></button>
 				</div>
 				
@@ -17,7 +17,7 @@
 			</div>
 			<div class="toolbar pull-right">
 				<div class="btn-group" role="group" aria-label="Sixth group" ng-if="mailPart=='mailview'">
-					<button class="btn btn-default" tooltip-animation="true" aria-hidden="true" tooltip="Previous Message"><span class=" glyphicon glyphicon-arrow-left" name="prevmsg" value="prevmsg"></span></button>
+					<button class="btn btn-default" tooltip-animation="true" aria-hidden="true" tooltip="Previous Message" ng-click="prevmail()" ><span class=" glyphicon glyphicon-arrow-left" name="prevmsg" value="prevmsg"></span></button>
 					
 					<button class="btn btn-default" tooltip-animation="true" aria-hidden="true" tooltip="Next Message"><span class="glyphicon glyphicon-arrow-right" name="nextmsg" value="nextmsg"></span>
 					</button>
