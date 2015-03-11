@@ -62,38 +62,77 @@ define(['app'], function (app) {
 			});
 		}; //end pagination
 		
-		$scope.changeValue = function(status) {
-			//console.log($scope.custom);
-			$scope.filterStatus = {status : status};
+		$scope.changeValue = function(statusCol,status) {
+			console.log($scope.custom);
+			$scope.filterStatus= {};
+			(status =="") ? delete $scope.custom[statusCol] : $scope.filterStatus[statusCol] = status;
 			angular.extend($scope.custom, $scope.filterStatus);
-			dataService.get("/getmultiple/templates/1/"+$scope.pageItems, $scope.custom)
+			angular.extend($scope.custom, $scope.search);			
+			
+			dataService.get("/getmultiple/template/1/"+$scope.pageItems, $scope.custom)
 			.then(function(response) {  //function for templatelist response
-				$scope.templates = response.data;
-				$scope.totalRecords = response.totalRecords;
+				if(response.status == 'success'){
+					$scope.templates = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.templates = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
 				
 			});
-		};		
+		};
+
+		$scope.searchFilter = function(statusCol, searchTemp) {
+			$scope.search = {search: true};
+			$scope.filterStatus= {};
+			(searchTemp =="") ? delete $scope.custom[statusCol] : $scope.filterStatus[statusCol] = searchTemp;
+			angular.extend($scope.custom, $scope.filterStatus);
+			angular.extend($scope.custom, $scope.search);			
+			
+			dataService.get("/getmultiple/template/1/"+$scope.pageItems, $scope.custom)
+			.then(function(response) {  //function for templatelist response
+				if(response.status == 'success'){
+					$scope.templates = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.templates = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
+				//console.log($scope.properties);
+			});
+		};
+		
+		//function for close alert
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
 		
 		// switch functions 
 		var projectTemplate = function(){
-			$scope.custom = {status : 1};			
-			angular.extend($scope.custom,$scope.user_id);
-			dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems, $scope.custom)
-			.then(function(response) {  //function for templatelist response
-				$scope.totalRecords = response.totalRecords;
-				$scope.templates = response.data;
-				console.log(response.data);
-			});
+				$scope.custom = {status : 1};			
+				angular.extend($scope.custom,$scope.user_id);
+				dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems, $scope.custom)
+				.then(function(response) {  //function for templatelist response
+					$scope.totalRecords = response.totalRecords;
+					$scope.templates = response.data;
+					console.log(response.data);
+				});
 		};
 		
 		var websitesTemplate = function(){
 			$scope.custom = {status : 1,template_type : "public"};			
 			angular.extend($scope.custom);
 			dataService.get("/getmultiple/template/"+$scope.webTempCurrentPage+"/"+$scope.pageItems,$scope.custom)
-			.then(function(response) {  //function for templatelist response
-				$scope.totalRecords = response.totalRecords;
-				$scope.templates = response.data;
-			//	console.log(response.data);
+			.then(function(response) { //function for templatelist response
+				 if(response.status == 'success'){
+					$scope.totalRecords = response.totalRecords;
+					$scope.templates = response.data;
+				//	console.log(response.data);
+				 }else{
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}
 			});
 		};
 		
@@ -102,9 +141,14 @@ define(['app'], function (app) {
 			angular.extend($scope.custom,$scope.user_id);
 			dataService.get("/getmultiple/template/"+$scope.propTemplate+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) {  
-				$scope.totalRecords = response.totalRecords;
-				$scope.templates = response.data;
-				console.log(response.data);
+				if(response.status == 'success'){
+					$scope.totalRecords = response.totalRecords;
+					$scope.templates = response.data;
+				//	console.log(response.data);
+				}	
+				else{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}	
 			});	
 		};
 		
@@ -112,10 +156,15 @@ define(['app'], function (app) {
 			$scope.custom = {status : 1,custom : 1,template_type : "private"};
 			angular.extend($scope.custom, $scope.user_id);			
 			dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems,$scope.custom)
-			.then(function(response) {  
-				$scope.totalRecords = response.totalRecords;
-				$scope.templates = response.data;
-				console.log(response.data);
+			.then(function(response) { 
+				if(response.status == 'success'){
+					$scope.totalRecords = response.totalRecords;
+					$scope.templates = response.data;
+					console.log(response.data);
+				}
+				else{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}	
 			});
 		};
 		
@@ -124,9 +173,14 @@ define(['app'], function (app) {
 			angular.extend($scope.custom,$scope.user_id);
 			dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) {  
-				$scope.totalRecords = response.totalRecords;
-				$scope.templates = response.data;
-				console.log(response.data);
+				if(response.status == 'success'){
+					$scope.totalRecords = response.totalRecords;
+					$scope.templates = response.data;
+					console.log(response.data);
+				}
+				else{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}	
 			});
 		};
 		
@@ -135,9 +189,13 @@ define(['app'], function (app) {
 			angular.extend($scope.custom,$scope.user_id);
 			dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) {  //function for templatelist response
-				$scope.totalRecords = response.totalRecords;
-				$scope.templates = response.data;
-				console.log(response.data);
+				if(response.status == 'success'){
+					$scope.totalRecords = response.totalRecords;
+					$scope.templates = response.data;
+					console.log(response.data);
+				}else{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
 			});
 		};
 		
@@ -151,30 +209,17 @@ define(['app'], function (app) {
 			$scope.postData = function(template) { 
 				dataService.post("/post/template",$scope.template)
 				.then(function(response) {  //function for response of request temp
-					$scope.template = response.data;
-					console.log(response);
-					$scope.reset();
+					if(response.status == 'success'){
+						$scope.template = response.data;
+						console.log(response);
+						$scope.reset();
+					}else{
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}	
 				});
 			}
 		}
-		 //this request for single templates data
-			if($routeParams.id) {
-				
-				$http.get("/getsingle/templates/"+$routeParams.pageNo,$routeParams.id)
-				.success(function(response) {$scope.templates = response;
-					console.log($scope.templates);
-				});
-				
-			}else{
-		//this request for all templates data
-				$http.get("/getmultiple/templates/"+$routeParams.pageNo,$routeParams.id)
-					.success(function(response) 
-					{$scope.templates = response;
-						console.log($scope.templates);
-					});
-				
-				
-			}//end templatelist code
+		 
 			 
 		switch($scope.tempPart) {
 			case 'listTemplates':

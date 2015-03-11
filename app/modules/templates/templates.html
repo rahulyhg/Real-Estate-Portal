@@ -4,17 +4,19 @@
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>
 			<div class="row text-right bottom-space">
 				<div class="col-sm-12"> 
-                  <div class="pull-left">				
-						<select id="template" class="form-control" ng-model="templates.template" title="Select template type"> 
-							<option value="">Select Template Type</option>		
+					<div class="pull-left">				
+						<select id="template" class="form-control" ng-model="template" title="Select template type"> 	
+							<option value="websitesTemplate" selected>Websites</option>	
 							<option value="projectTemplate">Project</option>
 							<option value="propertyTemplate">Property</option> 
-							<option value="websitesTemplate">Websites</option> 
 						</select>
 					</div>
 					<a href="#/dashboard/templates" class="btn btn-default" title="List of Template">List of Templates</a>
+					
 					<a href="#/dashboard/templates/myTemplates" class="btn btn-default" title="My Template">My Templates</a>
+					
 					<a href="#/dashboard/templates/requestCustomTemplates" class="btn btn-default" title="Request Custom Template">Request Custom Template</a>
+					
 					<a href="#/dashboard/templates/customTemplates" class="btn btn-default" title="Custom Template">Custom Templates</a>
 				</div>	
 			</div>	
@@ -22,18 +24,17 @@
 			<div class="row bottom-space">
 				<div class="col-sm-2"> 
 					<label for="searchTemp" class="control-label">Search </label>  
-					  <div class="input-group">
-						 <input id="searchTemp" type="text" class="form-control" placeholder="Search for..." ng-model="myWebsite.searchTemp"  typeahead="template_name for templates in search | filter:{template_name:$viewValue}" typeahead-template-url="customTemplate.html">
-						 <span class="input-group-btn">
+					<div class="input-group">
+						<input id="search" type="text" class="form-control" placeholder="Search" ng-model="searchTemp" ng-change="searchFilter('template_name', searchTemp)">					 
+						<span class="input-group-btn">
 							<button class="btn btn-success" type="button">
 								<span class="glyphicon glyphicon-search iconsearch"></span>
-						</span>
-						
-					  </div><!-- /input-group -->
+						</span>						
+					</div><!-- /input-group -->
 				</div>			 				  
 				 <div class="col-sm-2">
 					<label for="id" class="control-label">Sort by Order</label>
-					<select id="id" class="form-control ng-pristine ng-valid" ng-model="templates.id" title="Select order"> 
+					<select id="id" class="form-control" ng-model="templates.id" title="Select order"> 
 						<option value="">Select Order</option>		<!-- added value & selected attr -->	
 						<option value="-id">Desending</option>
 						<option value="id">Ascending</option>  
@@ -41,28 +42,24 @@
 				</div>
 				<div class="col-sm-2">
 					<label for="status" class="control-label">Select Status</label>
-					<select id="status" class="form-control ng-pristine ng-valid" ng-model="templates.status" title="status"  ng-change="changeValue(status)">
-						<option value="" selected="">Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
+					<select id="status" class="form-control" ng-model="status" title="status"  ng-change="changeValue('status',status)" ng-init="status=1">
 						
-						<option value="1">Active</option>
-						<option value="0">Deleted</option>		
-						
+						<option value="1" selected>Active</option>
+						<option value="0">Deleted</option>							
 					</select>
 				</div>	
 				<div class="col-sm-2">
 					<label for="T_type" class="control-label">Template Type</label>
-					<select id="T_type" class="form-control ng-pristine ng-valid" ng-model="template.templates_type" title="Select type">
-						<option value="" selected="">Select Template</option> <!-- add value attribute empty & selected for initial selected option -->
-						<option value="free">Free</option>
-						<option value="buy">Buy</option>
-						<option value="preview">Preview</option>	
+					<select id="T_type" class="form-control" ng-model="templates_type" title="Select type" "changeValue('template_type',templates_type)">
+						<option value="" selected="">Select Template</option> 
+						<option value="free">Public</option>
+						<option value="buy">Private</option>							
 					</select>
 				</div>	
 				<div class="col-sm-2" ng-if="tempPart=='websitesTemplate'" >
 					<label for="category" class="control-label">Template Category</label>
-					<select id="category" class="form-control ng-pristine ng-valid" ng-model="templates.category" title="Template category">
-						<option value="" selected="">Select Category</option> <!-- add value attribute empty & selected for initial selected option -->
-						
+					<select id="category" class="form-control" ng-model="category" title="Template category" "changeValue('category',category)">
+						<option value="" selected="">Select Category</option> 			
 						<option value="">Hospital Template</option>
 						<option value="">Online Shopping Template</option>		
 						<option value="">College Template</option>	
@@ -70,15 +67,14 @@
 				</div>	
 				<div class="col-sm-2" ng-if="tempPart=='customTemplates'">
 					<label for="devlpement_status" class="control-label">Devlpement Status</label>
-					<select id="devlpement_status" class="form-control ng-pristine ng-valid" ng-model="templates.devlpement_status" title="devlpement_status">
-						<option value="" selected="">Select Devlpement Status</option> <!-- add value attribute empty & selected for initial selected option -->
-						
-						<option value="">Pending</option>
-						<option value="">In-progress</option>
-						<option value="">Completed</option>
-						<option value="">Rejected</option>
-						<option value="">In-review</option>
-						
+					<select id="devlpement_status" class="form-control" ng-model="devlpement_status" title="devlpement_status" "changeValue('devlpement_status',devlpement_status)" >
+						<option value="" selected="">Select Devlpement Status</option> 	
+						<option value="pending">Pending</option>
+						<option value="placed">Placed</option>
+						<option value="inprogress">In-progress</option>
+						<option value="completed">Completed</option>
+						<option value="rejected">Rejected</option>
+						<option value="in-review">In-review</option>						
 					</select>
 				</div>		
 			</div>	
@@ -100,12 +96,8 @@
 					<ng-include ng-if="tempPart=='requestCustomTemplates'" src="'modules/templates/requestCustomTemplates.html'"></ng-include>	
 					
 					<ng-include ng-if="tempPart=='customTemplates'" 
-					src="'modules/templates/customTemplates.html'"></ng-include>
-					
-					
-					
-				</div>
-				
+					src="'modules/templates/customTemplates.html'"></ng-include>		
+				</div>			
 			</div>		
 		</div>
 	</div>
