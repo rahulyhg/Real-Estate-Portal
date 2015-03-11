@@ -3,37 +3,28 @@
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
-				
+				<th>Remove</th>
 				<th>Sr.No.</th>
-				
 				<th>Subject</th>
 				<th>Date</th>
-				<th>Reply Status</th>
-				
-				<th>Remove</th>
-		  </tr>
+			</tr>
 		</thead>
 		<tbody>			
-			<tr ng-repeat="m in mailList">
-				
-				<td>{{((mailListCurrentPage - 1) * pageItems) + $index + 1 }}</td>
-				<td>
-					<a href="#/dashboard/response/mailview/{{m.id}}" ng-if="m.read_status==0"><b>{{m.subject}}</b></a>
-					<a href="#/dashboard/response/mailview/{{m.id}}"ng-if="m.read_status==1">{{m.subject}}</a>
+			<tr ng-repeat="m in mailList" ng-if="(m.status==1)">
+				<td> 
+					<button class="btn btn-default glyphicon glyphicon-trash" ng-if="(m.status==1)" ng-click="deletestatus(m.id,m.status, $index)"></button>
 				</td>
-				
-				<td>{{m.date}}</td>
+				<td >{{((mailListCurrentPage - 1) * pageItems) + $index + 1 }}</td>
 				<td>
-					<button type="button" ng-if="(m.read_status==1)" ng-model="m.read_status" >
-						<span>Read</span>
-					</button> 
-					<button type="button" ng-if="(m.read_status==0)" ng-model="m.read_status" ng-click="changestatus(m.id,m.read_status, $index)">
-						<span>Unread</span>
-					</button>  
+					<span type="button" ng-if="(m.read_status==1)" ng-model="m.read_status" >
+						<a href="#/dashboard/response/mailview/{{m.id}}"ng-if="m.read_status==1">{{m.subject}}</a>
+					</span>
+					<span type="button" ng-if="(m.read_status==0)" ng-model="m.read_status" ng-click="changestatus(m.id,m.read_status, $index)">
+						<a href="#/dashboard/response/mailview/{{m.id}}" ng-if="m.read_status==0"><b>{{m.subject}}</b></a>
+					</span>
 				</td>
-				
-				<td> <button class="btn btn-danger glyphicon glyphicon-trash" ng-click="deletemail(m.id)"></button>
-				 
+				<td>{{m.date}}
+				<span type="hidden" name="reply_date" ng-model="m.reply_date" ng-init="m.reply_date = today.date()" value="{{m.reply_date}}"></span>
 				</td>
 			</tr>
 		</tbody>

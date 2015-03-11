@@ -64,8 +64,7 @@ define(['app'], function (app) {
 		};// end file upload function
 		
 		// code for read & unread emails
-		
-		$scope.changestatus = function(id, read_status, index){
+			$scope.changestatus = function(id, read_status, index){
 				if(read_status==0){
 					$scope.status = {read_status : 1};
 					
@@ -79,8 +78,20 @@ define(['app'], function (app) {
 					});
 				}
 			};
-		
-		
+			
+		//code for delete single mail
+		$scope.deletestatus = function(id, status, index){
+			if(status==1){
+				$scope.status = {status : 0};
+				dataService.put("put/enquiry/"+id, $scope.status)
+				.then(function(response) { 
+					console.log(response.message);
+					$scope.mailList[index].status = 0
+					//$scope.readStatus = 1;
+					
+				});
+			}
+		};
 		// switch functions
 		
 		//show all inbox maillist
