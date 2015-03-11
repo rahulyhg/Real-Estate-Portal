@@ -11,6 +11,9 @@
 				<div class="form-group">
 					<label for="to_email" class="col-sm-2 control-label">To</label>
 					<div class="col-sm-8">
+						<input type="hidden" ng-model="compose.from_email">
+						<input type="hidden" ng-model="compose.date">
+						<input type="hidden" ng-model="compose.user_id">
 						<input type="email" class="form-control" id="to_email" name="to_email" placeholder="To" ng-model="compose.to_email.to" required>
 						<span  ng-show="ComposeMail.to_email.$dirty && ComposeMail.to_email.$invalid">
 							<span class="text-danger" ng-show="ComposeMail.to_email.$error.required">Email is required.</span>

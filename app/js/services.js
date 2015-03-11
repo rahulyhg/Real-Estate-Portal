@@ -10,6 +10,7 @@ define(['app'], function (app) {
             backdrop: true,
             keyboard: true,
             modalFade: true,
+			size : 'md',
             templateUrl: '../app/modules/component/modal.html'
         };
 
@@ -225,34 +226,55 @@ define(['app'], function (app) {
 		function ($http) { // This service connects to our REST API
 
 			var serviceBase = '../server-api/index.php/';
-
+			var today = new Date();
+			var year = today.getFullYear();
+			var month = today.getMonth() + 1;
+			var date = today.getDate();
+			var hour = today.getHours();
+			var min = today.getMinutes();
+			var sec = today.getSeconds();
 			var obj = {};
+			obj.currentDate = year + "-" + month + "-" + date + " " + hour + ":" + min + ":"+sec;
 			obj.setBase = function(path){
 				serviceBase = path;
 			};
-			obj.get = function (q, where) {
-				console.log(where);
+			obj.get = function (q, params) {
 				return $http({
-				url: serviceBase + q,
-				method: "GET",
-				params: where
+					url: serviceBase + q,
+					method: "GET",
+					params: params
 				}).then(function (results) {
 					return results.data;
 					
 				});
 			};
-			obj.post = function (q, object) {
-				return $http.post(serviceBase + q, object).then(function (results) {
+			obj.post = function (q, object, params) {
+				return $http({
+					url: serviceBase + q,
+					method: "POST",
+					data: object,
+					params: params
+				}).then(function (results) {
 					return results.data;
 				});
 			};
-			obj.put = function (q, object) {
-				return $http.put(serviceBase + q, object).then(function (results) {
+			obj.put = function (q, object, params) {
+				return $http({
+					url: serviceBase + q,
+					method: "PUT",
+					data: object,
+					params: params
+				}).then(function (results) {
 					return results.data;
 				});
 			};
-			obj.delete = function (q, object) {
-				return $http.delete(serviceBase + q, object).then(function (results) {
+			obj.delete = function (q, object, params) {
+				return $http({
+					url: serviceBase + q,
+					method: "DELETE",
+					data: object,
+					params: params
+				}).then(function (results) {
 					return results.data;
 				});
 			};

@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>			
-			<tr ng-repeat="m in mailList" ng-if="(m.status==1)">
+			<tr ng-repeat="m in mailList | filter: { status : hideDeleted}">
 				<td> 
 					<button class="btn btn-default glyphicon glyphicon-trash" ng-if="(m.status==1)" ng-click="deletestatus(m.id,m.status, $index)"></button>
 				</td>
@@ -41,7 +41,7 @@
 	</table>
 	<!-- pagination for mail list -->
 	<div class="text-center">				
-		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="mailListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(mailListCurrentPage,status)"></pagination>				
+		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="mailListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(mailListCurrentPage,statusParam)"></pagination>				
 		<pre>Page: {{mailListCurrentPage}} / {{numPages}}</pre>
 	</div>		
 </div>
