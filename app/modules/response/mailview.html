@@ -62,8 +62,7 @@
 				<div class="form-group">
 					<label for="reply_message" class="col-sm-2 control-label"> Message</label>
 					<div class="col-sm-10">
-						<textarea ng-if="singlemail.reply_status!=1" id="reply_message" class="form-control" name="reply_message" ng-model="replyMail.reply_message.message"  cols="30" rows="3" ng-maxlength="256" ui-tinymce  ng-required="true"></textarea>
-						<div ng-if="singlemail.reply_status==1">{{replyMail.reply_message.message}}</div>
+						<textarea id="reply_message" class="form-control" name="reply_message" ng-model="replyMail.reply_message.message"  cols="30" rows="3" ng-maxlength="256" ui-tinymce="tinymceConfig"  ng-required="true"></textarea>
 						<p>{{ 256 - replyMail.reply_message.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="mailView.reply_message.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>

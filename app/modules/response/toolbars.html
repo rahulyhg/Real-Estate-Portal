@@ -25,10 +25,7 @@
 				</div>
 				<form class="form-inline">
 					<div class="input-group">
-						<input type="text" class="form-control iconback" placeholder="Search">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search iconsearch"></span></button>
-						</span>
+						<input id="search" type="text" class="form-control" ng-change="searchFilter('subject', searchProp)" ng-model="searchProp" placeholder="search"/>
 					</div>
 				</form>
 			</div>

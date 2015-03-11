@@ -11,6 +11,12 @@
 			
 		}else{
 			$where=[]; 
+			// code for search
+			 $like = [];
+			 if(isset($_GET['search']) && $_GET['search'] == true){
+				 
+				 (isset($_GET['subject'])) ? $like['subject'] = $_GET['subject'] : "";
+			 }
 			// to check user_id is set or not
 			(isset($_GET['user_id'])) ? $where['user_id'] = $_GET['user_id'] : "";
 			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";

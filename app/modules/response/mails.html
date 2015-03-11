@@ -7,6 +7,7 @@
 				<th>Sr.No.</th>
 				<th>Subject</th>
 				<th>Date</th>
+				<th>Reply Status</th>
 			</tr>
 		</thead>
 		<tbody>			
@@ -16,15 +17,24 @@
 				</td>
 				<td >{{((mailListCurrentPage - 1) * pageItems) + $index + 1 }}</td>
 				<td>
-					<span type="button" ng-if="(m.read_status==1)" ng-model="m.read_status" >
+					<span  ng-if="(m.read_status==1)" ng-model="m.read_status" >
 						<a href="#/dashboard/response/mailview/{{m.id}}"ng-if="m.read_status==1">{{m.subject}}</a>
 					</span>
-					<span type="button" ng-if="(m.read_status==0)" ng-model="m.read_status" ng-click="changestatus(m.id,m.read_status, $index)">
+					<span  ng-if="(m.read_status==0)" ng-model="m.read_status" ng-click="changestatus(m.id,m.read_status, $index)">
 						<a href="#/dashboard/response/mailview/{{m.id}}" ng-if="m.read_status==0"><b>{{m.subject}}</b></a>
 					</span>
 				</td>
 				<td>{{m.date}}
 				<span type="hidden" name="reply_date" ng-model="m.reply_date" ng-init="m.reply_date = today.date()" value="{{m.reply_date}}"></span>
+				
+				</td>
+				<td>
+					<span  ng-if="(m.reply_status==1)" ng-model="m.reply_status" >
+						<p> Replied</p>
+					</span>
+					<span  ng-if="(m.reply_status==0)" ng-model="m.reply_status" >
+						<p> Not Replied </p>
+					</span>
 				</td>
 			</tr>
 		</tbody>

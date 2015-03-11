@@ -18,6 +18,7 @@ define(['app'], function (app) {
 		$scope.user_id = {user_id : 1}; 
 		$scope.mailPart=$routeParams.mailPart;
 		$scope.alerts = [];
+		$scope.tinymceConfig = {};
 		//to display default mails page
 		if(!$routeParams.mailPart){
 			$location.path('/dashboard/response/mails');
@@ -92,8 +93,26 @@ define(['app'], function (app) {
 				});
 			}
 		};
-		// switch functions
 		
+		//code for search filter
+		$scope.searchFilter = function(statusCol, showStatus) {
+			$scope.search = {search: true};
+			$scope.filterStatus= {};
+			(showStatus =="") ? delete $scope.subject[statusCol] : $scope.filterStatus[statusCol] = showStatus;
+			angular.extend($scope.subject, $scope.filterStatus);
+			angular.extend($scope.subject, $scope.search);
+			dataService.get("/getmultiple/enquiry/1/"+$scope.pageItems, $scope.subject)
+			.then(function(response) {  //function for templatelist response
+				if(response.status == 'error'){
+					$scope.alerts.push({type: response.status, msg: "No data Found"});
+					$scope.closeAlert = function(index) {
+						$scope.alerts.splice(index, 1);
+					};
+				}
+			});
+		};
+		
+		// switch functions
 		//show all inbox maillist
 		var inbox = function(){
 			$scope.status = {status : 1};
@@ -194,6 +213,15 @@ define(['app'], function (app) {
 					$scope.replyMail.reply_message.subject = "RE: "+$scope.singlemail.subject;
 					$scope.replyMsg = ($scope.singlemail.reply_message!="")? JSON.parse($scope.singlemail.reply_message) : {message:""};
 					$scope.replyMail.reply_message.message = $scope.replyMsg.message;
+					
+					if($scope.singlemail.reply_status == 1){
+						$scope.tinymceConfig = {
+							readonly: true,
+							//toolbar: false,
+							//menubar: false,
+							//statusbar: false
+						  }
+					}
 					
 					$scope.update = function(id,replyMail){
 						dataService.put("put/enquiry/"+id,replyMail)
