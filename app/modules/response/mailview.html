@@ -75,7 +75,9 @@
 					<div class="col-sm-offset-2 col-sm-4">
 						<input type="hidden" name="reply_status" ng-model="replyMail.reply_status" ng-init="replyMail.reply_status = 1" value="{{replyMail.reply_status}}">
 					</div>
+					<input type="hidden" ng-model="replyMail.user_id">
 				</div>
+				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-primary" title="Send replay" ng-click="update(singlemail.id, replyMail)" ng-disabled="mailView.$invalid" ng-disabled="true">Send Reply</button>
