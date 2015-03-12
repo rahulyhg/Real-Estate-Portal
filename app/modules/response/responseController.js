@@ -21,6 +21,7 @@ define(['app'], function (app) {
 		$scope.tinymceConfig = {};
 		$scope.currentDate = dataService.currentDate;
 		console.log($scope.currentDate);
+		$scope.hideDeleted = "";
 		//to display default mails page
 		if(!$routeParams.mailPart){
 			$location.path('/dashboard/response/mails');
@@ -28,9 +29,20 @@ define(['app'], function (app) {
 		$scope.closeAlert = function(index) {
 			$scope.alerts.splice(index, 1);
 		};
-
-		//$scope all methods
-		$scope.pageChanged = function(page, where) { //Code For Pagination
+		
+		// code for refresh page
+		$scope.refreshpage=function(){
+			$route.reload();
+		};
+		
+		//code for reset 
+		$scope.reset = function() {
+			$scope.compose = {};
+		};
+		
+		//{$scope all methods}
+		//Code For Pagination
+		$scope.pageChanged = function(page, where) { 
 			console.log(where);
 			angular.extend(where, $scope.user_id);
 			dataService.get("getmultiple/enquiry/"+page+"/"+$scope.pageItems, where).then(function(response){
@@ -40,15 +52,7 @@ define(['app'], function (app) {
 		}//end paggination
 		
 		
-		// code for refresh page
-		$scope.refreshpage=function(){
-			//$window.location.reload();
-			//$location.path('/');
-			$route.reload();
-		}
-		$scope.reset = function() {
-				$scope.compose = {};
-		};
+		
 		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
 			upload.generateThumbs(files);
 		};// end file upload function
@@ -68,7 +72,7 @@ define(['app'], function (app) {
 					});
 				}
 			};
-		$scope.hideDeleted = "";
+		
 		//code for delete single mail
 		$scope.deletestatus = function(id, status, index){
 			if(status==1){
