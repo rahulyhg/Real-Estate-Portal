@@ -11,8 +11,7 @@ define(['app'], function (app) {
 		$scope.propTemplate=1;		
 		$scope.projTempCurrentPage = 1;
 		$scope.customTempCurrentPage=1;
-		$scope.myTemplate=1;
-		$scope.listTempCurrentPage=1;
+		$scope.myTemplate=1;		
 		$scope.webTempCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";
@@ -90,6 +89,20 @@ define(['app'], function (app) {
 				}				
 			});
 		};
+		
+		//code for delete single mail
+		$scope.changeStatus = function(id, status, index){
+			if(status==1){
+				$scope.custom = {status : 0};
+				dataService.put("put/template/"+id, $scope.custom)
+				.then(function(response) { 
+					console.log(response.message);
+					$scope.templates[index].status = 0				
+				});
+			}
+		};
+		
+		
 	//search filter function
 		$scope.searchFilter = function(statusCol, searchTemp) {
 			$scope.search = {search: true};
@@ -169,23 +182,7 @@ define(['app'], function (app) {
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}	
 			});
-		};
-		
-		var listTemplates = function(){
-			$scope.custom = {status : 1,template_type : "private"};			
-			angular.extend($scope.custom,$scope.user_id);
-			dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems,$scope.custom)
-			.then(function(response) {  
-				if(response.status == 'success'){
-					$scope.totalRecords = response.totalRecords;
-					$scope.templates = response.data;
-					console.log(response.data);
-				}
-				else{
-					$scope.alerts.push({type: response.status, msg: response.message});
-				}	
-			});
-		};
+		};	
 		
 		var myTemplates = function(){
 			$scope.custom = {status : 1};			
@@ -223,10 +220,7 @@ define(['app'], function (app) {
 			}
 		} 
 			 
-		switch($scope.tempPart) {
-			case 'listTemplates':
-				listTemplates();
-				break;
+		switch($scope.tempPart) {			
 			case 'myTemplates':
 				myTemplates();
 				break;
