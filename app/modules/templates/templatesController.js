@@ -11,8 +11,7 @@ define(['app'], function (app) {
 		$scope.propTemplate=1;		
 		$scope.projTempCurrentPage = 1;
 		$scope.customTempCurrentPage=1;
-		$scope.myTemplate=1;
-		$scope.listTempCurrentPage=1;
+		$scope.myTemplate=1;		
 		$scope.webTempCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";
@@ -42,28 +41,9 @@ define(['app'], function (app) {
 		};
 		$scope.ok = function () {
 			$modalOptions.close('ok');
-		};		
+		};			
 		
-		
-		/* // for date  {Pooja}
-			
-			var d = new Date(year, month, day, hours, minutes, seconds);	
-			var year=d.getFullYear();
-			var month=d.getMonth();
-			var day = d.getDay(); 
-			var hours=d.getHours(); 
-			var minutes = d.getMinutes(); 
-			var seconds= d.getSeconds();
-			
-			if (month<11){
-				month="0" + month;
-			}
-			var day=d.getDate();
-			$scope.date=year + "-" + month + "-" + day;
-		//End  Date */ 
-		
-         //for alert {Pooja}
-		 
+         //for alert {Pooja}		 
 		if($scope.status=="warning"){     
 			 $scope.alerts.push({type: 'error', msg: "Error to load data" 
 			 });
@@ -76,8 +56,7 @@ define(['app'], function (app) {
 			$scope.alerts.splice(index, 1);
 		};
 	
-		/*For display by default websitesTemplate.html page*/
-		//console.log($scope.tempPart);		
+		/*For display by default websitesTemplate.html page*/			
 		if(!$routeParams.tempPart) {
 			$location.path('/dashboard/templates/websitesTemplate');
 		}	
@@ -107,11 +86,24 @@ define(['app'], function (app) {
 					$scope.templates = {};
 					$scope.totalRecords = {};
 					$scope.alerts.push({type: response.status, msg: response.message});
-				}
-				
+				}				
 			});
 		};
-
+		
+		//code for delete single mail
+		$scope.changeStatus = function(id, status, index){
+			if(status==1){
+				$scope.custom = {status : 0};
+				dataService.put("put/template/"+id, $scope.custom)
+				.then(function(response) { 
+					console.log(response.message);
+					$scope.templates[index].status = 0				
+				});
+			}
+		};
+		
+		
+	//search filter function
 		$scope.searchFilter = function(statusCol, searchTemp) {
 			$scope.search = {search: true};
 			$scope.filterStatus= {};
@@ -135,14 +127,14 @@ define(['app'], function (app) {
 		
 		// switch functions 
 		var projectTemplate = function(){
-				$scope.custom = {status : 1};			
-				angular.extend($scope.custom,$scope.user_id);
-				dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems, $scope.custom)
-				.then(function(response) {  //function for templatelist response
-					$scope.totalRecords = response.totalRecords;
-					$scope.templates = response.data;
-					console.log(response.data);
-				});
+			$scope.custom = {status : 1};			
+			angular.extend($scope.custom,$scope.user_id);
+			dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems, $scope.custom)
+			.then(function(response) {  //function for templatelist response
+				$scope.totalRecords = response.totalRecords;
+				$scope.templates = response.data;
+				console.log(response.data);
+			});
 		};
 		
 		var websitesTemplate = function(){
@@ -190,23 +182,7 @@ define(['app'], function (app) {
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}	
 			});
-		};
-		
-		var listTemplates = function(){
-			$scope.custom = {status : 1,template_type : "private"};			
-			angular.extend($scope.custom,$scope.user_id);
-			dataService.get("/getmultiple/template/"+$scope.listTempCurrentPage+"/"+$scope.pageItems,$scope.custom)
-			.then(function(response) {  
-				if(response.status == 'success'){
-					$scope.totalRecords = response.totalRecords;
-					$scope.templates = response.data;
-					console.log(response.data);
-				}
-				else{
-					$scope.alerts.push({type: response.status, msg: response.message});
-				}	
-			});
-		};
+		};	
 		
 		var myTemplates = function(){
 			$scope.custom = {status : 1};			
@@ -242,25 +218,15 @@ define(['app'], function (app) {
 					}	
 				});
 			}
-		}
-		 
+		} 
 			 
-		switch($scope.tempPart) {
-			case 'listTemplates':
-				listTemplates();
-				break;
+		switch($scope.tempPart) {			
 			case 'myTemplates':
 				myTemplates();
 				break;
 			case 'websitesTemplate':
 				websitesTemplate();
-				break;	
-			case 'propertyTemplate':
-				propertyTemplate();
-				break;
-			case 'projectTemplate':
-				projectTemplate();
-				break;
+				break;				
 			case 'customTemplates':
 				customTemplates();
 				break;			
@@ -270,8 +236,7 @@ define(['app'], function (app) {
 			default:
 				websitesTemplate();
 		};
-		
-					/* 
+							/* 
 			//update template 
 			if($routeParams.id){
 				$http.get("../server-api/index.php/put/template/"+$routeParams.id)
@@ -308,8 +273,7 @@ define(['app'], function (app) {
 					console.log(data.message);
 				}else{
 					alert(data.message);
-				}
-				
+				}				
 			});
 		};
 		
@@ -317,7 +281,6 @@ define(['app'], function (app) {
 			upload.generateThumbs(files);
 		};
 		// End upload function {pooja}
-		
 	};
        
 	// Inject controller's dependencies

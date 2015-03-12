@@ -5,7 +5,7 @@
 			<div class="row text-right bottom-space">
 				<div class="col-sm-12"> 
 					<div class="pull-left">				
-						<select id="template" class="form-control" ng-model="template_for" title="Select template type" ng-change="changeValue('template_for', template_for)" ng-init="template_for='Websites'"> 	
+						<select id="template" class="form-control" ng-model="template_for" title="Select template type" ng-change="changeValue('template_for',template_for)" ng-init="template_for='Websites'"> 	
 							<option value="Websites" selected>Websites</option>	
 							<option value="Project">Project</option>
 							<option value="Property">Property</option> 
@@ -22,7 +22,7 @@
 			</div>	
 			<div class="clearfix"></div>
 			<div class="row bottom-space">
-				<div class="col-sm-2"> 
+				<div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates'"> 
 					<label for="searchTemp" class="control-label">Search </label>  
 					<div class="input-group">
 						<input id="search" type="text" class="form-control" placeholder="Search" ng-model="searchTemp" ng-change="searchFilter('template_name', searchTemp)">					 
@@ -32,7 +32,7 @@
 						</span>						
 					</div><!-- /input-group -->
 				</div>			 				  
-				 <div class="col-sm-2">
+				 <div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates'">
 					<label for="id" class="control-label">Sort by Order</label>
 					<select id="id" class="form-control" ng-model="id" title="Select order"> 
 						<option value="">Select Order</option>		<!-- added value & selected attr -->	
@@ -40,7 +40,7 @@
 						<option value="template_name">Ascending</option>  
 					</select>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates'">
 					<label for="status" class="control-label">Select Status</label>
 					<select id="status" class="form-control" ng-model="status" title="status"  ng-change="changeValue('status',status)" ng-init="status=1">
 						
@@ -48,7 +48,7 @@
 						<option value="0">Deleted</option>							
 					</select>
 				</div>	
-				<div class="col-sm-2">
+				<div class="col-sm-3" ng-if="tempPart=='listTemplate' && tempPart!='requestCustomTemplates'">
 					<label for="T_type" class="control-label">Template Type</label>
 					<select id="T_type" class="form-control" ng-model="templates_type" title="Select type" ng-change="changeValue('template_type',templates_type)">
 						<option value="" selected="">Select Template</option> 
@@ -56,25 +56,25 @@
 						<option value="private">Private</option>							
 					</select>
 				</div>	
-				<div class="col-sm-2" ng-if="tempPart=='websitesTemplate'" >
+				<div class="col-sm-3" ng-if="tempPart=='websitesTemplate' &&  tempPart!='requestCustomTemplates'">
 					<label for="category" class="control-label">Template Category</label>
 					<select id="category" class="form-control" ng-model="category" title="Template category" ng-change="changeValue('category',category)">
 						<option value="" selected="">Select Category</option> 			
 						<option value="Hospital System">Hospital Template</option>
 						<option value="Online Shopping">Online Shopping Template</option>		
-						<option value="College ">College Template</option>	
+						<option value="College">College Template</option>	
 					</select>
 				</div>	
-				<div class="col-sm-2" ng-if="tempPart=='customTemplates'">
-					<label for="devlpement_status" class="control-label">Devlpement Status</label>
-					<select id="devlpement_status" class="form-control" ng-model="devlpement_status" title="devlpement_status" ng-change="changeValue('devlpement_status',devlpement_status)">
-						<option value="" selected="">Select Devlpement Status</option> 	
+				<div class="col-sm-3" ng-if="tempPart=='customTemplates' && tempPart!='requestCustomTemplates'">
+					<label for="develpement_status" class="control-label">Develpement Status</label>
+					<select id="develpement_status" class="form-control" ng-model="develpement_status" title="develpement_status" ng-change="changeValue('develpement_status',develpement_status)">
+						<option value="" selected="">Select Develpement Status</option> 	
 						<option value="pending">Pending</option>
-						<option value="placed">Placed</option>
+						<option value="order_placed">Order Placed</option>
 						<option value="inprogress">In-progress</option>
 						<option value="completed">Completed</option>
 						<option value="rejected">Rejected</option>
-						<option value="in-review">In-review</option>					
+						<option value="in_review">In-review</option>					
 					</select>
 				</div>		
 			</div>	

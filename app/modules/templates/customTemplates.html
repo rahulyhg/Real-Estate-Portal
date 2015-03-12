@@ -19,12 +19,12 @@
 					</a>
 					<span ng-show="x.development_status!='rejected'">{{x.development_status}}</span>
 				</td>
-				<td>{{x.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+				<td>{{x.date | date:'yyyy-MM-dd'}}</td>
 				<td>{{x.modified_date}}</td>
 				
 				<td>
-					<a class="btn btn-success" ng-show="x.status==1" title="Active">Active</a>
-					<a class="btn btn-warning" ng-show="x.status==0" title="Delete">Delete</a>					
+					<button class="btn btn-success" ng-show="x.status==1" title="Active"ng-click="changeStatus(x.id,x.status,$index)">Active</button>
+					<button class="btn btn-warning" ng-show="x.status==0" title="Delete">Delete</button>					
 					<a tooltip-animation="true" title="Preview" class="btn btn-primary">Preview					
 					</a>
 				</td>				

@@ -12,15 +12,23 @@
 						<tr>
 							<td rowspan="4"><img src="img/user.jpg"/></td>
 							<td>From</td>
-							<td>{{singlemail.from_email}}</td>
+							<td>{{singlemail.from_email.from}}</td>
+						</tr>
+						<tr ng-if="singlemail.to_email.cc!=''">
+							<td>Cc </td>
+							<td><a>{{singlemail.to_email.cc}}</a></td>
+						</tr>
+						<tr ng-if="singlemail.from_email.cc!=''">
+							<td>Cc </td>
+							<td><a>{{singlemail.from_email.cc}}</a></td>
 						</tr>
 						<tr>
 							<td>To </td>
-							<td><a>{{singlemail.first_name}}</a></td>
+							<td><a>{{singlemail.to_email.to}}</a></td>
 						</tr>
 						<tr>
 							<td>Reply-To </td>
-							<td><a>{{singlemail.from_email}}</a></td>
+							<td><a>{{singlemail.from_email.from}}</a></td>
 						</tr>
 						<tr>
 							<td>Date </td>

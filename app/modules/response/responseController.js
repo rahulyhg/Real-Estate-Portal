@@ -190,6 +190,8 @@ define(['app'], function (app) {
 				dataService.get("getsingle/enquiry/"+$scope.mailSingleId)
 				.then(function(response) {
 					$scope.singlemail = response.data;
+					$scope.singlemail.to_email = JSON.parse($scope.singlemail.to_email);
+					$scope.singlemail.from_email = JSON.parse($scope.singlemail.from_email);
 					$scope.totalRecords = response.totalRecords;
 					$scope.replyMail = {};
 					$scope.replyMail.reply_message ={};
