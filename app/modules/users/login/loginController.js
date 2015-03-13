@@ -1,38 +1,30 @@
 
-
 'use strict';
 
-define(['app', 'css!modules/users/login/login'], function (app) {
-    var injectParams = ['$scope', '$injector','$http'];
+define(['app'], function (app) {
+    var injectParams = ['$scope','$rootScope', '$injector','dataService','$location', '$cookieStore', '$cookies'];
 
     // This is controller for this view
-	var loginController = function ($scope, $injector,$http) {
-		$scope.logIn = function(login){
-			console.log($scope.login);
-			$http.post("server-api/index.php/login", $scope.login)
-			.success(function(response) {
-					alert(response);
-					//$scope.reset();
+	var loginController = function ($scope,$rootScope,$injector,dataService,$location, $cookieStore, $cookies) {
+		($rootScope.alerts) ? $scope.alerts = $rootScope.alerts : $scope.alerts = [];
+		//function for close alert
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
+		$scope.insert = function(login){
+			dataService.post("/post/user/login",$scope.login)
+			.then(function(response) {
+				if(response.status == 'success'){
+					$location.path("/dashboard");
+				}else{
+					$scope.alerts.push({type: (response.status == 'error') ? "danger" :response.status, msg: response.message});
+				}
 			})
-		}
-		
-		// This is for Forgot Password
-		$scope.forgotPass = function(forget){
-			console.log($scope.forget);
-			$http.post("server-api/index.php/forgot", $scope.forget)
-			.success(function(response) {
-				alert(response);		
-			})
-		}    
+		}	
+
     };
-	
-    
 	// Inject controller's dependencies
 	loginController.$inject = injectParams;
 	// Register/apply controller dynamically
     app.register.controller('loginController', loginController);
-	
 });
-
-
-

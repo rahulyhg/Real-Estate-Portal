@@ -12,15 +12,23 @@
 						<tr>
 							<td rowspan="4"><img src="img/user.jpg"/></td>
 							<td>From</td>
-							<td>{{singlemail.from_email}}</td>
+							<td>{{singlemail.from_email.from}}</td>
+						</tr>
+						<tr ng-if="singlemail.to_email.cc!=''">
+							<td>Cc </td>
+							<td><a>{{singlemail.to_email.cc}}</a></td>
+						</tr>
+						<tr ng-if="singlemail.from_email.cc!=''">
+							<td>Cc </td>
+							<td><a>{{singlemail.from_email.cc}}</a></td>
 						</tr>
 						<tr>
 							<td>To </td>
-							<td><a>{{singlemail.first_name}}</a></td>
+							<td><a>{{singlemail.to_email.to}}</a></td>
 						</tr>
 						<tr>
 							<td>Reply-To </td>
-							<td><a>{{singlemail.from_email}}</a></td>
+							<td><a>{{singlemail.from_email.from}}</a></td>
 						</tr>
 						<tr>
 							<td>Date </td>
@@ -75,7 +83,9 @@
 					<div class="col-sm-offset-2 col-sm-4">
 						<input type="hidden" name="reply_status" ng-model="replyMail.reply_status" ng-init="replyMail.reply_status = 1" value="{{replyMail.reply_status}}">
 					</div>
+					<input type="hidden" ng-model="replyMail.user_id">
 				</div>
+				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-primary" title="Send replay" ng-click="update(singlemail.id, replyMail)" ng-disabled="mailView.$invalid" ng-disabled="true">Send Reply</button>

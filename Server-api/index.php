@@ -18,8 +18,10 @@ $body = $app->request->getBody();
 $app->get('/getmultiple/:getRequest/:pageNo(/:records)','getRecords');
 // use thi uri for single record {Vilas}
 $app->get('/getsingle/:getRequest(/:id)', 'getRecord' );
+$app->get('/login/:getRequest','login');
+
 //use this uri for post new record into database - like create
-$app->post('/post/:getRequest', 'postRecord' );
+$app->post('/post/:getRequest(/:postParams)', 'postRecord' );
 
 $app->post('/upload', 'uploadFiles' );
 //use this uri for put/update record from database
@@ -27,6 +29,20 @@ $app->put('/put/:getRequest/:id', 'putRecord' );
 //use this uri for delete record from database
 $app->delete('/delete/:getRequest/:id', 'deleteRecord' );
 
+function login($getRequest){
+	$app = new \Slim\Slim();
+	$body = $app->request->getBody();
+	// this will get current url
+	/* $posIndex = strpos( $_SERVER['PHP_SELF'], '/index.php');
+	$baseUrl = substr( $_SERVER['PHP_SELF'], 0, $posIndex).'/index.php'; */ 
+	
+	try{
+			include 'modules/user.php';
+	}
+	catch(Exception $e) {
+        echo "Error: '".$e->getMessage()."'";
+    }
+};
 function getRecord($getRequest, $id){
 	$app = new \Slim\Slim();
 	$body = $app->request->getBody();
@@ -95,7 +111,7 @@ function uploadFiles(){
     }
 }
 
-function postRecord($getRequest){
+function postRecord($getRequest, $postParams){
 	$app = new \Slim\Slim();
 	$body = $app->request->getBody();
 	// this will get current url
