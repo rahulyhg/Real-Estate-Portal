@@ -25,7 +25,7 @@
 				<td>
 					<button class="btn btn-success" ng-show="x.status==1" title="Active"ng-click="changeStatus(x.id,x.status,$index)">Active</button>
 					<button class="btn btn-warning" ng-show="x.status==0" title="Delete">Delete</button>					
-					<a tooltip-animation="true" title="Preview" class="btn btn-primary">Preview					
+					<a ng-click="open('modules/templates/custTemp.html', x.id)" title="Preview" class="btn btn-primary">Preview					
 					</a>
 				</td>				
 			</tr>		

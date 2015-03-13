@@ -9,7 +9,7 @@
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr>
+			<tr><!-- ng-repeat="x in users filter: { status : hideDeleted}" -->
 				<td>1</td>
 				<td>Aarti</td>
 				<td>
@@ -24,16 +24,27 @@
 				<td>01-01-2015</td>
 				<td>
 					<div class="btn-group" role="group" aria-label="first group">
-						<button type="button"  tooltip-animation="true" tooltip="Ok" class="btn btn-default glyphicon glyphicon-ok" go-back></button>
-						<button type="button" tooltip-animation="true"  tooltip="Refresh"  class="btn btn-default glyphicon glyphicon-refresh"></button>
+						<a type="button"  tooltip-animation="true" tooltip="Approved" class="btn btn-success glyphicon glyphicon-ok" go-back></a>
+						
+						<a href="#/changepass" type="button" tooltip-animation="true"  tooltip="Reset Password"  class="btn btn-info glyphicon glyphicon-refresh"></a>
 					</div>
+					
 					<div class="btn-group" role="group" aria-label="second group">
-						<button type="button"  tooltip-animation="true" tooltip="Repeat" class="btn btn-default glyphicon glyphicon-repeat" go-back></button>
-						<button type="button" tooltip-animation="true"  tooltip="Ban"  class="btn btn-default glyphicon glyphicon-ban-circle"></button>
+					
+						<a type="button" tooltip-animation="true" tooltip="Re-active" class="btn btn-success glyphicon glyphicon-repeat"go-back></a><!--  ng-show="status==1"  -->
+						
+						<a type="button" tooltip-animation="true"  tooltip="Ban User"  class="btn btn-primary glyphicon glyphicon-ban-circle"></a>
+						<!-- ng-show="status==0" -->
 					</div>
+					
 					<div class="btn-group" role="group" aria-label="third group">
-						<button type="button"  tooltip-animation="true" tooltip="Edit" class="btn btn-default glyphicon glyphicon-pencil" go-back></button>
-						<button type="button" tooltip-animation="true"  tooltip="Remove"  class="btn btn-default glyphicon glyphicon-remove"></button>
+					
+						<a href="#/dashboard/users/adduser" type="button"  tooltip-animation="true" tooltip="Edit User Information" class="btn btn-success glyphicon glyphicon-pencil">
+						</a>
+						<!-- /{{x.id}} -->
+						<a type="button" tooltip-animation="true" tooltip="Remove"  class="btn btn-danger glyphicon glyphicon-remove" >
+						</a>
+						<!-- ng-if="(x.status==1)" ng-click="deletestatus(x.id,x.status, $index)" -->
 					</div>	
 				</td>
 			</tr>					
@@ -41,6 +52,6 @@
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersListCurrentPage,custom)"></pagination>
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>	

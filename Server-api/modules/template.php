@@ -3,8 +3,7 @@
 	$db = new dbHelper();
 	$reqMethod = $app->request->getMethod();
 	
-	if($reqMethod=="GET"){
-		
+	if($reqMethod=="GET"){		
 		if(isset($id)){
 			$where['id'] = $id;
 			$data = $db->select("templates", $where);
@@ -24,6 +23,7 @@
 			(isset($_GET['custom'])) ? $where['custom'] = $_GET['custom'] : "";
 			(isset($_GET['template_type'])) ? $where['template_type'] = $_GET['template_type'] : "";
 			(isset($_GET['devlpement_status'])) ? $where['devlpement_status'] = $_GET['devlpement_status'] : "";
+			
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select		
 			// this is used to select data with LIMIT & where clause with like filter

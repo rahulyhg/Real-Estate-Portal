@@ -21,6 +21,10 @@ define(['app'], function (app) {
 		$scope.currentDate = dataService.currentDate;
 		console.log($scope.currentDate);
 		
+		/* $scope.tempImg = [];
+		$http.get("store-tempImg.json").success(function(data){
+		  $scope.tempImg = data;
+		}); */
 		//single view modal fun
 		$scope.open = function (url, tempId) {
 			dataService.get("getsingle/template/"+tempId)
@@ -71,7 +75,7 @@ define(['app'], function (app) {
 		}; //end pagination
 		
 		$scope.changeValue = function(statusCol,status) {
-			console.log($scope.custom);
+			//console.log($scope.custom);
 			$scope.filterStatus= {};
 			(status =="") ? delete $scope.custom[statusCol] : $scope.filterStatus[statusCol] = status;
 			angular.extend($scope.custom, $scope.filterStatus);
@@ -90,7 +94,7 @@ define(['app'], function (app) {
 			});
 		};
 		
-		//code for delete single mail
+		//code for delete single template
 		$scope.changeStatus = function(id, status, index){
 			if(status==1){
 				$scope.custom = {status : 0};
@@ -200,11 +204,15 @@ define(['app'], function (app) {
 		};
 		
 		var requestCustomTemplates = function(){
-			$scope.custom = {status : 1};			
+			$scope.custom = {status : 1};	
+			$scope.template={};		
 			angular.extend($scope.custom,$scope.user_id);
+			$scope.template.date = $scope.currentDate;
+			//console.log($scope.template.date);
 			$scope.reset = function() {
 				$scope.template = {};
 			};
+			
 			//post method for insert data in request data form{Pooja}
 			$scope.postData = function(template) { 
 				dataService.post("/post/template",$scope.template)
@@ -218,6 +226,26 @@ define(['app'], function (app) {
 					}	
 				});
 			}
+			
+			//Upload Function for uploading files {Pooja}		
+		$scope.userinfo = {userId:1, name:"Pooja"}; // this is for uploading credentials
+		$scope.path = "template/"; // path to store images on server
+		$scope.template.template_image = []; // uploaded images will store in this array
+		$scope.upload = function(files,path,userinfo){ // this function for uploading files
+			upload.upload(files,path,userinfo,function(data){
+				if(data.status !== 'error'){
+					$scope.template.template_image.push(JSON.stringify(data.details));
+					console.log(data.message);
+				}else{
+					alert(data.message);
+				}				
+			});
+		};
+		
+		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
+			upload.generateThumbs(files);
+		};
+		// End upload function {pooja}
 		} 
 			 
 		switch($scope.tempPart) {			
@@ -261,26 +289,7 @@ define(['app'], function (app) {
 			}	*/
 
 			
-		//Upload Function for uploading files {Pooja}
-		$scope.template={}; // this is form object
-		$scope.userinfo = {userId:1, name:"Pooja"}; // this is for uploading credentials
-		$scope.path = "template/"; // path to store images on server
-		$scope.template.template_image = []; // uploaded images will store in this array
-		$scope.upload = function(files,path,userinfo){ // this function for uploading files
-			upload.upload(files,path,userinfo,function(data){
-				if(data.status !== 'error'){
-					$scope.template.template_image.push(JSON.stringify(data.details));
-					console.log(data.message);
-				}else{
-					alert(data.message);
-				}				
-			});
-		};
 		
-		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
-			upload.generateThumbs(files);
-		};
-		// End upload function {pooja}
 	};
        
 	// Inject controller's dependencies

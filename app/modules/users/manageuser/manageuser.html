@@ -7,6 +7,9 @@
 			</div>
 			<div class="row ">
 				<div class="col-sm-12 ">	
+				
+					<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>	
+				
 					<ng-include ng-if="userViews=='userslist'" src="'modules/users/manageuser/userslist.html'"></ng-include>
 					<ng-include ng-if="userViews=='usersgroup'" src="'modules/users/manageuser/usersgroup.html'"></ng-include>
 					<ng-include ng-if="userViews=='adduser'" src="'modules/users/manageuser/adduser.html'"></ng-include>

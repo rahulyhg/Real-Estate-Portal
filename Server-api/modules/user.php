@@ -2,20 +2,30 @@
 	require_once 'db/dbHelper.php';
 	$db = new dbHelper();
 	$reqMethod = $app->request->getMethod();
-	
+
 	if($reqMethod=="GET"){
 		if(isset($id)){
 			$where['id'] = $id;
 			$data = $db->select("users", $where);
 			echo json_encode($data);
 			
-		}else{
+		}else{			
+			$like = [];
+			if(isset($_GET['search']) && $_GET['search'] == true){	
+              
+				(isset($_GET['username'])) ? $like['username'] = $_GET['username'] : "";
+			}	
+				
 			$where=[]; // this will used for user specific data selection.
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select
 			
+			// to check user_id is set or not
+			((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
+			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
+			
 			// this is used to select data with LIMIT & where clause
-			$data = $db->select("users", $where, $limit);
+			$data = $db->select("users", $where, $limit,$like);
 			
 			// this is used to count totalRecords with only where clause
 			$totalRecords['totalRecords'] = count($db->select("users", $where)['data']);		
@@ -33,6 +43,7 @@
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){
 		$where['id'] = $id; // need where clause to update/delete record
+		
 		$update = $db->update("users", $body, $where);
 		echo json_encode($update);
 	}

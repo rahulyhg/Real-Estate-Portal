@@ -3,7 +3,7 @@
 		<thead>
 			<th>Sr.No.</th>
 			<th>User Group</th>
-			<th>Users in</th>
+			<th>Users In</th>
 			<th>Access/Permission</th>
 			<th>Manage</th>
 		</thead>
@@ -14,13 +14,16 @@
 				<td>1</td>
 				<td>{"menus":["Home","Users","Templates","Websites","Business","Products"],"SpecialPermission":{"Whole access":true}}
 				</td>
-				<td><a href="#" class="btn btn-default" tooltip="Edit Here"><span class= "glyphicon glyphicon-pencil"></span></a>
-				<a href="#" class="btn btn-default " tooltip="Delete"><span class= "glyphicon glyphicon-remove"></span></a></td>
+				<td>
+					<a href="#/dashboard/users/adduser" type="button"  tooltip-animation="true" tooltip="Edit User Information" class="btn btn-success glyphicon glyphicon-pencil"></a>
+					
+					<a type="button" tooltip-animation="true" tooltip="Remove"  class="btn btn-danger glyphicon glyphicon-remove" ></a>
+				</td>
 			</tr>					
 		</tbody>					
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersGroupCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersGroupCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersGroupCurrentPage,custom)"></pagination>
 	<pre>Page: {{currentPage}} / {{numPages}}</pre>
 </div>
