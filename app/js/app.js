@@ -1,18 +1,19 @@
 'use strict';
 
 define(['angular',
- 'angularRoute',
- 'routeResolver',
- 'bootstrap',
- 'directives',
- 'services', 
- 'filters',
- 'upload','uploadShim',
+	'angularRoute',
+	'ngCookies',
+	'routeResolver',
+	'bootstrap',
+	'directives',
+	'services', 
+	'filters',
+	'upload','uploadShim',
  'css!../css/bootstrap.min', 'css!../css/mystyle.css'
-], function (angular, angularRoute) {
+], function (angular, angularRoute, ngCookies) {
     // Declare app level module which depends on views, and components
     var app = angular.module('realEstate', [
-   'ngRoute', 'routeResolverServices', 'ui.bootstrap', 'customDirectives', 'customServices', 'customFilters', 'angularFileUpload'
+   'ngRoute', 'routeResolverServices', 'ui.bootstrap', 'customDirectives', 'customServices', 'customFilters', 'angularFileUpload', 'ngCookies'
  ]);
     app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
                 '$compileProvider', '$filterProvider', '$provide', '$httpProvider',
@@ -45,6 +46,14 @@ define(['angular',
                     controller: 'login',
                     template: 'login',
 					label: "Login"
+                }, 'users/login/'))
+				
+				// route for logout
+				
+				.when('/logout', route.resolve({
+                    controller: 'login',
+                    template: 'logout',
+					label: "Logout"
                 }, 'users/login/'))
 				
 				.when('/changepass',route.resolve({
@@ -94,11 +103,7 @@ define(['angular',
 				
 				
 				// Below routes will use response module folder	{Sunita- To display mailbox single view remove status add mailID }
-				/*.when('/dashboard/response/:mailId?', route.resolve({
-                    controller: 'response',
-                    template: 'response',
-					label: " Mail Box"
-                }, 'response/'))*/
+				
 				
 				// this is to display mail views {sunita}
 				.when('/dashboard/response/:mailPart?', route.resolve({
@@ -112,6 +117,7 @@ define(['angular',
                     template: 'response',
 					label: " Mail Box"
                 }, 'response/'))
+				
 				// Below routes will use Property module folder
 				// In this view you can see list of all properties
                 .when('/dashboard/property', route.resolve({
@@ -158,9 +164,49 @@ define(['angular',
 	
             .otherwise({redirectTo: '/'});
  }]);
-    app.run(['$location', '$rootScope', 'breadcrumbs', function ($location, $rootScope, breadcrumbs) {
-        $rootScope.metaTitle = "Real Estate Portal";
-        $rootScope.breadcrumbs = breadcrumbs;
- }]);
+  app.run(['$location', '$rootScope', 'breadcrumbs','dataService','$cookieStore', '$cookies', function($location, $rootScope, breadcrumbs, dataService, $cookieStore, $cookies) {
+		$rootScope.$on("$routeChangeStart", function (event, next, current) {
+			$rootScope.breadcrumbs = breadcrumbs;
+			$rootScope.appConfig = {
+				metaTitle : "Real Estate Portal",
+				headerTitle : next.$$route.label,
+				subTitle : next.$$route.label
+			};
+			
+			var nextUrl = next.$$route.originalPath;
+			if(nextUrl == '/logout'){
+				dataService.get('/login/logout').then(function(response){
+					$rootScope.LogoutMsg = response;
+					$rootScope.userDetails = {};
+					console.log("logout");
+					sessionStorage.clear();
+					angular.forEach($cookies, function (v, k) {
+						$cookieStore.remove(k);
+					});
+				});
+			}
+			//if(!$cookies.userDetails==""){
+				dataService.get('/login/session').then(function(response){
+					if(response.id===""){
+						if (nextUrl == '/forgotpass' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/' || nextUrl == '/logout') {
+
+						} else {
+							$location.path("/login");
+							$rootScope.alerts = [{type: "warning", msg: "You are not logged in!"}];
+						}
+					}else{
+						if (nextUrl == '/forgotpass' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/') {
+							$location.path("/dashboard");
+						}
+						
+						sessionStorage.userDetails = JSON.stringify(response);
+						$rootScope.userDetails = JSON.parse(sessionStorage.userDetails);
+					};
+				})
+				
+			//}
+			
+		});
+	}]);
     return app;
 });
