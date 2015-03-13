@@ -37,6 +37,21 @@ define(['app'], function (app) {
 					}
 				})
 			}	
+			
+			//code for change password
+			$scope.changepass = function(changepwd) {
+				console.log(changepwd);
+				dataService.post("/post/user/changepass",changepwd)
+				.then(function(response) {
+					if(response.status == 'success'){
+						$scope.changepwd = response.data;
+						console.log(response);
+						$location.path("/dashboard");
+					}else{
+						$scope.alerts.push({type: (response.status == 'error') ? "danger" :response.status, msg: response.message});
+					}
+				})
+			}	
 		};
     
 	// Inject controller's dependencies
