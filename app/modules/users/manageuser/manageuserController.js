@@ -53,7 +53,7 @@ define(['app'], function (app) {
 		//For display by default userslist.html page
 		if(!$routeParams.userView) {
 		$location.path('/dashboard/users/userslist');
-		console.log($location);
+		//console.log($location.path);
 		}	
 		
 		//Code For Pagination
@@ -80,10 +80,11 @@ define(['app'], function (app) {
 		}; */
 		
 		
-		/* // switch functions 
+		// switch functions 
 		var usersList = function(){
 			$scope.userStatus = {status : 1};			
-			angular.extend($scope.userStatus,$scope.user_id);			dataService.get("/getmultiple/user/"+$scope.usersListCurrentPage+"/"+$scope.pageItems, $scope.userStatus)			
+			angular.extend($scope.userStatus,$scope.user_id);	
+			dataService.get("/getmultiple/user/"+$scope.usersListCurrentPage+"/"+$scope.pageItems, $scope.userStatus)			
 			.then(function(response) { 
 				if(response.status == 'success'){
 					$scope.totalRecords = response.totalRecords;
@@ -96,9 +97,21 @@ define(['app'], function (app) {
 			});
 		};	
 		
-		
-		
-		*/
+		var usersGroup = function(){
+			$scope.userStatus = {status : 1};			
+			angular.extend($scope.userStatus,$scope.user_id);		
+			dataService.get("/getmultiple/user/"+$scope.usersGroupCurrentPage+"/"+$scope.pageItems, $scope.userStatus)			
+			.then(function(response) { 
+				if(response.status == 'success'){
+					$scope.totalRecords = response.totalRecords;
+					$scope.users = response.data;
+					console.log(response.data);
+				}
+				else{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}	
+			});
+		};		
 		
 		switch($scope.userViews) {			
 			case 'userslist':

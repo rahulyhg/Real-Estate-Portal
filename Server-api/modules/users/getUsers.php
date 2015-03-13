@@ -1,8 +1,6 @@
 <?php
-	function getMultipleUsers(){
-		$where=[]; // this will used for user specific data selection.
-			$limit['pageNo'] = $pageNo; // from which record to select
-			$limit['records'] = $records; // how many records to select
+	function getMultipleUsers($where,$limit){
+			$db = new dbHelper();
 			
 			// this is used to select data with LIMIT & where clause
 			$data = $db->select("users", $where, $limit);
@@ -14,7 +12,8 @@
 			$data = array_merge($totalRecords,$data);
 			echo json_encode($data);
 	}
-	function getSingleUser(){
+	function getSingleUser($id){
+		$db = new dbHelper();
 		$where['id'] = $id;
 		$data = $db->selectSingle("users", $where);
 		echo json_encode($data);
