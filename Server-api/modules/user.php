@@ -41,7 +41,7 @@
 			doLogin($body);
 		}elseif(isset($postParams) && $postParams == 'register'){ // register.php
 			registerUser($body);
-		}elseif(isset($postParams) && $postParams == 'forgotpass'){ // login.php
+		}elseif(isset($postParams) && $postParams == 'forgot'){
 			forgotPass($body);
 		}elseif(isset($postParams) && $postParams == 'register'){ // register.php
 			checkAvailability($body);

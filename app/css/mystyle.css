@@ -2,6 +2,27 @@ body
 {
 	overflow:scroll;
 }
+header a
+{
+	margin-top:10px;
+}
+header .user-dropdown{
+	position: relative;
+}
+header .user-dropdown .dropdown-menu {
+	left: auto;
+	right: 0;
+}
+
+header .user-img {
+    display: inline-block;
+    vertical-align: middle;
+}
+header .user-img img
+{
+	height: 65px;	
+	padding-top:4px;
+}
 
 .main-content
 {
@@ -148,9 +169,4 @@ h3 {
 }
 .sidebar-border,.form-border{
 	border:1px solid #ccc;
-}
-.user-img{
-	height:80px;
-	padding:4px
-	
 }
