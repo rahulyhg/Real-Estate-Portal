@@ -11,46 +11,50 @@
 	$reqMethod = $app->request->getMethod();
 
 	//getMethod
-	if($reqMethod=="GET"){
-		if(isset($getRequest) && $getRequest =='session'){
-			getSession($getRequest);
-		}elseif(isset($getRequest) && $getRequest =='logout'){
-			logout();
-		}else{
-			if(isset($id)){
-				getSingleUser($id);
+	if($reqMethod=="GET"){		
+		if(isset($id)){
+			$where['id'] = $id;
+			$data = $db->select("users", $where);
+			echo json_encode($data);			
+			
+		}else{			
+			$like = [];
+			if(isset($_GET['search']) && $_GET['search'] == true){	
+              
+				(isset($_GET['username'])) ? $like['username'] = $_GET['username'] : "";
+			}				
+			elseif(isset($getRequest) && $getRequest =='session'){
+				getSession($getRequest);
+			}elseif(isset($getRequest) && $getRequest =='logout'){
+				logout();
 			}else{
-				$where=[]; // this will used for user specific data selection.
-				$like = [];
-				if(isset($_GET['search']) && $_GET['search'] == true){	
-					(isset($_GET['username'])) ? $like['username'] = $_GET['username'] : "";
+				if(isset($id)){
+					getSingleUser();
 				}
-				// to check user_id is set or not
-				((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
-				(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
-				$limit['pageNo'] = $pageNo; // from which record to select
-				$limit['records'] = $records; // how many records to select
-				getMultipleUsers($where,$limit,$like); // from getUsers.php
 			}
+			$where=[]; 
+			// to check user_id is set or not
+			((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
+			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
+			
+			$data = $db->select("users", $where, $limit,$like);
+			
 		}
-	
 	}//end get
 	
 	if($reqMethod=="POST"){
-		if(isset($postParams) && $postParams == 'login'){ // login.php
+		if(isset($postParams) && $postParams == 'login'){
 			doLogin($body);
-		}elseif(isset($postParams) && $postParams == 'register'){ // register.php
+		}elseif(isset($postParams) && $postParams == 'register'){
 			registerUser($body);
-		}elseif(isset($postParams) && $postParams == 'forgotpass'){ // login.php
+		}elseif(isset($postParams) && $postParams == 'forgotpass'){
 			forgotPass($body);
-		}elseif(isset($postParams) && $postParams == 'register'){ // register.php
-			checkAvailability($body);
 		}
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){
 		echo $reqMethod;
-		echo $body;
+		
 	}
 	
 
