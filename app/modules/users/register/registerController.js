@@ -69,6 +69,7 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 			.then(function(response) {
 				if(response.status == 'success'){
 					$scope.submitted = true;
+					$scope.alerts.push({type: response.status, msg: response.message});
 				}
 				console.log(response);
 			},function(err){

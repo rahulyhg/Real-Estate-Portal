@@ -188,14 +188,14 @@ define(['angular',
 			//if(!$cookies.userDetails==""){
 				dataService.get('/login/session').then(function(response){
 					if(response.id===""){
-						if (nextUrl == '/forgotpass' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/' || nextUrl == '/logout') {
+						if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/' || nextUrl == '/logout') {
 
 						} else {
 							$location.path("/login");
 							$rootScope.alerts = [{type: "warning", msg: "You are not logged in!"}];
 						}
 					}else{
-						if (nextUrl == '/forgotpass' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/') {
+						if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/') {
 							$location.path("/dashboard");
 						}
 						

@@ -1,10 +1,11 @@
+
 <div class="main-content">
 <div class="row "> 
 	<div  class="breadcrumb-back" ng-include="'modules/component/breadcrumb.html'"></div>
 	<div class="col-sm-2" ng-include="'modules/component/mainnav.html'"></div>
 	<div class="col-sm-10">
 		
-			<form class="form-horizontal myForm" role="form" name="forgotPass"  novalidate>
+			<form class="form-horizontal border" role="form" name="forgotPass"  novalidate ng-submit="forgotPass.$valid">
 				<div class="form-group">
 				   <div class="col-offset-3 col-sm-9">
 						<h3> Forgot Password</h3>
@@ -13,19 +14,19 @@
 				<hr>
 				<p>If you have forgot the account password, you can reset password and a new password will be sent to your email address..</p>
 				<div class="form-group">
-					<label for="user_email" class="col-sm-2 control-label">Email</label>
+					<label for="email" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-8">
-						<input type="Email" class="form-control" id="user_email" ng-model="forget.user_email" name="Email" placeholder="Enter Email" required>
-							<span class="text-danger" ng-show="forgotPass.user_email.$dirty && forgotPass.user_email.$invalid">
-								<span ng-show="forgotPass.user_email.$error.required">Email is required.</span>
-								<span ng-show="forgotPass.user_email.$error.email">Invalid Email address.</span>
+						<input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" ng-model="forgot.email" required>{{forgot | json }}
+							<span  ng-show="forgotPass.email.$dirty && forgotPass.email.$invalid">
+								<span class="text-danger" ng-show="forgotPass.email.$error.required">Email is required.</span>
+								<span class="text-danger" ng-show="forgotPass.email.$error.email">Invalid Email address.</span>
 							</span>
 					</div>			
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-8">
-						<button type="submit" class="btn btn-success" name="sendPass" title="Send">Go</button>
-						<button type="reset" class="btn btn-danger" name="cancelPass" title="Cancel">Cancel</button>
+						<button type="submit" class="btn btn-success" name="sendPass" title="Send" ng-disabled="forgotPass.$invalid" ng-click="forgotpass(forgot)">Go</button>
+						<button type="reset" class="btn btn-danger" name="cancelPass" title="Cancel" ng-click="reset()">Cancel</button>
 					</div>
 				</div>
 			</form>

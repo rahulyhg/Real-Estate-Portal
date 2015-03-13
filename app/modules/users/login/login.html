@@ -6,7 +6,7 @@
 				<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<h3> loginForm </h3>
+							<h3> Login Here </h3>
 						</div>
 					</div>             
 					<div class="form-group">
@@ -40,7 +40,7 @@
 					<div class="form-group">
 						 <div class="col-sm-offset-2 col-sm-10">
 							  <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-primary" name="btn1" ng-model="login.btn1" ng-click="insert(login)"> Login</button><br>
-							  <a href="#register" title="Register here">Register here</a> | <a href="#/forgot" title="Forgot password">Forgot Password</a>
+							  <a href="#register" title="Register here">Register here</a> | <a href="#forgot" title="Forgot password">Forgot Password</a>
 						 </div>
 					</div>
 				</form>
