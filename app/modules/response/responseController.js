@@ -122,6 +122,10 @@ define(['app'], function (app) {
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}else{
 					$scope.mailList = response.data;
+						console.log(response.data);
+					
+					//$scope.mailList.from_email = JSON.parse($scope.mailList.from_email);
+				//	$scope.mailList = response.data;
 					$scope.totalRecords = response.totalRecords;
 				}
 			});
@@ -145,7 +149,8 @@ define(['app'], function (app) {
 		//code for send email
 		var composemailview= function(){
 			// code for uploading file
-			$scope.compose = {user_id: 1, from_email : "vilas@wtouch.in", first_name : "Vilas", last_name : "Shetkar" };
+			$scope.compose = {user_id: 1, from_email :{ to :"vilas@wtouch.in", Cc: " " }
+			, first_name : "Vilas", last_name : "Shetkar" };
 			$scope.compose.date = $scope.currentDate;
 			$scope.userinfo = {userId:1, name:"vilas"};
 			$scope.path = "enquiry/"; 
