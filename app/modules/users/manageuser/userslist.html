@@ -9,9 +9,9 @@
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr><!-- ng-repeat="x in users filter: { status : hideDeleted}" -->
-				<td>1</td>
-				<td>Aarti</td>
+			<tr ng-repeat="x in users"><!--  filter: { status : hideDeleted}" -->
+				<td>{{((usersListCurrentPage - 1) * pageItems) + $index + 1}}</td>
+				<td>{{x.username}}</td>
 				<td>
 					<select class="form-control">
 						<option value="">Select Group</option>
@@ -20,8 +20,8 @@
 						<option value="bizowner">Business Owner</option>
 					</select>
 				</td>
-				<td>aarti@wtouch.in</td>
-				<td>01-01-2015</td>
+				<td>{{x.email}}</td>
+				<td>{{x.register_date}}</td>
 				<td>
 					<div class="btn-group" role="group" aria-label="first group">
 						<a type="button"  tooltip-animation="true" tooltip="Approved" class="btn btn-success glyphicon glyphicon-ok" go-back></a>
@@ -52,6 +52,6 @@
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersListCurrentPage,custom)"></pagination>
-	<pre>Page: {{currentPage}} / {{numPages}}</pre>
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersListCurrentPage,userStatus)"></pagination>
+	<pre>Page: {{usersListCurrentPage}} / {{numPages}}</pre>
 </div>	
