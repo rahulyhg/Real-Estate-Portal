@@ -1,25 +1,28 @@
+{{edit |json}}
 <div class="row">
 	<div class="col-sm-12">	
 		<div class="main-content">
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>	
 			<div class="row ">
+			<form name="editProfile" class="form-horizontal " role="form" novalidate ng-submit="editProfile.$valid">	
 				<div class="col-sm-2">
 					<img class="user-img" src="img/user.jpg">					
 						<!-- This is file input for select images -->
-					<input type="file" id="userProfile" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="userProfile">
+					<input type="file" id="editProfile" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="editProfile">
 					
 					<!-- This will show thumbnails & progress of images -->
-					<file-preview url="userProfile" ng-model="edit.user_img"></file-preview>
+					<file-preview url="editProfile" ng-model="edit.user_img"></file-preview>
 					
 					<!-- This button will show if file/s selected -->
-					<button ng-show="userProfile" ng-click="upload(userProfile,path,userinfo)" type="button">Upload</button>
+					<button ng-show="editProfile" ng-click="upload(editProfile,path,userinfo)" type="button">Upload</button>
 					<input type="hidden" ng-model="edit.user_img">
 						<caption>Upload Your Photo here..!</caption>		
 				</div>	
 				
 					
 				<div class="col-sm-10">					
-					<form name="editProfile" class="form-horizontal border" role="form" novalidate ng-submit="editProfile.$valid">	
+					
 						<div class="form-group">
 						   <div class="col-md-offset-2  col-md-8">
 								<h3 col-md-offset-2 col-md-9>Edit Profile</h3>
@@ -28,16 +31,16 @@
 						<div class="form-group">
 							<label for="name" class="col-md-2 control-label">Name</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="name" ng-model="edit.name" name="name" placeholder="Enter Name" required>
+								<input type="text" class="form-control" id="name" ng-model="edit.name" name="name" placeholder="Enter Name" required readonly>
 								<span class="text-danger" ng-show="editProfile.name.$error.required && (editProfile.name.$dirty || submitted)" class="help-block">Name is required.</span>
 							</div>						
 						</div>
 						<div class="form-group">
 							<label for="address" class="col-md-2 control-label">Address</label>
 							<div class="col-md-8">
-							<textarea class="form-control"  id="address" name="address" ng-model="editProf.address" cols="30" rows="4" ng-maxlength="20" placeholder="Enter Your Address"></textarea>
+							<textarea class="form-control"  id="address" name="address" ng-model="edit.address" cols="30" rows="4" ng-maxlength="20" placeholder="Enter Your Address"></textarea>
 			  
-							<p ng-hide="editProfile.address.$error.maxlength">{{ 20 - editProf.address.length + " Chars left" }}</p>
+							<p ng-hide="editProfile.address.$error.maxlength">{{ 20 - edit.address.length + " Chars left" }}</p>
 							 <span class="text-danger" ng-show="editProfile.address.$error.maxlength">
 								Sorry You are Exceeding the Limit
 							</span>	
@@ -68,16 +71,14 @@
 						</div>	
 						<div class="form-group">
 							<label  for="date" class="col-sm-2 control-label">Date</label>
-							<div class="col-md-8">
-								<p class="input-group">
-									<input type="text" id="date" class="form-control" datepicker-popup="{{format}}" ng-model="date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default" ng-click="open($event)">
-											<i class="glyphicon glyphicon-calendar"></i>
-										</button>
-									</span>
-								</p>
-							</div>
+								<div class="col-sm-8">
+									<p class="input-group">
+									  <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy"  ng-model="edit.dob" is-open="opened1" ng-click="open($event,'opened1')" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" >
+									  <span class="input-group-btn">
+										<button type="button" class="btn btn-default" ng-click="open($event,'opened1')"><i class="glyphicon glyphicon-calendar"></i></button>
+									  </span>
+									</p>
+								</div>
 						</div>
 						<div class="form-group">
 							<label for="website" class="col-md-2 control-label">Website </label>
@@ -92,7 +93,7 @@
 							
 						<div class="form-group">
 							<div class="col-md-offset-2 col-md-9">
-								<button type="submit" class="btn btn-success"  title="Edit Profile" ng-click="editprofile(edit)" ng-disabled="editProfile.$invalid">Save Profile</button>
+								<button type="submit" class="btn btn-success"  title="Edit Profile" ng-click="editprofile(edit.id ,edit)" ng-disabled="editProfile.$invalid">Save Profile</button>
 								<button type="reset" class="btn btn-danger" title="Cancel" ng-click="reset()">Cancel</button>
 							</div>						
 						</div>

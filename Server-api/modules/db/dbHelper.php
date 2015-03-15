@@ -301,12 +301,16 @@ class dbHelper {
                 $w .= " and " .$key. " = :".$key;
                 $a[":".$key] = $value;
             }
-            $inputData = json_decode($inputData);
+            $inputData = (is_object($inputData) || is_array($inputData) ) ? $inputData : json_decode($inputData);
 			$updateTable = [];
 			foreach($inputData as $key => $val) // $inputData holds input json data
 			{
-			
-				$value = (is_object($val) || is_array($val)) ? mysql_real_escape_string(json_encode($val)) : mysql_real_escape_string($val);
+				
+				$value = ($key!=='password')
+						? (is_object($val) || is_array($val))
+							? mysql_real_escape_string(json_encode($val))
+							: mysql_real_escape_string($val)
+						: passwordHash::hash($val);
 				array_push($updateTable,$key." = '".$value."'");
 				
 			}
