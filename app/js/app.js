@@ -76,7 +76,7 @@ define(['angular',
                 }, 'users/register/'))
 				
 				.when('/editprofile', route.resolve({
-                    controller: 'editprofile',
+                    controller: 'register',
                     template: 'editprofile',
 					label: "Edit Profile"
                 }, 'users/register/'))

@@ -57,23 +57,45 @@
 	function forgotPass($body){
 		$db = new dbHelper();
 		$sessionObj = new session();
-		
 		$input = json_decode($body);
-		
-		(property_exists($input,'username')) ? $where['username'] = $input->username : "";
 		(property_exists($input,'email')) ? $where['email'] = $input->email : "";
+		echo json_encode($where);
 		
-		$limit['pageNo'] = 1; // from which record to select
-		$limit['records'] = 1; // how many records to select
+	}
+	function changePass($body){
+		try{
+			$db = new dbHelper();
+			$sessionObj = new session();
+			$input = json_decode($body);
+			$table = 'users';
+			$where = [];
+			(property_exists($input,'user_id')) ? $where['id'] = $input->user_id : "";
+			$data = $db->selectSingle($table, $where);
+			$password = $input->password->old;
 			
-		$password = $input->password; // get password from json
-		
-		$data = $db->select("users", $where, $limit);
-		if($data['status']=='success'){
-			echo "reset link will sent to your mail id";
-		}else{
-			echo "your username or email id doesn't match to database";
-		}
+			// password check with hash encode
+			if(passwordHash::check_password($data['data']['password'],$password)){
+				$newPass['password'] = $input->password->new;
+				$updatePass = $db->update($table, $newPass, $where);
+				if($updatePass['status'] == 'success'){
+					$response["message"] = "Your password Changed successfully.";
+					$response["status"] = "success";
+					$response["data"] = null;
+				}else{
+					throw new Exception('Password does\'n match!');
+				}
+				
+				echo json_encode($response);
+			}else{
+				throw new Exception('Password does\'n match!');
+			}
+			
+		}catch(Exception $e){
+            $response["status"] = "error";
+            $response["message"] = 'Error: ' .$e->getMessage();
+            $response["data"] = null;
+			echo json_encode($response);
+        }
 	}
 	function logout(){
 		$sessionObj = new session();

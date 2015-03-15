@@ -45,14 +45,15 @@
 			forgotPass($body);
 		}elseif(isset($postParams) && $postParams == 'register'){
 			checkAvailability($body);			// register.php
-		}elseif(isset($postParams) && $postParams == 'addusers'){ // addusers.php
-			postRecord($body);
+		}elseif(isset($postParams) && $postParams == 'changepass'){
+			changePass($body);
 		}
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){
-		echo $reqMethod;
-		echo $body;
+		$where['id'] = $id; // need where clause to update/delete record
+		$update = $db->update("users", $body, $where);
+		echo json_encode($update);
 	}
 	
 
