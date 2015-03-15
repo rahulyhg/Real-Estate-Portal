@@ -48,6 +48,7 @@
 		}elseif(isset($postParams) && $postParams == 'changepass'){
 			changePass($body);
 		}
+		
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){

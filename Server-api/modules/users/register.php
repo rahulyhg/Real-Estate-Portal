@@ -6,6 +6,7 @@
 		echo json_encode($insert);
 	}
 	
+	
 	function editUser($body){
 		$db = new dbHelper();	
 		$insert = $db->put("users", $body);

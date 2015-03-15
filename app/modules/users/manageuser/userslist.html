@@ -13,7 +13,9 @@
 				<td>{{((usersListCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.username}}</td>
 				<td>
-					<select class="form-control">
+					<a type="button" class="btn btn-success glyphicon glyphicon-pencil" ng-click="showDropDown($event,'opened2')"></a>
+					
+					<select class="form-control" ng-show="opened2">
 						<option value="">Select Group</option>
 						<option value="manager">Manager</option>
 						<option value="salseman">Salseman</option>
@@ -40,7 +42,7 @@
 					<div class="btn-group" role="group" aria-label="third group">
 					
 						<a href="#/dashboard/users/adduser" type="button"  tooltip-animation="true" tooltip="Edit User Information" class="btn btn-success glyphicon glyphicon-pencil">
-						</a>
+						</a> 
 						<!-- /{{x.id}} -->
 						<a type="button" tooltip-animation="true" tooltip="Remove"  class="btn btn-danger glyphicon glyphicon-remove" >
 						</a>

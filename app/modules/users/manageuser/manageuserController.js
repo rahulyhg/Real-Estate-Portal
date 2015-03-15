@@ -44,9 +44,19 @@ define(['app'], function (app) {
 				$event.preventDefault();
 				$event.stopPropagation();
 				$scope[opened] = ($scope[opened] ===true) ? false : true;
-			};		
+			};	
+			
 		//End  Date Picker 
 				 
+			//show dropdown list	 
+		$scope.showDropDown = function($event,opened1)
+			{
+				$event.preventDefault();
+				$event.stopPropagation();
+				$scope[opened1] = ($scope[opened1] ===true) ? false : true;
+			};	
+				//end dropdown
+			
 		//console.log($scope.userViews);
 		
 		//For display by default userslist.html page
@@ -120,10 +130,10 @@ define(['app'], function (app) {
 			});
 		};		
 		//search filter function
-		$scope.searchFilter = function(statusCol, searchTemp) {
+		$scope.searchFilter = function(statusCol, searchUser) {
 			$scope.search = {search: true};
 			$scope.filterStatus= {};
-			(searchTemp =="") ? delete $scope.userStatus[statusCol] : $scope.filterStatus[statusCol] = searchTemp;
+			(searchTemp =="") ? delete $scope.userStatus[statusCol] : $scope.filterStatus[statusCol] = searchUser;
 			angular.extend($scope.userStatus, $scope.filterStatus);
 			angular.extend($scope.userStatus, $scope.search);			
 			
@@ -140,6 +150,8 @@ define(['app'], function (app) {
 				//console.log($scope.properties);
 			});
 		};		
+		
+	
 		
 			
 		/* //create user group
@@ -161,22 +173,21 @@ define(['app'], function (app) {
 		
 		//post method for insert data in request data form{Pooja}
 		var addUsers = function(){
-			$scope.addusers={};
+			//$scope.addusers={};
 			$scope.postData = function(addusers) { 
-			
-				 console.log($scope.addusers);
-				/* dataService.post("/post/user",addusers)
+			console.log(addusers);
+				 dataService.post("post/user/register",addusers)
 				.then(function(response) {  //function for response of request temp
 					if(response.status == 'success'){
-						$scope.addusers = response.data;
-						console.log(response);
-						$scope.reset();
+					$scope.submitted = true;
+					$scope.alerts.push({type: response.status, msg: response.message});
+				
 					}else{
 						$scope.alerts.push({type: response.status, msg: response.message});
 					}	
-				});	  */
-		} 
-};//end post Method
+				});	  
+			} 
+		};//end post Method
 			
 		switch($scope.userViews) {
 			case 'adduser':
