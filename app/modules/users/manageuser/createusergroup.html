@@ -6,7 +6,7 @@
 			<div class="form-group">
 				<label  for="group_name" class="col-sm-2 control-label">Group Name</label>
 				<div class="col-sm-9">
-					<input type="text" id="group_name" class="form-control" name="group_name" placeholder="Enter Your Group Name" ng-model="usergroup.group_name" required >
+					<input type="text" id="group_name" class="form-control" name="group_name" placeholder="Enter Your Group Name" ng-model="createUserGroup.group_name" required >
 					<span class="text-danger" ng-show="addGroup.group_name.$dirty && addGroup.group_name.$invalid">
 						<span ng-show="addGroup.group_name.$error.required">Group Name is required.</span>
 					</span>
@@ -15,7 +15,7 @@
 			<div class="form-group">	
 				<label  for="description" class="col-sm-2 control-label">Group Description </label>
 				<div class="col-sm-9">
-					<input type="text" id="description" class="form-control" name="description" placeholder="Group Description" ng-model="usergroup.description" required >
+					<input type="text" id="description" class="form-control" name="description" placeholder="Group Description" ng-model="createUserGroup.description" required >
 					<span class="text-danger" ng-show="addGroup.description.$dirty && addGroup.description.$invalid">
 					<span ng-show="addGroup.description.$error.required">Group Description is required.</span>
 					</span>
@@ -25,7 +25,7 @@
 				<label  for="date" class="col-sm-2 control-label">Date</label>
 				<div class="col-sm-9">
 					<p class="input-group">
-					  <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy"  ng-model="usergroup.date" is-open="opened1" ng-click="open($event,'opened1')" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+					  <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy"  ng-model="createUserGroup.date" is-open="opened1" ng-click="open($event,'opened1')" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
 					  
 					  <span class="input-group-btn">
 						<button type="button" class="btn btn-default" ng-click="open($event,'opened1')"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -41,27 +41,27 @@
 							<label class="control-label">User Module</label>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.userModule.userList">User List
+									<input type="checkbox" ng-model="createUserGroup.group_permission.userModule.userList">User List
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.userModule.addUser"> Add User
+									<input type="checkbox" ng-model="createUserGroup.group_permission.userModule.addUser"> Add User
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.userModule.editUser"> Edit User
+									<input type="checkbox" ng-model="createUserGroup.group_permission.userModule.editUser"> Edit User
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.userModule.banUser"> Ban User
+									<input type="checkbox" ng-model="createUserGroup.group_permission.userModule.banUser"> Ban User
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.userModule.deleteUser"> Delete User
+									<input type="checkbox" ng-model="createUserGroup.group_permission.userModule.deleteUser"> Delete User
 								</label>
 							</div>
 						</div>
@@ -69,32 +69,32 @@
 							<label class="control-label">Template Module</label>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.tempModule.tempList">Template List
+									<input type="checkbox" ng-model="createUserGroup.group_permission.tempModule.tempList">Template List
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.tempModule.myTempList">My Template List
+									<input type="checkbox" ng-model="createUserGroup.group_permission.tempModule.myTempList">My Template List
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.tempModule.reqCustTemp"> Request Custom Template
+									<input type="checkbox" ng-model="createUserGroup.group_permission.tempModule.reqCustTemp"> Request Custom Template
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.tempModule.addTemp">Add Template
+									<input type="checkbox" ng-model="createUserGroup.group_permission.tempModule.addTemp">Add Template
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.tempModule.editTemp">Edit Template
+									<input type="checkbox" ng-model="createUserGroup.group_permission.tempModule.editTemp">Edit Template
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.tempModule.deleteTemp">Delete Template
+									<input type="checkbox" ng-model="createUserGroup.group_permission.tempModule.deleteTemp">Delete Template
 								</label>
 							</div>
 						</div>		
@@ -102,32 +102,32 @@
 							<label class="control-label">Business Module</label>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.busiModule.busiList">Business list
+									<input type="checkbox" ng-model="createUserGroup.group_permission.busiModule.busiList">Business list
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.busiModule.addBusi"> Add Business
+									<input type="checkbox" ng-model="createUserGroup.group_permission.busiModule.addBusi"> Add Business
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.busiModule.approveBusi"> Approve Business
+									<input type="checkbox" ng-model="createUserGroup.group_permission.busiModule.approveBusi"> Approve Business
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.busiModule.varifyBusi">Varify Business
+									<input type="checkbox" ng-model="createUserGroup.group_permission.busiModule.varifyBusi">Varify Business
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.busiModule.editBusi"> Edit Business
+									<input type="checkbox" ng-model="createUserGroup.group_permission.busiModule.editBusi"> Edit Business
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" ng-model="usergroup.groupPermission.busiModule.deleteBusi"> Delete Business
+									<input type="checkbox" ng-model="createUserGroup.group_permission.busiModule.deleteBusi"> Delete Business
 								</label>
 							</div>
 						</div>			
@@ -139,19 +139,19 @@
 				<div class="col-sm-4">
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" ng-model="usergroup.other.setting1">Setting 1
+							<input type="checkbox" ng-model="createUserGroup.other.setting1">Setting 1
 						</label>
 					</div>
 					<div class="checkbox">
 						<label>
-						  <input type="checkbox" ng-model="usergroup.other.setting2"> Setting 2
+						  <input type="checkbox" ng-model="createUserGroup.other.setting2"> Setting 2
 						</label>
 					</div>
 				</div>
 			</div>					
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-9">
-				  <button type="submit" class="btn btn-success" title="Add User" ng-click="postData(usergroup)" ng-disabled="addGroup.$invalid">Add User</button>
+				  <button type="submit" class="btn btn-success" title="Add User" ng-click="postData(createUserGroup)" ng-disabled="addGroup.$invalid">Add User</button>
 				  <button type="reset" class="btn btn-danger" title="Reset">Reset</button>
 				</div>
 			</div>						

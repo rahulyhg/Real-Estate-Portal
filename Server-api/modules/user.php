@@ -46,7 +46,9 @@
 		}elseif(isset($postParams) && $postParams == 'register'){
 			checkAvailability($body);			// register.php
 		}elseif(isset($postParams) && $postParams == 'changepass'){
-			changePass($body);
+			changePass($body);			
+		}elseif(isset($postParams) && $postParams == 'usersgroup'){
+			userGroup($body);
 			
 		}
 		
