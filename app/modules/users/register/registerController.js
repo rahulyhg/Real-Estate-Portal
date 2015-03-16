@@ -8,7 +8,8 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 		//to set registration date
 		$scope.currentDate = dataService.currentDate;
 		console.log($scope.currentDate);
-		$scope.alerts = [];
+		$scope.alerts=[];
+		
 		$scope.closeAlert = function(index) {
 			$scope.alerts.splice(index, 1);
 		};
@@ -47,14 +48,14 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 			$scope.path = "user/"; 
 			//for edit profile object for uploading images
 			
-			$scope.edit.user_img = [];
+			
 			$scope.register.user_img = []; // uploaded images will store in this array
 			// this function for uploading files
 			$scope.upload = function(files,path,userinfo){ 
 				upload.upload(files,path,userinfo,function(data){
 					if(data.status !== 'error'){
 						$scope.register.user_img.push(JSON.stringify(data.details));
-						$scope.edit.user_img.push(JSON.stringify(data.details));
+						
 					}else{
 						alert(data.message);
 					}
@@ -72,7 +73,7 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 			.then(function(response) {
 				if(response.status == 'success'){
 					$scope.submitted = true;
-					$scope.alerts.push({type: response.status, msg: response.message});
+					$scope.alert.push({type: response.status, msg: response.message});
 				}
 			},function(err){
 				console.log(err);
@@ -88,15 +89,11 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 		$scope.edit.dob = $rootScope.userDetails.dob;
 		$scope.edit.website = $rootScope.userDetails.website;
 			$scope.editprofile = function(id,edit){
-				$scope.edit.user_img=edit.user_img;
-				console.log(edit.user_img);
 				dataService.put("put/user/"+id,edit)
 				.then(function(response) {
-					
-					
 					if(response.status == 'success'){
-						$scope.alerts.push({type: response.status, msg: response.messa
-					});
+						$scope.alerts.push({type: response.status, msg: response.message
+						});
 					}else{
 						$scope.alerts.push({type: (response.status == 'error') ? "danger" :response.status, msg: response.message});
 					}

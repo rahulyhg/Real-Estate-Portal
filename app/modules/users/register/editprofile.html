@@ -5,24 +5,23 @@
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>
 			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>	
 			<div class="row ">
-			<form name="editProfile" class="form-horizontal " role="form" novalidate ng-submit="editProfile.$valid">	
 				<div class="col-sm-2">
 					<img class="user-img" src="img/user.jpg">					
 						<!-- This is file input for select images -->
-					<input type="file" id="editProfile" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="editProfile">
+					<input type="file" id="userProfile" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="userProfile">
 					
 					<!-- This will show thumbnails & progress of images -->
-					<file-preview url="editProfile" ng-model="edit.user_img"></file-preview>
+					<file-preview url="userProfile" ng-model="edit.user_img"></file-preview>
 					
 					<!-- This button will show if file/s selected -->
-					<button ng-show="editProfile" ng-click="upload(editProfile,path,userinfo)" type="button">Upload</button>
+					<button ng-show="userProfile" ng-click="upload(userProfile,path,userinfo)" type="button">Upload</button>
 					<input type="hidden" ng-model="edit.user_img">
 						<caption>Upload Your Photo here..!</caption>		
 				</div>	
 				
 					
 				<div class="col-sm-10">					
-					
+					<form name="editProfile" class="form-horizontal border" role="form" novalidate ng-submit="editProfile.$valid">	
 						<div class="form-group">
 						   <div class="col-md-offset-2  col-md-8">
 								<h3 col-md-offset-2 col-md-9>Edit Profile</h3>
