@@ -159,6 +159,7 @@ define(['app'], function (app) {
 		$scope.searchFilter = function(statusCol, searchUser) {
 			$scope.search = {search: true};
 			$scope.filterStatus= {};
+			$scope.userStatus = {};
 			(searchUser =="") ? delete $scope.userStatus[statusCol] : $scope.filterStatus[statusCol] = searchUser;
 			angular.extend($scope.userStatus, $scope.filterStatus);
 			angular.extend($scope.userStatus, $scope.search);			
@@ -193,8 +194,26 @@ define(['app'], function (app) {
 					$scope.reset();
 				});  */				
 			}
-		}	 
+		}
 		
+	 //for inserting data into createusergroup
+		var createUserGroup = function(){			
+			$scope.postData = function(usergroup) { 
+				console.log(usergroup);
+				dataService.post("post/user/usersgroup",usergroup)
+				.then(function(response) {  //function for response of request temp
+					if(response.status == 'success'){
+					$scope.submitted = true;					
+				
+					}else{
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}	
+				});	  
+			}
+		};	
+		 
+		 
+		 
 		//post method for insert data in request data form{Pooja}
 		var addUsers = function(){
 			//$scope.addusers={};
@@ -203,24 +222,24 @@ define(['app'], function (app) {
 				 dataService.post("post/user/register",addusers)
 				.then(function(response) {  //function for response of request temp
 					if(response.status == 'success'){
-					$scope.submitted = true;
-					$scope.alerts.push({type: response.status, msg: response.message});
-				
+					$scope.submitted = true;				
 					}else{
 						$scope.alerts.push({type: response.status, msg: response.message});
 					}	
 				});	  
 			}
-
-
+			
+			//
 			if($routeParams.id){//Update user			
 			dataService.get("getsingle/user/"+$routeParams.id)
 			.then(function(response) {
 					$scope.addusers = response.data;			
-					$scope.update = function(addusers){				
+					
+				});				
+			$scope.update = function(addusers){				
 						console.log(addusers);
-						$scope.putParams = {id : $routeParams.id};
-						dataService.put("put/user/"+$scope.putParams ,addusers)
+						
+						dataService.put("put/user/"+$routeParams.id ,addusers)
 						.then(function(response) {  //function for response of request temp
 							if(response.status == 'success'){
 								$scope.submitted = true;
@@ -230,15 +249,18 @@ define(['app'], function (app) {
 								$scope.alerts.push({type: response.status, msg: response.message});
 							}	
 						});	 
-					};
-				});
-			}			
-		};//end post Method	  
+					};	
+			}		
+		};//end addUser Method	  
+	
 			
 		switch($scope.userViews) {
 			case 'adduser':
 				addUsers();
-				break;			
+				break;		
+			case 'createusergroup':
+				createUserGroup();
+				break;				
 			case 'userslist':
 				usersList();
 				break;
@@ -248,19 +270,11 @@ define(['app'], function (app) {
 			
 			default:
 				usersList();
-		};
-		
-	}; 
-		
-		
-		
-		 
-		
-		
+		};	
+	}; 	
 			
 	// Inject controller's dependencies
 	manageuserController.$inject = injectParams;
 	// Register/apply controller dynamically
-    app.register.controller('manageuserController', manageuserController);
-	
+    app.register.controller('manageuserController', manageuserController);	
 });
