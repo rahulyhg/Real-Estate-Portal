@@ -73,7 +73,7 @@ define(['angular',
                     controller: 'register',
                     template: 'register',
 					label: "Register"
-                }, 'users/register/'))
+                }, 'users/register/'))				
 				
 				.when('/editprofile', route.resolve({
                     controller: 'register',
@@ -96,7 +96,7 @@ define(['angular',
 					label: 'Users'
 				}, 'users/manageuser/'))
 				
-				.when('/dashboard/users/:userViews?', route.resolve({
+				.when('/dashboard/users/:userViews/:id?', route.resolve({
 					controller:'manageuser', 
 					template: 'manageuser'
 				}, 'users/manageuser/'))

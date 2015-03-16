@@ -26,7 +26,7 @@
 					(isset($_GET['username'])) ? $like['username'] = $_GET['username'] : "";
 				}
 				// to check user_id is set or not
-				((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
+				
 				(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
 				$limit['pageNo'] = $pageNo; // from which record to select
 				$limit['records'] = $records; // how many records to select
@@ -43,11 +43,13 @@
 			registerUser($body);
 		}elseif(isset($postParams) && $postParams == 'forgot'){
 			forgotPass($body);
-		}elseif(isset($postParams) && $postParams == 'register'){ // register.php
-			checkAvailability($body);
+		}elseif(isset($postParams) && $postParams == 'register'){
+			checkAvailability($body);			// register.php
 		}elseif(isset($postParams) && $postParams == 'changepass'){
 			changePass($body);
+			
 		}
+		
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){

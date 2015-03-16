@@ -1,12 +1,12 @@
 
 <div class="row ">
-	<div class="col-sm-12">	
+	<div class="col-sm-12">		<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>	
 		<h3 class="col-sm-offset-2 col-sm-9"> Add New User</h3>
 		<form name="addNewUser" class="form-horizontal addNewUser" role="form" novalidate="novalidate" ng-submit="addNewUser.$valid">	
 			<div class="form-group">
 				<label  for="name" class="col-sm-2 control-label">Name</label>
 				<div class="col-sm-9">
-					<input type="text" id="name" class="form-control" name="name" placeholder="Enter Your Name" ng-model="users.name" required >
+					<input type="text" id="name" class="form-control" name="name" placeholder="Enter Your Name" ng-model="addusers.name" required >
 					<span class="text-danger" ng-show="addNewUser.name.$dirty && addNewUser.name.$invalid">
 					<span ng-show="addNewUser.name.$error.required">Name is required.</span>
 					</span>
@@ -15,7 +15,7 @@
 			<div class="form-group">	
 				<label  for="email" class="col-sm-2 control-label">Email Id </label>
 				<div class="col-sm-9">
-					<input type="Email" class="form-control" id="email" ng-model="users.email" name="email" placeholder="Enter Email" required >
+					<input type="Email" class="form-control" id="email" ng-model="addusers.email" name="email" placeholder="Enter Email" required >
 					<span class="text-danger" ng-show="addNewUser.email.$dirty && addNewUser.email.$invalid">
 					<span ng-show="addNewUser.email.$error.required">Email is required.</span>
 					<span ng-show="addNewUser.email.$error.email">Invalid Email address.</span>
@@ -25,7 +25,7 @@
 			<div class="form-group">
 				<label for="phone" class="col-sm-2 control-label">Phone</label>
 				<div class="col-sm-9">
-					<input type="text" id="phone" name="phone" class="form-control" ng-model="users.phone" placeholder="Your Contact No" ng-pattern="/^[789]\d{9}$/" maxlength="10" required>
+					<input type="text" id="phone" name="phone" class="form-control" ng-model="addusers.phone" placeholder="Your Contact No" ng-pattern="/^[789]\d{9}$/" maxlength="10" required>
 					<span class="text-danger" ng-show="addNewUser.phone.$dirty && addNewUser.phone.$invalid">
 						<span ng-show="addNewUser.phone.$error.pattern && (addNewUser.phone.$dirty || submitted)" class="help-block">Enter a valid Contact Number</span>
 					</span>
@@ -35,17 +35,17 @@
 				<label  for="birthdate" class="col-sm-2 control-label">Birth Date</label>
 				<div class="col-sm-9">
 					<p class="input-group">
-					  <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" name="dob" ng-model="users.dob" is-open="opened2" ng-click="open($event,'opened2')" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
-					  <span class="input-group-btn">
-						<button type="button" class="btn btn-default" ng-click="open($event,'opened2')"><i class="glyphicon glyphicon-calendar"></i></button>
-					  </span>
+						 <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" name="dob" ng-model="addusers.dob" is-open="opened2" ng-click="open($event,'opened2')" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+						<span class="input-group-btn">
+								<button type="button" class="btn btn-default" ng-click="open($event,'opened2')"><i class="glyphicon glyphicon-calendar"></i></button>
+						</span>
 					</p>
 				</div>
 			</div>				
 			<div class="form-group">
 				<label  for="username" class="col-sm-2 control-label">User Name</label>
 				<div class="col-sm-9">
-					<input type="text" id="username" class="form-control" name="username" placeholder="Enter Your User Name" ng-model="username" required >
+					<input type="text" id="username" class="form-control" name="username" placeholder="Enter Your User Name" ng-model="addusers.username" required >
 					<span class="text-danger" ng-show="addNewUser.username.$dirty && addNewUser.username.$invalid">
 					<span ng-show="addNewUser.username.$error.required">User Name is required.</span>
 					</span>
@@ -55,7 +55,7 @@
 			<div class="form-group">
 				<label for="country" class="col-sm-2 control-label" name="group">Address</label>
 				<div class="col-sm-2">		
-				<select class="form-control" name="country" id="country"  ng-model="users.country" required>		
+				<select class="form-control" name="country" id="country"  ng-model="addusers.country" required>		
 						<option value="">Select Country</option>
 						<option value="India">India</option>
 						<option value="America">America</option>
@@ -66,7 +66,7 @@
 				</span>				
 				</div>
 				<div class="col-sm-2">
-					<select class="form-control" name="state" id="state"  ng-model="users.state" required>		
+					<select class="form-control" name="state" id="state"  ng-model="addusers.state" required>		
 						<option value="">Select State</option>
 						<option value="Maharastra">Maharastra</option>
 						<option value="Goa">Goa</option>
@@ -77,7 +77,7 @@
 					</span>				
 				</div>
 				<div class="col-sm-2">
-					<select class="form-control" name="City" id="City"  ng-model="users.city" required>		
+					<select class="form-control" name="City" id="City"  ng-model="addusers.city" required>		
 						<option value="">Select City</option>
 						<option value="Pune">Pune</option>
 						<option value="Mumbai">Mumbai</option>						
@@ -90,7 +90,8 @@
 			</div>						
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-9">
-					  <button type="submit"  class="btn btn-success" title="Add User" ng-click="postData(users)" ng-disabled="addNewUser.$invalid">Add User</button>
+					  <button type="submit"  class="btn btn-success" title="Add User" ng-click="postData(addusers)" ng-disabled="addNewUser.$invalid">Add User</button>
+					  <button type="submit"  class="btn btn-success" title="Edit User" ng-click="update(addusers)">Update User</button>
 					  <button type="reset" class="btn btn-danger" title="Reset">Reset</button>
 				</div>
 			</div>						
