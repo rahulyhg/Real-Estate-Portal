@@ -47,6 +47,7 @@
 			checkAvailability($body);			// register.php
 		}elseif(isset($postParams) && $postParams == 'changepass'){
 			changePass($body);
+			
 		}
 		
 	}

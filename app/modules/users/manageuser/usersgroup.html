@@ -8,15 +8,13 @@
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>admin</td>
-				<td>1</td>
-				<td>{"menus":["Home","Users","Templates","Websites","Business","Products"],"SpecialPermission":{"Whole access":true}}
-				</td>
+			<tr ng-repeat="x in users">
+				<td>{{((usersGroupCurrentPage - 1) * pageItems) + $index + 1}}</td>
+				<td>{{x.user_group}}</td>
+				<td>{{}}</td>
+				<td>{{x.group_permission}}</td>
 				<td>
-					<a href="#/dashboard/users/adduser" type="button"  tooltip-animation="true" tooltip="Edit User Information" class="btn btn-success glyphicon glyphicon-pencil"></a>
-					
+					<a href="#/dashboard/users/adduser" type="button" tooltip-animation="true" tooltip="Edit User Information" class="btn btn-success glyphicon glyphicon-pencil"></a>					
 					<a type="button" tooltip-animation="true" tooltip="Remove"  class="btn btn-danger glyphicon glyphicon-remove" ></a>
 				</td>
 			</tr>					

@@ -35,10 +35,10 @@
 				<label  for="birthdate" class="col-sm-2 control-label">Birth Date</label>
 				<div class="col-sm-9">
 					<p class="input-group">
-					  <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" name="dob" ng-model="addusers.dob" is-open="opened2" ng-click="open($event,'opened2')" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
-					  <span class="input-group-btn">
-						<button type="button" class="btn btn-default" ng-click="open($event,'opened2')"><i class="glyphicon glyphicon-calendar"></i></button>
-					  </span>
+						 <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" name="dob" ng-model="addusers.dob" is-open="opened2" ng-click="open($event,'opened2')" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+						<span class="input-group-btn">
+								<button type="button" class="btn btn-default" ng-click="open($event,'opened2')"><i class="glyphicon glyphicon-calendar"></i></button>
+						</span>
 					</p>
 				</div>
 			</div>				
@@ -91,6 +91,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-9">
 					  <button type="submit"  class="btn btn-success" title="Add User" ng-click="postData(addusers)" ng-disabled="addNewUser.$invalid">Add User</button>
+					  <button type="submit"  class="btn btn-success" title="Edit User" ng-click="update(addusers)">Update User</button>
 					  <button type="reset" class="btn btn-danger" title="Reset">Reset</button>
 				</div>
 			</div>						
