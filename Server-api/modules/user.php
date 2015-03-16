@@ -20,17 +20,8 @@
 			if(isset($id)){
 				getSingleUser($id);
 			}else{
-				$where=[]; // this will used for user specific data selection.
-				$like = [];
-				if(isset($_GET['search']) && $_GET['search'] == true){	
-					(isset($_GET['username'])) ? $like['username'] = $_GET['username'] : "";
-				}
-				// to check user_id is set or not
-				
-				(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
-				$limit['pageNo'] = $pageNo; // from which record to select
-				$limit['records'] = $records; // how many records to select
-				getMultipleUsers($where,$limit,$like); // from getUsers.php
+				getMultipleUsers($pageNo,$records); // from getUsers.php
+				((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
 			}
 		}
 	
