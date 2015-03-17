@@ -20,12 +20,10 @@ define(['app'], function (app) {
 		$scope.project.floor_plan = {};
 		$scope.project.floor_plan.details = {};
 		$scope.project.project_gallery = {};
-		$scope.Date = dataService.currentDate;
+		$scope.date = dataService.currentDate;
 		$scope.project.project_gallery.details = {};
 		console.log($rootScope.userDetails);
 	
-		
-		console.log($scope.project.user_id);
 		$scope.addToObject = function(data, object){
 			object[data.title] = data.description;
 		}
@@ -43,18 +41,13 @@ define(['app'], function (app) {
 			$scope.alerts.splice(index, 1);
 		};
 		
-			console.log($rootScope.userDetails);
-		 // this function will generate thumbnails of images
-		$scope.generateThumb = function(files){ 
-			upload.generateThumbs(files);
-		};// End upload function
-		$scope.addproject = function(project){
-			console.log(project,$rootScope.userDetails.status);
-			$scope.user_id={ user_id:$rootScope.userDetails.id };
-			//Upload Function for uploading files 
-			$scope.project={};
+		$scope.user_id={id:$rootScope.userDetails.id };
 		
-			$scope.userinfo = {user_id:$rootScope.userDetails.id}; 
+		$scope.project={};
+		$scope.addproject = function(project){
+			//Upload Function for uploading files 
+			$scope.project.created_date=$scope.date;
+			$scope.userinfo = {id:$rootScope.userDetails.id}; 
 			$scope.path = "project/"; // path to store images on server
 			$scope.project.project_images  = {};
 		
@@ -73,6 +66,12 @@ define(['app'], function (app) {
 					}
 		
 				});
+				
+				// this function will generate thumbnails of images
+				$scope.generateThumb = function(files){ 
+					upload.generateThumbs(files);
+				};
+		
 			};
 		};
 	};	
