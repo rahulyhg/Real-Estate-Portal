@@ -8,33 +8,38 @@
 			<tabset>
 				<p class="paraMand">* Fields are mandatory</p>		
 				<tab heading="Project" title="Project information">
-				<h3>Project Information</h3>{{project.info|json}}
+				<h3>Project Information</h3>{{project|json}}
+				
 					<div class="form-group">
 							<label  for="projectTitle" class="col-sm-2 control-label">* &nbsp Project Title</label>
 							<div class="col-sm-9">		
-								<textarea type="text"  id="projectTitle" class="form-control" name="projectTitle" ng-model="project.info.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+								<textarea type="text"  id="projectTitle" class="form-control" name="projectTitle" ng-model="project.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
 								<p ng-hide="addProject.projectTitle.$error.maxlength">{{ 356 - project.title.length + " Chars left" }}</p>
 									 <span class="text-danger" ng-show="addProject.projectTitle.$error.maxlength">
 									Sorry You are Exceeding the Limit</span>
 										<span class="text-danger" ng-show="addProject.projectTitle.$dirty && addProject.projectTitle.$invalid">
 									  <span ng-show="addProject.projectTitle.$error.required">Project title is required .</span>
 							</div>
+							<input type="hidden" ng-model="project.user_id">
+							<input type="hidden" ng-model="project.status">
+							<input type="hidden" ng-model="project.date">
 					</div>
 					<div class="form-group"> 
 						<label for="featured" class="col-sm-2 control-label">* &nbsp Featured</label> 
-						<div class="col-sm-9"  ng-model="project.info.featured">
-							<label class="radio-inline">
-								<input type="radio" name="featured" id="Yes" value="1" checked="true"> Yes
+						<div class="col-sm-9">
+							<label class="radio-inline" >
+								<input type="radio" name="featured" id="yes" value="1"   ng-model="project.featured" checked> Yes
 							</label>
-							<label class="radio-inline">
-								<input type="radio" name="featured" id="No" value="0"> No
+							<label class="radio-inline" ng-model="project.featured">
+								<input type="radio" name="featured" id="no" value="0" ng-model="project.featured" > No
 							</label>										
 						</div>	
+						
 					</div>	
 					<div class="form-group">
 							<label for="Category" class="col-sm-2 control-label">* &nbsp Category</label>
 						<div class="col-sm-9">
-							<select name="Category"  class="form-control" id="Category" ng-model="project.info.category" required>
+							<select name="Category"  class="form-control" id="Category" ng-model="project.category" required>
 								<option value="" selected="selected">Select Category</option>
 								<option value="residential">Residential Property</option>
 								<option value="commercial">Commercial Property</option>
@@ -49,7 +54,7 @@
 					<div class="form-group">
 						<label for="projectType" class="col-sm-2 control-label"> * &nbsp Project Type</label>
 						<div class="col-sm-9">
-								<input type="text" class="form-control" id="projectType" name="type" ng-model="project.info.projectType" required>
+								<input type="text" class="form-control" id="projectType" name="type" ng-model="project.projectType" required>
 								<span class="text-danger" ng-show="addProject.projectType.$dirty && addProject.projectType.$invalid">
 									<span ng-show="addProject.projectType.$error.required">Project Type is required .</span>
 							</span>
@@ -58,7 +63,7 @@
 					<div class="form-group">
 							<label for="projectLocation" class="col-sm-2 control-label">* &nbsp Location</label>
 						<div class="col-sm-9">
-								<input type="text" class="form-control" id="projectLocation" name="projectLocation" ng-model="project.info.location" required>
+								<input type="text" class="form-control" id="projectLocation" name="projectLocation" ng-model="project.location" required>
 								<span class="text-danger" ng-show="addProject.projectLocation.$dirty && addProject.projectLocation.$invalid">
 									<span ng-show="addProject.projectLocation.$error.required">Location is required .</span>
 							</span>
@@ -66,29 +71,53 @@
 					</div>
 				</tab>
 				<tab heading="Project Image " title="Project Image">	
-					<h3>Project Image</h3>{{project.project_imgages|json}}
+					<h3>Project Image</h3>{{project.project_images|json}}
 					<div class="form-group">
 						<label for="projectImage" class="col-sm-2 control-label">* &nbsp Project Image</label>
-						<div class="col-sm-9">
+						<div class="col-sm-4">
 							<!-- This is file input for select images -->
-							<input type="file" id="projectImage" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="projectImage" ng-multiple="true">
+							<input type="file" id="projectImage" ng-file-select  accept="image/*" ng-file-change="generateThumb($files)" ng-model="projectImage" ng-multiple="false">
 							
 							<!-- This will show thumbnails & progress of images -->
-							<file-preview url="projectImage" ng-model="project.info.project_images"></file-preview>
+							<file-preview url="projectImage" ng-model="project.project_images"></file-preview>
 							
 							<!-- This button will show if file/s selected -->
 							<button ng-show="projectImage" ng-click="upload(projectImage,path,userinfo)" type="button">Upload</button>
-							<input type="hidden" ng-model="project.info.project_images">
+							<input type="hidden" ng-model="project.project_images">
 						</div>	
+						<div class="col-sm-6">
+							<div class="table-responsive">
+								<table class="table table-bordered " ng-if="project.project_images">
+									
+									<tr ng-repeat=" value in project.project_images">
+										<td>{{key}}</td>
+										<td><img src="{{value}}"></td>
+										<td><button ng-click="removeObject(key,project.project_images)">Remove</button></td>
+										
+									</tr>
+								</table>
+							</div>
+						</div>
 					</div>	
 				</tab>
 				<tab heading="Overview" title="Overview">
 					<h3>Overview</h3>{{project.overview|json}}
 					<div class="form-group">
-							<label  for="overviewTitle" class="col-sm-2 control-label">Overview Title</label>
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(aoverview, project.overview.details)" title="Add Overview">Add Overview</button>
+						</div>
+					</div>
+					<div>
+						<input type="hidden" required name="overview" ng-model="addProject.overview" />
+						<span class="help-block" ng-show="addProject.overview.$dirty && addProject.overview.$invalid">
+							<span ng-show="addProject.overview.$error.required" class="text-danger">Overview Description is required.</span>
+						</span>
+					</div>
+					<div class="form-group">
+							<label  for="overviewTitle" class="col-sm-2 control-label">* Title</label>
 							<div class="col-sm-9">		
-								<textarea type="text"  id="overviewTitle" class="form-control" name="overviewTitle" ng-model="project.overview.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-								<p ng-hide="addProject.overviewTitle.$error.maxlength">{{ 356 - project.overview.title.length + " Chars left" }}</p>
+								<textarea type="text"  id="overviewTitle" class="form-control" name="overviewTitle" ng-model="aoverview.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+								<p ng-hide="addProject.overviewTitle.$error.maxlength">{{ 356 - aoverview.title.length + " Chars left" }}</p>
 									 <span class="text-danger" ng-show="addProject.overviewTitle.$error.maxlength">
 									Sorry You are Exceeding the Limit</span>
 										<span class="text-danger" ng-show="addProject.overviewTitle.$dirty && addProject.overviewTitle.$invalid">
@@ -96,10 +125,10 @@
 							</div>
 					</div>
 					<div class="form-group"> 
-							<label for="overviewDiscription" class="col-sm-2 control-label"> Overview Description</label> 
+							<label for="overviewDiscription" class="col-sm-2 control-label">  * Description</label> 
 						<div class="col-sm-9">
-								<textarea class="form-control" id="overviewDiscription"  name="overviewDiscription" ng-model="project.overview.description" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
-							<p ng-hide="addProject.overviewDiscription.$error.maxlength">{{ 356 - project.overview.description.length + " Chars left" }}</p>
+								<textarea class="form-control" id="overviewDiscription"  name="overviewDiscription" ng-model="aoverview.description.description" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
+							<p ng-hide="addProject.overviewDiscription.$error.maxlength">{{ 356 - aoverview.description.description.length + " Chars left" }}</p>
 									 <span class="text-danger" ng-show="addProject.overviewDiscription.$error.maxlength">
 									Sorry You are Exceeding the Limit</span>
 							<span class="text-danger" ng-show="addProject.overviewDiscription.$dirty && addProject.overviewDiscription.$invalid">
@@ -109,9 +138,9 @@
 					</div>	
 					<h4>SEO</h4>
 					<div class="form-group">
-							<label for="overviewBrowserTitle" class="col-sm-2 control-label">Overview Browser Title</label>
+							<label for="overviewBrowserTitle" class="col-sm-2 control-label">* Browser Title</label>
 						<div class="col-sm-9">
-							 <textarea class="form-control" id="overviewBrowserTitle"  name="overviewBrowserTitle" ng-model="project.overview.seo.browser_title"   cols="20" rows="4" ng-maxlength="356" ></textarea>	
+							 <textarea class="form-control" id="overviewBrowserTitle"  name="overviewBrowserTitle" ng-model="project.overview.seo.browser_title"   cols="20" rows="4" ng-maxlength="356" required></textarea>	
 		  
 							<p ng-hide="addProject.overviewBrowserTitle.$error.maxlength">{{ 356 - project.overview.seo.browser_title + " Chars left" }}</p>
 							
@@ -123,7 +152,7 @@
 						</div>							
 					</div>				
 					<div class="form-group">
-						<label for="overviewMetaKey" class="col-sm-2 control-label">Overview Meta Keywords</label> 
+						<label for="overviewMetaKey" class="col-sm-2 control-label">* Meta Keywords</label> 
 						<div class="col-sm-9"> 
 							<textarea class="form-control" name="overviewMetaKey" ng-model="project.overview.seo.meta_key"  id="overviewMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
 							<p ng-hide="addProject.overviewMetaKey.$error.maxlength">{{ 356 - project.overview.seo.meta_key.length + " Chars left" }}</p>
@@ -135,7 +164,7 @@
 						</div>							
 					</div>
 					<div class="form-group"> 
-							<label for="overviewMetaDisc" class="col-sm-2 control-label">Overview Meta Discription</label> 
+							<label for="overviewMetaDisc" class="col-sm-2 control-label">* Meta Discription</label> 
 						<div class="col-sm-9">
 								<textarea class="form-control" id="overviewMetaDisc"  name="overviewMetaDisc" ng-model="project.overview.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
 							<p ng-hide="addProject.overviewMetaDisc.$error.maxlength">{{ 356 - project.overview.seo.meta_desc.length + " Chars left" }}</p>
@@ -145,7 +174,24 @@
 									<span ng-show="addProject.overviewMetaDisc.$error.required">Meta Discription is required .</span>
 							</span>
 						</div>
-					</div>						
+					</div>
+					<div class="col-sm-12">
+						<div class="table-responsive">
+							<table class="table table-bordered " ng-if="project.overview.details">
+								<tr>
+									<th>Overview Title</th>
+									<th>Overview Description</th>
+									<th>Remove </th>
+								</tr>
+								<tr ng-repeat="(key, value) in project.overview.details">
+									<td>{{key}}</td>
+									<td>{{value}}</td>
+									<td><button ng-click="removeObject(key,project.overview.details)">Remove</button></td>
+									
+								</tr>
+							</table>
+						</div>
+					</div>
 				</tab>
 				
 				<tab heading="Builder" title="Builder Details">
@@ -162,14 +208,16 @@
 					<div class="form-group">
 						<label for="builderLogo" class="col-sm-2 control-label">* &nbsp Builder  Logo</label>
 						<div class="col-sm-9">
-							<textarea class="form-control"  name="builderLogo"  id="builder_logo" ng-model="project.builder.builder_logo" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-								<p ng-hide="addProject.builderLogo.$error.maxlength">{{ 356 - project.builder.builder_logo.length + " Chars left" }}</p>
-								<span class="text-danger" ng-show="addProject.builderLogo.$error.maxlength">
-									Sorry You are Exceeding the Limit</span>
-								<span class="text-danger" ng-show="addProject.builderLogo.$dirty && addProject.logo.$invalid">
-									<span ng-show="addProject.builderLogo.$error.required">Project Logo is required .</span>
-								</span>
-						</div>
+							<!-- This is file input for select images -->
+							<input type="file" id="builderLogo" ng-file-select  accept="image/*" ng-file-change="generateThumb($files)" ng-model="builderLogo" ng-multiple="false">
+							
+							<!-- This will show thumbnails & progress of images -->
+							<file-preview url="builderLogo" ></file-preview>
+							
+							<!-- This button will show if file/s selected -->
+							<button ng-show="builderLogo" ng-click="upload(builderLogo,path,userinfo)" type="button">Upload</button>
+							<input type="hidden" ng-model="project.builder.builder_logo">
+						</div>	
 					</div>		
 					<div class="form-group">
 						<label for="OwnerName" class="col-sm-2 control-label">* &nbsp Owner Name</label>
@@ -183,14 +231,16 @@
 					<div class="form-group">
 						<label for="ownerLogo" class="col-sm-2 control-label">* &nbsp Owner  Logo</label>
 						<div class="col-sm-9">
-							<textarea class="form-control"  name="ownerLogo"  id="ownerLogo" ng-model="project.builder.owner_logo" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-								<p ng-hide="addProject.ownerLogo.$error.maxlength">{{ 356 - project.builder.ownerLogo.length + " Chars left" }}</p>
-								<span class="text-danger" ng-show="addProject.ownerLogo.$error.maxlength">
-									Sorry You are Exceeding the Limit</span>
-								<span class="text-danger" ng-show="addProject.ownerLogo.$dirty && addProject.logo.$invalid">
-									<span ng-show="addProject.ownerLogo.$error.required">Project Logo is required .</span>
-								</span>
-						</div>
+							<!-- This is file input for select images -->
+							<input type="file" id="ownerLogo" ng-file-select  accept="image/*" ng-file-change="generateThumb($files)" ng-model="ownerLogo" ng-multiple="false">
+							
+							<!-- This will show thumbnails & progress of images -->
+							<file-preview url="ownerLogo" ng-model="project.builder.Owner_logo"></file-preview>
+							
+							<!-- This button will show if file/s selected -->
+							<button ng-show="ownerLogo" ng-click="upload(ownerLogo,path,userinfo)" type="button">Upload</button>
+							<input type="hidden" ng-model="project.builder.Owner_logo">
+						</div>	
 					</div>		
 					
 				
@@ -198,10 +248,21 @@
 			<tab heading="Amenities" title="Amenities">
 				<h3>Amenities</h3>	{{project.amenities|json}}
 				<div class="form-group">
-					<label  for="amenitiesTitle" class="col-sm-2 control-label">Amenities Title</label>
+					<div class="col-sm-offset-3 col-sm-9">
+						<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(addamenities, project.amenities.details)" title="Add Specification">Add Amenities</button>
+					</div>
+				</div>
+				<div>
+					<input type="hidden" required name="amenities" ng-model="addProject.amenities" />
+					<span class="help-block" ng-show="addProject.amenities.$dirty && addProject.amenities.$invalid">
+						<span ng-show="addProject.amenities.$error.required" class="text-danger">Amenities Description is required.</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label  for="amenitiesTitle" class="col-sm-2 control-label">* Title</label>
 					<div class="col-sm-9">		
-						<textarea type="text"  id="amenitiesTitle" class="form-control" name="amenitiesTitle" ng-model="project.amenities.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-						<p ng-hide="addProject.amenitiesTitle.$error.maxlength">{{ 356 - project.amenities.title + " Chars left" }}</p>
+						<textarea type="text"  id="amenitiesTitle" class="form-control" name="amenitiesTitle" ng-model="addamenities.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+						<p ng-hide="addProject.amenitiesTitle.$error.maxlength">{{ 356 - addamenities.title + " Chars left" }}</p>
 							 <span class="text-danger" ng-show="addProject.amenitiesTitle.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
 								<span class="text-danger" ng-show="addProject.amenitiesTitle.$dirty && addProject.amenitiesTitle.$invalid">
@@ -209,10 +270,10 @@
 					</div>
 				</div>
 				<div class="form-group"> 
-					<label for="amenitiesDiscription" class="col-sm-2 control-label"> Amenities Description</label> 
+					<label for="amenitiesDiscription" class="col-sm-2 control-label">  * Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="amenitiesDiscription"  name="amenitiesDiscription" ng-model="project.amenities.description" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
-						<p ng-hide="addProject.amenitiesDiscription.$error.maxlength">{{ 356 - project.amenities.description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="amenitiesDiscription"  name="amenitiesDiscription" ng-model="addamenities.description.description" cols="20" rows="4" ng-maxlength="356" required ui-tinymce></textarea>
+						<p ng-hide="addProject.amenitiesDiscription.$error.maxlength">{{ 356 - addamenities.description.description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.amenitiesDiscription.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.amenitiesDiscription.$dirty && addProject.amenitiesDiscription.$invalid">
@@ -236,7 +297,7 @@
 					</div>							
 				</div>				
 				<div class="form-group">
-					<label for="amenitiesMetaKey" class="col-sm-2 control-label">Meta Keywords</label> 
+					<label for="amenitiesMetaKey" class="col-sm-2 control-label">* Meta Keywords</label> 
 					<div class="col-sm-9"> 
 						<textarea class="form-control" name="amenitiesMetaKey" ng-model="project.amenities.seo.meta_key"  id="amenitiesMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
 						<p ng-hide="addProject.amenitiesMetaKey.$error.maxlength">{{ 356 - project.amenities.seo.meta_key.length + " Chars left" }}</p>
@@ -248,7 +309,7 @@
 					</div>							
 				</div>
 				<div class="form-group"> 
-						<label for="amenitiesMetaDesc" class="col-sm-2 control-label">Meta Description</label> 
+						<label for="amenitiesMetaDesc" class="col-sm-2 control-label">* Meta Description</label> 
 					<div class="col-sm-9">
 							<textarea class="form-control" id="amenitiesMetaDesc"  name="amenitiesMetaDesc" ng-model="project.amenities.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
 						<p ng-hide="addProject.amenitiesMetaDesc.$error.maxlength">{{ 356 - project.amenities.seo.meta_desc.length + " Chars left" }}</p>
@@ -258,15 +319,43 @@
 								<span ng-show="addProject.amenitiesMetaDesc.$error.required">Meta Description is required .</span>
 						</span>
 					</div>
-				</div>	
+				</div>
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<table class="table table-bordered " ng-if="project.amenities.details">
+							<tr>
+								<th>Amenities Title</th>
+								<th>Amenities Description</th>
+								<th>Remove </th>
+							</tr>
+							<tr ng-repeat="(key, value) in project.amenities.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+								<td><button ng-click="removeObject(key,project.amenities.details)">Remove</button></td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
 			</tab>
 			<tab heading="Specifications" title="Specification">
 				<h3>Specification</h3>	{{project.specification|json}}
 				<div class="form-group">
-					<label  for="specificationTitle" class="col-sm-2 control-label">Specification Title</label>
+					<div class="col-sm-offset-3 col-sm-9">
+						<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(aspecification, project.specification.details)" title="Add Specification">Add Specification</button>
+					</div>
+				</div>
+				<div>
+					<input type="hidden" required name="specification" ng-model="addProject.specification" />
+					<span class="help-block" ng-show="addProject.specification.$dirty && addProject.specification.$invalid">
+						<span ng-show="addProject.specification.$error.required" class="text-danger">Specification Description is required.</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label  for="specificationTitle" class="col-sm-2 control-label"> * Title</label>
 					<div class="col-sm-9">		
-						<textarea type="text"  id="specificationTitle" class="form-control" name="specificationTitle" ng-model="project.specification.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-						<p ng-hide="addProject.specificationTitle.$error.maxlength">{{ 356 - project.specification.title + " Chars left" }}</p>
+						<textarea type="text"  id="specificationTitle" class="form-control" name="specificationTitle" ng-model="aspecification.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+						<p ng-hide="addProject.specificationTitle.$error.maxlength">{{ 356 - aspecification.title + " Chars left" }}</p>
 							 <span class="text-danger" ng-show="addProject.specificationTitle.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
 								<span class="text-danger" ng-show="addProject.specificationTitle.$dirty && addProject.title.$invalid">
@@ -274,10 +363,10 @@
 					</div>
 				</div>
 				<div class="form-group"> 
-					<label for="specificationDiscription" class="col-sm-2 control-label"> Specification Description</label> 
+					<label for="specificationDiscription" class="col-sm-2 control-label">  * Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="specificationDiscription"  name="specificationDiscription" ng-model="project.specification.description" cols="20" rows="4" ng-maxlength="356" required ui-tinymce ></textarea>
-						<p ng-hide="addProject.specificationDiscription.$error.maxlength">{{ 356 - project.specification.description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="specificationDiscription"  name="specificationDiscription" ng-model="aspecification.description.description" cols="20" rows="4" ng-maxlength="356" required ui-tinymce ></textarea>
+						<p ng-hide="addProject.specificationDiscription.$error.maxlength">{{ 356 - aspecification.description.description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.specificationDiscription.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.specificationDiscription.$dirty && addProject.specificationDiscription.$invalid">
@@ -301,7 +390,7 @@
 					</div>							
 				</div>				
 				<div class="form-group">
-					<label for="specificationMetaKey" class="col-sm-2 control-label">Meta Keywords</label> 
+					<label for="specificationMetaKey" class="col-sm-2 control-label">* Meta Keywords</label> 
 					<div class="col-sm-9"> 
 						<textarea class="form-control" name="specificationMetaKey" ng-model="project.specification.seo.meta_key"  id="specificationMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
 						<p ng-hide="addProject.specificationMetaKey.$error.maxlength">{{ 356 - project.specification.seo.meta_key.length + " Chars left" }}</p>
@@ -313,7 +402,7 @@
 					</div>							
 				</div>
 				<div class="form-group"> 
-						<label for="specificationMetaDesc" class="col-sm-2 control-label">Meta Description</label> 
+						<label for="specificationMetaDesc" class="col-sm-2 control-label">* Meta Description</label> 
 					<div class="col-sm-9">
 							<textarea class="form-control" id="specificationMetaDesc"  name="specificationMetaDesc" ng-model="project.specification.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
 						<p ng-hide="addProject.specificationMetaDesc.$error.maxlength">{{ 356 - project.specification.seo.meta_desc.length + " Chars left" }}</p>
@@ -324,14 +413,43 @@
 						</span>
 					</div>
 				</div>	
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<table class="table table-bordered " ng-if="project.specification.details">
+							<tr>
+								<th>Specification Title</th>
+								<th>Specification Description</th>
+								<th>Remove </th>
+							</tr>
+							<tr ng-repeat="(key, value) in project.specification.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+								<td><button ng-click="removeObject(key,project.specification.details)">Remove</button></td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
 			</tab>
 			<tab heading="Location Map" title="This is location map">
-				<h3>Location Map</h3>{{project.location_map|json}}
+				<h3>Location Map</h3>{{project.location_map | json}}
+				{{alocation_map|json}}
 				<div class="form-group">
-					<label  for="locationTitle" class="col-sm-2 control-label">Location Title</label>
+					<div class="col-sm-offset-3 col-sm-9">
+						<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(alocation_map, project.location_map.details)" title="Add Location map">Add Location map</button>
+					</div>
+				</div>
+				<div>
+					<input type="hidden" required name="location_map" ng-model="addProject.location_map" />
+					<span class="help-block" ng-show="addProject.location_map.$dirty && addProject.location_map.$invalid">
+						<span ng-show="addProject.location_map.$error.required" class="text-danger">location_map Description is required.</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label  for="locationTitle" class="col-sm-2 control-label">* Title</label>
 					<div class="col-sm-9">		
-						<textarea type="text"  id="locationTitle" class="form-control" name="locationTitle" ng-model="project.location_map.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-						<p ng-hide="addProject.locationTitle.$error.maxlength">{{ 356 - project.location_map.title + " Chars left" }}</p>
+						<textarea type="text"  id="locationTitle" class="form-control" name="locationTitle" ng-model="alocation_map.title"    cols="20" rows="4" ng-maxlength="356" ></textarea>
+						<p ng-hide="addProject.locationTitle.$error.maxlength">{{ 356 - alocation_map.title + " Chars left" }}</p>
 							 <span class="text-danger" ng-show="addProject.locationTitle.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
 								<span class="text-danger" ng-show="addProject.locationTitle.$dirty && addProject.locationTitle.$invalid">
@@ -339,10 +457,10 @@
 					</div>
 				</div>
 				<div class="form-group"> 
-					<label for="locationDiscription" class="col-sm-2 control-label"> Location Description</label> 
+					<label for="locationDiscription" class="col-sm-2 control-label">  * Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="locationDiscription"  name="locationDiscription" ng-model="project.location_map.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.locationDiscription.$error.maxlength">{{ 356 - project.location_map.description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="locationDiscription"  name="locationDiscription" ng-model="alocation_map.description.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.locationDiscription.$error.maxlength">{{ 356 - project.alocation_map.description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.locationDiscription.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.locationDiscription.$dirty && addProject.locationDiscription.$invalid">
@@ -354,21 +472,21 @@
 					<label for="locationImage" class="col-sm-2 control-label">* &nbsp Location Image</label>
 					<div class="col-sm-9">
 						<!-- This is file input for select images -->
-						<input type="file" id="locationImage" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="locationImage" ng-multiple="true">
+						<input type="file" id="locationImage" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="locationImage" ng-multiple="false">
 						
 						<!-- This will show thumbnails & progress of images -->
-						<file-preview url="locationImage" ng-model="project.location_map.location_image"></file-preview>
+						<file-preview url="locationImage"></file-preview>
 						
 						<!-- This button will show if file/s selected -->
 						<button ng-show="locationImage" ng-click="upload(locationImage,path,userinfo)" type="button">Upload</button>
-						<input type="hidden" ng-model="project.location_map.location_image">
+						 <input type="hidden" ng-model="location_map.description.location_image"> 
 					</div>	
 				</div>	
 				<div class="form-group"> 
 					<label for="locationImageDis" class="col-sm-2 control-label"> Image Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="locationImageDis"  name="locationImageDis" ng-model="project.location_map.image_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.locationImageDis.$error.maxlength">{{ 356 - project.location_map.image_description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="locationImageDis"  name="locationImageDis" ng-model="alocation_map.description.image_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.locationImageDis.$error.maxlength">{{ 356 - alocation_map.image_description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.locationImageDis.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.locationImageDis.$dirty && addProject.locationImageDis.$invalid">
@@ -380,9 +498,9 @@
 				<div class="form-group">
 						<label for="locationBrowserTitle" class="col-sm-2 control-label">* &nbsp Browser Title</label>
 					<div class="col-sm-9">
-						 <textarea class="form-control" id="locationBrowserTitle" rows="1" name="locationBrowserTitle" ng-model="project.specification.seo.browser_title"   cols="20" rows="4" ng-maxlength="356"  ></textarea>	
+						 <textarea class="form-control" id="locationBrowserTitle" rows="1" name="locationBrowserTitle" ng-model="project.location_map.seo.browser_title"   cols="20" rows="4" ng-maxlength="356"  ></textarea>	
 	  
-						<p ng-hide="addProject.locationBrowserTitle.$error.maxlength">{{ 356 - project.specification.seo.browser_title + " Chars left" }}</p>
+						<p ng-hide="addProject.locationBrowserTitle.$error.maxlength">{{ 356 - project.location_map.seo.browser_title + " Chars left" }}</p>
 						
 						<span class="text-danger" ng-show="addProject.locationBrowserTitle.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
@@ -392,10 +510,10 @@
 					</div>							
 				</div>				
 				<div class="form-group">
-					<label for="locationMetaKey" class="col-sm-2 control-label">Meta Keywords</label> 
+					<label for="locationMetaKey" class="col-sm-2 control-label">* Meta Keywords</label> 
 					<div class="col-sm-9"> 
-						<textarea class="form-control" name="locationMetaKey" ng-model="project.specification.seo.meta_key"  id="locationMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
-						<p ng-hide="addProject.locationMetaKey.$error.maxlength">{{ 356 - project.specification.seo.meta_key.length + " Chars left" }}</p>
+						<textarea class="form-control" name="locationMetaKey" ng-model="project.location_map.seo.meta_key"  id="locationMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
+						<p ng-hide="addProject.locationMetaKey.$error.maxlength">{{ 356 - project.location_map.seo.meta_key.length + " Chars left" }}</p>
 								 <span class="text-danger" ng-show="addProject.locationMetaKey.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 								<span class="text-danger" ng-show="addProject.locationMetaKey.$dirty && addProject.locationMetaKey.$invalid">
@@ -404,10 +522,10 @@
 					</div>							
 				</div>
 				<div class="form-group"> 
-						<label for="locationMetaDesc" class="col-sm-2 control-label">Meta Description</label> 
+						<label for="locationMetaDesc" class="col-sm-2 control-label">* Meta Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="locationMetaDesc"  name="locationMetaDesc" ng-model="project.specification.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.locationMetaDesc.$error.maxlength">{{ 356 - project.specification.seo.meta_desc.length + " Chars left" }}</p>
+							<textarea class="form-control" id="locationMetaDesc"  name="locationMetaDesc" ng-model="project.location_map.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.locationMetaDesc.$error.maxlength">{{ 356 - project.location_map.seo.meta_desc.length + " Chars left" }}</p>
 						<span class="text-danger" ng-show="addProject.locationMetaDesc.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.locationMetaDesc.$dirty && addProject.locationMetaDesc.$invalid">
@@ -415,14 +533,42 @@
 						</span>
 					</div>
 				</div>	
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<table class="table table-bordered " ng-if="project.location_map.details">
+							<tr>
+								<th>Location Map Heading</th>
+								<th>Location Map Description</th>
+								<th>Remove </th>
+							</tr>
+							<tr ng-repeat="(key, value) in project.location_map.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+								<td><button ng-click="removeObject(key,project.location_map.details)">Remove</button></td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
 			</tab>
 			<tab heading="Layout Map" title="This is Layout Map">	
 				<h3>Layout Map</h3>{{project.layout_map|json}}
 				<div class="form-group">
-					<label  for="layoutTitle" class="col-sm-2 control-label">Layout Title</label>
+					<div class="col-sm-offset-3 col-sm-9">
+						<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(alayout_map, project.layout_map.details)" title="Add Layout map">Add Layout map</button>
+					</div>
+				</div>
+				<div>
+					<input type="hidden" required name="layout_map" ng-model="addProject.layout_map" />
+					<span class="help-block" ng-show="addProject.layout_map.$dirty && addProject.layout_map.$invalid">
+						<span ng-show="addProject.layout_map.$error.required" class="text-danger">location_map Description is required.</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label  for="layoutTitle" class="col-sm-2 control-label">* Title</label>
 					<div class="col-sm-9">		
-						<textarea type="text"  id="layoutTitle" class="form-control" name="layoutTitle" ng-model="project.layout_map.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-						<p ng-hide="addProject.title.$error.maxlength">{{ 356 - project.layout_map.title + " Chars left" }}</p>
+						<textarea type="text"  id="layoutTitle" class="form-control" name="layoutTitle" ng-model="alayout_map.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+						<p ng-hide="addProject.title.$error.maxlength">{{ 356 - alayout_map.title + " Chars left" }}</p>
 							 <span class="text-danger" ng-show="addProject.layoutTitle.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
 								<span class="text-danger" ng-show="addProject.layoutTitle.$dirty && addProject.layoutTitle.$invalid">
@@ -430,10 +576,10 @@
 					</div>
 				</div>
 				<div class="form-group"> 
-					<label for="layoutDiscription" class="col-sm-2 control-label"> Layout Description</label> 
+					<label for="layoutDiscription" class="col-sm-2 control-label"> *  Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="layoutDiscription"  name="layoutDiscription" ng-model="project.layout_map.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.layoutDiscription.$error.maxlength">{{ 356 - project.layout_map.description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="layoutDiscription"  name="layoutDiscription" ng-model="alayout_map.description.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.layoutDiscription.$error.maxlength">{{ 356 - alayout_map.description.description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.layoutDiscription.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.layoutDiscription.$dirty && addProject.layoutDiscription.$invalid">
@@ -442,24 +588,24 @@
 					</div>
 				</div>	
 				<div class="form-group">
-					<label for="layout_image" class="col-sm-2 control-label">* &nbsp Layout Image</label>
+					<label for="layoutImage" class="col-sm-2 control-label">* &nbsp Layout Image</label>
 					<div class="col-sm-9">
 						<!-- This is file input for select images -->
-						<input type="file" id="layout_image" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="layout_image" ng-multiple="true">
+						<input type="file" id="layoutImage" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="layoutImage" ng-multiple="false">
 						
 						<!-- This will show thumbnails & progress of images -->
-						<file-preview url="layout_image" ng-model="project.layout_map.layout_image"></file-preview>
+						<file-preview url="layoutImage" ></file-preview>
 						
 						<!-- This button will show if file/s selected -->
-						<button ng-show="layout_image" ng-click="upload(project_imgages,path,userinfo)" type="button">Upload</button>
-						<input type="hidden" ng-model="project.layout_map.layout_image">
+						<button ng-show="layoutImage" ng-click="upload(layoutImage,path,userinfo)" type="button">Upload</button>
+						<input type="hidden" ng-model="alayout_map.layout_image">
 					</div>	
 				</div>	
 				<div class="form-group"> 
 					<label for="layoutImageDis" class="col-sm-2 control-label"> Image Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="layoutImageDis"  name="layoutImageDis" ng-model="project.layout_map.image_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.layoutImageDis.$error.maxlength">{{ 356 - project.layout_map.image_description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="layoutImageDis"  name="layoutImageDis" ng-model="alayout_map.image_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.layoutImageDis.$error.maxlength">{{ 356 - alayout_map.image_description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.layoutImageDis.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.layoutImageDis.$dirty && addProject.layoutImageDis.$invalid">
@@ -483,7 +629,7 @@
 					</div>							
 				</div>				
 				<div class="form-group">
-					<label for="layoutMetakey" class="col-sm-2 control-label">Meta Keywords</label> 
+					<label for="layoutMetakey" class="col-sm-2 control-label">* Meta Keywords</label> 
 					<div class="col-sm-9"> 
 						<textarea class="form-control" name="layoutMetakey" ng-model="project.layout_map.seo.meta_key"  id="layoutMetakey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
 						<p ng-hide="addProject.layoutMetakey.$error.maxlength">{{ 356 - project.layout_map.seo.meta_key.length + " Chars left" }}</p>
@@ -495,7 +641,7 @@
 					</div>							
 				</div>
 				<div class="form-group"> 
-						<label for="layoutMetaDesc" class="col-sm-2 control-label">Meta Description</label> 
+						<label for="layoutMetaDesc" class="col-sm-2 control-label">* Meta Description</label> 
 					<div class="col-sm-9">
 							<textarea class="form-control" id="layoutMetaDesc"  name="layoutMetaDesc" ng-model="project.layout_map.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
 						<p ng-hide="addProject.layoutMetaDesc.$error.maxlength">{{ 356 - project.layout_map.seo.meta_desc.length + " Chars left" }}</p>
@@ -506,14 +652,42 @@
 						</span>
 					</div>
 				</div>	
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<table class="table table-bordered " ng-if="project.layout_map.details">
+							<tr>
+								<th>Layout Map Heading</th>
+								<th>Layout Map Description</th>
+								<th>Remove </th>
+							</tr>
+							<tr ng-repeat="(key, value) in project.layout_map.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+								<td><button ng-click="removeObject(key,project.layout_map.details)">Remove</button></td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
 		</tab>
 		<tab heading="Floor Plans" title="Floor plans">
 			<h3>Floor Plans</h3>{{project.floor_plan|json}}
 			<div class="form-group">
-					<label  for="floorTitle" class="col-sm-2 control-label">Floor Title</label>
+				<div class="col-sm-offset-3 col-sm-9">
+					<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(afloor_plan, project.floor_plan.details)" title="Add Floor Plans">Add Floor Plan</button>
+				</div>
+			</div>
+			<div>
+				<input type="hidden" required name="floor_plan" ng-model="addProject.floor_plan" />
+				<span class="help-block" ng-show="addProject.floor_plan.$dirty && addProject.floor_plan.$invalid">
+					<span ng-show="addProject.floor_plan.$error.required" class="text-danger">Floor Plan Description is required.</span>
+				</span>
+			</div>
+			<div class="form-group">
+					<label  for="floorTitle" class="col-sm-2 control-label">* Title</label>
 					<div class="col-sm-9">		
-						<textarea type="text"  id="floorTitle" class="form-control" name="floorTitle" ng-model="project.floor_plan.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-						<p ng-hide="addProject.floorTitle.$error.maxlength">{{ 356 - project.floor_plan.title + " Chars left" }}</p>
+						<textarea type="text"  id="floorTitle" class="form-control" name="floorTitle" ng-model="afloor_plan.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+						<p ng-hide="addProject.floorTitle.$error.maxlength">{{ 356 - afloor_plan.title + " Chars left" }}</p>
 							 <span class="text-danger" ng-show="addProject.floorTitle.$error.maxlength">
 							Sorry You are Exceeding the Limit</span>
 								<span class="text-danger" ng-show="addProject.floorTitle.$dirty && addProject.floorTitle.$invalid">
@@ -521,10 +695,10 @@
 					</div>
 				</div>
 				<div class="form-group"> 
-					<label for="floorDescription" class="col-sm-2 control-label"> Floor Description</label> 
+					<label for="floorDescription" class="col-sm-2 control-label"> * Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="floorDescription"  name="floorDescription" ng-model="project.floor_plan.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.floorDescription.$error.maxlength">{{ 356 - project.floor_plan.description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="floorDescription"  name="floorDescription" ng-model="afloor_plan.description.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.floorDescription.$error.maxlength">{{ 356 - afloor_plan.description.description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.floorDescription.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.floorDescription.$dirty && addProject.floorDescription.$invalid">
@@ -536,21 +710,21 @@
 					<label for="floorImage" class="col-sm-2 control-label">* &nbsp Floor Image</label>
 					<div class="col-sm-9">
 						<!-- This is file input for select images -->
-						<input type="file" id="floorImage" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="floorImage" ng-multiple="true">
+						<input type="file" id="floorImage" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="floorImage" ng-multiple="false">
 						
 						<!-- This will show thumbnails & progress of images -->
-						<file-preview url="floorImage" ng-model="project.floor_plan.floor_image"></file-preview>
+						<file-preview url="floorImage" ></file-preview>
 						
 						<!-- This button will show if file/s selected -->
 						<button ng-show="floorImage" ng-click="upload(floorImage,path,userinfo)" type="button">Upload</button>
-						<input type="hidden" ng-model="project.floor_plan.floor_image">
+						<input type="hidden" ng-model="afloor_plan.floor_image">
 					</div>	
 				</div>	
 				<div class="form-group"> 
 					<label for="floorImageDesc" class="col-sm-2 control-label"> Image Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="floorImageDesc"  name="floorImageDesc" ng-model="project.floor_plan.image_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.floorImageDesc.$error.maxlength">{{ 356 - project.floor_plan.image_description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="floorImageDesc"  name="floorImageDesc" ng-model="afloor_plan.image_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.floorImageDesc.$error.maxlength">{{ 356 - afloor_plan.image_description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.floorImageDesc.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.floorImageDesc.$dirty && addProject.floorImageDesc.$invalid">
@@ -574,7 +748,7 @@
 					</div>							
 				</div>				
 				<div class="form-group">
-					<label for="floorMetaKey" class="col-sm-2 control-label">Meta Keywords</label> 
+					<label for="floorMetaKey" class="col-sm-2 control-label">* Meta Keywords</label> 
 					<div class="col-sm-9"> 
 						<textarea class="form-control" name="floorMetaKey" ng-model="project.floor_plan.seo.meta_key"  id="floorMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
 						<p ng-hide="addProject.floorMetaKey.$error.maxlength">{{ 356 - project.floor_plan.seo.meta_key.length + " Chars left" }}</p>
@@ -586,7 +760,7 @@
 					</div>							
 				</div>
 				<div class="form-group"> 
-						<label for="floorMetaDesc" class="col-sm-2 control-label">Meta Description</label> 
+						<label for="floorMetaDesc" class="col-sm-2 control-label">* Meta Description</label> 
 					<div class="col-sm-9">
 							<textarea class="form-control" id="floorMetaDesc"  name="floorMetaDesc" ng-model="project.floor_plan.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
 						<p ng-hide="addProject.floorMetaDesc.$error.maxlength">{{ 356 - project.floor_plan.seo.meta_desc.length + " Chars left" }}</p>
@@ -597,48 +771,76 @@
 						</span>
 					</div>
 				</div>	
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<table class="table table-bordered " ng-if="project.floor_plan.details">
+							<tr>
+								<th>Floor Plan Title</th>
+								<th>Floor Plan Description</th>
+								<th>Remove </th>
+							</tr>
+							<tr ng-repeat="(key, value) in project.floor_plan.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+								<td><button ng-click="removeObject(key,project.floor_plan.details)">Remove</button></td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
 		</tab>
 		<tab heading=" Gallery" title="Project Gallery">
 			<h3>Project Gallery</h3>{{project.project_gallery|json}}
 			<div class="form-group">
-					<label  for="galleryTitle" class="col-sm-2 control-label">Product Gallery Title</label>
-					<div class="col-sm-9">		
-						<textarea type="text"  id="galleryTitle" class="form-control" name="galleryTitle" ng-model="project.project_gallery.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-						<p ng-hide="addProject.galleryTitle.$error.maxlength">{{ 356 - project.project_gallery.title + " Chars left" }}</p>
-							 <span class="text-danger" ng-show="addProject.galleryTitle.$error.maxlength">
-							Sorry You are Exceeding the Limit</span>
-								<span class="text-danger" ng-show="addProject.galleryTitle.$dirty && addProject.galleryTitle.$invalid">
-							  <span ng-show="addProject.galleryTitle.$error.required"> title is required .</span>
-					</div>
+				<div class="col-sm-offset-3 col-sm-9">
+					<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(aproject_gallery, project.project_gallery.details)" title="Add Project Gallery">Add Project Gallery</button>
 				</div>
-				<div class="form-group"> 
-					<label for="galleryDescription" class="col-sm-2 control-label"> Product Gallery Description</label> 
-					<div class="col-sm-9">
-							<textarea class="form-control" id="galleryDescription"  name="galleryDescription" ng-model="project.project_gallery.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.galleryDescription.$error.maxlength">{{ 356 - project.project_gallery.description.length + " Chars left" }}</p>
-						 <span class="text-danger" ng-show="addProject.galleryDescription.$error.maxlength">
-								Sorry You are Exceeding the Limit</span>
-						<span class="text-danger" ng-show="addProject.galleryDescription.$dirty && addProject.galleryDescription.$invalid">
-								<span ng-show="addProject.galleryDescription.$error.required"> Description is required .</span>
-						</span>
-					</div>
-				</div>	
-					<div class="form-group">
-					<label  for="Media" class="col-sm-2 control-label">Media </label>
-					<div class="col-sm-9">		
-						<textarea type="text"  id="Media" class="form-control" name="Media" ng-model="project.project_gallery.media"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-						<p ng-hide="addProject.Media.$error.maxlength">{{ 356 - project.project_gallery.media + " Chars left" }}</p>
-							 <span class="text-danger" ng-show="addProject.Media.$error.maxlength">
-							Sorry You are Exceeding the Limit</span>
-								<span class="text-danger" ng-show="addProject.Media.$dirty && addProject.Media.$invalid">
-							  <span ng-show="addProject.Media.$error.required"> title is required .</span>
-					</div>
+			</div>
+			<div>
+				<input type="hidden" required name="project_gallery" ng-model="addProject.project_gallery" />
+				<span class="help-block" ng-show="addProject.project_gallery.$dirty && addProject.project_gallery.$invalid">
+					<span ng-show="addProject.project_gallery.$error.required" class="text-danger">Project Gallery Description is required.</span>
+				</span>
+			</div>
+			<div class="form-group">
+				<label  for="galleryTitle" class="col-sm-2 control-label">* Title</label>
+				<div class="col-sm-9">		
+					<textarea type="text"  id="galleryTitle" class="form-control" name="galleryTitle" ng-model="aproject_gallery.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+					<p ng-hide="addProject.galleryTitle.$error.maxlength">{{ 356 - aproject_gallery.title + " Chars left" }}</p>
+						 <span class="text-danger" ng-show="addProject.galleryTitle.$error.maxlength">
+						Sorry You are Exceeding the Limit</span>
+							<span class="text-danger" ng-show="addProject.galleryTitle.$dirty && addProject.galleryTitle.$invalid">
+						  <span ng-show="addProject.galleryTitle.$error.required"> title is required .</span>
 				</div>
+			</div>
+			<div class="form-group"> 
+				<label for="galleryDescription" class="col-sm-2 control-label"> * Description</label> 
+				<div class="col-sm-9">
+						<textarea class="form-control" id="galleryDescription"  name="galleryDescription" ng-model="aproject_gallery.description.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+					<p ng-hide="addProject.galleryDescription.$error.maxlength">{{ 356 - aproject_gallery.description.description.length + " Chars left" }}</p>
+					 <span class="text-danger" ng-show="addProject.galleryDescription.$error.maxlength">
+							Sorry You are Exceeding the Limit</span>
+					<span class="text-danger" ng-show="addProject.galleryDescription.$dirty && addProject.galleryDescription.$invalid">
+							<span ng-show="addProject.galleryDescription.$error.required"> Description is required .</span>
+					</span>
+				</div>
+			</div>	
+			<div class="form-group">
+				<label  for="Media" class="col-sm-2 control-label">* Media </label>
+				<div class="col-sm-9">		
+					<textarea type="text"  id="Media" class="form-control" name="Media" ng-model="aproject_gallery.media"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+					<p ng-hide="addProject.Media.$error.maxlength">{{ 356 - aproject_gallery.media + " Chars left" }}</p>
+						 <span class="text-danger" ng-show="addProject.Media.$error.maxlength">
+						Sorry You are Exceeding the Limit</span>
+							<span class="text-danger" ng-show="addProject.Media.$dirty && addProject.Media.$invalid">
+						  <span ng-show="addProject.Media.$error.required"> title is required .</span>
+				</div>
+			</div>
 				<div class="form-group"> 
-					<label for="mediaDiscription" class="col-sm-2 control-label"> Description</label> 
+					<label for="mediaDiscription" class="col-sm-2 control-label"> * Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="mediaDiscription"  name="mediaDiscription" ng-model="project.project_gallery.media_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.mediaDiscription.$error.maxlength">{{ 356 - project.project_gallery.media_description.length + " Chars left" }}</p>
+							<textarea class="form-control" id="mediaDiscription"  name="mediaDiscription" ng-model="aproject_gallery.media_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.mediaDiscription.$error.maxlength">{{ 356 - aproject_gallery.media_description.length + " Chars left" }}</p>
 						 <span class="text-danger" ng-show="addProject.mediaDiscription.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.mediaDiscription.$dirty && addProject.mediaDiscription.$invalid">
@@ -663,7 +865,7 @@
 					</div>							
 				</div>				
 				<div class="form-group">
-					<label for="galleryMetaKey" class="col-sm-2 control-label">Meta Keywords</label> 
+					<label for="galleryMetaKey" class="col-sm-2 control-label">* Meta Keywords</label> 
 					<div class="col-sm-9"> 
 						<textarea class="form-control" name="galleryMetaKey" ng-model="project.project_gallery.seo.meta_key"  id="galleryMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
 						<p ng-hide="addProject.galleryMetaKey.$error.maxlength">{{ 356 - project.project_gallery.seo.meta_key.length + " Chars left" }}</p>
@@ -675,7 +877,7 @@
 					</div>							
 				</div>
 				<div class="form-group"> 
-						<label for="galleryMetaDesc" class="col-sm-2 control-label">Meta Description</label> 
+						<label for="galleryMetaDesc" class="col-sm-2 control-label">* Meta Description</label> 
 					<div class="col-sm-9">
 							<textarea class="form-control" id="galleryMetaDesc"  name="galleryMetaDesc" ng-model="project.project_gallery.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
 						<p ng-hide="addProject.galleryMetaDesc.$error.maxlength">{{ 356 - project.project_gallery.seo.meta_desc.length + " Chars left" }}</p>
@@ -685,30 +887,47 @@
 								<span ng-show="addProject.galleryMetaDesc.$error.required">Meta Description is required .</span>
 						</span>
 					</div>
-				</div>	
+				</div>
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<table class="table table-bordered " ng-if="project.project_gallery.details">
+							<tr>
+								<th>Project Gallery Title</th>
+								<th>Project Gallery Description</th>
+								<th>Remove </th>
+							</tr>
+							<tr ng-repeat="(key, value) in project.project_gallery.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+								<td><button ng-click="removeObject(key,project.project_gallery.details)">Remove</button></td>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
 		</tab>
 			
 			
 		<tab heading="Contact" title="Contact">
-			<h3>Contact Details</h3>{{project.contact|json}}
+			<h3>Contact Details</h3>{{project.contact_details|json}}
 			<div class="form-group">
 				<label for="personName" class="col-sm-2 control-label">Person Name </label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="personName" ng-model="project.contact.name" name="personName" placeholder="Enter Your Name" ng-required="true">	
+					<input type="text" class="form-control" id="personName" ng-model="project.contact_details.name" name="personName" placeholder="Enter Your Name" ng-required="true">	
 						<span class="text-danger" ng-show="addProject.personName.$error.required && (addProject.personName.$dirty || submitted)" class="help-block">Name is required.</span>						
 				</div>						
 			</div>	
 			<div class="form-group">
 				<label for="Phone" class="col-sm-2 control-label">Phone </label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control help-block" id="Phone" ng-model="project.contact.phone" name="Phone" placeholder="Your Phone number"  ng-pattern="/(7|8|9)\d{9}$/" maxlength="10"  required >							
+					<input type="text" class="form-control help-block" id="Phone" ng-model="project.contact_details.phone" name="Phone" placeholder="Your Phone number"  ng-pattern="/(7|8|9)\d{9}$/" maxlength="10"  required >							
 					<p ng-show="addProject.Phone.$error.pattern && (addProject.Phone.$dirty || submitted)" class="text-danger" >Enter a valid contact no.</p>
 				</div>						
 			</div>	
 			<div class="form-group">
 				<label for="Email" class="col-sm-2 control-label">Email ID</label>
 				<div class="col-sm-9">
-					<input type="email" class="form-control" id="Email" name="Email" placeholder="example@gmail.com" ng-model="project.contact.email" required>
+					<input type="email" class="form-control" id="Email" name="Email" placeholder="example@gmail.com" ng-model="project.contact_details.email" required>
 					<span  ng-show="addProject.Email.$dirty && addProject.Email.$invalid">
 						<span class="text-danger" ng-show="addProject.Email.$error.required">Email is required.</span>
 						<span class="text-danger" ng-show="addProject.Email.$error.email">Invalid Email address.</span>
@@ -716,11 +935,11 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="Address" class="col-sm-2 control-label">Address*</label>
+				<label for="Address" class="col-sm-2 control-label">Address</label>
 				<div class="col-sm-9">
-					<textarea  class="form-control" id="Address" ng-model="project.contact.address" name="Address" placeholder="Enter Address" required maxlength="50">
+					<textarea  class="form-control" id="Address" ng-model="project.contact_details.address" name="Address" placeholder="Enter Address" required maxlength="50">
 					</textarea>
-					<p ng-hide="addProject.Address.$error.maxlength">{{ 50 - project.contact.address.length + " Chars left"}}</p>
+					<p ng-hide="addProject.Address.$error.maxlength">{{ 50 - project.contact_details.address.length + " Chars left"}}</p>
 					<span class="text-danger" ng-show="addProject.Address.$dirty && 	addProject.Address.$invalid">
 					<span class="text-danger" ng-show="addProject.Address.$error.maxlength">
 					Sorry You are Exceeding the Limit</span>
@@ -732,9 +951,9 @@
 				<div class="form-group">
 						<label for="contactBrowserTitle" class="col-sm-2 control-label">* &nbsp Browser Title</label>
 					<div class="col-sm-9">
-						 <textarea class="form-control" id="contactBrowserTitle"  name="contactBrowserTitle" ng-model="project.contact.seo.browser_title"   cols="20" rows="4" ng-maxlength="356"  ></textarea>	
+						 <textarea class="form-control" id="contactBrowserTitle"  name="contactBrowserTitle" ng-model="project.contact_details.seo.browser_title"   cols="20" rows="4" ng-maxlength="356"  ></textarea>	
 	  
-						<p ng-hide="addProject.contactBrowserTitle.$error.maxlength">{{ 356 - project.contact.seo.browser_title + " Chars left" }}</p>
+						<p ng-hide="addProject.contactBrowserTitle.$error.maxlength">{{ 356 - project.contact_details.seo.browser_title + " Chars left" }}</p>
 						
 						<span class="text-danger" ng-show="addProject.contactBrowserTitle.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
@@ -744,10 +963,10 @@
 					</div>							
 				</div>				
 				<div class="form-group">
-					<label for="contactMetaKey" class="col-sm-2 control-label">Meta Keywords</label> 
+					<label for="contactMetaKey" class="col-sm-2 control-label">* Meta Keywords</label> 
 					<div class="col-sm-9"> 
-						<textarea class="form-control" name="contactMetaKey" ng-model="project.contact.seo.meta_key"  id="contactMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
-						<p ng-hide="addProject.contactMetaKey.$error.maxlength">{{ 356 - project.contact.seo.meta_key.length + " Chars left" }}</p>
+						<textarea class="form-control" name="contactMetaKey" ng-model="project.contact_details.seo.meta_key"  id="contactMetaKey" cols="20" rows="4" ng-maxlength="356" required> </textarea>
+						<p ng-hide="addProject.contactMetaKey.$error.maxlength">{{ 356 - project.contact_details.seo.meta_key.length + " Chars left" }}</p>
 								 <span class="text-danger" ng-show="addProject.contactMetaKey.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 								<span class="text-danger" ng-show="addProject.contactMetaKey.$dirty && addProject.contactMetaKey.$invalid">
@@ -756,10 +975,10 @@
 					</div>							
 				</div>
 				<div class="form-group"> 
-						<label for="contactMetaDesc" class="col-sm-2 control-label">Meta Description</label> 
+						<label for="contactMetaDesc" class="col-sm-2 control-label">* Meta Description</label> 
 					<div class="col-sm-9">
-							<textarea class="form-control" id="contactMetaDesc"  name="contactMetaDesc" ng-model="project.contact.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-						<p ng-hide="addProject.contactMetaDesc.$error.maxlength">{{ 356 - project.contact.seo.meta_desc.length + " Chars left" }}</p>
+							<textarea class="form-control" id="contactMetaDesc"  name="contactMetaDesc" ng-model="project.contact_details.seo.meta_desc" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+						<p ng-hide="addProject.contactMetaDesc.$error.maxlength">{{ 356 - project.contact_details.seo.meta_desc.length + " Chars left" }}</p>
 						<span class="text-danger" ng-show="addProject.contactMetaDesc.$error.maxlength">
 								Sorry You are Exceeding the Limit</span>
 						<span class="text-danger" ng-show="addProject.contactMetaDesc.$dirty && addProject.contactMetaDesc.$invalid">
@@ -790,7 +1009,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-9">
-					<button type="submit" ng-click="addproject()" ng-disabled="addProject.$invalid" title="Add your new project" class="btn btn-primary text-center">Add new Project</button>
+					<button type="submit" ng-click="addproject(project)" ng-disabled="addProject.$invalid" title="Add your new project" class="btn btn-primary text-center">Add new Project</button>
 						<button type="submit" ng-click="update()" title="Edit your project Details" class="btn btn-success text-center">Edit Project</button>
 						<button type="reset" ng-click="reset()" title="cancel Details" class="btn btn-danger text-center">Cancel</button>
 				</div>

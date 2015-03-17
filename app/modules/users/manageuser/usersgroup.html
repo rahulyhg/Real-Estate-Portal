@@ -8,14 +8,18 @@
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in users">
+			<tr ng-repeat="x in usergroup | filter: { status : hideDeleted}">
 				<td>{{((usersGroupCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.user_group}}</td>
 				<td>{{}}</td>
 				<td>{{x.group_permission}}</td>
 				<td>
-					<a href="#/dashboard/users/adduser" type="button" tooltip-animation="true" tooltip="Edit User Information" class="btn btn-success glyphicon glyphicon-pencil"></a>					
-					<a type="button" tooltip-animation="true" tooltip="Remove"  class="btn btn-danger glyphicon glyphicon-remove" ></a>
+					<a href="#/dashboard/users/createusergroup/{{x.id}}" type="button" tooltip-animation="true" tooltip="Edit User Information" class="btn btn-primary glyphicon glyphicon-pencil"></a>	
+					
+					<button type="button" tooltip="{{dynamicTooltip(x.status, 'Remove','Not Remove')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="changeStatusFn('status', x.status, x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">
+							<span ng-if="x.status==1" class="glyphicon glyphicon-remove"></span>
+							<span ng-if="x.status==0" class="glyphicon glyphicon-remove"></span>
+						</button>
 				</td>
 			</tr>					
 		</tbody>					
@@ -23,5 +27,5 @@
 </div>
 <div class="text-center">				
 	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersGroupCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersGroupCurrentPage,userStatus)"></pagination>
-	<pre>Page: {{currentPage}} / {{numPages}}</pre>
+	<pre>Page: {{usersGroupCurrentPage}} / {{numPages}}</pre>
 </div>
