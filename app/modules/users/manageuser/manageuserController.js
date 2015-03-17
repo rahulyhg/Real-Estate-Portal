@@ -98,14 +98,25 @@ define(['app'], function (app) {
 			$scope.changeStatus[colName] = colValue;
 			console.log($scope.changeStatus);
 			 dataService.put("put/user/"+id,$scope.changeStatus)
-			 dataService.put("put/usergroup/"+id,$scope.changeStatus)
+			 //dataService.put("put/usergroup/"+id,$scope.changeStatus)
 			.then(function(response) { 
 				if(colName=='status'){					
 				}
 				$scope.alerts.push({type: response.status,msg: response.message});
 			}); 
 		};	
-		
+		$scope.editGroupName = function(colName, colValue, id, editStatus){
+			$scope.changeStatus[colName] = colValue;
+
+			if(editStatus==0){
+				 dataService.put("put/user/"+id,$scope.changeStatus)
+				.then(function(response) { 
+					if(colName=='status'){					
+					}
+					$scope.alerts.push({type: response.status,msg: response.message});
+				}); 
+			}
+		};	
 		// switch functions 
 		var usersList = function(){			
 			dataService.get("getmultiple/user/"+$scope.usersListCurrentPage+"/"+$scope.pageItems)			

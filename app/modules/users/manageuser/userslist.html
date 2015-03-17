@@ -1,5 +1,5 @@
 
-<div class="table-responsive">	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>	
+<div class="table-responsive">
 	<table class="table table-bordered table-hover ">
 		<thead>
 			<th>Sr.No.</th>
@@ -13,15 +13,14 @@
 			<tr ng-repeat="x in users | filter: { status : hideDeleted}">
 				<td>{{((usersListCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.username}}</td>
-				<td>{{x.group_name}}
+				<td>{{x.group_id}}
 				
-					<a type="button" class="btn btn-success glyphicon glyphicon-pencil" ng-click="showDropDown($event,'opened')"></a>
-					
-					<select class="form-control" ng-show="x.group_name" is-open="opened" ng-model="x.group_name" ng-click="showDropDown($event,'opened')" ng-required="true">	
+					<a type="button" class="btn btn-success glyphicon glyphicon-pencil" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-change="editGroupName('group_id', x.group_id, x.id, x.boxId)" ng-model="x.boxId"></a>
+					<select class="form-control" ng-show="x.boxId == 1" ng-model="x.group_id" ng-click="showDropDown($event,'opened')" ng-required="true">
 						<option value="">Select Group</option>
-						<option value="manager">Manager</option>
-						<option value="salseman">Salseman</option>
-						<option value="bizowner">Business Owner</option>
+						<option value="1">Manager</option>
+						<option value="2">Salseman</option>
+						<option value="3">Business Owner</option>
 					</select>
 					<!-- <pre ng-show="opened">Model: {{selected | json}}</pre> --> 
 				</td>
@@ -29,28 +28,28 @@
 				<td>{{x.register_date}}</td>
 				<td>
 					<div class="btn-group" role="group" aria-label="first group">
-						<button type="button" tooltip="{{dynamicTooltip(x.status, 'No Approve','Approve')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-warning'" ng-model="x.status"  btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" tooltip-animation="true">
+						<a type="button" tooltip="{{dynamicTooltip(x.status, 'No Approve','Approve')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-warning'" ng-model="x.status"  btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" tooltip-animation="true">
 							<span class="glyphicon glyphicon-ok"></span>
-						</button>										
+						</a>										
 						
-						<a href="#/changepass" type="button" tooltip-animation="true"  tooltip="Reset Password"  class="btn btn-info glyphicon glyphicon-refresh"></a>
+						<a href="#/changepass" type="button" tooltip-animation="true"  tooltip="Reset Password"  class="btn btn-info "><span class="glyphicon glyphicon-refresh"></span></a>
 					</div>
 					
 					<div class="btn-group">
-						<button type="button" tooltip="{{dynamicTooltip(UserBan, 'Baned','Re-active')}}" ng-class="(x.baned==1) ? 'btn btn-warning' : 'btn btn-danger'" ng-model="x.baned" ng-change="changeStatusFn('baned', x.baned, x.id)" btn-checkbox btn-checkbox-true="'0'" btn-checkbox-false="'1'">
+						<a type="button" tooltip="{{dynamicTooltip(UserBan, 'Baned','Re-active')}}" ng-class="(x.baned==1) ? 'btn btn-warning' : 'btn btn-danger'" ng-model="x.baned" ng-change="changeStatusFn('baned', x.baned, x.id)" btn-checkbox btn-checkbox-true="'0'" btn-checkbox-false="'1'">
 							<span ng-if="x.baned==1" class="glyphicon glyphicon-repeat"></span>
 							<span ng-if="x.baned==0" class="glyphicon glyphicon-ban-circle"></span>
-						</button>
+						</a>
 					</div>	
 					
 					<div class="btn-group" role="group" aria-label="third group">		
 						<a href="#/dashboard/users/adduser/{{x.id}}" type="button"  tooltip-animation="true" tooltip="Edit User Information" class="btn btn-primary glyphicon glyphicon-pencil">
 						</a> 
 						
-						<button type="button" tooltip="{{dynamicTooltip(UserBan, 'status','Re-active')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="changeStatusFn('status', x.status, x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">
+						<a type="button" tooltip="{{dynamicTooltip(UserBan, 'status','Re-active')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="changeStatusFn('status', x.status, x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">
 							<span ng-if="x.status==1" class="glyphicon glyphicon-remove"></span>
 							<span ng-if="x.status==0" class="glyphicon glyphicon-remove"></span>
-						</button>					
+						</a>					
 					</div>	
 				</td>
 			</tr>					
