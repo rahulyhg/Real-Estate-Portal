@@ -8,13 +8,14 @@
 				<button class="btn btn-default" type="button">Go!</button>
 			  </span>
 		</div><!-- /input-group -->
-	</div>			 				  
+	</div>	
+
 	 <div class="col-sm-3">
 		<label for="id" class="control-label">Sort by Order</label>
-		<select id="id" class="form-control" ng-model="id"> 
+		<select id="id" class="form-control" ng-model="name"> 
 			<option value="">Select Order</option>		<!-- added value & selected attr -->	
-			<option value="-id">Desending</option>
-			<option value="id">Asending</option>  
+			<option value="-domain_name">Desending</option>
+			<option value="domain_name">Asending</option>  
 		</select>
 	</div>
 	<div class="col-sm-3">
@@ -52,16 +53,27 @@
 					<th>Manage</th>
 				</thead>
 				<tbody>
-					<tr ng-repeat="x in websites">
-						<td>{{x.id}}</td>
-						<td>{{x.domain_name}}</td>
+					<tr ng-repeat="x in website | orderBy:name ">
+						<td>{{((myWebsiteCurrentPage - 1) * pageItems) + $index + 1}}</td>
+						<td>{{x.domain_name}}
+							
+								<a type="button" tooltip="Edit" class="btn btn-warning glyphicon glyphicon-pencil pull-right" href="#"></a>
+							
+						</td>
 						<td>{{x.registered_date}}</td>
 						<td>{{x.expiry_date}}</td>
 						<td>
-							<a href="#"  class="glyphicon glyphicon-refresh btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
-							<a href="#"  class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites">
-							</a>
-							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+							<div class="btn-group">
+								<a ng-click="open('modules/websites/viewwebsite.html', x.id)" class="glyphicon glyphicon-star btn btn-success" tooltip="View Site"></a>
+							</div>	
+							
+							<div class="btn-group">
+								<a href="#"  class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites">
+								</a>
+							</div>
+							<div class="btn-group">
+								<button type="button" tooltip="Delete Site" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="deleted(x.id, x.status)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class="glyphicon glyphicon-trash"></span></button>								
+							</div>
 						</td>
 					</tr>
 				</tbody>					
@@ -69,8 +81,8 @@
 		</div>
 	
 		<div class="text-center">				
-			<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
-			<pre>Page: {{currentPage}} / {{numPages}}</pre>
+			<!-- <pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
+			<pre>Page: {{currentPage}} / {{numPages}}</pre> -->
 		</div>	
 	</div>	
 </div>
