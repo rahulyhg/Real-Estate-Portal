@@ -20,12 +20,12 @@
 			if(isset($id)){
 				getSingleUser($id);
 			}else{
-				getMultipleUsers($pageNo,$records); // from getUsers.php
-				((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
+				$limit['pageNo'] = $pageNo; // from which record to select
+				$limit['records'] = $records; // how many records to select
+				getMultipleUsers($limit); // from getUsers.php
 			}
 		}
-	
-	}//end get
+	}
 	
 	if($reqMethod=="POST"){
 		if(isset($postParams) && $postParams == 'login'){ // login.php
@@ -34,15 +34,11 @@
 			registerUser($body);
 		}elseif(isset($postParams) && $postParams == 'forgot'){
 			forgotPass($body);
-		}elseif(isset($postParams) && $postParams == 'register'){
+		}elseif(isset($postParams) && $postParams == 'checkavailability'){
 			checkAvailability($body);			// register.php
 		}elseif(isset($postParams) && $postParams == 'changepass'){
 			changePass($body);			
-		}elseif(isset($postParams) && $postParams == 'usersgroup'){
-			userGroup($body);
-			
 		}
-		
 	}
 	
 	if($reqMethod=="PUT" || $reqMethod=="DELETE"){
@@ -51,5 +47,4 @@
 		echo json_encode($update);
 	}
 	
-
  ?>

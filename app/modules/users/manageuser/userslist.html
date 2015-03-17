@@ -1,4 +1,5 @@
-<div class="table-responsive">		
+
+<div class="table-responsive">	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>	
 	<table class="table table-bordered table-hover ">
 		<thead>
 			<th>Sr.No.</th>
@@ -9,10 +10,10 @@
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in users"><!--  filter: { status : hideDeleted}" -->
+			<tr ng-repeat="x in users | filter: { status : hideDeleted}">
 				<td>{{((usersListCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.username}}</td>
-				<td>
+				<td>{{x.group_name}}
 					<a type="button" class="btn btn-success glyphicon glyphicon-pencil" ng-click="showDropDown($event,'opened1')"></a>
 					
 					<select class="form-control" ng-show="x.group_name" >
@@ -28,33 +29,35 @@
 				<td>{{x.register_date}}</td>
 				<td>
 					<div class="btn-group" role="group" aria-label="first group">
-						<a type="button"  tooltip-animation="true" tooltip="Approved" class="btn btn-success glyphicon glyphicon-ok" go-back></a>
+						<button type="button" tooltip="{{dynamicTooltip(x.status, 'No Approve','Approve')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-warning'" ng-model="x.status"  btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" tooltip-animation="true">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>										
 						
 						<a href="#/changepass" type="button" tooltip-animation="true"  tooltip="Reset Password"  class="btn btn-info glyphicon glyphicon-refresh"></a>
 					</div>
 					
 					<div class="btn-group">
-						  <button type="button" tooltip="{{dynamicTooltip(x.baned, 'Baned', 'Reactive')}}" ng-class="(x.baned==1) ? 'btn btn-warning' : 'btn btn-success'" ng-model="x.baned" ng-click="changeStatus('baned', x.baned,x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">
-						   <span ng-if="x.baned==1" class="glyphicon glyphicon-ban-circle"></span>
-						   <span ng-if="x.baned==0" class="glyphicon glyphicon-repeat"></span>
-						  </button>
-					</div>		
+						<button type="button" tooltip="{{dynamicTooltip(UserBan, 'Baned','Re-active')}}" ng-class="(x.baned==1) ? 'btn btn-warning' : 'btn btn-danger'" ng-model="x.baned" ng-change="changeStatusFn('baned', x.baned, x.id)" btn-checkbox btn-checkbox-true="'0'" btn-checkbox-false="'1'">
+							<span ng-if="x.baned==1" class="glyphicon glyphicon-repeat"></span>
+							<span ng-if="x.baned==0" class="glyphicon glyphicon-ban-circle"></span>
+						</button>
+					</div>	
 					
-					<div class="btn-group" role="group" aria-label="third group">
-					
-						<a href="#/dashboard/users/adduser/{{x.id}}" type="button"  tooltip-animation="true" tooltip="Edit User Information" class="btn btn-success glyphicon glyphicon-pencil">
+					<div class="btn-group" role="group" aria-label="third group">		
+						<a href="#/dashboard/users/adduser/{{x.id}}" type="button"  tooltip-animation="true" tooltip="Edit User Information" class="btn btn-primary glyphicon glyphicon-pencil">
 						</a> 
 						
-						<a type="button" tooltip-animation="true" tooltip="Remove"  class="btn btn-danger glyphicon glyphicon-remove"  >
-						</a>
-						<!-- ng-click="changeStatus(x.id,x.status,$index)" ng-click="deletestatus(x.id,x.status, $index)" -->
+						<button type="button" tooltip="{{dynamicTooltip(UserBan, 'status','Re-active')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="changeStatusFn('status', x.status, x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">
+							<span ng-if="x.status==1" class="glyphicon glyphicon-remove"></span>
+							<span ng-if="x.status==0" class="glyphicon glyphicon-remove"></span>
+						</button>					
 					</div>	
 				</td>
 			</tr>					
 		</tbody>					
 	</table>
 </div>
-<div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersListCurrentPage,userStatus)"></pagination>
+<div class="text-center">			
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersListCurrentPage)"></pagination>
 	<pre>Page: {{usersListCurrentPage}} / {{numPages}}</pre>
 </div>	
