@@ -1,5 +1,5 @@
 <?php
-	function getMultipleUsers($where,$limit){
+	function getMultipleUsers($pageNo,$records){
 			$db = new dbHelper();
 			$where=[]; // this will used for user specific data selection.
 			$like = [];
@@ -7,11 +7,20 @@
 				 
 				 (isset($_GET['username'])) ? $like['username'] = $_GET['username'] : "";
 			 }
+			$where=[]; // this will used for user specific data selection.
+			$like = [];
+			if(isset($_GET['search']) && $_GET['search'] == true){	
+				(isset($_GET['username'])) ? $like['username'] = $_GET['username'] : "";
+			}
+			
+			// to check user_id is set or not
+			((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
+			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
 			// this is used to select data with LIMIT & where clause
-			$data = $db->select("users", $where, $limit,$like);
+			$data = $db->select("users", $where, $limit, $like);
 			
 			// this is used to count totalRecords with only where clause
-			$totalRecords['totalRecords'] = count($db->select("users", $where)['data']);		
+			$totalRecords['totalRecords'] = count($db->select("users", $where,$limit=null, $like)['data']);
 			
 			// $data is array & $totalRecords is also array. So for final output we just merge these two arrays into $data array
 			$data = array_merge($totalRecords,$data);
