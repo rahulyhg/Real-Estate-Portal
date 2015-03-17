@@ -28,6 +28,7 @@
 	
 	if($reqMethod=="POST"){
 		$insert = $db->insert("project", $body);
+		
 		echo json_encode($insert);
 	}
 	

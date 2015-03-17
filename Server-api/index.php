@@ -111,7 +111,7 @@ function uploadFiles(){
     }
 }
 
-function postRecord($getRequest, $postParams){
+function postRecord($getRequest, $postParams=null){
 	$app = new \Slim\Slim();
 	$body = $app->request->getBody();
 	// this will get current url
