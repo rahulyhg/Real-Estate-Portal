@@ -8,6 +8,7 @@ define(['app'], function (app) {
 		$scope.alerts = [];
 		$scope.project = {};
 		$scope.project.overview = {};
+		
 		$scope.project.overview.details = {};
 		$scope.project.amenities = {};
 		$scope.project.amenities.details = {};
@@ -20,9 +21,9 @@ define(['app'], function (app) {
 		$scope.project.floor_plan = {};
 		$scope.project.floor_plan.details = {};
 		$scope.project.project_gallery = {};
-		$scope.date = dataService.currentDate;
 		$scope.project.project_gallery.details = {};
-		console.log($rootScope.userDetails);
+		
+		$scope.date = dataService.currentDate;
 	
 		$scope.addToObject = function(data, object){
 			object[data.title] = data.description;
@@ -41,38 +42,41 @@ define(['app'], function (app) {
 			$scope.alerts.splice(index, 1);
 		};
 		
-		$scope.user_id={id:$rootScope.userDetails.id };
+		//Upload Function for uploading files 
+		$scope.project={}; 
 		
-		$scope.project={};
+		$scope.userinfo = {user_id:$scope.project.user_id}; 
+		$scope.path = "project/"; 
+		$scope.project.project_images  = {};
+		$scope.upload = function(files,path,userinfo,picArr){//this function for uploading files
+			upload.upload(files,path,userinfo,function(data){
+				console.log(files,path,userinfo);
+				var picArrKey = 0, x;
+				for(x in picArr) picArrKey++;
+				if(data.status === 'success'){
+					picArr[picArrKey] = (JSON.stringify(data.details));
+					
+					console.log(data.message);
+				}else{
+					$scope.alerts.push({type: data.status, msg: data.message});
+				}
+	
+			});
+		};
+		$scope.generateThumb = function(files){  
+			upload.generateThumbs(files);
+		};// end file upload code
+		
+		// for created project date
+		$scope.project.created_date=$scope.date;
+		$scope.project.user_id= $rootScope.userDetails.id;
+		$scope.project.featured = "0";
+		console.log($scope.project.user_id);
 		$scope.addproject = function(project){
-			//Upload Function for uploading files 
-			$scope.project.created_date=$scope.date;
-			$scope.userinfo = {id:$rootScope.userDetails.id}; 
-			$scope.path = "project/"; // path to store images on server
-			$scope.project.project_images  = {};
-		
-			// uploaded images will store in this array
-			$scope.upload = function(files,path,userinfo,picArr){
-				console.log(picArr);
-				upload.upload(files,path,userinfo,function(data){
-					var picArrKey = 0, x;
-					for(x in picArr) picArrKey++;
-					if(data.status === 'success'){
-						console.log(data.details);
-						picArr[picArrKey] = (JSON.stringify(data.details));
-						console.log(data.message);
-					}else{
-						$scope.alerts.push({type: response.status, msg: response.message});
-					}
-		
-				});
-				
-				// this function will generate thumbnails of images
-				$scope.generateThumb = function(files){ 
-					upload.generateThumbs(files);
-				};
-		
-			};
+			
+			
+			
+			
 		};
 	};	
 	 
