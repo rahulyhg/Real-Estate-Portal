@@ -40,30 +40,37 @@ define(['app'], function (app) {
 		}; 
 		
 		// for date picker {Pooja}
-		$scope.today = function() 
-		{
-			$scope.userRegDt = new Date();
-			$scope.birthdate= new Date();
-		};
-		$scope.today();
-
+		
 		$scope.open = function($event,opened)
+		{
+			$event.preventDefault();
+			$event.stopPropagation();
+			$scope.opened = ($scope.opened==true)?false:true;
+		};	
+		$scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		$scope.format = 'yyyy-MM-dd';			
+		//End  Date Picker 
+		
+			//show dropdown list
+			/* $scope.showDropDown=function ($event, opened1) {
+			  $scope.selected = undefined;
+			  $scope.states = [];
+			  $scope.opened = false;  
+			  $scope.open = function() {
+				$scope.opened = true;
+			  }
+			  $scope.close = function() {
+				$scope.opened = false;
+			  }
+			}	 */		
+		$scope.showDropDown = function($event,opened)		
 			{
-				$event.preventDefault();
-				$event.stopPropagation();
-				$scope[opened] = ($scope[opened] ===true) ? false : true;
-			};	
-			
-		//End  Date Picker 				 
-			//show dropdown list	 
-		$scope.showDropDown = function($event,opened1)		
-			{
-				$scope.selected = undefined;
+				//$scope.selected = undefined;
 				$scope.user_groups = []; 				  				
 				$event.preventDefault();
 				$event.stopPropagation();
-				$scope[opened1] = ($scope[opened1] ===true) ? false : true;
-			};	
+				$scope[opened] = ($scope[opened] ===true) ? false : true;
+			};	 
 				//end dropdown
 			
 		//console.log($scope.userViews);
@@ -177,7 +184,7 @@ define(['app'], function (app) {
 			$scope.createUserGroup.date = $scope.currentDate; 
 			$scope.postData = function(usergroup) { 
 				console.log(usergroup);
-				dataService.post("post/user/usersgroup",usergroup)				
+				dataService.post("post/usergroup",usergroup)				
 				.then(function(response) {  //function for response of request temp
 					if(response.status == 'success'){
 					$scope.submitted = true;				
@@ -214,7 +221,7 @@ define(['app'], function (app) {
 		var addUsers = function(){
 			//$scope.addusers={};
 			$scope.postData = function(addusers) { 
-			console.log(addusers);
+			//console.log(addusers);
 				 dataService.post("post/user/register",addusers)
 				.then(function(response) {  //function for response of request temp
 					if(response.status == 'success'){

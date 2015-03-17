@@ -14,16 +14,16 @@
 				<td>{{((usersListCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.username}}</td>
 				<td>{{x.group_name}}
-					<a type="button" class="btn btn-success glyphicon glyphicon-pencil" ng-click="showDropDown($event,'opened1')"></a>
+				
+					<a type="button" class="btn btn-success glyphicon glyphicon-pencil" ng-click="showDropDown($event,'opened')"></a>
 					
-					<select class="form-control" ng-show="x.group_name" >
-					<!-- focus-me="opened1" ng-model="selected" typeahead="group_name in user_groups | filter:$viewValue" -->
+					<select class="form-control" ng-show="x.group_name" is-open="opened" ng-model="x.group_name" ng-click="showDropDown($event,'opened')" ng-required="true">	
 						<option value="">Select Group</option>
 						<option value="manager">Manager</option>
 						<option value="salseman">Salseman</option>
 						<option value="bizowner">Business Owner</option>
 					</select>
-					<!-- <pre ng-show="opened1">Model: {{selected | json}}</pre> -->
+					<!-- <pre ng-show="opened">Model: {{selected | json}}</pre> --> 
 				</td>
 				<td>{{x.email}}</td>
 				<td>{{x.register_date}}</td>
