@@ -164,7 +164,35 @@ define(['angular',
 	
             .otherwise({redirectTo: '/'});
  }]);
-  app.run(['$location', '$rootScope', 'breadcrumbs','dataService','$cookieStore', '$cookies', function($location, $rootScope, breadcrumbs, dataService, $cookieStore, $cookies) {
+ app.run(['$location', '$rootScope', 'breadcrumbs','dataService','$cookieStore', '$cookies', function($location, $rootScope, breadcrumbs, dataService, $cookieStore, $cookies) {
+		$rootScope.$on("$routeChangeStart", function (event, next, current) {
+			$rootScope.userDetails = dataService.userDetails;
+			$rootScope.breadcrumbs = breadcrumbs;
+			$rootScope.appConfig = {
+				metaTitle : "Real Estate Portal",
+				headerTitle : next.$$route.label,
+				subTitle : next.$$route.label
+			};
+			var nextUrl = next.$$route.originalPath;
+			if(nextUrl == '/logout'){
+				dataService.logout();
+				$rootScope.userDetails = {};
+			}
+			if(dataService.auth == false){
+				if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/' || nextUrl == '/logout') {
+
+				} else {
+					$location.path("/login");
+					$rootScope.alerts = [{type: "warning", msg: "You are not logged in!"}];
+				}
+			}else{
+				if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/') {
+					$location.path("/dashboard");
+				}
+			};
+		});
+ 
+  /* app.run(['$location', '$rootScope', 'breadcrumbs','dataService','$cookieStore', '$cookies', function($location, $rootScope, breadcrumbs, dataService, $cookieStore, $cookies) {
 		$rootScope.$on("$routeChangeStart", function (event, next, current) {
 			$rootScope.breadcrumbs = breadcrumbs;
 			$rootScope.appConfig = {
@@ -206,7 +234,7 @@ define(['angular',
 				
 			//}
 			
-		});
+		}); */
 	}]);
     return app;
 });

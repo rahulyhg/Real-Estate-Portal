@@ -79,7 +79,7 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 				console.log(err);
 			})
 		}	
-		
+		if($rootScope.userDetails !== null){
 		$scope.edit.id = $rootScope.userDetails.id;
 		$scope.edit.user_img = $rootScope.userDetails.user_img;
 		$scope.edit.name = $rootScope.userDetails.name;
@@ -88,6 +88,7 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 		$scope.edit.phone = $rootScope.userDetails.phone;
 		$scope.edit.dob = $rootScope.userDetails.dob;
 		$scope.edit.website = $rootScope.userDetails.website;
+		}
 		
 			$scope.editprofile = function(id,edit){
 				dataService.put("put/user/"+id,edit)

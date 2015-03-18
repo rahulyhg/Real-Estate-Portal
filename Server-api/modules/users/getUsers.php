@@ -16,7 +16,7 @@
 			
 			// $data is array & $totalRecords is also array. So for final output we just merge these two arrays into $data array
 			$data = array_merge($totalRecords,$data);
-			echo json_encode($data);			
+			echo json_encode($data);
 	}
 	function getSingleUser($id){
 		$db = new dbHelper();

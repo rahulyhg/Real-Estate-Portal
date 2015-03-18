@@ -1,19 +1,19 @@
 <div class="row ">
 	 <div class="col-sm-3"> 
 		<label for="search" class="control-label">Search </label>		
-		<input id="search" type="text" class="form-control" ng-model="reqSite.searchSite" placeholder="search"/>
+		<input id="search" type="text" class="form-control" ng-model="searchProp" placeholder="search"/>
 	</div>			 				  
 	 <div class="col-sm-3">
 		<label for="id" class="control-label">Sort by Order</label>
 		<select id="id" class="form-control" ng-model="id"> 
 			<option value="">Select Order</option>		<!-- added value & selected attr -->	
-			<option value="-id">Desending</option>
-			<option value="id">Asending</option>  
+			<option value="-domain_name">Desending</option>
+			<option value="domain_name">Asending</option>  
 		</select>
 	</div>
 	<div class="col-sm-3">
 		<label for="status" class="control-label">Select Status</label>
-		<select id="status" class="form-control" ng-model="reqSite.status">
+		<select id="status" class="form-control" ng-model="status">
 			<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
 			<option value="1">In Progress</option>
 			<option value="2">Approved</option>
@@ -23,7 +23,7 @@
 	</div>
 	
 	<div class="col-sm-3">
-			<label for="website" class="control-label">Select Site :</label>
+			<label for="website" class="control-label">Select Site</label>
 			<select id="website" class="form-control" name="website" ng-model="website">            
 				<option value="">All</option>
 				<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
@@ -47,8 +47,8 @@
 					<th>Manage Site</th>
 				</thead>
 				<tbody>
-					<tr ng-repeat="x in reqwebsites">
-						<td>{{x.id}}</td>
+					<tr ng-repeat="x in website | orderBy:id">
+						<td>{{((reqestSiteCurrentPage - 1) * pageItems) + $index + 1 }}</td>
 						<td>{{x.domain_name}}</td>
 						<td>{{x.registered_date}}</td>
 						<td>{{x.expiry_date}}</td>
@@ -62,9 +62,9 @@
 			</table>
 		</div>
 	
-	<div class="text-center">				
-		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="requSiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
-		<pre>Page: {{currentPage}} / {{numPages}}</pre>
+	<div class="text-center">
+		<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="reqestSiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(reqestSiteCurrentPage,featured)"></pagination>
+		<pre>Page: {{reqestSiteCurrentPage}} / {{numPages}}</pre>
 	</div>	
 </div>	
 	

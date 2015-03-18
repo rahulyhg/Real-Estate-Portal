@@ -1,83 +1,206 @@
 'use strict';
+
 define(['app'], function (app) {
-    var injectParams = ['$scope', '$injector','$routeParams','$location','$http'];
+    var injectParams = ['$scope', '$rootScope','$injector','$routeParams','$location','dataService','upload','modalService'];
+
     // This is controller for this view
-	var websitesController = function ($scope, $injector,$routeParams,$location,$http) {
-		console.log("this is websites controller");
+	var websitesController = function ($scope,$rootScope,$injector,$routeParams,$location,dataService,upload,modalService) {
 		
-		//Code For Pagination
+		$scope.open = function (url, webId) {
+			dataService.get("getsingle/website/"+webId)
+			.then(function(response) {
+				var modalDefaults = {
+					templateUrl: url,	// apply template to modal
+					size : 'lg'
+				};
+				var modalOptions = {
+					website: response.data[0]  // assign data to modal
+				};
+				console.log(response.data[0]);
+				modalService.showModal(modalDefaults, modalOptions).then(function (result) {
+					console.log("modalOpened");
+				});
+			});
+		};
+		$scope.ok = function () {
+			$modalOptions.close('ok');
+		};
+			
+        //for display form parts
+        $scope.webPart = $routeParams.webPart;
+        // all $scope object goes here
+        $scope.alerts = [];
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
 		$scope.myWebsiteCurrentPage = 1;
-		$scope.requSiteCurrentPage= 1;
+		$scope.reqestSiteCurrentPage = 1;
 		$scope.pageItems = 10;
-		$scope.numPages = "";		
-
-		$scope.pageChanged = function() {
-			//$log.log('Page changed to: ' + $scope.currentPage);
-			$http.get("../server-api/index.php/website/"+$scope.myWebsiteCurrentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.website = response.website;
-				
+		$scope.numPages = "";
+		$scope.hideDeleted = "";
+		//$scope.currentDate = dataService.currentDate;
+       $scope.userDetails = {user_id : $rootScope.userDetails.id}; // these are URL parameters
+	   $scope.currentDate = dataService.currentDate;
+		// All $scope methods
+		
+		
+		
+        $scope.pageChanged = function(page) { // Pagination page changed
+		//angular.extend($scope.featured, $scope.userDetails);
+			$scope.userDetails;
+			dataService.get("getmultiple/website/"+page+"/"+$scope.pageItems,  $scope.userDetails)
+			.then(function(response) {  //function for websitelist response
+				$scope.website = response.data;
+				//console.log($scope.properties);
 			});
-			$http.get("../server-api/index.php/website/"+$scope.requSiteCurrentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.website = response.website;				
+		};
+		
+        /*For display by default websitelist.html page*/
+		if(!$scope.webPart) {
+			$location.path('/dashboard/websites/mywebsites');
+		}
+         
+		//this is global method for filter 
+		$scope.changeStatus = function(statusCol, colValue) {
+			console.log($scope.websiteParams);
+			$scope.filterStatus= {};
+			(colValue =="") ? delete $scope.websiteParams[statusCol] : $scope.filterStatus[statusCol] = colValue;
+			angular.extend($scope.websiteParams, $scope.filterStatus);
+			dataService.get("/getmultiple/website/1/"+$scope.pageItems, $scope.websiteParams)
+			.then(function(response) {  //function for templatelist response
+				if(response.status == 'success'){
+					$scope.website = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.website = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
+				//console.log($scope.properties);
 			});
 		};	
 		
-		//code for database operation
-		//code for view website data
-		if($routeParams.id) {
-		
-			$http.get("../server-api/index.php/getsingle/website"+$routeParams.id)
-			.success(function(response) {$scope.websites = response;
-				console.log($scope.websites);
-			});
-		
-		}else{
-		//this request for all response data
-			if($routeParams.pageNo){
-				$http.get("../server-api/index.php/getmultiple/website"+$routeParams.pageNo)
-				.success(function(response) 
-				{$scope.websites = response;
-					console.log($scope.websites);
+		//search filter{sonali}
+		$scope.searchFilter = function(statusCol, colValue) {
+			$scope.search = {search: true};
+			$scope.websiteParams={};
+			$scope.filterStatus= {};
+			(colValue =="") ? delete $scope.websiteParams[statusCol] : $scope.filterStatus[statusCol] = colValue;
+			angular.extend($scope.websiteParams, $scope.filterStatus);
+			angular.extend($scope.websiteParams, $scope.search);
+			
+			if(colValue.length >= 4 || colValue ==""){
+				dataService.get("getmultiple/website/1/"+$scope.pageItems, $scope.websiteParams)
+				.then(function(response) {  //function for templatelist response
+					if(response.status == 'success'){
+						$scope.website = response.data;
+						$scope.totalRecords = response.totalRecords;
+					}else{
+						$scope.website = {};
+						$scope.totalRecords = {};
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}
+					//console.log($scope.properties);
 				});
 			}
-		}
-		//edit websites
-		if($routeParams.id){
-			$http.get("../server-api/index.php/getsingle/website"+$routeParams.id)
-			.success(function(response) {
-				$scope.websites = response;
-				$scope.reset = function() {
-					$scope.websites = angular.copy($scope.websites);
-				};
-				$scope.reset();
-				console.log($scope.websites);
-			
-		}).error(function(err){
-			console.log(err);
-		});
+		};
+				
+		$scope.showInput = function($event,opened)		
+			{
+				//$scope.selected = undefined;
+				$scope.domain_name = []; 				  				
+				$event.preventDefault();
+				$event.stopPropagation();
+				$scope[opened] = ($scope[opened] ===true) ? false : true;
+			};	
 		
-		$scope.update = function(){
-			$http.put("../server-api/index.php/put/website"+$routeParams.id,$scope.websites)
-			.success(function(response) {
-				alert(response);
+		$scope.deleted = function(id, status){
+				$scope.deletedData = {status : status};
+				//console.log($scope.deletedData);
+				dataService.put("put/website/"+id, $scope.deletedData)
+				.then(function(response) { //function for businesslist response
+					if(response.status == 'success'){
+						//$scope.hideDeleted = 1;
+						console.log(response);
+					}
+				});
+			};		
+			
+		
+        var mywebsites = function(){
+			$scope.websiteParams = $scope.userDetails;
+			//function for mywebsites{sonali}
+			angular.extend($scope.websiteParams, $scope.userDetails);
+			dataService.get("getmultiple/website/"+$scope.myWebsiteCurrentPage+"/"+$scope.pageItems, $scope.websiteParams)
+			.then(function(response) {  //function for mywebsites response
+			if(response.status == 'success'){
+					$scope.website=response.data;
+					console.log($scope.website);
+					$scope.alerts.push({type: response.status, msg:'data access successfully..'});
+					$scope.totalRecords = response.totalRecords;	
+				}
+				else
+				{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				};
+			});
+			
+			
+		};
+       
+		var requestedsitelist = function(){
+			//function for requestedsitelist{sonali}
+			dataService.get("/getmultiple/website/"+$scope.reqestSiteCurrentPage+"/"+$scope.pageItems, $scope.userDetails)
+			.then(function(response) {  //function for requestedsitelist response
+			if(response.status == 'success'){
+					$scope.website=response.data;
+					$scope.alerts.push({type: response.status, msg:'data access successfully..'});
+					$scope.totalRecords = response.totalRecords;	
+				}
+				else
+				{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				};
+				$scope.website = response.data;
 			});
 		};
-		}
-        //end code
-	
-		$scope.webPart=$routeParams.webPart;
-		console.log($scope.webPart);
-		if(!$routeParams.webPart){
-			$location.path('/dashboard/websites/mywebsites');
-		}
+				
+		 var requestnewsite = function(){		
+			//post method for insert data in request template form{sonali}
+			
+			$scope.reqnewsite = {};
+			$scope.postData = function(reqnewsite) { 
+			$scope.reqnewsite.date = $scope.currentDate
+			$scope.reqnewsite.user_id = $scope.userDetails.user_id;
+				console.log(reqnewsite);	
+				 dataService.post("post/website",reqnewsite,$scope.user_id)
+				.then(function(response) {  //function for response of request site
+					$scope.reqnewsite = response.data;
+					console.log(response);
+				//	$scope.reset();
+				});   
+			}//end of post method{sonali} 
+		};
 		
-    };    
+        switch($scope.webPart) {
+			case 'mywebsites':
+			console.log($scope.webPart);
+				mywebsites();
+			case 'requestnewsite':
+				requestnewsite();
+			break;
+			case 'requestedsitelist':
+				requestedsitelist();
+			break;
+			default:
+				mywebsites();
+		};
+		
+    };
+	
 	// Inject controller's dependencies
 	websitesController.$inject = injectParams;
 	// Register/apply controller dynamically
-    app.register.controller('websitesController', websitesController);	
+    app.register.controller('websitesController', websitesController);
+	
+	
 });

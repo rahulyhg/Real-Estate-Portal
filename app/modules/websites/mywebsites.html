@@ -2,24 +2,26 @@
 <div class="row ">
 	 <div class="col-sm-3"> 
 		<label for="searchSite" class="control-label">Search </label>		
-		<div class="input-group">
-			  <input id="searchSite" type="text" class="form-control" placeholder="Search for..." ng-model="myWebsite.searchSite">
-			  <span class="input-group-btn">
-				<button class="btn btn-default" type="button">Go!</button>
-			  </span>
-		</div><!-- /input-group -->
-	</div>			 				  
+		<div class="input-group">		
+				<input id="search" type="text" class="form-control" ng-change="searchFilter('domain_name', searchProp)" ng-model="searchProp" placeholder="search"/>
+				<span class="input-group-btn">
+				<button class="btn btn-success" type="button">
+					<span class="glyphicon glyphicon-search iconsearch"></span>
+				</span>	
+			</div>	<!-- /input-group -->
+	</div>	
+
 	 <div class="col-sm-3">
 		<label for="id" class="control-label">Sort by Order</label>
-		<select id="id" class="form-control" ng-model="id"> 
+		<select id="id" class="form-control" ng-model="name"> 
 			<option value="">Select Order</option>		<!-- added value & selected attr -->	
-			<option value="-id">Desending</option>
-			<option value="id">Asending</option>  
+			<option value="-domain_name">Desending</option>
+			<option value="domain_name">Asending</option>  
 		</select>
 	</div>
 	<div class="col-sm-3">
 		<label for="status" class="control-label">Select Status</label>
-		<select id="status" class="form-control" ng-model="myWebsite.status">
+		<select id="status" class="form-control" ng-model="statusFilter" ng-change="changeStatus('status',statusFilter)">
 			<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
 			<option value="1">In Progress</option>
 			<option value="2">Approved</option>
@@ -52,16 +54,30 @@
 					<th>Manage</th>
 				</thead>
 				<tbody>
-					<tr ng-repeat="x in websites">
-						<td>{{x.id}}</td>
-						<td>{{x.domain_name}}</td>
+					<tr ng-repeat="x in website | orderBy:name">
+						<td>{{((myWebsiteCurrentPage - 1) * pageItems) + $index + 1}}</td>
+						<td>{{x.domain_name}}
+							<a type="button" tooltip="Edit" class="btn btn-warning glyphicon glyphicon-pencil pull-right" ng-click="showInput($event,'opened')"></a>
+								<input type="text" id="domain_name" class="form-control" name="domain_name" ng-show="x.domain_name" ng-model="x.domain_name"  ng-click="showInput($event,'opened')" ng-required="true">
+						</td>
 						<td>{{x.registered_date}}</td>
 						<td>{{x.expiry_date}}</td>
 						<td>
-							<a href="#"  class="glyphicon glyphicon-refresh btn btn-success" aria-hidden="true" tooltip-position="top" tooltip="Renew page"></a>
-							<a href="#"  class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites">
-							</a>
-							<a href="#"  class="glyphicon glyphicon-trash btn btn-danger" aria-hidden="true" tooltip-position="top" tooltip="Delete Site"></a>
+							<div class="btn-group">
+								<a ng-click="open('modules/websites/viewwebsite.html', x.id)" class="glyphicon glyphicon-star btn btn-success" tooltip="View Site"></a>
+							</div>	
+							
+							<div class="btn-group">
+								<a href="#" class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites">
+								</a>
+							</div>
+							<div class="btn-group">
+								<a ng-click="open('modules/websites/viewdeletedWebsite.html', x.id)"  class="glyphicon glyphicon-trash btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Delete Site" >
+								</a>
+							</div>
+							<div class="btn-group">
+								<!--button type="button" ng-click="open('modules/websites/viewdeletedWebsite.html', x.id)"  tooltip="Delete Site" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="deleted(x.id, x.status)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class="glyphicon glyphicon-trash"></span></button-->								
+							</div>
 						</td>
 					</tr>
 				</tbody>					
@@ -69,8 +85,8 @@
 		</div>
 	
 		<div class="text-center">				
-			<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>				
-			<pre>Page: {{currentPage}} / {{numPages}}</pre>
+			<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(myWebsiteCurrentPage,featured)"></pagination>				
+			<pre>Page: {{myWebsiteCurrentPage}} / {{numPages}}</pre>
 		</div>	
 	</div>	
 </div>
