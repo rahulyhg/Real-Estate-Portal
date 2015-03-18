@@ -9,8 +9,7 @@ define(['app'], function (app) {
 		
 		// all $scope object goes here{pooja}
 		$scope.maxSize = 5;
-		$scope.totalRecords = "";
-		
+		$scope.totalRecords = "";		
 		$scope.usergroupCurrentPage= 1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
@@ -49,21 +48,9 @@ define(['app'], function (app) {
 		};	
 		$scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = 'yyyy-MM-dd';			
-		//End  Date Picker 
-		
-			//show dropdown list
-			/* $scope.showDropDown=function ($event, opened1) {
-			  $scope.selected = undefined;
-			  $scope.states = [];
-			  $scope.opened = false;  
-			  $scope.open = function() {
-				$scope.opened = true;
-			  }
-			  $scope.close = function() {
-				$scope.opened = false;
-			  }
-			}	 */		
-		$scope.showDropDown = function($event,opened)		
+		//End  Date Picker 		
+				
+		/* $scope.showDropDown = function($event,opened)		
 			{
 				//$scope.selected = undefined;
 				$scope.user_groups = []; 				  				
@@ -71,7 +58,7 @@ define(['app'], function (app) {
 				$event.stopPropagation();
 				$scope[opened] = ($scope[opened] ===true) ? false : true;
 			};	 
-				//end dropdown
+				//end dropdown */
 			
 		//console.log($scope.userViews);
 		
@@ -82,29 +69,52 @@ define(['app'], function (app) {
 		}	
 				
 		//code for pagination
-		$scope.pageChanged = function(page) {				
+		$scope.pageChanged = function(page) {
+			if($scope.userViews=='userslist'){	
 			dataService.get("getmultiple/user/"+page+"/"+$scope.pageItems)
 			.then(function(response) {
 				$scope.users = response.data;
 				//console.log(response.data);
-				$scope.totalRecords = response.totalRecords;
+				
 			});
+			}
+			if($scope.userViews=='usersgroup'){
+				dataService.get("getmultiple/usergroup/"+page+"/"+$scope.pageItems)
+				.then(function(response) {
+					$scope.usergroupList = response.data;					
+				});
+			}	
 		}; //end pagination
 		
 		//global method for change status of particular column 
 		$scope.hideDeleted = "";// & use this filter in ng-repeat - filter: { status : hideDeleted}
 		$scope.changeStatus = {};
 		$scope.changeStatusFn = function(colName, colValue, id){
-			$scope.changeStatus[colName] = colValue;
-			console.log($scope.changeStatus);
-			 dataService.put("put/user/"+id,$scope.changeStatus)
-			 //dataService.put("put/usergroup/"+id,$scope.changeStatus)
-			.then(function(response) { 
-				if(colName=='status'){					
-				}
-				$scope.alerts.push({type: response.status,msg: response.message});
-			}); 
+			$scope.changeStatus[colName] = colValue;				
+			//console.log($scope.changeStatus);
+			if($scope.userViews=='userlist'){
+				 dataService.put("put/user/"+id,$scope.changeStatus)			
+				.then(function(response) {					
+					if(colName=='status'){					
+					}
+					$scope.alerts.push({type: response.status,msg: response.message});
+				}); 
+			}else if($scope.userViews=='usergroup'){
+				dataService.put("put/usergroup/"+id,$scope.changeStatus)		
+				.then(function(response) {					
+					if(colName=='status'){					
+					}
+					$scope.alerts.push({type: response.status,msg: response.message});
+				});
+			}		
 		};	
+		$scope.forgotPass = function(colName, colValue, id){
+			$scope.changeStatus[colName] = colValue;				
+				 dataService.post("post/user/forgotpass", $scope.changeStatus)
+				.then(function(response) {					
+					$scope.alerts.push({type: response.status,msg: response.message});
+				}); 
+		};
 		$scope.editGroupName = function(colName, colValue, id, editStatus){
 			$scope.changeStatus[colName] = colValue;
 
@@ -118,27 +128,17 @@ define(['app'], function (app) {
 			}
 		};	
 		
-		//code for change password
-			$scope.passMatch = function(pass1, pass2){
-				$scope.pass = (pass1===pass2) ? true : false;
-			}
-			$scope.changepass = function(changepwd) {
-				
-				$scope.userID = {user_id : $rootScope.userDetails.id}
-				angular.extend(changepwd, $scope.userID);
-				console.log(JSON.stringify(changepwd));
-				dataService.post("/post/user/checkavailability",changepwd)
-				.then(function(response) {
-					if(response.status == 'success'){
-						$scope.changepwd = {};
-						$scope.alerts.push({type: response.status, msg: response.message});
-					}else{
-						$scope.alerts.push({type: (response.status == 'error') ? "danger" :response.status, msg: response.message});
-					}
-				})
-			}	//end changepass fun
-		
-		
+		//check availability
+		$scope.checkuserAvailable = function(addusers){
+			dataService.post("post/user/checkavailability",addusers)
+			.then(function(response) {  
+				if(response.status == 'success'){
+					
+				}else{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
+			});
+		}	
 		
 		// switch functions 
 		var usersList = function(){			
@@ -162,7 +162,7 @@ define(['app'], function (app) {
 				console.log(response);
 				 if(response.status =='success'){
 					$scope.totalRecords = response.totalRecords;
-					$scope.usergroup = response.data;
+					$scope.usergroupList = response.data;
 					console.log(response.data);
 				}
 				else{
@@ -178,39 +178,37 @@ define(['app'], function (app) {
 			$scope.userStatus = {};
 			(searchUser =="") ? delete $scope.userStatus[statusCol] : $scope.filterStatus[statusCol] = searchUser;
 			angular.extend($scope.userStatus, $scope.filterStatus);
-			angular.extend($scope.userStatus, $scope.search);			
-			
-			dataService.get("getmultiple/user/1/"+$scope.pageItems, $scope.userStatus)
-			.then(function(response) {  //function for userlist response
-				if(response.status == 'success'){
-					$scope.users = response.data;
-					$scope.totalRecords = response.totalRecords;
-				}else{
-					$scope.users = {};
-					$scope.totalRecords = {};
-					$scope.alerts.push({type: response.status, msg: response.message});
-				}
-				//console.log($scope.properties);
-			});
-		};			
-			
-		 //create user group
-		var usersGroup = function(){
-				$scope.postData = function(usergroup) {
-				console.log(usergroup);
-				/* dataService.post("post/user/"+pageItems,usergroup)
-				.then(function(response) {  
+			angular.extend($scope.userStatus, $scope.search);	
+			if($scope.userViews=='userlist'){
+				dataService.get("getmultiple/user/1/"+$scope.pageItems, $scope.userStatus)
+				.then(function(response) {  //function for userlist response
 					if(response.status == 'success'){
-					$scope.submitted = true;
-					$scope.alerts.push({type: response.status, msg: response.message});
-				
+						$scope.users = response.data;
+						$scope.totalRecords = response.totalRecords;
 					}else{
+						$scope.users = {};
+						$scope.totalRecords = {};
 						$scope.alerts.push({type: response.status, msg: response.message});
 					}
-					$scope.reset();
-				});  */				
+					//console.log($scope.properties);
+				});
 			}
-		}
+			if($scope.userViews=='usersgroup'){
+			dataService.get("getmultiple/usergroup/1/"+$scope.pageItems, $scope.userStatus)
+				.then(function(response) {  //function for userlist response
+					if(response.status == 'success'){
+						$scope.usergroupList = response.data;
+						$scope.totalRecords = response.totalRecords;
+					}else{
+						$scope.usergroupList = {};
+						$scope.totalRecords = {};
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}
+					//console.log($scope.properties);
+				});
+			}	
+		};
+		
 		
 	 //for inserting data into createusergroup
 	 $scope.createUserGroup={};
@@ -226,7 +224,8 @@ define(['app'], function (app) {
 						$scope.alerts.push({type: response.status, msg: response.message});
 					}	
 				});	  
-			}			
+			}	
+			
 			//update into usergroup
 			if($routeParams.id){//Update user			
 			dataService.get("getsingle/usergroup/"+$routeParams.id)

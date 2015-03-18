@@ -15,7 +15,7 @@
 			 $like = [];
 			 if(isset($_GET['search']) && $_GET['search'] == true){
 				 
-				 (isset($_GET['subject'])) ? $like['subject'] = $_GET['subject'] : "";
+				 (isset($_GET['group_name'])) ? $like['group_name'] = $_GET['group_name'] : "";
 			 }
 			// to check user_id is set or not
 			(isset($_GET['user_id'])) ? $where['user_id'] = $_GET['user_id'] : "";

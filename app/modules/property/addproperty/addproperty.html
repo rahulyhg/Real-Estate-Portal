@@ -1,32 +1,31 @@
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-12"><alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 		<div class="main-content">		
-			<ng-include src="'modules/component/toolbar.html'"></ng-include>						
+			<ng-include src="'modules/component/toolbar.html'"></ng-include>			
 			<h3 class="text-center" title="Add new Property">Add New Property</h3>
 			<form class="form-horizontal" name="addProperty" novalidate>	
 				<tabset>
 				<p class="paraMand">* Fields are mandatory</p>
-					<tab heading="Property" title="Property information">
-					
+				<tab heading="Property" title="Property information">				
 					<h3>Property Information:</h3>
-						<div class="form-group">
-							
+						<!-- <div class="form-group">							
 							<label for="property_for" class="col-sm-2  control-label">* Property for</label>
-							<div class="col-sm-9"  ng-model="property.property_for"> {{property.property_for | json}}
+							<div class="col-sm-9"> {{property.property_info.property_for | json}}
 								<label class="radio-inline">
-									<input type="radio" name="property_for"   id="Sale" value="Sale" checked="true" >Sale
+									<input type="radio" name="property_for"   id="Sale" value="Sale" checked="true" ng-model="property.property_info.property_for.sale">Sale
 								</label>
 								<label class="radio-inline">
-								  <input type="radio" name="property_for"   id="Rent" value="Rent"> Rent
+								  <input type="radio" name="property_for"   id="Rent" value="Rent" ng-model="property.property_info.property_for.rent"> Rent
 								</label>
 								<label class="radio-inline">
-								  <input type="radio" name="property_for"   id="PG" value="PG"> PG
+								  <input type="radio" name="property_for"   id="PG" value="PG" ng-model="property.property_info.property_for.PG"> PG
 								</label>												
 							</div>	
-						</div>
+						</div> -->				
+						
 						<div class="form-group"> 
 							<label for="featured" class="col-sm-2 control-label">* &nbsp Featured</label> 
-								<div class="col-sm-9 "  ng-model="property.featured">
+								<div class="col-sm-9 "  ng-model="property.property_info.featured">
 									<label class="radio-inline">
 									  <input type="radio" name="featured" id="Yes" value="yes" checked="true"> Yes
 									</label>

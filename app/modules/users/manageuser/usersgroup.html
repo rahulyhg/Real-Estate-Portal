@@ -8,7 +8,7 @@
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in usergroup | filter: { status : hideDeleted}">
+			<tr ng-repeat="x in usergroupList | filter: { status : hideDeleted}">
 				<td>{{((usersGroupCurrentPage - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.user_group}}</td>
 				<td>{{}}</td>
@@ -26,6 +26,6 @@
 	</table>
 </div>
 <div class="text-center">				
-	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="manageusers.usersGroupCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersGroupCurrentPage,userStatus)"></pagination>
+	<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="usersGroupCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(usersGroupCurrentPage)"></pagination>
 	<pre>Page: {{usersGroupCurrentPage}} / {{numPages}}</pre>
 </div>

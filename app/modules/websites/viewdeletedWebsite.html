@@ -8,13 +8,9 @@
 			<div class="col-sm-12">
 				<span> Are You Sure You Want to Delete ?</span>	
 			</div>
-			<div class="col-sm-12">
-				<a class="btn btn-primary" aria-hidden="true" ng-model="x.status" ng-change="deleted(x.id, x.status)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">Yes</a>
-				<a href="#"  class="btn btn-primary" aria-hidden="true">No</a>
-			</div>
 		</div>
 	</div>
 	<div class="modal-footer">
-				<button class="btn btn-primary" ng-click="modalOptions.ok()">CLOSE</button>
+				<button class="btn btn-primary" ng-click="modalOptions.ok()">Yes</button> | <button class="btn btn-primary" aria-hidden="true">No</button>
 	</div>
 </div>			

@@ -4,22 +4,31 @@
 	$reqMethod = $app->request->getMethod();
 	
 	if($reqMethod=="GET"){
-		print_r($_GET);
 		if(isset($id)){
 			$where['id'] = $id;
-			$data = $db->select("property", $where);
+			$data = $db->selectSingle("property", $where);
 			echo json_encode($data);
 			
 		}else{
-			$where=[]; // this will used for user specific data selection.
+			$where=[]; 
+			// code for search
+			 $like = [];
+			 if(isset($_GET['search']) && $_GET['search'] == true){
+				 
+				 (isset($_GET['title'])) ? $like['title'] = $_GET['title'] : "";
+			 }
+			/*// to check user_id is set or not
+			 (isset($_GET['user_id'])) ? $where['user_id'] = $_GET['user_id'] : "";
+			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : ""; */
+			 
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select
 			
 			// this is used to select data with LIMIT & where clause
-			$data = $db->select("property", $where, $limit);
+			$data = $db->select("property", $where, $limit, $like);
 			
 			// this is used to count totalRecords with only where clause
-			$totalRecords['totalRecords'] = count($db->select("property", $where)['data']);		
+			$totalRecords['totalRecords'] = count($db->select("property", $where,null, $like)['data']);		
 			
 			// $data is array & $totalRecords is also array. So for final output we just merge these two arrays into $data array
 			$data = array_merge($totalRecords,$data);

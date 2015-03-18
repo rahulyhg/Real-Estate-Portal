@@ -1,7 +1,7 @@
 <div class="col-sm-12 clearfix bottom-space">
 	<div class="toolbar pull-left">
 		<form class="form-inline ">
-			<div class="input-group">
+			<div class="input-group" ng-if="userViews!='createusergroup' && userViews!='adduser'">
 				<input type="text" class="form-control iconback" placeholder="Search" title="search here" ng-model="searchUser" ng-change="searchFilter('username', searchUser)">
 				<span class="input-group-btn">
 					<button class="btn btn-success" type="button"><span class="glyphicon glyphicon-search iconsearch"></span></button>

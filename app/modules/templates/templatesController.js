@@ -25,6 +25,7 @@ define(['app'], function (app) {
 		$http.get("store-tempImg.json").success(function(data){
 		  $scope.tempImg = data;
 		}); */
+		
 		//single view modal fun
 		$scope.open = function (url, tempId) {
 			dataService.get("getsingle/template/"+tempId)
@@ -128,6 +129,8 @@ define(['app'], function (app) {
 				//console.log($scope.properties);
 			});
 		};	
+		
+		
 		
 		// switch functions 
 		var projectTemplate = function(){
