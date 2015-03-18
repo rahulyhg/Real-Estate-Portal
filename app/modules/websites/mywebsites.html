@@ -8,7 +8,7 @@
 				<button class="btn btn-success" type="button">
 					<span class="glyphicon glyphicon-search iconsearch"></span>
 				</span>	
-			</div>	<!-- /input-group -->
+		</div>	<!-- /input-group -->
 	</div>	
 
 	 <div class="col-sm-3">
@@ -56,27 +56,27 @@
 				<tbody>
 					<tr ng-repeat="x in website | orderBy:name">
 						<td>{{((myWebsiteCurrentPage - 1) * pageItems) + $index + 1}}</td>
-						<td>{{x.domain_name}}
-							<a type="button" tooltip="Edit" class="btn btn-warning glyphicon glyphicon-pencil pull-right" ng-click="showInput($event,'opened')"></a>
-								<input type="text" id="domain_name" class="form-control" name="domain_name" ng-show="x.domain_name" ng-model="x.domain_name"  ng-click="showInput($event,'opened')" ng-required="true">
+						<td>{{x.domain_name}}							
+								<a type="button" class="btn pull-right" ng-model="x.boxId" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-class="(x.boxId==1) ? 'btn btn-success' : 'btn btn-warning'" ng-click="showInput($event,'opened')" ng-change="editDomainName('domain_name', x.domain_name, x.id,x.boxId)" tooltip="Edit">
+								<span ng-if="x.boxId==1" class="glyphicon glyphicon-pencil"></span>
+								<span ng-if="x.boxId==0" class="glyphicon glyphicon-ok"></span>
+								</a>
+								<input type="text" id="domain_name" class="form-control" name="domain_name" ng-show="x.boxId == 1" ng-model="x.domain_name" ng-required="true"/>					
 						</td>
 						<td>{{x.registered_date}}</td>
 						<td>{{x.expiry_date}}</td>
 						<td>
 							<div class="btn-group">
-								<a ng-click="open('modules/websites/viewwebsite.html', x.id)" class="glyphicon glyphicon-star btn btn-success" tooltip="View Site"></a>
+								<button ng-click="open('modules/websites/viewwebsite.html', x.id)" class="glyphicon glyphicon-star btn btn-success" tooltip="View Site"></button>
 							</div>	
 							
 							<div class="btn-group">
-								<a href="#" class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites">
-								</a>
+								<button class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites">
+								</button>
 							</div>
+						
 							<div class="btn-group">
-								<a ng-click="open('modules/websites/viewdeletedWebsite.html', x.id)"  class="glyphicon glyphicon-trash btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Delete Site" >
-								</a>
-							</div>
-							<div class="btn-group">
-								<!--button type="button" ng-click="open('modules/websites/viewdeletedWebsite.html', x.id)"  tooltip="Delete Site" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="deleted(x.id, x.status)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class="glyphicon glyphicon-trash"></span></button-->								
+								<button type="button" tooltip="Delete Site" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="deleted(x.id, x.status)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class="glyphicon glyphicon-trash"></span></button>								
 							</div>
 						</td>
 					</tr>

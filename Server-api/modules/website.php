@@ -19,7 +19,7 @@
 			$limit['records'] = $records; // how many records to select
 			
 			// this is used to select data with LIMIT & where clause
-			$data = $db->select("website", $where, $limit);
+			$data = $db->select("website", $where, $limit, $like);
 			
 			// this is used to count totalRecords with only where clause
 			$totalRecords['totalRecords'] = count($db->select("website", $where, $limit=null, $like)['data']);		

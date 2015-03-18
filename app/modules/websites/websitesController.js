@@ -112,20 +112,7 @@ define(['app'], function (app) {
 				$event.stopPropagation();
 				$scope[opened] = ($scope[opened] ===true) ? false : true;
 			};	
-		
-		$scope.deleted = function(id, status){
-				$scope.deletedData = {status : status};
-				//console.log($scope.deletedData);
-				dataService.put("put/website/"+id, $scope.deletedData)
-				.then(function(response) { //function for businesslist response
-					if(response.status == 'success'){
-						//$scope.hideDeleted = 1;
-						console.log(response);
-					}
-				});
-			};		
-			
-		
+							
         var mywebsites = function(){
 			$scope.websiteParams = $scope.userDetails;
 			//function for mywebsites{sonali}
@@ -144,7 +131,17 @@ define(['app'], function (app) {
 				};
 			});
 			
-			
+			$scope.deleted = function(id, status){
+				$scope.deletedData = {status : status};
+				//console.log($scope.deletedData);
+				dataService.put("put/website/"+id, $scope.deletedData)
+				.then(function(response) { //function for businesslist response
+					if(response.status == 'success'){
+						//$scope.hideDeleted = 1;
+						console.log(response);
+					}
+				});
+			};		
 		};
        
 		var requestedsitelist = function(){
