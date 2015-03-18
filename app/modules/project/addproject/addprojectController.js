@@ -14,6 +14,7 @@ define(['app'], function (app) {
 		$scope.project.amenities = {};
 		$scope.project.amenities.details = {};
 		$scope.project.specification = {};
+		
 		$scope.project.specification.details = {};
 		$scope.project.location_map = {};
 		$scope.project.location_map.details = {};
@@ -28,6 +29,7 @@ define(['app'], function (app) {
 	
 		$scope.addToObject = function(data, object){
 			object[data.title] = data.description;
+			
 		}
 		
 		$scope.removeObject = function(key, object){
@@ -48,28 +50,28 @@ define(['app'], function (app) {
 		
 		
 		$scope.path = "project/"; 
-		$scope.addimage = {};
-		$scope.addimage.title={};
-		$scope.alocation_map={};
-		$scope.alocation_map.description={};
+		$scope.aproject = {};
+		$scope.location_map={};
+		$scope.location_map.description={};
 		$scope.location_map.description.location_image={};
-		$scope.addimage.description = {};
-		$scope.addimage.description.project_images  = {};
-		$scope.upload = function(files,path,userinfo,picArr){//this function for uploading files
-			upload.upload(files,path,userinfo,function(response){
-				console.log(response);
+		$scope.aproject.description = {};
+		$scope.aproject.description.project_image= {};
+		$scope.afloor_plan={};
+		$scope.afloor_plan.description={};
+		$scope.afloor_plan.description.floor_image={};
+		// this function for uploading files
+		$scope.upload = function(files,path,userinfo, picArr){ 
+			upload.upload(files,path,userinfo,function(data){
 				var picArrKey = 0, x;
 				for(x in picArr) picArrKey++;
-				
-				if(response.status === 'success'){
-					picArr[picArrKey] = (JSON.stringify(response.details));
-					console.log(response.message);
-					
+				if(data.status === 'success'){
+					picArr[picArrKey] = data.details;
+					console.log(data.message);
 				}else{
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}
-	
-			});
+				
+			}); 
 		};
 		$scope.generateThumb = function(files){  
 			upload.generateThumbs(files);
@@ -82,7 +84,7 @@ define(['app'], function (app) {
 		//console.log($scope.project.user_id);
 		$scope.addproject = function(project){
 			
-			
+			console.log(project);
 			
 			
 		};

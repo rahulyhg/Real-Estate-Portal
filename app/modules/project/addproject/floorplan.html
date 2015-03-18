@@ -1,7 +1,7 @@
 <h3>Floor Plans</h3>{{project.floor_plan|json}}
 <div class="form-group">
 	<div class="col-sm-offset-3 col-sm-9">
-		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(afloor_plan, project.floor_plan.details)" title="Add Floor Plans">Add Floor Plan</button>
+		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(afloor_plan.title, project.floor_plan.details)" title="Add Floor Plans">Add Floor Plan</button>
 	</div>
 </div>
 <div>
@@ -43,8 +43,8 @@
 			<file-preview url="floorImage" ></file-preview>
 			
 			<!-- This button will show if file/s selected -->
-			<button ng-show="floorImage" ng-click="upload(floorImage,path,userinfo)" type="button">Upload</button>
-			<input type="hidden" ng-model="afloor_plan.floor_image">
+			<button ng-show="floorImage" ng-click="upload(floorImage,path,userinfo,afloor_plan.description.floor_image)" type="button">Upload</button>
+			<input type="hidden" ng-model="afloor_plan.description.floor_image">
 		</div>	
 	</div>	
 	<div class="form-group"> 

@@ -3,9 +3,9 @@
 	<div class="col-sm-offset-3 col-sm-9">
 		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(aspecification, project.specification.details)" title="Add Specification">Add Specification</button>
 	</div>
-</div>
+</div>{{aspecification}}
 <div>
-	<input type="hidden" required name="specification" ng-model="project.specification" />
+	<input type="hidden" required name="specification" ng-model="project.specification" />{{project.specification}}
 	<span class="help-block" ng-show="addProject.specification.$dirty && addProject.specification.$invalid">
 		<span ng-show="addProject.specification.$error.required" class="text-danger">Specification Description is required.</span>
 	</span>
@@ -80,7 +80,7 @@
 				<th>Specification Description</th>
 				<th>Remove </th>
 			</tr>
-			<tr ng-repeat="(key, value) in project.specification.details">
+			<tr ng-repeat="(key, value) in project.specification.details">{{project.specification.details}}
 				<td>{{key}}</td>
 				<td>{{value}}</td>
 				<td><button ng-click="removeObject(key,project.specification.details)">Remove</button></td>

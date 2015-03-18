@@ -1,14 +1,14 @@
 <h3>Project Image</h3>{{project.project_images|json}}
 <div class="form-group">
 	<div class="col-sm-offset-3 col-sm-9">
-		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(addimage, project.project_images.details)" title="Add Overview">Add Image</button>
+		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(aproject, project.project_images.details)" title="Add Overview">Add Image</button>
 	</div>
 </div>
 <div class="form-group">
 	<label  for="ImageTitle" class="col-sm-2 control-label">* Title</label>
 	<div class="col-sm-9">		
-		<textarea type="text"  id="ImageTitle" class="form-control" name="ImageTitle" ng-model="addimage.title"    cols="20" rows="4" ng-maxlength="356"  ></textarea>
-		<p ng-hide="addProject.ImageTitle.$error.maxlength">{{ 356 - addimage.title.length + " Chars left" }}</p>
+		<textarea type="text"  id="ImageTitle" class="form-control" name="ImageTitle" ng-model="aproject.title"    cols="20" rows="4" ng-maxlength="356"  ></textarea>
+		<p ng-hide="addProject.ImageTitle.$error.maxlength">{{ 356 - aproject.title.length + " Chars left" }}</p>
 			 <span class="text-danger" ng-show="addProject.ImageTitle.$error.maxlength">
 			Sorry You are Exceeding the Limit</span>
 				<span class="text-danger" ng-show="addProject.ImageTitle.$dirty && addProject.ImageTitle.$invalid">
@@ -16,17 +16,17 @@
 	</div>
 </div>
 <div class="form-group">
-	<label for="project_images" class="col-sm-2 control-label">* &nbsp Project Image</label>
-	<div class="col-sm-4">
-		<input type="file" id="project_images" name="project_images" ng-file-select  accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="aprojectImg" >	
+	<label for="project_image" class="col-sm-2 control-label">* &nbsp Project Image</label>
+	<div class="col-sm-9">
+			<input type="file" id="project_image" name="project_image" ng-file-select ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="project_image">	
 		<!-- This will show thumbnails & progress of images -->
-			<file-preview url="aprojectImg"></file-preview>
+			<file-preview url="project_image"></file-preview>
 			<!-- This button will show if file/s selected -->
-			<button ng-show="aprojectImg" ng-click="upload(aprojectImg,path,userinfo, aproject.description.project_images)" type="button">Upload</button>
-			
+			<button ng-show="project_image" ng-click="upload(project_image,path,userinfo, aproject.description.project_image)" type="button">Upload</button>
 			<!-- This hidden input will store image path in array after successful uploading -->
-			
+			<input type="hidden" ng-model="aproject.description.project_image">
 	</div>
+
 </div>	
 <div class="form-group"> 
 	<label for="projImageDescription" class="col-sm-2 control-label">  * Description</label> 
@@ -46,14 +46,14 @@
 </div>	
 <div class="col-sm-12">
 	<div class="table-responsive">
-		<table class="table table-bordered " ng-if="project.project_images">
+		<table class="table table-bordered " ng-if="project.project_images.details">
 			<tr>
 				<th>Image Title</th>
 				<th>Image Description</th>
 				<th>Remove </th>
 			</tr>
 			
-			<tr ng-repeat="(key, value) in project_images.details">
+			<tr ng-repeat="(key, value) in project.project_images.details">
 				<td>{{key}}</td>
 				<td>
 					<span ng-repeat="(key, value) in aproject.description.project_images">
