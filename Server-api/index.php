@@ -2,6 +2,7 @@
 
 // load required files
 require_once 'lib/Slim/Slim.php';
+require_once 'lib/PHPMailer/PHPMailerAutoload.php';
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();

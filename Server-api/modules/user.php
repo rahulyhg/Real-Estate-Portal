@@ -32,7 +32,7 @@
 			doLogin($body);
 		}elseif(isset($postParams) && $postParams == 'register'){ // register.php
 			registerUser($body);
-		}elseif(isset($postParams) && $postParams == 'forgot'){
+		}elseif(isset($postParams) && $postParams == 'forgotpass'){
 			echo json_encode(forgotPass($body));
 		}elseif(isset($postParams) && $postParams == 'checkavailability'){
 			checkAvailability($body);			// register.php

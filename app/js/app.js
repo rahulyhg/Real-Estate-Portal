@@ -56,7 +56,7 @@ define(['angular',
 					label: "Logout"
                 }, 'users/login/'))
 				
-				.when('/changepass',route.resolve({
+				.when('/changepass/:resetPassKey',route.resolve({
                     controller: 'login',
                     template: 'changepass',
 					label: "Change Password"
@@ -74,7 +74,11 @@ define(['angular',
                     template: 'register',
 					label: "Register"
                 }, 'users/register/'))				
-				
+				.when('/changepass',route.resolve({
+                    controller: 'register',
+                    template: 'changepass',
+					label: "Change Password"
+                }, 'users/register/'))
 				.when('/editprofile', route.resolve({
                     controller: 'register',
                     template: 'editprofile',
@@ -179,14 +183,14 @@ define(['angular',
 				$rootScope.userDetails = {};
 			}
 			if(dataService.auth == false){
-				if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/' || nextUrl == '/logout') {
+				if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/' || nextUrl == '/logout' || nextUrl == '/changepass/:resetPassKey') {
 
 				} else {
 					$location.path("/login");
 					$rootScope.alerts = [{type: "warning", msg: "You are not logged in!"}];
 				}
 			}else{
-				if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/') {
+				if (nextUrl == '/forgot' || nextUrl == '/register' || nextUrl == '/login' || nextUrl == '/' || nextUrl == '/changepass/:resetPassKey') {
 					$location.path("/dashboard");
 				}
 			};
