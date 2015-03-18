@@ -117,6 +117,29 @@ define(['app'], function (app) {
 				}); 
 			}
 		};	
+		
+		//code for change password
+			$scope.passMatch = function(pass1, pass2){
+				$scope.pass = (pass1===pass2) ? true : false;
+			}
+			$scope.changepass = function(changepwd) {
+				
+				$scope.userID = {user_id : $rootScope.userDetails.id}
+				angular.extend(changepwd, $scope.userID);
+				console.log(JSON.stringify(changepwd));
+				dataService.post("/post/user/checkavailability",changepwd)
+				.then(function(response) {
+					if(response.status == 'success'){
+						$scope.changepwd = {};
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}else{
+						$scope.alerts.push({type: (response.status == 'error') ? "danger" :response.status, msg: response.message});
+					}
+				})
+			}	//end changepass fun
+		
+		
+		
 		// switch functions 
 		var usersList = function(){			
 			dataService.get("getmultiple/user/"+$scope.usersListCurrentPage+"/"+$scope.pageItems)			
