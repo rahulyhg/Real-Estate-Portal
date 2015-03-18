@@ -25,8 +25,7 @@ define(['app'], function (app) {
 		$scope.ok = function () {
 			$modalOptions.close('ok');
 		};
-		
-		
+			
         //for display form parts
         $scope.webPart = $routeParams.webPart;
         // all $scope object goes here
@@ -37,6 +36,7 @@ define(['app'], function (app) {
 		$scope.reqestSiteCurrentPage = 1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";
+		$scope.hideDeleted = "";
 		//$scope.currentDate = dataService.currentDate;
        $scope.userDetails = {user_id : $rootScope.userDetails.id}; // these are URL parameters
 	   $scope.currentDate = dataService.currentDate;
@@ -44,9 +44,10 @@ define(['app'], function (app) {
 		
 		
 		
-        $scope.pageChanged = function(page,where) { // Pagination page changed
+        $scope.pageChanged = function(page) { // Pagination page changed
+		//angular.extend($scope.featured, $scope.userDetails);
 			$scope.userDetails;
-			dataService.get("/getmultiple/website/"+page+"/"+$scope.pageItems,  $scope.userDetails)
+			dataService.get("getmultiple/website/"+page+"/"+$scope.pageItems,  $scope.userDetails)
 			.then(function(response) {  //function for websitelist response
 				$scope.website = response.data;
 				//console.log($scope.properties);
@@ -57,10 +58,79 @@ define(['app'], function (app) {
 		if(!$scope.webPart) {
 			$location.path('/dashboard/websites/mywebsites');
 		}
-              
+         
+		//this is global method for filter 
+		$scope.changeStatus = function(statusCol, colValue) {
+			console.log($scope.websiteParams);
+			$scope.filterStatus= {};
+			(colValue =="") ? delete $scope.websiteParams[statusCol] : $scope.filterStatus[statusCol] = colValue;
+			angular.extend($scope.websiteParams, $scope.filterStatus);
+			dataService.get("/getmultiple/website/1/"+$scope.pageItems, $scope.websiteParams)
+			.then(function(response) {  //function for templatelist response
+				if(response.status == 'success'){
+					$scope.website = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.website = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
+				//console.log($scope.properties);
+			});
+		};	
+		
+		//search filter{sonali}
+		$scope.searchFilter = function(statusCol, colValue) {
+			$scope.search = {search: true};
+			$scope.websiteParams={};
+			$scope.filterStatus= {};
+			(colValue =="") ? delete $scope.websiteParams[statusCol] : $scope.filterStatus[statusCol] = colValue;
+			angular.extend($scope.websiteParams, $scope.filterStatus);
+			angular.extend($scope.websiteParams, $scope.search);
+			
+			if(colValue.length >= 4 || colValue ==""){
+				dataService.get("getmultiple/website/1/"+$scope.pageItems, $scope.websiteParams)
+				.then(function(response) {  //function for templatelist response
+					if(response.status == 'success'){
+						$scope.website = response.data;
+						$scope.totalRecords = response.totalRecords;
+					}else{
+						$scope.website = {};
+						$scope.totalRecords = {};
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}
+					//console.log($scope.properties);
+				});
+			}
+		};
+				
+		$scope.showInput = function($event,opened)		
+			{
+				//$scope.selected = undefined;
+				$scope.domain_name = []; 				  				
+				$event.preventDefault();
+				$event.stopPropagation();
+				$scope[opened] = ($scope[opened] ===true) ? false : true;
+			};	
+		
+		$scope.deleted = function(id, status){
+				$scope.deletedData = {status : status};
+				//console.log($scope.deletedData);
+				dataService.put("put/website/"+id, $scope.deletedData)
+				.then(function(response) { //function for businesslist response
+					if(response.status == 'success'){
+						//$scope.hideDeleted = 1;
+						console.log(response);
+					}
+				});
+			};		
+			
+		
         var mywebsites = function(){
+			$scope.websiteParams = $scope.userDetails;
 			//function for mywebsites{sonali}
-			dataService.get("/getmultiple/website/"+$scope.myWebsiteCurrentPage+"/"+$scope.pageItems, $scope.userDetails)
+			angular.extend($scope.websiteParams, $scope.userDetails);
+			dataService.get("getmultiple/website/"+$scope.myWebsiteCurrentPage+"/"+$scope.pageItems, $scope.websiteParams)
 			.then(function(response) {  //function for mywebsites response
 			if(response.status == 'success'){
 					$scope.website=response.data;
@@ -73,33 +143,53 @@ define(['app'], function (app) {
 					$scope.alerts.push({type: response.status, msg: response.message});
 				};
 			});
+			
+			
 		};
-        
+       
+		var requestedsitelist = function(){
+			//function for requestedsitelist{sonali}
+			dataService.get("/getmultiple/website/"+$scope.reqestSiteCurrentPage+"/"+$scope.pageItems, $scope.userDetails)
+			.then(function(response) {  //function for requestedsitelist response
+			if(response.status == 'success'){
+					$scope.website=response.data;
+					$scope.alerts.push({type: response.status, msg:'data access successfully..'});
+					$scope.totalRecords = response.totalRecords;	
+				}
+				else
+				{
+					$scope.alerts.push({type: response.status, msg: response.message});
+				};
+				$scope.website = response.data;
+			});
+		};
+				
 		 var requestnewsite = function(){		
 			//post method for insert data in request template form{sonali}
 			
 			$scope.reqnewsite = {};
 			$scope.postData = function(reqnewsite) { 
-			$scope.reqnewsite.created_date = $scope.currentDate
+			$scope.reqnewsite.date = $scope.currentDate
 			$scope.reqnewsite.user_id = $scope.userDetails.user_id;
 				console.log(reqnewsite);	
 				 dataService.post("post/website",reqnewsite,$scope.user_id)
 				.then(function(response) {  //function for response of request site
 					$scope.reqnewsite = response.data;
 					console.log(response);
-					$scope.reset();
+				//	$scope.reset();
 				});   
 			}//end of post method{sonali} 
 		};
-        
 		
-  
         switch($scope.webPart) {
 			case 'mywebsites':
 			console.log($scope.webPart);
 				mywebsites();
 			case 'requestnewsite':
-			requestnewsite();
+				requestnewsite();
+			break;
+			case 'requestedsitelist':
+				requestedsitelist();
 			break;
 			default:
 				mywebsites();

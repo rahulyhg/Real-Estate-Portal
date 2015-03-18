@@ -33,7 +33,7 @@
 		}elseif(isset($postParams) && $postParams == 'register'){ // register.php
 			registerUser($body);
 		}elseif(isset($postParams) && $postParams == 'forgot'){
-			forgotPass($body);
+			echo json_encode(forgotPass($body));
 		}elseif(isset($postParams) && $postParams == 'checkavailability'){
 			checkAvailability($body);			// register.php
 		}elseif(isset($postParams) && $postParams == 'changepass'){
