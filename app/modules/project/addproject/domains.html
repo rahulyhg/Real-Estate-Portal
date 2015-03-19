@@ -1,26 +1,21 @@
 <div class="form-group">
-	<div class="col-sm-12 ">	
-		<h3>Domains</h3>			    
-		<table class="table table-bordered">
-			<tr>
-				<td class="checkbox" > 							
-					<label>
-						<input type="checkbox" value="" name="selectall"  ng-model="project.domain.select">Select All
-					</label>
-				</td>
-				<td class="checkbox ">
-					<label>
-						<input type="checkbox" value=""  value="www.hinjewadiproperties.com" ng-model="project.domain.other">www.hinjewadiproperties.com
-					</label>
-				</td>
-			</tr>
-		</table>
+	<div class="col-sm-12 ">					
+		<h3>Domains</h3>
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<tr>
+					<td class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="selectAll" ng-change="checkAll(websites, selectAll)"> Select all
+						</label>
+					</td>
+				</tr>
+				<tr ng-repeat="website in websites">
+					<td>	
+					  <input type="checkbox" checklist-model="project.domain" checklist-value="website"> {{website.domain_name}}
+					</td>
+				</tr>
+			</table>
 		</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-9">
-				<button type="submit" ng-click="addproject(project)" ng-disabled="addProject.$invalid" title="Add your new project" class="btn btn-primary text-center">Add new Project</button>
-					<button type="submit" ng-click="update()" title="Edit your project Details" class="btn btn-success text-center">Edit Project</button>
-					<button type="reset" ng-click="reset()" title="cancel Details" class="btn btn-danger text-center">Cancel</button>
-			</div>
-		</div>			
+	</div>
+</div>

@@ -1,4 +1,4 @@
-<h3>Project Information</h3>{{project|json}}
+<h3>Project Information</h3>
 				
 <div class="form-group">
 	<label  for="projectTitle" class="col-sm-2 control-label">* &nbsp Project Title</label>
@@ -44,7 +44,7 @@
 <div class="form-group">
 <label for="projectType" class="col-sm-2 control-label"> * &nbsp Project Type</label>
 <div class="col-sm-9">
-		<input type="text" class="form-control" id="projectType" name="type" ng-model="project.projectType" required>
+		<input type="text" class="form-control" id="projectType" name="type" ng-model="project.type" required>
 		<span class="text-danger" ng-show="addProject.projectType.$dirty && addProject.projectType.$invalid">
 			<span ng-show="addProject.projectType.$error.required">Project Type is required .</span>
 	</span>

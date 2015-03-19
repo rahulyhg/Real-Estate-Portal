@@ -58,7 +58,14 @@
 					</tab>
 				</tabset>
 				<ng-include  src="'modules/project/addproject/domains.html'">
-				</ng-include> 			
+				</ng-include> 	
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-9">
+						<button type="submit" ng-click="addproject(project)" ng-disabled="addProject.$invalid" title="Add your new project" class="btn btn-primary text-center">Add new Project</button>
+							<button type="submit" ng-click="update()" title="Edit your project Details" class="btn btn-success text-center">Edit Project</button>
+							<button type="reset" ng-click="reset()" title="cancel Details" class="btn btn-danger text-center">Cancel</button>
+					</div>
+				</div>						
 			</form>	
 		</div>	
 	</div>

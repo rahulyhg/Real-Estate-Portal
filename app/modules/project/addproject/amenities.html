@@ -1,11 +1,11 @@
-<h3>Amenities</h3>	{{project.amenities|json}}
+<h3>Amenities</h3>	
 <div class="form-group">
 	<div class="col-sm-offset-3 col-sm-9">
 		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(addamenities, project.amenities.details)" title="Add Specification">Add Amenities</button>
 	</div>
 </div>
 <div>
-	<input type="hidden" required name="amenities" ng-model="project.amenities" />
+	<input type="hidden" required name="amenities" ng-model=" project.amenities" />
 	<span class="help-block" ng-show="addProject.amenities.$dirty && addProject.amenities.$invalid">
 		<span ng-show="addProject.amenities.$error.required" class="text-danger">Amenities Description is required.</span>
 	</span>
