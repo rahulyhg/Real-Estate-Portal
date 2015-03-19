@@ -116,31 +116,21 @@ define(['app'], function (app) {
 			};
 			
 		// code to access dynamic project categories & types
-				$scope.contries = dataService.config.country;
-				$scope.getState = function(country){
-					var states = [];
-					for (var x in $scope.contries){
-						console.log($scope.contries[x].country_name);
-						if($scope.contries[x].country_name == country){
-							for(var y in $scope.contries[x].states){
-								states.push($scope.contries[x].states[y])
+				$scope.categories = dataService.config.property.category;
+				$scope.types = dataService.config.property.category.types;
+				$scope.getCategory = function(category){
+					var types = [];
+					for (var x in $scope.categories){
+						console.log($scope.categories[x].category_name);
+						if($scope.categories[x].category_name == category){
+							for(var y in $scope.categories[x].types){
+								types.push($scope.categories[x].types[y])
 							}
 						}
 					}
-					$scope.states = states;
+					$scope.types = types;
 				};
-				$scope.getCities = function(state){
-					var cities = [];
-					for (var x in $scope.states){
-						console.log($scope.states[x].state_name);
-						if($scope.states[x].state_name == state){
-							for(var y in $scope.states[x].cities){
-								cities.push($scope.states[x].cities[y])
-							}
-						}
-					}
-				$scope.cities = cities;
-				};	
+				
 		//add project
 		$scope.addproject = function(project){
 			console.log(project);
