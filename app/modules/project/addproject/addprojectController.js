@@ -67,12 +67,12 @@ define(['app'], function (app) {
 			// add form part to main form object
 			$scope.addToObject = function(data, object){
 				object[data.title] = data.description;
-			}
+			};
 			
 			// remove object from main form object
 			$scope.removeObject = function(key, object){
 				delete object[key];
-			}
+			};
 			
 			// to close alert message
 			$scope.closeAlert = function(index) {
@@ -116,8 +116,9 @@ define(['app'], function (app) {
 			};
 			
 		// code to access dynamic project categories & types
+				/*$scope.project = {category : {} };
 				$scope.categories = dataService.config.property.category;
-				$scope.types = dataService.config.property.category.types;
+				console.log(dataService.config);
 				$scope.getCategory = function(category){
 					var types = [];
 					for (var x in $scope.categories){
@@ -129,7 +130,7 @@ define(['app'], function (app) {
 						}
 					}
 					$scope.types = types;
-				};
+				};*/
 				
 		//add project
 		$scope.addproject = function(project){
