@@ -1,0 +1,21 @@
+{
+	country : [{
+		country_name : 'India'
+		states : [{
+			state_Name : "Maharashtra",
+			cities : [{city_name : 'Pune'},{city_name : 'Mumbai'}]
+		},{
+			state_Name : "Maharashtra",
+			cities : [{city_name : 'Pune'},{city_name : 'Mumbai'}]
+		}]
+	}],
+	property : {
+		amenities : ['power', 'electricity'],
+	},
+	business : {
+		infrastructure : [],
+		category : [],
+		additional_business : []
+	}
+	
+}

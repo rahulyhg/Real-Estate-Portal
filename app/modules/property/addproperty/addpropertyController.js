@@ -44,10 +44,14 @@ define(['app'], function (app) {
 		} */
 		
 		//Upload Function for uploading files {Vilas}
-		$scope.property={}; // this is form object
+		$scope.property={
+			prop_image : {},
+			domain : [{id:"2", domain_name : "www.wtouch.in"}]
+		}; // this is form object
+		
 		$scope.userinfo = {userId:1, name:"vilas"}; // this is for uploading credentials
 		$scope.path = "property/"; // path to store images on server
-		$scope.property.prop_image = []; // uploaded images will store in this array
+		
 		$scope.upload = function(files,path,userinfo){ // this function for uploading files
 			upload.upload(files,path,userinfo,function(data){
 				if(data.status !== 'error'){
@@ -64,20 +68,29 @@ define(['app'], function (app) {
 			upload.generateThumbs(files);
 		};
 		// End upload function {Vilas}
-		$scope.property = {};
-		$scope.property.other_domain = ['all'];
-		$scope.roles = [
-			'guest', 
-			'user', 
-			'customer', 
-			'admin'
-		  ];
-		  $scope.user = {
-			roles: ['guest']
-		  };
-		  $scope.checkAll = function() {
-			$scope.user.roles = angular.copy($scope.roles);
-		  };
+		
+		dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id})
+		.then(function(response){
+			var websites = [];
+			for(var id in response.data){
+				var obj = {id: response.data[id].id, domain_name : response.data[id].domain_name};
+				websites.push(obj);
+			}
+			$scope.websites = websites;
+		}) 
+		/* $scope.websites = [
+			{id:1, domain_name:"google.com"},
+			{id:2, domain_name:"wtouch.in"},
+		] */
+		/* $scope.$watchCollection('websites', function(newNames, oldNames) {
+			if($scope.websites == newNames ) 
+				console.log(newNames);
+		}); */
+		$scope.checkAll = function(websites, checkValue) {
+			if(checkValue){
+				$scope.property.domain = angular.copy(websites);
+			}
+		};
 	};		
 	// Inject controller's dependencies
 	addpropertyController.$inject = injectParams;

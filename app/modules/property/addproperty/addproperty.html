@@ -486,19 +486,19 @@
 						<div class="table-responsive">
 							<table class="table table-bordered">
 								<tr>
-									<td class="checkbox"> 
-<label ng-repeat="role in roles">
-  <input type="checkbox" checklist-model="user.roles" checklist-value="role"> {{role}}
-</label> {{user.roles}}
-									  <label>
-										<input type="checkbox" checklist-value="all" checklist-model="property.other_domain">
-										all 
-									  </label>{{property.other_domain | json}}
+									<td class="checkbox">
+		<label>
+			<input type="checkbox" ng-model="selectAll" ng-change="checkAll(websites, selectAll)"> Select all
+		</label>
+	<label ng-repeat="website in websites">
+	  <input type="checkbox" checklist-model="property.domain" checklist-value="website"> {{website.domain_name}}
+	</label> {{property.domain | json}}
+
 									</td>
 									<td class="checkbox ">
 									  <label>
 										<input type="checkbox" checklist-value="www.hinjewadiproperties.com" checklist-model="property.other_domain">www.hinjewadiproperties.com
-									  </label>{{property.other_domain | json}}
+									  </label>
 									</td>
 								</tr>
 							</table>
