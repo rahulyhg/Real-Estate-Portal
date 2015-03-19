@@ -3,11 +3,12 @@
 		<div class="main-content">
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>
 			<div class="text-right bottom-space">
-				
 					<a href="#/dashboard/websites/" class="btn btn-default">Website List</a>
 					<a href="#/dashboard/websites/requestnewsite" class="btn btn-default">Request New WebSite</a>
 					<a href="#/dashboard/websites/requestedsitelist" class="btn btn-default">Requested Website List</a>
-				
+			</div>
+			<div>
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
