@@ -24,7 +24,8 @@ define(['app'], function (app) {
 		$scope.dynamicTooltip = function(status, active, notActive){
 			return (status==1) ? active : notActive;
 		};
-		 
+		
+		console.log(dataService.config);	
 		 //for alert {Pooja}		 
 		if($scope.status=="warning"){     
 			 $scope.alerts.push({type: 'error', msg: "Error to load data"});
