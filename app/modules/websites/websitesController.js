@@ -103,16 +103,39 @@ define(['app'], function (app) {
 				});
 			}
 		};
-				
+		
+		$scope.changeStatusFn = function(colName, colValue, id){
+			$scope.changeStatus[colName] = colValue;
+			console.log($scope.changeStatus);		
+				dataService.put("put/website/"+id, $scope.changeStatus)
+				.then(function(response) { 
+					if(colName=='status'){
+						$scope.hideDeleted = 1;
+					}
+					$scope.alerts.push({type: response.status, msg: response.message});
+				});		
+		};
+			
+		$scope.editDomainName = function(colName, colValue, id, editStatus){
+			$scope.changeStatus[colName] = colValue;
+			console.log(colValue);
+			if(editStatus==0){
+				 dataService.put("put/website/"+id,$scope.changeStatus)
+				.then(function(response) { 
+					$scope.alerts.push({type: response.status,msg: response.message});
+				}); 
+			}
+		};	
+		
 		$scope.showInput = function($event,opened)		
-			{
-				//$scope.selected = undefined;
-				$scope.domain_name = []; 				  				
-				$event.preventDefault();
-				$event.stopPropagation();
-				$scope[opened] = ($scope[opened] ===true) ? false : true;
-			};	
-							
+		{
+			//$scope.selected = undefined;
+			$scope.domain_name = []; 				  				
+			$event.preventDefault();
+			$event.stopPropagation();
+			$scope[opened] = ($scope[opened] ===true) ? false : true;
+		};
+		
         var mywebsites = function(){
 			$scope.websiteParams = $scope.userDetails;
 			//function for mywebsites{sonali}

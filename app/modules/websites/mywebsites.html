@@ -56,12 +56,12 @@
 				<tbody>
 					<tr ng-repeat="x in website | orderBy:name">
 						<td>{{((myWebsiteCurrentPage - 1) * pageItems) + $index + 1}}</td>
-						<td>{{x.domain_name}}							
-								<a type="button" class="btn pull-right" ng-model="x.boxId" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-class="(x.boxId==1) ? 'btn btn-success' : 'btn btn-warning'" ng-click="showInput($event,'opened')" ng-change="editDomainName('domain_name', x.domain_name, x.id,x.boxId)" tooltip="Edit">
-								<span ng-if="x.boxId==1" class="glyphicon glyphicon-pencil"></span>
-								<span ng-if="x.boxId==0" class="glyphicon glyphicon-ok"></span>
+						<td>{{x.domain_name}}		
+								<a type="button" class="btn btn-success pull-right" ng-model="x.boxId" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-change="editDomainName('domain_name', x.domain_name, x.id,x.boxId)">
+								<span ng-if="x.boxId == 0" class="glyphicon glyphicon-pencil"></span>
+									<span ng-if="x.boxId == 1" class="glyphicon glyphicon-ok"></span>
 								</a>
-								<input type="text" id="domain_name" class="form-control" name="domain_name" ng-show="x.boxId == 1" ng-model="x.domain_name" ng-required="true"/>					
+								<input type="text" id="domain_name" class="form-control"  ng-click="showInput($event,'opened')" name="domain_name" ng-show="x.boxId == 1" ng-model="x.domain_name" ng-required="true"/>					
 						</td>
 						<td>{{x.registered_date}}</td>
 						<td>{{x.expiry_date}}</td>
