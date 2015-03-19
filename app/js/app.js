@@ -169,14 +169,14 @@ define(['angular',
             .otherwise({redirectTo: '/'});
  }]);
  app.run(['$location', '$rootScope', 'breadcrumbs','dataService','$cookieStore', '$cookies', function($location, $rootScope, breadcrumbs, dataService, $cookieStore, $cookies) {
-		$rootScope.userDetails = dataService.userDetails;
-		$rootScope.breadcrumbs = breadcrumbs;
-		$rootScope.appConfig = {
-			metaTitle : "Real Estate Portal",
-			headerTitle : next.$$route.label,
-			subTitle : next.$$route.label
-		};
 		$rootScope.$on("$routeChangeStart", function (event, next, current) {
+			$rootScope.userDetails = dataService.userDetails;
+			$rootScope.breadcrumbs = breadcrumbs;
+			$rootScope.appConfig = {
+				metaTitle : "Real Estate Portal",
+				headerTitle : next.$$route.label,
+				subTitle : next.$$route.label
+			};
 			var nextUrl = next.$$route.originalPath;
 			if(nextUrl == '/logout'){
 				dataService.logout();
