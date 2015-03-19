@@ -36,13 +36,13 @@
 		
 			"category" : [{
 				"category_name" : "Residential Property", 
-				"types" : [{"type" : "Flats & Apartment"}, {"type" : "Individual House/ Home"}, {"type" : "Society Housing"}, {"type" : "Builder Floor"}, {"type" : "Farm House"}, {"type" : "Apartments"}, {"type" : "Residential Land/ Plot"}, {"type" : "Bunglaows/ Villas"}, {"type" : "Penthouses"}],	
+				"types" : [{"type" : "Flats & Apartment"}, {"type" : "Individual House/ Home"}, {"type" : "Society Housing"}, {"type" : "Builder Floor"}, {"type" : "Farm House"}, {"type" : "Apartments"}, {"type" : "Residential Land/ Plot"}, {"type" : "Bunglaows/ Villas"}, {"type" : "Penthouses"}]	
 			},{
 				"category_name" : "Commercial Property", 
-				"types" : [{"type" : "Commercial Shops"}, {"type" : "Showrooms"}, {"type" : "Office Space"}, {"type" : "Office Complex "}, {"type" : "Banquet Hall & Guest House"}, {"type" : "Shopping Mall Space"}, {"type" : "Business Center"}, {"type" : "Commercial Lands & Plots"}, {"type" : "Hotel & Restaurant"}, {"type" : "Intitutional Land"}, {"type" : "Clinic & Hospital Building"}], 	
+				"types" : [{"type" : "Commercial Shops"}, {"type" : "Showrooms"}, {"type" : "Office Space"}, {"type" : "Office Complex "}, {"type" : "Banquet Hall & Guest House"}, {"type" : "Shopping Mall Space"}, {"type" : "Business Center"}, {"type" : "Commercial Lands & Plots"}, {"type" : "Hotel & Restaurant"}, {"type" : "Intitutional Land"}, {"type" : "Clinic & Hospital Building"}]	
 			},{
 				"category_name" : "Agricultural Land",
-				"types" : [{"type" : "Farm Land"}, {"type" : "Farm Land For Lease"}, {"type" : "Pasture"}], 	
+				"types" : [{"type" : "Farm Land"}, {"type" : "Farm Land For Lease"}, {"type" : "Pasture"}] 	
 			},{
 				"category_name" : "Industrial Property", 
 				"types" : [{"type" : "Industrial Land/Plot"}, {"type" : "Warehouse/Godown"}, {"type" : "Factory"}, {"type" : "Factory Plot/Land"}] 	
