@@ -42,7 +42,20 @@ define(['app'], function (app) {
 	   $scope.currentDate = dataService.currentDate;
 		// All $scope methods
 		
+		/*For display by default websitelist.html page*/
+		if(!$scope.webPart) {
+			$location.path('/dashboard/websites/mywebsites');
+		}
 		
+		//function for close alert
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
+			
+		//for tooltip
+		$scope.dynamicTooltip = function(status, active, notActive){
+			return (status==1) ? active : notActive;
+		};
 		
         $scope.pageChanged = function(page) { // Pagination page changed
 		//angular.extend($scope.featured, $scope.userDetails);
@@ -54,30 +67,41 @@ define(['app'], function (app) {
 			});
 		};
 		
-        /*For display by default websitelist.html page*/
-		if(!$scope.webPart) {
-			$location.path('/dashboard/websites/mywebsites');
-		}
-         
 		//this is global method for filter 
-		$scope.changeStatus = function(statusCol, colValue) {
-			console.log($scope.websiteParams);
+		$scope.changeStatusFn = function(statusCol, showStatus) {
+			console.log($scope.status);
 			$scope.filterStatus= {};
-			(colValue =="") ? delete $scope.websiteParams[statusCol] : $scope.filterStatus[statusCol] = colValue;
-			angular.extend($scope.websiteParams, $scope.filterStatus);
-			dataService.get("/getmultiple/website/1/"+$scope.pageItems, $scope.websiteParams)
-			.then(function(response) {  //function for templatelist response
+			(showStatus =="") ? delete $scope.status[statusCol] : $scope.filterStatus[statusCol] = showStatus;
+			angular.extend($scope.status, $scope.filterStatus);
+			dataService.get("getmultiple/website/1/"+$scope.pageItems, $scope.status)
+			.then(function(response) {  
 				if(response.status == 'success'){
 					$scope.website = response.data;
 					$scope.totalRecords = response.totalRecords;
 				}else{
 					$scope.website = {};
 					$scope.totalRecords = {};
-					$scope.alerts.push({type: response.status, msg: response.message});
+					$scope.alerts.push({type: response.status, msg: "No data Found"});
 				}
 				//console.log($scope.properties);
 			});
-		};	
+		};  
+		
+		$scope.changeStatus={};
+		$scope.editDomainName = function(colName, colValue, id, editStatus){
+			$scope.changeStatus[colName] = colValue;
+			console.log(colValue);
+			console.log($scope.changeStatus);
+				if(editStatus==0){
+				 dataService.put("put/website/"+id,$scope.changeStatus)
+				.then(function(response) { 
+					//if(status=='success'){
+						//$scope.hideDeleted = 1;
+					//}
+					$scope.alerts.push({type: response.status,msg:"One row updated"});
+				}); 
+			}
+		};	 
 		
 		//search filter{sonali}
 		$scope.searchFilter = function(statusCol, colValue) {
@@ -104,18 +128,6 @@ define(['app'], function (app) {
 			}
 		};
 		
-		$scope.changeStatusFn = function(colName, colValue, id){
-			$scope.changeStatus[colName] = colValue;
-			console.log($scope.changeStatus);		
-				dataService.put("put/website/"+id, $scope.changeStatus)
-				.then(function(response) { 
-					if(colName=='status'){
-						$scope.hideDeleted = 1;
-					}
-					$scope.alerts.push({type: response.status, msg: response.message});
-				});		
-		};
-			
 		$scope.editDomainName = function(colName, colValue, id, editStatus){
 			$scope.changeStatus[colName] = colValue;
 			console.log(colValue);
@@ -145,7 +157,7 @@ define(['app'], function (app) {
 			if(response.status == 'success'){
 					$scope.website=response.data;
 					console.log($scope.website);
-					$scope.alerts.push({type: response.status, msg:'data access successfully..'});
+					//$scope.alerts.push({type: response.status, msg:'data access successfully..'});
 					$scope.totalRecords = response.totalRecords;	
 				}
 				else
@@ -154,17 +166,18 @@ define(['app'], function (app) {
 				};
 			});
 			
+			//delete button {trupti}
 			$scope.deleted = function(id, status){
 				$scope.deletedData = {status : status};
-				//console.log($scope.deletedData);
 				dataService.put("put/website/"+id, $scope.deletedData)
 				.then(function(response) { //function for businesslist response
 					if(response.status == 'success'){
 						//$scope.hideDeleted = 1;
-						console.log(response);
+						//console.log(response);
+						$scope.website=response.data;
 					}
 				});
-			};		
+			};			
 		};
        
 		var requestedsitelist = function(){

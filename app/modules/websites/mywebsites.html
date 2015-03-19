@@ -1,4 +1,3 @@
-
 <div class="row ">
 	 <div class="col-sm-3"> 
 		<label for="searchSite" class="control-label">Search </label>		
@@ -10,7 +9,6 @@
 				</span>	
 		</div>	<!-- /input-group -->
 	</div>	
-
 	 <div class="col-sm-3">
 		<label for="id" class="control-label">Sort by Order</label>
 		<select id="id" class="form-control" ng-model="name"> 
@@ -21,26 +19,14 @@
 	</div>
 	<div class="col-sm-3">
 		<label for="status" class="control-label">Select Status</label>
-		<select id="status" class="form-control" ng-model="statusFilter" ng-change="changeStatus('status',statusFilter)">
+		<select id="status" class="form-control" ng-model="statusFilter" ng-change="changeStatusFn('status',statusFilter)">
 			<option value="" selected>Select Status</option> <!-- add value attribute empty & selected for initial selected option -->
-			<option value="1">In Progress</option>
-			<option value="2">Approved</option>
-			<option value="3">Pending</option>
-			<option value="4">Rejected</option> 
-		</select>
-	</div>
-	
-	<div class="col-sm-3">
-		<label for="website" class="control-label">Select Site :</label>
-		<select id="website" class="form-control">            
-			<option value="">Select Site</option>
-			<option value="www.jaidevlandmarks.com">www.jaidevlandmarks.com</option>  
-			<option value="www.hinjewadiproperties.com">www.hinjewadiproperties.com</option>  
-			
+			<option value="1">Active</option>
+			<option value="0">Deleted</option>
+			<option value="2">Expired</option>
 		</select>
 	</div>
 </div>	
-
 <div class="row">
 	<div class="col-sm-12">
 	<h3> Website Details</h3>
@@ -51,39 +37,48 @@
 					<th>Site Names</th>
 					<th>Start Date</th>
 					<th>Exp Date</th>
+					<th>status</th>
 					<th>Manage</th>
 				</thead>
 				<tbody>
 					<tr ng-repeat="x in website | orderBy:name">
 						<td>{{((myWebsiteCurrentPage - 1) * pageItems) + $index + 1}}</td>
-						<td>{{x.domain_name}}		
+						<!-- <td>{{x.domain_name}}		
 								<a type="button" class="btn btn-success pull-right" ng-model="x.boxId" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-change="editDomainName('domain_name', x.domain_name, x.id,x.boxId)">
 								<span ng-if="x.boxId == 0" class="glyphicon glyphicon-pencil"></span>
 									<span ng-if="x.boxId == 1" class="glyphicon glyphicon-ok"></span>
 								</a>
 								<input type="text" id="domain_name" class="form-control"  ng-click="showInput($event,'opened')" name="domain_name" ng-show="x.boxId == 1" ng-model="x.domain_name" ng-required="true"/>					
+						</td> -->
+						
+						<td>{{x.domain_name}} 
+						<a type="button" class="btn btn-warning pull-right" ng-model="x.boxId" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-click="showInput($event,'opened')" ng-change="editDomainName('domain_name', x.domain_name, x.id,x.boxId)" tooltip="Edit">
+						<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<input type="text" id="domain_name" class="form-control" name="domain_name" ng-show="x.boxId == 1" ng-model="x.domain_name" ng-required="true"/>
 						</td>
 						<td>{{x.registered_date}}</td>
 						<td>{{x.expiry_date}}</td>
+						<td>{{x.status}}</td>
 						<td>
 							<div class="btn-group">
-								<button ng-click="open('modules/websites/viewwebsite.html', x.id)" class="glyphicon glyphicon-star btn btn-success" tooltip="View Site"></button>
+								<!-- <button ng-click="open('modules/websites/viewwebsite.html', x.id)" class="glyphicon glyphicon-star btn btn-success" tooltip="View Site"></button> -->
+								<a ng-click="open('modules/websites/viewWebsite.html', x.id)" class="btn btn-primary responsive"> View Details</a>
 							</div>	
+							<div class="btn-group">
+								<a href="{{'http://'+x.domain_name}}" target="_blank" class="btn btn-primary">Prieview
+								</a>		
+							</div>
 							
-							<div class="btn-group">
-								<button class="glyphicon glyphicon-search btn btn-primary" aria-hidden="true" tooltip-position="top" tooltip="Preview Sites">
-								</button>
-							</div>
-						
-							<div class="btn-group">
-								<button type="button" tooltip="Delete Site" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="deleted(x.id, x.status)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class="glyphicon glyphicon-trash"></span></button>								
-							</div>
+							<button type="button" tooltip="{{dynamicTooltip(x.status, 'Delete', 'Active')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="changeStatusFn( 'status',x.status, x.id)"" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class="glyphicon glyphicon-remove"></span></button>
+							
+							<button type="button" tooltip="{{dynamicTooltip(x.expired, 'expired', 'Reactive')}}"ng-class="(x.expired==0) ? 'btn btn-danger' : 'btn btn-success'" ng-model="x.expired" ng-change="changeStatusFn('expired',x.id, x.expired)" btn-checkbox btn-checkbox-true="0" btn-checkbox-false="1"><span class="glyphicon glyphicon-ok"></span></button>
+			
 						</td>
 					</tr>
 				</tbody>					
 			</table>
 		</div>
-	
 		<div class="text-center">				
 			<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="myWebsiteCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(myWebsiteCurrentPage,featured)"></pagination>				
 			<pre>Page: {{myWebsiteCurrentPage}} / {{numPages}}</pre>
