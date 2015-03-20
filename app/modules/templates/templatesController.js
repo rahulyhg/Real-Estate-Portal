@@ -20,6 +20,9 @@ define(['app'], function (app) {
  		$scope.alerts = [];
 		$scope.currentDate = dataService.currentDate;
 		console.log($scope.currentDate);
+		$scope.id={user_id:$rootScope.userDetails.id};
+		
+		
 		
 		/* $scope.tempImg = [];
 		$http.get("store-tempImg.json").success(function(data){
@@ -249,7 +252,37 @@ define(['app'], function (app) {
 			upload.generateThumbs(files);
 		};
 		// End upload function {pooja}
-		} 
+		}
+		
+		
+		var websitelist = function(){
+		dataService.get('getmultiple/template/',{user_id:$rootScope.userDetails.id})
+		.then(function(response){
+			var templates = [];
+			for(var id in response.data){
+			 var obj = {id: response.data[id].id, domain_name : response.data[id].domain_name};
+			 webList.push(obj);
+			}
+			$scope.webList = templates;
+		   }) ;
+		
+		
+		
+		
+		
+		
+		/* console.log($scope.id);
+		var websitelist = function(){
+			dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems+"/"+$rootScope.userDetails.id)
+			.then(function(response) {  //function for websiteList response
+				$scope.totalRecords = response.totalRecords;
+				$scope.webList = response.data;
+				console.log(response.data);
+			});
+			
+		};
+ */
+		
 			 
 		switch($scope.tempPart) {			
 			case 'myTemplates':
@@ -263,6 +296,9 @@ define(['app'], function (app) {
 				break;			
 			case 'requestCustomTemplates':
 				requestCustomTemplates();
+				break;	
+			case 'websiteList':
+				websitelist();
 				break;	
 			default:
 				websitesTemplate();
