@@ -21,7 +21,7 @@ define(['app'], function (app) {
 			project_gallery : { details : {} },
 			project_images : {} ,
 			created_date : $scope.currentDate,
-			user_id : $rootScope.userDetails.id,
+			user_id : $rootScope.userDetails.id
 		};
 
 		//Upload Function for uploading files 
@@ -98,15 +98,14 @@ define(['app'], function (app) {
 			};// end file upload code
 			
 			// for dynamic value of domain name
-			dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id})
-				.then(function(response){
+			dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id}).then(function(response){
 				var websites = [];
 				for(var id in response.data){
 					var obj = {id: response.data[id].id, domain_name : response.data[id].domain_name};
 					websites.push(obj);
 				}
 				$scope.websites = websites;
-			}) 
+			}) ;
 
 			// for check all checkboxes
 			$scope.checkAll = function(websites, checkValue) {
@@ -116,22 +115,23 @@ define(['app'], function (app) {
 			};
 			
 		// code to access dynamic project categories & types
-				/*$scope.project = {category : {} };
+				$scope.project = {category : {} };
 				$scope.categories = dataService.config.property.category;
 				console.log(dataService.config);
-				$scope.getCategory = function(category){
-					var types = [];
+				$scope.getTypes = function(category){
+					var projtypes = [];
+					console.log($scope.categories);
 					for (var x in $scope.categories){
 						console.log($scope.categories[x].category_name);
 						if($scope.categories[x].category_name == category){
 							for(var y in $scope.categories[x].types){
-								types.push($scope.categories[x].types[y])
+								projtypes.push($scope.categories[x].types[y])
 							}
 						}
 					}
-					$scope.types = types;
-				};*/
-				
+					$scope.projtypes = projtypes;
+				};
+
 		//add project
 		$scope.addproject = function(project){
 			console.log(project);
@@ -142,7 +142,7 @@ define(['app'], function (app) {
 				}else{
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}
-				$scope.reset();
+				$scope.addproject.$setPristine();
 			});
 		};
 	};	

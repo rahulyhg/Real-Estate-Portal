@@ -24,7 +24,7 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			dataService.get("getmultiple/project/"+page+"/"+$scope.pageItems, where).then(function(response){
 				$scope.projects = response.data;
 			});
-		}
+		};
 		
 		// to view project details in table
 		dataService.get("getmultiple/project/"+$scope.projectListCurrentPage+"/"+$scope.pageItems,$scope.user_id)
