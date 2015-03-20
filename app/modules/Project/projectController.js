@@ -33,9 +33,10 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 		
 		// for delete button
 			$scope.deleted = function(id, status){
-				$scope.deletedData = {status : status};
+				$scope.deletedData = {status : 0};
+				$scope.featuredData = {featured : 0};
 				console.log(status);
-				dataService.put("put/project/"+id, $scope.deletedData)
+				dataService.put("put/project/"+id, $scope.deletedData,$scope.featuredData)
 				.then(function(response) { 
 					if(response.status == 'success'){
 						$scope.projects=response.data;

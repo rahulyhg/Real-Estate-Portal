@@ -100,9 +100,11 @@
 										<a class="btn btn-success" href="#/dashboard/project/addproject/{{x.id}}" title="Edit">
 											<span class="glyphicon glyphicon-pencil"></span>
 										</a>
+										<button type="button" tooltip="{{dynamicTooltip(x.featured, 'non featured', 'featured')}}" ng-class="(x.featured==1) ? 'btn btn-info ' : 'btn btn-danger glyphicon glyphicon-trash'" ng-model="x.featured" ng-click="deleted( x.featured, x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">{{x.featured}}
+										</button>
+										
 										<button href="#" class="btn btn-primary " title="Preview Template">Preview</button>
-										<a class="btn btn-info" ng-show="x.featured==1" title="Active">Featured</a>
-										<a class="btn btn-warning" ng-show="x.featured==0" title="Deleted">Non Featured</a>
+										
 									
 										
 									
