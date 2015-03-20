@@ -15,16 +15,12 @@ define(['app'], function (app) {
 		$scope.webTempCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";
-		$scope.user_id = {user_id : 2};
+		$scope.user_id = {user_id : 2};/* $rootScope.userDetails.id */
 		$scope.tempPart = $routeParams.tempPart;
  		$scope.alerts = [];
 		$scope.currentDate = dataService.currentDate;
 		console.log($scope.currentDate);
 		
-		/* $scope.tempImg = [];
-		$http.get("store-tempImg.json").success(function(data){
-		  $scope.tempImg = data;
-		}); */
 		
 		//single view modal fun
 		$scope.open = function (url, tempId) {
@@ -46,7 +42,52 @@ define(['app'], function (app) {
 		};
 		$scope.ok = function () {
 			$modalOptions.close('ok');
-		};			
+		};
+
+	//show user website list data 
+		$scope.showWebDt = function (url, tempId) {
+			$scope.status = {status:1};
+			angular.extend($scope.status, $scope.userDetails);
+			dataService.get("getmultiple/website/1/50",$scope.status)
+			.then(function(response) {
+				var oldObj = response.data;
+				var modalDefaults = {
+					templateUrl: url,	// apply template to modal
+					size : 'lg'
+				};
+				var modalOptions = {
+					webList: oldObj,  // assign data to modal
+					tempId : {templates : {template_id : [tempId]}},
+					updateConfig : function(formData){
+						modalOptions.formData = formData;
+					},					
+				};				
+				modalService.showModal(modalDefaults, modalOptions).then(function (result) {
+					var formData = modalOptions.formData;
+					var userConfig = dataService.parse($rootScope.userDetails).config;
+					var webConfig = dataService.parse(modalOptions.websiteList[formData.website_id].config);
+					var userTemplateConfig = (userConfig.templates.template_id) ? userConfig.templates.template_id.push(tempId) : angular.extend(userConfig,formData.config);
+					
+					console.log(userTemplateConfig);
+					console.log(userConfig);
+					//angular.extend(userConfig, formData.config);
+					angular.extend(webConfig, formData.config);
+					dataService.put('put/website/'+formData.website_id, {config : webConfig})
+					.then(function(response){
+						console.log(response.message);
+					});
+					dataService.put('put/user/'+$rootScope.userDetails.id, {config : userConfig})
+					.then(function(response){
+						console.log(response.message);
+					});  
+					
+				});
+			});
+		};
+		$scope.ok = function () {
+			$modalOptions.close('ok');
+		};	//	end of webList modal
+	
 		
          //for alert {Pooja}		 
 		if($scope.status=="warning"){     
@@ -95,20 +136,32 @@ define(['app'], function (app) {
 			});
 		};
 		
-		//code for delete single template
-		$scope.changeStatus = function(id, status, index){
-			if(status==1){
-				$scope.custom = {status : 0};
+		 $scope.changeStatus = {};
+		$scope.changeStatusFn = function(colName, colValue, id){
+			$scope.changeStatus[colName] = colValue;				
+			//console.log($scope.changeStatus);
+			
+				 dataService.put("put/template/"+id,$scope.changeStatus)			
+				.then(function(response) {					
+					if(colName=='template_type'){					
+					}
+					$scope.alerts.push({type: response.status,msg: response.message});
+				}); 
+		}
+		
+		/* //code for delete single template
+		$scope.changeStatus = function(id, template_type, index){
+			if(template_type==1){
+				$scope.custom = {template_type : 0};
 				dataService.put("put/template/"+id, $scope.custom)
 				.then(function(response) { 
 					console.log(response.message);
-					$scope.templates[index].status = 0				
+					$scope.templates[index].template_type = 0				
 				});
 			}
-		};
+		};	  */
 		
-		
-	//search filter function
+		//search filter function
 		$scope.searchFilter = function(statusCol, searchTemp) {
 			$scope.search = {search: true};
 			$scope.filterStatus= {};
@@ -128,9 +181,7 @@ define(['app'], function (app) {
 				}
 				//console.log($scope.properties);
 			});
-		};	
-		
-		
+		};			
 		
 		// switch functions 
 		var projectTemplate = function(){
@@ -176,7 +227,7 @@ define(['app'], function (app) {
 		};
 		
 		var customTemplates = function(){
-			$scope.custom = {status : 1,custom : 1,template_type : "private"};
+			$scope.custom = {custom : 1};
 			angular.extend($scope.custom, $scope.user_id);			
 			dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) { 
@@ -203,7 +254,7 @@ define(['app'], function (app) {
 				}else{
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}
-			});
+			});		
 		};
 		
 		var requestCustomTemplates = function(){
@@ -249,7 +300,7 @@ define(['app'], function (app) {
 			upload.generateThumbs(files);
 		};
 		// End upload function {pooja}
-		} 
+		}			
 			 
 		switch($scope.tempPart) {			
 			case 'myTemplates':
@@ -264,35 +315,12 @@ define(['app'], function (app) {
 			case 'requestCustomTemplates':
 				requestCustomTemplates();
 				break;	
+			/* case 'websiteList':
+				websitelist();
+				break;	 */
 			default:
 				websitesTemplate();
-		};
-							/* 
-			//update template 
-			if($routeParams.id){
-				$http.get("../server-api/index.php/put/template/"+$routeParams.id)
-				.success(function(response) {
-					$scope.templates = response;
-					$scope.reset = function() {
-						$scope.templates = angular.copy($scope.templates);
-					};
-					$scope.reset();
-					console.log($scope.templates);
-					
-				}).error(function(err){
-					console.log(err);
-				});
-				
-				$scope.update = function(){
-					$http.put("../server-api/index.php/put/template/"+$routeParams.id,$scope.templates)
-					.success(function(response) {
-						alert(response);
-					});
-				};
-			}	*/
-
-			
-		
+		};		
 	};
        
 	// Inject controller's dependencies

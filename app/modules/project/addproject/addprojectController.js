@@ -99,7 +99,8 @@ define(['app'], function (app) {
 			};// end file upload code
 			
 			// for dynamic value of domain name
-			dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id}).then(function(response){
+			dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id})
+			.then(function(response){
 				var websites = [];
 				for(var id in response.data){
 					var obj = {id: response.data[id].id, domain_name : response.data[id].domain_name};

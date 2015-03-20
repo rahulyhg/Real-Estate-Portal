@@ -1,0 +1,111 @@
+
+<form name="submitTemp"  class="form-horizontal " role="form" novalidate="novalidate">
+	<div class="form-group">
+	   <div class="col-sm-offset-2 col-sm-9">
+			<h3> Request For Custom Template</h3>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="template_name" class="col-sm-2 control-label">Template Name</label>	
+		<div class="col-sm-9">
+            <input type="text" id="template_name" class="form-control" name="template_name" placeholder="Enter Your Name" ng-model="submitTemplate.template_name" required >
+			<span class="text-danger" ng-show="submitTemp.template_name.$dirty && submitTemp.template_name.$invalid">
+				<span ng-show="submitTemp.template_name.$error.required">Name is required.</span>
+			</span>
+		</div>						
+	</div>	
+        <input type="hidden" ng-model="template.date" >
+	<div class="form-group">	
+		<label  for="domain" class="col-sm-2 control-label">category</label>
+		<div class="col-sm-9">
+           <select class="form-control" id="category" name="category" ng-model="submitTemplate.category" required >
+				<option value="" selected>select Template Category{{submitTemplate.category}}</option>
+					
+			</select>
+		</div>						
+	</div>	
+	<div class="form-group">	
+		<label  for="contact" class="col-sm-2 control-label">  Upload file</label>	
+			<div class="col-sm-9">
+				<input type="file" id="submitTemplate" ng-file-select ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="scrible">
+							
+					<!-- This will show thumbnails & progress of images -->
+					<file-preview url="scrible" ng-model="submitTemplate.scrible"></file-preview>
+					
+					<!-- This button will show if file/s selected -->
+					<button ng-show="scrible" ng-click="upload(scrible,path,userinfo)" type="button">Upload</button>
+					
+					<!-- This hidden input will store image path in array after successful uploading -->
+					<input type="hidden" ng-model="submitTemplate.scrible">
+				<!-- Changed by pooja -->          
+			</div>						
+	</div>
+ 	
+	<div class="form-group">
+		<label for="submitTemplate" class="col-sm-2 control-label">Upload Image file for preview</label>	
+		<div class="col-sm-9">
+			<input type="file" id="submitTemplate" ng-file-select ng-multiple="true" accept="image/jpeg,image/png, image/gif" ng-file-change="generateThumb($files)" ng-model="scrible">
+						
+				<!-- This will show thumbnails & progress of images -->
+				<file-preview url="scrible" ng-model="submitTemplate.scrible"></file-preview>
+				
+				<!-- This button will show if file/s selected -->
+				<button ng-show="scrible" ng-click="upload(scrible,path,userinfo)" type="button">Upload</button>
+				
+				<!-- This hidden input will store image path in array after successful uploading -->
+				<input type="hidden" ng-model="submitTemplate.scrible">
+			<!-- Changed by pooja -->
+		</div>
+	</div>
+	<div class="form-group">
+		 <label for="requirement" class="col-sm-2 control-label">template_params</label>
+		<div class="col-sm-9">
+			<div class="row">
+				<div class="col-sm-4">
+					<label class="control-label">Select Options</label>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="submitTemplate.template_params.slider">Slider
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="submitTemplate.template_params.featured">  Featured/Hightlighted
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="submitTemplate.template_params.product_service"> Product/Service
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="submitTemplate.template_params.template_color">Template Colors
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="submitTemplate.template_params.enquiry_form">  Enquiry form
+						</label>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="submitTemplate.template_params.google_map">   Google map
+						</label>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class="form-group">	
+		<label for="requirement" class="col-sm-2 control-label">hidden input </label>	
+		</div>
+	</div>
+		
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-9">
+			<button type="submit" class="btn btn-success" tooltip="Submit Template Request">Submit Template</button><!-- ng-click="postData(template)" -->
+			<button type="reset" class="btn btn-danger" tooltip="Cancle">Reset</button>
+		</div>
+	</div>					
+</form>
+			
