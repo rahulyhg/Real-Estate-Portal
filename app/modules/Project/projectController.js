@@ -1,42 +1,43 @@
 'use strict';
 define(['app'], function (app) {
-var injectParams = ['$scope', '$injector','$http', '$routeParams','$rootScope'];
+var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataService'];
   // This is controller for this view
-	var projectController = function ($scope, $injector,$http,$routeParams,$rootScope) {
+	var projectController = function ($scope, $injector,$routeParams,$rootScope,dataService) {
 		$rootScope.metaTitle = "Real Estate Project";
-	//Code For Pagination
+	
 		$scope.maxSize = 5;
 		$scope.totalRecords = "";
-		$scope.currentPage = 1;
+		$scope.projectListCurrentPage = 1;
 		$scope.pageItems = 10;
-		$scope.numPages = "";	
-		if($routeParams.type) {					
-		$http.get("../server-api/index.php/project/"+$routeParams.type)
-		.success(function(response) {
-			$scope.project = response;
-			console.log($scope.project);
-		});
+		$scope.numPages = "";		
+		$scope.user_id = {user_id : $rootScope.userDetails.id}; 
+		$scope.alerts = [];
 		
-		}else{
-		//this request for all project data	
-		$http.get("../server-api/index.php/projects/"+$scope.currentPage+"/"+$scope.pageItems)
-			.success(function(response) {
+		// function to close alert
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
+		
+		//Code For Pagination
+		$scope.pageChanged = function(page, where) { 
+			angular.extend(where, $scope.user_id);
+			dataService.get("getmultiple/project/"+page+"/"+$scope.pageItems, where).then(function(response){
+				$scope.projects = response.data;
+			});
+		};
+		
+		// to view project details in table
+		dataService.get("getmultiple/project/"+$scope.projectListCurrentPage+"/"+$scope.pageItems,$scope.user_id)
+		.then(function(response) {  
+				console.log(response);
+				
 				$scope.projects = response.projects;
 				$scope.totalRecords=response.totalRecords;
-			//console.log($scope.projects);
-			});		
-		}		
+			
+		});
 
-		$scope.pageChanged = function() {
-			//$log.log('Page changed to: ' + $scope.currentPage);
-			$http.get("../server-api/index.php/projects/"+$scope.currentPage+"/"+$scope.pageItems)
-			.success(function(response) {
-				$scope.projects = response.projects;
-				//console.log(projects);
-				//$scope.totalRecords = response.totalRecords;
-				
-			});
-		};    
+		
+		
     };		 
 	// Inject controller's dependencies
 	projectController.$inject = injectParams;

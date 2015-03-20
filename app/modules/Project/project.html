@@ -70,7 +70,7 @@
 							</thead>
 							
 							<tbody>
-								<tr ng-repeat="x in projects | filter:searchProp | orderBy:id | filter:{status:status} | filter:{featured:featured}">
+								<tr ng-repeat="x in projects ">
 									<td>{{ $index + 1 }}</td>
 									<td><img class="img-thumbnail img-responsive prop-img" ng-src="/img/{{x.proj_image}}"></td>
 									<td>
@@ -106,12 +106,10 @@
 							</tbody>
 						</table>
 					</div>
-				
-					<div class="text-center">				
-						<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged()"></pagination>
-						
-						<pre>Page: {{currentPage}} / {{numPages}}</pre>
-					</div>
+				<div class="text-center">				
+					<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="projectListCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(projectListCurrentPage,statusParam)"></pagination>				
+					<pre>Page: {{projectListCurrentPage}} / {{numPages}}</pre>
+				</div>	
 				</div>
 			</div>
 		</div>		

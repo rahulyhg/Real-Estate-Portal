@@ -1,7 +1,7 @@
-<h3>Project Gallery</h3>{{project.project_gallery|json}}
+<h3>Project Gallery</h3>
 <div class="form-group">
 	<div class="col-sm-offset-3 col-sm-9">
-		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(aproject_gallery, project.project_gallery.details)" title="Add Project Gallery">Add Project Gallery</button>
+		<button type="button" class="btn btn-default btn-primary pull-right" ng-click="addToObject(addproject_gallery, project.project_gallery.details)" title="Add Project Gallery">Add Project Gallery</button>
 	</div>
 </div>
 <div>
@@ -13,8 +13,8 @@
 <div class="form-group">
 	<label  for="galleryTitle" class="col-sm-2 control-label">* Title</label>
 	<div class="col-sm-9">		
-		<textarea type="text"  id="galleryTitle" class="form-control" name="galleryTitle" ng-model="aproject_gallery.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-		<p ng-hide="addProject.galleryTitle.$error.maxlength">{{ 356 - aproject_gallery.title + " Chars left" }}</p>
+		<textarea type="text"  id="galleryTitle" class="form-control" name="galleryTitle" ng-model="addproject_gallery.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+		<p ng-hide="addProject.galleryTitle.$error.maxlength">{{ 356 - addproject_gallery.title + " Chars left" }}</p>
 			 <span class="text-danger" ng-show="addProject.galleryTitle.$error.maxlength">
 			Sorry You are Exceeding the Limit</span>
 				<span class="text-danger" ng-show="addProject.galleryTitle.$dirty && addProject.galleryTitle.$invalid">
@@ -24,8 +24,8 @@
 <div class="form-group"> 
 	<label for="galleryDescription" class="col-sm-2 control-label"> * Description</label> 
 	<div class="col-sm-9">
-			<textarea class="form-control" id="galleryDescription"  name="galleryDescription" ng-model="aproject_gallery.description.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-		<p ng-hide="addProject.galleryDescription.$error.maxlength">{{ 356 - aproject_gallery.description.description.length + " Chars left" }}</p>
+			<textarea class="form-control" id="galleryDescription"  name="galleryDescription" ng-model="addproject_gallery.description.description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+		<p ng-hide="addProject.galleryDescription.$error.maxlength">{{ 356 - addproject_gallery.description.description.length + " Chars left" }}</p>
 		 <span class="text-danger" ng-show="addProject.galleryDescription.$error.maxlength">
 				Sorry You are Exceeding the Limit</span>
 		<span class="text-danger" ng-show="addProject.galleryDescription.$dirty && addProject.galleryDescription.$invalid">
@@ -36,8 +36,8 @@
 <div class="form-group">
 	<label  for="Media" class="col-sm-2 control-label">* Media </label>
 	<div class="col-sm-9">		
-		<textarea type="text"  id="Media" class="form-control" name="Media" ng-model="aproject_gallery.media"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
-		<p ng-hide="addProject.Media.$error.maxlength">{{ 356 - aproject_gallery.media + " Chars left" }}</p>
+		<textarea type="text"  id="Media" class="form-control" name="Media" ng-model="addproject_gallery.media"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+		<p ng-hide="addProject.Media.$error.maxlength">{{ 356 - addproject_gallery.media + " Chars left" }}</p>
 			 <span class="text-danger" ng-show="addProject.Media.$error.maxlength">
 			Sorry You are Exceeding the Limit</span>
 				<span class="text-danger" ng-show="addProject.Media.$dirty && addProject.Media.$invalid">
@@ -47,8 +47,8 @@
 	<div class="form-group"> 
 		<label for="mediaDiscription" class="col-sm-2 control-label"> * Description</label> 
 		<div class="col-sm-9">
-				<textarea class="form-control" id="mediaDiscription"  name="mediaDiscription" ng-model="aproject_gallery.media_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
-			<p ng-hide="addProject.mediaDiscription.$error.maxlength">{{ 356 - aproject_gallery.media_description.length + " Chars left" }}</p>
+				<textarea class="form-control" id="mediaDiscription"  name="mediaDiscription" ng-model="addproject_gallery.media_description" cols="20" rows="4" ng-maxlength="356" required ></textarea>
+			<p ng-hide="addProject.mediaDiscription.$error.maxlength">{{ 356 - addproject_gallery.media_description.length + " Chars left" }}</p>
 			 <span class="text-danger" ng-show="addProject.mediaDiscription.$error.maxlength">
 					Sorry You are Exceeding the Limit</span>
 			<span class="text-danger" ng-show="addProject.mediaDiscription.$dirty && addProject.mediaDiscription.$invalid">
