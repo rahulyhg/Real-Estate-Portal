@@ -57,8 +57,9 @@
 				<td>{{key}}</td>
 				<td>
 					<span ng-repeat="(key, value) in addimage.description.project_images">
-						<img width='50px' ng-src="{{'../server-api/'+value.file_name}}" />
-					</span>
+					 <img width='150px' ng-src="{{appConfig.assetPath+value.file_name}}"/>
+				   </span>
+					
 				</td>
 				<td><button ng-click="removeObject(key,project.project_images)">Remove</button></td>
 			</tr>

@@ -4,7 +4,7 @@ define(['app'], function (app) {
 	var injectParams = ['$scope','$rootScope','$injector', '$routeParams','upload','dataService'];
   // This is controller for this view
 	var addprojectController = function ($scope,$rootScope, $injector,$routeParams,upload,dataService) {
-		$rootScope.metaTitle = "Real Estate Add Project";
+		 $rootScope.metaTitle = "Real Estate Add Project";
 		$scope.alerts = [];
 		$scope.userinfo = {user_id : $rootScope.userDetails.id};
 		$scope.currentDate = dataService.currentDate;
@@ -66,13 +66,14 @@ define(['app'], function (app) {
 			
 			// add form part to main form object
 			$scope.addToObject = function(data, object){
-				object[data.title] = data.description;
-			};
-			
+				 var dtlObj = JSON.stringify(data.description);
+				 object[data.title] = JSON.parse(dtlObj);
+			}
+
 			// remove object from main form object
 			$scope.removeObject = function(key, object){
 				delete object[key];
-			};
+			}
 			
 			// to close alert message
 			$scope.closeAlert = function(index) {
@@ -115,7 +116,6 @@ define(['app'], function (app) {
 			};
 			
 		// code to access dynamic project categories & types
-				$scope.project = {category : {} };
 				$scope.categories = dataService.config.property.category;
 				console.log(dataService.config);
 				$scope.getTypes = function(category){
@@ -130,7 +130,10 @@ define(['app'], function (app) {
 						}
 					}
 					$scope.projtypes = projtypes;
+					
 				};
+				
+		
 
 		//add project
 		$scope.addproject = function(project){
@@ -145,6 +148,8 @@ define(['app'], function (app) {
 				$scope.addproject.$setPristine();
 			});
 		};
+		
+		
 	};	
 	 
 	// Inject controller's dependencies
