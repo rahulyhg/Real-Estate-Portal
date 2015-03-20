@@ -258,12 +258,13 @@ define(['app'], function (app) {
 		var websitelist = function(){
 		dataService.get('getmultiple/template/',{user_id:$rootScope.userDetails.id})
 		.then(function(response){
-			var templates = [];
+			console.log=($rootScope.userDetails.id);
+			/* var templates = [];
 			for(var id in response.data){
 			 var obj = {id: response.data[id].id, domain_name : response.data[id].domain_name};
 			 webList.push(obj);
 			}
-			$scope.webList = templates;
+			$scope.webList = templates; */
 		   }) ;
 		
 		
