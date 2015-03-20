@@ -18,6 +18,10 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			$scope.alerts.splice(index, 1);
 		};
 		
+		//for dynamic tooltip
+		$scope.dynamicTooltip = function(status, active, notActive){
+			return (status==1) ? active : notActive;
+		};
 		//Code For Pagination
 		$scope.pageChanged = function(page) { 
 			angular.extend($scope.projectParam, $scope.user_id);
@@ -27,31 +31,62 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			});
 		};
 		
-		// code for search filter
-		$scope.searchFilter = function(statusCol, colValue) {
-			$scope.search = {search: true};
-			$scope.filterStatus= {}; 
-			(colValue =="") ? delete $scope.projectParam[title] : $scope.filterStatus[title] = colValue;
-			angular.extend($scope.projectParam, $scope.filterStatus);
-			angular.extend($scope.projectParam, $scope.search);
-			
-			if(colValue.length >= 4 || colValue ==""){
-				dataService.get("/getmultiple/project/1/"+$scope.pageItems, $scope.projectParam)
+		// for delete button
+			$scope.deleted = function(id, status){
+				$scope.deletedData = {status : status};
+				console.log(status);
+				dataService.put("put/project/"+id, $scope.deletedData)
 				.then(function(response) { 
 					if(response.status == 'success'){
-						$scope.projects = response.data; // this will change for template
-						$scope.totalRecords = response.totalRecords; // this is for pagination
-					}else{
-						$scope.projects = {};
-						$scope.totalRecords = {};
-						$scope.alerts.push({type: response.status, msg: response.message});
+						$scope.projects=response.data;
 					}
 				});
+			};		
+		
+		$scope.searchFilter = function(statusCol, showStatus) {
+			$scope.search = {search: true};
+			$scope.filterStatus= {};
+			$scope.projectParam={};
+			(showStatus =="") ? delete $scope.projectParam[statusCol] : $scope.filterStatus[statusCol] = showStatus;
+			angular.extend($scope.projectParam, $scope.filterStatus);
+			angular.extend($scope.projectParam, $scope.search);
+			if(showStatus.length >= 4 || showStatus == ""){
+			dataService.get("getmultiple/project/1/"+$scope.pageItems, $scope.projectParam)
+			.then(function(response) {  
+			console.log(response);
+				if(response.status == 'success'){
+					$scope.projects = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.projects = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
+			});
 			}
+		}; 
+		
+		// code for filter data as per satus (delete/active)
+		
+		$scope.changeStatus = function(statusCol, showStatus) {
+			console.log($scope.projectParam);
+			$scope.filterStatus= {};
+			(showStatus =="") ? delete $scope.projectParam[statusCol] : $scope.filterStatus[statusCol] = showStatus;
+			angular.extend($scope.projectParam, $scope.filterStatus);
+			dataService.get("getmultiple/project/1/"+$scope.pageItems, $scope.projectParam)
+			.then(function(response) {  
+				if(response.status == 'success'){
+					$scope.projects = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.projects = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
+			});
 		};
 		
 		// code for change status when user delete/ active the project
-			
 		$scope.changeValue = function(statusCol,status) {
 			$scope.filterStatus= {};
 			(status =="") ? delete $scope.projectParam[statusCol] : $scope.filterStatus[statusCol] = status;
@@ -85,9 +120,9 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 		}) ;
 		
 		// code for view project details
-		$scope.custom = {status : 1};			
-		angular.extend($scope.custom,$scope.user_id);
-		dataService.get("/getmultiple/project/"+$scope.projectListCurrentPage+"/"+$scope.pageItems, $scope.custom)
+		$scope.projectParam = {status : 1};			
+		angular.extend($scope.projectParam,$scope.user_id);
+		dataService.get("/getmultiple/project/"+$scope.projectListCurrentPage+"/"+$scope.pageItems, $scope.projectParam)
 		.then(function(response) {  //function for templatelist response
 			$scope.totalRecords = response.totalRecords;
 			$scope.projects = response.data;

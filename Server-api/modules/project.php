@@ -19,6 +19,7 @@
 			((isset($_GET['user_id'])) && ($_GET['user_id']!=="")) ? $where['user_id'] = $_GET['user_id'] : "";			
 			(isset($_GET['status'])) ? $where['status'] = $_GET['status'] : "";
 			(isset($_GET['domain'])) ? $where['domain'] = $_GET['domain'] : "";
+			(isset($_GET['featured'])) ? $where['featured'] = $_GET['featured'] : "";
 			
 			$limit['pageNo'] = $pageNo; // from which record to select
 			$limit['records'] = $records; // how many records to select
