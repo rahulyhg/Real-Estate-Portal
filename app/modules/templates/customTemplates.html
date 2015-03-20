@@ -3,20 +3,33 @@
 	<table class="table table-bordered ">
 		<thead>
 			<th>Sr.No.</th>
-			<th>Template Name</th>			
+			<th>Template Name</th>
+			<th>Template Type</th>
 			<th>Devlopment Status</th>
 			<th>Create Date</th>
 			<th>Modified Date</th>			
 			<th>Manage</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates | orderBy:id">
+			<tr ng-repeat="x in templates | orderBy:sort">
 				<td>{{((customTempCurrentPage - 1) * pageItems) + $index + 1}}</td>
-				<td>{{x.template_name}}</td>				
+				<td>{{x.template_name}}</td>	
 				<td>
+					<a type="button" ng-class="(x.template_type=='private') ? 'btn btn-success' : 'btn btn-primary'" ng-model="x.template_type" ng-change="changeStatusFn('template_type', x.template_type, x.id)" btn-checkbox btn-checkbox-true="'private'" btn-checkbox-false="'public'">
+					
+							<span ng-if="x.template_type=='private'">Private</span>
+							<span ng-if="x.template_type=='public'">Public</span>
+						</a> 
+				
+					<!-- <button class="btn btn-success" ng-show="x.template_type=='private'" title="Private" ng-click="changeStatusFn(x.id,x.template_type,$index)">Private</button>
+					
+					<button class="btn btn-primary" ng-show="x.template_type=='public'" title="Public" ng-click="changeStatusFn(x.id,x.template_type,$index)">Public</button>  -->
+				</td>	
+				<td>				
 					<a class="btn btn-success" ng-show="x.development_status=='rejected'" tooltip="Resend request">
 						<span class="glyphicon glyphicon-refresh"></span>
 					</a>
+					
 					<span ng-show="x.development_status!='rejected'">{{x.development_status}}</span>
 				</td>
 				<td>{{x.date | date:'yyyy-MM-dd'}}</td>
@@ -24,7 +37,9 @@
 				
 				<td>
 					<button class="btn btn-success" ng-show="x.status==1" title="Active"ng-click="changeStatus(x.id,x.status,$index)">Active</button>
-					<button class="btn btn-warning" ng-show="x.status==0" title="Delete">Delete</button>					
+					
+					<button class="btn btn-warning" ng-show="x.status==0" title="Delete">Delete</button>
+					
 					<a ng-click="open('modules/templates/custTemp.html', x.id)" title="Preview" class="btn btn-primary">Preview					
 					</a>
 				</td>				

@@ -11,7 +11,7 @@
 			
 		</thead>
 		<tbody>
-			<tr ng-repeat="x in templates | orderBy:id">
+			<tr ng-repeat="x in templates | orderBy:sort">
 				<td>{{((myTemplate - 1) * pageItems) + $index + 1}}</td>
 				<td>{{x.template_name}}</td>
 				<td>{{x.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
@@ -21,7 +21,8 @@
 						<a class="btn btn-warning" ng-show="x.status==0" title="Deleted">Delete</a>
 					</td>
 					<td>
-						<button href="#" class="btn btn-success" ng-show="x.template_price=='free'" ng-click="open('modules/templates/websiteList.html', x.id)" title="Apply for Template">Apply</button>
+						<button class="btn btn-success" ng-show="x.template_price=='free'" ng-click="showWebDt('modules/templates/websiteList.html', x.id)" title="Apply for Template">Apply</button>
+						
 						<button  class="btn btn-warning" title="Buy Template" ng-show="x.template_price!='free'" > Buy </button>
 						
 						<button href="#" class="btn btn-primary" title="Preview Template">Preview</button>
