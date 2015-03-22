@@ -147,10 +147,8 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 		angular.extend($scope.projectParam,$scope.user_id);
 		dataService.get("/getmultiple/project/"+$scope.projectListCurrentPage+"/"+$scope.pageItems, $scope.projectParam)
 		.then(function(response) {  
-		
 			$scope.totalRecords = response.totalRecords;
 			$scope.projects = response.data;
-			console.log(response.data);
 		});
 		
 		//code to edit project details
@@ -158,7 +156,6 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			dataService.get("getsingle/project/"+$routeParams.id)
 			.then(function(response) {
 				$scope.project = response.data;
-				console.log(project);
 			});
 		};
 	 };		 
