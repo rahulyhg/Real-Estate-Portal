@@ -23,7 +23,7 @@
 					</select>
 				</div>
 				<div class="col-sm-2">
-					<label for="status" class="control-label">Select Status</label>
+					<label for="status" class="control-label">Filter By Status</label>
 					<select id="status" class="form-control" 
 					ng-change="changeStatus('status',showStatus)" ng-model="showStatus" ng-init="showStatus=1">
 						<option value="1">Active</option>
@@ -94,20 +94,21 @@
 									</td>	
 									<td>{{x.domain}}</td>					
 									<td>
-										<button type="button" tooltip="{{dynamicTooltip(x.status, 'Delete', 'Active')}}" ng-class="(x.status==1) ? 'btn btn-info glyphicon glyphicon-ok' : 'btn btn-danger glyphicon glyphicon-trash'" ng-model="x.status" ng-click="deleted( x.status, x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">{{x.status}}
-										</button>
-										
+									<div class="btn-group">
+										<button type="button" tooltip="{{dynamicTooltip(x.status, 'Active', ' Delete')}}" ng-class="(x.status==1) ? 'btn btn-success glyphicon glyphicon-ok' : 'btn btn-danger glyphicon glyphicon-remove'" ng-model="x.status" ng-change="deleted(x.id, x.status)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class=""></span></button>								
+									</div>
+									
+									<div class="btn-group">
+										<button type="button" tooltip="{{dynamicTooltip(x.featured, ' Featured', 'Non Featured')}}" ng-class="(x.featured==1) ? 'btn btn-warning glyphicon glyphicon-star' : 'btn btn-danger glyphicon glyphicon-star-empty'" ng-model="x.featured" ng-change="feature(x.id, x.featured)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"></button>
+									</div>
+									<div class="btn-group">	
 										<a class="btn btn-success" href="#/dashboard/project/addproject/{{x.id}}" title="Edit">
 											<span class="glyphicon glyphicon-pencil"></span>
 										</a>
-										<button type="button" tooltip="{{dynamicTooltip(x.featured, 'non featured', 'featured')}}" ng-class="(x.featured==1) ? 'btn btn-info ' : 'btn btn-danger glyphicon glyphicon-trash'" ng-model="x.featured" ng-click="deleted( x.featured, x.id)" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'">{{x.featured}}
-										</button>
-										
-										<button href="#" class="btn btn-primary " title="Preview Template">Preview</button>
-										
-									
-										
-									
+									</div>										
+									<div class="btn-group">	
+										<a ng-click="open('modules/project/viewproject.html', x.id)" class="btn btn-primary responsive"> Prieview</a>
+									</div>	
 									</td>
 								</tr>				
 							</tbody>
