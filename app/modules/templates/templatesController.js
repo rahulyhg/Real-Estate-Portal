@@ -15,7 +15,8 @@ define(['app'], function (app) {
 		$scope.webTempCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";
-		$scope.user_id = {user_id : 2};/* $rootScope.userDetails.id */
+		$scope.userInfo = {user_id : $rootScope.userDetails.id};
+		/*$scope.userInfo = {userDetails : 2}; $rootScope.userDetails.id */
 		$scope.tempPart = $routeParams.tempPart;
  		$scope.alerts = [];
 		$scope.currentDate = dataService.currentDate;
@@ -31,9 +32,9 @@ define(['app'], function (app) {
 					size : 'lg'
 				};
 				var modalOptions = {
-					tempList: response.data[0]  // assign data to modal
+					tempList: dataService.parse(response.data)  // assign data to modal
 				};
-				console.log(response.data[0]);
+				//console.log(response.data[0]);
 				modalService.showModal(modalDefaults, modalOptions).then(function (result) {
 					console.log("modalOpened");
 				});
@@ -47,7 +48,7 @@ define(['app'], function (app) {
 	//show user website list data 
 		$scope.showWebDt = function (url, tempId) {
 			$scope.status = {status:1};
-			angular.extend($scope.status, $scope.userDetails);
+			angular.extend($scope.status, $scope.userInfo);
 			dataService.get("getmultiple/website/1/50",$scope.status)
 			.then(function(response) {
 				var oldObj = response.data;
@@ -108,7 +109,7 @@ define(['app'], function (app) {
 		}	
 		
 		$scope.pageChanged = function(page) {			
-			angular.extend($scope.custom, $scope.user_id);		
+			angular.extend($scope.custom, $scope.userInfo);		
 			dataService.get("/getmultiple/templates/"+page+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) {
 				$scope.templates = response.template;
@@ -147,19 +148,7 @@ define(['app'], function (app) {
 					}
 					$scope.alerts.push({type: response.status,msg: response.message});
 				}); 
-		}
-		
-		/* //code for delete single template
-		$scope.changeStatus = function(id, template_type, index){
-			if(template_type==1){
-				$scope.custom = {template_type : 0};
-				dataService.put("put/template/"+id, $scope.custom)
-				.then(function(response) { 
-					console.log(response.message);
-					$scope.templates[index].template_type = 0				
-				});
-			}
-		};	  */
+		}	
 		
 		//search filter function
 		$scope.searchFilter = function(statusCol, searchTemp) {
@@ -181,12 +170,36 @@ define(['app'], function (app) {
 				}
 				//console.log($scope.properties);
 			});
-		};			
+		};	
+
+
+		//Upload Function for uploading files {Pooja}	
+			$scope.template={}; // this is form object
+			$scope.addtemplate={};			
+			$scope.path = "template/"; // path to store images on server
+			$scope.template.scrible  = {};// uploaded images will store in this array
+			$scope.addtemplate.scrible  = {};// uploaded images will store in this array			
+			$scope.upload = function(files,path,userInfo,picArr){ //this function for uploading files
+				upload.upload(files,path,userInfo,function(data){
+					var picArrKey = 0, x;
+					for(x in picArr) picArrKey++;
+					if(data.status === 'success'){
+						picArr[picArrKey] = data.details;
+						console.log(data.message);
+					}else{
+						$scope.alerts.push({type: data.status, msg: data.message});
+					}
+				});
+			};
+			 $scope.generateThumb = function(files){  // this function will generate thumbnails of images
+					upload.generateThumbs(files);
+				};
+			// End upload function {pooja} 	
 		
 		// switch functions 
 		var projectTemplate = function(){
 			$scope.custom = {status : 1};			
-			angular.extend($scope.custom,$scope.user_id);
+			angular.extend($scope.custom,$scope.userInfo);
 			dataService.get("/getmultiple/template/"+$scope.projTempCurrentPage+"/"+$scope.pageItems, $scope.custom)
 			.then(function(response) {  //function for templatelist response
 				$scope.totalRecords = response.totalRecords;
@@ -212,7 +225,7 @@ define(['app'], function (app) {
 		
 		var propertyTemplate = function(){
 			$scope.custom = {status : 1,template_type : "private"};			
-			angular.extend($scope.custom,$scope.user_id);
+			angular.extend($scope.custom,$scope.userInfo);
 			dataService.get("/getmultiple/template/"+$scope.propTemplate+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) {  
 				if(response.status == 'success'){
@@ -228,7 +241,7 @@ define(['app'], function (app) {
 		
 		var customTemplates = function(){
 			$scope.custom = {custom : 1};
-			angular.extend($scope.custom, $scope.user_id);			
+			angular.extend($scope.custom, $scope.userInfo);			
 			dataService.get("/getmultiple/template/"+$scope.customTempCurrentPage+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) { 
 				if(response.status == 'success'){
@@ -244,7 +257,7 @@ define(['app'], function (app) {
 		
 		var myTemplates = function(){
 			$scope.custom = {status : 1};			
-			angular.extend($scope.custom,$scope.user_id);
+			angular.extend($scope.custom,$scope.userInfo);
 			dataService.get("/getmultiple/template/"+$scope.myTemplate+"/"+$scope.pageItems,$scope.custom)
 			.then(function(response) {  //function for templatelist response
 				if(response.status == 'success'){
@@ -260,7 +273,7 @@ define(['app'], function (app) {
 		var requestCustomTemplates = function(){
 			$scope.custom = {status : 1};	
 			$scope.template={};		
-			angular.extend($scope.custom,$scope.user_id);
+			angular.extend($scope.custom,$scope.userInfo);
 			$scope.template.date = $scope.currentDate;
 			//console.log($scope.template.date);
 			$scope.reset = function() {
@@ -279,28 +292,40 @@ define(['app'], function (app) {
 						$scope.alerts.push({type: response.status, msg: response.message});
 					}	
 				});
-			}
+			}			
+		}		
+						
 			
-			//Upload Function for uploading files {Pooja}		
-		$scope.userinfo = {userId:1, name:"Pooja"}; // this is for uploading credentials
-		$scope.path = "template/"; // path to store images on server
-		$scope.template.template_image = []; // uploaded images will store in this array
-		$scope.upload = function(files,path,userinfo){ // this function for uploading files
-			upload.upload(files,path,userinfo,function(data){
-				if(data.status !== 'error'){
-					$scope.template.template_image.push(JSON.stringify(data.details));
-					console.log(data.message);
-				}else{
-					alert(data.message);
-				}				
-			});
-		};
-		
-		$scope.generateThumb = function(files){  // this function will generate thumbnails of images
-			upload.generateThumbs(files);
-		};
-		// End upload function {pooja}
-		}			
+		 //add template funtion			 
+		var addTemplate = function(){			
+			 // for dynamic value of category
+			dataService.get('getmultiple/template/1/50', {user_id:$rootScope.userDetails.id})
+			.then(function(response){
+				var addTemp1 = [];
+				for(var id in response.data){
+					var obj = {id: response.data[id].id, category : response.data[id].category};
+					addTemp1.push(obj);
+				}
+				$scope.addTemp1 = addTemp1;
+			}) ;		
+				
+			//post method for insert data in request template form{pooja}
+			$scope.postData = function(addtemplate) { 
+			console.log(addtemplate);					
+				$scope.addtemplate.date = $scope.currentDate;
+				dataService.post("post/template",addtemplate,$scope.userInfo)
+				.then(function(response) {  //function for response of request temp
+					if(response.status == 'success'){
+						$scope.template = response.data;
+						//console.log(response);
+						$scope.alerts.push({type: response.status, msg: response.message});						
+					}else{
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}	
+				});
+			}			
+		}//end of post method
+			 
 			 
 		switch($scope.tempPart) {			
 			case 'myTemplates':
@@ -311,7 +336,10 @@ define(['app'], function (app) {
 				break;				
 			case 'customTemplates':
 				customTemplates();
-				break;			
+				break;
+			case 'addTemplate':
+				addTemplate();
+				break;		
 			case 'requestCustomTemplates':
 				requestCustomTemplates();
 				break;	

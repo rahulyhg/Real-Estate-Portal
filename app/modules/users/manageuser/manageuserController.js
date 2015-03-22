@@ -39,8 +39,7 @@ define(['app'], function (app) {
 			$scope.alerts.splice(index, 1);
 		}; 
 		
-		// for date picker {Pooja}
-		
+		// for date picker {Pooja}		
 		$scope.open = function($event,opened)
 		{
 			$event.preventDefault();
@@ -49,19 +48,7 @@ define(['app'], function (app) {
 		};	
 		$scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = 'yyyy-MM-dd';			
-		//End  Date Picker 		
-				
-		/* $scope.showDropDown = function($event,opened)		
-			{
-				//$scope.selected = undefined;
-				$scope.user_groups = []; 				  				
-				$event.preventDefault();
-				$event.stopPropagation();
-				$scope[opened] = ($scope[opened] ===true) ? false : true;
-			};	 
-				//end dropdown */
-			
-		//console.log($scope.userViews);
+		//End  Date Picker 			
 		
 		//For display by default userslist.html page
 		if(!$routeParams.userViews) {
@@ -72,12 +59,10 @@ define(['app'], function (app) {
 		//code for pagination
 		$scope.pageChanged = function(page) {
 			if($scope.userViews=='userslist'){	
-			dataService.get("getmultiple/user/"+page+"/"+$scope.pageItems)
-			.then(function(response) {
-				$scope.users = response.data;
-				//console.log(response.data);
-				
-			});
+				dataService.get("getmultiple/user/"+page+"/"+$scope.pageItems)
+				.then(function(response) {
+					$scope.users = response.data;			
+				});
 			}
 			if($scope.userViews=='usersgroup'){
 				dataService.get("getmultiple/usergroup/"+page+"/"+$scope.pageItems)
@@ -180,7 +165,7 @@ define(['app'], function (app) {
 			(searchUser =="") ? delete $scope.userStatus[statusCol] : $scope.filterStatus[statusCol] = searchUser;
 			angular.extend($scope.userStatus, $scope.filterStatus);
 			angular.extend($scope.userStatus, $scope.search);	
-			if($scope.userViews=='userlist'){
+			if($scope.userViews=='userslist'){
 				dataService.get("getmultiple/user/1/"+$scope.pageItems, $scope.userStatus)
 				.then(function(response) {  //function for userlist response
 					if(response.status == 'success'){
@@ -196,7 +181,7 @@ define(['app'], function (app) {
 			}
 			if($scope.userViews=='usersgroup'){
 			dataService.get("getmultiple/usergroup/1/"+$scope.pageItems, $scope.userStatus)
-				.then(function(response) {  //function for userlist response
+				.then(function(response) {  //function for usersgrouplist response
 					if(response.status == 'success'){
 						$scope.usergroupList = response.data;
 						$scope.totalRecords = response.totalRecords;

@@ -18,11 +18,13 @@
 					<a href="#/dashboard/templates/requestCustomTemplates" class="btn btn-default" title="Request Custom Template">Request Custom Template</a>
 					
 					<a href="#/dashboard/templates/customTemplates" class="btn btn-default" title="Custom Template">Custom Templates</a>
+					
+					<a href="#/dashboard/templates/addTemplate" class="btn btn-default" title="Add Template">Add Templates</a>
 				</div>	
 			</div>	
 			<div class="clearfix"></div>
 			<div class="row bottom-space">
-				<div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates'"> 
+				<div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates' && tempPart!=='addTemplate'"> 
 					<label for="searchTemp" class="control-label">Search </label>  
 					<div class="input-group">
 						<input id="search" type="text" class="form-control" placeholder="Search" ng-model="searchTemp" ng-change="searchFilter('template_name', searchTemp)">					 
@@ -32,7 +34,7 @@
 						</span>						
 					</div><!-- /input-group -->
 				</div>			 				  
-				 <div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates'">
+				 <div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates' && tempPart!=='addTemplate'">
 					<label for="sort" class="control-label">Sort by Order</label>		
 					<select id="sort" class="form-control" ng-model="sort" title="Select order"> 
 						<option value="">Select Order</option><!-- added value & selected attr -->	
@@ -40,7 +42,7 @@
 						<option value="id">Ascending</option>  
 					</select>
 				</div>
-				<div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates'">
+				<div class="col-sm-3" ng-if="tempPart!='requestCustomTemplates'&& tempPart!=='addTemplate'">
 					<label for="status" class="control-label">Select Status</label>
 					<select id="status" class="form-control" ng-model="status" title="status"  ng-change="changeValue('status',status)" ng-init="status=1">
 						
@@ -48,7 +50,7 @@
 						<option value="0">Deleted</option>							
 					</select>
 				</div>	
-				<div class="col-sm-3" ng-if="tempPart=='listTemplate' && tempPart!='requestCustomTemplates'">
+				<div class="col-sm-3" ng-if="tempPart=='listTemplate' && tempPart!='requestCustomTemplates' && tempPart!=='addTemplate'">
 					<label for="T_type" class="control-label">Template Type</label>
 					<select id="T_type" class="form-control" ng-model="templates_type" title="Select type" ng-change="changeValue('template_type',templates_type)">
 						<option value="" selected="">Select Template</option> 
@@ -56,7 +58,7 @@
 						<option value="private">Private</option>							
 					</select>
 				</div>	
-				<div class="col-sm-3" ng-if="tempPart=='websitesTemplate' &&  tempPart!='requestCustomTemplates'">
+				<div class="col-sm-3" ng-if="tempPart=='websitesTemplate' &&  tempPart!='requestCustomTemplates' && tempPart!=='addTemplate'">
 					<label for="category" class="control-label">Template Category</label>
 					<select id="category" class="form-control" ng-model="category" title="Template category" ng-change="changeValue('category',category)">
 						<option value="" selected="">Select Category</option> 			
@@ -65,10 +67,10 @@
 						<option value="College">College Template</option>	
 					</select>
 				</div>	
-				<div class="col-sm-3" ng-if="tempPart=='customTemplates' && tempPart!='requestCustomTemplates'">
+				<div class="col-sm-3" ng-if="tempPart=='customTemplates' && tempPart!='requestCustomTemplates' && tempPart!=='addTemplate'">
 					<label for="develpement_status" class="control-label">Develpement Status</label>
 					<select id="develpement_status" class="form-control" ng-model="develpement_status" title="develpement_status" ng-change="changeValue('develpement_status',develpement_status)">
-						<option value="" selected="">Select Develpement Status</option> 	
+						<option value="" selected="">Select Develpement Status</option>	
 						<option value="pending">Pending</option>
 						<option value="order_placed">Order Placed</option>
 						<option value="inprogress">In-progress</option>
@@ -84,7 +86,7 @@
 					
 					<ng-include ng-if="tempPart=='websitesTemplate'" src="'modules/templates/websitesTemplate.html'"></ng-include>	
 					
-					<ng-include ng-if="tempPart=='listTemplate'" src="'modules/templates/listTemplate.html'"></ng-include>	
+					<ng-include ng-if="tempPart=='addTemplate'" src="'modules/templates/addTemplate.html'"></ng-include>	
 					
 					<ng-include ng-if="tempPart=='myTemplates'"
 					src="'modules/templates/myTemplates.html'"></ng-include>	

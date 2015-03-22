@@ -8,7 +8,7 @@
 				<div class="col-sm-9">
 					<input type="text" id="name" class="form-control" name="name" placeholder="Enter Your Name" ng-model="addusers.name" required >
 					<span class="text-danger" ng-show="addNewUser.name.$dirty && addNewUser.name.$invalid">
-					<span ng-show="addNewUser.name.$error.required">Name is required.</span>
+						<span ng-show="addNewUser.name.$error.required">Name is required.</span>
 					</span>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 			<div class="form-group">
 				<label  for="birthdate" class="col-sm-2 control-label">Birth Date</label>
 				<div class="col-sm-9">
-					<div class="input-group">{{addusers.dob}}
+					<div class="input-group">
 						<input type="text" id="dob" name="dob" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="addusers.dob" is-open="opened" max-date="'2015-06-22'" ng-required="true" close-text="Close" ng-click="open($event)"/>
 						<span class="input-group-btn">
 							<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -98,7 +98,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-9">
 					  <button type="submit"  class="btn btn-primary" title="Add User" ng-click="postData(addusers)" ng-disabled="addNewUser.$invalid">Add User</button>
-					  <button type="submit"  class="btn btn-success" title="Edit User" ng-click="update(addusers)">Update User</button>
+					  <button type="submit"  class="btn btn-success" title="Edit User" ng-click="update(addusers)" >Update User</button>
 					  <button type="reset" class="btn btn-danger" title="Reset">Reset</button>
 				</div>
 			</div>						

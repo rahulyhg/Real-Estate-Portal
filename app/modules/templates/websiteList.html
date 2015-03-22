@@ -7,10 +7,10 @@
 		<div class="row">
 			<div class="col-sm-12">			
 				<h1>Website List</h1>
-					<select id="selectDomain" class="form-control" ng-change="changeScope(selectDomain)" ng-model="applyTemplate.website_id" ng-options="item.id as item.domain_name for item in modalOptions.webList" required> 
-						<option value="">Select Website</option>
-					</select>
-					<input type="hidden" ng-model="applyTemplate.config" ng-init ="applyTemplate.config = modalOptions.tempId" />
+				<select id="selectDomain" class="form-control" ng-change="changeScope(selectDomain)" ng-model="applyTemplate.website_id" ng-options="item.id as item.domain_name for item in modalOptions.webList" required> 
+					<option value="">Select Website</option>
+				</select>
+				<input type="hidden" ng-model="applyTemplate.config" ng-init ="applyTemplate.config = modalOptions.tempId" />
 			</div>
 		</div>
 	</div>
