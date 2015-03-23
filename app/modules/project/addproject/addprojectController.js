@@ -150,6 +150,24 @@ define(['app'], function (app) {
 			});
 		};
 		
+		//code to edit project details
+		
+		//code to edit project details
+		if($routeParams.id){
+			dataService.get("getsingle/project/"+$routeParams.id)
+			.then(function(response) {
+				$scope.project = response.data;
+				console.log($scope.project);
+			});
+			
+			$scope.update = function(id,project){
+				dataService.put("put/project/"+id,project)
+				.then(function(response) {
+					console.log(response);
+				});
+			};
+		};
+		
 		
 	};	
 	 

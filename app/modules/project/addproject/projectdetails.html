@@ -3,7 +3,7 @@
 <div class="form-group">
 	<label  for="projectTitle" class="col-sm-2 control-label">* &nbsp Project Title</label>
 	<div class="col-sm-9">		
-		<textarea type="text"  id="projectTitle" class="form-control" name="projectTitle" ng-model="project.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>
+		<textarea type="text"  id="projectTitle" class="form-control" name="projectTitle" ng-model="project.title"    cols="20" rows="4" ng-maxlength="356"  required></textarea>{{project.title|json}}
 		<p ng-hide="addProject.projectTitle.$error.maxlength">{{ 356 - project.title.length + " Chars left" }}</p>
 			 <span class="text-danger" ng-show="addProject.projectTitle.$error.maxlength">
 			Sorry You are Exceeding the Limit</span>
