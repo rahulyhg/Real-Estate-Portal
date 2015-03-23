@@ -3,25 +3,25 @@
 		<div class="main-content"> 
 		<div>
 			<ng-include src="'modules/component/toolbar.html'"></ng-include>  
-		</div>
+		</div>{{config}}
 		<div class="bottomspace">
 			<h3 class="text-center">Website Setting</h3>
 				<form name="websettingsForm" class="form-horizontal" role="form" novalidate="novalidate" ng-submit="websettingsForm.$valid">
 					<div class="bottomspace">
 						<div class="row">
 							<div class="form-group">	
-								<label  for="selectbusiness" class="col-sm-offset-2 control-label">Select Business</label>
+								<label  for="selectproject" class="col-sm-offset-2 control-label">Select Project</label>
 							</div>
 							<div class="col-sm-4 col-sm-offset-2">
-								<select id="selectBusiness" class="form-control"ng-model="config.business_id" ng-options="item.id as item.business_name for item in businessList"> 
-									<option value="">Select Business</option>
+								<select id="selectproject" class="form-control"ng-model="config.project_id" ng-options="item.id as item.title for item in projectList"> 
+									<option value="">Select project</option>
 								<select id="biz" class="form-control" ng-model="biz"> 		
 									<option value=""></option>
 								</select>
 							</div>
 							<div class="col-sm-4">
-								<select id="selectTemplate" class="form-control" ng-model="config.template_id" ng-options="item.id as item.template_name for item in templateList"> 
-									<option value="">Select Template</option>
+								<select id="selectProperty" class="form-control" ng-model="config.property_id" ng-options="item.id as item.title for item in templateList"> 
+									<option value="">Select Property</option>
 								<select id="biz" class="form-control" ng-model="biz"> 		
 									<option value=""></option>
 								</select>
@@ -71,6 +71,7 @@
 								</div>						
 						</div>	
 					<div class="form-group">	
+					<input type="hidden" ng-model="config.website_id"/>
 						<label  for="Longitude" class="col-sm-2 control-label">Longitude</label>
 							<div class="col-sm-9">
 								<input type="text" id="Longitude" class="form-control" name="Longitude" placeholder="Google Latitude" ng-model="config.google_map.longitude" required >
@@ -81,7 +82,8 @@
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-9">
-							<button type="submit" class="btn btn-primary" ng-disabled="websettingsForm.$dirty && websettingsForm.$invalid" ng-click="editWebsitedetails(config)">Send Request</button>
+							<button type="submit" class="btn btn-primary" ng-disabled="websettingsForm.$dirty && websettingsForm.$invalid" ng-click="editWebsitedetails(config.website_id,config)">Send Request</button>
+							<button type="reset" class="btn btn-danger">Reset</button>
 						</div>
 					</div>		
 					</div>
