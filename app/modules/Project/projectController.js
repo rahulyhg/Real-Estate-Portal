@@ -1,8 +1,8 @@
 'use strict';
 define(['app'], function (app) {
-var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataService'];
+var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataService','modalService'];
   // This is controller for this view
-	var projectController = function ($scope, $injector,$routeParams,$rootScope,dataService) {
+	var projectController = function ($scope, $injector,$routeParams,$rootScope,dataService,modalService) {
 		$rootScope.metaTitle = "Real Estate Project";
 	
 		$scope.maxSize = 5;
@@ -27,18 +27,19 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			angular.extend($scope.projectParam, $scope.user_id);
 			dataService.get("getmultiple/project/"+page+"/"+$scope.pageItems,$scope.projectParam).then(function(response){
 				$scope.projects = response.data;
-				console.log(response.data);
+			
 			});
 		};
 		
 		// for delete button
-			$scope.deleted = function(id, status){
-				$scope.deletedData = {status : status};
-				console.log(status);
+			$scope.deleted = function(id, delstatus){
+				$scope.deletedData = {status : delstatus};
+				//$scope.featuredData = {featured : 0};
 				dataService.put("put/project/"+id, $scope.deletedData)
 				.then(function(response) { 
 					if(response.status == 'success'){
 						$scope.projects=response.data;
+						$scope.alerts.push({type: response.status, msg: response.message});
 					}
 				});
 			};		
@@ -53,7 +54,6 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			if(showStatus.length >= 4 || showStatus == ""){
 			dataService.get("getmultiple/project/1/"+$scope.pageItems, $scope.projectParam)
 			.then(function(response) {  
-			console.log(response);
 				if(response.status == 'success'){
 					$scope.projects = response.data;
 					$scope.totalRecords = response.totalRecords;
@@ -69,7 +69,6 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 		// code for filter data as per satus (delete/active)
 		
 		$scope.changeStatus = function(statusCol, showStatus) {
-			console.log($scope.projectParam);
 			$scope.filterStatus= {};
 			(showStatus =="") ? delete $scope.projectParam[statusCol] : $scope.filterStatus[statusCol] = showStatus;
 			angular.extend($scope.projectParam, $scope.filterStatus);
@@ -105,8 +104,6 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 				}				
 			});
 		};
-		
-		
 		// code to access domain names dynamically
 		$scope.userinfo={user_id:$rootScope.userDetails.id,status :1}
 		dataService.get('getmultiple/website/1/200', $scope.userinfo).then(function(response){
@@ -116,17 +113,42 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 					domains.push(obj);
 				}
 				$scope.domains = domains;
-				console.log(domains);
-		}) ;
+		});
+		
+		// code for open model in preview button
+		$scope.open = function (url, projectId) {
+			dataService.get("getsingle/project/"+projectId)
+			.then(function(response) {
+				var oldObj = response.data[0];
+				var newObj = {};
+				angular.forEach(oldObj, function(value, key) {
+				  this[key] = (value.slice(0, 1) == "{" || value.slice(0, 1) == "[" ) ? JSON.parse(value) : value;
+				}, newObj);
+				
+				var modalDefaults = {
+					templateUrl: url,	// apply template to modal
+					size : 'lg'
+				};
+				var modalOptions = {
+					project: newObj // assign data to modal
+				};
+			
+				modalService.showModal(modalDefaults, modalOptions).then(function (result) {
+					
+				});
+			});
+		};
+		$scope.ok = function () {
+			$modalOptions.close('ok');
+		};
 		
 		// code for view project details
 		$scope.projectParam = {status : 1};			
 		angular.extend($scope.projectParam,$scope.user_id);
 		dataService.get("/getmultiple/project/"+$scope.projectListCurrentPage+"/"+$scope.pageItems, $scope.projectParam)
-		.then(function(response) {  //function for templatelist response
+		.then(function(response) {  
 			$scope.totalRecords = response.totalRecords;
 			$scope.projects = response.data;
-			console.log(response.data);
 		});
 		
 		//code to edit project details
@@ -134,7 +156,6 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			dataService.get("getsingle/project/"+$routeParams.id)
 			.then(function(response) {
 				$scope.project = response.data;
-				console.log(project);
 			});
 		};
 	 };		 

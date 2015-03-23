@@ -15,7 +15,7 @@ define(['app'], function (app) {
 		$scope.delListCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
-		$scope.user_id = {$rootScope.userDetails.id}; 
+		$scope.user_id = {user_id:1}; 
 		$scope.mailPart=$routeParams.mailPart;
 		$scope.alerts = [];
 		$scope.tinymceConfig = {};
