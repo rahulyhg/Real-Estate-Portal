@@ -151,13 +151,7 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			$scope.projects = response.data;
 		});
 		
-		//code to edit project details
-		if($routeParams.id){
-			dataService.get("getsingle/project/"+$routeParams.id)
-			.then(function(response) {
-				$scope.project = response.data;
-			});
-		};
+		
 	 };		 
 	// Inject controller's dependencies
 	projectController.$inject = injectParams;
