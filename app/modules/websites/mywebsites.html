@@ -43,14 +43,6 @@
 				<tbody>
 					<tr ng-repeat="x in website | orderBy:name">
 						<td>{{((myWebsiteCurrentPage - 1) * pageItems) + $index + 1}}</td>
-						<!-- <td>{{x.domain_name}}		
-								<a type="button" class="btn btn-success pull-right" ng-model="x.boxId" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-change="editDomainName('domain_name', x.domain_name, x.id,x.boxId)">
-								<span ng-if="x.boxId == 0" class="glyphicon glyphicon-pencil"></span>
-									<span ng-if="x.boxId == 1" class="glyphicon glyphicon-ok"></span>
-								</a>
-								<input type="text" id="domain_name" class="form-control"  ng-click="showInput($event,'opened')" name="domain_name" ng-show="x.boxId == 1" ng-model="x.domain_name" ng-required="true"/>					
-						</td> -->
-						
 						<td>{{x.domain_name}} 
 						<a type="button" class="btn btn-warning pull-right" ng-model="x.boxId" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'" ng-click="showInput($event,'opened')" ng-change="editDomainName('domain_name', x.domain_name, x.id,x.boxId)" tooltip="Edit">
 						<span class="glyphicon glyphicon-pencil"></span>
@@ -62,7 +54,6 @@
 						<td>{{x.status}}</td>
 						<td>
 							<div class="btn-group">
-								<!-- <button ng-click="open('modules/websites/viewwebsite.html', x.id)" class="glyphicon glyphicon-star btn btn-success" tooltip="View Site"></button> -->
 								<a ng-click="open('modules/websites/viewWebsite.html', x.id)" class="btn btn-primary responsive"> View Details</a>
 							</div>	
 							<div class="btn-group">
@@ -73,6 +64,10 @@
 							<button type="button" tooltip="{{dynamicTooltip(x.status, 'Delete', 'Active')}}" ng-class="(x.status==1) ? 'btn btn-success' : 'btn btn-danger'" ng-model="x.status" ng-change="changeStatusFn( 'status',x.status, x.id)"" btn-checkbox btn-checkbox-true="'1'" btn-checkbox-false="'0'"><span class="glyphicon glyphicon-remove"></span></button>
 							
 							<button type="button" tooltip="{{dynamicTooltip(x.expired, 'expired', 'Reactive')}}"ng-class="(x.expired==0) ? 'btn btn-danger' : 'btn btn-success'" ng-model="x.expired" ng-change="changeStatusFn('expired',x.id, x.expired)" btn-checkbox btn-checkbox-true="0" btn-checkbox-false="1"><span class="glyphicon glyphicon-ok"></span></button>
+							
+							<div class="btn-group">
+								<a type="button" tooltip="Edit" class="btn btn-warning glyphicon glyphicon-pencil" href="#/dashboard/websites/websettings/{{x.id}}"></a>	
+							</div>
 			
 						</td>
 					</tr>

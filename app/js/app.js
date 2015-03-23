@@ -160,6 +160,9 @@ define(['angular',
 					label: "Websites"
                 }, 'websites/'))
 				
+				.when('/dashboard/websites/websettings/:id', route.resolve({controller:'websettings', template: 'websettings',label:"Website Settings"}, 'websites/websettings/'))
+				
+				
 				.when('/dashboard/templates/:tempPart?', route.resolve({
                     controller: 'templates',
                     template: 'templates',
