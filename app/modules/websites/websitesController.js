@@ -178,7 +178,7 @@ define(['app'], function (app) {
 					}
 				});
 			};			
-		};
+		
        
 		var requestedsitelist = function(){
 			//function for requestedsitelist{sonali}
@@ -213,6 +213,7 @@ define(['app'], function (app) {
 				});   
 			}//end of post method{trupti} 
 		};
+		
 		};
 		
         switch($scope.webPart) {
