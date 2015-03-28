@@ -80,14 +80,7 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 			})
 		}	
 		if($rootScope.userDetails !== null){
-		$scope.edit.id = $rootScope.userDetails.id;
-		$scope.edit.user_img = $rootScope.userDetails.user_img;
-		$scope.edit.name = $rootScope.userDetails.name;
-		$scope.edit.address = $rootScope.userDetails.address;
-		$scope.edit.country = $rootScope.userDetails.country;
-		$scope.edit.phone = $rootScope.userDetails.phone;
-		$scope.edit.dob = $rootScope.userDetails.dob;
-		$scope.edit.website = $rootScope.userDetails.website;
+			angular.copy($scope.edit,$rootScope.userDetails);
 		}
 		
 			$scope.editprofile = function(id,edit){

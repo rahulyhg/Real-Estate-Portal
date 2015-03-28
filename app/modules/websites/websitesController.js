@@ -178,7 +178,7 @@ define(['app'], function (app) {
 					}
 				});
 			};			
-		};
+		
        
 		var requestedsitelist = function(){
 			//function for requestedsitelist{sonali}
@@ -198,20 +198,22 @@ define(['app'], function (app) {
 		};
 				
 		 var requestnewsite = function(){		
-			//post method for insert data in request template form{sonali}
-			
+			//post method for insert data in request template form{trupti}
 			$scope.reqnewsite = {};
 			$scope.postData = function(reqnewsite) { 
 			$scope.reqnewsite.date = $scope.currentDate
+			$scope.userDetails=$scope.userDetails;
 			$scope.reqnewsite.user_id = $scope.userDetails.user_id;
-				console.log(reqnewsite);	
-				 dataService.post("post/website",reqnewsite,$scope.user_id)
+				 dataService.post("post/website",reqnewsite)
 				.then(function(response) {  //function for response of request site
 					$scope.reqnewsite = response.data;
 					console.log(response);
+					console.log(reqnewsite);	
 				//	$scope.reset();
 				});   
-			}//end of post method{sonali} 
+			}//end of post method{trupti} 
+		};
+		
 		};
 		
         switch($scope.webPart) {
