@@ -90,8 +90,7 @@ define(['app'], function (app) {
 						console.log(data.message);
 					}else{
 						$scope.alerts.push({type: response.status, msg: response.message});
-					}
-					
+					}					
 				}); 
 			};
 			$scope.generateThumb = function(files){  

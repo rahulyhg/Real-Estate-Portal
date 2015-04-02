@@ -9,19 +9,90 @@ define(['app'], function (app) {
 		$scope.userinfo = {user_id : $rootScope.userDetails.id};
 		$scope.currentDate = dataService.currentDate;
 		
+		// to close alert message
+			$scope.closeAlert = function(index) {
+				$scope.alerts.splice(index, 1);
+			};
+			
+			// this function for uploading files
+			$scope.upload = function(files,path,userinfo, picArr){ 
+				upload.upload(files,path,userinfo,function(data){
+					var picArrKey = 0, x;
+					for(x in picArr) picArrKey++;
+					if(data.status === 'success'){
+						picArr[picArrKey] = data.details;
+						console.log(data.message);
+					}else{
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}
+					
+				}); 
+			};
+			$scope.generateThumb = function(files){  
+				upload.generateThumbs(files);
+			};// end file upload code
+		
+		
+		$scope.property = dataService.config.property;	
+		$scope.PropType = dataService.config.property.category.types;
+			
+	//dynamic dropdwnlist of country,state & city
+		$scope.contries = dataService.config.country;
+		$scope.getState = function(country){
+			var states = [];
+			for (var x in $scope.contries){
+				if($scope.contries[x].country_name == country){
+					for(var y in $scope.contries[x].states){
+						states.push($scope.contries[x].states[y])
+					}
+				}
+			}
+			$scope.states = states;
+		};
+		
+		$scope.getCities = function(state){
+			var cities = [];
+			for (var x in $scope.states){
+				if($scope.states[x].state_name == state){
+					for(var y in $scope.states[x].cities){
+						cities.push($scope.states[x].cities[y])
+					}
+				}
+			}
+			$scope.cities = cities;
+		};	
+
+			
 		// Add property
-		$scope.addProperty = function(property){
-			console.log(property);
-			dataService.post("post/property", $scope.property,$scope.userinfo)
-			.then(function(response) {
-				if(response.status=="success"){
-					$scope.alerts.push({type: response.status, msg: response.message});
+		$scope.addProperty = function(property){						
+			$scope.property.date = $scope.currentDate;
+			dataService.post("post/property",property,$scope.userInfo)
+			.then(function(response) {  //function for response of request temp
+				if(response.status == 'success'){
+					$scope.property = response.data;
+					//console.log(response);
+					$scope.alerts.push({type: response.status, msg: response.message});						
 				}else{
 					$scope.alerts.push({type: response.status, msg: response.message});
-				}
-				$scope.addproject.$setPristine();
+				}	
 			});
-		};
+		}
+			
+			/* if($routeParams.id){
+				dataService.get("getsingle/property/"+$routeParams.id)
+				.then(function(response) {
+					$scope.property = response.data;
+					console.log($scope.property);
+				});
+			
+				$scope.update = function(id,property){
+					dataService.put("put/property/"+id,property)
+					.then(function(response) {
+						console.log(response);
+					});
+				};
+			};	 */
+		
 			
 		
 		
@@ -51,7 +122,7 @@ define(['app'], function (app) {
 		};
 		// End upload function {Vilas} */
 		
-		dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id})
+	/*	dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id})
 		.then(function(response){
 			var websites = [];
 			for(var id in response.data){
@@ -60,19 +131,19 @@ define(['app'], function (app) {
 			}
 			$scope.websites = websites;
 		}) 
-		/* $scope.websites = [
+		 $scope.websites = [
 			{id:1, domain_name:"google.com"},
 			{id:2, domain_name:"wtouch.in"},
 		] */
 		/* $scope.$watchCollection('websites', function(newNames, oldNames) {
 			if($scope.websites == newNames ) 
 				console.log(newNames);
-		}); */
+		}); 
 		$scope.checkAll = function(websites, checkValue) {
 			if(checkValue){
 				$scope.property.domain = angular.copy(websites);
 			}
-		};
+		}; */
 	};		
 	
 	

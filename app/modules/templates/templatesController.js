@@ -15,8 +15,7 @@ define(['app'], function (app) {
 		$scope.webTempCurrentPage=1;
 		$scope.pageItems = 10;
 		$scope.numPages = "";
-		$scope.userInfo = {user_id : $rootScope.userDetails.id};
-		/*$scope.userInfo = {userDetails : 2}; $rootScope.userDetails.id */
+		$scope.userInfo = {user_id : $rootScope.userDetails.id};		
 		$scope.tempPart = $routeParams.tempPart;
  		$scope.alerts = [];
 		$scope.currentDate = dataService.currentDate;
@@ -137,7 +136,7 @@ define(['app'], function (app) {
 			});
 		};
 		
-		 $scope.changeStatus = {};
+		$scope.changeStatus = {};
 		$scope.changeStatusFn = function(colName, colValue, id){
 			$scope.changeStatus[colName] = colValue;				
 			//console.log($scope.changeStatus);

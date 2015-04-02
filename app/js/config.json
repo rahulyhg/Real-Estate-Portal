@@ -46,23 +46,35 @@
 			},{
 				"category_name" : "Industrial Property", 
 				"types" : ["Industrial Land/Plot", "Warehouse/Godown", "Factory", "Factory Plot/Land"]
-			}],
+			}],			
 			
-			"property_Details" : {
-				"Property Age" : ["Under Construction", "New Construction"],
-				"Furnished" : ["Unfurnished", "Semi Furnished"],
-				"Ownership" : ["Individual", "Others"],
-				"Total Floors" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-				"Facing" : ["East", "West", "North", "South"]
-			},
+			"propertyAge" : ["under Construction", "New Construction", "0 to 5 years", "5 to 10 years", "10 to 15 years", "15 to 20 years", "Above 20 years"], 
+			
+			"furnished" : ["Furnished", "Unfurnished", "Semi-Furnished"],
+			
+			"transaction_type" : ["Resale Property", "New Property"],
+			
+			"ownership" :["Individual", "Others","Broker/Agent","Builder/Promoter"],
+			
+			"floors" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
+			
+			"facing" : ["East", "West", "South", "North" , "South East", "South West", "North West", "North East"],
+			
+			"property_floor" : ["Ground", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" ],
+			
+			"parking" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
 			
 			"area_Details"	: ["Sq.Feet", "Cent", "Sq. Yards", "Ares", "Acre", "Sq. Meter","Bigha", "Hectares", "Guntha", "Marla"],
 			
 			"property_Price" : {
 				"Amount" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"],
 				"In_Rupees" : ["Thousand", "Lac", "Crore"]
-			}
-		},
+			}        
+		
+	},
+		
+		
+	
 	
 	"manage_user" :{
 			"user_Module" : ["User List", "Add User", "Edit User", "Ban user", "Delete User"],
