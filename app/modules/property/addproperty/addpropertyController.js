@@ -33,9 +33,9 @@ define(['app'], function (app) {
 			};// end file upload code
 		
 		
-		$scope.property = dataService.config.property;	
-		$scope.PropType = dataService.config.property.category.types;
-			
+		$scope.propertyConfig = dataService.config.property;					
+		
+		
 	//dynamic dropdwnlist of country,state & city
 		$scope.contries = dataService.config.country;
 		$scope.getState = function(country){
@@ -61,40 +61,37 @@ define(['app'], function (app) {
 			}
 			$scope.cities = cities;
 		};	
+		
+		//display dynamic list from project table 
+		dataService.get('getmultiple/project/1/50', $scope.userinfo)
+			.then(function(response){
+				console.log(response.data);								
+				$scope.addProjName = response.data;				
+			});
 
+         
+		dataService.get('getmultiple/property/1/50', $scope.userinfo)
+			.then(function(response){
+				console.log(response);								
+				$scope.addPropStruct = response.data;				
+		}); 
 			
 		// Add property
-		$scope.addProperty = function(property){						
-			$scope.property.date = $scope.currentDate;
+		$scope.addProperty = function(){		
+		
+		/*	$scope.property.date = $scope.currentDate;
 			dataService.post("post/property",property,$scope.userInfo)
 			.then(function(response) {  //function for response of request temp
 				if(response.status == 'success'){
 					$scope.property = response.data;
-					//console.log(response);
-					$scope.alerts.push({type: response.status, msg: response.message});						
+					console.log(response);					
+					$scope.alerts.push({type: response.status, msg: response.message});	
 				}else{
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}	
-			});
-		}
-			
-			/* if($routeParams.id){
-				dataService.get("getsingle/property/"+$routeParams.id)
-				.then(function(response) {
-					$scope.property = response.data;
-					console.log($scope.property);
-				});
-			
-				$scope.update = function(id,property){
-					dataService.put("put/property/"+id,property)
-					.then(function(response) {
-						console.log(response);
-					});
-				};
-			};	 */
-		
-			
-		
+			}); 
+		}*/
+	}	
 		
 		/* //Upload Function for uploading files {Vilas}
 		$scope.property={
@@ -122,7 +119,7 @@ define(['app'], function (app) {
 		};
 		// End upload function {Vilas} */
 		
-	/*	dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id})
+		dataService.get('getmultiple/website/1/200', {user_id:$rootScope.userDetails.id})
 		.then(function(response){
 			var websites = [];
 			for(var id in response.data){
@@ -134,8 +131,9 @@ define(['app'], function (app) {
 		 $scope.websites = [
 			{id:1, domain_name:"google.com"},
 			{id:2, domain_name:"wtouch.in"},
-		] */
-		/* $scope.$watchCollection('websites', function(newNames, oldNames) {
+		] 
+		
+		 $scope.$watchCollection('websites', function(newNames, oldNames) {
 			if($scope.websites == newNames ) 
 				console.log(newNames);
 		}); 
@@ -143,7 +141,7 @@ define(['app'], function (app) {
 			if(checkValue){
 				$scope.property.domain = angular.copy(websites);
 			}
-		}; */
+		}; 
 	};		
 	
 	

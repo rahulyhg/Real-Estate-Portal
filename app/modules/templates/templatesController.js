@@ -298,7 +298,7 @@ define(['app'], function (app) {
 		 //add template funtion			 
 		var addTemplate = function(){			
 			 // for dynamic value of category
-			dataService.get('getmultiple/template/1/50', {user_id:$rootScope.userDetails.id})
+			dataService.get('getmultiple/template/1/50', $scope.userinfo)
 			.then(function(response){
 				var addTemp1 = [];
 				for(var id in response.data){
@@ -306,7 +306,8 @@ define(['app'], function (app) {
 					addTemp1.push(obj);
 				}
 				$scope.addTemp1 = addTemp1;
-			}) ;		
+			}) ;	
+			
 				
 			//post method for insert data in request template form{pooja}
 			$scope.postData = function(addtemplate) { 
