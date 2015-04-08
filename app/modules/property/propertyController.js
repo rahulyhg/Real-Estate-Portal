@@ -12,6 +12,7 @@ define(['app'], function (app) {
 		$scope.pageItems = 10;
 		$scope.numPages = "";		
 		$scope.alerts = [];
+		$scope.userInfo = {user_id : $rootScope.userDetails.id};
 		$scope.currentDate = dataService.currentDate;
 		console.log($scope.currentDate);
 		
@@ -28,9 +29,10 @@ define(['app'], function (app) {
 			$scope.alerts.splice(index, 1);
 		}; 		
 		
-		//code for pagination
-		$scope.pageChanged = function(page) {			
-			dataService.get("getmultiple/property/"+page+"/"+$scope.pageItems)
+		//code for pagination		
+		$scope.pageChanged = function(page) {	
+			angular.extend($scope.propertyParam, $scope.userInfo);
+			dataService.get("getmultiple/property/"+page+"/"+$scope.pageItems,$scope.propertyParam)
 			.then(function(response) {
 				$scope.properties = response.data;
 				//console.log(response.data);				
@@ -41,22 +43,23 @@ define(['app'], function (app) {
 		$scope.searchFilter = function(statusCol, searchProp) {
 			$scope.search = {search: true};
 			$scope.filterStatus= {};
-			$scope.propStatus = {};
-			(searchProp =="") ? delete $scope.propStatus[statusCol] : $scope.filterStatus[statusCol] = searchProp;
-			angular.extend($scope.propStatus, $scope.filterStatus);
-			angular.extend($scope.propStatus, $scope.search);			
-				dataService.get("getmultiple/property/1/"+$scope.pageItems, $scope.propStatus)
-				.then(function(response) {  //function for userlist response
-					if(response.status == 'success'){
-						$scope.properties = response.data;
-						$scope.totalRecords = response.totalRecords;
-					}else{
-						$scope.properties = {};
-						$scope.totalRecords = {};
-						$scope.alerts.push({type: response.status, msg: response.message});
-					}					
-				});
-		}		
+			(searchProp =="") ? delete $scope.propertyParam[statusCol] : $scope.filterStatus[statusCol] = searchProp;
+			angular.extend($scope.propertyParam, $scope.filterStatus);
+			angular.extend($scope.propertyParam, $scope.search);			
+			
+			dataService.get("/getmultiple/property/1/"+$scope.pageItems, $scope.propertyParam)
+			.then(function(response) {  //function for propertylist response
+				if(response.status == 'success'){
+					$scope.properties = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.properties = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}
+				//console.log($scope.properties);
+			});
+		};				
 		
 		//view single property modal
 		 $scope.open = function (url, propId) {
@@ -75,43 +78,23 @@ define(['app'], function (app) {
 		};	
 		$scope.ok = function () {
 			$modalOptions.close('ok');
-		};	//end of modal function
+		};	//end of modal function		
+				
 		
-		
-		var myProperty = function(){			
-			dataService.get("/getmultiple/property/"+$scope.myProperty+"/"+$scope.pageItems)
-			.then(function(response) {  //function for property list response
-				if(response.status == 'success'){
-					$scope.totalRecords = response.totalRecords;
-					$scope.properties = response.data;
-					console.log(response.data);
-				}else{
-					$scope.alerts.push({type: response.status, msg: response.message});
-				}
-			});
-		};
-		
-		
-		
-		
-		
-		/* // Single Property view
-		if($routeParams.id) {
-			dataService.get("/property/"+$routeParams.id)
-			.success(function(response) {
-				$scope.properties = response;
-				console.log($scope.properties);
-		    });		
-		}
-		// Multiple Property View
-		else{	
-			dataService.get("/properties/"+$scope.currentPage+"/10")
-			.success(function(response) {
-				$scope.properties = response.properties;
-				$scope.totalRecords = response.totalRecords;
-				//console.log($scope.properties);
-			});
-		} */		
+			$scope.propertyParam = {status : 1};			
+			angular.extend($scope.propertyParam,$scope.userInfo);
+			dataService.get("getmultiple/property/1/"+$scope.pageItems, $scope.propertyParam)
+			.then(function(response) { 
+				console.log(response);
+				//function for property list response  
+					/* if(response.status == 'success'){
+						$scope.totalRecords = response.totalRecords;
+						$scope.properties = response.data; 
+						
+					}else{
+						$scope.alerts.push({type: response.status, msg: response.message});
+					}*/
+			});	
 	};		
 	// Inject controller's dependencies
 	propertyController.$inject = injectParams;

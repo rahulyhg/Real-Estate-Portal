@@ -66,8 +66,7 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			}
 		}; 
 		
-		// code for filter data as per satus (delete/active)
-		
+		// code for filter data as per satus (delete/active)		
 		$scope.changeStatus = function(statusCol, showStatus) {
 			$scope.filterStatus= {};
 			(showStatus =="") ? delete $scope.projectParam[statusCol] : $scope.filterStatus[statusCol] = showStatus;
