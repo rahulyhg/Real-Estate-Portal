@@ -255,7 +255,8 @@ define(['app'], function (app) {
 			dataService.get("getsingle/user/"+$routeParams.id)
 			.then(function(response) {
 					$scope.addusers = response.data;					
-				});				
+				});	
+				
 			$scope.update = function(addusers){				
 				console.log(addusers);						
 				dataService.put("put/user/"+$routeParams.id ,addusers)

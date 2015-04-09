@@ -39,6 +39,7 @@ define(['app'], function (app) {
 			});			
 		};	//end pagination
 		
+		
 		//search filter function
 		$scope.searchFilter = function(statusCol, searchProp) {
 			$scope.search = {search: true};
@@ -59,11 +60,47 @@ define(['app'], function (app) {
 				}
 				//console.log($scope.properties);
 			});
-		};				
+		};		
+
+/***************************************************************************************/
+		/* $scope.changeStatus = {};
+		$scope.changeStatusFn = function(colName, colValue, id){
+			$scope.changeStatus[colName] = colValue;				
+			//console.log($scope.changeStatus);
+			
+				 dataService.put("put/property/"+id,$scope.changeStatus)			
+				.then(function(response) {					
+					if(colName=='title'){					
+					}
+					$scope.alerts.push({type: response.status,msg: response.message});
+				}); 
+		}		 */
 		
-		//view single property modal
+/***************************************************************************************/	
+		$scope.changeValue = function(statusCol,status) {
+			//console.log($scope.propertyParam);
+			$scope.filterStatus= {};
+			(status =="") ? delete $scope.propertyParam[statusCol] : $scope.filterStatus[statusCol] = status;
+			angular.extend($scope.propertyParam, $scope.filterStatus);
+			angular.extend($scope.propertyParam, $scope.search);			
+			
+			dataService.get("/getmultiple/property/1/"+$scope.pageItems, $scope.propertyParam)
+			.then(function(response) {  //function for property response
+				if(response.status == 'success'){
+					$scope.properties = response.data;
+					$scope.totalRecords = response.totalRecords;
+				}else{
+					$scope.properties = {};
+					$scope.totalRecords = {};
+					$scope.alerts.push({type: response.status, msg: response.message});
+				}				
+			});
+		};
+/*****************************************************************************************/		
+
+	//view single property modal
 		 $scope.open = function (url, propId) {
-			dataService.get("/property/"+propId)
+			dataService.get("getsingle/property/"+propId)
 			.success(function(response) {
 				var modalDefaults = {
 					templateUrl: url,	// apply template to modal
@@ -80,22 +117,45 @@ define(['app'], function (app) {
 			$modalOptions.close('ok');
 		};	//end of modal function		
 				
-		
+/**************************************************************************************/				
+		//view multiple records
 			$scope.propertyParam = {status : 1};			
 			angular.extend($scope.propertyParam,$scope.userInfo);
 			dataService.get("getmultiple/property/1/"+$scope.pageItems, $scope.propertyParam)
-			.then(function(response) { 
-				console.log(response);
-				//function for property list response  
-					/* if(response.status == 'success'){
+			.then(function(response) { //function for property list response  
+				console.log(response.data);				
+					if(response.status == 'success'){
 						$scope.totalRecords = response.totalRecords;
-						$scope.properties = response.data; 
+						$scope.properties = response.data; 					
 						
 					}else{
 						$scope.alerts.push({type: response.status, msg: response.message});
-					}*/
+					}
 			});	
+
+	/***************************************************************************************/		
+			//update single record
+		/*	$scope.update = function(addProperty){				
+				console.log(addProperty);	
+				
+				 dataService.put("put/property/"+$routeParams.id ,addProperty)
+				.then(function(response) { 					
+				//function for response of request temp
+					if(response.status == 'success'){
+						$scope.submitted = true;
+						$scope.alerts.push({type: response.status,msg: response.message});						
+					}else{
+						$scope.alerts.push({type: response.status,msg: response.message});
+					}	
+				});	 
+			};	 */
+			
+			//post data
+			
+			
 	};		
+	
+	
 	// Inject controller's dependencies
 	propertyController.$inject = injectParams;
 	// Register/apply controller dynamically

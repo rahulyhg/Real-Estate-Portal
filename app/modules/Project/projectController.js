@@ -150,7 +150,30 @@ var injectParams = ['$scope', '$injector','$routeParams','$rootScope','dataServi
 			$scope.projects = response.data;
 		});
 		
-		
+	/***********************************************************************************/	
+			//update single record
+			
+			if($routeParams.id){//Update user			
+			dataService.get("getsingle/project/"+$routeParams.id)
+			.then(function(response) {
+					$scope.projects = response.data;	
+					console.log(projects);					
+				});				
+			$scope.update = function(projects){				
+				console.log(projects);	
+				
+				/*  dataService.put("put/project/"+$routeParams.id ,projects)
+				.then(function(response) { 	//function for response of request project
+					if(response.status == 'success'){
+						$scope.submitted = true;
+						$scope.alerts.push({type: response.status,msg: response.message});						
+					}else{
+						
+						$scope.alerts.push({type: response.status,msg: response.message});
+					}	
+				});	 */ 
+			};	
+	/***********************************************************************************/	
 	 };		 
 	// Inject controller's dependencies
 	projectController.$inject = injectParams;
