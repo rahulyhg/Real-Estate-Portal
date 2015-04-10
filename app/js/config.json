@@ -161,6 +161,8 @@
 			
 			"Bedrooms" :["1","2","3","4","5","6"],
 			
+			"currency" : ["In-Rupees","Thousand","Lac","Carore"],
+			
 			"propertyAge" : ["under Construction", "New Construction", "0 to 5 years", "5 to 10 years", "10 to 15 years", "15 to 20 years", "Above 20 years"], 
 			
 			"furnished" : ["Furnished", "Unfurnished", "Semi-Furnished"],

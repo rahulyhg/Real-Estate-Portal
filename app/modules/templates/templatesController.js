@@ -37,9 +37,9 @@ define(['app'], function (app) {
 				modalService.showModal(modalDefaults, modalOptions).then(function (result) {
 					console.log("modalOpened");
 				});
-			});
-			
+			});			
 		};
+		
 		$scope.ok = function () {
 			$modalOptions.close('ok');
 		};

@@ -5,9 +5,12 @@ define(['app'], function (app) {
 	var addpropertyController = function ($scope, $injector,$routeParams,$http,$rootScope, upload, $timeout,dataService) {
 		$rootScope.metaTitle = "Add Real Estate Property";
 		
+		// all $scope object goes here{pooja}
 		$scope.alerts = [];
 		$scope.userinfo = {user_id : $rootScope.userDetails.id};
 		$scope.currentDate = dataService.currentDate;
+		$scope.property={};
+		
 		
 		// to close alert message
 			$scope.closeAlert = function(index) {
@@ -21,7 +24,7 @@ define(['app'], function (app) {
 					for(x in picArr) picArrKey++;
 					if(data.status === 'success'){
 						picArr[picArrKey] = data.details;
-						console.log(data.message);
+						
 					}else{
 						$scope.alerts.push({type: data.status, msg: data.message});
 					}
@@ -32,12 +35,20 @@ define(['app'], function (app) {
 				upload.generateThumbs(files);
 			};// end file upload code
 		
-		/**********************************************************************/
+	/**********************************************************************/
 		//display records from config.js to combo
 		
 		$scope.propertyConfig = dataService.config.property;					
-		console.log($scope.propertyConfig);
-		/*********************************************************************/
+		
+		
+	/*********************************************************************/
+		
+		// Add Business multi part form show/hide operation from here! {pooja}
+		$scope.formPart = 'property';
+		$scope.showFormPart = function(formPart){
+			$scope.formPart = formPart;
+		};
+	/*********************************************************************/
 		
 	//dynamic dropdwnlist of country,state & city
 	
@@ -73,32 +84,60 @@ define(['app'], function (app) {
 	//display dynamic list from project table 
 		dataService.get('getmultiple/project/1/50', $scope.userinfo)
 			.then(function(response){
-				console.log(response.data);								
+												
 				$scope.addProjName = response.data;				
 			});
 
          
 		dataService.get('getmultiple/property/1/50', $scope.userinfo)
 			.then(function(response){
-				console.log(response);								
+												
 				$scope.addPropStruct = response.data;				
 		}); 
 			
 	/************************************************************************************/		
+		
+		 //Add property
+		$scope.addPropertyFun = function(property){	
 			
-		// Add property
-		$scope.addPropertya = function(property){
-			alert("property");
-			/* dataService.post("post/property", $scope.property,$scope.userinfo)
+			$scope.property.date = $scope.currentDate;
+			dataService.post("post/property",property,$scope.userinfo)
 			.then(function(response) {
+				
 				if(response.status=="success"){
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}else{
 					$scope.alerts.push({type: response.status, msg: response.message});
-				}
-				/* $scope.addProperty.$setPristine(); 
-			}); */
-		};				
+				}				
+			}); 
+			/********************************************************************************/
+			//update into property
+			};
+			 if($routeParams.id){//Update user
+				console.log($routeParams.id);	
+				dataService.get("getsingle/property/"+$routeParams.id)
+				.then(function(response) {
+						$scope.property = response.data;	
+						console.log($scope.property);					
+					});	
+					
+					$scope.update = function(property){				
+												
+						dataService.put("put/property/"+$routeParams.id,property)
+						.then(function(response) { //function for response of request temp
+							if(response.status == 'success'){
+								$scope.submitted = true;
+								$scope.alerts.push({type: response.status,msg: response.message});						
+							}else{
+								$scope.alerts.push({type: response.status, msg: response.message});
+							}	
+						});	  
+					};	 
+			}			
+
+
+			
+						
 		
 	/*********************************************************************/	
 	//display websites-domain into checkbox
@@ -115,14 +154,13 @@ define(['app'], function (app) {
 		 $scope.websites = [
 			{id:1, domain_name:"google.com"},
 			{id:2, domain_name:"wtouch.in"},
-		] 
+		];
 		
 		 $scope.$watchCollection('websites', function(newNames, oldNames) {
-			if($scope.websites == newNames ) 
-				console.log(newNames);
+			
+				
 		}); 
-		$scope.checkAll = function(websites, checkValue) {
-			$scope.property={};
+		$scope.checkAll = function(websites, checkValue) {			
 			if(checkValue){
 				$scope.property.domain = angular.copy(websites);
 			}

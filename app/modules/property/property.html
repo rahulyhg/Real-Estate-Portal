@@ -1,14 +1,11 @@
 
  <!-- ng-controller removed from here. No need ng-controller on each page. Bcoz we add it through main angular module(mean from app.js-route provider) -->
  
- 
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+			<ng-include src="'modules/component/toolbar.html'"></ng-include>
 <div class="row">
 	<div class="col-sm-12">	
-		<div class="main-content">
-			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-			<ng-include src="'modules/component/toolbar.html'"></ng-include>	
-
-			
+		<div class="main-content">			
 			<div class="row bottom-space">
 				<div class="col-sm-2"> 
 					<label class="control-label"> </label><br>
@@ -88,38 +85,37 @@
 									<td>
 										<table class="table table-bordered table-responsive">
 											<tr>
-												<td>Property Title</td>
+												<td><b>Property Title</b></td>
 												<td>{{x.title}}</td>
 											</tr>
 											<tr>
-												<td>Property For</td>
+												<td><b>Property For</b></td>
 												<td>{{x.property_for}}</td>
 											</tr>
 											<tr>
-												<td>Property Type</td>
+												<td><b>Property Type</b></td>
 												<td>{{x.type}}</td>		
 											</tr>
 											<tr>
-												<td>Address</td>
+												<td><b>Address</b></td>
 												<td>{{x.property_location}}</td>
 											</tr>
 										</table>
 									</td>	
 									
-									<td>{{x.featured}}
-										
+									<td>										
 										<a class="btn btn-success" ng-show="x.featured==0" title="Featured">Featured </a>
 										
 										<a class="btn btn-warning" ng-show="x.featured==1" title="Not featured"> Not Featured </a>
 									</td>			
-									<td>{{x.status}}
+									<td>
 										<a class="btn btn-success"  ng-show="x.status==1" title="Active">Active</a>
 										
 										<a class="btn btn-warning"  ng-show="x.status==0" title="Delete">Delete</a>
 									</td>
-									<td>{{x.domain}}</td>				
-									<td>			
-										
+									<td>{{x.domain}}									
+									</td>				
+									<td>										
 										<a href="#/dashboard/property/addproperty/{{x.id}}" class="btn btn-primary" type="button" tooltip-animation="true" tooltip="Edit User Information"> 
 											<span class="glyphicon glyphicon-pencil"></span>
 										</a>
@@ -130,8 +126,7 @@
 							</tbody>
 						</table>
 					</div>					
-					<div class="text-center">	
-
+					<div class="text-center">
 					
 						<pagination total-items="totalRecords" items-per-page="pageItems"  ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="pageChanged(currentPage,propertyParam)"></pagination>			
 						<pre>Page: {{currentPage}} / {{numPages}}</pre>

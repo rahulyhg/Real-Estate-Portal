@@ -73,12 +73,14 @@ define(['angular',
                     controller: 'register',
                     template: 'register',
 					label: "Register"
-                }, 'users/register/'))				
+                }, 'users/register/'))		
+				
 				.when('/changepass',route.resolve({
                     controller: 'register',
                     template: 'changepass',
 					label: "Change Password"
                 }, 'users/register/'))
+				
 				.when('/editprofile', route.resolve({
                     controller: 'register',
                     template: 'editprofile',

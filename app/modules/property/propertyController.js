@@ -98,21 +98,26 @@ define(['app'], function (app) {
 		};
 /*****************************************************************************************/		
 
-	//view single property modal
-		 $scope.open = function (url, propId) {
-			dataService.get("getsingle/property/"+propId)
-			.success(function(response) {
+	//view single property modal		 
+		$scope.open = function (url, propId) {
+			dataService.get("getsingle/property/"+ propId)
+			.then(function(response) {
+				
+				console.log(response);
 				var modalDefaults = {
 					templateUrl: url,	// apply template to modal
+					size : 'lg'
 				};
 				var modalOptions = {
-					property: response  // assign data to modal
+					viewProperty: dataService.parse(response.data)  // assign data to modal
 				};
+				//console.log(response.data);
 				modalService.showModal(modalDefaults, modalOptions).then(function (result) {
 					console.log("modalOpened");
 				});
 			});			
-		};	
+		};
+		
 		$scope.ok = function () {
 			$modalOptions.close('ok');
 		};	//end of modal function		
@@ -123,7 +128,7 @@ define(['app'], function (app) {
 			angular.extend($scope.propertyParam,$scope.userInfo);
 			dataService.get("getmultiple/property/1/"+$scope.pageItems, $scope.propertyParam)
 			.then(function(response) { //function for property list response  
-				console.log(response.data);				
+				//console.log(response.data);				
 					if(response.status == 'success'){
 						$scope.totalRecords = response.totalRecords;
 						$scope.properties = response.data; 					
@@ -132,29 +137,9 @@ define(['app'], function (app) {
 						$scope.alerts.push({type: response.status, msg: response.message});
 					}
 			});	
-
-	/***************************************************************************************/		
-			//update single record
-		/*	$scope.update = function(addProperty){				
-				console.log(addProperty);	
-				
-				 dataService.put("put/property/"+$routeParams.id ,addProperty)
-				.then(function(response) { 					
-				//function for response of request temp
-					if(response.status == 'success'){
-						$scope.submitted = true;
-						$scope.alerts.push({type: response.status,msg: response.message});						
-					}else{
-						$scope.alerts.push({type: response.status,msg: response.message});
-					}	
-				});	 
-			};	 */
-			
-			//post data
-			
 			
 	};		
-	
+	/***************************************************************************************/
 	
 	// Inject controller's dependencies
 	propertyController.$inject = injectParams;

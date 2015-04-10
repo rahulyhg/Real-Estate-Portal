@@ -1,4 +1,4 @@
-{{property | json}}  <!--Amenities-->	
+  <!--Amenities-->	
 		<h3>Amenities:</h3>
 		<div class="form-group">
 			<div class="col-sm-12">
@@ -7,7 +7,7 @@
 						<tr>
 							<td class="checkbox">
 								<label class="col-sm-3" ng-repeat="x in propertyConfig.amenities">
-									<input type="checkbox" checklist-model="property.amenities" checklist-value="x"/>
+									<input type="checkbox" checklist-model="property.amenities" checklist-value="x"/ required>
 									{{x}}
 								</label>								
 							</td>

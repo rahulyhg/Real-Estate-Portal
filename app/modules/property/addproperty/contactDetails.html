@@ -1,4 +1,4 @@
-{{property |json}}
+
 <!-- property contact details -->				
 	<h3>Property contact Detail:</h3>
 		<div class="form-group">
@@ -29,10 +29,11 @@
 				<p class="text-danger" ng-show="addProperty.contact_details.$error.required && (addProperty.contact_details.$dirty || submitted)" class="help-block">Email is required.</p>								
 			</div>							
 	  </div>
+	  
 	  <div class="form-group">
 			<label for="cont_address" class="col-sm-2 control-label"> * Address </label>
 			<div class="col-sm-9">
-				<textarea class="form-control"  id="cont_address" name="cont_address" ng-model="property.contact_details.cont_address" cols="30" rows="4" ng-maxlength="356" ></textarea>
+				<textarea class="form-control"  id="cont_address" name="cont_address" ng-model="property.contact_details.cont_address" cols="30" rows="4" ng-maxlength="356" required></textarea>
 		<p ng-hide="addProperty.contact_details.$error.maxlength">{{ 356 - property.contact_details.length + " Chars left" }}</p>
 		 <span class="text-danger" ng-show="addProperty.contact_details.$error.maxlength">
 			Sorry You are Exceeding the Limit
