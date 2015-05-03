@@ -47,7 +47,7 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 			$scope.userinfo = {userId:1, name:"vilas"};
 			$scope.path = "user/"; 
 			//for edit profile object for uploading images
-			
+			$scope.alerts=[];
 			
 			$scope.register.user_img = []; // uploaded images will store in this array
 			// this function for uploading files
@@ -72,8 +72,8 @@ define(['app', 'css!modules/users/register/register'], function (app) {
 			dataService.post("post/user/register", register)
 			.then(function(response) {
 				if(response.status == 'success'){
-					$scope.submitted = true;
 					$scope.alert.push({type: response.status, msg: response.message});
+					$scope.submitted = true;
 				}
 			},function(err){
 				console.log(err);

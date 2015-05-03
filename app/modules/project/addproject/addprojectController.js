@@ -145,7 +145,8 @@ define(['app'], function (app) {
 				}else{
 					$scope.alerts.push({type: response.status, msg: response.message});
 				}
-				$scope.addproject.$setPristine();
+			
+			
 			});
 		};
 		
@@ -155,8 +156,8 @@ define(['app'], function (app) {
 		if($routeParams.id){
 			dataService.get("getsingle/project/"+$routeParams.id)
 			.then(function(response) {
-				$scope.project = response.data;
-				console.log($scope.project);
+				$scope.project= response.data;
+				$scope.alerts.push({type: response.status, msg: "record updated successfully"});
 			});
 			
 			$scope.update = function(id,project){
