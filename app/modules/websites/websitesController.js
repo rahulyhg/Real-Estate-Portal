@@ -179,7 +179,7 @@ define(['app'], function (app) {
 				});
 			};			
 		
-       
+       };
 		var requestedsitelist = function(){
 			//function for requestedsitelist{sonali}
 			dataService.get("/getmultiple/website/"+$scope.reqestSiteCurrentPage+"/"+$scope.pageItems, $scope.userDetails)
@@ -214,7 +214,7 @@ define(['app'], function (app) {
 			}//end of post method{trupti} 
 		};
 		
-		};
+		
 		
         switch($scope.webPart) {
 			case 'mywebsites':

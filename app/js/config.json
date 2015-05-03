@@ -1,36 +1,3 @@
-{
-	"country" : [{
-			"country_name" : "India",
-			"states" : [{
-					"state_name" : "Maharashtra",
-					"cities" : [{"city_name" : "Pune"},{"city_name" : "Mumbai"}]
-				},{
-					"state_name" : "Gujarat",
-					"cities" : [{"city_name" : "Nasik"},{"city_name" : "Ahmdabad"}]
-				},{
-					"state_name" : "Karnataka",
-					"cities" : [{"city_name" : "Nagpur"},{"city_name" : "Beed"}]
-				},{
-					"state_name" : "Kerala",
-					"cities" : [{"city_name" : "Virar"},{"city_name" : "Satara"}]
-				}
-			]},{
-			"country_name" : "Australia",
-			"states" : [{
-					"state_name" : "Uttar Pradesh",
-					"cities" : [{"city_name" : "Nanded"},{"city_name" : "Latur"}]
-				},{
-					"state_name" : "MadhyaPradesh",
-					"cities" : [{"city_name" : "Aurangabad"},{"city_name" : "Jalana"}]
-				},{
-					"state_name" : "Bihar",
-					"cities" : [{"city_name" : "Solapur"},{"city_name" : "Sangali"}]
-				},{
-					"state_name" : "Hariyana",
-					"cities" : [{"city_name" : "Vasai"},{"city_name" : "Thane"}]
-				}
-			]}	
-		],
 
 	"property" : {
 			"amenities" : ["Power Backup", "Water Storage", "Lift", "Reserve Parking", "Security", "Maintenance Staff", "GYM", "Park", "Private Terrace", "Swimming Pool", "Servant Quarters", "Club House"],
@@ -187,6 +154,10 @@
 			}        
 		
 	},
+		
+		
+		
+		
 		
 		
 	
